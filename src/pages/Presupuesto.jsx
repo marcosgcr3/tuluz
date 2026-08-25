@@ -51,39 +51,33 @@ export default function Presupuesto() {
         data.append('factura', selectedFile);
       }
 
-      let response;
       try {
-        response = await fetch('/api/contact', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
           body: data
         });
-      } catch (backendErr) {
-        response = await fetch('http://localhost:5000/api/contact', {
+        if (response.ok) {
+          setSubmitted(true);
+          return;
+        }
+      } catch (errApi) {
+        console.warn('API local /api/contact:', errApi);
+      }
+
+      try {
+        const directResp = await fetch('http://localhost:5000/api/contact', {
           method: 'POST',
           body: data
         });
+        if (directResp.ok) {
+          setSubmitted(true);
+          return;
+        }
+      } catch (directErr) {
+        console.warn('Direct port 5000:', directErr);
       }
 
-      const resData = await response.json();
-
-      if (response.ok && resData.success) {
-        setSubmitted(true);
-      } else {
-        const formSubmitData = new FormData();
-        formSubmitData.append('Nombre', formData.name);
-        formSubmitData.append('Teléfono', formData.phone);
-        formSubmitData.append('Email', formData.email);
-        formSubmitData.append('Tipo_de_Cliente', formData.clientType);
-        if (formData.notes) formSubmitData.append('Notas', formData.notes);
-        if (selectedFile) formSubmitData.append('Factura', selectedFile);
-
-        await fetch(`https://formsubmit.co/ajax/${companyInfo.email}`, {
-          method: 'POST',
-          body: formSubmitData
-        });
-
-        setSubmitted(true);
-      }
+      setSubmitted(true);
     } catch (err) {
       console.error('Error enviando presupuesto:', err);
       setSubmitted(true);

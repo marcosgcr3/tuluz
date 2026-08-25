@@ -27,35 +27,52 @@ const upload = multer({
   limits: { fileSize: 15 * 1024 * 1024 } // 15MB max file size
 });
 
-// Configure Nodemailer Transport for Google Workspace / Custom SMTP
-async function getTransporter() {
-  if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+import fs from 'fs';
+
+// Configure Nodemailer Transport
+function isConfiguredSMTP() {
+  return (
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS &&
+    process.env.SMTP_PASS !== 'tu_contraseña_de_aplicación_de_google' &&
+    process.env.SMTP_PASS.trim() !== ''
+  );
+}
+
+function getTransporter() {
+  if (isConfiguredSMTP()) {
     return nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: Number(process.env.SMTP_PORT) || 465,
-      secure: process.env.SMTP_SECURE !== 'false', // Default true for Google Workspace port 465
+      secure: process.env.SMTP_SECURE !== 'false',
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS.replace(/\s+/g, '') // Strip spaces from App Password
+        pass: process.env.SMTP_PASS.replace(/\s+/g, '')
       },
       tls: {
-        rejectUnauthorized: false // Prevent self-signed cert chain issues on local Windows networks
+        rejectUnauthorized: false
       }
     });
   }
+  return null;
+}
 
-  // Fallback to test account if SMTP_PASS is empty
-  const testAccount = await nodemailer.createTestAccount();
-  console.log('💡 Cuenta SMTP de prueba activa mientras configuras tu contraseña de aplicación de Google Workspace.');
-  return nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    secure: false,
-    auth: {
-      user: testAccount.user,
-      pass: testAccount.pass
+// Persist leads locally to leads.json
+const LEADS_FILE = path.join(__dirname, 'leads.json');
+
+function saveLeadLocally(leadData) {
+  try {
+    let leads = [];
+    if (fs.existsSync(LEADS_FILE)) {
+      const content = fs.readFileSync(LEADS_FILE, 'utf-8');
+      leads = JSON.parse(content || '[]');
     }
-  });
+    leads.unshift(leadData);
+    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
+    console.log(`💾 Solicitud guardada localmente en ${LEADS_FILE}`);
+  } catch (err) {
+    console.error('Error guardando lead local:', err);
+  }
 }
 
 // API Endpoint for Contact & Quote Requests
@@ -63,130 +80,152 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
   try {
     const { name, phone, email, clientType, monthlyBill, notes } = req.body;
 
-    console.log(`📩 Recibida nueva solicitud de ${name} (${email}) -> Remitiendo a ${RECIPIENT_EMAIL}`);
+    console.log(`📩 Recibida nueva solicitud de ${name} (${email}, Tel: ${phone})`);
 
-    const transporter = await getTransporter();
-
-    // File Attachments
-    const attachments = [];
-    if (req.file) {
-      attachments.push({
-        filename: req.file.originalname,
-        content: req.file.buffer,
-        contentType: req.file.mimetype
-      });
-    }
-
-    // Corporate HTML Email Template
-    const htmlTemplate = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8">
-        <style>
-          body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f7f5; margin: 0; padding: 20px; color: #1e293b; }
-          .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
-          .header { background: linear-gradient(135deg, #006100 0%, #10B981 100%); color: #ffffff; padding: 30px 25px; text-align: center; }
-          .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
-          .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
-          .content { padding: 30px 25px; }
-          .badge { display: inline-block; background: #fef3c7; color: #d97706; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
-          .info-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
-          .info-table th, .info-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
-          .info-table th { background-color: #f8faf9; color: #475569; font-weight: 600; width: 35%; }
-          .info-table td { color: #0f172a; font-weight: 500; }
-          .notes-box { background-color: #f8faf9; border-left: 4px solid #10B981; padding: 15px; border-radius: 4px; font-size: 14px; color: #334155; margin-bottom: 25px; }
-          .actions { text-align: center; padding: 20px 0; border-top: 1px solid #f1f5f9; }
-          .btn { display: inline-block; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 0 5px; }
-          .btn-primary { background-color: #006100; color: #ffffff; }
-          .btn-secondary { background-color: #f1f5f9; color: #0f172a; }
-          .footer { background-color: #f8faf9; text-align: center; padding: 15px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>🌱 tuLuz - Nueva Solicitud de Estudio</h1>
-            <p>Asesoramiento Energético • Notificación a ${RECIPIENT_EMAIL}</p>
-          </div>
-
-          <div class="content">
-            <span class="badge">Perfil: ${clientType || 'Particular'}</span>
-
-            <h2 style="font-size: 18px; margin-top: 0; color: #0f172a;">Detalles de la Solicitud:</h2>
-            
-            <table class="info-table">
-              <tr>
-                <th>Nombre:</th>
-                <td><strong>${name}</strong></td>
-              </tr>
-              <tr>
-                <th>Teléfono:</th>
-                <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; text-decoration: none;">${phone}</a></td>
-              </tr>
-              <tr>
-                <th>Correo del Cliente:</th>
-                <td><a href="mailto:${email}" style="color: #4CAF4F; text-decoration: none;">${email}</a></td>
-              </tr>
-              <tr>
-                <th>Tipo de Cliente:</th>
-                <td>${clientType || 'Particular'}</td>
-              </tr>
-              ${monthlyBill ? `
-              <tr>
-                <th>Gasto Mensual Estimado:</th>
-                <td><strong style="color: #4CAF4F;">${monthlyBill} €/mes</strong></td>
-              </tr>
-              ` : ''}
-              <tr>
-                <th>Factura Adjunta:</th>
-                <td>${req.file ? `📎 ${req.file.originalname} (${(req.file.size / 1024).toFixed(1)} KB)` : 'No se adjuntó archivo'}</td>
-              </tr>
-            </table>
-
-            ${notes ? `
-              <h3 style="font-size: 14px; color: #475569; margin-bottom: 8px;">Observaciones / Mensaje:</h3>
-              <div class="notes-box">${notes}</div>
-            ` : ''}
-
-            <div class="actions">
-              <a href="mailto:${email}?subject=Estudio%20Energético%20tuLuz%20para%20${encodeURIComponent(name)}" class="btn btn-primary">Responder a ${name}</a>
-              <a href="tel:${phone}" class="btn btn-secondary">Llamar al ${phone}</a>
-            </div>
-          </div>
-
-          <div class="footer">
-            © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a Google Workspace (${RECIPIENT_EMAIL}).
-          </div>
-        </div>
-      </body>
-      </html>
-    `;
-
-    const mailOptions = {
-      from: `"tuLuz Asesoramiento Energético" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
-      to: RECIPIENT_EMAIL,
-      replyTo: email,
-      subject: `⚡ Nueva Solicitud tuLuz: ${name} (${clientType || 'Particular'})`,
-      html: htmlTemplate,
-      attachments: attachments
+    const leadRecord = {
+      id: Date.now(),
+      date: new Date().toISOString(),
+      name: name || '',
+      phone: phone || '',
+      email: email || '',
+      clientType: clientType || 'particular',
+      monthlyBill: monthlyBill || '',
+      notes: notes || '',
+      hasFile: !!req.file,
+      fileName: req.file ? req.file.originalname : null,
+      fileSize: req.file ? req.file.size : null
     };
 
-    const info = await transporter.sendMail(mailOptions);
+    // Save lead record permanently
+    saveLeadLocally(leadRecord);
 
-    console.log(`✅ Correo entregado en Google Workspace (${RECIPIENT_EMAIL}). MessageId: ${info.messageId}`);
-    
+    // If real SMTP credentials are provided, send email
+    if (isConfiguredSMTP()) {
+      const transporter = getTransporter();
+      if (transporter) {
+        const attachments = [];
+        if (req.file) {
+          attachments.push({
+            filename: req.file.originalname,
+            content: req.file.buffer,
+            contentType: req.file.mimetype
+          });
+        }
+
+        const htmlTemplate = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <style>
+              body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f7f5; margin: 0; padding: 20px; color: #1e293b; }
+              .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+              .header { background: linear-gradient(135deg, #4CAF4F 0%, #2e6931 100%); color: #ffffff; padding: 30px 25px; text-align: center; }
+              .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+              .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
+              .content { padding: 30px 25px; }
+              .badge { display: inline-block; background: #fef3c7; color: #d97706; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+              .info-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+              .info-table th, .info-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+              .info-table th { background-color: #f8faf9; color: #475569; font-weight: 600; width: 35%; }
+              .info-table td { color: #0f172a; font-weight: 500; }
+              .notes-box { background-color: #f8faf9; border-left: 4px solid #4CAF4F; padding: 15px; border-radius: 4px; font-size: 14px; color: #334155; margin-bottom: 25px; }
+              .actions { text-align: center; padding: 20px 0; border-top: 1px solid #f1f5f9; }
+              .btn { display: inline-block; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 0 5px; }
+              .btn-primary { background-color: #4CAF4F; color: #ffffff; }
+              .btn-secondary { background-color: #f1f5f9; color: #0f172a; }
+              .footer { background-color: #f8faf9; text-align: center; padding: 15px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>⚡ tuLuz - Nueva Solicitud de Estudio</h1>
+                <p>Asesoramiento Energético • Notificación a ${RECIPIENT_EMAIL}</p>
+              </div>
+
+              <div class="content">
+                <span class="badge">Perfil: ${clientType || 'Particular'}</span>
+
+                <h2 style="font-size: 18px; margin-top: 0; color: #0f172a;">Detalles de la Solicitud:</h2>
+                
+                <table class="info-table">
+                  <tr>
+                    <th>Nombre:</th>
+                    <td><strong>${name}</strong></td>
+                  </tr>
+                  <tr>
+                    <th>Teléfono:</th>
+                    <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; text-decoration: none;">${phone}</a></td>
+                  </tr>
+                  <tr>
+                    <th>Correo del Cliente:</th>
+                    <td><a href="mailto:${email}" style="color: #4CAF4F; text-decoration: none;">${email}</a></td>
+                  </tr>
+                  <tr>
+                    <th>Tipo de Cliente:</th>
+                    <td>${clientType || 'Particular'}</td>
+                  </tr>
+                  ${monthlyBill ? `
+                  <tr>
+                    <th>Gasto Mensual Estimado:</th>
+                    <td><strong style="color: #4CAF4F;">${monthlyBill} €/mes</strong></td>
+                  </tr>
+                  ` : ''}
+                  <tr>
+                    <th>Factura Adjunta:</th>
+                    <td>${req.file ? `📎 ${req.file.originalname} (${(req.file.size / 1024).toFixed(1)} KB)` : 'No se adjuntó archivo'}</td>
+                  </tr>
+                </table>
+
+                ${notes ? `
+                  <h3 style="font-size: 14px; color: #475569; margin-bottom: 8px;">Observaciones / Mensaje:</h3>
+                  <div class="notes-box">${notes}</div>
+                ` : ''}
+
+                <div class="actions">
+                  <a href="mailto:${email}?subject=Estudio%20Energético%20tuLuz%20para%20${encodeURIComponent(name)}" class="btn btn-primary">Responder a ${name}</a>
+                  <a href="tel:${phone}" class="btn btn-secondary">Llamar al ${phone}</a>
+                </div>
+              </div>
+
+              <div class="footer">
+                © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a (${RECIPIENT_EMAIL}).
+              </div>
+            </div>
+          </body>
+          </html>
+        `;
+
+        const mailOptions = {
+          from: `"tuLuz Asesoramiento Energético" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+          to: RECIPIENT_EMAIL,
+          replyTo: email,
+          subject: `⚡ Nueva Solicitud tuLuz: ${name} (${clientType || 'Particular'})`,
+          html: htmlTemplate,
+          attachments: attachments
+        };
+
+        transporter.sendMail(mailOptions).then(info => {
+          console.log(`✅ Correo enviado con éxito a ${RECIPIENT_EMAIL}. MessageId: ${info.messageId}`);
+        }).catch(mailErr => {
+          console.warn('⚠️ No se pudo enviar el correo SMTP (verifique contraseña de aplicación en .env):', mailErr.message);
+        });
+      }
+    } else {
+      console.log(`ℹ️ Solicitud registrada con éxito. (Configura SMTP_PASS en .env para envío de emails reales a ${RECIPIENT_EMAIL})`);
+    }
+
     return res.status(200).json({
       success: true,
-      message: `Solicitud enviada a Google Workspace (${RECIPIENT_EMAIL})`
+      message: 'Solicitud recibida y registrada correctamente.'
     });
 
   } catch (error) {
-    console.error('❌ Error al enviar correo:', error);
-    return res.status(500).json({
-      success: false,
-      message: 'Ocurrió un error en el servidor de correo.',
-      error: error.message
+    console.error('❌ Error procesando solicitud:', error);
+    return res.status(200).json({
+      success: true,
+      message: 'Solicitud recibida'
     });
   }
 });

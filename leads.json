@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1787655908469,
+    "date": "2026-08-25T11:05:08.469Z",
+    "name": "Carlos",
+    "phone": "611222333",
+    "email": "carlos@test.com",
+    "clientType": "particular",
+    "monthlyBill": "",
+    "notes": "",
+    "hasFile": false,
+    "fileName": null,
+    "fileSize": null
+  },
+  {
+    "id": 1787655908464,
+    "date": "2026-08-25T11:05:08.464Z",
+    "name": "Juan Perez",
+    "phone": "620000000",
+    "email": "juan@test.com",
+    "clientType": "particular",
+    "monthlyBill": "",
+    "notes": "",
+    "hasFile": false,
+    "fileName": null,
+    "fileSize": null
+  }
+]

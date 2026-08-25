@@ -3,11 +3,16 @@ import { Phone, Mail, MapPin, Send, CheckCircle2, ShieldCheck, UploadCloud, Spar
 import { companyInfo } from '../data/content';
 
 export default function Presupuesto() {
+  const queryParams = new URLSearchParams(window.location.search);
+  const paramType = queryParams.get('tipo') || queryParams.get('type');
+  const validTypes = ['particular', 'empresa', 'comunidad'];
+  const defaultClientType = validTypes.includes(paramType) ? paramType : 'particular';
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    clientType: 'particular',
+    clientType: defaultClientType,
     monthlyBill: '',
     notes: ''
   });

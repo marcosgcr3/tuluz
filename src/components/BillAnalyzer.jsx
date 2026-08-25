@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UploadCloud, FileText, CheckCircle, Sparkles, Shield, ArrowRight } from 'lucide-react';
 
-export default function BillAnalyzer({ onOpenModal }) {
+export default function BillAnalyzer({ onOpenModal, clientType = 'particular' }) {
   const [fileName, setFileName] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analyzed, setAnalyzed] = useState(false);
@@ -128,7 +128,7 @@ export default function BillAnalyzer({ onOpenModal }) {
               Factura pre-procesada con éxito. Envíanos tus datos de contacto para remitirte el dictamen de ahorro completo.
             </p>
             <button 
-              onClick={() => onOpenModal({ uploadedFile: fileName })}
+              onClick={() => onOpenModal({ uploadedFile: fileName, clientType })}
               className="btn btn-primary" 
               style={{ padding: '0.6rem 1.4rem' }}
             >

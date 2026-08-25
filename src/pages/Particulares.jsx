@@ -140,7 +140,7 @@ export default function Particulares({ onOpenModal }) {
       {/* Bill Dropzone Uploader */}
       <section className="section">
         <div className="container">
-          <BillAnalyzer onOpenModal={onOpenModal} />
+          <BillAnalyzer onOpenModal={onOpenModal} clientType="particular" />
         </div>
       </section>
 

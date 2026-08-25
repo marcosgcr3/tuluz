@@ -3,6 +3,11 @@ import cors from 'cors';
 import multer from 'multer';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -186,7 +191,16 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
   }
 });
 
+// Servir archivos estáticos del frontend (Vite)
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Cualquier otra petición que no sea de la API sirve el index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend Google Workspace activo en http://localhost:${PORT}`);
   console.log(`📬 Los formularios se envían a: ${RECIPIENT_EMAIL}`);
 });
+

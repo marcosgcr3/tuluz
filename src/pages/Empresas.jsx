@@ -140,7 +140,7 @@ export default function Empresas({ onOpenModal }) {
       {/* Bill Uploader */}
       <section className="section">
         <div className="container">
-          <BillAnalyzer onOpenModal={onOpenModal} />
+          <BillAnalyzer onOpenModal={onOpenModal} clientType="empresa" />
         </div>
       </section>
 

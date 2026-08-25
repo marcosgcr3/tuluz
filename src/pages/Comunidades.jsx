@@ -140,7 +140,7 @@ export default function Comunidades({ onOpenModal }) {
       {/* Upload zone */}
       <section className="section">
         <div className="container">
-          <BillAnalyzer onOpenModal={onOpenModal} />
+          <BillAnalyzer onOpenModal={onOpenModal} clientType="comunidad" />
         </div>
       </section>
 

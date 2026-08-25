@@ -44,7 +44,20 @@ export default function App() {
   };
 
   const openContactModal = (initialData = {}) => {
-    setModalInitialData(initialData);
+    const cleanPath = currentPath.replace(/\/$/, '') || '/';
+    let defaultType = 'particular';
+    if (cleanPath === '/empresas') {
+      defaultType = 'empresa';
+    } else if (cleanPath === '/comunidades-de-vecinos') {
+      defaultType = 'comunidad';
+    } else if (cleanPath === '/particulares') {
+      defaultType = 'particular';
+    }
+
+    setModalInitialData({
+      clientType: defaultType,
+      ...initialData
+    });
     setContactModalOpen(true);
   };
 

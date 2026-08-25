@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Send, Phone, Mail, CheckCircle2, Sparkles, Loader2, UploadCloud } from 'lucide-react';
 import { companyInfo } from '../data/content';
 
@@ -16,6 +16,19 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(prev => ({
+        ...prev,
+        clientType: initialData.clientType || 'particular',
+        monthlyBill: initialData.monthlyBill !== undefined ? initialData.monthlyBill : prev.monthlyBill,
+        notes: initialData.notes || (initialData.uploadedFile ? `Factura pre-analizada: ${initialData.uploadedFile}` : (prev.notes || ''))
+      }));
+      setSubmitted(false);
+      setSelectedFile(null);
+    }
+  }, [isOpen, initialData]);
 
   if (!isOpen) return null;
 

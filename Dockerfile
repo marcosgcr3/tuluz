@@ -1,28 +1,27 @@
-# --- Stage 1: Build the Vite frontend ---
 FROM node:20-alpine AS builder
+
 WORKDIR /app
+
 COPY package*.json ./
-RUN npm ci
+RUN npm install
+
 COPY . .
 RUN npm run build
 
-# --- Stage 2: Production runner ---
 FROM node:20-alpine AS runner
+
 WORKDIR /app
+
 ENV NODE_ENV=production
+ENV PORT=3000
 
-# Copy package files and install only production dependencies
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 
-# Copy the server file
-COPY server.js ./
-
-# Copy the built frontend from builder stage
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/server.js ./server.js
 
-# Expose the port (can be overridden by PORT env variable)
-EXPOSE 5000
+EXPOSE 3000
 
-# Start the server
 CMD ["node", "server.js"]

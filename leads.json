@@ -1,5 +1,31 @@
 [
   {
+    "id": 1787656377126,
+    "date": "2026-08-25T11:12:57.126Z",
+    "name": "MARCOS GOMEZ CORTES",
+    "phone": "654638215",
+    "email": "marcosgcr3@gmail.com",
+    "clientType": "comunidad",
+    "monthlyBill": "",
+    "notes": "",
+    "hasFile": false,
+    "fileName": null,
+    "fileSize": null
+  },
+  {
+    "id": 1787656369605,
+    "date": "2026-08-25T11:12:49.605Z",
+    "name": "MARCOS GOMEZ CORTES",
+    "phone": "654638215",
+    "email": "marcosgcr3@gmail.com",
+    "clientType": "empresa",
+    "monthlyBill": "",
+    "notes": "",
+    "hasFile": false,
+    "fileName": null,
+    "fileSize": null
+  },
+  {
     "id": 1787656132737,
     "date": "2026-08-25T11:08:52.737Z",
     "name": "marcos gomez",

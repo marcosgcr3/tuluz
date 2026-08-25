@@ -41,51 +41,51 @@ export default function Particulares({ onOpenModal }) {
     <div>
       
       {/* Page Hero */}
-      <section className="section" style={{ padding: '4rem 0 3rem 0', position: 'relative', overflow: 'hidden' }}>
+      <section className="section" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem) 0', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute',
           top: '-50px',
           left: '10%',
-          width: '400px',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%)',
+          width: 'min(400px, 80vw)',
+          height: '350px',
+          background: 'radial-gradient(circle, rgba(76, 175, 79, 0.18) 0%, transparent 70%)',
           filter: 'blur(50px)',
           pointerEvents: 'none'
         }} />
 
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', lgGridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'center' }} className="hero-page-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2.5rem', alignItems: 'center' }} className="hero-page-grid">
             <div>
-              <div className="badge" style={{ marginBottom: '1.25rem' }}>
+              <div className="badge" style={{ marginBottom: '1rem' }}>
                 <HomeIcon size={16} />
                 <span>Ahorro para Hogares y Particulares</span>
               </div>
 
-              <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.4rem)', fontWeight: 800, marginBottom: '1.25rem', lineHeight: 1.15 }}>
-                Asesoría energética para optimizar <span className="text-gradient">facturas de luz en el hogar en Andalucía</span>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.18 }}>
+                Asesoramiento energético para optimizar <span className="text-gradient">facturas de luz en tu hogar</span>
               </h1>
 
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-                En TúLuz nos especializamos en asesoría energética gratuita y personalizada para particulares en Andalucía. Nuestro equipo trabaja para que pagues únicamente lo justo por la electricidad de tu vivienda.
+              <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
+                En <strong>tuLuz</strong> nos especializamos en asesoramiento energético gratuito y personalizado para particulares en Andalucía. Nuestro equipo trabaja para que pagues únicamente lo justo por la electricidad de tu vivienda.
               </p>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <button onClick={() => onOpenModal({ clientType: 'particular' })} className="btn btn-primary">
+              <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }} className="page-hero-btns">
+                <button onClick={() => onOpenModal({ clientType: 'particular' })} className="btn btn-primary page-btn">
                   <span>Revisar mi Factura Gratis</span>
                   <ArrowRight size={18} />
                 </button>
-                <a href={`tel:${companyInfo.phoneRaw}`} className="btn btn-secondary">
-                  <Phone size={18} style={{ color: 'var(--accent-green)' }} />
+                <a href={`tel:${companyInfo.phoneRaw}`} className="btn btn-secondary page-btn">
+                  <Phone size={18} style={{ color: 'var(--primary)' }} />
                   <span>{companyInfo.phone}</span>
                 </a>
               </div>
             </div>
 
-            <div className="glass-card" style={{ padding: '1rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
+            <div className="glass-card" style={{ padding: '0.75rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
               <img 
                 src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" 
                 alt="Ahorro de luz en hogares particulares" 
-                style={{ width: '100%', height: '340px', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
+                style={{ width: '100%', height: 'clamp(220px, 35vw, 340px)', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
               />
             </div>
           </div>
@@ -93,41 +93,41 @@ export default function Particulares({ onOpenModal }) {
       </section>
 
       {/* Services Section */}
-      <section className="section" style={{ background: 'rgba(0, 97, 0, 0.02)' }}>
+      <section className="section" style={{ background: 'rgba(76, 175, 79, 0.02)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-green)' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <span style={{ fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--primary)' }}>
               Servicio Gratuito para tu Casa
             </span>
-            <h2 style={{ fontSize: '2.4rem', marginTop: '0.3rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.4rem)', marginTop: '0.3rem' }}>
               Bajamos tu factura de luz <span className="text-gradient">sin complicaciones</span>
             </h2>
-            <p style={{ color: 'var(--text-muted)', maxW: '600px', margin: '0.5rem auto 0 auto' }}>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0.5rem auto 0 auto', fontSize: '0.92rem' }}>
               Analizamos tus facturas y cambiamos las condiciones de tu contrato sin cortes de luz ni molestias.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', mdGridTemplateColumns: 'repeat(3, 1fr)', gap: '1.75rem' }} className="grid-3">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }} className="grid-3">
             {homeServices.map((s, idx) => {
               const Icon = s.icon;
               return (
-                <div key={idx} className="glass-card" style={{ padding: '2rem', borderRadius: 'var(--radius-lg)', display: 'flex', flexDirection: 'column' }}>
+                <div key={idx} className="glass-card" style={{ padding: 'clamp(1.25rem, 3vw, 1.85rem)', borderRadius: 'var(--radius-lg)', display: 'flex', flexDirection: 'column' }}>
                   <div style={{
-                    width: '52px',
-                    height: '52px',
+                    width: '50px',
+                    height: '50px',
                     borderRadius: '14px',
-                    background: 'rgba(16, 185, 129, 0.12)',
-                    color: 'var(--accent-green)',
+                    background: 'rgba(76, 175, 79, 0.12)',
+                    color: 'var(--primary)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginBottom: '1.25rem'
+                    marginBottom: '1.1rem'
                   }}>
-                    <Icon size={26} />
+                    <Icon size={24} />
                   </div>
 
-                  <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, flex: 1 }}>
+                  <h3 style={{ fontSize: '1.18rem', marginBottom: '0.5rem' }}>{s.title}</h3>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.55, flex: 1 }}>
                     {s.desc}
                   </p>
                 </div>
@@ -145,24 +145,24 @@ export default function Particulares({ onOpenModal }) {
       </section>
 
       {/* Call CTA */}
-      <section className="section" style={{ padding: '3rem 0' }}>
+      <section className="section" style={{ padding: '2.5rem 0' }}>
         <div className="container">
           <div className="glass-card" style={{
-            background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
+            background: 'linear-gradient(135deg, #4CAF4F 0%, #2e6931 100%)',
             color: '#ffffff',
-            padding: '3rem 2rem',
+            padding: 'clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 3.5vw, 2.5rem)',
             borderRadius: 'var(--radius-lg)',
             textAlign: 'center'
           }}>
-            <h3 style={{ fontSize: '2rem', color: '#ffffff', marginBottom: '1rem' }}>
-              ¡Llama ahora al <a href={`tel:${companyInfo.phoneRaw}`} style={{ textDecoration: 'underline', color: 'var(--energy-gold)' }}>{companyInfo.phone}</a>!
+            <h3 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', color: '#ffffff', marginBottom: '0.8rem' }}>
+              ¡Llama ahora al <a href={`tel:${companyInfo.phoneRaw}`} style={{ textDecoration: 'underline', color: '#FFC107' }}>{companyInfo.phone}</a>!
             </h3>
-            <p style={{ fontSize: '1.1rem', maxW: '650px', margin: '0 auto 2rem auto', color: 'rgba(255,255,255,0.9)' }}>
+            <p style={{ fontSize: 'clamp(0.92rem, 2.5vw, 1.05rem)', maxWidth: '650px', margin: '0 auto 1.75rem auto', color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
               Déjanos ayudarte a reducir la factura de la luz de tu hogar con nuestro estudio 100% gratuito.
             </p>
-            <button onClick={() => onOpenModal({ clientType: 'particular' })} className="btn btn-gold">
+            <button onClick={() => onOpenModal({ clientType: 'particular' })} className="btn btn-gold" style={{ padding: '0.85rem 1.8rem' }}>
               <span>Solicitar Asesoría de Luz Gratuita</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={17} />
             </button>
           </div>
         </div>
@@ -172,8 +172,20 @@ export default function Particulares({ onOpenModal }) {
         @media (min-width: 900px) {
           .hero-page-grid { grid-template-columns: 1.2fr 0.8fr !important; }
         }
-        @media (min-width: 768px) {
+        @media (min-width: 600px) and (max-width: 959px) {
+          .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (min-width: 960px) {
           .grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+        }
+        @media (max-width: 500px) {
+          .page-hero-btns {
+            flex-direction: column;
+          }
+          .page-btn {
+            width: 100%;
+            justify-content: center;
+          }
         }
       `}</style>
 

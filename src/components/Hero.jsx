@@ -5,7 +5,7 @@ import WhyUs from './WhyUs';
 
 export default function Hero({ onOpenModal, navigate }) {
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', padding: '3.5rem 0 4.5rem 0' }}>
+    <div style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(2rem, 5vw, 3.8rem) 0 clamp(2.5rem, 6vw, 4.5rem) 0' }}>
       
       {/* Background Decorative Glow Spheres */}
       <div style={{
@@ -13,63 +13,63 @@ export default function Hero({ onOpenModal, navigate }) {
         top: '-100px',
         left: '50%',
         transform: 'translateX(-50%)',
-        width: '600px',
-        height: '400px',
-        background: 'radial-gradient(ellipse at center, rgba(16, 185, 129, 0.2) 0%, rgba(247, 209, 0, 0.1) 40%, transparent 70%)',
+        width: 'min(600px, 90vw)',
+        height: '350px',
+        background: 'radial-gradient(ellipse at center, rgba(76, 175, 79, 0.22) 0%, rgba(255, 193, 7, 0.12) 40%, transparent 70%)',
         filter: 'blur(60px)',
         pointerEvents: 'none',
         zIndex: 0
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ maxW: '960px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center' }}>
           
           {/* Top Pill Badge */}
-          <div className="badge" style={{ marginBottom: '1.5rem' }}>
+          <div className="badge" style={{ marginBottom: '1.25rem' }}>
             <Sparkles size={16} />
-            <span>Asesoría Energética 100% Gratuita en Andalucía</span>
+            <span>Asesoramiento Energético 100% Gratuito en Andalucía</span>
           </div>
 
-          {/* Main Title */}
+          {/* Main Title aligned with Brand Concept */}
           <h1 style={{
-            fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
+            fontSize: 'clamp(1.95rem, 6.5vw, 3.8rem)',
             fontWeight: 800,
             letterSpacing: '-0.03em',
             marginBottom: '1.25rem',
             lineHeight: 1.15
           }}>
-            Expertos en reducir el coste de tu <span className="text-gradient">factura de luz</span>
+            Iluminamos <span className="text-gradient">mejores decisiones energéticas</span>
           </h1>
 
           {/* Subtitle */}
           <p style={{
-            fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
+            fontSize: 'clamp(0.95rem, 3.2vw, 1.2rem)',
             color: 'var(--text-muted)',
             lineHeight: 1.6,
-            marginBottom: '2.5rem',
-            maxWidth: '740px',
-            margin: '0 auto 2.5rem auto'
+            marginBottom: '2rem',
+            maxWidth: '780px',
+            margin: '0 auto 2rem auto'
           }}>
-            Analizamos tu consumo eléctrico previo y comparamos entre más de <strong>50 comercializadoras</strong>. Identificamos oportunidades reales de ahorro sin complicaciones ni costes para tu hogar, empresa o comunidad.
+            <strong>tuLuz</strong> representa claridad, ahorro y un futuro sostenible. Te asesoramos para que optimices tu consumo eléctrico, reduzcas tu factura y cuides lo que realmente importa comparando entre más de <strong>50 comercializadoras</strong>.
           </p>
 
           {/* CTAs Button Row */}
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
+          <div className="hero-btn-row" style={{ display: 'flex', gap: '0.85rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3rem' }}>
             <button 
               onClick={() => onOpenModal()}
-              className="btn btn-primary"
-              style={{ padding: '0.9rem 2.2rem', fontSize: '1.05rem' }}
+              className="btn btn-primary hero-btn"
+              style={{ padding: '0.85rem 2rem', fontSize: '1.02rem' }}
             >
-              <span>Solicitar Estudio Gratuito</span>
-              <ArrowRight size={20} />
+              <span>Hablemos</span>
+              <ArrowRight size={18} />
             </button>
 
             <a 
               href={`tel:${companyInfo.phoneRaw}`}
-              className="btn btn-secondary"
-              style={{ padding: '0.9rem 1.8rem', fontSize: '1.05rem' }}
+              className="btn btn-secondary hero-btn"
+              style={{ padding: '0.85rem 1.6rem', fontSize: '1.02rem' }}
             >
-              <Phone size={18} style={{ color: 'var(--accent-green)' }} />
+              <Phone size={18} style={{ color: 'var(--primary)' }} />
               <span>Llamar al {companyInfo.phone}</span>
             </a>
           </div>
@@ -77,12 +77,15 @@ export default function Hero({ onOpenModal, navigate }) {
           {/* Ventaja Competitiva / Why Choose Us Section */}
           <div style={{ paddingTop: '2.5rem', borderTop: '1px solid var(--border-light)' }}>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              <span style={{ fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-green)' }}>
-                Ventaja Competitiva
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--primary)' }}>
+                Nuestros Valores de Marca
               </span>
-              <h2 style={{ fontSize: '2rem', fontWeight: 800, marginTop: '0.2rem' }}>
-                ¿Por qué Elegir <span className="text-gradient">TúLuz en Andalucía</span>?
+              <h2 style={{ fontSize: 'clamp(1.7rem, 4.5vw, 2.3rem)', fontWeight: 800, marginTop: '0.3rem' }}>
+                El compromiso de <span className="text-gradient">tuLuz</span>
               </h2>
+              <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0.4rem auto 0 auto', fontSize: '0.92rem' }}>
+                Cuatro pilares fundamentales sobre los que construimos la relación con cada uno de nuestros clientes.
+              </p>
             </div>
 
             <WhyUs />
@@ -90,6 +93,19 @@ export default function Hero({ onOpenModal, navigate }) {
 
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 540px) {
+          .hero-btn-row {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .hero-btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </div>
   );
 }

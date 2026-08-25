@@ -79,18 +79,18 @@ export default function ServicesGrid({ navigate }) {
             </div>
 
             {/* Card Content Body */}
-            <div style={{ padding: '2rem 1.5rem 1.5rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.6rem' }}>{service.title}</h3>
+            <div style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+              <h3 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.4rem)', marginBottom: '0.5rem' }}>{service.title}</h3>
               
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '1.5rem', flex: 1 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.25rem', flex: 1, lineHeight: 1.55 }}>
                 {service.description}
               </p>
 
               {/* Features List */}
-              <ul style={{ listStyle: 'none', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              <ul style={{ listStyle: 'none', marginBottom: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {service.features.map((feat, idx) => (
-                  <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--text-main)' }}>
-                    <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.15)', color: 'var(--accent-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                  <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: 'var(--text-main)' }}>
+                    <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: 'rgba(76, 175, 79, 0.15)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                       <Check size={12} />
                     </div>
                     <span>{feat}</span>
@@ -105,7 +105,7 @@ export default function ServicesGrid({ navigate }) {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="btn btn-secondary"
-                style={{ width: '100%', justifyContent: 'space-between', padding: '0.75rem 1.25rem' }}
+                style={{ width: '100%', justifyContent: 'space-between', padding: '0.75rem 1.15rem' }}
               >
                 <span>Ver Solución Completa</span>
                 <ArrowRight size={16} />
@@ -118,7 +118,10 @@ export default function ServicesGrid({ navigate }) {
       })}
 
       <style>{`
-        @media (min-width: 768px) {
+        @media (min-width: 600px) and (max-width: 959px) {
+          .services-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1.25rem !important; }
+        }
+        @media (min-width: 960px) {
           .services-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
       `}</style>

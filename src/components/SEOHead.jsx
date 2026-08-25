@@ -2,43 +2,43 @@ import { useEffect } from 'react';
 
 const seoDataMap = {
   '/': {
-    title: 'TúLuz | Asesoría Energética Gratuita en Córdoba y Andalucía',
-    description: 'Optimiza tu factura de luz en Córdoba y Andalucía con TúLuz. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad. Ahorra hasta un 35%.',
+    title: 'tuLuz | Asesoramiento Energético Gratuito en Córdoba y Andalucía',
+    description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad en Andalucía.',
     canonical: 'https://tu-luz.es/'
   },
   '/empresas': {
-    title: 'Asesoría Energética para Empresas y Pymes en Andalucía | TúLuz',
-    description: 'Reducción de costes eléctricos para empresas, pymes e industrias en Andalucía. Optimización de potencia contratada (P1-P6) y tarifas a precio de coste.',
+    title: 'Asesoramiento Energético para Empresas y Pymes | tuLuz',
+    description: 'Optimización de costes eléctricos para empresas e industrias en Andalucía. Ajuste de potencia contratada (P1-P6) y mejores tarifas con tuLuz.',
     canonical: 'https://tu-luz.es/empresas'
   },
   '/comunidades-de-vecinos': {
-    title: 'Ahorro Energético en Comunidades de Vecinos en Andalucía | TúLuz',
-    description: 'Estudio gratuito para reducir el gasto de luz en zonas comunes, garajes y ascensores de comunidades en Córdoba y Andalucía. Sin costes.',
+    title: 'Asesoramiento Energético para Comunidades de Vecinos | tuLuz',
+    description: 'Estudio gratuito para reducir el gasto de luz en zonas comunes, garajes y ascensores de comunidades en Andalucía. Sin costes con tuLuz.',
     canonical: 'https://tu-luz.es/comunidades-de-vecinos'
   },
   '/particulares': {
-    title: 'Ahorro en Factura de Luz para Particulares y Hogares | TúLuz',
-    description: 'Encuentra la mejor tarifa de luz para tu hogar en Andalucía. Revisión sin compromiso de tu factura y asesoría en energía solar.',
+    title: 'Asesoramiento Energético para Particulares y Hogares | tuLuz',
+    description: 'Encuentra la mejor tarifa de luz para tu vivienda en Andalucía. Revisión sin compromiso de tu factura y asesoría solar con tuLuz.',
     canonical: 'https://tu-luz.es/particulares'
   },
   '/solicita-un-presupuesto': {
-    title: 'Solicita tu Estudio Energético Gratuito en 2 Minutos | TúLuz',
-    description: 'Analizamos tu factura de luz sin coste ni compromiso. Adjunta tu factura o datos de contacto y empieza a ahorrar en Andalucía.',
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Analizamos tu factura de luz sin coste ni compromiso. Adjunta tu factura o datos de contacto y empieza a ahorrar con tuLuz.',
     canonical: 'https://tu-luz.es/solicita-un-presupuesto'
   },
   '/presupuesto': {
-    title: 'Solicita tu Estudio Energético Gratuito en 2 Minutos | TúLuz',
-    description: 'Analizamos tu factura de luz sin coste ni compromiso. Adjunta tu factura o datos de contacto y empieza a ahorrar en Andalucía.',
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Analizamos tu factura de luz sin coste ni compromiso. Adjunta tu factura o datos de contacto y empieza a ahorrar con tuLuz.',
     canonical: 'https://tu-luz.es/solicita-un-presupuesto'
   },
   '/aviso-legal': {
-    title: 'Aviso Legal y Términos de Servicio | TúLuz Asesoría Energética',
-    description: 'Información legal, propiedad intelectual y condiciones generales de uso del sitio web de TúLuz Asesoría Energética.',
+    title: 'Aviso Legal y Términos de Servicio | tuLuz Asesoramiento Energético',
+    description: 'Información legal, propiedad intelectual y condiciones generales de uso del sitio web de tuLuz Asesoramiento Energético.',
     canonical: 'https://tu-luz.es/aviso-legal'
   },
   '/politica-de-privacidad': {
-    title: 'Política de Privacidad y Protección de Datos | TúLuz',
-    description: 'Consulta cómo tratamos y protegemos tus datos personales conforme al RGPD en TúLuz Asesoría Energética.',
+    title: 'Política de Privacidad y Protección de Datos | tuLuz',
+    description: 'Consulta cómo tratamos y protegemos tus datos personales conforme al RGPD en tuLuz Asesoramiento Energético.',
     canonical: 'https://tu-luz.es/politica-de-privacidad'
   }
 };

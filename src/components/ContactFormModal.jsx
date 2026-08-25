@@ -97,18 +97,17 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
     }
   };
 
-  return (
-    <div className="modal-overlay" onClick={onClose}>
+  return (    <div className="modal-overlay" onClick={onClose}>
       <div 
-        className="glass-card" 
+        className="glass-card modal-content-box" 
         onClick={(e) => e.stopPropagation()}
         style={{
           width: '100%',
-          maxWidth: '650px',
-          maxHeight: '90vh',
+          maxWidth: '620px',
+          maxHeight: '92vh',
           overflowY: 'auto',
           borderRadius: 'var(--radius-lg)',
-          padding: '2.5rem',
+          padding: 'clamp(1.25rem, 4vw, 2.25rem)',
           position: 'relative',
           background: 'var(--bg-card)',
           boxShadow: 'var(--shadow-lg)'
@@ -118,19 +117,21 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
         {/* Close Button */}
         <button 
           onClick={onClose}
+          aria-label="Cerrar modal"
           style={{
             position: 'absolute',
-            top: '1.25rem',
-            right: '1.25rem',
-            width: '36px',
-            height: '36px',
+            top: '1rem',
+            right: '1rem',
+            width: '38px',
+            height: '38px',
             borderRadius: '50%',
             background: 'var(--bg-main)',
             border: '1px solid var(--border-light)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--text-main)'
+            color: 'var(--text-main)',
+            zIndex: 10
           }}
         >
           <X size={20} />
@@ -138,27 +139,27 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
 
         {!submitted ? (
           <div>
-            <div className="badge" style={{ marginBottom: '0.8rem' }}>
+            <div className="badge" style={{ marginBottom: '0.75rem' }}>
               <Sparkles size={14} />
               <span>Estudio Energético Gratuito</span>
             </div>
 
-            <h3 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>
+            <h3 style={{ fontSize: 'clamp(1.35rem, 4.5vw, 1.75rem)', marginBottom: '0.4rem', paddingRight: '2rem' }}>
               Solicita tu <span className="text-gradient">Estudio de Ahorro</span>
             </h3>
 
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '1.75rem' }}>
-              Déjanos tus datos y un asesor especializado se pondrá en contacto contigo sin ningún compromiso.
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
+              Déjanos tus datos y un asesor especializado de <strong>tuLuz</strong> se pondrá en contacto contigo sin ningún compromiso.
             </p>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               
               {/* Client Type Toggle */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                   Tipo de Cliente
                 </label>
-                <div style={{ display: 'flex', gap: '0.5rem', background: 'var(--bg-main)', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+                <div style={{ display: 'flex', gap: '0.35rem', background: 'var(--bg-main)', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
                   {[
                     { id: 'particular', label: 'Particular' },
                     { id: 'empresa', label: 'Empresa / Pyme' },
@@ -170,12 +171,14 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                       onClick={() => setFormData({ ...formData, clientType: t.id })}
                       style={{
                         flex: 1,
-                        padding: '0.45rem',
-                        fontSize: '0.85rem',
+                        padding: '0.45rem 0.3rem',
+                        fontSize: 'clamp(0.75rem, 2.5vw, 0.85rem)',
                         fontWeight: formData.clientType === t.id ? 700 : 500,
                         borderRadius: 'var(--radius-sm)',
                         color: formData.clientType === t.id ? '#ffffff' : 'var(--text-muted)',
-                        background: formData.clientType === t.id ? 'var(--primary)' : 'transparent'
+                        background: formData.clientType === t.id ? 'var(--primary)' : 'transparent',
+                        textAlign: 'center',
+                        minHeight: '36px'
                       }}
                     >
                       {t.label}
@@ -186,7 +189,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
 
               {/* Name Input */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                   Nombre y Apellidos *
                 </label>
                 <input 
@@ -203,15 +206,15 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                     background: 'var(--bg-main)',
                     color: 'var(--text-main)',
                     outline: 'none',
-                    fontSize: '0.95rem'
+                    fontSize: '16px'
                   }}
                 />
               </div>
 
               {/* Phone & Email Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="form-row">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }} className="modal-form-row">
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                     Teléfono Móvil *
                   </label>
                   <input 
@@ -228,14 +231,14 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                       background: 'var(--bg-main)',
                       color: 'var(--text-main)',
                       outline: 'none',
-                      fontSize: '0.95rem'
+                      fontSize: '16px'
                     }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
-                    Tu Correo Electrónico *
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                    Correo Electrónico *
                   </label>
                   <input 
                     type="email" 
@@ -251,7 +254,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                       background: 'var(--bg-main)',
                       color: 'var(--text-main)',
                       outline: 'none',
-                      fontSize: '0.95rem'
+                      fontSize: '16px'
                     }}
                   />
                 </div>
@@ -259,7 +262,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
 
               {/* File Attachment */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                   Adjuntar Factura (Opcional - PDF/Foto)
                 </label>
                 <div 
@@ -280,10 +283,10 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                     onChange={handleFileChange}
                     style={{ display: 'none' }}
                   />
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '0.85rem', color: selectedFile ? 'var(--accent-green)' : 'var(--text-muted)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '0.85rem', color: selectedFile ? 'var(--primary)' : 'var(--text-muted)' }}>
                     <UploadCloud size={18} />
-                    <span style={{ fontWeight: selectedFile ? 700 : 400 }}>
-                      {selectedFile ? `Factura adjunta: ${selectedFile.name}` : 'Haz clic para adjuntar tu factura'}
+                    <span style={{ fontWeight: selectedFile ? 700 : 400, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {selectedFile ? `Factura adjunta: ${selectedFile.name}` : 'Toca aquí para adjuntar factura'}
                     </span>
                   </div>
                 </div>
@@ -291,11 +294,11 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
 
               {/* Notes */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                   Observaciones / Comentarios
                 </label>
                 <textarea 
-                  rows="3"
+                  rows="2"
                   placeholder="Detalles sobre tu consumo actual o intereses."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
@@ -307,23 +310,23 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                     background: 'var(--bg-main)',
                     color: 'var(--text-main)',
                     outline: 'none',
-                    fontSize: '0.95rem',
+                    fontSize: '16px',
                     resize: 'vertical'
                   }}
                 />
               </div>
 
               {/* Consent checkbox */}
-              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--text-muted)', cursor: 'pointer' }}>
-                <input type="checkbox" required style={{ marginTop: '2px', accentColor: 'var(--accent-green)' }} />
-                <span>Acepto la <a href="/politica-de-privacidad" style={{ textDecoration: 'underline', color: 'var(--accent-green)' }}>política de privacidad</a> para tramitar la solicitud de estudio.</span>
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.78rem', color: 'var(--text-muted)', cursor: 'pointer', lineHeight: 1.4 }}>
+                <input type="checkbox" required style={{ marginTop: '2px', accentColor: 'var(--primary)' }} />
+                <span>Acepto la <a href="/politica-de-privacidad" style={{ textDecoration: 'underline', color: 'var(--primary)' }}>política de privacidad</a> para tramitar la solicitud de estudio.</span>
               </label>
 
               <button 
-                type="submit"
+                type="submit" 
                 disabled={isSubmitting}
                 className="btn btn-primary"
-                style={{ width: '100%', justifyContent: 'center', marginTop: '0.5rem' }}
+                style={{ width: '100%', justifyContent: 'center', marginTop: '0.4rem', padding: '0.85rem' }}
               >
                 {isSubmitting ? (
                   <>
@@ -341,35 +344,35 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
             </form>
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+          <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
             <div style={{
-              width: '72px',
-              height: '72px',
+              width: '64px',
+              height: '64px',
               borderRadius: '50%',
-              background: 'rgba(16, 185, 129, 0.15)',
-              color: 'var(--accent-green)',
+              background: 'rgba(76, 175, 79, 0.15)',
+              color: 'var(--primary)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 1.25rem auto'
+              margin: '0 auto 1rem auto'
             }}>
-              <CheckCircle2 size={40} />
+              <CheckCircle2 size={36} />
             </div>
 
-            <h3 style={{ fontSize: '1.8rem', marginBottom: '0.6rem', color: 'var(--accent-green)' }}>
+            <h3 style={{ fontSize: '1.6rem', marginBottom: '0.5rem', color: 'var(--primary)' }}>
               ¡Solicitud Enviada con Éxito!
             </h3>
 
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.75rem', maxWidth: '480px', margin: '0 auto 1.75rem auto' }}>
-              Gracias, <strong>{formData.name}</strong>. Hemos recibido tu solicitud. Nuestro equipo de asesores revisará tu información y se pondrá en contacto contigo en la mayor brevedad posible.
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '1.5rem', maxWidth: '450px', margin: '0 auto 1.5rem auto', lineHeight: 1.5 }}>
+              Gracias, <strong>{formData.name}</strong>. Hemos recibido tu solicitud. Nuestro equipo de asesores revisará tu información y se pondrá en contacto contigo a la mayor brevedad posible.
             </p>
 
-            <div style={{ background: 'var(--bg-main)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)', display: 'inline-flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem', textAlign: 'left', fontSize: '0.88rem' }}>
+            <div style={{ background: 'var(--bg-main)', padding: '0.9rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)', display: 'inline-flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem', textAlign: 'left', fontSize: '0.86rem' }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}>
-                <Phone size={16} style={{ color: 'var(--accent-green)' }} /> Atención directa: {companyInfo.phone}
+                <Phone size={15} style={{ color: 'var(--primary)' }} /> Atención directa: {companyInfo.phone}
               </span>
               <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}>
-                <Mail size={16} style={{ color: 'var(--accent-green)' }} /> {companyInfo.email}
+                <Mail size={15} style={{ color: 'var(--primary)' }} /> {companyInfo.email}
               </span>
             </div>
 
@@ -384,6 +387,12 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
         )}
 
       </div>
+
+      <style>{`
+        @media (max-width: 540px) {
+          .modal-form-row { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 }

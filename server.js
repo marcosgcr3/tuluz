@@ -106,8 +106,8 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
       <body>
         <div class="container">
           <div class="header">
-            <h1>💡 TúLuz - Nueva Solicitud</h1>
-            <p>Notificación enviada a Google Workspace (${RECIPIENT_EMAIL})</p>
+            <h1>🌱 tuLuz - Nueva Solicitud de Estudio</h1>
+            <p>Asesoramiento Energético • Notificación a ${RECIPIENT_EMAIL}</p>
           </div>
 
           <div class="content">
@@ -122,11 +122,11 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
               </tr>
               <tr>
                 <th>Teléfono:</th>
-                <td><a href="tel:${phone}" style="color: #006100; font-weight: 700; text-decoration: none;">${phone}</a></td>
+                <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; text-decoration: none;">${phone}</a></td>
               </tr>
               <tr>
                 <th>Correo del Cliente:</th>
-                <td><a href="mailto:${email}" style="color: #006100; text-decoration: none;">${email}</a></td>
+                <td><a href="mailto:${email}" style="color: #4CAF4F; text-decoration: none;">${email}</a></td>
               </tr>
               <tr>
                 <th>Tipo de Cliente:</th>
@@ -135,7 +135,7 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
               ${monthlyBill ? `
               <tr>
                 <th>Gasto Mensual Estimado:</th>
-                <td><strong style="color: #10B981;">${monthlyBill} €/mes</strong></td>
+                <td><strong style="color: #4CAF4F;">${monthlyBill} €/mes</strong></td>
               </tr>
               ` : ''}
               <tr>
@@ -150,13 +150,13 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
             ` : ''}
 
             <div class="actions">
-              <a href="mailto:${email}?subject=Estudio%20Energético%20TúLuz%20para%20${encodeURIComponent(name)}" class="btn btn-primary">Responder a ${name}</a>
+              <a href="mailto:${email}?subject=Estudio%20Energético%20tuLuz%20para%20${encodeURIComponent(name)}" class="btn btn-primary">Responder a ${name}</a>
               <a href="tel:${phone}" class="btn btn-secondary">Llamar al ${phone}</a>
             </div>
           </div>
 
           <div class="footer">
-            © ${new Date().getFullYear()} TúLuz Asesoría Energética • Notificación directa a Google Workspace (${RECIPIENT_EMAIL}).
+            © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a Google Workspace (${RECIPIENT_EMAIL}).
           </div>
         </div>
       </body>
@@ -164,10 +164,10 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
     `;
 
     const mailOptions = {
-      from: `"Formulario Web TúLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+      from: `"tuLuz Asesoramiento Energético" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
       to: RECIPIENT_EMAIL,
       replyTo: email,
-      subject: `⚡ Nueva Solicitud de Estudio: ${name} (${clientType || 'Particular'})`,
+      subject: `⚡ Nueva Solicitud tuLuz: ${name} (${clientType || 'Particular'})`,
       html: htmlTemplate,
       attachments: attachments
     };

@@ -1,6 +1,9 @@
 export const companyInfo = {
-  name: "TúLuz",
-  tagline: "Asesoría Energética Gratuita en Andalucía",
+  name: "tuLuz",
+  brandName: "tuLuz",
+  tagline: "Asesoramiento Energético",
+  fullTagline: "Asesoramiento Energético para Hogares, Empresas y Comunidades",
+  description: "tuLuz representa claridad, ahorro y un futuro sostenible. Asesoramos para que tomes mejores decisiones energéticas, optimices tu consumo y cuides lo que importa.",
   phone: "620 061 560",
   phoneRaw: "+34620061560",
   email: "david@tu-luz.es",
@@ -84,24 +87,28 @@ export const servicesOverview = [
 
 export const valuePillars = [
   {
-    icon: "Gift",
-    title: "Asesoramiento 100% Gratuito",
-    description: "Analizamos tu factura y consumo de luz sin ningún compromiso financiero ni coste oculto."
+    icon: "Lightbulb",
+    title: "Claridad",
+    subtitle: "Transparencia total",
+    description: "Hablamos claro y simplificamos lo complejo para que siempre entiendas tu factura."
   },
   {
-    icon: "Network",
-    title: "Red con +50 Comercializadoras",
-    description: "No dependemos de una sola eléctrica. Buscamos la oferta objetivamente más barata para ti."
-  },
-  {
-    icon: "BarChart3",
-    title: "Estudio Minucioso de Consumos",
-    description: "Detectamos excesos de potencia contratada, cobros indebidos y tramos horarios desaprovechados."
+    icon: "Leaf",
+    title: "Sostenibilidad",
+    subtitle: "Compromiso ecológico",
+    description: "Comprometidos con el medio ambiente y las personas hacia una energía limpia y responsable."
   },
   {
     icon: "TrendingUp",
-    title: "Maximización y Vigilancia de Ahorro",
-    description: "Revisamos tus contratos periódicamente para garantizar que siempre disfrutes del precio más ajustado."
+    title: "Eficiencia",
+    subtitle: "Ahorro real",
+    description: "Buscamos siempre la mejor solución energética comparando entre más de 50 comercializadoras."
+  },
+  {
+    icon: "HandHeart",
+    title: "Cercanía",
+    subtitle: "Atención humana",
+    description: "Acompañamos y escuchamos a cada cliente con un trato directo y asesoramiento a medida."
   }
 ];
 
@@ -109,7 +116,7 @@ export const testimonials = [
   {
     name: "Manuel Gómez",
     role: "Administrador de Fincas en Córdoba",
-    text: "TúLuz logró reducir la factura de electricidad de 4 comunidades que gestionamos en más de un 28%. El proceso fue rápido y transparente.",
+    text: "tuLuz logró reducir la factura de electricidad de 4 comunidades que gestionamos en más de un 28%. El proceso fue rápido y transparente.",
     rating: 5,
     tag: "Comunidades"
   },
@@ -132,7 +139,7 @@ export const testimonials = [
 export const faqs = [
   {
     q: "¿El servicio de asesoría energética es realmente gratuito?",
-    a: "Sí, 100% gratuito para ti. En TúLuz realizamos el estudio de tus facturas, comparativa de mercado y trámites sin cobrarte absolutamente nada."
+    a: "Sí, 100% gratuito para ti. En tuLuz realizamos el estudio de tus facturas, comparativa de mercado y trámites sin cobrarte absolutamente nada."
   },
   {
     q: "¿Tengo que cambiarme obligatoriamente de compañía eléctrica?",

@@ -28,26 +28,28 @@ export default function Footer({ navigate }) {
           
           {/* Col 1: Brand Info */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', cursor: 'pointer' }} onClick={() => handleNavClick('/')}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                background: 'var(--primary)',
-                color: '#fff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <Lightbulb size={24} />
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.25rem', cursor: 'pointer' }} 
+              onClick={() => handleNavClick('/')}
+              title="tuLuz - Asesoramiento Energético"
+            >
+              <img 
+                src="/icono.png" 
+                alt="tuLuz" 
+                style={{ width: '50px', height: '50px', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(76, 175, 79, 0.25))' }}
+              />
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontFamily: 'var(--font-primary)', fontSize: '1.85rem', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.025em', color: 'var(--text-main)' }}>
+                  tu<span style={{ color: 'var(--primary)' }}>Luz</span>
+                </span>
+                <span style={{ fontSize: '0.64rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '3px' }}>
+                  Asesoramiento Energético
+                </span>
               </div>
-              <span style={{ fontFamily: 'var(--font-primary)', fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)' }}>
-                Tú<span className="text-gradient">Luz</span>
-              </span>
             </div>
 
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', maxW: '320px', marginBottom: '1.5rem' }}>
-              Expertos en asesoría energética gratuita en Andalucía. Optimizamos tu factura de electricidad comparando entre más de 50 comercializadoras.
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, maxWidth: '340px', marginBottom: '1.5rem' }}>
+              tuLuz representa claridad, ahorro y un futuro sostenible. Asesoramos para que tomes mejores decisiones energéticas, optimices tu consumo y cuides lo que importa.
             </p>
 
             <div style={{ display: 'flex', gap: '0.75rem' }}>
@@ -55,9 +57,10 @@ export default function Footer({ navigate }) {
                 href={companyInfo.socials.whatsapp} 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="WhatsApp tuLuz"
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
                   background: 'rgba(37, 211, 102, 0.15)',
                   color: '#25D366',
@@ -67,7 +70,7 @@ export default function Footer({ navigate }) {
                   transition: 'all 0.2s ease'
                 }}
               >
-                <MessageCircle size={18} />
+                <MessageCircle size={20} />
               </a>
             </div>
           </div>
@@ -76,7 +79,7 @@ export default function Footer({ navigate }) {
           <div>
             <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Dirección</h4>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-              <MapPin size={18} style={{ color: 'var(--accent-green)', flexShrink: 0, marginTop: '2px' }} />
+              <MapPin size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
               <span>{companyInfo.address}</span>
             </div>
           </div>
@@ -86,11 +89,11 @@ export default function Footer({ navigate }) {
             <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Contacto</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
               <a href={`tel:${companyInfo.phoneRaw}`} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'inherit' }}>
-                <Phone size={18} style={{ color: 'var(--accent-green)' }} />
+                <Phone size={18} style={{ color: 'var(--primary)' }} />
                 <span>{companyInfo.phone}</span>
               </a>
               <a href={`mailto:${companyInfo.email}`} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'inherit' }}>
-                <Mail size={18} style={{ color: 'var(--accent-green)' }} />
+                <Mail size={18} style={{ color: 'var(--primary)' }} />
                 <span>{companyInfo.email}</span>
               </a>
             </div>
@@ -114,7 +117,7 @@ export default function Footer({ navigate }) {
               </button>
               <button 
                 onClick={() => handleNavClick('/solicita-un-presupuesto')} 
-                style={{ textAlign: 'left', color: 'var(--accent-green)', fontWeight: 600, background: 'none' }}
+                style={{ textAlign: 'left', color: 'var(--primary)', fontWeight: 600, background: 'none' }}
               >
                 Solicitar estudio gratuito
               </button>
@@ -135,8 +138,8 @@ export default function Footer({ navigate }) {
           fontSize: '0.85rem',
           color: 'var(--text-muted)'
         }}>
-          <span>© {new Date().getFullYear()} {companyInfo.name} - Asesoría Energética en Andalucía. Todos los derechos reservados.</span>
-          <span>Desarrollado con alto rendimiento y optimización visual.</span>
+          <span>© {new Date().getFullYear()} {companyInfo.name} - Asesoramiento Energético. Todos los derechos reservados.</span>
+          <span>Claridad · Ahorro · Sostenibilidad</span>
         </div>
 
       </div>

@@ -350,11 +350,11 @@ export default function Presupuesto() {
                   {/* Notes */}
                   <div>
                     <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
-                      Observaciones
+                      Observaciones <span style={{ fontWeight: 400, opacity: 0.7 }}>(Opcional)</span>
                     </label>
                     <textarea 
                       rows="3"
-                      placeholder="Escribe aquí cualquier aclaración o consulta."
+                      placeholder="Escribe aquí cualquier aclaración o consulta (opcional)."
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                       style={{

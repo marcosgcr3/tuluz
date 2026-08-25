@@ -290,11 +290,11 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
               {/* Notes */}
               <div>
                 <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
-                  Observaciones / Comentarios
+                  Observaciones / Comentarios <span style={{ fontWeight: 400, opacity: 0.7 }}>(Opcional)</span>
                 </label>
                 <textarea 
                   rows="2"
-                  placeholder="Detalles sobre tu consumo actual o intereses."
+                  placeholder="Detalles sobre tu consumo actual, horarios o dudas (opcional)."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   style={{

@@ -371,12 +371,6 @@ export default function Presupuesto() {
                     />
                   </div>
 
-                  {/* Consent */}
-                  <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.78rem', color: 'var(--text-muted)', cursor: 'pointer', lineHeight: 1.4 }}>
-                    <input type="checkbox" required style={{ marginTop: '2px', accentColor: 'var(--primary)' }} />
-                    <span>Acepto la <a href="/politica-de-privacidad" style={{ textDecoration: 'underline', color: 'var(--primary)' }}>política de privacidad</a> para la tramitación de mi solicitud.</span>
-                  </label>
-
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
@@ -395,6 +389,11 @@ export default function Presupuesto() {
                       </>
                     )}
                   </button>
+
+                  {/* Implicit Consent Notice */}
+                  <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-muted)', margin: '0.2rem 0 0 0', lineHeight: 1.4 }}>
+                    Al enviar este formulario aceptas nuestra <a href="/politica-de-privacidad" style={{ textDecoration: 'underline', color: 'var(--primary)' }}>política de privacidad</a> para la tramitación del estudio.
+                  </p>
 
                 </form>
               </div>

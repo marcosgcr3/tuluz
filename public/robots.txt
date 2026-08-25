@@ -1,0 +1,9 @@
+# Directivas de rastreo para motores de búsqueda (Googlebot, Bingbot, etc.)
+User-agent: *
+Allow: /
+
+# Deshabilitar carpetas privadas o de API
+Disallow: /api/
+
+# Mapa del sitio oficial
+Sitemap: https://tu-luz.es/sitemap.xml

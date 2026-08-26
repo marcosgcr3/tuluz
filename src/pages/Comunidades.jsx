@@ -58,15 +58,15 @@ export default function Comunidades({ onOpenModal }) {
             <div>
               <div className="badge" style={{ marginBottom: '1rem' }}>
                 <Users size={16} />
-                <span>Soluciones para Comunidades de Propietarios</span>
+                <span>Soluciones de Luz y Gas para Comunidades</span>
               </div>
 
               <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.18 }}>
-                Eficiencia energética para <span className="text-gradient">comunidades de vecinos en Andalucía</span>
+                Eficiencia energética en <span className="text-gradient">luz y gas para comunidades de vecinos</span>
               </h1>
 
               <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-                En <strong>tuLuz</strong> conocemos las necesidades específicas de las fincas colectivas. Nos enfocamos en reducir costes en zonas comunes, evitar derramas innecesarias y simplificar la gestión energética del inmueble.
+                En <strong>tuLuz</strong> conocemos las necesidades específicas de las fincas colectivas. Nos enfocamos en reducir costes en suministros eléctricos y gas comunitario (calderas, calefacción central y zonas comunes), evitando derramas innecesarias.
               </p>
 
               <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }} className="page-hero-btns">
@@ -84,7 +84,7 @@ export default function Comunidades({ onOpenModal }) {
             <div className="glass-card" style={{ padding: '0.75rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
               <img 
                 src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" 
-                alt="Eficiencia Energética en Comunidades de Vecinos" 
+                alt="Eficiencia Energética de Luz y Gas en Comunidades de Vecinos" 
                 style={{ width: '100%', height: 'clamp(220px, 35vw, 340px)', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
               />
             </div>
@@ -103,7 +103,7 @@ export default function Comunidades({ onOpenModal }) {
               Reduce el coste de las facturas en tu <span className="text-gradient">Comunidad de Vecinos</span>
             </h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0.5rem auto 0 auto', fontSize: '0.92rem' }}>
-              Optimizamos los contadores comunes del edificio para bajar la cuota mensual de los vecinos.
+              Optimizamos los contadores comunes de electricidad y gas para bajar la cuota mensual de los vecinos.
             </p>
           </div>
 

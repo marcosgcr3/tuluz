@@ -2,33 +2,33 @@ import { useEffect } from 'react';
 
 const seoDataMap = {
   '/': {
-    title: 'tuLuz | Asesoramiento Energético Gratuito en Córdoba y Andalucía',
-    description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad en Andalucía.',
+    title: 'tuLuz | Asesoramiento Energético Gratuito en Luz y Gas en Andalucía',
+    description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad y gas en Andalucía.',
     canonical: 'https://tu-luz.es/'
   },
   '/empresas': {
-    title: 'Asesoramiento Energético para Empresas y Pymes | tuLuz',
-    description: 'Optimización de costes eléctricos para empresas e industrias en Andalucía. Ajuste de potencia contratada (P1-P6) y mejores tarifas con tuLuz.',
+    title: 'Asesoramiento Energético en Luz y Gas para Empresas | tuLuz',
+    description: 'Optimización de costes de electricidad y gas para empresas e industrias en Andalucía. Ajuste de potencia contratada (P1-P6) y mejores tarifas con tuLuz.',
     canonical: 'https://tu-luz.es/empresas'
   },
   '/comunidades-de-vecinos': {
-    title: 'Asesoramiento Energético para Comunidades de Vecinos | tuLuz',
-    description: 'Estudio gratuito para reducir el gasto de luz en zonas comunes, garajes y ascensores de comunidades en Andalucía. Sin costes con tuLuz.',
+    title: 'Asesoramiento en Luz y Gas para Comunidades de Vecinos | tuLuz',
+    description: 'Estudio gratuito para reducir el gasto de electricidad y gas en zonas comunes, garajes y calderas de comunidades en Andalucía. Sin costes con tuLuz.',
     canonical: 'https://tu-luz.es/comunidades-de-vecinos'
   },
   '/particulares': {
-    title: 'Asesoramiento Energético para Particulares y Hogares | tuLuz',
-    description: 'Encuentra la mejor tarifa de luz para tu vivienda en Andalucía. Revisión sin compromiso de tu factura y asesoría solar con tuLuz.',
+    title: 'Asesoramiento en Luz y Gas para Particulares y Hogares | tuLuz',
+    description: 'Encuentra la mejor tarifa de luz y gas para tu vivienda en Andalucía. Revisión sin compromiso de tus facturas y asesoría solar con tuLuz.',
     canonical: 'https://tu-luz.es/particulares'
   },
   '/solicita-un-presupuesto': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
-    description: 'Analizamos tu factura de luz sin coste ni compromiso. Adjunta tu factura o datos de contacto y empieza a ahorrar con tuLuz.',
+    title: 'Solicita tu Estudio Gratuito de Luz y Gas | tuLuz',
+    description: 'Analizamos tus facturas de luz y gas sin coste ni compromiso. Adjunta tus facturas o datos de contacto y empieza a ahorrar con tuLuz.',
     canonical: 'https://tu-luz.es/solicita-un-presupuesto'
   },
   '/presupuesto': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
-    description: 'Analizamos tu factura de luz sin coste ni compromiso. Adjunta tu factura o datos de contacto y empieza a ahorrar con tuLuz.',
+    title: 'Solicita tu Estudio Gratuito de Luz y Gas | tuLuz',
+    description: 'Analizamos tus facturas de luz y gas sin coste ni compromiso. Adjunta tus facturas o datos de contacto y empieza a ahorrar con tuLuz.',
     canonical: 'https://tu-luz.es/solicita-un-presupuesto'
   },
   '/aviso-legal': {

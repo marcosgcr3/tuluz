@@ -37,7 +37,7 @@ export default function SavingsCalculator({ onOpenModal }) {
         <div>
           <div className="badge" style={{ marginBottom: '0.85rem' }}>
             <Calculator size={16} />
-            <span>Simulador de Ahorro Eléctrico</span>
+            <span>Simulador de Ahorro en Luz y Gas</span>
           </div>
 
           <h3 style={{ fontSize: 'clamp(1.4rem, 4.5vw, 1.85rem)', marginBottom: '0.6rem' }}>
@@ -45,7 +45,7 @@ export default function SavingsCalculator({ onOpenModal }) {
           </h3>
 
           <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-            Selecciona tu perfil y ajusta tu consumo mensual aproximado para ver la estimación de reducción en tu factura.
+            Selecciona tu perfil y ajusta tu gasto mensual aproximado en luz y/o gas para ver la estimación de ahorro.
           </p>
 
           {/* Client Type Selector */}

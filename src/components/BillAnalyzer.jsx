@@ -29,7 +29,7 @@ export default function BillAnalyzer({ onOpenModal, clientType = 'particular' })
       
       <div className="badge" style={{ marginBottom: '0.85rem', background: 'rgba(255, 193, 7, 0.15)', color: '#d97706', borderColor: 'rgba(255, 193, 7, 0.3)' }}>
         <Sparkles size={15} />
-        <span>Subida e Inspección Gratuita</span>
+        <span>Subida e Inspección Gratuita de Luz y Gas</span>
       </div>
 
       <h3 style={{ fontSize: 'clamp(1.35rem, 4.5vw, 1.85rem)', marginBottom: '0.6rem' }}>
@@ -37,7 +37,7 @@ export default function BillAnalyzer({ onOpenModal, clientType = 'particular' })
       </h3>
 
       <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto', fontSize: '0.92rem', lineHeight: 1.5 }}>
-        Arrastra tu última factura de luz en formato PDF o fotografía. Nuestro equipo examinará tu tarifa y consumo en menos de 24 horas.
+        Arrastra tu última factura de luz o gas en formato PDF o fotografía. Nuestro equipo examinará tu tarifa y consumo en menos de 24 horas.
       </p>
 
       {/* Dropzone Area */}
@@ -81,7 +81,7 @@ export default function BillAnalyzer({ onOpenModal, clientType = 'particular' })
             }}>
               <UploadCloud size={28} />
             </div>
-            <h4 style={{ fontSize: '1.05rem', marginBottom: '0.3rem' }}>Toca aquí para adjuntar tu factura</h4>
+            <h4 style={{ fontSize: '1.05rem', marginBottom: '0.3rem' }}>Toca aquí para adjuntar tu factura de luz o gas</h4>
             <span style={{ fontSize: '0.82rem', color: 'var(--text-light)' }}>Soporta PDF, fotos JPG/PNG (máx. 15MB)</span>
           </div>
         )}
@@ -102,7 +102,7 @@ export default function BillAnalyzer({ onOpenModal, clientType = 'particular' })
               <Sparkles size={28} />
             </div>
             <h4 style={{ fontSize: '1.05rem', marginBottom: '0.3rem' }}>Analizando factura: {fileName}...</h4>
-            <span style={{ fontSize: '0.82rem', color: 'var(--primary)' }}>Verificando comercializadora, peajes y potencias</span>
+            <span style={{ fontSize: '0.82rem', color: 'var(--primary)' }}>Verificando comercializadora, peajes, potencias y tramos</span>
           </div>
         )}
 

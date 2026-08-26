@@ -123,7 +123,7 @@ export default function Home({ onOpenModal, navigate }) {
                 ¡Llama hoy y mejora tu consumo con el equipo de tuLuz!
               </h3>
               <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: 'clamp(0.9rem, 2.5vw, 1.02rem)', lineHeight: 1.5 }}>
-                Estudiamos sin costo la viabilidad de optimización en tu factura eléctrica en Córdoba y toda Andalucía.
+                Estudiamos sin costo la viabilidad de optimización en tus facturas de luz y gas en Córdoba y toda Andalucía.
               </p>
             </div>
 

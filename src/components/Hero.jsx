@@ -27,7 +27,7 @@ export default function Hero({ onOpenModal, navigate }) {
           {/* Top Pill Badge */}
           <div className="badge" style={{ marginBottom: '1.25rem' }}>
             <Sparkles size={16} />
-            <span>Asesoramiento Energético 100% Gratuito en Andalucía</span>
+            <span>Asesoramiento en Luz y Gas 100% Gratuito en Andalucía</span>
           </div>
 
           {/* Main Title aligned with Brand Concept */}
@@ -50,7 +50,7 @@ export default function Hero({ onOpenModal, navigate }) {
             maxWidth: '780px',
             margin: '0 auto 2rem auto'
           }}>
-            <strong>tuLuz</strong> representa claridad, ahorro y un futuro sostenible. Te asesoramos para que optimices tu consumo eléctrico, reduzcas tu factura y cuides lo que realmente importa comparando entre más de <strong>50 comercializadoras</strong>.
+            <strong>tuLuz</strong> representa claridad, ahorro y un futuro sostenible. Te asesoramos para que optimices tu consumo de electricidad y gas natural, reduzcas tus facturas y cuides lo que realmente importa comparando entre más de <strong>50 comercializadoras</strong>.
           </p>
 
           {/* CTAs Button Row */}

@@ -258,7 +258,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
               {/* File Attachment */}
               <div>
                 <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
-                  Adjuntar Factura (Opcional - PDF/Foto)
+                  Adjuntar Factura de Luz o Gas (Opcional - PDF/Foto)
                 </label>
                 <div 
                   onClick={() => fileInputRef.current?.click()}
@@ -281,7 +281,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '0.85rem', color: selectedFile ? 'var(--primary)' : 'var(--text-muted)' }}>
                     <UploadCloud size={18} />
                     <span style={{ fontWeight: selectedFile ? 700 : 400, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {selectedFile ? `Factura adjunta: ${selectedFile.name}` : 'Toca aquí para adjuntar factura'}
+                      {selectedFile ? `Factura adjunta: ${selectedFile.name}` : 'Toca aquí para adjuntar factura de luz o gas'}
                     </span>
                   </div>
                 </div>

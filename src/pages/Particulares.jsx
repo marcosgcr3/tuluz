@@ -58,20 +58,20 @@ export default function Particulares({ onOpenModal }) {
             <div>
               <div className="badge" style={{ marginBottom: '1rem' }}>
                 <HomeIcon size={16} />
-                <span>Ahorro para Hogares y Particulares</span>
+                <span>Ahorro en Luz y Gas para Hogares y Particulares</span>
               </div>
 
               <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.18 }}>
-                Asesoramiento energético para optimizar <span className="text-gradient">facturas de luz en tu hogar</span>
+                Asesoramiento energético para optimizar <span className="text-gradient">facturas de luz y gas en tu hogar</span>
               </h1>
 
               <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-                En <strong>tuLuz</strong> nos especializamos en asesoramiento energético gratuito y personalizado para particulares en Andalucía. Nuestro equipo trabaja para que pagues únicamente lo justo por la electricidad de tu vivienda.
+                En <strong>tuLuz</strong> nos especializamos en asesoramiento energético gratuito y personalizado para particulares en Andalucía. Nuestro equipo trabaja para que pagues únicamente lo justo por la electricidad y el gas de tu vivienda.
               </p>
 
               <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }} className="page-hero-btns">
                 <button onClick={() => onOpenModal({ clientType: 'particular' })} className="btn btn-primary page-btn">
-                  <span>Revisar mi Factura Gratis</span>
+                  <span>Revisar mis Facturas Gratis</span>
                   <ArrowRight size={18} />
                 </button>
                 <a href={`tel:${companyInfo.phoneRaw}`} className="btn btn-secondary page-btn">
@@ -84,7 +84,7 @@ export default function Particulares({ onOpenModal }) {
             <div className="glass-card" style={{ padding: '0.75rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
               <img 
                 src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" 
-                alt="Ahorro de luz en hogares particulares" 
+                alt="Ahorro de luz y gas en hogares particulares" 
                 style={{ width: '100%', height: 'clamp(220px, 35vw, 340px)', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
               />
             </div>
@@ -100,10 +100,10 @@ export default function Particulares({ onOpenModal }) {
               Servicio Gratuito para tu Casa
             </span>
             <h2 style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.4rem)', marginTop: '0.3rem' }}>
-              Bajamos tu factura de luz <span className="text-gradient">sin complicaciones</span>
+              Bajamos tus facturas de luz y gas <span className="text-gradient">sin complicaciones</span>
             </h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0.5rem auto 0 auto', fontSize: '0.92rem' }}>
-              Analizamos tus facturas y cambiamos las condiciones de tu contrato sin cortes de luz ni molestias.
+              Analizamos tus contratos y cambiamos las condiciones sin cortes de suministro ni molestias.
             </p>
           </div>
 
@@ -158,10 +158,10 @@ export default function Particulares({ onOpenModal }) {
               ¡Llama ahora al <a href={`tel:${companyInfo.phoneRaw}`} style={{ textDecoration: 'underline', color: '#FFC107' }}>{companyInfo.phone}</a>!
             </h3>
             <p style={{ fontSize: 'clamp(0.92rem, 2.5vw, 1.05rem)', maxWidth: '650px', margin: '0 auto 1.75rem auto', color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
-              Déjanos ayudarte a reducir la factura de la luz de tu hogar con nuestro estudio 100% gratuito.
+              Déjanos ayudarte a reducir las facturas de luz y gas de tu hogar con nuestro estudio 100% gratuito.
             </p>
             <button onClick={() => onOpenModal({ clientType: 'particular' })} className="btn btn-gold" style={{ padding: '0.85rem 1.8rem' }}>
-              <span>Solicitar Asesoría de Luz Gratuita</span>
+              <span>Solicitar Asesoría de Luz y Gas Gratuita</span>
               <ArrowRight size={17} />
             </button>
           </div>

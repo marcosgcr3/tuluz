@@ -58,15 +58,15 @@ export default function Empresas({ onOpenModal }) {
             <div>
               <div className="badge" style={{ marginBottom: '1rem' }}>
                 <Building2 size={16} />
-                <span>Asesoramiento Energético Empresarial</span>
+                <span>Asesoramiento Energético Empresarial (Luz y Gas)</span>
               </div>
 
               <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.18 }}>
-                Análisis y optimización de facturas para <span className="text-gradient">empresas en Andalucía</span>
+                Análisis y optimización de facturas de <span className="text-gradient">luz y gas para empresas</span>
               </h1>
 
               <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-                En <strong>tuLuz</strong> somos especialistas en proporcionar soluciones energéticas personalizadas y eficientes para pymes, comercios e industrias. Nos centramos en optimizar el consumo de electricidad y minimizar costes operativos.
+                En <strong>tuLuz</strong> somos especialistas en proporcionar soluciones energéticas personalizadas y eficientes para pymes, comercios e industrias. Nos centramos en optimizar el consumo de electricidad y gas natural, minimizando costes operativos.
               </p>
 
               <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }} className="page-hero-btns">
@@ -84,7 +84,7 @@ export default function Empresas({ onOpenModal }) {
             <div className="glass-card" style={{ padding: '0.75rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" 
-                alt="Optimización Energética para Empresas" 
+                alt="Optimización Energética de Luz y Gas para Empresas" 
                 style={{ width: '100%', height: 'clamp(220px, 35vw, 340px)', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
               />
             </div>

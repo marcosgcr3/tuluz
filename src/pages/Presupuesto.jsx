@@ -99,7 +99,7 @@ export default function Presupuesto() {
             Recibe asesoramiento energético con <span className="text-gradient">tuLuz en Andalucía</span>
           </h1>
           <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '0 auto', fontSize: 'clamp(0.92rem, 2.5vw, 1.05rem)', lineHeight: 1.6 }}>
-            Nuestra asesoría energética 100% gratuita incluye un estudio detallado de tu factura. Rellena el formulario y nos pondremos en contacto contigo a la mayor brevedad.
+            Nuestra asesoría energética 100% gratuita incluye un estudio detallado de tus facturas de luz y/o gas. Rellena el formulario y nos pondremos en contacto contigo a la mayor brevedad.
           </p>
         </div>
 
@@ -317,7 +317,7 @@ export default function Presupuesto() {
                   {/* Optional File Attachment */}
                   <div>
                     <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
-                      Adjuntar Factura (Opcional - PDF/Foto)
+                      Adjuntar Factura de Luz o Gas (Opcional - PDF/Foto)
                     </label>
                     
                     <div 
@@ -342,7 +342,7 @@ export default function Presupuesto() {
                       />
                       <UploadCloud size={22} style={{ color: 'var(--primary)', margin: '0 auto 0.25rem auto' }} />
                       <span style={{ fontSize: '0.85rem', display: 'block', color: selectedFile ? 'var(--primary)' : 'var(--text-muted)', fontWeight: selectedFile ? 700 : 400, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {selectedFile ? `Factura adjunta: ${selectedFile.name}` : 'Toca o arrastra tu factura aquí'}
+                        {selectedFile ? `Factura adjunta: ${selectedFile.name}` : 'Toca o arrastra tu factura de luz o gas aquí'}
                       </span>
                     </div>
                   </div>

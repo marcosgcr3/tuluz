@@ -206,14 +206,15 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
           attachments: attachments
         };
 
-        transporter.sendMail(mailOptions).then(info => {
+        try {
+          const info = await transporter.sendMail(mailOptions);
           console.log(`✅ Correo enviado con éxito a ${RECIPIENT_EMAIL}. MessageId: ${info.messageId}`);
-        }).catch(mailErr => {
-          console.warn('⚠️ No se pudo enviar el correo SMTP (verifique contraseña de aplicación en .env):', mailErr.message);
-        });
+        } catch (mailErr) {
+          console.error('⚠️ Error enviando correo SMTP:', mailErr.message);
+        }
       }
     } else {
-      console.log(`ℹ️ Solicitud registrada con éxito. (Configura SMTP_PASS en .env para envío de emails reales a ${RECIPIENT_EMAIL})`);
+      console.warn(`⚠️ SMTP NO configurado en el servidor. (Variables SMTP_USER y SMTP_PASS no encontradas en el entorno). Destinatario: ${RECIPIENT_EMAIL}`);
     }
 
     return res.status(200).json({

@@ -240,7 +240,8 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor backend Google Workspace activo en http://localhost:${PORT}`);
-  console.log(`📬 Los formularios se envían a: ${RECIPIENT_EMAIL}`);
+  console.log(`🚀 Servidor backend activo en puerto ${PORT}`);
+  console.log(`📬 Destinatario de leads: ${RECIPIENT_EMAIL}`);
+  console.log(`🔑 Estado SMTP: ${isConfiguredSMTP() ? 'CONFIGURADO Y LISTO (' + process.env.SMTP_USER + ')' : '⚠️ NO CONFIGURADO (Faltan variables)'}`);
 });
 

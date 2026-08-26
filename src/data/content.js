@@ -6,7 +6,7 @@ export const companyInfo = {
   description: "tuLuz representa claridad, ahorro y un futuro sostenible. Asesoramos para que tomes mejores decisiones energéticas, optimices tu consumo y cuides lo que importa.",
   phone: "620 061 560",
   phoneRaw: "+34620061560",
-  email: "david@tu-luz.es",
+  email: "davidad@tu-luz.es",
   address: "Av. del Aeropuerto, 6, Poniente Sur, 14004 Córdoba, España",
   city: "Córdoba",
   region: "Andalucía",

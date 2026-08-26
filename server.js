@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'david@tu-luz.es';
+const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'davidad@tu-luz.es';
 
 // Middleware
 app.use(cors());

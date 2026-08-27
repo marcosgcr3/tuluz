@@ -44,7 +44,7 @@ export const servicesOverview = [
     path: "/empresas",
     badge: "Solución Corporativa",
     icon: "Building2",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=75&fm=webp",
     description: "Análisis y optimización de costes energéticos de electricidad y gas para pymes e industrias. Ajuste de potencia, tarifas duales e inducción fotovoltaica.",
     features: [
       "Optimización de potencia contratada (P1-P6) y gas",
@@ -59,7 +59,7 @@ export const servicesOverview = [
     path: "/comunidades-de-vecinos",
     badge: "Gestión de Fincas",
     icon: "Users",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=75&fm=webp",
     description: "Reducción directa de la cuota comunitaria optimizando el consumo de electricidad y gas (calefacción central, calderas, ascensores, garajes e iluminación).",
     features: [
       "Estudio gratuito de facturas de luz y gas comunitario",
@@ -74,7 +74,7 @@ export const servicesOverview = [
     path: "/particulares",
     badge: "Ahorro Doméstico",
     icon: "Home",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=75&fm=webp",
     description: "Pagos justos en luz y gas en tu hogar sin cambiar tus hábitos diarios. Encontramos la tarifa fija, indexada o paquete dual idónea para tu consumo familiar.",
     features: [
       "Revisión minuciosa de luz y gas sin coste",

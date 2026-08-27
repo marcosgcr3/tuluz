@@ -33,11 +33,18 @@ export default function Footer({ navigate }) {
               onClick={() => handleNavClick('/')}
               title="tuLuz - Asesoramiento Energético"
             >
-              <img 
-                src="/icono.png" 
-                alt="tuLuz" 
-                style={{ width: '50px', height: '50px', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(76, 175, 79, 0.25))' }}
-              />
+              <picture>
+                <source srcSet="/icono.webp" type="image/webp" />
+                <img 
+                  src="/icono.png" 
+                  alt="tuLuz" 
+                  width="50"
+                  height="50"
+                  loading="lazy"
+                  decoding="async"
+                  style={{ width: '50px', height: '50px', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(76, 175, 79, 0.25))' }}
+                />
+              </picture>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <span style={{ fontFamily: 'var(--font-primary)', fontSize: '1.85rem', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.025em', color: 'var(--text-main)' }}>
                   tu<span style={{ color: 'var(--primary)' }}>Luz</span>

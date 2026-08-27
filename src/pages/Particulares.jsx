@@ -83,8 +83,12 @@ export default function Particulares({ onOpenModal }) {
 
             <div className="glass-card" style={{ padding: '0.75rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
               <img 
-                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=75&fm=webp" 
                 alt="Ahorro de luz y gas en hogares particulares" 
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="340"
                 style={{ width: '100%', height: 'clamp(220px, 35vw, 340px)', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
               />
             </div>

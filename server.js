@@ -231,8 +231,16 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
   }
 });
 
-// Servir archivos estáticos del frontend (Vite)
-app.use(express.static(path.join(__dirname, 'dist')));
+// Servir archivos estáticos del frontend con caché óptima (1 año para assets inmutables, no-cache para index.html)
+app.use(express.static(path.join(__dirname, 'dist'), {
+  maxAge: '1y',
+  immutable: true,
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    }
+  }
+}));
 
 // Cualquier otra petición que no sea de la API sirve el index.html
 app.get('*', (req, res) => {

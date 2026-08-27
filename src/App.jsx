@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
-import ContactFormModal from './components/ContactFormModal';
 import SEOHead from './components/SEOHead';
-
-// Pages
 import Home from './pages/Home';
-import Empresas from './pages/Empresas';
-import Comunidades from './pages/Comunidades';
-import Particulares from './pages/Particulares';
-import Presupuesto from './pages/Presupuesto';
-import LegalNotice from './pages/LegalNotice';
-import PrivacyPolicy from './pages/PrivacyPolicy';
+
+// Lazy Loaded Pages & Modals for Instant Initial Bundle Loading
+const Empresas = lazy(() => import('./pages/Empresas'));
+const Comunidades = lazy(() => import('./pages/Comunidades'));
+const Particulares = lazy(() => import('./pages/Particulares'));
+const Presupuesto = lazy(() => import('./pages/Presupuesto'));
+const LegalNotice = lazy(() => import('./pages/LegalNotice'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const ContactFormModal = lazy(() => import('./components/ContactFormModal'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
@@ -106,7 +106,21 @@ export default function App() {
 
       {/* Main Page Area */}
       <main style={{ flex: 1 }}>
-        {renderPageComponent()}
+        <Suspense fallback={
+          <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{
+              width: '36px',
+              height: '36px',
+              border: '3px solid rgba(76, 175, 79, 0.2)',
+              borderTopColor: 'var(--primary)',
+              borderRadius: '50%',
+              animation: 'spin 0.8s linear infinite'
+            }} />
+            <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+          </div>
+        }>
+          {renderPageComponent()}
+        </Suspense>
       </main>
 
       {/* Footer */}
@@ -115,12 +129,16 @@ export default function App() {
       {/* Floating Action Buttons */}
       <FloatingActions onOpenModal={openContactModal} />
 
-      {/* Global Lead Modal */}
-      <ContactFormModal 
-        isOpen={contactModalOpen} 
-        onClose={closeContactModal} 
-        initialData={modalInitialData}
-      />
+      {/* Global Lead Modal (Lazily Loaded) */}
+      {contactModalOpen && (
+        <Suspense fallback={null}>
+          <ContactFormModal 
+            isOpen={contactModalOpen} 
+            onClose={closeContactModal} 
+            initialData={modalInitialData}
+          />
+        </Suspense>
+      )}
 
     </div>
   );

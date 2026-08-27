@@ -56,18 +56,25 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
             style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 0 }}
             title="tuLuz - Asesoramiento Energético"
           >
-            <img 
-              src="/icono.png" 
-              alt="tuLuz" 
-              className="navbar-brand-icon"
-              style={{
-                width: '56px',
-                height: '56px',
-                objectFit: 'contain',
-                filter: 'drop-shadow(0 2px 8px rgba(76, 175, 79, 0.3))',
-                transition: 'transform 0.3s ease'
-              }}
-            />
+            <picture>
+              <source srcSet="/icono.webp" type="image/webp" />
+              <img 
+                src="/icono.png" 
+                alt="tuLuz" 
+                width="56"
+                height="56"
+                fetchpriority="high"
+                decoding="async"
+                className="navbar-brand-icon"
+                style={{
+                  width: '56px',
+                  height: '56px',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 2px 8px rgba(76, 175, 79, 0.3))',
+                  transition: 'transform 0.3s ease'
+                }}
+              />
+            </picture>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span className="navbar-brand-text" style={{ 
                 fontFamily: 'var(--font-primary)', 

@@ -83,8 +83,12 @@ export default function Empresas({ onOpenModal }) {
 
             <div className="glass-card" style={{ padding: '0.75rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
               <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=75&fm=webp" 
                 alt="Optimización Energética de Luz y Gas para Empresas" 
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="340"
                 style={{ width: '100%', height: 'clamp(220px, 35vw, 340px)', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
               />
             </div>

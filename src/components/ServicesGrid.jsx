@@ -31,6 +31,10 @@ export default function ServicesGrid({ navigate }) {
               <img 
                 src={service.image} 
                 alt={`Asesoría energética para ${service.title} en Andalucía y Córdoba`} 
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="200"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}

@@ -60,6 +60,9 @@ export default function BillAnalyzer({ onOpenModal, clientType = 'particular' })
         }}
       >
         <input 
+          id="bill-file-upload"
+          name="billFile"
+          aria-label="Adjuntar factura de electricidad o gas"
           type="file" 
           accept=".pdf,image/*" 
           onChange={handleFileChange}

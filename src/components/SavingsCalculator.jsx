@@ -79,11 +79,16 @@ export default function SavingsCalculator({ onOpenModal }) {
           {/* Range Input Slider */}
           <div style={{ marginBottom: '1.5rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', fontWeight: 600 }}>
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Factura mensual:</span>
+              <label htmlFor="calculator-monthly-bill" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', cursor: 'pointer' }}>
+                Factura mensual:
+              </label>
               <span style={{ fontSize: 'clamp(1.2rem, 4vw, 1.45rem)', color: 'var(--primary)', fontWeight: 800 }}>{monthlyBill} €/mes</span>
             </div>
 
             <input 
+              id="calculator-monthly-bill"
+              name="monthlyBill"
+              aria-label="Factura mensual estimada en euros"
               type="range" 
               min="30" 
               max="2000" 

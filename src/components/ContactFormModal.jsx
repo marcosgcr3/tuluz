@@ -184,10 +184,12 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
 
               {/* Name Input */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                <label htmlFor="modal-name-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                   Nombre y Apellidos *
                 </label>
                 <input 
+                  id="modal-name-input"
+                  name="name"
                   type="text" 
                   required
                   placeholder="Ej. Juan Pérez"
@@ -209,10 +211,12 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
               {/* Phone & Email Grid */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }} className="modal-form-row">
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                  <label htmlFor="modal-phone-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                     Teléfono Móvil *
                   </label>
                   <input 
+                    id="modal-phone-input"
+                    name="phone"
                     type="tel" 
                     required
                     placeholder="600 000 000"
@@ -232,10 +236,12 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                  <label htmlFor="modal-email-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                     Correo Electrónico *
                   </label>
                   <input 
+                    id="modal-email-input"
+                    name="email"
                     type="email" 
                     required
                     placeholder="tuemail@ejemplo.com"
@@ -257,7 +263,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
 
               {/* File Attachment */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                <label htmlFor="modal-file-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem', cursor: 'pointer' }}>
                   Adjuntar Factura de Luz o Gas (Opcional - PDF/Foto)
                 </label>
                 <div 
@@ -273,6 +279,9 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                 >
                   <input 
                     ref={fileInputRef}
+                    id="modal-file-input"
+                    name="billFile"
+                    aria-label="Adjuntar archivo de factura de luz o gas"
                     type="file" 
                     accept=".pdf,image/*" 
                     onChange={handleFileChange}
@@ -289,10 +298,12 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
 
               {/* Notes */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                <label htmlFor="modal-notes-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                   Observaciones / Comentarios <span style={{ fontWeight: 400, opacity: 0.7 }}>(Opcional)</span>
                 </label>
                 <textarea 
+                  id="modal-notes-input"
+                  name="notes"
                   rows="2"
                   placeholder="Detalles sobre tu consumo actual, horarios o dudas (opcional)."
                   value={formData.notes}

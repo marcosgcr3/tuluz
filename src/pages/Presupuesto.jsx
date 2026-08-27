@@ -243,10 +243,12 @@ export default function Presupuesto() {
 
                   {/* Name */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                    <label htmlFor="presupuesto-name-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                       Nombre Completo *
                     </label>
                     <input 
+                      id="presupuesto-name-input"
+                      name="name"
                       type="text" 
                       required
                       placeholder="Tu nombre completo"
@@ -268,10 +270,12 @@ export default function Presupuesto() {
                   {/* Phone & Email */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }} className="presupuesto-form-row">
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                      <label htmlFor="presupuesto-phone-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                         Teléfono Móvil *
                       </label>
                       <input 
+                        id="presupuesto-phone-input"
+                        name="phone"
                         type="tel" 
                         required
                         placeholder="Ej. 620 000 000"
@@ -291,10 +295,12 @@ export default function Presupuesto() {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                      <label htmlFor="presupuesto-email-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                         Tu Correo Electrónico *
                       </label>
                       <input 
+                        id="presupuesto-email-input"
+                        name="email"
                         type="email" 
                         required
                         placeholder="tuemail@ejemplo.com"
@@ -316,7 +322,7 @@ export default function Presupuesto() {
 
                   {/* Optional File Attachment */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                    <label htmlFor="presupuesto-file-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem', cursor: 'pointer' }}>
                       Adjuntar Factura de Luz o Gas (Opcional - PDF/Foto)
                     </label>
                     
@@ -335,6 +341,9 @@ export default function Presupuesto() {
                     >
                       <input 
                         ref={fileInputRef}
+                        id="presupuesto-file-input"
+                        name="billFile"
+                        aria-label="Adjuntar archivo de factura de luz o gas"
                         type="file" 
                         accept=".pdf,image/*" 
                         onChange={handleFileChange}
@@ -349,10 +358,12 @@ export default function Presupuesto() {
 
                   {/* Notes */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+                    <label htmlFor="presupuesto-notes-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                       Observaciones <span style={{ fontWeight: 400, opacity: 0.7 }}>(Opcional)</span>
                     </label>
                     <textarea 
+                      id="presupuesto-notes-input"
+                      name="notes"
                       rows="3"
                       placeholder="Escribe aquí cualquier aclaración o consulta (opcional)."
                       value={formData.notes}

@@ -45,6 +45,9 @@ export default function FAQAccordion() {
           >
             <button
               onClick={() => toggleFAQ(index)}
+              aria-expanded={isOpen}
+              aria-controls={`faq-answer-${index}`}
+              id={`faq-question-${index}`}
               style={{
                 width: '100%',
                 padding: '1.25rem 1.5rem',
@@ -74,15 +77,20 @@ export default function FAQAccordion() {
             </button>
 
             {isOpen && (
-              <div style={{
-                padding: '0 1.5rem 1.25rem 3.1rem',
-                color: 'var(--text-muted)',
-                fontSize: '0.94rem',
-                lineHeight: 1.6,
-                borderTop: '1px solid var(--border-light)',
-                paddingTop: '1rem',
-                animation: 'fadeIn 0.3s ease'
-              }}>
+              <div 
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
+                style={{
+                  padding: '0 1.5rem 1.25rem 3.1rem',
+                  color: 'var(--text-muted)',
+                  fontSize: '0.94rem',
+                  lineHeight: 1.6,
+                  borderTop: '1px solid var(--border-light)',
+                  paddingTop: '1rem',
+                  animation: 'fadeIn 0.3s ease'
+                }}
+              >
                 {faq.a}
               </div>
             )}

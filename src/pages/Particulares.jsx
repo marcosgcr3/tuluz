@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home as HomeIcon, ArrowRight, Phone, CheckCircle2, Shield, Zap, Search, Sun, Scale, Gauge, BellRing } from 'lucide-react';
+import { ArrowRight, Phone, CheckCircle2, Shield, Zap, Search, Sun, Scale, Gauge, BellRing } from 'lucide-react';
 import { companyInfo } from '../data/content';
 import BillAnalyzer from '../components/BillAnalyzer';
 
@@ -18,7 +18,7 @@ export default function Particulares({ onOpenModal }) {
     {
       icon: Gauge,
       title: "Optimización de Potencia Contratada",
-      desc: "Te aconsejamos la potencia exacta que necesita tu vivienda para evitar pagar un exceso innecesario en el término fijo de la factura."
+      desc: "Ajustamos tus términos de potencia contratada para evitar pagar por kW que no utilizas o incurrir en penalizaciones innecesarias."
     },
     {
       icon: Sun,
@@ -27,8 +27,8 @@ export default function Particulares({ onOpenModal }) {
     },
     {
       icon: BellRing,
-      title: "Seguimiento y Alerta de Tarifas",
-      desc: "No te abandonamos tras el contrato. Hacemos un seguimiento permanente del mercado libre para avisarte si aparece una oferta superior o vence tu promoción."
+      title: "Monitoreo y Renovaciones",
+      desc: "Te alertamos antes de cualquier subida o vencimiento contractual para mantener siempre el precio más bajo del mercado."
     },
     {
       icon: Zap,
@@ -38,10 +38,10 @@ export default function Particulares({ onOpenModal }) {
   ];
 
   return (
-    <div>
+    <div style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(2rem, 5vw, 3.5rem) 0' }}>
       
-      {/* Page Hero */}
-      <section className="section" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem) 0', position: 'relative', overflow: 'hidden' }}>
+      {/* Background Ambience */}
+      <section style={{ position: 'relative', paddingBottom: '3.5rem' }}>
         <div style={{
           position: 'absolute',
           top: '-50px',
@@ -56,11 +56,6 @@ export default function Particulares({ onOpenModal }) {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2.5rem', alignItems: 'center' }} className="hero-page-grid">
             <div>
-              <div className="badge" style={{ marginBottom: '1rem' }}>
-                <HomeIcon size={16} />
-                <span>Ahorro en Luz y Gas para Hogares y Particulares</span>
-              </div>
-
               <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.18 }}>
                 Asesoramiento energético para optimizar <span className="text-gradient">facturas de luz y gas en tu hogar</span>
               </h1>

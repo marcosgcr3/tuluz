@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, ArrowRight, Phone, CheckCircle2, Shield, Zap, Layers, FileSpreadsheet, Sun, ShieldAlert, LifeBuoy } from 'lucide-react';
+import { ArrowRight, Phone, CheckCircle2, Shield, Zap, Layers, FileSpreadsheet, Sun, ShieldAlert, LifeBuoy } from 'lucide-react';
 import { companyInfo } from '../data/content';
 import BillAnalyzer from '../components/BillAnalyzer';
 
@@ -56,11 +56,6 @@ export default function Comunidades({ onOpenModal }) {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2.5rem', alignItems: 'center' }} className="hero-page-grid">
             <div>
-              <div className="badge" style={{ marginBottom: '1rem' }}>
-                <Users size={16} />
-                <span>Soluciones de Luz y Gas para Comunidades</span>
-              </div>
-
               <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.18 }}>
                 Eficiencia energética en <span className="text-gradient">luz y gas para comunidades de vecinos</span>
               </h1>

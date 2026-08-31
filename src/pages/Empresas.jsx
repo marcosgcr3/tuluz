@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, ArrowRight, Phone, CheckCircle, ShieldCheck, Zap, Sliders, Sun, FileCheck, RefreshCw, BarChart2 } from 'lucide-react';
+import { ArrowRight, Phone, CheckCircle, ShieldCheck, Zap, Sliders, Sun, FileCheck, RefreshCw, BarChart2 } from 'lucide-react';
 import { companyInfo } from '../data/content';
 import BillAnalyzer from '../components/BillAnalyzer';
 
@@ -56,11 +56,6 @@ export default function Empresas({ onOpenModal }) {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2.5rem', alignItems: 'center' }} className="hero-page-grid">
             <div>
-              <div className="badge" style={{ marginBottom: '1rem' }}>
-                <Building2 size={16} />
-                <span>Asesoramiento Energético Empresarial (Luz y Gas)</span>
-              </div>
-
               <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.18 }}>
                 Análisis y optimización de facturas de <span className="text-gradient">luz y gas para empresas</span>
               </h1>

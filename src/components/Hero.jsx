@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, Zap, Phone, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Phone } from 'lucide-react';
 import { companyInfo } from '../data/content';
 import WhyUs from './WhyUs';
 
@@ -24,21 +24,15 @@ export default function Hero({ onOpenModal, navigate }) {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center' }}>
           
-          {/* Top Pill Badge */}
-          <div className="badge" style={{ marginBottom: '1.25rem' }}>
-            <Sparkles size={16} />
-            <span>Asesoramiento en Luz y Gas 100% Gratuito en Andalucía</span>
-          </div>
-
-          {/* Main Title aligned with Brand Concept */}
+          {/* Main Title aligned with Brand Concept & SEO */}
           <h1 style={{
-            fontSize: 'clamp(1.95rem, 6.5vw, 3.8rem)',
+            fontSize: 'clamp(2rem, 6.5vw, 3.8rem)',
             fontWeight: 800,
             letterSpacing: '-0.03em',
             marginBottom: '1.25rem',
-            lineHeight: 1.15
+            lineHeight: 1.18
           }}>
-            Iluminamos <span className="text-gradient">mejores decisiones energéticas</span>
+            Ahorra en Luz y Gas en Andalucía con <span className="text-gradient">asesoramiento 100% gratuito</span>
           </h1>
 
           {/* Subtitle */}

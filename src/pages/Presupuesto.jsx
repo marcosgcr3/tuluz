@@ -96,7 +96,7 @@ export default function Presupuesto() {
             <span>Formulario de Solicitud Directa</span>
           </div>
           <h1 style={{ fontSize: 'clamp(1.85rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '0.8rem', lineHeight: 1.2 }}>
-            Recibe asesoramiento energético con <span className="text-gradient">tuLuz en Andalucía</span>
+            Recibe asesoramiento energético con <span className="text-gradient">tuLuz</span>
           </h1>
           <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '0 auto', fontSize: 'clamp(0.92rem, 2.5vw, 1.05rem)', lineHeight: 1.6 }}>
             Nuestra asesoría energética 100% gratuita incluye un estudio detallado de tus facturas de luz y/o gas. Rellena el formulario y nos pondremos en contacto contigo a la mayor brevedad.

@@ -58,7 +58,7 @@ export default function Home({ onOpenModal, navigate }) {
               Testimonios Reales
             </span>
             <h2 style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.4rem)', marginTop: '0.3rem' }}>
-              Lo que opinan nuestros <span className="text-gradient">Clientes en Andalucía</span>
+              Lo que opinan nuestros <span className="text-gradient">Clientes</span>
             </h2>
           </div>
 
@@ -123,7 +123,7 @@ export default function Home({ onOpenModal, navigate }) {
                 ¡Llama hoy y mejora tu consumo con el equipo de tuLuz!
               </h3>
               <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: 'clamp(0.9rem, 2.5vw, 1.02rem)', lineHeight: 1.5 }}>
-                Estudiamos sin costo la viabilidad de optimización en tus facturas de luz y gas en Córdoba y toda Andalucía.
+                Estudiamos sin costo la viabilidad de optimización en tus facturas de luz y gas.
               </p>
             </div>
 

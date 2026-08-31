@@ -30,7 +30,7 @@ export default function ServicesGrid({ navigate }) {
             <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
               <img 
                 src={service.image} 
-                alt={`Asesoría energética para ${service.title} en Andalucía y Córdoba`} 
+                alt={`Asesoría energética para ${service.title}`} 
                 loading="lazy"
                 decoding="async"
                 width="400"

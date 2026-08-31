@@ -158,7 +158,7 @@ export const faqs = [
     a: "Tan solo necesitamos una factura reciente de luz y/o gas (en PDF o foto) donde se aprecien los datos de consumo y tarifa contratada."
   },
   {
-    q: "¿Trabajáis solo en Córdoba o en toda Andalucía?",
-    a: "Atendemos en toda Andalucía y en el territorio nacional español. Realizamos gestiones tanto presenciales como 100% digitales."
+    q: "¿En qué zonas trabajáis?",
+    a: "Trabajamos en todo el territorio peninsular y en las islas (Baleares y Canarias), excepto en Ceuta y Melilla. Realizamos todas las gestiones de forma 100% digital y telefónica para tu máxima comodidad."
   }
 ];

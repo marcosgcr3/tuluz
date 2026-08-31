@@ -2,23 +2,23 @@ import { useEffect } from 'react';
 
 const seoDataMap = {
   '/': {
-    title: 'tuLuz | Asesoramiento Energético Gratuito en Luz y Gas en Andalucía',
-    description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad y gas en Andalucía.',
+    title: 'tuLuz | Asesoramiento Energético Gratuito en Luz y Gas',
+    description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad y gas.',
     canonical: 'https://tu-luz.es/'
   },
   '/empresas': {
     title: 'Asesoramiento Energético en Luz y Gas para Empresas | tuLuz',
-    description: 'Optimización de costes de electricidad y gas para empresas e industrias en Andalucía. Ajuste de potencia contratada (P1-P6) y mejores tarifas con tuLuz.',
+    description: 'Optimización de costes de electricidad y gas para empresas e industrias. Ajuste de potencia contratada (P1-P6) y mejores tarifas con tuLuz.',
     canonical: 'https://tu-luz.es/empresas'
   },
   '/comunidades-de-vecinos': {
     title: 'Asesoramiento en Luz y Gas para Comunidades de Vecinos | tuLuz',
-    description: 'Estudio gratuito para reducir el gasto de electricidad y gas en zonas comunes, garajes y calderas de comunidades en Andalucía. Sin costes con tuLuz.',
+    description: 'Estudio gratuito para reducir el gasto de electricidad y gas en zonas comunes, garajes y calderas de comunidades. Sin costes con tuLuz.',
     canonical: 'https://tu-luz.es/comunidades-de-vecinos'
   },
   '/particulares': {
     title: 'Asesoramiento en Luz y Gas para Particulares y Hogares | tuLuz',
-    description: 'Encuentra la mejor tarifa de luz y gas para tu vivienda en Andalucía. Revisión sin compromiso de tus facturas y asesoría solar con tuLuz.',
+    description: 'Encuentra la mejor tarifa de luz y gas para tu vivienda. Revisión sin compromiso de tus facturas y asesoría solar con tuLuz.',
     canonical: 'https://tu-luz.es/particulares'
   },
   '/solicita-un-presupuesto': {

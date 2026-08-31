@@ -27,7 +27,7 @@ export default function LegalNotice() {
                 <li><strong>Domicilio social:</strong> {companyInfo.address}</li>
                 <li><strong>Teléfono de contacto:</strong> {companyInfo.phone}</li>
                 <li><strong>Correo electrónico:</strong> {companyInfo.email}</li>
-                <li><strong>Actividad principal:</strong> Asesoría energética independiente y mediación comercial con distribuidoras eléctricas en Andalucía.</li>
+                <li><strong>Actividad principal:</strong> Asesoría energética independiente y optimización de suministros de electricidad y gas.</li>
               </ul>
             </div>
 

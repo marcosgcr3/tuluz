@@ -32,7 +32,7 @@ export default function Hero({ onOpenModal, navigate }) {
             marginBottom: '1.25rem',
             lineHeight: 1.18
           }}>
-            Ahorra en Luz y Gas en Andalucía con <span className="text-gradient">asesoramiento 100% gratuito</span>
+            Ahorra en Luz y Gas con <span className="text-gradient">asesoramiento 100% gratuito</span>
           </h1>
 
           {/* Subtitle */}

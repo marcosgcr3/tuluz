@@ -13,7 +13,7 @@ export default function Particulares({ onOpenModal }) {
     {
       icon: Scale,
       title: "Estudio de Mercado (+50 Comercializadoras)",
-      desc: "Comparamos objetivamente entre más de 50 compañías para ofrecerte las tarifas (fijas o indexadas) más competitivas del momento en Andalucía."
+      desc: "Comparamos objetivamente entre más de 50 compañías para ofrecerte las tarifas (fijas o indexadas) más competitivas del momento."
     },
     {
       icon: Gauge,
@@ -61,7 +61,7 @@ export default function Particulares({ onOpenModal }) {
               </h1>
 
               <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-                En <strong>tuLuz</strong> nos especializamos en asesoramiento energético gratuito y personalizado para particulares en Andalucía. Nuestro equipo trabaja para que pagues únicamente lo justo por la electricidad y el gas de tu vivienda.
+                En <strong>tuLuz</strong> nos especializamos en asesoramiento energético gratuito y personalizado para particulares. Nuestro equipo trabaja para que pagues únicamente lo justo por la electricidad y el gas de tu vivienda.
               </p>
 
               <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }} className="page-hero-btns">

@@ -157,7 +157,7 @@ export default function Comunidades({ onOpenModal }) {
               Contáctanos para reducir los gastos de energía de tu comunidad. ¡Llama ahora al <a href={`tel:${companyInfo.phoneRaw}`} style={{ textDecoration: 'underline', color: '#FFC107' }}>{companyInfo.phone}</a>!
             </h3>
             <p style={{ fontSize: 'clamp(0.92rem, 2.5vw, 1.05rem)', maxWidth: '650px', margin: '0 auto 1.75rem auto', color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
-              Estudio sin compromiso para fincas residenciales y complejos comunitarios en toda Andalucía.
+              Estudio sin compromiso para fincas residenciales y complejos comunitarios.
             </p>
             <button onClick={() => onOpenModal({ clientType: 'comunidad' })} className="btn btn-gold" style={{ padding: '0.85rem 1.8rem' }}>
               <span>Solicitar Informe Gratuito de Finca</span>

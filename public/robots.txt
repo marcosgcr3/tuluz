@@ -1,9 +1,24 @@
 # Directivas de rastreo para motores de búsqueda (Googlebot, Bingbot, etc.)
 User-agent: *
 Allow: /
-
-# Deshabilitar carpetas privadas o de API
 Disallow: /api/
+
+# Rastreadores de Inteligencia Artificial (GEO / AI Search)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 # Mapa del sitio oficial
 Sitemap: https://tu-luz.es/sitemap.xml
+

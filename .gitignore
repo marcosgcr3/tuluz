@@ -124,3 +124,5 @@ dist
 *.sw?
 .DS_Store
 .unlighthouse/
+tools/
+

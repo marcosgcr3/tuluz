@@ -89,7 +89,15 @@ export default function App() {
       case '/solicitar-estudio':
       case '/estudio-gratuito':
       case '/estudio':
+      case '/google':
+      case '/meta':
+      case '/instagram':
+      case '/facebook':
+      case '/tiktok':
+      case '/promo':
         return <Presupuesto navigate={navigate} />;
+      case '/solar':
+        return <Autoconsumo onOpenModal={openContactModal} navigate={navigate} />;
       case '/gracias':
       case '/solicitud-enviada':
         return <Gracias navigate={navigate} />;

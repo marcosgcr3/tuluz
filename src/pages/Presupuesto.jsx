@@ -43,6 +43,34 @@ export default function Presupuesto({ navigate }) {
     }
   };
 
+  const getTrafficSource = () => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const utmSource = params.get('utm_source') || params.get('src') || params.get('source');
+      const utmCampaign = params.get('utm_campaign') || params.get('campaign');
+      const path = window.location.pathname.toLowerCase();
+
+      if (utmSource) return `${utmSource}${utmCampaign ? ' (' + utmCampaign + ')' : ''}`;
+      if (params.get('gclid')) return 'Google Ads (gclid)';
+      if (params.get('fbclid')) return 'Meta Ads (fbclid)';
+      if (params.get('ttclid')) return 'TikTok Ads (ttclid)';
+      if (path.includes('tiktok')) return 'TikTok Ads';
+      if (path.includes('meta')) return 'Meta Ads';
+      if (path.includes('instagram')) return 'Instagram Ads';
+      if (path.includes('facebook')) return 'Facebook Ads';
+      if (path.includes('google')) return 'Google Ads';
+      if (document.referrer) {
+        if (document.referrer.includes('tiktok.com')) return 'TikTok';
+        if (document.referrer.includes('instagram.com')) return 'Instagram';
+        if (document.referrer.includes('facebook.com')) return 'Facebook';
+        if (document.referrer.includes('google.')) return 'Google';
+      }
+      return 'Web Directa / Orgánico';
+    } catch {
+      return 'Web Directa';
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -53,6 +81,8 @@ export default function Presupuesto({ navigate }) {
       data.append('phone', formData.phone);
       data.append('email', formData.email);
       data.append('clientType', formData.clientType);
+      data.append('source', getTrafficSource());
+      data.append('pageUrl', window.location.href);
       if (formData.notes) data.append('notes', formData.notes);
 
       if (selectedFile) {

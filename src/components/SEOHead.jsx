@@ -51,6 +51,36 @@ const seoDataMap = {
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio'
   },
+  '/google': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio'
+  },
+  '/meta': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio'
+  },
+  '/instagram': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio'
+  },
+  '/facebook': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio'
+  },
+  '/tiktok': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio'
+  },
+  '/solar': {
+    title: 'Autoconsumo Solar y Placas Solares Fotovoltaicas | tuLuz',
+    description: 'Genera tu propia energía y ahorra hasta un 80% en tu factura de luz. Estudio de viabilidad solar, subvenciones y batería virtual.',
+    canonical: 'https://tu-luz.es/autoconsumo'
+  },
   '/gracias': {
     title: '¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
     description: 'Gracias por solicitar tu estudio energético gratuito. Nuestro equipo revisará tus facturas en breve.',

@@ -78,9 +78,10 @@ function saveLeadLocally(leadData) {
 // API Endpoint for Contact & Quote Requests
 app.post('/api/contact', upload.single('factura'), async (req, res) => {
   try {
-    const { name, phone, email, clientType, monthlyBill, notes } = req.body;
+    const { name, phone, email, clientType, monthlyBill, notes, source, pageUrl } = req.body;
 
-    console.log(`📩 Recibida nueva solicitud de ${name} (${email}, Tel: ${phone})`);
+    const leadSource = source || 'Web Directa / Orgánico';
+    console.log(`📩 Recibida nueva solicitud de ${name} (${email}, Tel: ${phone}) | Origen: ${leadSource}`);
 
     const leadRecord = {
       id: Date.now(),
@@ -89,6 +90,8 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
       phone: phone || '',
       email: email || '',
       clientType: clientType || 'particular',
+      source: leadSource,
+      pageUrl: pageUrl || '',
       monthlyBill: monthlyBill || '',
       notes: notes || '',
       hasFile: !!req.file,
@@ -125,6 +128,7 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
               .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
               .content { padding: 30px 25px; }
               .badge { display: inline-block; background: #fef3c7; color: #d97706; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+              .source-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
               .info-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
               .info-table th, .info-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
               .info-table th { background-color: #f8faf9; color: #475569; font-weight: 600; width: 35%; }
@@ -145,11 +149,18 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
               </div>
 
               <div class="content">
-                <span class="badge">Perfil: ${clientType || 'Particular'}</span>
+                <div style="display: flex; gap: 8px; margin-bottom: 20px;">
+                  <span class="badge">Perfil: ${clientType || 'Particular'}</span>
+                  <span class="source-badge">📍 Origen: ${leadSource}</span>
+                </div>
 
                 <h2 style="font-size: 18px; margin-top: 0; color: #0f172a;">Detalles de la Solicitud:</h2>
                 
                 <table class="info-table">
+                  <tr>
+                    <th>Canal / Origen:</th>
+                    <td><strong style="color: #0284c7;">${leadSource}</strong></td>
+                  </tr>
                   <tr>
                     <th>Nombre:</th>
                     <td><strong>${name}</strong></td>
@@ -228,6 +239,36 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
       success: true,
       message: 'Solicitud recibida'
     });
+  }
+});
+
+// Endpoint para consultar resumen y estadísticas de conversiones por canal
+app.get('/api/leads-summary', (req, res) => {
+  try {
+    let leads = [];
+    if (fs.existsSync(LEADS_FILE)) {
+      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
+    }
+
+    const bySource = {};
+    const byType = {};
+
+    leads.forEach(l => {
+      const src = l.source || 'Web Directa';
+      bySource[src] = (bySource[src] || 0) + 1;
+
+      const type = l.clientType || 'Particular';
+      byType[type] = (byType[type] || 0) + 1;
+    });
+
+    res.json({
+      totalLeads: leads.length,
+      bySource,
+      byType,
+      recentLeads: leads.slice(0, 50)
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Error leyendo leads' });
   }
 });
 

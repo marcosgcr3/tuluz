@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="eavGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#eavGrad)" />
+  <path d="M50 18C44 26 34 38 34 52C34 66 42 78 50 82C58 78 66 66 66 52C66 40 58 28 50 18ZM50 72C46 68 42 60 42 52C42 44 48 36 50 32C52 38 56 46 56 52C56 60 52 68 50 72Z" fill="#FFFFFF" />
+</svg>

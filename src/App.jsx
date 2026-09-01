@@ -9,6 +9,7 @@ import Home from './pages/Home';
 const Empresas = lazy(() => import('./pages/Empresas'));
 const Comunidades = lazy(() => import('./pages/Comunidades'));
 const Particulares = lazy(() => import('./pages/Particulares'));
+const Autoconsumo = lazy(() => import('./pages/Autoconsumo'));
 const Presupuesto = lazy(() => import('./pages/Presupuesto'));
 const LegalNotice = lazy(() => import('./pages/LegalNotice'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
@@ -52,6 +53,8 @@ export default function App() {
       defaultType = 'comunidad';
     } else if (cleanPath === '/particulares') {
       defaultType = 'particular';
+    } else if (cleanPath === '/autoconsumo') {
+      defaultType = 'autoconsumo';
     }
 
     setModalInitialData({
@@ -78,8 +81,13 @@ export default function App() {
         return <Comunidades onOpenModal={openContactModal} navigate={navigate} />;
       case '/particulares':
         return <Particulares onOpenModal={openContactModal} navigate={navigate} />;
+      case '/autoconsumo':
+        return <Autoconsumo onOpenModal={openContactModal} navigate={navigate} />;
       case '/solicita-un-presupuesto':
       case '/presupuesto':
+      case '/solicitar-estudio':
+      case '/estudio-gratuito':
+      case '/estudio':
         return <Presupuesto />;
       case '/aviso-legal':
         return <LegalNotice />;

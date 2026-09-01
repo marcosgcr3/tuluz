@@ -21,6 +21,7 @@ export const navLinks = [
   { name: "Empresas", path: "/empresas" },
   { name: "Comunidades", path: "/comunidades-de-vecinos" },
   { name: "Particulares", path: "/particulares" },
+  { name: "Autoconsumo", path: "/autoconsumo" },
   { name: "Solicita Presupuesto", path: "/solicita-un-presupuesto" }
 ];
 
@@ -49,7 +50,7 @@ export const servicesOverview = [
     features: [
       "Optimización de potencia contratada (P1-P6) y gas",
       "Estudio de mercado entre +50 comercializadoras",
-      "Consultoría de autoconsumo solar",
+      "Consultoría de autoconsumo solar empresarial",
       "Seguimiento activo y alertas de vencimiento"
     ]
   },
@@ -81,6 +82,21 @@ export const servicesOverview = [
       "Asesoría para instalación de paneles solares",
       "Mejor tarifa individual o paquete dual (Luz + Gas)",
       "Re-estudio continuo ante fluctuaciones del mercado"
+    ]
+  },
+  {
+    id: "autoconsumo",
+    title: "Autoconsumo Solar",
+    path: "/autoconsumo",
+    badge: "Energía Renovable",
+    icon: "Sun",
+    image: "/autoconsumo.webp",
+    description: "Genera tu propia energía limpia y reduce hasta un 70-80% tu factura eléctrica. Asesoramiento en dimensionamiento, mejores instaladores, batería virtual y subvenciones.",
+    features: [
+      "Estudio de viabilidad y dimensionamiento a medida",
+      "Comparativa de presupuestos con instaladores certificados",
+      "Gestión de subvenciones, deducción IRPF e IBI",
+      "Batería virtual y máxima compensación de excedentes"
     ]
   }
 ];
@@ -133,6 +149,13 @@ export const testimonials = [
     text: "No entendía las tarifas de luz ni de gas. David me explicó todo con claridad, me cambió a una tarifa combinada en 5 minutos y ahora pago 45€ menos al mes.",
     rating: 5,
     tag: "Particulares"
+  },
+  {
+    name: "Elena Morales",
+    role: "Propietaria de Vivienda Unifamiliar",
+    text: "En tuLuz nos asesoraron para poner placas solares y activar la batería virtual. Hemos pasado de pagar 180€/mes a tener facturas de prácticamente 0€ gracias a la compensación de excedentes.",
+    rating: 5,
+    tag: "Autoconsumo"
   }
 ];
 
@@ -140,6 +163,10 @@ export const faqs = [
   {
     q: "¿Revisáis tanto facturas de luz como de gas?",
     a: "¡Sí! En tuLuz realizamos análisis completos tanto de contratos de electricidad (luz) como de gas natural, así como de tarifas combinadas (duales) para conseguir el máximo ahorro global."
+  },
+  {
+    q: "¿Cómo me ayuda tuLuz con el Autoconsumo Solar?",
+    a: "Realizamos el estudio previo de viabilidad sin coste, comparamos presupuestos entre instaladores certificados y gestionamos la tarifa solar idónea con batería virtual para que compenses el 100% de tus excedentes."
   },
   {
     q: "¿El servicio de asesoría energética es realmente gratuito?",

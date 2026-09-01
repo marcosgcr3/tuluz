@@ -21,6 +21,11 @@ const seoDataMap = {
     description: 'Encuentra la mejor tarifa de luz y gas para tu vivienda. Revisión sin compromiso de tus facturas y asesoría solar con tuLuz.',
     canonical: 'https://tu-luz.es/particulares'
   },
+  '/autoconsumo': {
+    title: 'Autoconsumo Solar y Placas Solares Fotovoltaicas | tuLuz',
+    description: 'Genera tu propia energía y ahorra hasta un 80% en tu factura de luz. Estudio de viabilidad solar, subvenciones, deducción IRPF y batería virtual con tuLuz.',
+    canonical: 'https://tu-luz.es/autoconsumo'
+  },
   '/solicita-un-presupuesto': {
     title: 'Solicita tu Estudio Gratuito de Luz y Gas | tuLuz',
     description: 'Analizamos tus facturas de luz y gas sin coste ni compromiso. Adjunta tus facturas o datos de contacto y empieza a ahorrar con tuLuz.',
@@ -30,6 +35,21 @@ const seoDataMap = {
     title: 'Solicita tu Estudio Gratuito de Luz y Gas | tuLuz',
     description: 'Analizamos tus facturas de luz y gas sin coste ni compromiso. Adjunta tus facturas o datos de contacto y empieza a ahorrar con tuLuz.',
     canonical: 'https://tu-luz.es/solicita-un-presupuesto'
+  },
+  '/solicitar-estudio': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio 100% gratuito y sin compromiso de tus facturas de luz, gas y autoconsumo solar. Comparamos +50 comercializadoras.',
+    canonical: 'https://tu-luz.es/solicitar-estudio'
+  },
+  '/estudio-gratuito': {
+    title: 'Estudio Gratuito de Ahorro en Luz y Gas | tuLuz',
+    description: 'Ahorra hasta un 35% en tu factura de luz y gas o hasta un 80% con autoconsumo solar. Estudio gratuito sin compromiso.',
+    canonical: 'https://tu-luz.es/estudio-gratuito'
+  },
+  '/estudio': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio'
   },
   '/aviso-legal': {
     title: 'Aviso Legal y Términos de Servicio | tuLuz Asesoramiento Energético',

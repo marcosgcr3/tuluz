@@ -1,16 +1,17 @@
 import React from 'react';
-import { Building2, Users, Home, Check, ArrowRight } from 'lucide-react';
+import { Building2, Users, Home, Sun, Check, ArrowRight } from 'lucide-react';
 import { servicesOverview } from '../data/content';
 
 const iconMap = {
   Building2: Building2,
   Users: Users,
-  Home: Home
+  Home: Home,
+  Sun: Sun
 };
 
 export default function ServicesGrid({ navigate }) {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr', mdGridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }} className="services-grid">
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.75rem' }} className="services-grid">
       {servicesOverview.map((service) => {
         const IconComponent = iconMap[service.icon] || Home;
         
@@ -27,14 +28,14 @@ export default function ServicesGrid({ navigate }) {
           >
             
             {/* Top Image Banner */}
-            <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
+            <div style={{ position: 'relative', height: '190px', overflow: 'hidden' }}>
               <img 
                 src={service.image} 
                 alt={`Asesoría energética para ${service.title}`} 
                 loading="lazy"
                 decoding="async"
                 width="400"
-                height="200"
+                height="190"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
@@ -83,17 +84,17 @@ export default function ServicesGrid({ navigate }) {
             </div>
 
             {/* Card Content Body */}
-            <div style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', flex: 1, display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.4rem)', marginBottom: '0.5rem' }}>{service.title}</h3>
+            <div style={{ padding: 'clamp(1.25rem, 3vw, 1.6rem)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+              <h3 style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.35rem)', marginBottom: '0.5rem' }}>{service.title}</h3>
               
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.25rem', flex: 1, lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem', flex: 1, lineHeight: 1.55 }}>
                 {service.description}
               </p>
 
               {/* Features List */}
               <ul style={{ listStyle: 'none', marginBottom: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {service.features.map((feat, idx) => (
-                  <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: 'var(--text-main)' }}>
+                  <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.84rem', color: 'var(--text-main)' }}>
                     <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: 'rgba(76, 175, 79, 0.15)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                       <Check size={12} />
                     </div>
@@ -122,11 +123,11 @@ export default function ServicesGrid({ navigate }) {
       })}
 
       <style>{`
-        @media (min-width: 600px) and (max-width: 959px) {
+        @media (min-width: 640px) and (max-width: 1079px) {
           .services-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1.25rem !important; }
         }
-        @media (min-width: 960px) {
-          .services-grid { grid-template-columns: repeat(3, 1fr) !important; }
+        @media (min-width: 1080px) {
+          .services-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 1.25rem !important; }
         }
       `}</style>
     </div>

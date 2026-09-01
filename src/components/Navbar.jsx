@@ -110,7 +110,7 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
           </div>
 
           {/* Desktop Nav Links */}
-          <nav style={{ display: 'none', gap: '0.35rem', alignItems: 'center', flexWrap: 'nowrap' }} className="desktop-nav">
+          <nav style={{ display: 'none', gap: '0.25rem', alignItems: 'center', flexWrap: 'nowrap' }} className="desktop-nav">
             {navLinks.map((link) => {
               const isActive = currentPath === link.path;
               return (
@@ -118,9 +118,9 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
                   key={link.path}
                   onClick={() => handleNavClick(link.path)}
                   style={{
-                    padding: '0.5rem 0.85rem',
+                    padding: '0.45rem 0.75rem',
                     borderRadius: 'var(--radius-full)',
-                    fontSize: '0.92rem',
+                    fontSize: '0.90rem',
                     fontWeight: isActive ? 700 : 500,
                     color: isActive ? 'var(--primary)' : 'var(--text-main)',
                     background: isActive ? 'rgba(76, 175, 79, 0.12)' : 'transparent',
@@ -315,12 +315,12 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
 
       {/* Responsive Breakpoint CSS */}
       <style>{`
-        @media (min-width: 1040px) {
+        @media (min-width: 1100px) {
           .desktop-nav { display: flex !important; }
           .mobile-hamburger { display: none !important; }
           .navbar-cta-desktop { display: inline-flex !important; }
         }
-        @media (max-width: 1039px) {
+        @media (max-width: 1099px) {
           .desktop-nav { display: none !important; }
           .mobile-hamburger { display: flex !important; }
           .navbar-cta-desktop { display: none !important; }

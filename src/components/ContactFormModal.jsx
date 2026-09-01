@@ -157,8 +157,9 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
                 <div style={{ display: 'flex', gap: '0.35rem', background: 'var(--bg-main)', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
                   {[
                     { id: 'particular', label: 'Particular' },
-                    { id: 'empresa', label: 'Empresa / Pyme' },
-                    { id: 'comunidad', label: 'Comunidad' }
+                    { id: 'empresa', label: 'Empresa' },
+                    { id: 'comunidad', label: 'Comunidad' },
+                    { id: 'autoconsumo', label: 'Autoconsumo' }
                   ].map(t => (
                     <button
                       type="button"

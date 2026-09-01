@@ -9,7 +9,8 @@ export default function SavingsCalculator({ onOpenModal }) {
   const savingsPercentages = {
     particular: 0.32,
     empresa: 0.38,
-    comunidad: 0.29
+    comunidad: 0.29,
+    autoconsumo: 0.72
   };
 
   const currentRate = savingsPercentages[clientType] || 0.32;
@@ -37,7 +38,7 @@ export default function SavingsCalculator({ onOpenModal }) {
         <div>
           <div className="badge" style={{ marginBottom: '0.85rem' }}>
             <Calculator size={16} />
-            <span>Simulador de Ahorro en Luz y Gas</span>
+            <span>Simulador de Ahorro Energético</span>
           </div>
 
           <h3 style={{ fontSize: 'clamp(1.4rem, 4.5vw, 1.85rem)', marginBottom: '0.6rem' }}>
@@ -53,7 +54,8 @@ export default function SavingsCalculator({ onOpenModal }) {
             {[
               { id: 'particular', label: 'Particular' },
               { id: 'empresa', label: 'Empresa' },
-              { id: 'comunidad', label: 'Comunidad' }
+              { id: 'comunidad', label: 'Comunidad' },
+              { id: 'autoconsumo', label: 'Autoconsumo' }
             ].map(type => (
               <button
                 key={type.id}

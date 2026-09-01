@@ -5,7 +5,7 @@ import { companyInfo } from '../data/content';
 export default function Presupuesto() {
   const queryParams = new URLSearchParams(window.location.search);
   const paramType = queryParams.get('tipo') || queryParams.get('type');
-  const validTypes = ['particular', 'empresa', 'comunidad'];
+  const validTypes = ['particular', 'empresa', 'comunidad', 'autoconsumo'];
   const defaultClientType = validTypes.includes(paramType) ? paramType : 'particular';
 
   const [formData, setFormData] = useState({
@@ -216,8 +216,9 @@ export default function Presupuesto() {
                     <div style={{ display: 'flex', gap: '0.35rem', background: 'var(--bg-main)', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
                       {[
                         { id: 'particular', label: 'Particular' },
-                        { id: 'empresa', label: 'Empresa / Pyme' },
-                        { id: 'comunidad', label: 'Comunidad' }
+                        { id: 'empresa', label: 'Empresa' },
+                        { id: 'comunidad', label: 'Comunidad' },
+                        { id: 'autoconsumo', label: 'Autoconsumo' }
                       ].map(t => (
                         <button
                           type="button"

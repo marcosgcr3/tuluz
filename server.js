@@ -242,8 +242,18 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
   }
 });
 
-// Endpoint para consultar resumen y estadísticas de conversiones por canal
+// Endpoint protegido para consultar resumen y estadísticas de conversiones por canal
 app.get('/api/leads-summary', (req, res) => {
+  const adminKey = process.env.ADMIN_KEY || 'tuluz2026';
+  const providedKey = req.query.key || req.headers['x-api-key'] || req.headers['authorization'];
+
+  // Validación de seguridad y privacidad RGPD
+  if (!providedKey || (providedKey !== adminKey && providedKey !== `Bearer ${adminKey}`)) {
+    return res.status(401).json({ 
+      error: 'Acceso no autorizado. Se requiere clave de administración (ej: ?key=TU_CLAVE).' 
+    });
+  }
+
   try {
     let leads = [];
     if (fs.existsSync(LEADS_FILE)) {
@@ -262,6 +272,7 @@ app.get('/api/leads-summary', (req, res) => {
     });
 
     res.json({
+      success: true,
       totalLeads: leads.length,
       bySource,
       byType,

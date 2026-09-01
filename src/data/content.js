@@ -44,7 +44,7 @@ export const providersList = [
   { name: "Gana Energía", domain: "ganaenergia.com" },
   { name: "Mega Energía", domain: "megaenergia.es" },
   { name: "Novaluz Energía", domain: "novaluz.es" },
-  { name: "Net Energy", domain: "netenergy.es" },
+  { name: "Net Energy", domain: "net-energia.es", logo: "/logos/net-energy.svg" },
   { name: "Kleen Energy", domain: "kleenenergy.es" },
   { name: "Unieléctrica", domain: "unielectrica.com" },
   { name: "Ibereléctrica Energía", domain: "iberelectrica.es" }

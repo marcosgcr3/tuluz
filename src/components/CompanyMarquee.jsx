@@ -6,7 +6,9 @@ function ProviderBadge({ provider }) {
   const [hasError, setHasError] = useState(false);
   const name = typeof provider === 'string' ? provider : provider.name;
   const domain = typeof provider === 'string' ? '' : provider.domain;
-  const logoUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : '';
+  const logoUrl = typeof provider === 'object' && provider.logo 
+    ? provider.logo 
+    : (domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : '');
 
   return (
     <div 

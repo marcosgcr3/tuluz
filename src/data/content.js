@@ -26,11 +26,28 @@ export const navLinks = [
 ];
 
 export const providersList = [
-  "Endesa", "Iberdrola", "Naturgy", "Repsol", "TotalEnergies",
-  "Plenitude", "Audax Renovables", "HolaLuz", "GNS Energy", "Fenie Energía",
-  "Octopus Energy", "Lucera", "Imagenerat", "EnergyAV", "Factor Energía",
-  "Gana Energía", "Mega Energía", "Novaluz Energía", "Net Energy",
-  "Kleen Energy", "Unieléctrica", "Ibereléctrica Energía"
+  { name: "Endesa", domain: "endesa.com" },
+  { name: "Iberdrola", domain: "iberdrola.es" },
+  { name: "Naturgy", domain: "naturgy.es" },
+  { name: "Repsol", domain: "repsol.es" },
+  { name: "TotalEnergies", domain: "totalenergies.es" },
+  { name: "Plenitude", domain: "eniplenitude.es" },
+  { name: "Audax Renovables", domain: "audaxrenovables.com" },
+  { name: "HolaLuz", domain: "holaluz.com" },
+  { name: "GNS Energy", domain: "gnsenergy.es" },
+  { name: "Fenie Energía", domain: "fenieenergia.es" },
+  { name: "Octopus Energy", domain: "octopusenergy.es" },
+  { name: "Lucera", domain: "lucera.es" },
+  { name: "Imagenerat", domain: "imagenerat.es" },
+  { name: "EnergyAV", domain: "energyav.es" },
+  { name: "Factor Energía", domain: "factorenergia.com" },
+  { name: "Gana Energía", domain: "ganaenergia.com" },
+  { name: "Mega Energía", domain: "megaenergia.es" },
+  { name: "Novaluz Energía", domain: "novaluz.es" },
+  { name: "Net Energy", domain: "netenergy.es" },
+  { name: "Kleen Energy", domain: "kleenenergy.es" },
+  { name: "Unieléctrica", domain: "unielectrica.com" },
+  { name: "Ibereléctrica Energía", domain: "iberelectrica.es" }
 ];
 
 export const heroStats = [

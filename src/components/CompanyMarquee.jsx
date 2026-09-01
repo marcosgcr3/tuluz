@@ -1,6 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { providersList } from '../data/content';
 import { Zap } from 'lucide-react';
+
+function ProviderBadge({ provider }) {
+  const [hasError, setHasError] = useState(false);
+  const name = typeof provider === 'string' ? provider : provider.name;
+  const domain = typeof provider === 'string' ? '' : provider.domain;
+  const logoUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : '';
+
+  return (
+    <div 
+      style={{
+        padding: '0.6rem 1.25rem',
+        borderRadius: 'var(--radius-full)',
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border-light)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.65rem',
+        boxShadow: 'var(--shadow-sm)',
+        whiteSpace: 'nowrap',
+        fontSize: '0.95rem',
+        fontWeight: 600,
+        color: 'var(--text-main)',
+        transition: 'transform 0.2s ease, border-color 0.2s ease'
+      }}
+    >
+      <div 
+        style={{
+          width: '24px',
+          height: '24px',
+          borderRadius: '50%',
+          background: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+          flexShrink: 0
+        }}
+      >
+        {logoUrl && !hasError ? (
+          <img 
+            src={logoUrl} 
+            alt={`Logo ${name}`}
+            onError={() => setHasError(true)}
+            style={{
+              width: '17px',
+              height: '17px',
+              objectFit: 'contain',
+              display: 'block'
+            }}
+            loading="lazy"
+          />
+        ) : (
+          <Zap size={14} style={{ color: 'var(--accent-green)' }} />
+        )}
+      </div>
+      <span>{name}</span>
+    </div>
+  );
+}
 
 export default function CompanyMarquee() {
   const duplicatedProviders = [...providersList, ...providersList, ...providersList];
@@ -42,27 +102,11 @@ export default function CompanyMarquee() {
 
       {/* Marquee Track */}
       <div className="animate-marquee" style={{ gap: '1.5rem', padding: '0.5rem 0' }}>
-        {duplicatedProviders.map((name, index) => (
-          <div 
-            key={index} 
-            style={{
-              padding: '0.75rem 1.5rem',
-              borderRadius: 'var(--radius-full)',
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border-light)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              boxShadow: 'var(--shadow-sm)',
-              whiteSpace: 'nowrap',
-              fontSize: '0.95rem',
-              fontWeight: 600,
-              color: 'var(--text-main)'
-            }}
-          >
-            <Zap size={16} style={{ color: 'var(--accent-green)' }} />
-            <span>{name}</span>
-          </div>
+        {duplicatedProviders.map((provider, index) => (
+          <ProviderBadge 
+            key={`${typeof provider === 'string' ? provider : provider.name}-${index}`} 
+            provider={provider} 
+          />
         ))}
       </div>
 

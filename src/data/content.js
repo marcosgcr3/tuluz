@@ -28,7 +28,9 @@ export const navLinks = [
 export const providersList = [
   "Endesa", "Iberdrola", "Naturgy", "Repsol", "TotalEnergies",
   "Plenitude", "Audax Renovables", "HolaLuz", "GNS Energy", "Fenie Energía",
-  "Octopus Energy", "Lucera", "Imagenerat", "EnergyAV", "Factor Energía"
+  "Octopus Energy", "Lucera", "Imagenerat", "EnergyAV", "Factor Energía",
+  "Gana Energía", "Mega Energía", "Novaluz Energía", "Net Energy",
+  "Kleen Energy", "Unieléctrica", "Ibereléctrica Energía"
 ];
 
 export const heroStats = [

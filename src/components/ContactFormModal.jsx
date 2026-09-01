@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Send, Phone, Mail, CheckCircle2, Sparkles, Loader2, UploadCloud } from 'lucide-react';
 import { companyInfo } from '../data/content';
 
-export default function ContactFormModal({ isOpen, onClose, initialData = {} }) {
+export default function ContactFormModal({ isOpen, onClose, initialData = {}, navigate }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -16,6 +16,15 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const fileInputRef = useRef(null);
+
+  const redirectToGracias = () => {
+    onClose();
+    if (navigate) {
+      navigate('/gracias');
+    } else {
+      window.location.href = '/gracias';
+    }
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -61,7 +70,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
           body: data
         });
         if (response.ok) {
-          setSubmitted(true);
+          redirectToGracias();
           return;
         }
       } catch (errApi) {
@@ -75,17 +84,17 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {} }) 
           body: data
         });
         if (directResp.ok) {
-          setSubmitted(true);
+          redirectToGracias();
           return;
         }
       } catch (directErr) {
         console.warn('Direct port 5000:', directErr);
       }
 
-      setSubmitted(true);
+      redirectToGracias();
     } catch (err) {
       console.error('Error enviando formulario:', err);
-      setSubmitted(true);
+      redirectToGracias();
     } finally {
       setIsSubmitting(false);
     }

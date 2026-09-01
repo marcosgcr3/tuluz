@@ -11,6 +11,7 @@ const Comunidades = lazy(() => import('./pages/Comunidades'));
 const Particulares = lazy(() => import('./pages/Particulares'));
 const Autoconsumo = lazy(() => import('./pages/Autoconsumo'));
 const Presupuesto = lazy(() => import('./pages/Presupuesto'));
+const Gracias = lazy(() => import('./pages/Gracias'));
 const LegalNotice = lazy(() => import('./pages/LegalNotice'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const ContactFormModal = lazy(() => import('./components/ContactFormModal'));
@@ -88,7 +89,10 @@ export default function App() {
       case '/solicitar-estudio':
       case '/estudio-gratuito':
       case '/estudio':
-        return <Presupuesto />;
+        return <Presupuesto navigate={navigate} />;
+      case '/gracias':
+      case '/solicitud-enviada':
+        return <Gracias navigate={navigate} />;
       case '/aviso-legal':
         return <LegalNotice />;
       case '/politica-de-privacidad':
@@ -144,6 +148,7 @@ export default function App() {
             isOpen={contactModalOpen} 
             onClose={closeContactModal} 
             initialData={modalInitialData}
+            navigate={navigate}
           />
         </Suspense>
       )}

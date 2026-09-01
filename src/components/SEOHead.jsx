@@ -51,6 +51,16 @@ const seoDataMap = {
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio'
   },
+  '/gracias': {
+    title: '¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
+    description: 'Gracias por solicitar tu estudio energético gratuito. Nuestro equipo revisará tus facturas en breve.',
+    canonical: 'https://tu-luz.es/gracias'
+  },
+  '/solicitud-enviada': {
+    title: '¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
+    description: 'Gracias por solicitar tu estudio energético gratuito. Nuestro equipo revisará tus facturas en breve.',
+    canonical: 'https://tu-luz.es/gracias'
+  },
   '/aviso-legal': {
     title: 'Aviso Legal y Términos de Servicio | tuLuz Asesoramiento Energético',
     description: 'Información legal, propiedad intelectual y condiciones generales de uso del sitio web de tuLuz Asesoramiento Energético.',

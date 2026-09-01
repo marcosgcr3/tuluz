@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Phone, Mail, MapPin, Send, CheckCircle2, ShieldCheck, UploadCloud, Sparkles, MessageCircle, Loader2 } from 'lucide-react';
 import { companyInfo } from '../data/content';
 
-export default function Presupuesto() {
+export default function Presupuesto({ navigate }) {
   const queryParams = new URLSearchParams(window.location.search);
   const paramType = queryParams.get('tipo') || queryParams.get('type');
   const validTypes = ['particular', 'empresa', 'comunidad', 'autoconsumo'];
@@ -21,6 +21,14 @@ export default function Presupuesto() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const fileInputRef = useRef(null);
+
+  const redirectToGracias = () => {
+    if (navigate) {
+      navigate('/gracias');
+    } else {
+      window.location.href = '/gracias';
+    }
+  };
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -57,7 +65,7 @@ export default function Presupuesto() {
           body: data
         });
         if (response.ok) {
-          setSubmitted(true);
+          redirectToGracias();
           return;
         }
       } catch (errApi) {
@@ -70,17 +78,17 @@ export default function Presupuesto() {
           body: data
         });
         if (directResp.ok) {
-          setSubmitted(true);
+          redirectToGracias();
           return;
         }
       } catch (directErr) {
         console.warn('Direct port 5000:', directErr);
       }
 
-      setSubmitted(true);
+      redirectToGracias();
     } catch (err) {
       console.error('Error enviando presupuesto:', err);
-      setSubmitted(true);
+      redirectToGracias();
     } finally {
       setIsSubmitting(false);
     }

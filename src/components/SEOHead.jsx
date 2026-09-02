@@ -54,27 +54,38 @@ const seoDataMap = {
   '/google': {
     title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
-    canonical: 'https://tu-luz.es/solicitar-estudio'
+    canonical: 'https://tu-luz.es/solicitar-estudio',
+    noindex: true
   },
   '/meta': {
     title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
-    canonical: 'https://tu-luz.es/solicitar-estudio'
+    canonical: 'https://tu-luz.es/solicitar-estudio',
+    noindex: true
   },
   '/instagram': {
     title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
-    canonical: 'https://tu-luz.es/solicitar-estudio'
+    canonical: 'https://tu-luz.es/solicitar-estudio',
+    noindex: true
   },
   '/facebook': {
     title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
-    canonical: 'https://tu-luz.es/solicitar-estudio'
+    canonical: 'https://tu-luz.es/solicitar-estudio',
+    noindex: true
   },
   '/tiktok': {
     title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
-    canonical: 'https://tu-luz.es/solicitar-estudio'
+    canonical: 'https://tu-luz.es/solicitar-estudio',
+    noindex: true
+  },
+  '/promo': {
+    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio',
+    noindex: true
   },
   '/solar': {
     title: 'Autoconsumo Solar y Placas Solares Fotovoltaicas | tuLuz',
@@ -84,12 +95,14 @@ const seoDataMap = {
   '/gracias': {
     title: '¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
     description: 'Gracias por solicitar tu estudio energético gratuito. Nuestro equipo revisará tus facturas en breve.',
-    canonical: 'https://tu-luz.es/gracias'
+    canonical: 'https://tu-luz.es/gracias',
+    noindex: true
   },
   '/solicitud-enviada': {
     title: '¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
     description: 'Gracias por solicitar tu estudio energético gratuito. Nuestro equipo revisará tus facturas en breve.',
-    canonical: 'https://tu-luz.es/gracias'
+    canonical: 'https://tu-luz.es/gracias',
+    noindex: true
   },
   '/aviso-legal': {
     title: 'Aviso Legal y Términos de Servicio | tuLuz Asesoramiento Energético',
@@ -121,6 +134,21 @@ export default function SEOHead({ currentPath }) {
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
       canonicalLink.setAttribute('href', seoData.canonical);
+    }
+
+    // Update robots meta tag (noindex for ads and thank you pages)
+    let robotsMeta = document.querySelector('meta[name="robots"]');
+    if (seoData.noindex) {
+      if (!robotsMeta) {
+        robotsMeta = document.createElement('meta');
+        robotsMeta.setAttribute('name', 'robots');
+        document.head.appendChild(robotsMeta);
+      }
+      robotsMeta.setAttribute('content', 'noindex, nofollow');
+    } else {
+      if (robotsMeta) {
+        robotsMeta.setAttribute('content', 'index, follow');
+      }
     }
 
     // Update Open Graph tags

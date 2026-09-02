@@ -2,6 +2,14 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /gracias
+Disallow: /solicitud-enviada
+Disallow: /google
+Disallow: /meta
+Disallow: /instagram
+Disallow: /facebook
+Disallow: /tiktok
+Disallow: /promo
 
 # Rastreadores de Inteligencia Artificial (GEO / AI Search)
 User-agent: GPTBot

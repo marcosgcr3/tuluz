@@ -1,0 +1,21 @@
+{
+  "name": "tuLuz - Asesoramiento Energético",
+  "short_name": "tuLuz",
+  "description": "Asesoramiento Energético Gratuito en Luz, Gas y Autoconsumo Solar para Hogares, Empresas y Comunidades en toda España.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF4F",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

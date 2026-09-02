@@ -3,23 +3,7 @@ import { Lightbulb, Menu, X, Moon, Sun, Phone, ArrowRight } from 'lucide-react';
 import { companyInfo, navLinks } from '../data/content';
 
 export default function Navbar({ currentPath, navigate, theme, toggleTheme, openContactModal }) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -43,16 +27,10 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
     <>
       <header 
         style={{
-          position: 'sticky',
-          top: 0,
+          position: 'relative',
           zIndex: 900,
-          transition: 'all 0.3s ease',
-          background: isScrolled ? 'var(--bg-glass)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(16px)' : 'none',
-          WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
-          borderBottom: isScrolled ? '1px solid var(--border-light)' : '1px solid transparent',
-          boxShadow: isScrolled ? 'var(--shadow-sm)' : 'none',
-          padding: isScrolled ? '0.7rem 0' : '1.1rem 0'
+          background: 'transparent',
+          padding: '1.1rem 0'
         }}
       >
         <div className="navbar-container" style={{ width: '100%', maxWidth: '100%', padding: '0 clamp(1rem, 3.5vw, 3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.25rem' }}>

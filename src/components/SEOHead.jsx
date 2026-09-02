@@ -168,6 +168,14 @@ export default function SEOHead({ currentPath }) {
     let twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) twDesc.setAttribute('content', seoData.description);
 
+    // Track dynamic SPA pageview in Google Tag
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('config', 'G-B3QHJXW8RB', {
+        page_path: cleanPath,
+        page_title: seoData.title
+      });
+    }
+
   }, [currentPath]);
 
   return null;

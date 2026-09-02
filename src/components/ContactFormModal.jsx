@@ -18,6 +18,14 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {}, na
   const fileInputRef = useRef(null);
 
   const redirectToGracias = () => {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'Modal_Formulario',
+        event_label: formData.clientType || 'particular',
+        value: 1
+      });
+    }
+
     onClose();
     if (navigate) {
       navigate('/gracias');

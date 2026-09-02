@@ -23,6 +23,14 @@ export default function Presupuesto({ navigate }) {
   const fileInputRef = useRef(null);
 
   const redirectToGracias = () => {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'Formulario',
+        event_label: formData.clientType || 'particular',
+        value: 1
+      });
+    }
+
     if (navigate) {
       navigate('/gracias');
     } else {

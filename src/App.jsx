@@ -45,6 +45,25 @@ export default function App() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
+  // Auto-open modal if landing on campaign routes or with ?modal=1
+  useEffect(() => {
+    const cleanPath = currentPath.replace(/\/$/, '') || '/';
+    const params = new URLSearchParams(window.location.search);
+    const modalRoutes = ['/google', '/meta', '/instagram', '/facebook', '/tiktok', '/promo', '/contacto'];
+    const shouldOpenModal = modalRoutes.includes(cleanPath) || params.get('modal') === '1' || params.get('formulario') === '1';
+
+    if (shouldOpenModal) {
+      let defaultType = 'particular';
+      const paramType = params.get('tipo') || params.get('type');
+      const validTypes = ['particular', 'empresa', 'comunidad', 'autoconsumo'];
+      if (validTypes.includes(paramType)) {
+        defaultType = paramType;
+      }
+      setModalInitialData({ clientType: defaultType });
+      setContactModalOpen(true);
+    }
+  }, [currentPath]);
+
   const openContactModal = (initialData = {}) => {
     const cleanPath = currentPath.replace(/\/$/, '') || '/';
     let defaultType = 'particular';
@@ -67,6 +86,12 @@ export default function App() {
 
   const closeContactModal = () => {
     setContactModalOpen(false);
+    const cleanPath = currentPath.replace(/\/$/, '') || '/';
+    const modalRoutes = ['/google', '/meta', '/instagram', '/facebook', '/tiktok', '/promo', '/contacto'];
+    if (modalRoutes.includes(cleanPath)) {
+      window.history.replaceState({}, '', '/');
+      setCurrentPath('/');
+    }
   };
 
   // Render active page component based on route path
@@ -75,6 +100,13 @@ export default function App() {
 
     switch (cleanPath) {
       case '/':
+      case '/google':
+      case '/meta':
+      case '/instagram':
+      case '/facebook':
+      case '/tiktok':
+      case '/promo':
+      case '/contacto':
         return <Home onOpenModal={openContactModal} navigate={navigate} />;
       case '/empresas':
         return <Empresas onOpenModal={openContactModal} navigate={navigate} />;
@@ -89,12 +121,6 @@ export default function App() {
       case '/solicitar-estudio':
       case '/estudio-gratuito':
       case '/estudio':
-      case '/google':
-      case '/meta':
-      case '/instagram':
-      case '/facebook':
-      case '/tiktok':
-      case '/promo':
         return <Presupuesto navigate={navigate} />;
       case '/solar':
         return <Autoconsumo onOpenModal={openContactModal} navigate={navigate} />;

@@ -52,37 +52,43 @@ const seoDataMap = {
     canonical: 'https://tu-luz.es/solicitar-estudio'
   },
   '/google': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    title: '[Google Ads] Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio',
     noindex: true
   },
   '/meta': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    title: '[Meta Ads] Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio',
     noindex: true
   },
   '/instagram': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    title: '[Instagram Ads] Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio',
     noindex: true
   },
   '/facebook': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    title: '[Facebook Ads] Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio',
     noindex: true
   },
   '/tiktok': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    title: '[TikTok Ads] Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio',
     noindex: true
   },
   '/promo': {
-    title: 'Solicita tu Estudio Energético Gratuito | tuLuz',
+    title: '[Campaña Promo] Solicita tu Estudio Energético Gratuito | tuLuz',
+    description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
+    canonical: 'https://tu-luz.es/solicitar-estudio',
+    noindex: true
+  },
+  '/contacto': {
+    title: '[Contacto Directo] Solicita tu Estudio Energético Gratuito | tuLuz',
     description: 'Estudio gratuito de luz, gas y energía solar para hogares, empresas y comunidades.',
     canonical: 'https://tu-luz.es/solicitar-estudio',
     noindex: true
@@ -93,13 +99,13 @@ const seoDataMap = {
     canonical: 'https://tu-luz.es/autoconsumo'
   },
   '/gracias': {
-    title: '¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
+    title: '[Conversión] ¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
     description: 'Gracias por solicitar tu estudio energético gratuito. Nuestro equipo revisará tus facturas en breve.',
     canonical: 'https://tu-luz.es/gracias',
     noindex: true
   },
   '/solicitud-enviada': {
-    title: '¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
+    title: '[Conversión] ¡Solicitud Recibida con Éxito! | tuLuz Asesoramiento Energético',
     description: 'Gracias por solicitar tu estudio energético gratuito. Nuestro equipo revisará tus facturas en breve.',
     canonical: 'https://tu-luz.es/gracias',
     noindex: true
@@ -121,8 +127,23 @@ export default function SEOHead({ currentPath }) {
     const cleanPath = currentPath ? currentPath.replace(/\/$/, '') || '/' : '/';
     const seoData = seoDataMap[cleanPath] || seoDataMap['/'];
 
+    // Determine dynamic title with UTM / channel tags for Analytics visibility
+    let effectiveTitle = seoData.title;
+    if (typeof window !== 'undefined') {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const utmSource = params.get('utm_source') || params.get('src') || params.get('source');
+        const utmCampaign = params.get('utm_campaign') || params.get('campaign');
+        if (utmSource && !effectiveTitle.toLowerCase().includes(utmSource.toLowerCase())) {
+          effectiveTitle = `[${utmSource}${utmCampaign ? ' - ' + utmCampaign : ''}] ${effectiveTitle}`;
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+
     // Update document title
-    document.title = seoData.title;
+    document.title = effectiveTitle;
 
     // Update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -153,7 +174,7 @@ export default function SEOHead({ currentPath }) {
 
     // Update Open Graph tags
     let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', seoData.title);
+    if (ogTitle) ogTitle.setAttribute('content', effectiveTitle);
 
     let ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', seoData.description);
@@ -163,7 +184,7 @@ export default function SEOHead({ currentPath }) {
 
     // Update Twitter tags
     let twTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twTitle) twTitle.setAttribute('content', seoData.title);
+    if (twTitle) twTitle.setAttribute('content', effectiveTitle);
 
     let twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) twDesc.setAttribute('content', seoData.description);
@@ -171,8 +192,8 @@ export default function SEOHead({ currentPath }) {
     // Track dynamic SPA pageview in Google Tag
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('config', 'G-B3QHJXW8RB', {
-        page_path: cleanPath,
-        page_title: seoData.title
+        page_path: cleanPath + (window.location.search || ''),
+        page_title: effectiveTitle
       });
     }
 

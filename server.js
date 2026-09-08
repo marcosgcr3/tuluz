@@ -264,13 +264,18 @@ const handleMetaWebhookVerification = (req, res) => {
   const token = req.query['hub.verify_token'];
   const challenge = req.query['hub.challenge'];
 
-  const expectedToken = process.env.META_VERIFY_TOKEN || 'tuluz_meta_secret_2026%!!';
+  const expectedToken = process.env.META_VERIFY_TOKEN;
+
+  if (!expectedToken) {
+    console.error('❌ Error de configuración: META_VERIFY_TOKEN no está definido en el archivo .env');
+    return res.status(500).send('META_VERIFY_TOKEN no configurado en el servidor');
+  }
 
   if (mode === 'subscribe' && token === expectedToken) {
     console.log('✅ Webhook de Meta Ads verificado con éxito por Meta.');
     return res.status(200).send(String(challenge));
   } else {
-    console.warn(`⚠️ Intento fallido de verificación de Webhook de Meta. Token recibido: "${token}" vs Esperado: "${expectedToken}"`);
+    console.warn(`⚠️ Intento fallido de verificación de Webhook de Meta. Token recibido: "${token}" no coincide con el definido en .env.`);
     return res.sendStatus(403);
   }
 };
@@ -460,7 +465,11 @@ app.post('/api/meta-webhook', handleMetaWebhookEvent);
 // ==========================================
 
 function checkAdminAuth(req) {
-  const adminKey = process.env.ADMIN_KEY || 'tuluz2026';
+  const adminKey = process.env.ADMIN_KEY;
+  if (!adminKey || adminKey.trim() === '') {
+    console.error('❌ Error de seguridad: ADMIN_KEY no está definida en el archivo .env');
+    return false;
+  }
   const providedKey = req.query.key || req.headers['x-api-key'] || req.headers['authorization'];
   if (!providedKey) return false;
   return providedKey === adminKey || providedKey === `Bearer ${adminKey}`;
@@ -535,7 +544,7 @@ app.get('/api/leads-summary', (req, res) => {
       systemStatus: {
         smtpReady: isConfiguredSMTP(),
         metaReady: !!process.env.META_PAGE_ACCESS_TOKEN,
-        metaVerifyToken: process.env.META_VERIFY_TOKEN ? 'Configurado' : 'Por defecto'
+        metaVerifyToken: process.env.META_VERIFY_TOKEN ? 'Configurado en .env' : 'No configurado en .env'
       }
     });
   } catch (err) {
@@ -642,7 +651,9 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend activo en puerto ${PORT}`);
   console.log(`📬 Destinatario de leads: ${RECIPIENT_EMAIL}`);
-  console.log(`🔑 Estado SMTP: ${isConfiguredSMTP() ? 'CONFIGURADO Y LISTO (' + process.env.SMTP_USER + ')' : '⚠️ NO CONFIGURADO (Faltan variables)'}`);
-  console.log(`🎯 Meta Ads Webhook listo en: /webhook y /api/meta-webhook`);
+  console.log(`🔑 Estado SMTP: ${isConfiguredSMTP() ? 'CONFIGURADO Y LISTO (' + process.env.SMTP_USER + ')' : '⚠️ NO CONFIGURADO (Faltan variables SMTP)'}`);
+  console.log(`🎯 Meta Verify Token: ${process.env.META_VERIFY_TOKEN ? 'DEFINIDO EN .ENV' : '⚠️ FALTA META_VERIFY_TOKEN'}`);
+  console.log(`🔑 Meta Page Token: ${process.env.META_PAGE_ACCESS_TOKEN ? 'DEFINIDO EN .ENV' : '⚠️ FALTA META_PAGE_ACCESS_TOKEN'}`);
+  console.log(`🛡️ Clave Admin (/admin): ${process.env.ADMIN_KEY ? 'DEFINIDA EN .ENV' : '⚠️ FALTA ADMIN_KEY'}`);
 });
 

@@ -14,6 +14,7 @@ const Presupuesto = lazy(() => import('./pages/Presupuesto'));
 const Gracias = lazy(() => import('./pages/Gracias'));
 const LegalNotice = lazy(() => import('./pages/LegalNotice'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const ContactFormModal = lazy(() => import('./components/ContactFormModal'));
 
 export default function App() {
@@ -131,10 +132,37 @@ export default function App() {
         return <LegalNotice />;
       case '/politica-de-privacidad':
         return <PrivacyPolicy />;
+      case '/admin':
+      case '/dashboard':
+        return <AdminDashboard navigate={navigate} />;
       default:
         return <Home onOpenModal={openContactModal} navigate={navigate} />;
     }
   };
+
+  const cleanPath = currentPath.replace(/\/$/, '') || '/';
+  const isAdminRoute = cleanPath === '/admin' || cleanPath === '/dashboard';
+
+  // Si estamos en el panel de administración, no mostramos la barra pública ni el footer
+  if (isAdminRoute) {
+    return (
+      <Suspense fallback={
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', color: '#ffffff' }}>
+          <div style={{
+            width: '40px',
+            height: '40px',
+            border: '3px solid rgba(76, 175, 79, 0.2)',
+            borderTopColor: '#4CAF4F',
+            borderRadius: '50%',
+            animation: 'spin 0.8s linear infinite'
+          }} />
+          <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+        </div>
+      }>
+        <AdminDashboard navigate={navigate} />
+      </Suspense>
+    );
+  }
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

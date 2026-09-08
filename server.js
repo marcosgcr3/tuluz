@@ -455,15 +455,22 @@ const handleMetaWebhookEvent = async (req, res) => {
 app.post('/webhook', handleMetaWebhookEvent);
 app.post('/api/meta-webhook', handleMetaWebhookEvent);
 
-// Endpoint protegido para consultar resumen y estadísticas de conversiones por canal
-app.get('/api/leads-summary', (req, res) => {
+// ==========================================
+// API DE ADMINISTRACIÓN Y MÉTRICAS DE LEADS
+// ==========================================
+
+function checkAdminAuth(req) {
   const adminKey = process.env.ADMIN_KEY || 'tuluz2026';
   const providedKey = req.query.key || req.headers['x-api-key'] || req.headers['authorization'];
+  if (!providedKey) return false;
+  return providedKey === adminKey || providedKey === `Bearer ${adminKey}`;
+}
 
-  // Validación de seguridad y privacidad RGPD
-  if (!providedKey || (providedKey !== adminKey && providedKey !== `Bearer ${adminKey}`)) {
+// Endpoint protegido para consultar resumen, métricas y lista de leads
+app.get('/api/leads-summary', (req, res) => {
+  if (!checkAdminAuth(req)) {
     return res.status(401).json({ 
-      error: 'Acceso no autorizado. Se requiere clave de administración (ej: ?key=TU_CLAVE).' 
+      error: 'Acceso no autorizado. Se requiere clave de administración válida.' 
     });
   }
 
@@ -473,26 +480,146 @@ app.get('/api/leads-summary', (req, res) => {
       leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
     }
 
+    const now = new Date();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    const startOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7).getTime();
+
+    let todayCount = 0;
+    let weekCount = 0;
+    let metaAdsCount = 0;
+
     const bySource = {};
     const byType = {};
+    const byStatus = {
+      'nuevo': 0,
+      'contactado': 0,
+      'en_estudio': 0,
+      'ganado': 0,
+      'descartado': 0
+    };
 
-    leads.forEach(l => {
+    const formattedLeads = leads.map(l => {
+      const leadDate = l.date ? new Date(l.date).getTime() : 0;
+      if (leadDate >= startOfToday) todayCount++;
+      if (leadDate >= startOfWeek) weekCount++;
+
       const src = l.source || 'Web Directa';
       bySource[src] = (bySource[src] || 0) + 1;
 
-      const type = l.clientType || 'Particular';
+      if (src.toLowerCase().includes('meta') || src.toLowerCase().includes('facebook') || src.toLowerCase().includes('instagram')) {
+        metaAdsCount++;
+      }
+
+      const type = l.clientType || 'particular';
       byType[type] = (byType[type] || 0) + 1;
+
+      const status = l.status || 'nuevo';
+      byStatus[status] = (byStatus[status] || 0) + 1;
+
+      return {
+        ...l,
+        status
+      };
     });
 
     res.json({
       success: true,
       totalLeads: leads.length,
+      todayLeads: todayCount,
+      weekLeads: weekCount,
+      metaAdsLeads: metaAdsCount,
       bySource,
       byType,
-      recentLeads: leads.slice(0, 50)
+      byStatus,
+      leads: formattedLeads,
+      systemStatus: {
+        smtpReady: isConfiguredSMTP(),
+        metaReady: !!process.env.META_PAGE_ACCESS_TOKEN,
+        metaVerifyToken: process.env.META_VERIFY_TOKEN ? 'Configurado' : 'Por defecto'
+      }
     });
   } catch (err) {
+    console.error('Error obteniendo resumen de leads:', err);
     res.status(500).json({ error: 'Error leyendo leads' });
+  }
+});
+
+// Endpoint protegido para actualizar el estado comercial de un lead
+app.post('/api/leads/update-status', (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado.' });
+  }
+
+  const { leadId, status } = req.body;
+  if (!leadId || !status) {
+    return res.status(400).json({ error: 'Faltan parámetros requeridos (leadId, status).' });
+  }
+
+  try {
+    let leads = [];
+    if (fs.existsSync(LEADS_FILE)) {
+      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
+    }
+
+    const index = leads.findIndex(l => String(l.id) === String(leadId));
+    if (index === -1) {
+      return res.status(404).json({ error: 'Lead no encontrado' });
+    }
+
+    leads[index].status = status;
+    leads[index].updatedAt = new Date().toISOString();
+
+    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
+    res.json({ success: true, lead: leads[index] });
+  } catch (err) {
+    console.error('Error actualizando lead:', err);
+    res.status(500).json({ error: 'Error actualizando estado del lead' });
+  }
+});
+
+// Endpoint protegido para exportar los leads a un CSV compatible con Excel
+app.get('/api/leads/export-csv', (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).send('Acceso no autorizado.');
+  }
+
+  try {
+    let leads = [];
+    if (fs.existsSync(LEADS_FILE)) {
+      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
+    }
+
+    const escapeCsv = (val) => {
+      if (val === null || val === undefined) return '""';
+      const str = String(val).replace(/"/g, '""');
+      return `"${str}"`;
+    };
+
+    const header = ['ID', 'Fecha', 'Nombre', 'Teléfono', 'Email', 'Tipo de Cliente', 'Origen', 'Estado', 'Página / Formulario', 'Gasto Mensual', 'Notas'];
+    const rows = leads.map(l => [
+      escapeCsv(l.id),
+      escapeCsv(l.date ? new Date(l.date).toLocaleString('es-ES') : ''),
+      escapeCsv(l.name),
+      escapeCsv(l.phone),
+      escapeCsv(l.email),
+      escapeCsv(l.clientType || 'Particular'),
+      escapeCsv(l.source || 'Web Directa'),
+      escapeCsv(l.status || 'nuevo'),
+      escapeCsv(l.pageUrl || ''),
+      escapeCsv(l.monthlyBill || ''),
+      escapeCsv(l.notes || '')
+    ].join(';'));
+
+    // UTF-8 BOM (\uFEFF) para que Microsoft Excel abra las tildes y caracteres especiales perfectamente
+    const csvContent = '\uFEFF' + [header.join(';'), ...rows].join('\r\n');
+
+    const dateStr = new Date().toISOString().slice(0, 10);
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="leads_tuluz_${dateStr}.csv"`);
+    res.status(200).send(csvContent);
+  } catch (err) {
+    console.error('Error exportando CSV:', err);
+    res.status(500).send('Error generando archivo CSV');
   }
 });
 

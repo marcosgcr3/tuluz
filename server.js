@@ -586,6 +586,113 @@ app.post('/api/leads/update-status', (req, res) => {
   }
 });
 
+// Endpoint protegido para sincronizar leads históricos o pendientes desde Meta Ads
+app.post('/api/leads/sync-meta', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado.' });
+  }
+
+  const pageToken = process.env.META_PAGE_ACCESS_TOKEN;
+  if (!pageToken) {
+    return res.status(400).json({ error: 'META_PAGE_ACCESS_TOKEN no está configurado en el archivo .env' });
+  }
+
+  try {
+    // 1. Obtener la página o páginas asociadas
+    const meRes = await fetch(`https://graph.facebook.com/v21.0/me?access_token=${encodeURIComponent(pageToken)}`);
+    const meData = await meRes.json();
+    
+    let targetPageIds = [];
+    if (meData.id) targetPageIds.push(meData.id);
+
+    const accountsRes = await fetch(`https://graph.facebook.com/v21.0/me/accounts?access_token=${encodeURIComponent(pageToken)}`);
+    if (accountsRes.ok) {
+      const accountsData = await accountsRes.json();
+      if (accountsData.data) {
+        for (const acc of accountsData.data) {
+          if (acc.id && !targetPageIds.includes(acc.id)) targetPageIds.push(acc.id);
+        }
+      }
+    }
+
+    let existingLeads = [];
+    if (fs.existsSync(LEADS_FILE)) {
+      existingLeads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
+    }
+
+    let newlyImported = 0;
+
+    for (const pageId of targetPageIds) {
+      const formsRes = await fetch(`https://graph.facebook.com/v21.0/${pageId}/leadgen_forms?access_token=${encodeURIComponent(pageToken)}`);
+      if (!formsRes.ok) continue;
+      const formsData = await formsRes.json();
+
+      for (const form of (formsData.data || [])) {
+        const leadsRes = await fetch(`https://graph.facebook.com/v21.0/${form.id}/leads?access_token=${encodeURIComponent(pageToken)}`);
+        if (!leadsRes.ok) continue;
+        const leadsData = await leadsRes.json();
+
+        for (const metaLead of (leadsData.data || [])) {
+          const fieldData = metaLead.field_data || [];
+          const name = getMetaField(fieldData, ['full_name', 'nombre_completo', 'nombre', 'name', 'first_name']) || 'Cliente Meta Ads';
+          const email = getMetaField(fieldData, ['email', 'correo', 'correo_electrónico', 'correo_electronico']) || '';
+          const phone = getMetaField(fieldData, ['phone_number', 'phone', 'telefono', 'teléfono', 'numero_de_telefono', 'número_de_teléfono']) || '';
+
+          const cleanPhone = phone.replace(/[^0-9]/g, '');
+
+          // Evitar duplicados
+          const exists = existingLeads.some(l => 
+            String(l.metaLeadId) === String(metaLead.id) ||
+            (cleanPhone && l.phone && l.phone.replace(/[^0-9]/g, '') === cleanPhone) ||
+            (email && l.email && l.email.toLowerCase() === email.toLowerCase())
+          );
+
+          if (!exists) {
+            const extraQuestions = fieldData
+              .filter(f => !['full_name', 'nombre_completo', 'nombre', 'name', 'first_name', 'email', 'correo', 'correo_electrónico', 'correo_electronico', 'phone_number', 'phone', 'telefono', 'teléfono', 'numero_de_telefono', 'número_de_teléfono'].includes((f.name || '').toLowerCase()))
+              .map(f => `${f.name}: ${(f.values || []).join(', ')}`)
+              .join('\n');
+
+            const newRecord = {
+              id: Date.now() + Math.floor(Math.random() * 1000),
+              metaLeadId: metaLead.id,
+              date: metaLead.created_time || new Date().toISOString(),
+              name,
+              phone,
+              email,
+              clientType: 'Lead Meta Ads',
+              source: 'Meta Ads (Facebook / Instagram)',
+              pageUrl: `Formulario: ${form.name || form.id}`,
+              monthlyBill: '',
+              notes: extraQuestions ? `Preguntas del formulario:\n${extraQuestions}` : 'Cliente importado de Meta Ads',
+              status: 'nuevo',
+              hasFile: false,
+              fileName: null,
+              fileSize: null
+            };
+
+            existingLeads.unshift(newRecord);
+            newlyImported++;
+          }
+        }
+      }
+    }
+
+    if (newlyImported > 0) {
+      fs.writeFileSync(LEADS_FILE, JSON.stringify(existingLeads, null, 2), 'utf-8');
+    }
+
+    res.json({
+      success: true,
+      importedCount: newlyImported,
+      message: newlyImported > 0 ? `Se han sincronizado ${newlyImported} clientes potenciales de Meta Ads.` : 'Todos los clientes de Meta Ads ya están al día.'
+    });
+  } catch (err) {
+    console.error('Error sincronizando leads de Meta:', err);
+    res.status(500).json({ error: 'Error al conectar con Meta Graph API' });
+  }
+});
+
 // Endpoint protegido para exportar los leads a un CSV compatible con Excel
 app.get('/api/leads/export-csv', (req, res) => {
   if (!checkAdminAuth(req)) {

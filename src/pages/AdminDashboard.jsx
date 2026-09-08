@@ -121,6 +121,28 @@ export default function AdminDashboard({ navigate }) {
     }
   };
 
+  const [syncingMeta, setSyncingMeta] = useState(false);
+
+  const handleSyncMeta = async () => {
+    setSyncingMeta(true);
+    try {
+      const res = await fetch('/api/leads/sync-meta', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': adminKey
+        }
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al sincronizar');
+      fetchDashboardData();
+    } catch (err) {
+      alert('Error al sincronizar con Meta: ' + err.message);
+    } finally {
+      setSyncingMeta(false);
+    }
+  };
+
   const handleExportCsv = () => {
     const url = `/api/leads/export-csv?key=${encodeURIComponent(adminKey)}`;
     window.open(url, '_blank');
@@ -414,6 +436,29 @@ export default function AdminDashboard({ navigate }) {
           >
             <RefreshCw size={15} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
             <span>{loading ? 'Actualizando...' : 'Refrescar'}</span>
+          </button>
+
+          {/* Sync Meta Ads Button */}
+          <button
+            onClick={handleSyncMeta}
+            disabled={syncingMeta || loading}
+            title="Sincronizar clientes potenciales directamente de Meta Ads"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 14px',
+              borderRadius: '8px',
+              border: '1px solid #bae6fd',
+              background: '#e0f2fe',
+              color: '#0284c7',
+              fontSize: '13px',
+              fontWeight: '700',
+              cursor: syncingMeta ? 'wait' : 'pointer'
+            }}
+          >
+            <Sparkles size={15} style={{ animation: syncingMeta ? 'spin 1s linear infinite' : 'none' }} />
+            <span>{syncingMeta ? 'Sincronizando...' : 'Sincronizar Meta Ads'}</span>
           </button>
 
           {/* Export CSV Button */}

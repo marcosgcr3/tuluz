@@ -594,14 +594,14 @@ export default function AdminDashboard({ navigate }) {
         {/* ---------------------------------------------------- */}
         {/* KPI CARDS GRID */}
         {/* ---------------------------------------------------- */}
-        <div style={{
+        <div className="tuluz-kpi-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
           gap: '20px',
           marginBottom: '28px'
         }}>
           {/* Card 1: Total Leads */}
-          <div style={{
+          <div className="tuluz-kpi-card" style={{
             background: '#ffffff',
             borderRadius: '16px',
             padding: '20px 24px',
@@ -614,7 +614,7 @@ export default function AdminDashboard({ navigate }) {
                 <Users size={20} color="#16a34a" />
               </div>
             </div>
-            <div style={{ fontSize: '32px', fontWeight: '800', color: '#0f172a', letterSpacing: '-1px' }}>
+            <div className="tuluz-kpi-num" style={{ fontSize: '32px', fontWeight: '800', color: '#0f172a', letterSpacing: '-1px' }}>
               {total}
             </div>
             <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
@@ -623,7 +623,7 @@ export default function AdminDashboard({ navigate }) {
           </div>
 
           {/* Card 2: Meta Ads Leads */}
-          <div style={{
+          <div className="tuluz-kpi-card" style={{
             background: '#ffffff',
             borderRadius: '16px',
             padding: '20px 24px',
@@ -636,7 +636,7 @@ export default function AdminDashboard({ navigate }) {
                 <Sparkles size={20} color="#0284c7" />
               </div>
             </div>
-            <div style={{ fontSize: '32px', fontWeight: '800', color: '#0284c7', letterSpacing: '-1px' }}>
+            <div className="tuluz-kpi-num" style={{ fontSize: '32px', fontWeight: '800', color: '#0284c7', letterSpacing: '-1px' }}>
               {metaTotal}
             </div>
             <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
@@ -645,7 +645,7 @@ export default function AdminDashboard({ navigate }) {
           </div>
 
           {/* Card 3: Leads Recientes (Hoy / 7 Días) */}
-          <div style={{
+          <div className="tuluz-kpi-card" style={{
             background: '#ffffff',
             borderRadius: '16px',
             padding: '20px 24px',
@@ -659,7 +659,7 @@ export default function AdminDashboard({ navigate }) {
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-              <span style={{ fontSize: '32px', fontWeight: '800', color: '#0f172a', letterSpacing: '-1px' }}>
+              <span className="tuluz-kpi-num" style={{ fontSize: '32px', fontWeight: '800', color: '#0f172a', letterSpacing: '-1px' }}>
                 {dashboardData?.todayLeads || 0}
               </span>
               <span style={{ fontSize: '14px', color: '#64748b' }}>hoy</span>
@@ -675,7 +675,7 @@ export default function AdminDashboard({ navigate }) {
           </div>
 
           {/* Card 4: Estado Comercial */}
-          <div style={{
+          <div className="tuluz-kpi-card" style={{
             background: '#ffffff',
             borderRadius: '16px',
             padding: '20px 24px',
@@ -688,7 +688,7 @@ export default function AdminDashboard({ navigate }) {
                 <CheckCircle2 size={20} color="#10b981" />
               </div>
             </div>
-            <div style={{ fontSize: '32px', fontWeight: '800', color: '#10b981', letterSpacing: '-1px' }}>
+            <div className="tuluz-kpi-num" style={{ fontSize: '32px', fontWeight: '800', color: '#10b981', letterSpacing: '-1px' }}>
               {dashboardData?.byStatus?.ganado || 0}
             </div>
             <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
@@ -937,8 +937,8 @@ export default function AdminDashboard({ navigate }) {
             </div>
           </div>
 
-          {/* Table */}
-          <div style={{ overflowX: 'auto' }}>
+          {/* Desktop Table (Oculta en móvil) */}
+          <div className="tuluz-desktop-table" style={{ overflowX: 'auto' }}>
             <table style={{
               width: '100%',
               borderCollapse: 'collapse',
@@ -1176,6 +1176,201 @@ export default function AdminDashboard({ navigate }) {
               </tbody>
             </table>
           </div>
+
+          {/* Mobile Cards View (< 768px) */}
+          <div className="tuluz-mobile-cards" style={{ display: 'none', flexDirection: 'column', gap: '12px', padding: '16px' }}>
+            {filteredLeads.length === 0 ? (
+              <div style={{ padding: '32px 16px', textAlign: 'center', color: '#94a3b8' }}>
+                <Users size={28} style={{ margin: '0 auto 8px auto', opacity: 0.5 }} />
+                <p style={{ margin: 0, fontWeight: '600', fontSize: '14px' }}>No hay contactos</p>
+                <p style={{ margin: '4px 0 0 0', fontSize: '12px' }}>Prueba a modificar los filtros</p>
+              </div>
+            ) : (
+              filteredLeads.map((lead) => {
+                const statusKey = lead.status || 'nuevo';
+                const statusStyle = STATUS_CONFIG[statusKey] || STATUS_CONFIG.nuevo;
+                const isMeta = (lead.source || '').toLowerCase().includes('meta') || (lead.source || '').toLowerCase().includes('facebook');
+                const leadDate = lead.date ? new Date(lead.date).toLocaleDateString('es-ES', {
+                  day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
+                }) : 'N/D';
+
+                return (
+                  <div 
+                    key={lead.id}
+                    style={{
+                      background: '#ffffff',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: '12px',
+                      padding: '16px',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '12px'
+                    }}
+                  >
+                    {/* Header: Avatar, Name, Source Badge */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{
+                          width: '38px',
+                          height: '38px',
+                          borderRadius: '50%',
+                          background: isMeta ? '#e0f2fe' : '#dcfce7',
+                          color: isMeta ? '#0284c7' : '#15803d',
+                          fontWeight: '800',
+                          fontSize: '15px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0
+                        }}>
+                          {(lead.name || 'C').charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                          <div style={{ fontWeight: '800', fontSize: '15px', color: '#0f172a' }}>
+                            {lead.name || 'Sin nombre'}
+                          </div>
+                          <div style={{ fontSize: '12px', color: '#64748b' }}>
+                            {leadDate} • <span style={{ textTransform: 'capitalize' }}>{lead.clientType || 'Particular'}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <span style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        background: isMeta ? '#e0f2fe' : '#f1f5f9',
+                        color: isMeta ? '#0369a1' : '#475569',
+                        fontWeight: '700',
+                        fontSize: '11px',
+                        padding: '3px 8px',
+                        borderRadius: '6px',
+                        flexShrink: 0
+                      }}>
+                        {isMeta && <Sparkles size={11} />}
+                        {isMeta ? 'Meta Ads' : 'Web'}
+                      </span>
+                    </div>
+
+                    {/* Contact data */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px' }}>
+                      {lead.phone && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ color: '#64748b' }}>Teléfono:</span>
+                          <strong style={{ color: '#0f172a' }}>{lead.phone}</strong>
+                        </div>
+                      )}
+                      {lead.email && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ color: '#64748b' }}>Email:</span>
+                          <span style={{ color: '#334155', wordBreak: 'break-all' }}>{lead.email}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Status Dropdown */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '4px' }}>
+                      <span style={{ fontSize: '12px', fontWeight: '600', color: '#64748b' }}>Estado comercial:</span>
+                      <select
+                        value={statusKey}
+                        disabled={updatingLeadId === lead.id}
+                        onChange={(e) => handleStatusChange(lead.id, e.target.value)}
+                        style={{
+                          background: statusStyle.bg,
+                          color: statusStyle.color,
+                          border: `1px solid ${statusStyle.border}`,
+                          borderRadius: '8px',
+                          padding: '6px 10px',
+                          fontSize: '12px',
+                          fontWeight: '700',
+                          cursor: 'pointer',
+                          outline: 'none'
+                        }}
+                      >
+                        <option value="nuevo">Nuevo</option>
+                        <option value="contactado">Contactado</option>
+                        <option value="en_estudio">En estudio</option>
+                        <option value="ganado">Ganado</option>
+                        <option value="descartado">Descartado</option>
+                      </select>
+                    </div>
+
+                    {/* Touch Action Buttons for Mobile */}
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: lead.phone ? '1fr 1fr auto' : '1fr auto',
+                      gap: '8px',
+                      paddingTop: '8px',
+                      borderTop: '1px solid #f1f5f9'
+                    }}>
+                      {lead.phone && (
+                        <a
+                          href={`tel:${lead.phone}`}
+                          style={{
+                            padding: '11px',
+                            borderRadius: '8px',
+                            background: '#4CAF4F',
+                            color: '#ffffff',
+                            fontWeight: '700',
+                            fontSize: '13px',
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '6px'
+                          }}
+                        >
+                          <Phone size={15} />
+                          <span>Llamar</span>
+                        </a>
+                      )}
+                      {lead.phone && (
+                        <a
+                          href={formatWhatsappUrl(lead.phone, lead.name)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            padding: '11px',
+                            borderRadius: '8px',
+                            background: '#25D366',
+                            color: '#ffffff',
+                            fontWeight: '700',
+                            fontSize: '13px',
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '6px'
+                          }}
+                        >
+                          <MessageSquare size={15} />
+                          <span>WhatsApp</span>
+                        </a>
+                      )}
+                      <button
+                        onClick={() => setSelectedLead(lead)}
+                        title="Ver ficha completa"
+                        style={{
+                          padding: '11px 16px',
+                          borderRadius: '8px',
+                          background: '#f1f5f9',
+                          color: '#475569',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          border: '1px solid #cbd5e1',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <Eye size={16} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
       </div>
 
@@ -1376,11 +1571,36 @@ export default function AdminDashboard({ navigate }) {
         </div>
       )}
 
-      {/* Global CSS spinner */}
+      {/* Global & Responsive CSS */}
       <style>{`
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+          .tuluz-desktop-table {
+            display: none !important;
+          }
+          .tuluz-mobile-cards {
+            display: flex !important;
+          }
+          .tuluz-kpi-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+            margin-bottom: 20px !important;
+          }
+          .tuluz-kpi-card {
+            padding: 14px 16px !important;
+            border-radius: 12px !important;
+          }
+          .tuluz-kpi-num {
+            font-size: 24px !important;
+          }
+        }
+        @media (min-width: 769px) {
+          .tuluz-mobile-cards {
+            display: none !important;
+          }
         }
       `}</style>
     </div>

@@ -52,11 +52,11 @@ export default function AdminDashboard({ navigate }) {
     descartado: { label: 'Descartado', color: '#64748b', bg: '#f8fafc', border: '#e2e8f0' }
   };
 
-  const fetchDashboardData = async (keyToUse) => {
+  const fetchDashboardData = async (keyToUse, isBackground = false) => {
     const key = keyToUse || adminKey;
     if (!key) return;
 
-    setLoading(true);
+    if (!isBackground) setLoading(true);
     setError(null);
     try {
       const res = await fetch(`/api/leads-summary?key=${encodeURIComponent(key)}`);
@@ -64,7 +64,7 @@ export default function AdminDashboard({ navigate }) {
         setIsAuthenticated(false);
         sessionStorage.removeItem('tuluz_admin_key');
         setAuthError('Clave de administración incorrecta. Por favor verifícala.');
-        setLoading(false);
+        if (!isBackground) setLoading(false);
         return;
       }
       if (!res.ok) {
@@ -76,17 +76,24 @@ export default function AdminDashboard({ navigate }) {
       sessionStorage.setItem('tuluz_admin_key', key);
     } catch (err) {
       console.error(err);
-      setError(err.message || 'No se pudo conectar con el servidor.');
+      if (!isBackground) setError(err.message || 'No se pudo conectar con el servidor.');
     } finally {
-      setLoading(false);
+      if (!isBackground) setLoading(false);
     }
   };
 
   useEffect(() => {
     if (adminKey) {
       fetchDashboardData(adminKey);
+
+      // Auto-refresco silencioso cada 30 segundos para mantener el panel siempre actualizado
+      const timer = setInterval(() => {
+        fetchDashboardData(adminKey, true);
+      }, 30000);
+
+      return () => clearInterval(timer);
     }
-  }, []);
+  }, [adminKey]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -486,11 +493,11 @@ export default function AdminDashboard({ navigate }) {
             <span>{loading ? 'Actualizando...' : 'Refrescar'}</span>
           </button>
 
-          {/* Sync Meta Ads Button */}
+          {/* Auto-Sync Meta Ads Indicator & Force Button */}
           <button
             onClick={handleSyncMeta}
             disabled={syncingMeta || loading}
-            title="Sincronizar clientes potenciales directamente de Meta Ads"
+            title="Sincronización automática con Meta Ads activa. Pulsa si deseas forzar una sincronización manual inmediata."
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -506,7 +513,7 @@ export default function AdminDashboard({ navigate }) {
             }}
           >
             <MetaIcon size={15} color="#0284c7" style={{ animation: syncingMeta ? 'spin 1s linear infinite' : 'none' }} />
-            <span>{syncingMeta ? 'Sincronizando...' : 'Sincronizar Meta Ads'}</span>
+            <span>{syncingMeta ? 'Sincronizando...' : 'Auto-Sync Meta Activo'}</span>
           </button>
 
           {/* Export CSV Button */}

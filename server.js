@@ -485,11 +485,20 @@ function checkAdminAuth(req) {
 }
 
 // Endpoint protegido para consultar resumen, métricas y lista de leads
-app.get('/api/leads-summary', (req, res) => {
+app.get('/api/leads-summary', async (req, res) => {
   if (!checkAdminAuth(req)) {
     return res.status(401).json({ 
       error: 'Acceso no autorizado. Se requiere clave de administración válida.' 
     });
+  }
+
+  // Sincronización automática transparente con Meta Ads (si han pasado más de 30s desde el último chequeo)
+  if (process.env.META_PAGE_ACCESS_TOKEN && (Date.now() - lastMetaSyncTime > 30 * 1000)) {
+    try {
+      await syncMetaLeadsSilently();
+    } catch (syncErr) {
+      console.warn('⚠️ Auto-sync silencioso con Meta Ads:', syncErr.message);
+    }
   }
 
   try {
@@ -627,19 +636,17 @@ app.post('/api/leads/delete', (req, res) => {
   }
 });
 
-// Endpoint protegido para sincronizar leads históricos o pendientes desde Meta Ads
-app.post('/api/leads/sync-meta', async (req, res) => {
-  if (!checkAdminAuth(req)) {
-    return res.status(401).json({ error: 'Acceso no autorizado.' });
-  }
+let lastMetaSyncTime = 0;
 
+// Función interna reutilizable para sincronizar leads de Meta Ads de forma automática o manual
+async function syncMetaLeadsSilently() {
   const pageToken = process.env.META_PAGE_ACCESS_TOKEN;
-  if (!pageToken) {
-    return res.status(400).json({ error: 'META_PAGE_ACCESS_TOKEN no está configurado en el archivo .env' });
+  if (!pageToken || pageToken.trim() === '') {
+    return { success: false, error: 'META_PAGE_ACCESS_TOKEN no configurado' };
   }
 
   try {
-    // 1. Obtener la página o páginas asociadas
+    // 1. Obtener la página o páginas asociadas a la cuenta
     const meRes = await fetch(`https://graph.facebook.com/v21.0/me?access_token=${encodeURIComponent(pageToken)}`);
     const meData = await meRes.json();
     
@@ -721,17 +728,35 @@ app.post('/api/leads/sync-meta', async (req, res) => {
 
     if (newlyImported > 0) {
       fs.writeFileSync(LEADS_FILE, JSON.stringify(existingLeads, null, 2), 'utf-8');
+      console.log(`🔄 [Auto-Sync Meta Ads] Sincronización automática: ${newlyImported} nuevos leads guardados.`);
     }
 
-    res.json({
-      success: true,
-      importedCount: newlyImported,
-      message: newlyImported > 0 ? `Se han sincronizado ${newlyImported} clientes potenciales de Meta Ads.` : 'Todos los clientes de Meta Ads ya están al día.'
-    });
+    lastMetaSyncTime = Date.now();
+    return { success: true, newlyImported };
   } catch (err) {
-    console.error('Error sincronizando leads de Meta:', err);
-    res.status(500).json({ error: 'Error al conectar con Meta Graph API' });
+    console.error('⚠️ [Auto-Sync Meta Ads] Error sincronizando con Meta Graph API:', err.message);
+    return { success: false, error: err.message };
   }
+}
+
+// Endpoint protegido para sincronizar leads históricos o pendientes desde Meta Ads (manual)
+app.post('/api/leads/sync-meta', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado.' });
+  }
+
+  const result = await syncMetaLeadsSilently();
+  if (!result.success) {
+    return res.status(400).json({ error: result.error || 'Error al conectar con Meta Graph API' });
+  }
+
+  res.json({
+    success: true,
+    importedCount: result.newlyImported,
+    message: result.newlyImported > 0 
+      ? `Se han sincronizado ${result.newlyImported} clientes potenciales de Meta Ads.` 
+      : 'Todos los clientes de Meta Ads ya están al día.'
+  });
 });
 
 // Endpoint protegido para exportar los leads a un CSV compatible con Excel
@@ -803,5 +828,19 @@ app.listen(PORT, () => {
   console.log(`🎯 Meta Verify Token: ${process.env.META_VERIFY_TOKEN ? 'DEFINIDO EN .ENV' : '⚠️ FALTA META_VERIFY_TOKEN'}`);
   console.log(`🔑 Meta Page Token: ${process.env.META_PAGE_ACCESS_TOKEN ? 'DEFINIDO EN .ENV' : '⚠️ FALTA META_PAGE_ACCESS_TOKEN'}`);
   console.log(`🛡️ Clave Admin (/admin): ${process.env.ADMIN_KEY ? 'DEFINIDA EN .ENV' : '⚠️ FALTA ADMIN_KEY'}`);
+
+  // Auto-sincronización periódica con Meta Ads en segundo plano cada 5 minutos
+  setInterval(() => {
+    if (process.env.META_PAGE_ACCESS_TOKEN) {
+      syncMetaLeadsSilently().catch(err => console.error('Error en intervalo sync Meta:', err));
+    }
+  }, 5 * 60 * 1000);
+
+  // Chequeo inicial 5 segundos después del arranque
+  setTimeout(() => {
+    if (process.env.META_PAGE_ACCESS_TOKEN) {
+      syncMetaLeadsSilently().catch(err => console.error('Error en sync inicial Meta:', err));
+    }
+  }, 5000);
 });
 

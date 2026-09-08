@@ -4,7 +4,7 @@ import {
   RefreshCw, Search, Filter, CheckCircle2, Clock, 
   AlertCircle, ExternalLink, Lock, LogOut, MessageSquare, 
   FileText, Sparkles, ChevronRight, Eye, X, ArrowLeft,
-  Check, ShieldCheck
+  Check, ShieldCheck, Trash2
 } from 'lucide-react';
 
 export default function AdminDashboard({ navigate }) {
@@ -140,6 +140,39 @@ export default function AdminDashboard({ navigate }) {
       alert('Error al sincronizar con Meta: ' + err.message);
     } finally {
       setSyncingMeta(false);
+    }
+  };
+
+  const handleDeleteLead = async (leadId) => {
+    if (!window.confirm('¿Estás seguro de que deseas eliminar este contacto del panel?')) return;
+    try {
+      const res = await fetch('/api/leads/delete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': adminKey
+        },
+        body: JSON.stringify({ leadId })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al eliminar');
+
+      // Actualizar estado local
+      setDashboardData(prev => {
+        if (!prev) return prev;
+        const newLeads = prev.leads.filter(l => String(l.id) !== String(leadId));
+        return {
+          ...prev,
+          leads: newLeads,
+          totalLeads: Math.max(0, prev.totalLeads - 1)
+        };
+      });
+
+      if (selectedLead && String(selectedLead.id) === String(leadId)) {
+        setSelectedLead(null);
+      }
+    } catch (err) {
+      alert('No se pudo eliminar el contacto: ' + err.message);
     }
   };
 
@@ -1167,6 +1200,25 @@ export default function AdminDashboard({ navigate }) {
                             >
                               <Eye size={14} />
                             </button>
+
+                            {/* Delete Lead Button */}
+                            <button
+                              onClick={() => handleDeleteLead(lead.id)}
+                              title="Eliminar contacto"
+                              style={{
+                                padding: '6px',
+                                borderRadius: '6px',
+                                background: '#fee2e2',
+                                color: '#dc2626',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                border: '1px solid #fca5a5',
+                                cursor: 'pointer'
+                              }}
+                            >
+                              <Trash2 size={14} />
+                            </button>
                           </div>
                         </td>
                       </tr>
@@ -1364,6 +1416,23 @@ export default function AdminDashboard({ navigate }) {
                         }}
                       >
                         <Eye size={16} />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteLead(lead.id)}
+                        title="Eliminar contacto"
+                        style={{
+                          padding: '11px 16px',
+                          borderRadius: '8px',
+                          background: '#fee2e2',
+                          color: '#dc2626',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          border: '1px solid #fca5a5',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <Trash2 size={16} />
                       </button>
                     </div>
                   </div>
@@ -1566,6 +1635,27 @@ export default function AdminDashboard({ navigate }) {
                   <span>Email</span>
                 </a>
               )}
+              <button
+                onClick={() => handleDeleteLead(selectedLead.id)}
+                title="Eliminar contacto"
+                style={{
+                  padding: '10px 14px',
+                  borderRadius: '8px',
+                  background: '#fee2e2',
+                  color: '#dc2626',
+                  fontWeight: '700',
+                  fontSize: '13px',
+                  border: '1px solid #fca5a5',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px'
+                }}
+              >
+                <Trash2 size={15} />
+                <span>Eliminar</span>
+              </button>
             </div>
           </div>
         </div>

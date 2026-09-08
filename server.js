@@ -595,6 +595,38 @@ app.post('/api/leads/update-status', (req, res) => {
   }
 });
 
+// Endpoint protegido para eliminar un lead
+app.post('/api/leads/delete', (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado.' });
+  }
+
+  const { leadId } = req.body;
+  if (!leadId) {
+    return res.status(400).json({ error: 'Falta parámetro leadId.' });
+  }
+
+  try {
+    let leads = [];
+    if (fs.existsSync(LEADS_FILE)) {
+      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
+    }
+
+    const initialCount = leads.length;
+    leads = leads.filter(l => String(l.id) !== String(leadId));
+
+    if (leads.length === initialCount) {
+      return res.status(404).json({ error: 'Lead no encontrado.' });
+    }
+
+    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
+    res.json({ success: true, message: 'Lead eliminado correctamente.' });
+  } catch (err) {
+    console.error('Error eliminando lead:', err);
+    res.status(500).json({ error: 'Error eliminando lead' });
+  }
+});
+
 // Endpoint protegido para sincronizar leads históricos o pendientes desde Meta Ads
 app.post('/api/leads/sync-meta', async (req, res) => {
   if (!checkAdminAuth(req)) {

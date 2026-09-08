@@ -242,6 +242,219 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
   }
 });
 
+// ==========================================
+// META ADS (FACEBOOK / INSTAGRAM) WEBHOOK
+// ==========================================
+
+// Helper para extraer campos de field_data de Meta
+function getMetaField(fieldData, aliases) {
+  if (!Array.isArray(fieldData)) return '';
+  for (const alias of aliases) {
+    const found = fieldData.find(f => f.name && f.name.toLowerCase() === alias.toLowerCase());
+    if (found && found.values && found.values.length > 0) {
+      return String(found.values[0]).trim();
+    }
+  }
+  return '';
+}
+
+// GET /webhook (Handshake de verificación con Meta)
+const handleMetaWebhookVerification = (req, res) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  const expectedToken = process.env.META_VERIFY_TOKEN || 'tuluz_meta_secret_2026%!!';
+
+  if (mode === 'subscribe' && token === expectedToken) {
+    console.log('✅ Webhook de Meta Ads verificado con éxito por Meta.');
+    return res.status(200).send(String(challenge));
+  } else {
+    console.warn(`⚠️ Intento fallido de verificación de Webhook de Meta. Token recibido: "${token}" vs Esperado: "${expectedToken}"`);
+    return res.sendStatus(403);
+  }
+};
+
+app.get('/webhook', handleMetaWebhookVerification);
+app.get('/api/meta-webhook', handleMetaWebhookVerification);
+
+// POST /webhook (Recepción en tiempo real de nuevo Lead de Meta Ads)
+const handleMetaWebhookEvent = async (req, res) => {
+  try {
+    const body = req.body;
+
+    // Responder inmediatamente a Meta para confirmar recepción y evitar reintentos
+    res.status(200).send('EVENT_RECEIVED');
+
+    if (body.object !== 'page') return;
+
+    for (const entry of (body.entry || [])) {
+      for (const change of (entry.changes || [])) {
+        if (change.field === 'leadgen') {
+          const { leadgen_id, form_id, ad_id } = change.value || {};
+          console.log(`🎯 [Meta Ads] ¡Nuevo cliente potencial recibido! Leadgen ID: ${leadgen_id}`);
+
+          const pageToken = process.env.META_PAGE_ACCESS_TOKEN;
+          if (!pageToken) {
+            console.error('❌ Falta configurar META_PAGE_ACCESS_TOKEN en las variables de entorno.');
+            continue;
+          }
+
+          // Consultar los datos del lead a la Graph API de Meta
+          const graphUrl = `https://graph.facebook.com/v21.0/${leadgen_id}?access_token=${encodeURIComponent(pageToken)}`;
+          const metaRes = await fetch(graphUrl);
+
+          if (!metaRes.ok) {
+            const errText = await metaRes.text();
+            console.error(`❌ Error consultando Meta Graph API para lead ${leadgen_id}:`, errText);
+            continue;
+          }
+
+          const leadData = await metaRes.json();
+          const fieldData = leadData.field_data || [];
+
+          // Extraer nombre, teléfono y correo
+          const name = getMetaField(fieldData, ['full_name', 'nombre_completo', 'nombre', 'name', 'first_name']) || 'Cliente Meta Ads';
+          const email = getMetaField(fieldData, ['email', 'correo', 'correo_electrónico', 'correo_electronico']) || 'No especificado';
+          const phone = getMetaField(fieldData, ['phone_number', 'telefono', 'teléfono', 'phone', 'numero_de_telefono', 'número_de_teléfono']) || 'No especificado';
+
+          // Extraer preguntas personalizadas del formulario
+          const extraQuestions = fieldData
+            .filter(f => !['full_name', 'nombre_completo', 'nombre', 'name', 'first_name', 'email', 'correo', 'correo_electrónico', 'correo_electronico', 'phone_number', 'telefono', 'teléfono', 'phone', 'numero_de_telefono', 'número_de_teléfono'].includes((f.name || '').toLowerCase()))
+            .map(f => `<tr><th>${f.name}:</th><td><strong>${(f.values || []).join(', ')}</strong></td></tr>`)
+            .join('');
+
+          // Formatear teléfono limpio para enlaces de WhatsApp
+          const cleanPhone = phone.replace(/[^0-9]/g, '');
+
+          // Guardar registro localmente
+          const leadRecord = {
+            id: Date.now(),
+            date: new Date().toISOString(),
+            name,
+            phone,
+            email,
+            clientType: 'Lead Meta Ads',
+            source: 'Meta Ads (Facebook / Instagram)',
+            pageUrl: `Form ID: ${form_id || 'N/D'} | Ad ID: ${ad_id || 'N/D'}`,
+            monthlyBill: '',
+            notes: extraQuestions ? 'Contiene preguntas adicionales de formulario' : 'Cliente potencial directo de anuncio en Meta Ads',
+            hasFile: false,
+            fileName: null,
+            fileSize: null
+          };
+
+          saveLeadLocally(leadRecord);
+
+          // Enviar notificación por correo con Google Workspace
+          if (isConfiguredSMTP()) {
+            const transporter = getTransporter();
+            if (transporter) {
+              const htmlTemplate = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                  <meta charset="utf-8">
+                  <style>
+                    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f7f5; margin: 0; padding: 20px; color: #1e293b; }
+                    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+                    .header { background: linear-gradient(135deg, #1877F2 0%, #0d5cb6 100%); color: #ffffff; padding: 30px 25px; text-align: center; }
+                    .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+                    .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
+                    .content { padding: 30px 25px; }
+                    .badge { display: inline-block; background: #e0f2fe; color: #0284c7; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+                    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+                    .info-table th, .info-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+                    .info-table th { background-color: #f8faf9; color: #475569; font-weight: 600; width: 35%; }
+                    .info-table td { color: #0f172a; font-weight: 500; }
+                    .actions { text-align: center; padding: 20px 0; border-top: 1px solid #f1f5f9; }
+                    .btn { display: inline-block; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 5px; }
+                    .btn-call { background-color: #4CAF4F; color: #ffffff; }
+                    .btn-wa { background-color: #25D366; color: #ffffff; }
+                    .btn-mail { background-color: #0284c7; color: #ffffff; }
+                    .footer { background-color: #f8faf9; text-align: center; padding: 15px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+                  </style>
+                </head>
+                <body>
+                  <div class="container">
+                    <div class="header">
+                      <h1>🎯 ¡Nuevo Cliente Potencial de Meta Ads!</h1>
+                      <p>Campaña de Publicidad • Notificación a ${RECIPIENT_EMAIL}</p>
+                    </div>
+
+                    <div class="content">
+                      <div style="margin-bottom: 20px;">
+                        <span class="badge">📍 Origen: Meta Ads (Facebook / Instagram)</span>
+                      </div>
+
+                      <h2 style="font-size: 18px; margin-top: 0; color: #0f172a;">Datos del Contacto:</h2>
+                      
+                      <table class="info-table">
+                        <tr>
+                          <th>Nombre:</th>
+                          <td><strong style="font-size: 16px; color: #0f172a;">${name}</strong></td>
+                        </tr>
+                        <tr>
+                          <th>Teléfono:</th>
+                          <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; font-size: 16px; text-decoration: none;">📞 ${phone}</a></td>
+                        </tr>
+                        <tr>
+                          <th>Correo Electrónico:</th>
+                          <td><a href="mailto:${email}" style="color: #0284c7; text-decoration: none;">✉️ ${email}</a></td>
+                        </tr>
+                        <tr>
+                          <th>ID Formulario:</th>
+                          <td style="color: #64748b; font-size: 12px;">${form_id || 'N/D'}</td>
+                        </tr>
+                        ${extraQuestions}
+                      </table>
+
+                      <div class="actions">
+                        ${phone && phone !== 'No especificado' ? `
+                          <a href="tel:${phone}" class="btn btn-call">📞 Llamar Ahora</a>
+                          <a href="https://wa.me/${cleanPhone}?text=Hola%20${encodeURIComponent(name)},%20te%20contactamos%20de%20T%C3%BA%20Luz%20respecto%20a%20tu%20solicitud%20de%20estudio%20energ%C3%A9tico" class="btn btn-wa" target="_blank">💬 WhatsApp</a>
+                        ` : ''}
+                        ${email && email !== 'No especificado' ? `
+                          <a href="mailto:${email}?subject=Estudio%20Energ%C3%A9tico%20T%C3%BA%20Luz%20para%20${encodeURIComponent(name)}" class="btn btn-mail">✉️ Enviar Email</a>
+                        ` : ''}
+                      </div>
+                    </div>
+
+                    <div class="footer">
+                      © ${new Date().getFullYear()} TúLuz Asesoramiento Energético • Webhook Meta Ads activo.
+                    </div>
+                  </div>
+                </body>
+                </html>
+              `;
+
+              const mailOptions = {
+                from: `"TúLuz - Meta Ads" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+                to: RECIPIENT_EMAIL,
+                replyTo: email !== 'No especificado' ? email : RECIPIENT_EMAIL,
+                subject: `🎯 Lead Meta Ads: ${name} (${phone})`,
+                html: htmlTemplate
+              };
+
+              try {
+                const info = await transporter.sendMail(mailOptions);
+                console.log(`✅ [Meta Ads] Correo de lead enviado con éxito a ${RECIPIENT_EMAIL}. MessageId: ${info.messageId}`);
+              } catch (mailErr) {
+                console.error('⚠️ [Meta Ads] Error enviando correo SMTP:', mailErr.message);
+              }
+            }
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.error('❌ Error procesando evento de Webhook de Meta:', err);
+  }
+};
+
+app.post('/webhook', handleMetaWebhookEvent);
+app.post('/api/meta-webhook', handleMetaWebhookEvent);
+
 // Endpoint protegido para consultar resumen y estadísticas de conversiones por canal
 app.get('/api/leads-summary', (req, res) => {
   const adminKey = process.env.ADMIN_KEY || 'tuluz2026';
@@ -303,5 +516,6 @@ app.listen(PORT, () => {
   console.log(`🚀 Servidor backend activo en puerto ${PORT}`);
   console.log(`📬 Destinatario de leads: ${RECIPIENT_EMAIL}`);
   console.log(`🔑 Estado SMTP: ${isConfiguredSMTP() ? 'CONFIGURADO Y LISTO (' + process.env.SMTP_USER + ')' : '⚠️ NO CONFIGURADO (Faltan variables)'}`);
+  console.log(`🎯 Meta Ads Webhook listo en: /webhook y /api/meta-webhook`);
 });
 

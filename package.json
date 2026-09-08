@@ -8,7 +8,8 @@
     "server": "node server.js",
     "start": "node server.js",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pdf:brief": "node scripts/generate_brief_pdf.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

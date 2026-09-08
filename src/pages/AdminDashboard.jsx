@@ -4,8 +4,23 @@ import {
   RefreshCw, Search, Filter, CheckCircle2, Clock, 
   AlertCircle, ExternalLink, Lock, LogOut, MessageSquare, 
   FileText, Sparkles, ChevronRight, Eye, X, ArrowLeft,
-  Check, ShieldCheck, Trash2
+  Check, ShieldCheck, Trash2, Globe
 } from 'lucide-react';
+
+// Official Meta SVG Icon
+const MetaIcon = ({ size = 16, color = "currentColor", style = {} }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} style={{ flexShrink: 0, display: 'inline-block', verticalAlign: 'middle', ...style }}>
+    <path d="M12.001 8.167c-1.895 0-3.418 1.488-3.418 3.321 0 1.833 1.523 3.321 3.418 3.321 1.894 0 3.417-1.488 3.417-3.321 0-1.833-1.523-3.321-3.417-3.321zm0 5.438c-1.22 0-2.181-.96-2.181-2.117s.961-2.117 2.181-2.117 2.18 1.007 2.18 2.117c0 1.157-.96 2.117-2.18 2.117zm8.175-5.918c-.85-.85-2.022-1.325-3.268-1.325-1.574 0-3.037.76-4.041 2.03-1.004-1.27-2.467-2.03-4.04-2.03-1.246 0-2.418.475-3.268 1.325C4.697 8.528 4.2 9.712 4.2 11.002c0 1.289.497 2.474 1.359 3.349.85.85 2.022 1.325 3.268 1.325 1.573 0 3.036-.76 4.04-2.03 1.004 1.27 2.467 2.03 4.041 2.03 1.246 0 2.418-.475 3.268-1.325.862-.875 1.359-2.06 1.359-3.349 0-1.29-.497-2.474-1.359-3.349zm-1.026 5.673c-.584.584-1.385.908-2.242.908-1.355 0-2.613-.746-3.364-1.996l-.544-.9-.544.9c-.751 1.25-2.009 1.996-3.364 1.996-.857 0-1.658-.324-2.242-.908-.592-.6-.917-1.408-.917-2.28 0-.872.325-1.68.917-2.28.584-.584 1.385-.908 2.242-.908 1.355 0 2.613.746 3.364 1.996l.544.9.544-.9c.751-1.25 2.009-1.996 3.364-1.996.857 0 1.658.324 2.242.908.592.6.917 1.408.917 2.28 0 .872-.325 1.68-.917 2.28z"/>
+  </svg>
+);
+
+// Official WhatsApp SVG Icon
+const WhatsAppIcon = ({ size = 16, color = "currentColor", style = {} }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} style={{ flexShrink: 0, display: 'inline-block', verticalAlign: 'middle', ...style }}>
+    <path d="M17.472 14.382c-.301-.15-1.782-.879-2.058-.98-.276-.1-.477-.15-.678.15s-.778.98-.954 1.18c-.176.2-.351.226-.652.075s-1.272-.469-2.423-1.496c-.896-.799-1.5-1.786-1.676-2.087s-.019-.464.132-.614c.135-.135.301-.351.451-.527.151-.176.201-.301.301-.502.101-.201.05-.376-.025-.527s-.678-1.634-.929-2.238c-.244-.588-.493-.508-.678-.518-.175-.009-.376-.011-.577-.011s-.527.075-.803.376c-.276.301-1.054 1.03-1.054 2.511s1.079 2.913 1.23 3.114c.15.201 2.124 3.243 5.146 4.549.719.311 1.28.497 1.718.636.722.229 1.378.197 1.898.119.579-.087 1.782-.728 2.033-1.431.251-.703.251-1.305.176-1.431-.075-.126-.276-.201-.577-.351z"/>
+    <path d="M12.004 2C6.48 2 2 6.478 2 12c0 1.95.56 3.77 1.53 5.31L2 22l4.83-1.49A9.957 9.957 0 0 0 12.004 22C17.525 22 22 17.522 22 12S17.525 2 12.004 2zm0 18.17c-1.64 0-3.17-.46-4.49-1.26l-.32-.2-2.87.89.89-2.8-.21-.34A8.147 8.147 0 0 1 3.834 12c0-4.5 3.66-8.17 8.17-8.17 4.51 0 8.17 3.67 8.17 8.17 0 4.5-3.66 8.17-8.17 8.17z"/>
+  </svg>
+);
 
 export default function AdminDashboard({ navigate }) {
   const [adminKey, setAdminKey] = useState(() => sessionStorage.getItem('tuluz_admin_key') || '');
@@ -490,7 +505,7 @@ export default function AdminDashboard({ navigate }) {
               cursor: syncingMeta ? 'wait' : 'pointer'
             }}
           >
-            <Sparkles size={15} style={{ animation: syncingMeta ? 'spin 1s linear infinite' : 'none' }} />
+            <MetaIcon size={15} color="#0284c7" style={{ animation: syncingMeta ? 'spin 1s linear infinite' : 'none' }} />
             <span>{syncingMeta ? 'Sincronizando...' : 'Sincronizar Meta Ads'}</span>
           </button>
 
@@ -666,7 +681,7 @@ export default function AdminDashboard({ navigate }) {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
               <span style={{ fontSize: '13px', fontWeight: '600', color: '#0284c7' }}>META ADS (FB/IG)</span>
               <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Sparkles size={20} color="#0284c7" />
+                <MetaIcon size={20} color="#0284c7" />
               </div>
             </div>
             <div className="tuluz-kpi-num" style={{ fontSize: '32px', fontWeight: '800', color: '#0284c7', letterSpacing: '-1px' }}>
@@ -756,8 +771,9 @@ export default function AdminDashboard({ navigate }) {
                 return (
                   <div key={source}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', marginBottom: '6px' }}>
-                      <span style={{ fontWeight: '600', color: isMeta ? '#0284c7' : '#334155' }}>
-                        {source}
+                      <span style={{ fontWeight: '600', color: isMeta ? '#0284c7' : '#334155', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        {isMeta ? <MetaIcon size={14} color="#0284c7" /> : <Globe size={14} color="#4CAF4F" />}
+                        <span>{source}</span>
                       </span>
                       <span style={{ color: '#64748b' }}>
                         <strong>{count}</strong> ({pct}%)
@@ -1051,9 +1067,10 @@ export default function AdminDashboard({ navigate }) {
                           {lead.phone ? (
                             <a 
                               href={`tel:${lead.phone}`}
-                              style={{ color: '#0f172a', fontWeight: '600', textDecoration: 'none' }}
+                              style={{ color: '#0f172a', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                             >
-                              📞 {lead.phone}
+                              <Phone size={13} color="#4CAF4F" />
+                              <span>{lead.phone}</span>
                             </a>
                           ) : (
                             <span style={{ color: '#94a3b8' }}>-</span>
@@ -1065,7 +1082,7 @@ export default function AdminDashboard({ navigate }) {
                           <span style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '4px',
+                            gap: '5px',
                             background: isMeta ? '#e0f2fe' : '#f1f5f9',
                             color: isMeta ? '#0369a1' : '#475569',
                             fontWeight: '700',
@@ -1073,8 +1090,8 @@ export default function AdminDashboard({ navigate }) {
                             padding: '3px 8px',
                             borderRadius: '6px'
                           }}>
-                            {isMeta && <Sparkles size={11} />}
-                            {lead.source || 'Web Directa'}
+                            {isMeta ? <MetaIcon size={12} color="#0369a1" /> : <Globe size={12} color="#475569" />}
+                            <span>{lead.source || 'Web Directa'}</span>
                           </span>
                         </td>
 
@@ -1157,7 +1174,7 @@ export default function AdminDashboard({ navigate }) {
                                   textDecoration: 'none'
                                 }}
                               >
-                                <MessageSquare size={14} />
+                                <WhatsAppIcon size={14} color="#15803d" />
                               </a>
                             )}
 
@@ -1291,7 +1308,7 @@ export default function AdminDashboard({ navigate }) {
                       <span style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '4px',
+                        gap: '5px',
                         background: isMeta ? '#e0f2fe' : '#f1f5f9',
                         color: isMeta ? '#0369a1' : '#475569',
                         fontWeight: '700',
@@ -1300,8 +1317,8 @@ export default function AdminDashboard({ navigate }) {
                         borderRadius: '6px',
                         flexShrink: 0
                       }}>
-                        {isMeta && <Sparkles size={11} />}
-                        {isMeta ? 'Meta Ads' : 'Web'}
+                        {isMeta ? <MetaIcon size={12} color="#0369a1" /> : <Globe size={12} color="#475569" />}
+                        <span>{isMeta ? 'Meta Ads' : 'Web'}</span>
                       </span>
                     </div>
 
@@ -1396,7 +1413,7 @@ export default function AdminDashboard({ navigate }) {
                             gap: '6px'
                           }}
                         >
-                          <MessageSquare size={15} />
+                          <WhatsAppIcon size={16} color="#ffffff" />
                           <span>WhatsApp</span>
                         </a>
                       )}
@@ -1609,7 +1626,7 @@ export default function AdminDashboard({ navigate }) {
                     gap: '6px'
                   }}
                 >
-                  <MessageSquare size={15} />
+                  <WhatsAppIcon size={16} color="#ffffff" />
                   <span>WhatsApp</span>
                 </a>
               )}

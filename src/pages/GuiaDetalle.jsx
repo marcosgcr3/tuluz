@@ -312,11 +312,11 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
 
             {/* Read Time & Dates */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <Clock size={15} style={{ color: 'var(--primary)' }} /> {guide.readTime}
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', whiteSpace: 'nowrap' }}>
+                <Clock size={15} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {guide.readTime}
               </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <Calendar size={15} style={{ color: 'var(--primary)' }} /> Actualizado: {guide.updatedAt}
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', whiteSpace: 'nowrap' }}>
+                <Calendar size={15} style={{ color: 'var(--primary)', flexShrink: 0 }} /> Actualizado: {guide.updatedAt}
               </span>
               <button 
                 onClick={handleShare}

@@ -225,8 +225,8 @@ export default function Guias({ navigate, onOpenModal }) {
               <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
                 {featuredGuide.category}
               </span>
-              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
-                <Clock size={13} /> {featuredGuide.readTime}
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                <Clock size={13} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {featuredGuide.readTime}
               </span>
             </div>
 
@@ -303,21 +303,32 @@ export default function Guias({ navigate, onOpenModal }) {
               className="guide-card"
             >
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', gap: '0.75rem' }}>
                   <span style={{
-                    fontSize: '0.75rem',
+                    fontSize: '0.74rem',
                     fontWeight: 700,
                     textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
+                    letterSpacing: '0.04em',
                     color: 'var(--primary)',
                     background: 'rgba(76, 175, 79, 0.1)',
                     padding: '0.25rem 0.65rem',
-                    borderRadius: 'var(--radius-full)'
+                    borderRadius: 'var(--radius-full)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                   }}>
                     {guide.category}
                   </span>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
-                    <Clock size={13} /> {guide.readTime}
+                  <span style={{ 
+                    fontSize: '0.8rem', 
+                    color: 'var(--text-muted)', 
+                    display: 'inline-flex', 
+                    alignItems: 'center', 
+                    gap: '0.35rem',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0
+                  }}>
+                    <Clock size={13} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {guide.readTime}
                   </span>
                 </div>
 
@@ -347,16 +358,24 @@ export default function Guias({ navigate, onOpenModal }) {
                   borderTop: '1px solid var(--border-light)',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  gap: '0.75rem'
                 }}>
-                  <span style={{
-                    fontSize: '0.75rem',
-                    color: 'var(--text-muted)',
-                    fontFamily: 'monospace',
-                    background: 'var(--bg-main)',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '4px'
-                  }}>
+                  <span 
+                    title={`#${guide.keyword}`}
+                    style={{
+                      fontSize: '0.75rem',
+                      color: 'var(--text-muted)',
+                      fontFamily: 'monospace',
+                      background: 'var(--bg-main)',
+                      padding: '0.25rem 0.55rem',
+                      borderRadius: '4px',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      maxWidth: '62%'
+                    }}
+                  >
                     #{guide.keyword}
                   </span>
 
@@ -366,9 +385,11 @@ export default function Guias({ navigate, onOpenModal }) {
                     gap: '0.35rem',
                     color: 'var(--primary)',
                     fontWeight: 700,
-                    fontSize: '0.88rem'
+                    fontSize: '0.88rem',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0
                   }}>
-                    Leer más <ChevronRight size={16} />
+                    Leer más <ChevronRight size={16} style={{ flexShrink: 0 }} />
                   </span>
                 </div>
               </div>

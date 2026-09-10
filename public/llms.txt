@@ -14,11 +14,11 @@
 ## Guías de Ahorro y Eficiencia Energética
 
 - [Centro de Guías de Ahorro](https://tu-luz.es/guias): Hub de recursos formativos y análisis del mercado energético.
-- [Cómo ahorrar en la factura de la luz: 10 consejos reales](https://tu-luz.es/guias/ahorrar-factura-de-la-luz): 10 consejos contrastados con tabla de ahorro anual (ajuste de potencia kW, tramos 2.0TD, tarifas fijas vs indexadas, eliminación de servicios ocultos, hábitos de climatización y electrodomésticos).
-- [Tarifas de luz para empresas: 6 claves de optimización](https://tu-luz.es/guias/tarifas-luz-empresas): 6 claves para peajes 2.0TD, 3.0TD y 6.XTD, eliminación de penalizaciones por maxímetro y energía reactiva mediante baterías de condensadores, telemedida y contratos indexados.
-- [Autoconsumo solar en comunidades de vecinos: 6 pasos y normativa](https://tu-luz.es/guias/autoconsumo-solar-comunidades-de-vecinos): Guía en 6 pasos con normativa del RD 244/2019, mayorías en junta de la Ley de Propiedad Horizontal (LPH), coeficientes de reparto beta y deducciones fiscales IRPF/IBI.
-- [Comparador de comercializadoras de luz y gas: 5 trampas y checklist](https://tu-luz.es/guias/comparador-comercializadoras-luz-y-gas): Las 5 trampas comerciales más habituales, diferencias entre distribuidora y comercializadora, mercado libre vs regulado (PVPC / TUR) y checklist de 6 comprobaciones.
-- [Placas solares para particulares: precio y 6 partidas de coste](https://tu-luz.es/guias/placas-solares-particulares-precio): Tabla de precios residenciales en 2026, las 6 partidas de un presupuesto llave en mano, cálculo de paneles por consumo, amortización en 3-5 años y batería virtual.
+- [Cómo ahorrar en la factura de la luz: 10 claves definitivas](https://tu-luz.es/guias/ahorrar-factura-de-la-luz): 10 claves contrastadas con tabla de ahorro anual (ajuste de potencia kW, tramos 2.0TD, tarifas fijas vs indexadas, eliminación de servicios ocultos, hábitos de climatización y electrodomésticos).
+- [Tarifas de luz para empresas](https://tu-luz.es/guias/tarifas-luz-empresas): Optimización de peajes 2.0TD, 3.0TD y 6.XTD, eliminación de penalizaciones por maxímetro y energía reactiva mediante baterías de condensadores, telemedida y contratos indexados.
+- [Autoconsumo solar en comunidades de vecinos](https://tu-luz.es/guias/autoconsumo-solar-comunidades-de-vecinos): Guía completa de instalación compartida y normativa del RD 244/2019, mayorías en junta de la Ley de Propiedad Horizontal (LPH), coeficientes de reparto beta y deducciones IRPF/IBI.
+- [Comparador de comercializadoras de luz y gas](https://tu-luz.es/guias/comparador-comercializadoras-luz-y-gas): Claves para no caer en trampas comerciales, diferencias entre distribuidora y comercializadora, mercado libre vs regulado (PVPC / TUR) y checklist de contratación.
+- [Placas solares para particulares: precio](https://tu-luz.es/guias/placas-solares-particulares-precio): Precio de instalación en 2026, desglose de materiales, cálculo de paneles por consumo, amortización en 3-5 años y batería virtual para factura a 0€.
 
 ## Contacto e Información de la Empresa
 

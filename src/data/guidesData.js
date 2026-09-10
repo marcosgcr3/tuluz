@@ -6,9 +6,9 @@ export const guidesData = [
     id: 'ahorrar-factura-de-la-luz',
     slug: 'ahorrar-factura-de-la-luz',
     keyword: 'ahorrar factura de la luz',
-    title: 'Cómo ahorrar en la factura de la luz en 2026: 10 consejos reales y análisis de tu recibo',
-    metaTitle: 'Cómo Ahorrar en la Factura de la Luz en 2026: 10 Consejos Reales | tuLuz',
-    metaDescription: 'Guía con 10 consejos reales y contrastados para ahorrar en la factura de la luz hasta un 35%: ajuste de potencia (kW), tramos 2.0TD, tarifas ocultas y hábitos eficaces.',
+    title: 'Cómo ahorrar en la factura de la luz en 2026: 10 claves definitivas y análisis de tu recibo',
+    metaTitle: 'Cómo Ahorrar en la Factura de la Luz en 2026: 10 Claves | tuLuz',
+    metaDescription: 'Descubre las 10 claves reales y contrastadas para ahorrar en la factura de la luz hasta un 35%: ajuste de potencia (kW), tramos 2.0TD, tarifas y hábitos.',
     category: 'Hogar y Consumo',
     readTime: '9 min de lectura',
     publishedAt: '2026-03-15',
@@ -18,20 +18,20 @@ export const guidesData = [
       role: 'Especialistas en Eficiencia y Mercado Eléctrico',
       avatar: '/icono.webp'
     },
-    excerpt: 'Reducir el importe de tu recibo eléctrico no significa pasar frío o prescindir del confort. Te presentamos 10 consejos reales, explicados paso a paso con cifras concretas, para recortar hasta un 35% mensual.',
+    excerpt: 'Reducir el importe de tu recibo eléctrico no significa pasar frío o prescindir del confort. Conoce las 10 claves técnicas y prácticas más efectivas para recortar hasta un 35% mensual.',
     tableOfContents: [
       { id: 'anatomia-factura', title: 'Anatomía de la factura: qué pagas realmente en cada recibo' },
-      { id: 'consejo-1-potencia', title: 'Consejo 1: Ajusta la potencia contratada (término fijo en kW)' },
-      { id: 'consejo-2-tramos', title: 'Consejo 2: Aprovecha los 3 tramos horarios de la tarifa 2.0TD' },
-      { id: 'consejo-3-tarifa', title: 'Consejo 3: Elige la modalidad adecuada (precio fijo vs indexado)' },
-      { id: 'consejo-4-servicios', title: 'Consejo 4: Elimina servicios de mantenimiento y seguros innecesarios' },
-      { id: 'consejo-5-standby', title: 'Consejo 5: Erradica el consumo fantasma (stand-by) con regletas' },
-      { id: 'consejo-6-climatizacion', title: 'Consejo 6: Fija el termostato en 21°C en invierno y 25°C en verano' },
-      { id: 'consejo-7-frigorifico', title: 'Consejo 7: Regula y mantén el frigorífico a 4°C y el congelador a -18°C' },
-      { id: 'consejo-8-lavados', title: 'Consejo 8: Lava a baja temperatura (30°C) y usa programas ECO' },
-      { id: 'consejo-9-led', title: 'Consejo 9: Sustituye el 100% de la iluminación por bombillas LED' },
-      { id: 'consejo-10-autoconsumo', title: 'Consejo 10: Valora el autoconsumo solar con batería virtual' },
-      { id: 'tabla-resumen-ahorro', title: 'Tabla resumen: potencial de ahorro anual de cada consejo' },
+      { id: 'clave-1-potencia', title: 'Clave 1: Ajusta la potencia contratada (término fijo en kW)' },
+      { id: 'clave-2-tramos', title: 'Clave 2: Aprovecha los 3 tramos horarios de la tarifa 2.0TD' },
+      { id: 'clave-3-tarifa', title: 'Clave 3: Elige la modalidad adecuada (precio fijo vs indexado)' },
+      { id: 'clave-4-servicios', title: 'Clave 4: Elimina servicios de mantenimiento y seguros innecesarios' },
+      { id: 'clave-5-standby', title: 'Clave 5: Erradica el consumo fantasma (stand-by) con regletas' },
+      { id: 'clave-6-climatizacion', title: 'Clave 6: Fija el termostato en 21°C en invierno y 25°C en verano' },
+      { id: 'clave-7-frigorifico', title: 'Clave 7: Regula y mantén el frigorífico a 4°C y el congelador a -18°C' },
+      { id: 'clave-8-lavados', title: 'Clave 8: Lava a baja temperatura (30°C) y usa programas ECO' },
+      { id: 'clave-9-led', title: 'Clave 9: Sustituye el 100% de la iluminación por bombillas LED' },
+      { id: 'clave-10-autoconsumo', title: 'Clave 10: Valora el autoconsumo solar con batería virtual' },
+      { id: 'tabla-resumen-ahorro', title: 'Tabla comparativa: impacto real de ahorro anual de cada clave' },
       { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes sobre cómo ahorrar en la factura' }
     ],
     sections: [
@@ -49,8 +49,8 @@ export const guidesData = [
         ]
       },
       {
-        id: 'consejo-1-potencia',
-        title: 'Consejo 1: Ajusta la potencia contratada (término fijo en kW) según tus picos reales',
+        id: 'clave-1-potencia',
+        title: 'Clave 1: Ajusta la potencia contratada (término fijo en kW) según tus picos reales',
         content: `Más del 60% de los hogares en España tienen contratada más potencia de la que necesitan. Cada tramo de 1,15 kW de potencia contratada que reduzcas supone un ahorro directo de entre **45€ y 70€ al año**, sin importar cuánta luz consumas.`,
         callout: {
           type: 'tip',
@@ -59,8 +59,8 @@ export const guidesData = [
         }
       },
       {
-        id: 'consejo-2-tramos',
-        title: 'Consejo 2: Conoce y aprovecha los 3 tramos horarios de la tarifa 2.0TD',
+        id: 'clave-2-tramos',
+        title: 'Clave 2: Conoce y aprovecha los 3 tramos horarios de la tarifa 2.0TD',
         content: `La tarifa doméstica estándar (hasta 15 kW) divide el consumo eléctrico en tres periodos en días laborables. Desplazar los consumos más intensivos a las horas más baratas reduce notablemente el término de energía:`,
         table: {
           headers: ['Periodo', 'Horario en días laborables', 'Nivel de coste', 'Electrodomésticos recomendados'],
@@ -72,8 +72,8 @@ export const guidesData = [
         }
       },
       {
-        id: 'consejo-3-tarifa',
-        title: 'Consejo 3: Elige la modalidad adecuada (precio fijo vs indexado al mercado)',
+        id: 'clave-3-tarifa',
+        title: 'Clave 3: Elige la modalidad adecuada (precio fijo vs indexado al mercado)',
         content: `No te quedes con la tarifa por defecto que te asignó tu compañía hace años. Evalúa cuál de las dos opciones encaja mejor con tu estilo de vida:`,
         bullets: [
           '**Tarifa con precio fijo (24h o 3 tramos):** Pagas siempre el mismo precio pactado por kWh durante la vigencia del contrato (habitualmente 12 meses). Te protege ante subidas del mercado mayorista y te da certidumbre de gasto.',
@@ -81,23 +81,23 @@ export const guidesData = [
         ]
       },
       {
-        id: 'consejo-4-servicios',
-        title: 'Consejo 4: Elimina servicios de mantenimiento y seguros de pago innecesarios',
+        id: 'clave-4-servicios',
+        title: 'Clave 4: Elimina servicios de mantenimiento y seguros de pago innecesarios',
         content: `Es la fuga invisible de dinero más frecuente: servicios con nombres como "Protección Eléctrica Hogar", "Asistencia Urgencias 24h" o "Seguro de Facturas". Muchas veces se incluyen con un descuento inicial de 6 meses y luego pasan a costar entre **5€ y 15€ al mes**.\n\nLa inmensa mayoría de averías graves en el hogar ya están cubiertas por la póliza básica del seguro de tu vivienda. Dar de baja estos servicios adicionales puede ahorrarte de forma inmediata entre **60€ y 180€ al año**.`
       },
       {
-        id: 'consejo-5-standby',
-        title: 'Consejo 5: Erradica el consumo en reposo (stand-by o consumo fantasma) con regletas',
+        id: 'clave-5-standby',
+        title: 'Clave 5: Erradica el consumo en reposo (stand-by o consumo fantasma) con regletas',
         content: `Los pilotos rojos de televisores, decodificadores, routers, ordenadores, microondas y cargadores enchufados sin uso representan entre el **7% y el 11% del consumo eléctrico total de un hogar** (el equivalente a tener una bombilla encendida permanentemente las 24 horas del día).\n\nConectar estos dispositivos a regletas con interruptor o enchufes inteligentes programables para apagarlos por la noche o durante ausencias supone un recorte de entre **30€ y 60€ al año**.`
       },
       {
-        id: 'consejo-6-climatizacion',
-        title: 'Consejo 6: Fija el termostato de climatización en 21°C en invierno y 25°C en verano',
+        id: 'clave-6-climatizacion',
+        title: 'Clave 6: Fija el termostato de climatización en 21°C en invierno y 25°C en verano',
         content: `La climatización (calefacción y aire acondicionado) representa más del 40% del consumo energético doméstico en España. Por cada grado de temperatura que exijas de más al termostato, el consumo eléctrico del compresor aumenta entre un **7% y un 8%**.\n\n- **En invierno:** Ajusta a 20°C - 21°C de día y baja a 16°C - 17°C para dormir.\n- **En verano:** Configura la refrigeración a 25°C o 26°C y apóyate en ventiladores de techo, que consumen hasta un 90% menos de energía generando una sensación térmica hasta 3°C más fresca.`
       },
       {
-        id: 'consejo-7-frigorifico',
-        title: 'Consejo 7: Regula y mantén el frigorífico a 4°C y el congelador a -18°C',
+        id: 'clave-7-frigorifico',
+        title: 'Clave 7: Regula y mantén el frigorífico a 4°C y el congelador a -18°C',
         content: `El frigorífico es el único electrodoméstico que funciona ininterrumpidamente los 365 días del año, concentrando más del 30% del consumo de los aparatos del hogar:`,
         bullets: [
           '**Ajuste térmico óptimo:** Mantén la zona de refrigeración entre 3°C y 5°C, y el congelador a -18°C. Temperaturas más bajas solo aumentan el gasto sin aportar mejoras en conservación de alimentos.',
@@ -105,18 +105,18 @@ export const guidesData = [
         ]
       },
       {
-        id: 'consejo-8-lavados',
-        title: 'Consejo 8: Lava a baja temperatura (30°C o frío) y usa programas ECO',
+        id: 'clave-8-lavados',
+        title: 'Clave 8: Lava a baja temperatura (30°C o frío) y usa programas ECO',
         content: `Aproximadamente el **80% - 85% de la energía eléctrica que consume una lavadora se destina exclusivamente a calentar el agua** mediante su resistencia eléctrica interna. Lavar a 30°C en lugar de a 60°C reduce a la mitad el gasto por ciclo.\n\nAdemás, los programas ECO de lavadoras y lavavajillas tardan más tiempo pero calientan el agua más lentamente y usan menos volumen de agua, ahorrando entre un 20% y un 35% de electricidad por lavado.`
       },
       {
-        id: 'consejo-9-led',
-        title: 'Consejo 9: Sustituye el 100% de la iluminación por bombillas LED de alta eficiencia',
+        id: 'clave-9-led',
+        title: 'Clave 9: Sustituye el 100% de la iluminación por bombillas LED de alta eficiencia',
         content: `Si todavía conservas bombillas halógenas o fluorescentes compactas (bajo consumo tradicionales), estás desperdiciando energía en forma de calor. Una bombilla LED de 8W produce la misma luminosidad que una halógena de 50W, consumiendo un **84% menos de potencia**.\n\nLa sustitución de 10 bombillas incandescentes o halógenas por tecnología LED se amortiza en menos de 4 a 6 meses y genera un ahorro continuado de entre **40€ y 80€ al año** en iluminación.`
       },
       {
-        id: 'consejo-10-autoconsumo',
-        title: 'Consejo 10: Valora el autoconsumo solar fotovoltaico con batería virtual',
+        id: 'clave-10-autoconsumo',
+        title: 'Clave 10: Valora el autoconsumo solar fotovoltaico con batería virtual',
         content: `Si resides en una vivienda unifamiliar, adosado o perteneces a una comunidad con azotea aprovechable, instalar paneles solares es la medida con mayor potencial de recorte disponible en 2026:`,
         bullets: [
           'Permite **reducir hasta un 70% - 80% de la factura de luz** mediante la generación de tu propia energía limpia durante las horas de radiación.',
@@ -126,10 +126,10 @@ export const guidesData = [
       },
       {
         id: 'tabla-resumen-ahorro',
-        title: 'Tabla resumen: potencial de ahorro anual real de cada consejo',
-        content: `Resumen acumulado del impacto económico estimado que puedes conseguir aplicando estos 10 consejos en tu vivienda:`,
+        title: 'Tabla comparativa: impacto real de ahorro anual de cada clave',
+        content: `Resumen acumulado del impacto económico estimado que puedes conseguir aplicando estas 10 claves en tu vivienda:`,
         table: {
-          headers: ['Nº', 'Consejo de Ahorro', 'Ahorro medio anual estimado', 'Dificultad de aplicación'],
+          headers: ['Nº', 'Clave de Ahorro', 'Ahorro medio anual estimado', 'Dificultad de aplicación'],
           rows: [
             ['1', 'Ajustar la potencia contratada (kW)', '45€ - 80€ / año', 'Muy fácil (gestión de trámite)'],
             ['2', 'Aprovechar los tramos horarios 2.0TD', '60€ - 130€ / año', 'Media (adaptación de hábitos)'],
@@ -147,7 +147,7 @@ export const guidesData = [
     ],
     faqs: [
       {
-        q: '¿Cuál es el primer consejo que debería aplicar para notar un ahorro rápido?',
+        q: '¿Cuál es la primera clave que debería aplicar para notar un ahorro rápido?',
         a: 'Revisar la potencia contratada y los servicios de mantenimiento adicionales en tu última factura. Son dos gestiones administrativas sencillas que reducen el recibo fijo desde el primer mes sin cambiar tus hábitos de consumo.'
       },
       {
@@ -169,9 +169,9 @@ export const guidesData = [
     id: 'tarifas-luz-empresas',
     slug: 'tarifas-luz-empresas',
     keyword: 'tarifas luz empresas',
-    title: 'Tarifas de luz para empresas: 6 claves para optimizar el coste energético en pymes e industrias',
-    metaTitle: 'Tarifas de Luz para Empresas: 6 Claves de Optimización | tuLuz',
-    metaDescription: 'Descubre las 6 claves esenciales en tarifas de luz para empresas (3.0TD y 6.XTD). Elimina penalizaciones por maxímetro, reactiva y optimiza tus contratos.',
+    title: 'Tarifas de luz para empresas: cómo reducir el coste energético en pymes e industrias',
+    metaTitle: 'Tarifas de Luz para Empresas y Pymes | Optimización Energética tuLuz',
+    metaDescription: 'Descubre cómo elegir y negociar las mejores tarifas de luz para empresas (3.0TD y 6.XTD). Elimina penalizaciones por maxímetro, reactiva y optimiza tus contratos.',
     category: 'Empresas y Negocios',
     readTime: '9 min de lectura',
     publishedAt: '2026-03-20',
@@ -181,68 +181,68 @@ export const guidesData = [
       role: 'Consultoría Energética Industrial y Pyme',
       avatar: '/icono.webp'
     },
-    excerpt: 'La energía es uno de los mayores costes operativos en cualquier empresa. Te revelamos las 6 claves técnicas y contractuales para eliminar penalizaciones por maxímetro o reactiva y negociar tarifas competitivas.',
+    excerpt: 'La energía es uno de los mayores costes operativos en cualquier empresa. Aprende a descifrar los peajes 3.0TD y 6.XTD, eliminar penalizaciones por maxímetro o reactiva y negociar coberturas óptimas.',
     tableOfContents: [
-      { id: 'clave-1-peajes', title: 'Clave 1: Conoce tu peaje de acceso (2.0TD, 3.0TD, 6.XTD) y potencias crecientes' },
-      { id: 'clave-2-maximetro', title: 'Clave 2: Evita penalizaciones por maxímetro y excesos de potencia P1-P6' },
-      { id: 'clave-3-reactiva', title: 'Clave 3: Suprime el recargo por energía reactiva con baterías de condensadores' },
-      { id: 'clave-4-modalidades', title: 'Clave 4: Selecciona la modalidad: Fija, Indexada al Pool o Coberturas PPA' },
-      { id: 'clave-5-telemedida', title: 'Clave 5: Negocia tu tarifa con la curva de carga cuartohoraria real' },
-      { id: 'clave-6-caso-exito', title: 'Clave 6: Caso real: reducción del 31% de gasto eléctrico en pyme' },
+      { id: 'peajes-empresariales', title: '1. Tipos de tarifas y peajes para empresas (2.0TD, 3.0TD, 6.XTD)' },
+      { id: 'penalizaciones-maximetro', title: '2. Penalizaciones por exceso de potencia y maxímetro' },
+      { id: 'energia-reactiva', title: '3. El recargo de la energía reactiva: causas y solución' },
+      { id: 'modalidades-fija-indexada', title: '4. Modalidades de contratación: ¿Fija, Indexada o PPA?' },
+      { id: 'curva-carga-cuartohoraria', title: '5. Análisis y negociación con la curva de carga cuartohoraria' },
+      { id: 'caso-practico-pyme', title: '6. Caso real de optimización: 31% de ahorro en pyme' },
       { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes sobre tarifas de luz para empresas' }
     ],
     sections: [
       {
-        id: 'clave-1-peajes',
-        title: 'Clave 1: Conoce tu peaje de acceso (2.0TD, 3.0TD, 6.XTD) y la regla de potencias crecientes',
-        content: `El marco regulatorio clasifica los puntos de suministro en función de su tensión de red y potencia contratada:`,
+        id: 'peajes-empresariales',
+        title: '1. Clasificación de tarifas de luz para empresas: 2.0TD, 3.0TD y 6.XTD',
+        content: `El marco regulatorio clasifica los puntos de suministro en función de su tensión de red y la potencia contratada. Conocer el peaje que le corresponde a tu instalación es crucial para contratar correctamente:`,
         bullets: [
-          '**Tarifa 2.0TD (Baja Tensión, hasta 15 kW):** Pequeños despachos, oficinas comerciales y microempresas. Cuenta con 2 periodos de potencia y 3 de energía.',
-          '**Tarifa 3.0TD (Baja Tensión, más de 15 kW en algún periodo):** El estándar de pymes, comercios con refrigeración, obradores, restaurantes y naves industriales medianas. Dispone de **6 periodos de potencia (P1 a P6)** y **6 periodos de energía**.',
-          '**Tarifas 6.1TD a 6.4TD (Media y Alta Tensión):** Fábricas, industrias intensivas y centros logísticos con potencias superiores a 450 kW conectadas a redes de 1 kV a más de 72,5 kV.'
+          '**Tarifa 2.0TD (Baja Tensión, hasta 15 kW):** Destinada a pequeños despachos, oficinas comerciales y microempresas. Dispone de 2 periodos de potencia y 3 periodos de energía.',
+          '**Tarifa 3.0TD (Baja Tensión, más de 15 kW contratados en al menos un periodo):** El estándar de pymes, comercios con refrigeración, talleres, restaurantes y naves de mediano tamaño. Cuenta con **6 periodos de potencia (P1 a P6)** y **6 periodos de energía**.',
+          '**Tarifas 6.1TD a 6.4TD (Alta Tensión):** Diseñadas para fábricas, industrias intensivas y centros logísticos con potencias superiores a 450 kW conectadas a redes de media o alta tensión (de 1 kV a más de 72,5 kV).'
         ],
         callout: {
           type: 'important',
-          title: 'Regla obligatoria de potencias crecientes (P1 a P6):',
-          text: 'Por normativa del Real Decreto regulador, en las tarifas 3.0TD y 6.XTD la potencia contratada de cada periodo debe ser igual o superior a la del periodo anterior: P1 ≤ P2 ≤ P3 ≤ P4 ≤ P5 ≤ P6. Un error de dimensionamiento en esta escala genera costes innecesarios en periodos donde la empresa no tiene actividad.'
+          title: 'Regla de potencias crecientes en 3.0TD y 6.XTD:',
+          text: 'Por normativa técnica regulada (Real Decreto), la potencia contratada en cada periodo debe ser igual o superior a la del periodo anterior: P1 ≤ P2 ≤ P3 ≤ P4 ≤ P5 ≤ P6. Un error en esta configuración puede provocar bloqueos administrativos o sobrecostes innecesarios.'
         }
       },
       {
-        id: 'clave-2-maximetro',
-        title: 'Clave 2: Evita penalizaciones por maxímetro y excesos de potencia P1-P6',
-        content: `A diferencia de los domicilios donde el contador corta la luz al superar la potencia, en tarifas de empresa 3.0TD y 6.XTD el suministro nunca se interrumpe: se mide con un **maxímetro cuartohorario**.\n\nSi durante un intervalo de 15 minutos tu maquinaria demanda más potencia de la contratada en ese periodo, la distribuidora liquida un **recargo por exceso de potencia**. En empresas manufactureras o con cámaras de congelación, estos excesos pueden suponer cientos o miles de euros extra cada mes.\n\n**Solución tuLuz:** Extraemos tu histórico de telemedida para reajustar exactamente la potencia de cada periodo (P1 a P6) a tu régimen real de trabajo, eliminando por completo las penalizaciones sin comprometer la producción.`
+        id: 'penalizaciones-maximetro',
+        title: '2. Penalizaciones por exceso de potencia: cómo evitar el recargo del maxímetro',
+        content: `A diferencia de las viviendas donde el ICP "salta" cuando se supera la potencia, en suministros de empresas con tarifas 3.0TD y 6.XTD la electricidad no se corta: se mide mediante un **maxímetro** o integrador cuartohorario.\n\nSi durante un intervalo de 15 minutos tu maquinaria o climatización demanda más potencia de la contratada en ese periodo, la distribuidora factura una **penalización por exceso de potencia**. En empresas industriales, estos excesos pueden sumar cientos o miles de euros extra cada mes.\n\n**Solución tuLuz:** Monitorizamos tu histórico de telemedida para reajustar las potencias P1-P6 exactamente al perfil de tu operativa, eliminando las penalizaciones o ajustando a la baja periodos ociosos (como turnos de noche o fines de semana).`
       },
       {
-        id: 'clave-3-reactiva',
-        title: 'Clave 3: Suprime el recargo por energía reactiva con baterías de condensadores',
-        content: `La energía reactiva inductiva la provocan motores eléctricos, compresores, transformadores y tubos fluorescentes. Si el factor de potencia (coseno de fi) desciende por debajo de 0,95, la distribuidora factura una penalización por cada kVArh excedente.`,
+        id: 'energia-reactiva',
+        title: '3. El recargo silencioso de la energía reactiva: causas y solución',
+        content: `La energía reactiva es demandada por equipos que contienen motores, bobinas, transformadores o tubos fluorescentes (cámaras frigoríficas, compresores, ascensores, maquinaria industrial). Si el factor de potencia cae por debajo de 0,95, la distribuidora aplica un recargo económico por cada kVArh excedente.`,
         bullets: [
-          '**¿Cómo se erradica?** Instalando una **batería de condensadores automática** dimensionada al perfil reactivo de la planta.',
-          '**Amortización exprés:** En instalaciones con recargos mensuales de entre 80€ y 300€, la batería de condensadores se amortiza en menos de 6 a 12 meses, protegiendo además las líneas y transformadores contra sobrecalentamientos.'
+          '**¿Cómo se elimina?** La instalación de una **batería de condensadores automática** dimensionada a la carga de la planta neutraliza la energía reactiva inductiva.',
+          '**Retorno de inversión:** En instalaciones con penalizaciones mensuales superiores a 80€-200€, la batería de condensadores se amortiza en menos de 6 a 12 meses, protegiendo además los transformadores de la empresa.'
         ]
       },
       {
-        id: 'clave-4-modalidades',
-        title: 'Clave 4: Selecciona la modalidad adecuada: Fija, Indexada al Pool o Coberturas PPA',
-        content: `La estrategia de contratación debe ajustarse al nivel de tolerancia al riesgo y al perfil de producción de tu empresa:`,
+        id: 'modalidades-fija-indexada',
+        title: '4. Modalidades de contratación para empresas: ¿Fija, Indexada o Mixta (PPA)?',
+        content: `La elección contractual impacta directamente en la cuenta de resultados de la compañía:`,
         table: {
           headers: ['Modalidad', 'Ventajas principales', 'Riesgos asociados', 'Recomendado para'],
           rows: [
-            ['Precio Fijo', 'Presupuesto cerrado sin sorpresas durante 12-24 meses.', 'Precios habitualmente más altos debido a la prima de riesgo que cobra la comercializadora.', 'Negocios con márgenes comerciales estrictos que no pueden tolerar volatilidad.'],
-            ['Indexada al Pool (OMIE)', 'Sin recargo de cobertura comercial. Aprovecha los precios mínimos en horas solares.', 'Sensibilidad a subidas imprevistas del mercado mayorista.', 'Empresas con capacidad de desplazar consumo a horas diurnas o turnos nocturnos.'],
-            ['Mixta / Con Coberturas (PPA)', 'Bloqueo de un % de consumo a precio fijo y el resto a mercado spot indexado.', 'Requiere asesoramiento técnico profesional continuo.', 'Pymes medianas e industrias con consumos superiores a 100 MWh anuales.']
+            ['Precio Fijo', 'Presupuesto cerrado sin sorpresas durante 12-24 meses.', 'Precios habitualmente más altos con primas de riesgo de la comercializadora.', 'Empresas con márgenes estrictos que no pueden tolerar volatilidad.'],
+            ['Indexada al Pool (OMIE)', 'Sin prima de cobertura comercial. Aprovecha precios mínimos en horas solares.', 'Sensibilidad a subidas puntuales del mercado mayorista.', 'Empresas con capacidad de desplazar consumo a horas centrales o nocturnas.'],
+            ['Mixta / Con Coberturas (PPA)', 'Bloqueo de un % de consumo a precio fijo y el resto a mercado indexado.', 'Requiere asesoramiento técnico profesional continuado.', 'Empresas medianas y grandes con consumos superiores a 100 MWh/año.']
           ]
         }
       },
       {
-        id: 'clave-5-telemedida',
-        title: 'Clave 5: Negocia tu tarifa con la curva de carga cuartohoraria real',
-        content: `Las comercializadoras calculan sus mejores ofertas basándose en la **curva de carga**. Si tu empresa concentra el 80% de su consumo en las horas centrales del día (donde la gran aportación solar abarata el mercado mayorista), puedes exigir tarifas sensiblemente más baratas que una empresa que concentre su actividad en horas punta nocturnas.\n\nEn **tuLuz** descargamos los ficheros oficiales de telemedida de la distribuidora para lanzar rondas de licitación entre más de 50 comercializadoras, logrando condiciones que no se ofrecen en canales comerciales generales.`
+        id: 'curva-carga-cuartohoraria',
+        title: '5. La importancia de la curva de carga cuartohoraria en la negociación',
+        content: `Las comercializadoras asignan un precio personalizado a cada empresa basándose en su **curva de carga**. Un negocio cuyo 80% de actividad se realiza en horas de alta radiación solar (donde la energía mayorista suele estar en valores mínimos) puede negociar tarifas sustancialmente más agresivas que una empresa que concentre su actividad en horas punta nocturnas.\n\nEn tuLuz extraemos los ficheros de telemedida oficiales de la distribuidora para lanzar rondas de licitación entre más de 50 comercializadoras, obligándolas a competir por tu suministro.`
       },
       {
-        id: 'clave-6-caso-exito',
-        title: 'Clave 6: Caso real de optimización: reducción del 31% del gasto eléctrico en un taller mecanizado',
-        content: `**Situación de partida:** Taller mecanizado con tarifa 3.0TD con un gasto medio de 1.840€/mes. Contrataba 45 kW lineales en todos los periodos y pagaba recargos de reactiva de 145€/mes.\n\n**Intervención de tuLuz:**\n1. Reajuste de potencias P1-P6 según telemedida real (reduciendo P4-P6 a 22 kW en periodos no operativos).\n2. Instalación de batería de condensadores financiada sin desembolso inicial.\n3. Licitación de contrato indexado con fee comercial de solo 0,006€/kWh.\n\n**Resultado comprobado:** La factura media bajó a 1.270€/mes, generando un **ahorro neto anual de 6.840€**.`
+        id: 'caso-practico-pyme',
+        title: '6. Caso de éxito: reducción del 31% en el gasto eléctrico de un taller mecanizado',
+        content: `**Situación inicial:** Taller con tarifa 3.0TD pagando una media de 1.840€/mes. Contrataba 45 kW en todos los periodos y sufría recargos constantes por reactiva de 145€/mes.\n\n**Acciones implementadas por tuLuz:**\n1. Reajuste de potencias P1-P6 según telemedida real (reduciendo P4-P6 a 22 kW en periodos no laborables).\n2. Instalación de batería de condensadores con financiación sin desembolso inicial.\n3. Licitación del contrato de energía indexado con fee comercial de solo 0,006€/kWh.\n\n**Resultado:** La factura media se redujo a 1.270€/mes, logrando un **ahorro neto anual de 6.840€**.`
       }
     ],
     faqs: [
@@ -265,9 +265,9 @@ export const guidesData = [
     id: 'autoconsumo-solar-comunidades-de-vecinos',
     slug: 'autoconsumo-solar-comunidades-de-vecinos',
     keyword: 'autoconsumo solar comunidades de vecinos',
-    title: 'Autoconsumo solar en comunidades de vecinos: 6 pasos de instalación compartida y normativa',
-    metaTitle: 'Autoconsumo Solar en Comunidades de Vecinos: 6 Pasos | tuLuz',
-    metaDescription: 'Descubre los 6 pasos y la normativa del autoconsumo solar en comunidades de vecinos: Ley de Propiedad Horizontal, mayorías, coeficientes Beta y ayudas IRPF.',
+    title: 'Autoconsumo solar en comunidades de vecinos: guía completa de instalación compartida y normativa',
+    metaTitle: 'Autoconsumo Solar en Comunidades de Vecinos | Normativa y Ahorro tuLuz',
+    metaDescription: 'Todo sobre el autoconsumo solar en comunidades de propietarios: ley de propiedad horizontal, mayorías necesarias, coeficientes de reparto beta y reducción de cuotas.',
     category: 'Comunidades de Propietarios',
     readTime: '8 min de lectura',
     publishedAt: '2026-03-25',
@@ -277,77 +277,78 @@ export const guidesData = [
       role: 'Asesoría Especializada en Propiedad Horizontal',
       avatar: '/icono.webp'
     },
-    excerpt: 'Instalar placas solares en la cubierta de un edificio de vecinos permite desplomar la factura comunitaria e incluso suministrar energía a las viviendas. Te explicamos los 6 pasos técnicos y legales para llevarlo a cabo.',
+    excerpt: 'Instalar paneles solares fotovoltaicos en la cubierta de un edificio de vecinos permite desplomar la factura comunitaria e incluso alimentar las viviendas de los propietarios participantes. Te explicamos los pasos legales y técnicos.',
     tableOfContents: [
-      { id: 'paso-1-normativa', title: 'Paso 1: Conocer el marco legal español (Real Decreto 244/2019)' },
-      { id: 'paso-2-mayorias', title: 'Paso 2: Votar y conseguir las mayorías legales en junta (LPH)' },
-      { id: 'paso-3-modelos', title: 'Paso 3: Elegir el modelo (zonas comunes vs reparto entre vecinos)' },
-      { id: 'paso-4-coeficientes', title: 'Paso 4: Fijar los coeficientes de reparto de energía (parámetros Beta)' },
-      { id: 'paso-5-subvenciones', title: 'Paso 5: Gestionar deducciones de hasta el 60% en IRPF y rebajas de IBI' },
-      { id: 'paso-6-ejecucion', title: 'Paso 6: Ejecutar la instalación, legalización y activación con distribuidora' },
-      { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes sobre autoconsumo en comunidades' }
+      { id: 'marco-normativo', title: '1. Marco legal: Real Decreto 244/2019 y Ley de Propiedad Horizontal' },
+      { id: 'mayorias-junta', title: '2. ¿Qué mayoría se necesita en junta de propietarios?' },
+      { id: 'modelos-autoconsumo', title: '3. Modelos: zonas comunes vs reparto entre vecinos' },
+      { id: 'coeficientes-reparto', title: '4. Coeficientes de reparto (parámetros Beta)' },
+      { id: 'ayudas-subvenciones', title: '5. Subvenciones, deducción en IRPF e IBI' },
+      { id: 'pasos-proyecto', title: '6. Fases de un proyecto fotovoltaico comunitario con tuLuz' },
+      { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes en comunidades de vecinos' }
     ],
     sections: [
       {
-        id: 'paso-1-normativa',
-        title: 'Paso 1: Conocer el marco legal español (Real Decreto 244/2019)',
-        content: `El **Real Decreto 244/2019** reguló de manera definitiva el **autoconsumo colectivo a través de red interior o próxima**, terminando con las trabas históricas que impedían compartir energía solar en edificios plurifamiliares:`,
+        id: 'marco-normativo',
+        title: '1. Marco normativo: el Real Decreto 244/2019 y la democratización solar',
+        content: `Durante años, el autoconsumo en edificios residenciales estuvo frenado por barreras burocráticas. La entrada en vigor del **Real Decreto 244/2019** reguló de forma clara el **autoconsumo colectivo a través de red interior o próxima**, permitiendo que varios consumidores compartan la energía generada por una única instalación fotovoltaica ubicada en la azotea o tejado común.`,
         bullets: [
-          'Permite compartir la energía de una única instalación solar ubicada en el tejado o azotea común entre múltiples puntos de suministro situados a menos de **2.000 metros** en baja tensión.',
-          'No es obligatorio que el 100% de los vecinos participen ni paguen la instalación.',
-          'Los excedentes no consumidos en tiempo real se vierten a la red con compensación económica o acumulación en monedero de batería virtual.'
+          'Permite instalaciones compartidas situadas a una distancia máxima de hasta **2.000 metros** en baja tensión.',
+          'No requiere que todos los vecinos del inmueble participen ni paguen la instalación.',
+          'Los excedentes no autoconsumidos se pueden verter a la red con compensación económica en factura o monedero de batería virtual.'
         ]
       },
       {
-        id: 'paso-2-mayorias',
-        title: 'Paso 2: Votar y conseguir las mayorías legales en junta de propietarios (LPH)',
-        content: `El **artículo 17.1 de la Ley de Propiedad Horizontal (LPH)** establece con claridad los quórums de votación necesarios en función del destino de la energía fotovoltaica:`,
+        id: 'mayorias-junta',
+        title: '2. ¿Qué mayoría de votos se necesita en la junta de propietarios?',
+        content: `La modificación del **artículo 17.1 de la Ley de Propiedad Horizontal (LPH)** flexibilizó sustancialmente los quórums requeridos para la adopción de acuerdos energéticos renovables:`,
         table: {
-          headers: ['Destino de la energía', 'Mayoría requerida en Junta', 'Reparto del coste', 'Vecinos que no votaron a favor'],
+          headers: ['Destino de la instalación', 'Mayoría requerida en Junta', 'Distribución del coste', 'Vecinos no participantes'],
           rows: [
-            ['Exclusivo para zonas comunes (ascensor, luces, grupo de presión)', 'Mayoría simple (mayoría de propietarios que representen la mayoría de cuotas presentes).', 'Se reparte entre todos los propietarios según su coeficiente de participación.', 'Obligados al pago si el coste repercutido anual no supera 12 mensualidades ordinarias de gastos comunes.'],
-            ['Uso privativo para viviendas particulares interesadas', 'Un tercio (1/3) de los propietarios que representen un tercio de las cuotas de participación.', 'Asumido exclusivamente por los vecinos que voluntariamente se adhieran al proyecto.', 'No pagan nada, no participan en el coste y no reciben energía de los paneles.']
+            ['Exclusivo para zonas comunes (ascensor, luces, garaje)', 'Mayoría simple (voto favorable de la mayoría de propietarios que representen la mayoría de cuotas).', 'Se reparte entre todos los propietarios según cuota de participación.', 'Obligados al pago si el coste repercutido no supera doce mensualidades ordinarias.'],
+            ['Uso privativo individual (solo para vecinos interesados)', 'Un tercio (1/3) de los integrantes de la comunidad que representen un tercio de las cuotas de participación.', 'Asumido exclusivamente por los vecinos que voluntariamente se adhieran.', 'No pagan nada y no disfrutan de la energía generada.']
           ]
         },
         callout: {
           type: 'tip',
-          title: 'Adhesión posterior garantizada:',
-          text: 'Aquellos vecinos que en la votación inicial decidan no participar pueden incorporarse en cualquier momento posterior abonando el importe correspondiente debidamente actualizado con el interés legal.'
+          title: 'Clave de convivencia comunitaria:',
+          text: 'Aquellos propietarios que inicialmente voten en contra o decidan no participar pueden incorporarse en el futuro a la instalación colectiva abonando el importe correspondiente debidamente actualizado.'
         }
       },
       {
-        id: 'paso-3-modelos',
-        title: 'Paso 3: Elegir el modelo: zonas comunes vs comunidad solar con reparto a viviendas',
-        content: `Antes de solicitar presupuestos técnicos, la junta debe definir el alcance del proyecto:`,
+        id: 'modelos-autoconsumo',
+        title: '3. Dos modelos de autoconsumo colectivo en comunidades de vecinos',
+        content: `A la hora de diseñar el proyecto, la comunidad puede optar por dos estrategias:`,
         bullets: [
-          '**Modelo A: Solo Zonas Comunes:** La energía solar se conecta al contador comunitario (escalera, bombas, garaje, ascensores). Reduce directamente los gastos ordinarios del edificio y la cuota de comunidad que paga cada vecino.',
-          '**Modelo B: Autoconsumo Colectivo Completo (Comunidad Solar):** Se instala una planta de mayor potencia en la azotea que cubre el consumo común y además reparte energía horaria a los contadores de las viviendas de los vecinos adheridos, reduciendo sus facturas privadas de luz.'
+          '**Modelo 1: Autoconsumo para zonas comunes (CUPS comunitario):** La energía generada por las placas se destina íntegramente a reducir el consumo de la escalera, alumbrado, bombas de agua, puertas de garaje y ascensores. Consigue reducir la cuota mensual ordinaria que paga cada vecino.',
+          '**Modelo 2: Autoconsumo mixto o vecinal (Comunidad solar):** Se dimensiona una planta más amplia que cubre el consumo común y además reparte excedentes de producción horaria entre los contadores individuales de las viviendas adheridas.'
         ]
       },
       {
-        id: 'paso-4-coeficientes',
-        title: 'Paso 4: Fijar los coeficientes de reparto de energía (parámetros Beta)',
-        content: `Para que la distribuidora sepa cuánta energía solar asignar a cada contador participante en cada hora, se formaliza un **acuerdo de reparto** con coeficientes (parámetro **Beta**). La suma de los coeficientes de todos los participantes debe ser igual a 1 (100%).\n\n- **Coeficientes fijos:** Cada vecino recibe un porcentaje constante a lo largo del año (por ejemplo, 10% si son 10 vecinos con la misma aportación económica).\n- **Coeficientes dinámicos horarios:** Se adaptan por horas en base a los hábitos de consumo de cada hogar, optimizando la asignación de kilovatios y evitando que se desperdicie energía si un vecino no está en casa.`
+        id: 'coeficientes-reparto',
+        title: '4. ¿Cómo se reparte la energía? Los coeficientes de reparto (Beta)',
+        content: `Cada participante firma un **acuerdo de reparto** en el que se asigna a cada contador un coeficiente de distribución (denominado técnicamente parámetro **Beta**). La suma de todos los coeficientes debe ser igual a 1 (o 100%).\n\nExisten dos modalidades:\n- **Coeficientes fijos:** Cada vecino recibe un porcentaje constante a lo largo de todas las horas del año (por ejemplo, 10% por vecino si son 10 vecinos idénticos).\n- **Coeficientes dinámicos horarios:** Se adaptan por horas en función de los hábitos de cada hogar, maximizando el aprovechamiento y evitando el desperdicio de energía en horas donde una vivienda esté vacía.`
       },
       {
-        id: 'paso-5-subvenciones',
-        title: 'Paso 5: Gestionar deducciones de hasta el 60% en IRPF y rebajas de IBI',
-        content: `Las comunidades de propietarios disponen de ventajas fiscales extraordinarias que aceleran la amortización:`,
+        id: 'ayudas-subvenciones',
+        title: '5. Subvenciones, bonificaciones de IBI y deducciones de IRPF',
+        content: `Las comunidades de propietarios cuentan con ventajas fiscales de enorme impacto para acelerar la amortización:`,
         bullets: [
-          '**Deducción estatal en el IRPF de hasta el 60%:** Los propietarios participantes pueden desgravarse hasta el 60% de las cantidades invertidas en su declaración de la renta si las obras reducen el consumo de energía primaria no renovable del edificio en al menos un 30%.',
-          '**Bonificación en el IBI (Impuesto sobre Bienes Inmuebles):** Reducciones de entre el 30% y el 50% en el recibo anual del IBI durante 3 a 5 años según la ordenanza fiscal de tu ayuntamiento.',
-          '**Bonificación en el ICIO:** Descuentos de hasta el 95% en la tasa municipal de construcciones e instalaciones.'
+          '**Deducción en IRPF por rehabilitación energética:** Los propietarios participantes pueden deducirse hasta un **60% del importe invertido** en su declaración de la renta si la instalación logra reducir el consumo de energía primaria no renovable del edificio en al menos un 30%.',
+          '**Bonificación en el IBI (Impuesto sobre Bienes Inmuebles):** La mayoría de ayuntamientos aplican rebajas de entre el 30% y el 50% en el IBI durante 3 a 5 años tras la instalación.',
+          '**Bonificación en el ICIO:** Reducciones de hasta el 95% en la tasa municipal de obras.'
         ]
       },
       {
-        id: 'paso-6-ejecucion',
-        title: 'Paso 6: Ejecutar la instalación, legalización en Industria y activación con distribuidora',
-        content: `En **tuLuz** coordinamos todo el ciclo para que el presidente de la comunidad y el administrador de fincas no tengan que asumir cargas burocráticas:`,
+        id: 'pasos-proyecto',
+        title: '6. Fases de un proyecto fotovoltaico comunitario con tuLuz',
+        content: `En tuLuz gestionamos todo el proceso para que la junta y el administrador de fincas no tengan que preocuparse de nada:`,
         bullets: [
-          '1. **Estudio técnico gratuito:** Inspección de la cubierta, orientación, estado de impermeabilización y cálculo de sombras.',
-          '2. **Dossier para la Junta:** Presentación con cifras claras de inversión, amortización y ahorro de cuota comunitaria.',
-          '3. **Instalación y legalización:** Montaje por instaladores certificados, boletín eléctrico (CIE) y registro en la Delegación de Industria.',
-          '4. **Activación de contratos de autoconsumo colectivo:** Tramitación con la distribuidora de zona para que aplique los coeficientes Beta en la facturación mensual.'
+          '1. **Estudio técnico previo gratuito:** Análisis de superficie útil en azotea, orientación, sombras y viabilidad estructural.',
+          '2. **Simulación económica personalizada:** Presentación para la Junta de Vecinos con desglose de inversión, ahorro previsto y tiempos de amortización.',
+          '3. **Asesoramiento en Junta:** Acompañamos al presidente o administrador para resolver dudas técnicas a los vecinos.',
+          '4. **Instalación y legalización:** Tramitación de licencias, boletines eléctricos y registro ante la distribuidora de zona.',
+          '5. **Optimización de contratos y batería virtual:** Asignación de la comercializadora con mejor compensación de excedentes.'
         ]
       }
     ],
@@ -371,9 +372,9 @@ export const guidesData = [
     id: 'comparador-comercializadoras-luz-y-gas',
     slug: 'comparador-comercializadoras-luz-y-gas',
     keyword: 'comparador comercializadoras luz y gas',
-    title: 'Comparador de comercializadoras de luz y gas: 5 trampas habituales y checklist de 6 puntos',
-    metaTitle: 'Comparador de Comercializadoras de Luz y Gas: 5 Trampas | tuLuz',
-    metaDescription: 'Descubre las 5 trampas de las comercializadoras de luz y gas y el checklist de 6 puntos clave para comparar ofertas sin sorpresas ni costes ocultos.',
+    title: 'Comparador de comercializadoras de luz y gas: claves para no caer en trampas y pagar menos',
+    metaTitle: 'Comparador de Comercializadoras de Luz y Gas en España | Guía tuLuz',
+    metaDescription: 'Compara más de 50 comercializadoras de electricidad y gas natural de forma imparcial. Conoce la verdad sobre mercado libre vs regulado, letras pequeñas y permanencias.',
     category: 'Mercado y Tarifas',
     readTime: '8 min de lectura',
     publishedAt: '2026-03-30',
@@ -383,37 +384,37 @@ export const guidesData = [
       role: 'Analistas del Mercado Mayorista e Imparcialidad',
       avatar: '/icono.webp'
     },
-    excerpt: 'El mercado energético en España cuenta con cientos de ofertas comerciales aparentemente irresistibles. Te desvelamos las 5 trampas más habituales del sector y el checklist de 6 comprobaciones clave antes de firmar.',
+    excerpt: 'El mercado eléctrico y gasista en España cuenta con cientos de ofertas comerciales aparentemente atractivas. Descubre cómo analizar las ofertas de luz y gas sin sesgos ni cláusulas engañosas.',
     tableOfContents: [
-      { id: 'comercializadora-vs-distribuidora', title: 'Diferencia fundamental entre comercializadora y distribuidora' },
-      { id: 'mercado-libre-vs-regulado', title: 'Mercado Libre vs Mercado Regulado (PVPC y TUR)' },
-      { id: 'las-5-trampas', title: 'Las 5 trampas habituales de las ofertas comerciales gancho' },
-      { id: 'tarifas-duales', title: 'Tarifas duales (luz + gas): ¿realmente ahorras unificándolas?' },
-      { id: 'comparadores-sesgados', title: 'La verdad sobre los comparadores web convencionales' },
-      { id: 'checklist-6-puntos', title: 'Checklist de 6 comprobaciones clave antes de contratar' },
-      { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes en comparativas de tarifas' }
+      { id: 'comercializadora-vs-distribuidora', title: '1. Diferencia fundamental entre comercializadora y distribuidora' },
+      { id: 'mercado-libre-vs-regulado', title: '2. Mercado Libre vs Mercado Regulado (PVPC y TUR)' },
+      { id: 'trampas-habituales', title: '3. Las 5 trampas habituales de las ofertas gancho' },
+      { id: 'tarifas-duales', title: '4. Tarifas duales (luz + gas): ¿conviene unificarlas?' },
+      { id: 'por-que-comparadores-sesgados', title: '5. La verdad sobre los comparadores online convencionales' },
+      { id: 'checklist-comparativa', title: '6. Checklist para evaluar una oferta energética' },
+      { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes en comparativas' }
     ],
     sections: [
       {
         id: 'comercializadora-vs-distribuidora',
-        title: 'Diferencia fundamental entre comercializadora y distribuidora',
-        content: `Uno de los mayores motivos de confusión entre los usuarios es la distinción entre distribuidores y comercializadores:`,
+        title: '1. La diferencia clave: ¿quién te factura y quién lleva el cable a tu casa?',
+        content: `Uno de los mayores motivos de confusión entre los usuarios es la distinción entre distribuidoras y comercializadoras:`,
         bullets: [
-          '**Distribuidora eléctrica / gasista:** Es la empresa dueña de la infraestructura física (red de cables, tuberías, transformadores y contadores). Viene asignada por zona geográfica (por ejemplo, e-distribución/Endesa, i-DE/Iberdrola, UFD/Naturgy, Nedgia, Madrileña Red de Gas). No se puede cambiar de distribuidora.',
-          '**Comercializadora:** Es la empresa con la que suscribes el contrato, la que compra la energía en el mercado y la que emite tus facturas. Existen más de 300 comercializadoras registradas en España, y puedes cambiarte tantas veces como desees sin modificar tu contador ni interrumpir tu suministro.'
+          '**Distribuidora eléctrica / gasista:** Es la empresa propietaria de la infraestructura física (red de cables, tuberías, transformadores y contadores). Viene asignada por zona geográfica (por ejemplo, e-distribución/Endesa, i-DE/Iberdrola, UFD/Naturgy, Nedgia, Madrileña Red de Gas). No puedes cambiar de distribuidora.',
+          '**Comercializadora:** Es la empresa con la que suscribes el contrato, la que compra la energía en el mercado y la que emite tus facturas. Existen más de 300 comercializadoras registradas ante la CNMC en España, y puedes cambiarte tantas veces como desees sin modificar tu contador ni interrumpir tu suministro.'
         ]
       },
       {
         id: 'mercado-libre-vs-regulado',
-        title: 'Mercado Libre vs Mercado Regulado: ¿cuál te conviene?',
+        title: '2. Mercado Libre vs Mercado Regulado: ¿cuál te conviene?',
         content: `Tanto en electricidad como en gas natural conviven dos mercados totalmente distintos:`,
         table: {
           headers: ['Concepto', 'Mercado Regulado (PVPC en luz / TUR en gas)', 'Mercado Libre (+300 comercializadoras)'],
           rows: [
             ['Fijación de precios', 'Regulados por el Gobierno y fórmulas oficiales del BOE.', 'Libremente pactados entre la comercializadora y el cliente.'],
             ['Bono Social', 'Obligatorio para solicitar el Bono Social Eléctrico o Térmico.', 'No disponible (salvo excepciones normativas puntuales).'],
-            ['Permanencia', 'Prohibida por ley (0 permanencia).', 'Generalmente sin permanencia en contratos residenciales, salvo cláusulas de descuento vinculadas.'],
-            ['Servicios adicionales', 'Prohibido añadir seguros de averías o asistencias.', 'Permitido (frecuente foco de sobrecostes si no se vigilan).']
+            ['Permanencia', 'Prohibida por ley (0 permanencia).', 'Generalmente sin permanencia en contratos residenciales, aunque algunas empresas la imponen si no se revisa el contrato.'],
+            ['Servicios adicionales', 'Prohibido añadir seguros de averías o mantenimientos.', 'Permitido (frecuente foco de sobrecostes si no se rechazan expresamente).']
           ]
         },
         callout: {
@@ -423,38 +424,38 @@ export const guidesData = [
         }
       },
       {
-        id: 'las-5-trampas',
-        title: 'Las 5 trampas habituales de las ofertas comerciales gancho',
-        content: `Cuando usas un **comparador comercializadoras luz y gas**, debes tener cuidado con estas 5 prácticas comerciales frecuentes:`,
+        id: 'trampas-habituales',
+        title: '3. Las 5 trampas habituales de las ofertas comerciales gancho',
+        content: `Cuando buscas un **comparador comercializadoras luz y gas**, debes tener cuidado con tácticas comerciales diseñadas para dar una falsa sensación de ahorro:`,
         bullets: [
-          '**Trampa 1: El descuento con caducidad.** Promociones del "20% de descuento en el consumo" que esconden una subida automática masiva en el mes 13 si no recuerdas renegociar el contrato.',
-          '**Trampa 2: Precios de kWh que excluyen costes regulados.** Comerciales que publicitan un precio muy bajo por kWh pero omiten deliberadamente el término de pérdidas de red o el impuesto eléctrico.',
-          '**Trampa 3: Servicios de mantenimiento camuflados.** Cobros mensuales de 7€ a 14€ por pólizas de asistencia eléctrica de dudosa utilidad que duplican lo que ya cubre tu seguro de hogar.',
-          '**Trampa 4: Tarifas planas con regularización oculta.** Promesas de "cuota fija de 65€ al mes" que esconden una cláusula de liquidación anual con recargos de cientos de euros si superas un límite de consumo prefijado.',
-          '**Trampa 5: Penalizaciones por cancelación de descuentos.** Aunque la ley prohíbe permanencias en hogares, algunas compañías cobran penalizaciones por pérdida de bonificaciones acumuladas si te marchas antes de 12 meses.'
+          '**1. El descuento con caducidad:** Descuentos promocionales del "20% en el consumo durante el primer año" que esconden una subida automática masiva en el mes 13 si no recuerdas negociar.',
+          '**2. Precios por kWh que no incluyen costes regulados:** Comerciales que promocionan un precio atractivo pero excluyen deliberadamente el término de ajuste del mecanismo ibérico, pérdidas de red o el impuesto eléctrico.',
+          '**3. Mantenimientos de electrodomésticos camuflados:** Cobros mensuales de 7€ a 12€ por pólizas de asistencia de dudosa cobertura que duplican las coberturas que ya tiene tu seguro de hogar.',
+          '**4. Tarifas planas con liquidación a final de año:** Tarifas que prometen una "cuota fija mensual" de 60€ pero esconden una cláusula de regularización con cobros de cientos de euros si te desvías de una bolsa de consumo predefinida.',
+          '**5. Penalizaciones por cancelación anticipada:** Aunque la ley prohíbe permanencias en consumos domésticos (hasta 15 kW), algunas comercializadoras cobran penalizaciones por pérdida de descuentos acumulados.'
         ]
       },
       {
         id: 'tarifas-duales',
-        title: 'Tarifas duales (luz + gas): ¿realmente ahorras unificándolas?',
-        content: `Es muy común que las grandes energéticas ofrezcan un "descuento especial si contratas luz y gas juntos". En la práctica, casi siempre una de las dos partes del contrato está inflada. Por ejemplo, te ofrecen un precio competitivo en electricidad mientras encarecen el término fijo del gas, resultando en un coste neto superior.\n\nEn **tuLuz** recomendamos contratar la luz con la comercializadora que ofrezca las mejores condiciones eléctricas y el gas con la que ofrezca el mejor precio gasista (incluso la tarifa regulada TUR), optimizando cada suministro de forma separada.`
+        title: '4. Tarifas duales (luz + gas): ¿realmente ahorras unificándolas?',
+        content: `Es habitual que las grandes eléctricas ofrezcan un "descuento especial si contratas luz y gas juntos". En la práctica, casi siempre una de las dos partes del contrato está sobrevalorada. Por ejemplo, te ofrecen un precio competitivo en electricidad mientras inflan el término fijo del gas, resultando en un coste neto superior.\n\nEn **tuLuz** recomendamos contratar la luz con la comercializadora que ofrezca las mejores condiciones eléctricas y el gas con la que ofrezca el mejor precio gasista (incluso la tarifa regulada TUR), optimizando cada suministro de manera independiente.`
       },
       {
-        id: 'comparadores-sesgados',
-        title: 'La verdad sobre los comparadores web convencionales',
+        id: 'por-que-comparadores-sesgados',
+        title: '5. La verdad sobre los comparadores web convencionales',
         content: `La mayoría de comparadores automáticos que encuentras en internet posicionan en primer lugar a las comercializadoras que pagan mayores comisiones de captación por cliente captado, ocultando ofertas más económicas de comercializadoras que no pagan comisiones por clic.\n\n**tuLuz opera con independencia:** Comparamos más de 50 compañías del mercado libre y regulado buscando exclusivamente la opción que maximice el ahorro real de tu factura.`
       },
       {
-        id: 'checklist-6-puntos',
-        title: 'Checklist de 6 comprobaciones clave antes de contratar una oferta',
-        content: `Antes de firmar cualquier contrato de luz o gas, comprueba estos 6 puntos indispensables:`,
+        id: 'checklist-comparativa',
+        title: '6. Checklist para evaluar cualquier oferta energética antes de firmar',
+        content: `Antes de aceptar una oferta telefónica o web, verifica los siguientes 6 puntos:`,
         bullets: [
-          '**1. Precio final con impuestos:** ¿El precio por kWh incluye peajes de acceso regulados e impuestos?',
-          '**2. Precio de la potencia (kW):** ¿Cuánto cuesta el término de potencia en punta y valle?',
-          '**3. Ausencia de permanencia:** ¿Puedes darte de baja libremente sin penalizaciones?',
-          '**4. Cero servicios adicionales:** ¿Se ha excluido todo tipo de seguro, asistencia o mantenimiento?',
-          '**5. Vigencia temporal:** ¿El precio pactado es válido durante 12 meses completos o solo durante los primeros meses?',
-          '**6. Criterio de revisión anual:** ¿Las actualizaciones anuales se vinculan al IPC o a una fórmula interna de la comercializadora?'
+          '¿El precio del kWh incluye impuestos y peajes de acceso regulados?',
+          '¿Cuál es el precio del término de potencia (kW) en punta y valle?',
+          '¿Existe permanencia obligatoria o penalización por baja anticipada?',
+          '¿Se incluye algún seguro de asistencia, mantenimiento o protección de pagos?',
+          '¿Qué vigencia tienen los precios acordados (6 meses, 12 meses o indefinidos)?',
+          '¿La revisión anual de precios se vincula al IPC o a una fórmula interna?'
         ]
       }
     ],
@@ -478,9 +479,9 @@ export const guidesData = [
     id: 'placas-solares-particulares-precio',
     slug: 'placas-solares-particulares-precio',
     keyword: 'placas solares particulares precio',
-    title: 'Placas solares para particulares: precio de instalación en 2026, 6 partidas de coste y rentabilidad',
-    metaTitle: 'Placas Solares para Particulares: Precio Real en 2026 | tuLuz',
-    metaDescription: '¿Cuánto cuesta instalar placas solares en una vivienda particular? Tabla de precios en 2026, las 6 partidas del presupuesto, amortización en 3-5 años y deducción IRPF.',
+    title: 'Placas solares para particulares: precio de instalación en 2026, rentabilidad y ayudas',
+    metaTitle: 'Placas Solares para Particulares: Precio y Rentabilidad 2026 | tuLuz',
+    metaDescription: '¿Cuánto cuesta instalar placas solares en una vivienda particular? Desglose de precios en 2026, número de paneles, amortización en 3-5 años y deducciones IRPF.',
     category: 'Autoconsumo y Fotovoltaica',
     readTime: '9 min de lectura',
     publishedAt: '2026-04-05',
@@ -490,20 +491,20 @@ export const guidesData = [
       role: 'Instalaciones Solares y Autoconsumo Residencial',
       avatar: '/icono.webp'
     },
-    excerpt: 'Desglosamos al milímetro cuánto cuesta poner placas solares en una vivienda en 2026: tabla de precios por potencia, las 6 partidas de un presupuesto llave en mano, deducciones de hasta el 60% en IRPF y batería virtual para facturas a 0€.',
+    excerpt: 'Desglosamos al detalle cuánto cuesta poner placas solares en una vivienda particular en 2026: desglose de materiales, retorno de la inversión, deducciones de hasta el 60% en IRPF y batería virtual para factura a 0€.',
     tableOfContents: [
-      { id: 'tabla-precios-2026', title: '1. Tabla de precios reales de instalaciones solares en 2026' },
-      { id: 'las-6-partidas-coste', title: '2. Las 6 partidas que componen un presupuesto solar llave en mano' },
+      { id: 'tabla-precios-2026', title: '1. ¿Cuánto cuesta instalar placas solares en 2026?' },
+      { id: 'las-6-partidas-coste', title: '2. Desglose detallado: qué incluye un presupuesto solar' },
       { id: 'cuantos-paneles-necesitas', title: '3. ¿Cuántos paneles solares necesita realmente tu vivienda?' },
       { id: 'bateria-virtual-vs-fisica', title: '4. Batería virtual (monedero solar) vs Batería física de litio' },
       { id: 'retorno-inversion-3-5-anos', title: '5. Retorno de la inversión: amortización real en 3 a 5 años' },
-      { id: 'deducciones-irpf-ibi', title: '6. Deducción de hasta el 60% en IRPF y bonificaciones de IBI e ICIO' },
-      { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes sobre precios de placas solares' }
+      { id: 'deducciones-irpf-ibi', title: '6. Deducciones de IRPF, bonificaciones de IBI y ventajas fiscales' },
+      { id: 'preguntas-frecuentes', title: 'Preguntas frecuentes sobre placas solares' }
     ],
     sections: [
       {
         id: 'tabla-precios-2026',
-        title: '1. Tabla de precios reales de instalaciones solares residenciales en 2026',
+        title: '1. ¿Cuánto cuesta instalar placas solares en una vivienda particular en 2026?',
         content: `Gracias a la madurez de la tecnología de células monocristalinas de alta potencia (TOPCon y HJT), los precios de los paneles fotovoltaicos se sitúan hoy en sus valores más accesibles.\n\nEn 2026, el rango de precio medio en España oscila entre **3.200€ y 7.900€** (IVA incluido) para una vivienda unifamiliar o adosado estándar, antes de aplicar deducciones fiscales:`,
         table: {
           headers: ['Tipo de vivienda / Consumo mensual', 'Potencia pico', 'Nº estimado paneles (500W)', 'Rango de precio medio (IVA incluido)'],
@@ -517,15 +518,15 @@ export const guidesData = [
       },
       {
         id: 'las-6-partidas-coste',
-        title: '2. Las 6 partidas que componen un presupuesto solar llave en mano',
-        content: `Un presupuesto fotovoltaico profesional no es solo comprar paneles; comprende 6 partidas esenciales:`,
+        title: '2. Desglose detallado: qué incluye un presupuesto solar llave en mano',
+        content: `Un presupuesto fotovoltaico profesional no es solo comprar paneles; comprende todos los elementos técnicos y administrativos:`,
         bullets: [
-          '**1. Módulos fotovoltaicos Tier 1:** Paneles monocristalinos de alta eficiencia con 25 a 30 años de garantía de producción (representan el 25% - 30% del presupuesto).',
-          '**2. Inversor solar o microinversores:** El equipo que transforma la corriente continua de las placas en corriente alterna para tu hogar (marcas como Huawei, Enphase, Sungrow, Fronius), con un 20% - 25% del coste.',
-          '**3. Estructuras de anclaje:** Estructuras de aluminio anodizado coplanares o con inclinación certificadas para resistir vientos superiores a 120 km/h (10% - 12% del coste).',
-          '**4. Cuadro de protecciones eléctricas y cableado:** Magnetotérmicos, sobretensiones transitorias y permanentes y cableado solar de doble aislamiento (8% - 10% del coste).',
-          '**5. Mano de obra e instalación autorizada:** Técnicos montadores e instaladores electricistas homologados con seguro de responsabilidad civil (15% - 20% del coste).',
-          '**6. Legalización, tasas y boletín (CIE):** Proyecto o memoria técnica, pago de tasas municipales, boletín eléctrico y registro ante Industria y distribuidora (8% - 12% del coste).'
+          '**Módulos fotovoltaicos Tier 1:** Paneles monocristalinos de alta eficiencia con 25 a 30 años de garantía de producción (representan el 25% - 30% del presupuesto).',
+          '**Inversor solar o microinversores:** El equipo que transforma la corriente continua de las placas en corriente alterna para tu hogar (marcas como Huawei, Enphase, Sungrow, Fronius), con un 20% - 25% del coste.',
+          '**Estructuras de anclaje:** Estructuras de aluminio anodizado coplanares o con inclinación certificadas para resistir vientos superiores a 120 km/h (10% - 12% del coste).',
+          '**Cuadro de protecciones eléctricas y cableado:** Magnetotérmicos, sobretensiones transitorias y permanentes y cableado solar de doble aislamiento (8% - 10% del coste).',
+          '**Mano de obra e instalación autorizada:** Técnicos montadores e instaladores electricistas homologados con seguro de responsabilidad civil (15% - 20% del coste).',
+          '**Legalización, tasas y boletín (CIE):** Proyecto o memoria técnica, pago de tasas municipales, boletín eléctrico y registro ante Industria y distribuidora (8% - 12% del coste).'
         ]
       },
       {
@@ -549,7 +550,7 @@ export const guidesData = [
       },
       {
         id: 'deducciones-irpf-ibi',
-        title: '6. Deducción de hasta el 60% en IRPF y bonificaciones de IBI e ICIO',
+        title: '6. Deducciones de IRPF, bonificaciones de IBI y ventajas fiscales en 2026',
         content: `Las ayudas fiscales existentes reducen de forma drástica el coste real desembolsado:`,
         bullets: [
           '**Deducción estatal en el IRPF:** Deducciones de hasta el **40% o 60%** del importe de la instalación en la declaración de la renta para viviendas habituales que reduzcan la demanda de calefacción/refrigeración o el consumo de energía primaria no renovable.',

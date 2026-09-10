@@ -82,7 +82,50 @@ export default function Footer({ navigate }) {
             </div>
           </div>
 
-          {/* Col 2: Dirección */}
+          {/* Col 2: Guías de Ahorro Energético (SEO) */}
+          <div>
+            <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Guías de Ahorro</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
+              <button 
+                onClick={() => handleNavClick('/guias')} 
+                style={{ textAlign: 'left', color: 'var(--primary)', fontWeight: 700, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              >
+                Todas las Guías →
+              </button>
+              <button 
+                onClick={() => handleNavClick('/guias/ahorrar-factura-de-la-luz')} 
+                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              >
+                Ahorrar factura de la luz
+              </button>
+              <button 
+                onClick={() => handleNavClick('/guias/tarifas-luz-empresas')} 
+                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              >
+                Tarifas luz empresas
+              </button>
+              <button 
+                onClick={() => handleNavClick('/guias/autoconsumo-solar-comunidades-de-vecinos')} 
+                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              >
+                Autoconsumo comunidades
+              </button>
+              <button 
+                onClick={() => handleNavClick('/guias/comparador-comercializadoras-luz-y-gas')} 
+                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              >
+                Comparador luz y gas
+              </button>
+              <button 
+                onClick={() => handleNavClick('/guias/placas-solares-particulares-precio')} 
+                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              >
+                Placas solares particulares
+              </button>
+            </div>
+          </div>
+
+          {/* Col 3: Dirección */}
           <div>
             <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Dirección</h4>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
@@ -91,7 +134,7 @@ export default function Footer({ navigate }) {
             </div>
           </div>
 
-          {/* Col 3: Contacto */}
+          {/* Col 4: Contacto */}
           <div>
             <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Contacto</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
@@ -106,9 +149,9 @@ export default function Footer({ navigate }) {
             </div>
           </div>
 
-          {/* Col 4: Más Enlaces */}
+          {/* Col 5: Más Enlaces */}
           <div>
-            <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Más Enlaces</h4>
+            <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Legal & Info</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
               <button 
                 onClick={() => handleNavClick('/aviso-legal')} 
@@ -152,8 +195,11 @@ export default function Footer({ navigate }) {
       </div>
 
       <style>{`
-        @media (min-width: 768px) {
-          .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr !important; }
+        @media (min-width: 640px) and (max-width: 1023px) {
+          .footer-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 2rem !important; }
+        }
+        @media (min-width: 1024px) {
+          .footer-grid { grid-template-columns: 2fr 1.3fr 1fr 1fr 1fr !important; }
         }
       `}</style>
     </footer>

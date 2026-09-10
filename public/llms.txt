@@ -8,7 +8,17 @@
 - [Empresas](https://tu-luz.es/empresas): Análisis y optimización de costes energéticos de electricidad y gas para pymes e industrias. Ajuste de potencia (P1-P6), tarifas indexadas o fijas y consultoría solar.
 - [Comunidades de Vecinos](https://tu-luz.es/comunidades-de-vecinos): Reducción directa de la cuota comunitaria optimizando el consumo de electricidad y gas (calefacción central, calderas, ascensores, garajes e iluminación).
 - [Particulares](https://tu-luz.es/particulares): Ahorro doméstico en luz y gas sin cambiar de hábitos. Comparativa imparcial de tarifas fijas e indexadas entre más de 50 compañías.
+- [Autoconsumo Solar](https://tu-luz.es/autoconsumo): Proyectos de placas solares fotovoltaicas, comparativa de instaladores, gestión de ayudas IRPF y batería virtual.
 - [Solicita un Presupuesto](https://tu-luz.es/solicita-un-presupuesto): Formulario para solicitar un estudio de facturas 100% gratuito y sin compromiso.
+
+## Guías de Ahorro y Eficiencia Energética
+
+- [Centro de Guías de Ahorro](https://tu-luz.es/guias): Hub de recursos formativos y análisis del mercado energético.
+- [Cómo ahorrar en la factura de la luz](https://tu-luz.es/guias/ahorrar-factura-de-la-luz): Anatomía del recibo, ajuste de potencia en kW, periodos horarios 2.0TD (punta, llano, valle) y eliminación de servicios de mantenimiento no deseados.
+- [Tarifas de luz para empresas](https://tu-luz.es/guias/tarifas-luz-empresas): Peajes 3.0TD y 6.XTD, eliminación de penalizaciones por maxímetro y energía reactiva mediante baterías de condensadores, telemedida y contratos indexados.
+- [Autoconsumo solar en comunidades de vecinos](https://tu-luz.es/guias/autoconsumo-solar-comunidades-de-vecinos): Normativa del RD 244/2019, mayorías en junta de la Ley de Propiedad Horizontal (LPH), coeficientes de reparto beta y deducciones fiscales IRPF/IBI.
+- [Comparador de comercializadoras de luz y gas](https://tu-luz.es/guias/comparador-comercializadoras-luz-y-gas): Diferencias entre distribuidora y comercializadora, mercado libre frente a regulado (PVPC / TUR), detección de ofertas gancho y comparativa neutral.
+- [Placas solares para particulares: precio](https://tu-luz.es/guias/placas-solares-particulares-precio): Desglose del presupuesto fotovoltaico residencial en 2026, cálculo de paneles por consumo, amortización en 3-5 años y monedero de batería virtual para facturas a 0€.
 
 ## Contacto e Información de la Empresa
 

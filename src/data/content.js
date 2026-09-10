@@ -22,6 +22,7 @@ export const navLinks = [
   { name: "Comunidades", path: "/comunidades-de-vecinos" },
   { name: "Particulares", path: "/particulares" },
   { name: "Autoconsumo", path: "/autoconsumo" },
+  { name: "Guías", path: "/guias" },
   { name: "Solicita Presupuesto", path: "/solicita-un-presupuesto" }
 ];
 

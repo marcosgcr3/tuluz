@@ -15,6 +15,8 @@ const Gracias = lazy(() => import('./pages/Gracias'));
 const LegalNotice = lazy(() => import('./pages/LegalNotice'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const Guias = lazy(() => import('./pages/Guias'));
+const GuiaDetalle = lazy(() => import('./pages/GuiaDetalle'));
 const ContactFormModal = lazy(() => import('./components/ContactFormModal'));
 
 export default function App() {
@@ -135,7 +137,13 @@ export default function App() {
       case '/admin':
       case '/dashboard':
         return <AdminDashboard navigate={navigate} />;
+      case '/guias':
+        return <Guias navigate={navigate} onOpenModal={openContactModal} />;
       default:
+        if (cleanPath.startsWith('/guias/')) {
+          const slug = cleanPath.replace('/guias/', '');
+          return <GuiaDetalle slug={slug} navigate={navigate} onOpenModal={openContactModal} />;
+        }
         return <Home onOpenModal={openContactModal} navigate={navigate} />;
     }
   };

@@ -26,12 +26,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeHeading, setActiveHeading] = useState('');
   const [openFaqIndices, setOpenFaqIndices] = useState([0]); // First FAQ open by default
-  const [isTocOpen, setIsTocOpen] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth > 768;
-    }
-    return false;
-  });
+  const [isTocOpen, setIsTocOpen] = useState(false); // Collapsed by default on load for optimal mobile reading
 
   // Reading progress tracker
   useEffect(() => {
@@ -336,13 +331,15 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
       <div className="container" style={{ maxWidth: '1120px', marginTop: 'clamp(1.5rem, 3.5vw, 2.75rem)' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr',
+          gridTemplateColumns: 'minmax(0, 1fr)',
           gap: 'clamp(1.75rem, 3vw, 3rem)',
-          alignItems: 'start'
+          alignItems: 'start',
+          width: '100%',
+          maxWidth: '100%'
         }} className="guide-layout-grid">
           
           {/* Main Article Body */}
-          <main style={{ maxWidth: '760px', width: '100%', margin: '0 auto' }}>
+          <main style={{ maxWidth: '760px', width: '100%', minWidth: 0, margin: '0 auto' }}>
             
             {/* Table of Contents Box (Collapsible on mobile with clear count badge) */}
             <nav 
@@ -831,15 +828,32 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
           color: var(--text-muted);
           flex-wrap: wrap;
         }
+        .guide-layout-grid {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+        .guide-layout-grid > * {
+          min-width: 0;
+          max-width: 100%;
+        }
         .article-body {
           color: var(--text-main);
           word-break: break-word;
           overflow-wrap: break-word;
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+        .article-body * {
+          max-width: 100%;
         }
         .article-body p {
           font-size: clamp(0.98rem, 2.3vw, 1.05rem);
           line-height: 1.7;
           margin-bottom: 1.15rem;
+          word-break: break-word;
+          overflow-wrap: break-word;
         }
         .guide-cta-buttons {
           display: flex;

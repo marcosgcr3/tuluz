@@ -280,8 +280,8 @@ export default function Guias({ navigate, onOpenModal }) {
         {/* Guides Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-          gap: '2rem',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 290px), 1fr))',
+          gap: '1.75rem',
           marginBottom: '4.5rem'
         }}>
           {filteredGuides.map((guide) => (
@@ -292,7 +292,7 @@ export default function Guias({ navigate, onOpenModal }) {
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border-light)',
                 borderRadius: 'var(--radius-lg)',
-                padding: '1.75rem',
+                padding: 'clamp(1.25rem, 3vw, 1.75rem)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',

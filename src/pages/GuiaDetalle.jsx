@@ -26,6 +26,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeHeading, setActiveHeading] = useState('');
   const [openFaqIndices, setOpenFaqIndices] = useState([0]); // First FAQ open by default
+  const [isTocOpen, setIsTocOpen] = useState(true);
 
   // Reading progress tracker
   useEffect(() => {
@@ -356,48 +357,71 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
           {/* Main Article Body */}
           <main style={{ maxWidth: '760px', width: '100%', margin: '0 auto' }}>
             
-            {/* Table of Contents Box (Inline on mobile & desktop) */}
+            {/* Table of Contents Box (Collapsible on mobile, clean on desktop) */}
             <nav 
               aria-label="Índice del artículo"
               style={{
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border-color)',
                 borderRadius: 'var(--radius-lg)',
-                padding: '1.75rem',
+                padding: '1.25rem 1.5rem',
                 marginBottom: '3rem',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800, fontSize: '1.05rem' }}>
-                <BookOpen size={20} />
-                <span>Índice de Contenidos</span>
+              <div 
+                onClick={() => setIsTocOpen(!isTocOpen)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  cursor: 'pointer',
+                  userSelect: 'none',
+                  paddingBottom: isTocOpen ? '1rem' : '0',
+                  borderBottom: isTocOpen ? '1px solid var(--border-light)' : 'none',
+                  marginBottom: isTocOpen ? '1rem' : '0'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontWeight: 800, fontSize: '1.05rem' }}>
+                  <BookOpen size={20} />
+                  <span>Índice de Contenidos</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                  <span>{isTocOpen ? 'Ocultar' : 'Ver índice'}</span>
+                  {isTocOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                </div>
               </div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                {guide.tableOfContents.map((toc) => (
-                  <li key={toc.id}>
-                    <button
-                      onClick={() => scrollToSection(toc.id)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        padding: '0.2rem 0',
-                        textAlign: 'left',
-                        color: activeHeading === toc.id ? 'var(--primary)' : 'var(--text-main)',
-                        fontWeight: activeHeading === toc.id ? 700 : 500,
-                        fontSize: '0.92rem',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.4rem',
-                        transition: 'color 0.2s ease'
-                      }}
-                    >
-                      <ChevronRight size={14} style={{ color: activeHeading === toc.id ? 'var(--primary)' : 'var(--text-muted)' }} />
-                      <span>{toc.title}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
+
+              {isTocOpen && (
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  {guide.tableOfContents.map((toc) => (
+                    <li key={toc.id}>
+                      <button
+                        onClick={() => scrollToSection(toc.id)}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          padding: '0.3rem 0',
+                          textAlign: 'left',
+                          color: activeHeading === toc.id ? 'var(--primary)' : 'var(--text-main)',
+                          fontWeight: activeHeading === toc.id ? 700 : 500,
+                          fontSize: '0.92rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '0.5rem',
+                          width: '100%',
+                          transition: 'color 0.2s ease',
+                          lineHeight: 1.4
+                        }}
+                      >
+                        <ChevronRight size={15} style={{ color: activeHeading === toc.id ? 'var(--primary)' : 'var(--text-muted)', flexShrink: 0, marginTop: '2px' }} />
+                        <span>{toc.title}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </nav>
 
             {/* Content Sections */}
@@ -406,7 +430,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                 <section key={section.id} id={section.id} style={{ marginBottom: '3.5rem', scrollMarginTop: '100px' }}>
                   
                   <h2 style={{
-                    fontSize: 'clamp(1.45rem, 3.5vw, 1.85rem)',
+                    fontSize: 'clamp(1.4rem, 4vw, 1.85rem)',
                     fontWeight: 800,
                     lineHeight: 1.3,
                     color: 'var(--text-main)',
@@ -466,27 +490,38 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                     </div>
                   )}
 
-                  {/* Data Table if present */}
+                  {/* Data Table with Mobile Horizontal Swipe */}
                   {section.table && (
-                    <div style={{ margin: '1.75rem 0', overflowX: 'auto', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
-                      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.92rem', textAlign: 'left' }}>
-                        <thead>
-                          <tr style={{ background: 'var(--bg-card)', borderBottom: '2px solid var(--border-color)' }}>
-                            {section.table.headers.map((h, hIdx) => (
-                              <th key={hIdx} style={{ padding: '0.85rem 1.1rem', fontWeight: 700, color: 'var(--text-main)' }}>{h}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {section.table.rows.map((row, rIdx) => (
-                            <tr key={rIdx} style={{ borderBottom: '1px solid var(--border-light)', background: rIdx % 2 === 0 ? 'transparent' : 'rgba(0, 0, 0, 0.015)' }}>
-                              {row.map((cell, cIdx) => (
-                                <td key={cIdx} style={{ padding: '0.85rem 1.1rem', color: cIdx === 0 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: cIdx === 0 ? 600 : 400 }}>{cell}</td>
+                    <div style={{ margin: '1.75rem 0' }}>
+                      <div style={{
+                        overflowX: 'auto',
+                        WebkitOverflowScrolling: 'touch',
+                        borderRadius: 'var(--radius-md)',
+                        border: '1px solid var(--border-light)',
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)'
+                      }}>
+                        <table style={{ width: '100%', minWidth: '520px', borderCollapse: 'collapse', fontSize: '0.92rem', textAlign: 'left' }}>
+                          <thead>
+                            <tr style={{ background: 'var(--bg-card)', borderBottom: '2px solid var(--border-color)' }}>
+                              {section.table.headers.map((h, hIdx) => (
+                                <th key={hIdx} style={{ padding: '0.85rem 1.1rem', fontWeight: 700, color: 'var(--text-main)', whiteSpace: 'nowrap' }}>{h}</th>
                               ))}
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {section.table.rows.map((row, rIdx) => (
+                              <tr key={rIdx} style={{ borderBottom: '1px solid var(--border-light)', background: rIdx % 2 === 0 ? 'transparent' : 'rgba(0, 0, 0, 0.015)' }}>
+                                {row.map((cell, cIdx) => (
+                                  <td key={cIdx} style={{ padding: '0.85rem 1.1rem', color: cIdx === 0 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: cIdx === 0 ? 600 : 400 }}>{cell}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.4rem', textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.3rem' }}>
+                        <span>⇄ Desliza horizontalmente para ver la tabla completa</span>
+                      </div>
                     </div>
                   )}
 

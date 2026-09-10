@@ -26,7 +26,12 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeHeading, setActiveHeading] = useState('');
   const [openFaqIndices, setOpenFaqIndices] = useState([0]); // First FAQ open by default
-  const [isTocOpen, setIsTocOpen] = useState(true);
+  const [isTocOpen, setIsTocOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth > 768;
+    }
+    return false;
+  });
 
   // Reading progress tracker
   useEffect(() => {
@@ -198,7 +203,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   }
 
   return (
-    <article className="guide-detail-page" style={{ position: 'relative', paddingBottom: '6rem' }}>
+    <article className="guide-detail-page" style={{ position: 'relative', paddingBottom: '5rem', overflowX: 'hidden' }}>
       
       {/* Top Reading Progress Bar */}
       <div 
@@ -215,115 +220,96 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
       />
 
       {/* Header Container */}
-      <div style={{
+      <div className="guide-header-hero" style={{
         background: 'linear-gradient(180deg, rgba(76, 175, 79, 0.08) 0%, var(--bg-main) 100%)',
-        borderBottom: '1px solid var(--border-light)',
-        padding: 'clamp(2rem, 4vw, 3.5rem) 0 2.5rem'
+        borderBottom: '1px solid var(--border-light)'
       }}>
         <div className="container" style={{ maxWidth: '1000px' }}>
           
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" style={{ marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
+          <nav aria-label="Breadcrumb" style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
             <button 
               onClick={() => navigate('/')} 
               style={{ background: 'none', border: 'none', padding: 0, color: 'var(--text-muted)', cursor: 'pointer' }}
             >
               Inicio
             </button>
-            <ChevronRight size={14} />
+            <ChevronRight size={13} />
             <button 
               onClick={() => navigate('/guias')} 
               style={{ background: 'none', border: 'none', padding: 0, color: 'var(--text-muted)', cursor: 'pointer' }}
             >
               Guías
             </button>
-            <ChevronRight size={14} />
+            <ChevronRight size={13} />
             <span style={{ color: 'var(--primary)', fontWeight: 600 }}>{guide.category}</span>
           </nav>
 
           {/* Badges */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
             <span style={{
               background: 'var(--primary)',
               color: '#ffffff',
-              fontSize: '0.75rem',
+              fontSize: '0.74rem',
               fontWeight: 700,
               padding: '0.25rem 0.75rem',
               borderRadius: 'var(--radius-full)',
               textTransform: 'uppercase',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.04em'
             }}>
               {guide.category}
-            </span>
-            <span style={{
-              background: 'rgba(76, 175, 79, 0.12)',
-              color: 'var(--primary)',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              padding: '0.25rem 0.75rem',
-              borderRadius: 'var(--radius-full)'
-            }}>
-              Objetivo SEO: {guide.keyword}
             </span>
           </div>
 
           {/* Main H1 Title */}
           <h1 style={{
-            fontSize: 'clamp(1.8rem, 4.5vw, 2.9rem)',
+            fontSize: 'clamp(1.5rem, 4.5vw, 2.75rem)',
             fontWeight: 800,
             lineHeight: 1.2,
             letterSpacing: '-0.02em',
-            marginBottom: '1.25rem',
+            marginBottom: '1rem',
             color: 'var(--text-main)'
           }}>
             {guide.title}
           </h1>
 
           <p style={{
-            fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
+            fontSize: 'clamp(0.98rem, 2.2vw, 1.15rem)',
             color: 'var(--text-muted)',
             lineHeight: 1.6,
-            marginBottom: '1.75rem'
+            marginBottom: '1.5rem'
           }}>
             {guide.excerpt}
           </p>
 
           {/* Meta Information Bar */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '1.25rem',
-            paddingTop: '1.25rem',
-            borderTop: '1px solid var(--border-light)'
-          }}>
+          <div className="guide-meta-bar">
             {/* Author */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <img 
                 src={guide.author.avatar} 
                 alt={guide.author.name}
-                style={{ width: '42px', height: '42px', borderRadius: '50%', objectFit: 'contain', background: 'var(--bg-card)', border: '1px solid var(--border-light)' }} 
+                style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'contain', background: 'var(--bg-card)', border: '1px solid var(--border-light)', flexShrink: 0 }} 
               />
               <div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-main)' }}>{guide.author.name}</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{guide.author.role}</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-main)', lineHeight: 1.25 }}>{guide.author.name}</div>
+                <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>{guide.author.role}</div>
               </div>
             </div>
 
-            {/* Read Time & Dates */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
+            {/* Read Time, Dates & Share */}
+            <div className="guide-meta-details">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', whiteSpace: 'nowrap' }}>
-                <Clock size={15} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {guide.readTime}
+                <Clock size={14} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {guide.readTime}
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', whiteSpace: 'nowrap' }}>
-                <Calendar size={15} style={{ color: 'var(--primary)', flexShrink: 0 }} /> Actualizado: {guide.updatedAt}
+                <Calendar size={14} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {guide.updatedAt}
               </span>
               <button 
                 onClick={handleShare}
                 aria-label="Compartir artículo"
                 style={{
-                  background: 'none',
+                  background: 'var(--bg-card)',
                   border: '1px solid var(--border-light)',
                   padding: '0.35rem 0.75rem',
                   borderRadius: 'var(--radius-full)',
@@ -332,11 +318,12 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                   alignItems: 'center',
                   gap: '0.35rem',
                   cursor: 'pointer',
-                  fontSize: '0.8rem',
-                  transition: 'all 0.2s ease'
+                  fontSize: '0.78rem',
+                  transition: 'all 0.2s ease',
+                  fontWeight: 600
                 }}
               >
-                <Share2 size={14} /> Compartir
+                <Share2 size={13} /> Compartir
               </button>
             </div>
 
@@ -346,54 +333,71 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
       </div>
 
       {/* Main Content Layout */}
-      <div className="container" style={{ maxWidth: '1120px', marginTop: '3rem' }}>
+      <div className="container" style={{ maxWidth: '1120px', marginTop: 'clamp(1.5rem, 3.5vw, 2.75rem)' }}>
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr',
-          gap: '3rem',
+          gap: 'clamp(1.75rem, 3vw, 3rem)',
           alignItems: 'start'
         }} className="guide-layout-grid">
           
           {/* Main Article Body */}
           <main style={{ maxWidth: '760px', width: '100%', margin: '0 auto' }}>
             
-            {/* Table of Contents Box (Collapsible on mobile, clean on desktop) */}
+            {/* Table of Contents Box (Collapsible on mobile with clear count badge) */}
             <nav 
               aria-label="Índice del artículo"
               style={{
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border-color)',
                 borderRadius: 'var(--radius-lg)',
-                padding: '1.25rem 1.5rem',
-                marginBottom: '3rem',
+                padding: 'clamp(1rem, 2.5vw, 1.4rem)',
+                marginBottom: 'clamp(1.75rem, 3.5vw, 2.75rem)',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)'
               }}
             >
-              <div 
+              <button 
+                type="button"
                 onClick={() => setIsTocOpen(!isTocOpen)}
+                aria-expanded={isTocOpen}
                 style={{
+                  width: '100%',
+                  background: 'none',
+                  border: 'none',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   cursor: 'pointer',
                   userSelect: 'none',
-                  paddingBottom: isTocOpen ? '1rem' : '0',
+                  padding: 0,
+                  paddingBottom: isTocOpen ? '0.85rem' : '0',
                   borderBottom: isTocOpen ? '1px solid var(--border-light)' : 'none',
-                  marginBottom: isTocOpen ? '1rem' : '0'
+                  marginBottom: isTocOpen ? '0.85rem' : '0',
+                  textAlign: 'left'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontWeight: 800, fontSize: '1.05rem' }}>
-                  <BookOpen size={20} />
-                  <span>Índice de Contenidos</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontWeight: 800, fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)' }}>
+                  <BookOpen size={18} style={{ flexShrink: 0 }} />
+                  <span>Índice ({guide.tableOfContents.length} apartados)</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-                  <span>{isTocOpen ? 'Ocultar' : 'Ver índice'}</span>
-                  {isTocOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                <div style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '0.35rem', 
+                  fontSize: '0.8rem', 
+                  color: 'var(--primary)', 
+                  fontWeight: 600,
+                  background: 'rgba(76, 175, 79, 0.08)',
+                  padding: '0.25rem 0.65rem',
+                  borderRadius: 'var(--radius-full)'
+                }}>
+                  <span>{isTocOpen ? 'Plegar' : 'Desplegar'}</span>
+                  {isTocOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                 </div>
-              </div>
+              </button>
 
               {isTocOpen && (
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                   {guide.tableOfContents.map((toc) => (
                     <li key={toc.id}>
                       <button
@@ -401,21 +405,21 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                         style={{
                           background: 'none',
                           border: 'none',
-                          padding: '0.3rem 0',
+                          padding: '0.25rem 0',
                           textAlign: 'left',
                           color: activeHeading === toc.id ? 'var(--primary)' : 'var(--text-main)',
                           fontWeight: activeHeading === toc.id ? 700 : 500,
-                          fontSize: '0.92rem',
+                          fontSize: 'clamp(0.85rem, 2vw, 0.92rem)',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'flex-start',
-                          gap: '0.5rem',
+                          gap: '0.45rem',
                           width: '100%',
                           transition: 'color 0.2s ease',
-                          lineHeight: 1.4
+                          lineHeight: 1.45
                         }}
                       >
-                        <ChevronRight size={15} style={{ color: activeHeading === toc.id ? 'var(--primary)' : 'var(--text-muted)', flexShrink: 0, marginTop: '2px' }} />
+                        <ChevronRight size={14} style={{ color: activeHeading === toc.id ? 'var(--primary)' : 'var(--text-muted)', flexShrink: 0, marginTop: '3px' }} />
                         <span>{toc.title}</span>
                       </button>
                     </li>
@@ -425,17 +429,17 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
             </nav>
 
             {/* Content Sections */}
-            <div className="article-body" style={{ color: 'var(--text-main)', fontSize: '1.05rem', lineHeight: 1.8 }}>
+            <div className="article-body">
               {guide.sections.map((section) => (
-                <section key={section.id} id={section.id} style={{ marginBottom: '3.5rem', scrollMarginTop: '100px' }}>
+                <section key={section.id} id={section.id} style={{ marginBottom: 'clamp(2rem, 4vw, 3.25rem)', scrollMarginTop: '100px' }}>
                   
                   <h2 style={{
-                    fontSize: 'clamp(1.4rem, 4vw, 1.85rem)',
+                    fontSize: 'clamp(1.25rem, 3.8vw, 1.75rem)',
                     fontWeight: 800,
                     lineHeight: 1.3,
                     color: 'var(--text-main)',
-                    marginBottom: '1.2rem',
-                    paddingBottom: '0.5rem',
+                    marginBottom: '0.9rem',
+                    paddingBottom: '0.45rem',
                     borderBottom: '2px solid rgba(76, 175, 79, 0.2)'
                   }}>
                     {section.title}
@@ -449,7 +453,6 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                         return (
                           <p 
                             key={pIdx} 
-                            style={{ marginBottom: '1.15rem' }}
                             dangerouslySetInnerHTML={{ __html: formatted }} 
                           />
                         );
@@ -459,12 +462,12 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
 
                   {/* Bullet list if present */}
                   {section.bullets && (
-                    <ul style={{ listStyle: 'none', padding: 0, margin: '1.5rem 0', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: '1.25rem 0', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                       {section.bullets.map((bullet, bIdx) => {
                         const formatted = bullet.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                         return (
-                          <li key={bIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.98rem' }}>
-                            <CheckCircle2 size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '4px' }} />
+                          <li key={bIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', fontSize: 'clamp(0.92rem, 2.2vw, 0.98rem)', lineHeight: 1.55 }}>
+                            <CheckCircle2 size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
                             <div dangerouslySetInnerHTML={{ __html: formatted }} />
                           </li>
                         );
@@ -475,36 +478,37 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                   {/* Callout Box if present */}
                   {section.callout && (
                     <div style={{
-                      margin: '1.75rem 0',
-                      padding: '1.25rem 1.5rem',
+                      margin: 'clamp(1.25rem, 2.5vw, 1.75rem) 0',
+                      padding: 'clamp(1rem, 2.5vw, 1.35rem)',
                       borderRadius: 'var(--radius-md)',
                       background: section.callout.type === 'tip' ? 'rgba(76, 175, 79, 0.08)' : 'rgba(255, 152, 0, 0.08)',
                       borderLeft: `4px solid ${section.callout.type === 'tip' ? 'var(--primary)' : '#ff9800'}`,
                       color: 'var(--text-main)'
                     }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, marginBottom: '0.4rem', color: section.callout.type === 'tip' ? 'var(--primary)' : '#e65100' }}>
-                        {section.callout.type === 'tip' ? <Sparkles size={18} /> : <AlertCircle size={18} />}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontWeight: 700, marginBottom: '0.35rem', color: section.callout.type === 'tip' ? 'var(--primary)' : '#e65100', fontSize: '0.96rem' }}>
+                        {section.callout.type === 'tip' ? <Sparkles size={17} /> : <AlertCircle size={17} />}
                         <span>{section.callout.title}</span>
                       </div>
-                      <p style={{ fontSize: '0.95rem', margin: 0, lineHeight: 1.6 }}>{section.callout.text}</p>
+                      <p style={{ fontSize: '0.92rem', margin: 0, lineHeight: 1.55 }}>{section.callout.text}</p>
                     </div>
                   )}
 
                   {/* Data Table with Mobile Horizontal Swipe */}
                   {section.table && (
-                    <div style={{ margin: '1.75rem 0' }}>
+                    <div style={{ margin: 'clamp(1.25rem, 2.5vw, 1.75rem) 0' }}>
                       <div style={{
                         overflowX: 'auto',
                         WebkitOverflowScrolling: 'touch',
                         borderRadius: 'var(--radius-md)',
                         border: '1px solid var(--border-light)',
-                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)'
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
+                        maxWidth: '100%'
                       }}>
-                        <table style={{ width: '100%', minWidth: '520px', borderCollapse: 'collapse', fontSize: '0.92rem', textAlign: 'left' }}>
+                        <table style={{ width: '100%', minWidth: '460px', borderCollapse: 'collapse', fontSize: '0.88rem', textAlign: 'left' }}>
                           <thead>
                             <tr style={{ background: 'var(--bg-card)', borderBottom: '2px solid var(--border-color)' }}>
                               {section.table.headers.map((h, hIdx) => (
-                                <th key={hIdx} style={{ padding: '0.85rem 1.1rem', fontWeight: 700, color: 'var(--text-main)', whiteSpace: 'nowrap' }}>{h}</th>
+                                <th key={hIdx} style={{ padding: '0.7rem 0.85rem', fontWeight: 700, color: 'var(--text-main)', whiteSpace: 'nowrap' }}>{h}</th>
                               ))}
                             </tr>
                           </thead>
@@ -512,15 +516,15 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                             {section.table.rows.map((row, rIdx) => (
                               <tr key={rIdx} style={{ borderBottom: '1px solid var(--border-light)', background: rIdx % 2 === 0 ? 'transparent' : 'rgba(0, 0, 0, 0.015)' }}>
                                 {row.map((cell, cIdx) => (
-                                  <td key={cIdx} style={{ padding: '0.85rem 1.1rem', color: cIdx === 0 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: cIdx === 0 ? 600 : 400 }}>{cell}</td>
+                                  <td key={cIdx} style={{ padding: '0.7rem 0.85rem', color: cIdx === 0 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: cIdx === 0 ? 600 : 400 }}>{cell}</td>
                                 ))}
                               </tr>
                             ))}
                           </tbody>
                         </table>
                       </div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.4rem', textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.3rem' }}>
-                        <span>⇄ Desliza horizontalmente para ver la tabla completa</span>
+                      <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.4rem', textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.3rem' }}>
+                        <span>⇄ Desliza horizontalmente para ver la tabla</span>
                       </div>
                     </div>
                   )}
@@ -530,26 +534,26 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
             </div>
 
             {/* Interactive Free Audit Banner inside article */}
-            <div style={{
+            <div className="guide-cta-box" style={{
               background: 'linear-gradient(135deg, rgba(76, 175, 79, 0.12) 0%, rgba(30, 77, 43, 0.08) 100%)',
               border: '1px solid rgba(76, 175, 79, 0.35)',
               borderRadius: 'var(--radius-lg)',
-              padding: '2rem',
-              margin: '3.5rem 0',
+              padding: 'clamp(1.25rem, 3.5vw, 2rem)',
+              margin: 'clamp(2rem, 4vw, 3.25rem) 0',
               textAlign: 'center'
             }}>
-              <Zap size={32} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }} />
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--text-main)' }}>
+              <Zap size={30} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }} />
+              <h3 style={{ fontSize: 'clamp(1.15rem, 3.5vw, 1.35rem)', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--text-main)', lineHeight: 1.3 }}>
                 ¿Quieres saber cuánto puedes ahorrar con tu factura actual?
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', maxWidth: '580px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', maxWidth: '580px', margin: '0 auto 1.35rem', lineHeight: 1.6 }}>
                 En <strong>tuLuz</strong> analizamos tu factura de electricidad o gas sin ningún compromiso. Comparamos más de 50 comercializadoras y te decimos cuál es tu opción más rentable.
               </p>
-              <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <div className="guide-cta-buttons">
                 <button 
                   onClick={() => onOpenModal({ clientType: 'particular' })}
                   className="btn btn-primary"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
                 >
                   <span>Solicitar Estudio Gratuito</span>
                   <ArrowRight size={18} />
@@ -557,7 +561,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                 <a 
                   href={`tel:${companyInfo.phoneRaw}`}
                   className="btn btn-secondary"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
                 >
                   <Phone size={17} style={{ color: 'var(--primary)' }} />
                   <span>{companyInfo.phone}</span>
@@ -566,15 +570,15 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
             </div>
 
             {/* Frequently Asked Questions Section (FAQPage Schema target) */}
-            <section id="preguntas-frecuentes" style={{ marginBottom: '4rem', scrollMarginTop: '100px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
-                <HelpCircle size={24} style={{ color: 'var(--primary)' }} />
-                <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)', margin: 0 }}>
+            <section id="preguntas-frecuentes" style={{ marginBottom: 'clamp(2.5rem, 4vw, 4rem)', scrollMarginTop: '100px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                <HelpCircle size={22} style={{ color: 'var(--primary)', flexShrink: 0 }} />
+                <h2 style={{ fontSize: 'clamp(1.3rem, 3.8vw, 1.6rem)', fontWeight: 800, color: 'var(--text-main)', margin: 0 }}>
                   Preguntas Frecuentes
                 </h2>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {guide.faqs.map((faq, idx) => {
                   const isOpen = openFaqIndices.includes(idx);
                   return (
@@ -592,32 +596,33 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                         onClick={() => toggleFaq(idx)}
                         style={{
                           width: '100%',
-                          padding: '1.1rem 1.3rem',
+                          padding: '0.95rem 1.15rem',
                           background: 'none',
                           border: 'none',
                           textAlign: 'left',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          gap: '1rem',
+                          gap: '0.75rem',
                           cursor: 'pointer',
                           color: 'var(--text-main)',
                           fontWeight: 700,
-                          fontSize: '1.02rem'
+                          fontSize: 'clamp(0.92rem, 2.5vw, 1.02rem)',
+                          lineHeight: 1.35
                         }}
                       >
                         <span>{faq.q}</span>
-                        {isOpen ? <ChevronUp size={20} style={{ color: 'var(--primary)', flexShrink: 0 }} /> : <ChevronDown size={20} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />}
+                        {isOpen ? <ChevronUp size={18} style={{ color: 'var(--primary)', flexShrink: 0 }} /> : <ChevronDown size={18} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />}
                       </button>
 
                       {isOpen && (
                         <div style={{
-                          padding: '0 1.3rem 1.25rem',
+                          padding: '0 1.15rem 1.15rem',
                           color: 'var(--text-muted)',
-                          fontSize: '0.96rem',
-                          lineHeight: 1.65,
+                          fontSize: '0.92rem',
+                          lineHeight: 1.62,
                           borderTop: '1px solid var(--border-light)',
-                          paddingTop: '0.85rem'
+                          paddingTop: '0.75rem'
                         }}>
                           {faq.a}
                         </div>
@@ -629,30 +634,26 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
             </section>
 
             {/* Author Credential Bio Box */}
-            <div style={{
+            <div className="guide-author-box" style={{
               background: 'var(--bg-card)',
               border: '1px solid var(--border-light)',
               borderRadius: 'var(--radius-lg)',
-              padding: '1.75rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1.25rem',
-              marginBottom: '3.5rem',
-              flexWrap: 'wrap'
+              padding: 'clamp(1.25rem, 3vw, 1.75rem)',
+              marginBottom: 'clamp(2rem, 4vw, 3.5rem)'
             }}>
               <img 
                 src={guide.author.avatar} 
                 alt={guide.author.name}
-                style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'contain', background: 'var(--bg-main)', border: '1px solid var(--border-light)' }} 
+                style={{ width: '52px', height: '52px', borderRadius: '50%', objectFit: 'contain', background: 'var(--bg-main)', border: '1px solid var(--border-light)', flexShrink: 0 }} 
               />
               <div style={{ flex: 1, minWidth: '220px' }}>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.2rem' }}>
+                <div style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.2rem' }}>
                   Artículo redactado y revisado por {guide.author.name}
                 </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600, marginBottom: '0.4rem' }}>
+                <div style={{ fontSize: '0.82rem', color: 'var(--primary)', fontWeight: 600, marginBottom: '0.4rem' }}>
                   {guide.author.role}
                 </div>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.55 }}>
                   En tuLuz analizamos mensualmente miles de facturas y el mercado mayorista diario para ofrecer a familias, pymes y comunidades información veraz, sin letra pequeña.
                 </p>
               </div>
@@ -660,11 +661,11 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
 
             {/* Related Guides / Cross Linking */}
             {relatedGuides.length > 0 && (
-              <section style={{ borderTop: '1px solid var(--border-light)', paddingTop: '2.5rem' }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '1.25rem' }}>
+              <section style={{ borderTop: '1px solid var(--border-light)', paddingTop: '2.25rem' }}>
+                <h3 style={{ fontSize: 'clamp(1.15rem, 3vw, 1.3rem)', fontWeight: 800, color: 'var(--text-main)', marginBottom: '1.25rem' }}>
                   Guías Relacionadas de Ahorro
                 </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
                   {relatedGuides.map((rel) => (
                     <div 
                       key={rel.id}
@@ -673,7 +674,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                         background: 'var(--bg-card)',
                         border: '1px solid var(--border-light)',
                         borderRadius: 'var(--radius-md)',
-                        padding: '1.25rem',
+                        padding: '1.15rem',
                         cursor: 'pointer',
                         transition: 'all 0.2s ease'
                       }}
@@ -682,7 +683,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                       <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase' }}>
                         {rel.category}
                       </span>
-                      <h4 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0.5rem 0', color: 'var(--text-main)', lineHeight: 1.35 }}>
+                      <h4 style={{ fontSize: '1rem', fontWeight: 700, margin: '0.45rem 0', color: 'var(--text-main)', lineHeight: 1.35 }}>
                         {rel.title}
                       </h4>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.82rem', color: 'var(--primary)', fontWeight: 600 }}>
@@ -701,11 +702,11 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                 style={{
                   background: 'none',
                   border: '1px solid var(--border-color)',
-                  padding: '0.75rem 1.5rem',
+                  padding: '0.7rem 1.4rem',
                   borderRadius: 'var(--radius-full)',
                   color: 'var(--text-main)',
                   fontWeight: 600,
-                  fontSize: '0.92rem',
+                  fontSize: '0.9rem',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
@@ -807,6 +808,78 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
       </div>
 
       <style>{`
+        .guide-detail-page {
+          overflow-x: hidden;
+        }
+        .guide-header-hero {
+          padding: clamp(1.75rem, 4vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+        }
+        .guide-meta-bar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 1.25rem;
+          padding-top: 1.25rem;
+          border-top: 1px solid var(--border-light);
+        }
+        .guide-meta-details {
+          display: flex;
+          align-items: center;
+          gap: 1.15rem;
+          font-size: 0.82rem;
+          color: var(--text-muted);
+          flex-wrap: wrap;
+        }
+        .article-body {
+          color: var(--text-main);
+          word-break: break-word;
+          overflow-wrap: break-word;
+        }
+        .article-body p {
+          font-size: clamp(0.98rem, 2.3vw, 1.05rem);
+          line-height: 1.7;
+          margin-bottom: 1.15rem;
+        }
+        .guide-cta-buttons {
+          display: flex;
+          gap: 0.75rem;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .guide-author-box {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          flex-wrap: wrap;
+        }
+
+        @media (max-width: 640px) {
+          .guide-meta-bar {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0.85rem !important;
+          }
+          .guide-meta-details {
+            width: 100% !important;
+            justify-content: space-between !important;
+            gap: 0.5rem !important;
+          }
+          .guide-cta-buttons {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .guide-cta-buttons .btn {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .guide-author-box {
+            flex-direction: column !important;
+            text-align: center !important;
+            align-items: center !important;
+          }
+        }
+
         @media (min-width: 960px) {
           .guide-layout-grid {
             grid-template-columns: 1fr 310px !important;

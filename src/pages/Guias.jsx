@@ -313,7 +313,7 @@ export default function Guias({ navigate, onOpenModal }) {
                 </div>
 
                 <h3 style={{
-                  fontSize: '1.22rem',
+                  fontSize: 'clamp(1.1rem, 2.5vw, 1.25rem)',
                   fontWeight: 800,
                   lineHeight: 1.35,
                   color: 'var(--text-main)',
@@ -341,22 +341,14 @@ export default function Guias({ navigate, onOpenModal }) {
                   justifyContent: 'space-between',
                   gap: '0.75rem'
                 }}>
-                  <span 
-                    title={`#${guide.keyword}`}
-                    style={{
-                      fontSize: '0.75rem',
-                      color: 'var(--text-muted)',
-                      fontFamily: 'monospace',
-                      background: 'var(--bg-main)',
-                      padding: '0.25rem 0.55rem',
-                      borderRadius: '4px',
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      maxWidth: '62%'
-                    }}
-                  >
-                    #{guide.keyword}
+                  <span style={{
+                    fontSize: '0.78rem',
+                    color: 'var(--text-muted)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem'
+                  }}>
+                    <Calendar size={13} style={{ color: 'var(--primary)' }} /> {guide.updatedAt}
                   </span>
 
                   <span style={{
@@ -369,7 +361,7 @@ export default function Guias({ navigate, onOpenModal }) {
                     whiteSpace: 'nowrap',
                     flexShrink: 0
                   }}>
-                    Leer más <ChevronRight size={16} style={{ flexShrink: 0 }} />
+                    Leer guía <ChevronRight size={16} style={{ flexShrink: 0 }} />
                   </span>
                 </div>
               </div>

@@ -198,7 +198,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   }
 
   return (
-    <article className="guide-detail-page" style={{ position: 'relative', paddingBottom: '5rem', overflowX: 'hidden' }}>
+    <article className="guide-detail-page" style={{ position: 'relative', paddingBottom: '5rem' }}>
       
       {/* Top Reading Progress Bar */}
       <div 
@@ -333,7 +333,6 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
           display: 'grid',
           gridTemplateColumns: 'minmax(0, 1fr)',
           gap: 'clamp(1.75rem, 3vw, 3rem)',
-          alignItems: 'start',
           width: '100%',
           maxWidth: '100%'
         }} className="guide-layout-grid">
@@ -717,88 +716,89 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
           </main>
 
           {/* Sticky Sidebar on Desktop */}
-          <aside className="desktop-guide-sidebar" style={{ display: 'none', position: 'sticky', top: '100px' }}>
-            
-            {/* Quick Contact & Free Audit Box */}
-            <div style={{
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border-color)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '1.5rem',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-              marginBottom: '1.5rem'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                <Zap size={16} />
-                <span>Estudio 100% Gratuito</span>
+          <aside className="desktop-guide-sidebar" style={{ display: 'none', height: '100%' }}>
+            <div style={{ position: 'sticky', top: '90px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              
+              {/* Quick Contact & Free Audit Box */}
+              <div style={{
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '1.5rem',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+                  <Zap size={16} />
+                  <span>Estudio 100% Gratuito</span>
+                </div>
+                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.6rem', lineHeight: 1.3 }}>
+                  ¿Cuánto puedes ahorrar en tu luz?
+                </h4>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+                  Envíanos tu factura y nuestro equipo revisará tus potencias y contratos entre más de 50 comercializadoras.
+                </p>
+                <button 
+                  onClick={() => onOpenModal({ clientType: 'particular' })}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    borderRadius: 'var(--radius-full)',
+                    background: 'var(--primary)',
+                    color: '#ffffff',
+                    border: 'none',
+                    fontWeight: 700,
+                    fontSize: '0.92rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.4rem',
+                    boxShadow: '0 3px 12px rgba(76, 175, 79, 0.3)'
+                  }}
+                >
+                  <span>Analizar mi factura</span>
+                  <ArrowRight size={16} />
+                </button>
               </div>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.6rem', lineHeight: 1.3 }}>
-                ¿Cuánto puedes ahorrar en tu luz?
-              </h4>
-              <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '1.25rem' }}>
-                Envíanos tu factura y nuestro equipo revisará tus potencias y contratos entre más de 50 comercializadoras.
-              </p>
-              <button 
-                onClick={() => onOpenModal({ clientType: 'particular' })}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem 1rem',
-                  borderRadius: 'var(--radius-full)',
-                  background: 'var(--primary)',
-                  color: '#ffffff',
-                  border: 'none',
-                  fontWeight: 700,
-                  fontSize: '0.92rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.4rem',
-                  boxShadow: '0 3px 12px rgba(76, 175, 79, 0.3)'
-                }}
-              >
-                <span>Analizar mi factura</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
 
-            {/* Direct WhatsApp Assistance Box */}
-            <div style={{
-              background: 'rgba(37, 211, 102, 0.08)',
-              border: '1px solid rgba(37, 211, 102, 0.25)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '1.25rem',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.75rem'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#25D366', fontWeight: 700, fontSize: '0.92rem' }}>
-                <MessageCircle size={18} />
-                <span>Atención Rápida WhatsApp</span>
+              {/* Direct WhatsApp Assistance Box */}
+              <div style={{
+                background: 'rgba(37, 211, 102, 0.08)',
+                border: '1px solid rgba(37, 211, 102, 0.25)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '1.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.75rem'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#25D366', fontWeight: 700, fontSize: '0.92rem' }}>
+                  <MessageCircle size={18} />
+                  <span>Atención Rápida WhatsApp</span>
+                </div>
+                <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.45 }}>
+                  ¿Tienes dudas sobre esta guía o tu factura? Escríbenos directamente y un asesor te responderá hoy mismo.
+                </p>
+                <a 
+                  href={companyInfo.socials.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    padding: '0.65rem 1rem',
+                    borderRadius: 'var(--radius-full)',
+                    background: '#25D366',
+                    color: '#ffffff',
+                    fontWeight: 700,
+                    fontSize: '0.88rem',
+                    textDecoration: 'none',
+                    textAlign: 'center',
+                    display: 'inline-block'
+                  }}
+                >
+                  Abrir WhatsApp
+                </a>
               </div>
-              <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.45 }}>
-                ¿Tienes dudas sobre esta guía o tu factura? Escríbenos directamente y un asesor te responderá hoy mismo.
-              </p>
-              <a 
-                href={companyInfo.socials.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  padding: '0.65rem 1rem',
-                  borderRadius: 'var(--radius-full)',
-                  background: '#25D366',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  fontSize: '0.88rem',
-                  textDecoration: 'none',
-                  textAlign: 'center',
-                  display: 'inline-block'
-                }}
-              >
-                Abrir WhatsApp
-              </a>
-            </div>
 
+            </div>
           </aside>
 
         </div>
@@ -806,7 +806,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
 
       <style>{`
         .guide-detail-page {
-          overflow-x: hidden;
+          overflow-x: clip;
         }
         .guide-header-hero {
           padding: clamp(1.75rem, 4vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
@@ -896,10 +896,12 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
 
         @media (min-width: 960px) {
           .guide-layout-grid {
-            grid-template-columns: 1fr 310px !important;
+            grid-template-columns: minmax(0, 1fr) 320px !important;
+            align-items: stretch !important;
           }
           .desktop-guide-sidebar {
             display: block !important;
+            height: 100% !important;
           }
         }
       `}</style>

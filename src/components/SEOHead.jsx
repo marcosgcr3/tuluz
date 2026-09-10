@@ -126,28 +126,28 @@ const seoDataMap = {
     canonical: 'https://tu-luz.es/guias'
   },
   '/guias/ahorrar-factura-de-la-luz': {
-    title: 'Cómo Ahorrar en la Factura de la Luz en 2026 | Guía tuLuz',
-    description: 'Descubre cómo ahorrar en la factura de la luz hasta un 35%: optimización de potencia (kW), tramos horarios 2.0TD (punta, llano, valle) y revisión de tarifas ocultas.',
+    title: 'Cómo Ahorrar en la Factura de la Luz en 2026: 10 Consejos Reales | tuLuz',
+    description: 'Descubre 10 consejos reales y contrastados para ahorrar en la factura de la luz hasta un 35%: potencia en kW, tramos 2.0TD, tarifas ocultas y hábitos eficaces.',
     canonical: 'https://tu-luz.es/guias/ahorrar-factura-de-la-luz'
   },
   '/guias/tarifas-luz-empresas': {
-    title: 'Tarifas de Luz para Empresas y Pymes | Optimización Energética tuLuz',
-    description: 'Descubre cómo elegir y negociar las mejores tarifas de luz para empresas (3.0TD y 6.XTD). Elimina penalizaciones por maxímetro, reactiva y optimiza tus contratos.',
+    title: 'Tarifas de Luz para Empresas: 6 Claves de Optimización | tuLuz',
+    description: 'Descubre las 6 claves esenciales en tarifas de luz para empresas (3.0TD y 6.XTD). Elimina penalizaciones por maxímetro, reactiva y optimiza tus contratos.',
     canonical: 'https://tu-luz.es/guias/tarifas-luz-empresas'
   },
   '/guias/autoconsumo-solar-comunidades-de-vecinos': {
-    title: 'Autoconsumo Solar en Comunidades de Vecinos | Normativa y Ahorro tuLuz',
-    description: 'Todo sobre el autoconsumo solar en comunidades de propietarios: ley de propiedad horizontal, mayorías necesarias, coeficientes de reparto beta y reducción de cuotas.',
+    title: 'Autoconsumo Solar en Comunidades de Vecinos: 6 Pasos | tuLuz',
+    description: 'Descubre los 6 pasos y la normativa del autoconsumo solar en comunidades de vecinos: Ley de Propiedad Horizontal, mayorías, coeficientes Beta y ayudas IRPF.',
     canonical: 'https://tu-luz.es/guias/autoconsumo-solar-comunidades-de-vecinos'
   },
   '/guias/comparador-comercializadoras-luz-y-gas': {
-    title: 'Comparador de Comercializadoras de Luz y Gas en España | Guía tuLuz',
-    description: 'Compara más de 50 comercializadoras de electricidad y gas natural de forma imparcial. Conoce la verdad sobre mercado libre vs regulado, letras pequeñas y permanencias.',
+    title: 'Comparador de Comercializadoras de Luz y Gas: 5 Trampas | tuLuz',
+    description: 'Descubre las 5 trampas de las comercializadoras de luz y gas y el checklist de 6 puntos clave para comparar ofertas sin sorpresas ni costes ocultos.',
     canonical: 'https://tu-luz.es/guias/comparador-comercializadoras-luz-y-gas'
   },
   '/guias/placas-solares-particulares-precio': {
-    title: 'Placas Solares para Particulares: Precio y Rentabilidad 2026 | tuLuz',
-    description: '¿Cuánto cuesta instalar placas solares en una vivienda particular? Desglose de precios en 2026, número de paneles, amortización en 3-5 años y deducciones IRPF.',
+    title: 'Placas Solares para Particulares: Precio Real en 2026 | tuLuz',
+    description: '¿Cuánto cuesta instalar placas solares en una vivienda particular? Tabla de precios en 2026, las 6 partidas del presupuesto, amortización en 3-5 años y deducción IRPF.',
     canonical: 'https://tu-luz.es/guias/placas-solares-particulares-precio'
   }
 };

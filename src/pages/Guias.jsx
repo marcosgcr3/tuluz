@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  BookOpen, 
   Search, 
   ArrowRight, 
   Clock, 
@@ -73,25 +72,6 @@ export default function Guias({ navigate, onOpenModal }) {
 
         {/* Hero Section */}
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem' }}>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.4rem 1rem',
-            borderRadius: 'var(--radius-full)',
-            background: 'rgba(76, 175, 79, 0.12)',
-            border: '1px solid rgba(76, 175, 79, 0.25)',
-            color: 'var(--primary)',
-            fontSize: '0.85rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.08em',
-            marginBottom: '1.25rem'
-          }}>
-            <BookOpen size={16} />
-            <span>Centro de Conocimiento y Ahorro tuLuz</span>
-          </div>
-
           <h1 style={{
             fontSize: 'clamp(2.1rem, 5vw, 3.4rem)',
             fontWeight: 800,

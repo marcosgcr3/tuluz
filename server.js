@@ -572,6 +572,13 @@ app.get('/api/leads-summary', async (req, res) => {
       };
     });
 
+    // Ordenar siempre los leads por fecha descendente (los más recientes arriba del todo)
+    formattedLeads.sort((a, b) => {
+      const timeA = a.date ? new Date(a.date).getTime() : (Number(a.id) || 0);
+      const timeB = b.date ? new Date(b.date).getTime() : (Number(b.id) || 0);
+      return timeB - timeA;
+    });
+
     res.json({
       success: true,
       totalLeads: leads.length,

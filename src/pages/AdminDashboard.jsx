@@ -258,6 +258,10 @@ export default function AdminDashboard({ navigate }) {
       const matchType = typeFilter === 'all' || leadType === typeFilter.toLowerCase();
 
       return matchSearch && matchSource && matchStatus && matchType;
+    }).sort((a, b) => {
+      const timeA = a.date ? new Date(a.date).getTime() : (Number(a.id) || 0);
+      const timeB = b.date ? new Date(b.date).getTime() : (Number(b.id) || 0);
+      return timeB - timeA; // Más reciente primero (arriba del todo)
     });
   }, [dashboardData, searchTerm, sourceFilter, statusFilter, typeFilter]);
 

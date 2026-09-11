@@ -12,6 +12,18 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
+import { 
+  initDatabase, 
+  isDbConnected, 
+  saveLead, 
+  getAllLeads, 
+  updateLeadStatus, 
+  deleteLead 
+} from './db.js';
+
+// Inicializar conexión con PostgreSQL (con fallback automático a leads.json)
+initDatabase();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'davidad@tu-luz.es';
@@ -72,21 +84,14 @@ function getTransporter() {
   return null;
 }
 
-// Persist leads locally to leads.json
+// Persist leads locally to PostgreSQL and leads.json backup
 const LEADS_FILE = path.join(__dirname, 'leads.json');
 
-function saveLeadLocally(leadData) {
+async function saveLeadLocally(leadData) {
   try {
-    let leads = [];
-    if (fs.existsSync(LEADS_FILE)) {
-      const content = fs.readFileSync(LEADS_FILE, 'utf-8');
-      leads = JSON.parse(content || '[]');
-    }
-    leads.unshift(leadData);
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
-    console.log(`💾 Solicitud guardada localmente en ${LEADS_FILE}`);
+    await saveLead(leadData);
   } catch (err) {
-    console.error('Error guardando lead local:', err);
+    console.error('Error guardando lead:', err);
   }
 }
 
@@ -525,10 +530,7 @@ app.get('/api/leads-summary', async (req, res) => {
   }
 
   try {
-    let leads = [];
-    if (fs.existsSync(LEADS_FILE)) {
-      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
-    }
+    const leads = await getAllLeads();
 
     const now = new Date();
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
@@ -590,6 +592,7 @@ app.get('/api/leads-summary', async (req, res) => {
       byStatus,
       leads: formattedLeads,
       systemStatus: {
+        databaseReady: isDbConnected(),
         smtpReady: isConfiguredSMTP(),
         smtpRecipient: RECIPIENT_EMAIL,
         metaReady: !!process.env.META_PAGE_ACCESS_TOKEN,
@@ -665,7 +668,7 @@ app.get('/api/admin/test-meta', async (req, res) => {
 });
 
 // Endpoint protegido para actualizar el estado comercial de un lead
-app.post('/api/leads/update-status', (req, res) => {
+app.post('/api/leads/update-status', async (req, res) => {
   if (!checkAdminAuth(req)) {
     return res.status(401).json({ error: 'Acceso no autorizado.' });
   }
@@ -676,21 +679,11 @@ app.post('/api/leads/update-status', (req, res) => {
   }
 
   try {
-    let leads = [];
-    if (fs.existsSync(LEADS_FILE)) {
-      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
-    }
-
-    const index = leads.findIndex(l => String(l.id) === String(leadId));
-    if (index === -1) {
+    const success = await updateLeadStatus(leadId, status);
+    if (!success) {
       return res.status(404).json({ error: 'Lead no encontrado' });
     }
-
-    leads[index].status = status;
-    leads[index].updatedAt = new Date().toISOString();
-
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
-    res.json({ success: true, lead: leads[index] });
+    res.json({ success: true, lead: { id: leadId, status } });
   } catch (err) {
     console.error('Error actualizando lead:', err);
     res.status(500).json({ error: 'Error actualizando estado del lead' });
@@ -698,30 +691,21 @@ app.post('/api/leads/update-status', (req, res) => {
 });
 
 // Endpoint protegido para eliminar un lead
-app.post('/api/leads/delete', (req, res) => {
+app.post('/api/leads/delete', async (req, res) => {
   if (!checkAdminAuth(req)) {
     return res.status(401).json({ error: 'Acceso no autorizado.' });
   }
 
   const { leadId } = req.body;
   if (!leadId) {
-    return res.status(400).json({ error: 'Falta parámetro leadId.' });
+    return res.status(400).json({ error: 'Faltan parámetros requeridos (leadId).' });
   }
 
   try {
-    let leads = [];
-    if (fs.existsSync(LEADS_FILE)) {
-      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
-    }
-
-    const initialCount = leads.length;
-    leads = leads.filter(l => String(l.id) !== String(leadId));
-
-    if (leads.length === initialCount) {
+    const success = await deleteLead(leadId);
+    if (!success) {
       return res.status(404).json({ error: 'Lead no encontrado.' });
     }
-
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
     res.json({ success: true, message: 'Lead eliminado correctamente.' });
   } catch (err) {
     console.error('Error eliminando lead:', err);
@@ -780,10 +764,7 @@ async function syncMetaLeadsSilently() {
       return { success: false, error: errMsg };
     }
 
-    let existingLeads = [];
-    if (fs.existsSync(LEADS_FILE)) {
-      existingLeads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
-    }
+    let existingLeads = await getAllLeads();
 
     let newlyImported = 0;
 
@@ -843,6 +824,7 @@ async function syncMetaLeadsSilently() {
               fileSize: null
             };
 
+            await saveLead(newRecord);
             existingLeads.unshift(newRecord);
             newlyImported++;
 
@@ -854,6 +836,7 @@ async function syncMetaLeadsSilently() {
             if (isRecent) {
               await sendMetaLeadNotificationEmail(newRecord);
               newRecord.notified = true;
+              await saveLead(newRecord); // Actualizar marca notified en DB
             } else {
               console.log(`ℹ️ [Auto-Sync Meta Ads] Lead histórico guardado sin reenviar correo: ${name} (${newRecord.date})`);
             }
@@ -863,8 +846,7 @@ async function syncMetaLeadsSilently() {
     }
 
     if (newlyImported > 0) {
-      fs.writeFileSync(LEADS_FILE, JSON.stringify(existingLeads, null, 2), 'utf-8');
-      console.log(`🔄 [Auto-Sync Meta Ads] Sincronización automática: ${newlyImported} nuevos leads guardados y notificados por correo.`);
+      console.log(`🔄 [Auto-Sync Meta Ads] Sincronización automática: ${newlyImported} nuevos leads guardados en base de datos.`);
     }
 
     lastMetaSyncError = null; // Sin errores si completó el ciclo
@@ -898,16 +880,13 @@ app.post('/api/leads/sync-meta', async (req, res) => {
 });
 
 // Endpoint protegido para exportar los leads a un CSV compatible con Excel
-app.get('/api/leads/export-csv', (req, res) => {
+app.get('/api/leads/export-csv', async (req, res) => {
   if (!checkAdminAuth(req)) {
     return res.status(401).send('Acceso no autorizado.');
   }
 
   try {
-    let leads = [];
-    if (fs.existsSync(LEADS_FILE)) {
-      leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8') || '[]');
-    }
+    const leads = await getAllLeads();
 
     const escapeCsv = (val) => {
       if (val === null || val === undefined) return '""';

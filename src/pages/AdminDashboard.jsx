@@ -654,6 +654,25 @@ export default function AdminDashboard({ navigate }) {
               width: '8px',
               height: '8px',
               borderRadius: '50%',
+              background: dashboardData?.systemStatus?.databaseReady ? '#10b981' : '#3b82f6'
+            }} />
+            <strong>Base de Datos:</strong> {dashboardData?.systemStatus?.databaseReady ? 'PostgreSQL Conectado' : 'Almacenamiento Local'}
+          </div>
+          <div style={{
+            background: '#ffffff',
+            border: '1px solid #e2e8f0',
+            borderRadius: '10px',
+            padding: '8px 14px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            fontSize: '12px',
+            color: '#475569'
+          }}>
+            <span style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
               background: dashboardData?.systemStatus?.metaReady ? '#10b981' : '#f59e0b'
             }} />
             <strong>Meta Ads Webhook:</strong> {dashboardData?.systemStatus?.metaReady ? 'Listo & Conectado' : 'Pendiente de Token'}

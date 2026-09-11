@@ -42,6 +42,7 @@ export default function AdminDashboard({ navigate }) {
 
   // Detail Modal
   const [selectedLead, setSelectedLead] = useState(null);
+  const [newLeadToast, setNewLeadToast] = useState(null);
 
   // Status configuration
   const STATUS_CONFIG = {
@@ -71,7 +72,14 @@ export default function AdminDashboard({ navigate }) {
         throw new Error(`Error en el servidor (${res.status})`);
       }
       const data = await res.json();
-      setDashboardData(data);
+      setDashboardData(prev => {
+        if (isBackground && prev && data.totalLeads > prev.totalLeads) {
+          const newest = data.leads && data.leads[0] ? data.leads[0].name : 'Nuevo contacto';
+          setNewLeadToast(`🎯 ¡Nuevo cliente recibido! ${newest}`);
+          setTimeout(() => setNewLeadToast(null), 8000);
+        }
+        return data;
+      });
       setIsAuthenticated(true);
       sessionStorage.setItem('tuluz_admin_key', key);
     } catch (err) {
@@ -86,10 +94,10 @@ export default function AdminDashboard({ navigate }) {
     if (adminKey) {
       fetchDashboardData(adminKey);
 
-      // Auto-refresco silencioso cada 30 segundos para mantener el panel siempre actualizado
+      // Auto-refresco silencioso cada 15 segundos para mantener el panel siempre al día
       const timer = setInterval(() => {
         fetchDashboardData(adminKey, true);
-      }, 30000);
+      }, 15000);
 
       return () => clearInterval(timer);
     }
@@ -1813,6 +1821,42 @@ export default function AdminDashboard({ navigate }) {
           }
         }
       `}</style>
+
+      {/* Notificación flotante emergente cuando entra un lead nuevo en tiempo real */}
+      {newLeadToast && (
+        <div style={{
+          position: 'fixed',
+          bottom: '24px',
+          right: '24px',
+          background: '#0f172a',
+          color: '#ffffff',
+          padding: '14px 20px',
+          borderRadius: '14px',
+          boxShadow: '0 12px 35px rgba(0,0,0,0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          zIndex: 9999,
+          border: '1px solid #4CAF4F'
+        }}>
+          <Sparkles size={20} color="#4CAF4F" />
+          <span style={{ fontSize: '14px', fontWeight: '700' }}>{newLeadToast}</span>
+          <button
+            onClick={() => setNewLeadToast(null)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#94a3b8',
+              cursor: 'pointer',
+              marginLeft: '8px',
+              padding: '2px',
+              display: 'flex'
+            }}
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

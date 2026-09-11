@@ -22,7 +22,6 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/server.js ./server.js
 COPY --from=builder /app/db.js ./db.js
-COPY --from=builder /app/leads.json ./leads.json
 
 EXPOSE 3000
 

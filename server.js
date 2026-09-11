@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import compression from 'compression';
 import multer from 'multer';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
@@ -16,6 +17,8 @@ const PORT = process.env.PORT || 3000;
 const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'davidad@tu-luz.es';
 
 // Middleware
+// Compresión de texto Gzip/Deflate para acelerar transferencias en móvil
+app.use(compression());
 // Redirección canónica permanente 301 para SEO (eliminar www y unificar autoridad en tu-luz.es)
 app.use((req, res, next) => {
   const host = req.headers.host || '';

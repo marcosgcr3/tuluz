@@ -273,6 +273,113 @@ function getMetaField(fieldData, aliases) {
   return '';
 }
 
+// Función centralizada para enviar notificación por correo al recibir un lead de Meta Ads
+async function sendMetaLeadNotificationEmail(leadRecord, extraHtml = '') {
+  if (!isConfiguredSMTP()) {
+    console.warn(`⚠️ [Meta Ads] SMTP no configurado, no se envió email para ${leadRecord.name}`);
+    return false;
+  }
+
+  const transporter = getTransporter();
+  if (!transporter) return false;
+
+  const { name, phone, email, notes, pageUrl } = leadRecord;
+  const cleanPhone = (phone || '').replace(/[^0-9]/g, '');
+
+  const htmlTemplate = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f7f5; margin: 0; padding: 20px; color: #1e293b; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .header { background: linear-gradient(135deg, #1877F2 0%, #0d5cb6 100%); color: #ffffff; padding: 30px 25px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+        .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
+        .content { padding: 30px 25px; }
+        .badge { display: inline-block; background: #e0f2fe; color: #0284c7; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        .info-table th, .info-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+        .info-table th { background-color: #f8faf9; color: #475569; font-weight: 600; width: 35%; }
+        .info-table td { color: #0f172a; font-weight: 500; }
+        .actions { text-align: center; padding: 20px 0; border-top: 1px solid #f1f5f9; }
+        .btn { display: inline-block; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 5px; }
+        .btn-call { background-color: #4CAF4F; color: #ffffff; }
+        .btn-wa { background-color: #25D366; color: #ffffff; }
+        .btn-mail { background-color: #0284c7; color: #ffffff; }
+        .footer { background-color: #f8faf9; text-align: center; padding: 15px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>🎯 ¡Nuevo Cliente Potencial de Meta Ads!</h1>
+          <p>Campaña de Publicidad • Notificación a ${RECIPIENT_EMAIL}</p>
+        </div>
+
+        <div class="content">
+          <div style="margin-bottom: 20px;">
+            <span class="badge">📍 Origen: Meta Ads (Facebook / Instagram)</span>
+          </div>
+
+          <h2 style="font-size: 18px; margin-top: 0; color: #0f172a;">Datos del Contacto:</h2>
+          
+          <table class="info-table">
+            <tr>
+              <th>Nombre:</th>
+              <td><strong style="font-size: 16px; color: #0f172a;">${name || 'Cliente Meta'}</strong></td>
+            </tr>
+            <tr>
+              <th>Teléfono:</th>
+              <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; font-size: 16px; text-decoration: none;">📞 ${phone || 'No especificado'}</a></td>
+            </tr>
+            <tr>
+              <th>Correo Electrónico:</th>
+              <td><a href="mailto:${email}" style="color: #0284c7; text-decoration: none;">✉️ ${email || 'No especificado'}</a></td>
+            </tr>
+            ${pageUrl ? `<tr><th>Origen / Formulario:</th><td style="color: #64748b; font-size: 13px;">${pageUrl}</td></tr>` : ''}
+            ${notes ? `<tr><th>Detalles / Respuestas:</th><td style="font-size: 13px; white-space: pre-line;">${notes}</td></tr>` : ''}
+            ${extraHtml || ''}
+          </table>
+
+          <div class="actions">
+            ${cleanPhone ? `
+              <a href="tel:${cleanPhone}" class="btn btn-call">📞 Llamar Ahora</a>
+              <a href="https://wa.me/${cleanPhone}?text=Hola%20${encodeURIComponent(name || '')},%20te%20contactamos%20de%20T%C3%BA%20Luz%20respecto%20a%20tu%20solicitud%20de%20estudio%20energ%C3%A9tico" class="btn btn-wa" target="_blank">💬 WhatsApp</a>
+            ` : ''}
+            ${email && email !== 'No especificado' ? `
+              <a href="mailto:${email}?subject=Estudio%20Energ%C3%A9tico%20T%C3%BA%20Luz%20para%20${encodeURIComponent(name || '')}" class="btn btn-mail">✉️ Enviar Email</a>
+            ` : ''}
+          </div>
+        </div>
+
+        <div class="footer">
+          © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a (${RECIPIENT_EMAIL}).
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  const mailOptions = {
+    from: `"tuLuz - Meta Ads" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+    to: RECIPIENT_EMAIL,
+    replyTo: (email && email !== 'No especificado') ? email : RECIPIENT_EMAIL,
+    subject: `🎯 Lead Meta Ads: ${name || 'Contacto'} (${phone || 'Sin teléfono'})`,
+    html: htmlTemplate
+  };
+
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`✅ [Meta Ads] Correo de lead enviado con éxito a ${RECIPIENT_EMAIL}. MessageId: ${info.messageId}`);
+    return true;
+  } catch (mailErr) {
+    console.error('⚠️ [Meta Ads] Error enviando correo SMTP:', mailErr.message);
+    return false;
+  }
+}
+
 // GET /webhook (Handshake de verificación con Meta)
 const handleMetaWebhookVerification = (req, res) => {
   const mode = req.query['hub.mode'];
@@ -353,9 +460,6 @@ const handleMetaWebhookEvent = async (req, res) => {
             .map(f => `<tr><th>${f.name}:</th><td><strong>${(f.values || []).join(', ')}</strong></td></tr>`)
             .join('');
 
-          // Formatear teléfono limpio para enlaces de WhatsApp
-          const cleanPhone = phone.replace(/[^0-9]/g, '');
-
           // Guardar registro localmente
           const leadRecord = {
             id: Date.now(),
@@ -376,103 +480,7 @@ const handleMetaWebhookEvent = async (req, res) => {
           saveLeadLocally(leadRecord);
 
           // Enviar notificación por correo con Google Workspace
-          if (isConfiguredSMTP()) {
-            const transporter = getTransporter();
-            if (transporter) {
-              const htmlTemplate = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                  <meta charset="utf-8">
-                  <style>
-                    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f7f5; margin: 0; padding: 20px; color: #1e293b; }
-                    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
-                    .header { background: linear-gradient(135deg, #1877F2 0%, #0d5cb6 100%); color: #ffffff; padding: 30px 25px; text-align: center; }
-                    .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
-                    .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
-                    .content { padding: 30px 25px; }
-                    .badge { display: inline-block; background: #e0f2fe; color: #0284c7; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
-                    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
-                    .info-table th, .info-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
-                    .info-table th { background-color: #f8faf9; color: #475569; font-weight: 600; width: 35%; }
-                    .info-table td { color: #0f172a; font-weight: 500; }
-                    .actions { text-align: center; padding: 20px 0; border-top: 1px solid #f1f5f9; }
-                    .btn { display: inline-block; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 5px; }
-                    .btn-call { background-color: #4CAF4F; color: #ffffff; }
-                    .btn-wa { background-color: #25D366; color: #ffffff; }
-                    .btn-mail { background-color: #0284c7; color: #ffffff; }
-                    .footer { background-color: #f8faf9; text-align: center; padding: 15px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
-                  </style>
-                </head>
-                <body>
-                  <div class="container">
-                    <div class="header">
-                      <h1>🎯 ¡Nuevo Cliente Potencial de Meta Ads!</h1>
-                      <p>Campaña de Publicidad • Notificación a ${RECIPIENT_EMAIL}</p>
-                    </div>
-
-                    <div class="content">
-                      <div style="margin-bottom: 20px;">
-                        <span class="badge">📍 Origen: Meta Ads (Facebook / Instagram)</span>
-                      </div>
-
-                      <h2 style="font-size: 18px; margin-top: 0; color: #0f172a;">Datos del Contacto:</h2>
-                      
-                      <table class="info-table">
-                        <tr>
-                          <th>Nombre:</th>
-                          <td><strong style="font-size: 16px; color: #0f172a;">${name}</strong></td>
-                        </tr>
-                        <tr>
-                          <th>Teléfono:</th>
-                          <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; font-size: 16px; text-decoration: none;">📞 ${phone}</a></td>
-                        </tr>
-                        <tr>
-                          <th>Correo Electrónico:</th>
-                          <td><a href="mailto:${email}" style="color: #0284c7; text-decoration: none;">✉️ ${email}</a></td>
-                        </tr>
-                        <tr>
-                          <th>ID Formulario:</th>
-                          <td style="color: #64748b; font-size: 12px;">${form_id || 'N/D'}</td>
-                        </tr>
-                        ${extraQuestions}
-                      </table>
-
-                      <div class="actions">
-                        ${phone && phone !== 'No especificado' ? `
-                          <a href="tel:${phone}" class="btn btn-call">📞 Llamar Ahora</a>
-                          <a href="https://wa.me/${cleanPhone}?text=Hola%20${encodeURIComponent(name)},%20te%20contactamos%20de%20T%C3%BA%20Luz%20respecto%20a%20tu%20solicitud%20de%20estudio%20energ%C3%A9tico" class="btn btn-wa" target="_blank">💬 WhatsApp</a>
-                        ` : ''}
-                        ${email && email !== 'No especificado' ? `
-                          <a href="mailto:${email}?subject=Estudio%20Energ%C3%A9tico%20T%C3%BA%20Luz%20para%20${encodeURIComponent(name)}" class="btn btn-mail">✉️ Enviar Email</a>
-                        ` : ''}
-                      </div>
-                    </div>
-
-                    <div class="footer">
-                      © ${new Date().getFullYear()} TúLuz Asesoramiento Energético • Webhook Meta Ads activo.
-                    </div>
-                  </div>
-                </body>
-                </html>
-              `;
-
-              const mailOptions = {
-                from: `"TúLuz - Meta Ads" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
-                to: RECIPIENT_EMAIL,
-                replyTo: email !== 'No especificado' ? email : RECIPIENT_EMAIL,
-                subject: `🎯 Lead Meta Ads: ${name} (${phone})`,
-                html: htmlTemplate
-              };
-
-              try {
-                const info = await transporter.sendMail(mailOptions);
-                console.log(`✅ [Meta Ads] Correo de lead enviado con éxito a ${RECIPIENT_EMAIL}. MessageId: ${info.messageId}`);
-              } catch (mailErr) {
-                console.error('⚠️ [Meta Ads] Error enviando correo SMTP:', mailErr.message);
-              }
-            }
-          }
+          await sendMetaLeadNotificationEmail(leadRecord, extraQuestions);
         }
       }
     }
@@ -576,13 +584,76 @@ app.get('/api/leads-summary', async (req, res) => {
       leads: formattedLeads,
       systemStatus: {
         smtpReady: isConfiguredSMTP(),
+        smtpRecipient: RECIPIENT_EMAIL,
         metaReady: !!process.env.META_PAGE_ACCESS_TOKEN,
+        metaError: lastMetaSyncError,
         metaVerifyToken: process.env.META_VERIFY_TOKEN ? 'Configurado en .env' : 'No configurado en .env'
       }
     });
   } catch (err) {
     console.error('Error obteniendo resumen de leads:', err);
     res.status(500).json({ error: 'Error leyendo leads' });
+  }
+});
+
+// Endpoint para probar el envío de correo desde el panel de administración
+app.post('/api/admin/test-email', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado' });
+  }
+
+  if (!isConfiguredSMTP()) {
+    return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });
+  }
+
+  try {
+    const transporter = getTransporter();
+    const info = await transporter.sendMail({
+      from: `"tuLuz Notificaciones" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+      to: RECIPIENT_EMAIL,
+      subject: '⚡ Prueba de Notificación de tuLuz',
+      html: `
+        <div style="font-family: sans-serif; padding: 20px; color: #1e293b;">
+          <h2 style="color: #4CAF4F;">¡Prueba de Correo Exitosa!</h2>
+          <p>Tu servidor en tu-luz.es está correctamente conectado a Google Workspace (Gmail SMTP).</p>
+          <p>Los correos de nuevos clientes potenciales se enviarán a: <strong>${RECIPIENT_EMAIL}</strong>.</p>
+        </div>
+      `
+    });
+
+    res.json({ success: true, message: `Correo de prueba enviado correctamente a ${RECIPIENT_EMAIL}`, messageId: info.messageId });
+  } catch (err) {
+    console.error('Error probando envío SMTP:', err);
+    res.status(500).json({ error: `Error enviando correo: ${err.message}` });
+  }
+});
+
+// Endpoint para probar el token de Meta y devolver diagnóstico detallado
+app.get('/api/admin/test-meta', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado' });
+  }
+
+  const pageToken = process.env.META_PAGE_ACCESS_TOKEN;
+  if (!pageToken) {
+    return res.status(400).json({ error: 'META_PAGE_ACCESS_TOKEN no está configurado en .env' });
+  }
+
+  try {
+    const meRes = await fetch(`https://graph.facebook.com/v21.0/me?access_token=${encodeURIComponent(pageToken)}`);
+    const meData = await meRes.json();
+
+    const accountsRes = await fetch(`https://graph.facebook.com/v21.0/me/accounts?access_token=${encodeURIComponent(pageToken)}`);
+    const accountsData = await accountsRes.json();
+
+    res.json({
+      success: !meData.error,
+      me: meData,
+      accounts: accountsData,
+      syncError: lastMetaSyncError
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -652,21 +723,34 @@ app.post('/api/leads/delete', (req, res) => {
 });
 
 let lastMetaSyncTime = 0;
+let lastMetaSyncError = null;
 
 // Función interna reutilizable para sincronizar leads de Meta Ads de forma automática o manual
 async function syncMetaLeadsSilently() {
   const pageToken = process.env.META_PAGE_ACCESS_TOKEN;
   if (!pageToken || pageToken.trim() === '') {
-    return { success: false, error: 'META_PAGE_ACCESS_TOKEN no configurado' };
+    lastMetaSyncError = 'META_PAGE_ACCESS_TOKEN no configurado en variables de entorno';
+    return { success: false, error: lastMetaSyncError };
   }
 
   try {
+    let targetPageIds = [];
+
+    // Si se especificó un Page ID directo en el entorno, lo usamos
+    if (process.env.META_PAGE_ID) {
+      targetPageIds.push(process.env.META_PAGE_ID);
+    }
+
     // 1. Obtener la página o páginas asociadas a la cuenta
     const meRes = await fetch(`https://graph.facebook.com/v21.0/me?access_token=${encodeURIComponent(pageToken)}`);
     const meData = await meRes.json();
     
-    let targetPageIds = [];
-    if (meData.id) targetPageIds.push(meData.id);
+    if (meData.error) {
+      lastMetaSyncError = `Error en token de Meta: ${meData.error.message}`;
+      console.warn('⚠️ [Auto-Sync Meta Ads] Error Graph API /me:', meData.error.message);
+    } else if (meData.id && !targetPageIds.includes(meData.id)) {
+      targetPageIds.push(meData.id);
+    }
 
     const accountsRes = await fetch(`https://graph.facebook.com/v21.0/me/accounts?access_token=${encodeURIComponent(pageToken)}`);
     if (accountsRes.ok) {
@@ -676,6 +760,17 @@ async function syncMetaLeadsSilently() {
           if (acc.id && !targetPageIds.includes(acc.id)) targetPageIds.push(acc.id);
         }
       }
+    } else {
+      const accErr = await accountsRes.json().catch(() => ({}));
+      if (accErr.error) {
+        lastMetaSyncError = `Error Meta /me/accounts: ${accErr.error.message}`;
+      }
+    }
+
+    if (targetPageIds.length === 0) {
+      const errMsg = lastMetaSyncError || 'No se pudo obtener el ID de la página de Meta Ads con el token actual.';
+      console.warn('⚠️ [Auto-Sync Meta Ads]', errMsg);
+      return { success: false, error: errMsg };
     }
 
     let existingLeads = [];
@@ -687,7 +782,14 @@ async function syncMetaLeadsSilently() {
 
     for (const pageId of targetPageIds) {
       const formsRes = await fetch(`https://graph.facebook.com/v21.0/${pageId}/leadgen_forms?access_token=${encodeURIComponent(pageToken)}`);
-      if (!formsRes.ok) continue;
+      if (!formsRes.ok) {
+        const fErr = await formsRes.json().catch(() => ({}));
+        if (fErr.error) {
+          lastMetaSyncError = `Error consultando formularios (Page ${pageId}): ${fErr.error.message}`;
+          console.warn('⚠️ [Auto-Sync Meta Ads]', lastMetaSyncError);
+        }
+        continue;
+      }
       const formsData = await formsRes.json();
 
       for (const form of (formsData.data || [])) {
@@ -736,6 +838,9 @@ async function syncMetaLeadsSilently() {
 
             existingLeads.unshift(newRecord);
             newlyImported++;
+
+            // Enviar correo de notificación inmediatamente para este nuevo lead sincronizado
+            await sendMetaLeadNotificationEmail(newRecord);
           }
         }
       }
@@ -743,12 +848,14 @@ async function syncMetaLeadsSilently() {
 
     if (newlyImported > 0) {
       fs.writeFileSync(LEADS_FILE, JSON.stringify(existingLeads, null, 2), 'utf-8');
-      console.log(`🔄 [Auto-Sync Meta Ads] Sincronización automática: ${newlyImported} nuevos leads guardados.`);
+      console.log(`🔄 [Auto-Sync Meta Ads] Sincronización automática: ${newlyImported} nuevos leads guardados y notificados por correo.`);
     }
 
+    lastMetaSyncError = null; // Sin errores si completó el ciclo
     lastMetaSyncTime = Date.now();
     return { success: true, newlyImported };
   } catch (err) {
+    lastMetaSyncError = `Error general de sincronización: ${err.message}`;
     console.error('⚠️ [Auto-Sync Meta Ads] Error sincronizando con Meta Graph API:', err.message);
     return { success: false, error: err.message };
   }

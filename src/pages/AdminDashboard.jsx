@@ -165,6 +165,28 @@ export default function AdminDashboard({ navigate }) {
     }
   };
 
+  const [testingEmail, setTestingEmail] = useState(false);
+
+  const handleTestEmail = async () => {
+    setTestingEmail(true);
+    try {
+      const res = await fetch('/api/admin/test-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': adminKey
+        }
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error enviando email de prueba');
+      alert(`✅ ${data.message}`);
+    } catch (err) {
+      alert(`❌ Error enviando email de prueba: ${err.message}`);
+    } finally {
+      setTestingEmail(false);
+    }
+  };
+
   const handleDeleteLead = async (leadId) => {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este contacto del panel?')) return;
     try {
@@ -516,6 +538,29 @@ export default function AdminDashboard({ navigate }) {
             <span>{syncingMeta ? 'Sincronizando...' : 'Auto-Sync Meta Activo'}</span>
           </button>
 
+          {/* Test Email Button */}
+          <button
+            onClick={handleTestEmail}
+            disabled={testingEmail}
+            title="Enviar un correo de prueba para verificar la conexión SMTP con Google Workspace"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 14px',
+              borderRadius: '8px',
+              border: '1px solid #cbd5e1',
+              background: '#ffffff',
+              color: '#334155',
+              fontSize: '13px',
+              fontWeight: '600',
+              cursor: testingEmail ? 'wait' : 'pointer'
+            }}
+          >
+            <Mail size={15} color="#4CAF4F" />
+            <span>{testingEmail ? 'Enviando prueba...' : 'Probar Correo'}</span>
+          </button>
+
           {/* Export CSV Button */}
           <button
             onClick={handleExportCsv}
@@ -587,7 +632,7 @@ export default function AdminDashboard({ navigate }) {
         <div style={{
           display: 'flex',
           gap: '12px',
-          marginBottom: '24px',
+          marginBottom: '20px',
           flexWrap: 'wrap'
         }}>
           <div style={{
@@ -642,9 +687,37 @@ export default function AdminDashboard({ navigate }) {
             color: '#475569'
           }}>
             <ShieldCheck size={14} color="#0284c7" />
-            <strong>Destino de Avisos:</strong> davidad@tu-luz.es
+            <strong>Destino de Avisos:</strong> {dashboardData?.systemStatus?.smtpRecipient || 'davidad@tu-luz.es'}
           </div>
         </div>
+
+        {/* Banner de Aviso de Error en Meta Ads si aplica */}
+        {dashboardData?.systemStatus?.metaError && (
+          <div style={{
+            background: '#fffbeb',
+            border: '1px solid #fde68a',
+            borderRadius: '10px',
+            padding: '14px 18px',
+            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '12px',
+            color: '#92400e',
+            fontSize: '13px',
+            boxShadow: '0 2px 8px rgba(217, 119, 6, 0.08)'
+          }}>
+            <AlertCircle size={20} color="#d97706" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div>
+              <strong style={{ display: 'block', marginBottom: '3px', fontSize: '14px' }}>
+                Aviso de Sincronización con Meta Ads (Facebook / Instagram):
+              </strong>
+              <div>{dashboardData.systemStatus.metaError}</div>
+              <div style={{ marginTop: '8px', fontSize: '12px', color: '#b45309', lineHeight: 1.5 }}>
+                💡 <strong>Motivo frecuente:</strong> El <code>META_PAGE_ACCESS_TOKEN</code> no tiene asignados los permisos necesarios en Meta for Developers. Requiere: <code>leads_retrieval</code>, <code>pages_read_engagement</code> y <code>pages_manage_ads</code> al generar el token.
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ---------------------------------------------------- */}
         {/* KPI CARDS GRID */}

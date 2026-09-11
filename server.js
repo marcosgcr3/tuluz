@@ -16,6 +16,18 @@ const PORT = process.env.PORT || 3000;
 const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'davidad@tu-luz.es';
 
 // Middleware
+// Redirección canónica permanente 301 para SEO (eliminar www y unificar autoridad en tu-luz.es)
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  if (host.startsWith('www.')) {
+    const cleanHost = host.slice(4);
+    const protoHeader = req.headers['x-forwarded-proto'];
+    const protocol = (typeof protoHeader === 'string' ? protoHeader.split(',')[0].trim() : '') || 'https';
+    return res.redirect(301, `${protocol}://${cleanHost}${req.originalUrl}`);
+  }
+  next();
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

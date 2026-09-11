@@ -839,8 +839,17 @@ async function syncMetaLeadsSilently() {
             existingLeads.unshift(newRecord);
             newlyImported++;
 
-            // Enviar correo de notificación inmediatamente para este nuevo lead sincronizado
-            await sendMetaLeadNotificationEmail(newRecord);
+            // Enviar correo de notificación SOLO si el lead es reciente (menos de 4 horas)
+            // Esto evita que al reiniciar el contenedor o sincronizar se vuelvan a enviar correos de clientes antiguos
+            const leadTimestamp = new Date(newRecord.date).getTime();
+            const isRecent = !isNaN(leadTimestamp) && (Date.now() - leadTimestamp < 4 * 60 * 60 * 1000);
+
+            if (isRecent) {
+              await sendMetaLeadNotificationEmail(newRecord);
+              newRecord.notified = true;
+            } else {
+              console.log(`ℹ️ [Auto-Sync Meta Ads] Lead histórico guardado sin reenviar correo: ${name} (${newRecord.date})`);
+            }
           }
         }
       }

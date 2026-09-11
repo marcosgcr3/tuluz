@@ -12,6 +12,7 @@
     "monthlyBill": "",
     "notes": "Preguntas del formulario:\n0: I",
     "status": "nuevo",
+    "notified": true,
     "hasFile": false,
     "fileName": null,
     "fileSize": null
@@ -29,6 +30,7 @@
     "monthlyBill": "",
     "notes": "Preguntas del formulario:\n0: .",
     "status": "nuevo",
+    "notified": true,
     "hasFile": false,
     "fileName": null,
     "fileSize": null
@@ -46,6 +48,7 @@
     "monthlyBill": "",
     "notes": "Preguntas del formulario:\n0: bb CT",
     "status": "nuevo",
+    "notified": true,
     "hasFile": false,
     "fileName": null,
     "fileSize": null

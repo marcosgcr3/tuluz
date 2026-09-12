@@ -713,6 +713,44 @@ app.post('/api/leads/delete', async (req, res) => {
   }
 });
 
+// Endpoint protegido para añadir un lead manualmente desde el panel de administración
+app.post('/api/leads/create', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado.' });
+  }
+
+  const { name, phone, email, clientType, source, status, notes, monthlyBill } = req.body;
+  if (!name && !phone && !email) {
+    return res.status(400).json({ error: 'Debes indicar al menos un nombre, teléfono o correo electrónico.' });
+  }
+
+  try {
+    const leadRecord = {
+      id: Date.now(),
+      date: new Date().toISOString(),
+      name: name ? String(name).trim() : 'Cliente WhatsApp / Manual',
+      phone: phone ? String(phone).trim() : '',
+      email: email ? String(email).trim() : '',
+      clientType: clientType || 'particular',
+      source: source || 'WhatsApp Directo',
+      status: status || 'nuevo',
+      pageUrl: 'Añadido manualmente desde Panel Admin',
+      monthlyBill: monthlyBill ? String(monthlyBill).trim() : '',
+      notes: notes ? String(notes).trim() : '',
+      hasFile: false,
+      fileName: null,
+      fileSize: null
+    };
+
+    await saveLeadLocally(leadRecord);
+    console.log(`👤 [Admin] Lead manual añadido: ${leadRecord.name} (${leadRecord.phone || leadRecord.email}) | Origen: ${leadRecord.source}`);
+    res.json({ success: true, lead: leadRecord });
+  } catch (err) {
+    console.error('Error creando lead manual:', err);
+    res.status(500).json({ error: 'Error guardando el lead en la base de datos.' });
+  }
+});
+
 let lastMetaSyncTime = 0;
 let lastMetaSyncError = null;
 

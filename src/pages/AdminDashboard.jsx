@@ -4,7 +4,7 @@ import {
   RefreshCw, Search, Filter, CheckCircle2, Clock, 
   AlertCircle, ExternalLink, Lock, LogOut, MessageSquare, 
   FileText, Sparkles, ChevronRight, Eye, X, ArrowLeft,
-  Check, ShieldCheck, Trash2, Globe
+  Check, ShieldCheck, Trash2, Globe, UserPlus
 } from 'lucide-react';
 
 // Official Meta SVG Icon
@@ -43,6 +43,21 @@ export default function AdminDashboard({ navigate }) {
   // Detail Modal
   const [selectedLead, setSelectedLead] = useState(null);
   const [newLeadToast, setNewLeadToast] = useState(null);
+
+  // Manual Lead Modal & Form
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [addingLead, setAddingLead] = useState(false);
+  const [addLeadError, setAddLeadError] = useState('');
+  const [newLeadForm, setNewLeadForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    clientType: 'particular',
+    source: 'WhatsApp Directo',
+    status: 'nuevo',
+    monthlyBill: '',
+    notes: ''
+  });
 
   // Status configuration
   const STATUS_CONFIG = {
@@ -151,6 +166,73 @@ export default function AdminDashboard({ navigate }) {
     }
   };
 
+  const handleCreateLead = async (e) => {
+    e.preventDefault();
+    if (!newLeadForm.name.trim() && !newLeadForm.phone.trim() && !newLeadForm.email.trim()) {
+      setAddLeadError('Por favor introduce al menos el nombre, teléfono o correo del contacto.');
+      return;
+    }
+
+    setAddingLead(true);
+    setAddLeadError('');
+    try {
+      const res = await fetch('/api/leads/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': adminKey
+        },
+        body: JSON.stringify(newLeadForm)
+      });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || 'Error al guardar el nuevo contacto');
+      }
+
+      const { lead: createdLead } = await res.json();
+
+      // Update dashboard state smoothly
+      setDashboardData(prev => {
+        if (!prev) return prev;
+        const leads = [createdLead, ...(prev.leads || [])];
+        const bySource = { ...(prev.bySource || {}) };
+        bySource[createdLead.source] = (bySource[createdLead.source] || 0) + 1;
+        const byStatus = { ...(prev.byStatus || {}) };
+        byStatus[createdLead.status] = (byStatus[createdLead.status] || 0) + 1;
+
+        return {
+          ...prev,
+          totalLeads: (prev.totalLeads || 0) + 1,
+          todayLeads: (prev.todayLeads || 0) + 1,
+          weekLeads: (prev.weekLeads || 0) + 1,
+          bySource,
+          byStatus,
+          leads
+        };
+      });
+
+      setIsAddModalOpen(false);
+      setNewLeadForm({
+        name: '',
+        phone: '',
+        email: '',
+        clientType: 'particular',
+        source: 'WhatsApp Directo',
+        status: 'nuevo',
+        monthlyBill: '',
+        notes: ''
+      });
+
+      setNewLeadToast(`✅ ¡Lead añadido correctamente! (${createdLead.name})`);
+      setTimeout(() => setNewLeadToast(null), 6000);
+    } catch (err) {
+      setAddLeadError(err.message || 'Error al crear el lead.');
+    } finally {
+      setAddingLead(false);
+    }
+  };
+
   const [syncingMeta, setSyncingMeta] = useState(false);
 
   const handleSyncMeta = async () => {
@@ -251,10 +333,13 @@ export default function AdminDashboard({ navigate }) {
         matchSource = (lead.source || '').toLowerCase().includes('meta') || 
                       (lead.source || '').toLowerCase().includes('facebook') || 
                       (lead.source || '').toLowerCase().includes('instagram');
+      } else if (sourceFilter === 'whatsapp') {
+        matchSource = (lead.source || '').toLowerCase().includes('whatsapp');
       } else if (sourceFilter === 'web') {
         matchSource = !(lead.source || '').toLowerCase().includes('meta') && 
                       !(lead.source || '').toLowerCase().includes('facebook') && 
-                      !(lead.source || '').toLowerCase().includes('instagram');
+                      !(lead.source || '').toLowerCase().includes('instagram') &&
+                      !(lead.source || '').toLowerCase().includes('whatsapp');
       }
 
       // Status Filter
@@ -504,6 +589,33 @@ export default function AdminDashboard({ navigate }) {
 
         {/* Action Buttons Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          {/* Button: Add Manual Lead */}
+          <button
+            onClick={() => {
+              setAddLeadError('');
+              setIsAddModalOpen(true);
+            }}
+            title="Añadir un nuevo contacto recibido por WhatsApp, llamada, recomendación o presencial"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 16px',
+              borderRadius: '8px',
+              border: '1px solid #16a34a',
+              background: '#16a34a',
+              color: '#ffffff',
+              fontSize: '13px',
+              fontWeight: '700',
+              cursor: 'pointer',
+              boxShadow: '0 2px 8px rgba(22, 163, 74, 0.25)',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            <UserPlus size={16} />
+            <span>+ Añadir Lead Manual</span>
+          </button>
+
           {/* Refresh Button */}
           <button
             onClick={() => fetchDashboardData()}
@@ -879,11 +991,12 @@ export default function AdminDashboard({ navigate }) {
               {Object.entries(dashboardData?.bySource || {}).map(([source, count]) => {
                 const pct = total > 0 ? Math.round((count / total) * 100) : 0;
                 const isMeta = source.toLowerCase().includes('meta') || source.toLowerCase().includes('facebook');
+                const isWhatsApp = source.toLowerCase().includes('whatsapp');
                 return (
                   <div key={source}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', marginBottom: '6px' }}>
-                      <span style={{ fontWeight: '600', color: isMeta ? '#0284c7' : '#334155', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                        {isMeta ? <MetaIcon size={14} color="#0284c7" /> : <Globe size={14} color="#4CAF4F" />}
+                      <span style={{ fontWeight: '600', color: isMeta ? '#0284c7' : isWhatsApp ? '#16a34a' : '#334155', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        {isMeta ? <MetaIcon size={14} color="#0284c7" /> : isWhatsApp ? <WhatsAppIcon size={14} color="#16a34a" /> : <Globe size={14} color="#4CAF4F" />}
                         <span>{source}</span>
                       </span>
                       <span style={{ color: '#64748b' }}>
@@ -894,7 +1007,7 @@ export default function AdminDashboard({ navigate }) {
                       <div style={{
                         width: `${pct}%`,
                         height: '100%',
-                        background: isMeta ? 'linear-gradient(90deg, #0284c7, #38bdf8)' : 'linear-gradient(90deg, #4CAF4F, #81c784)',
+                        background: isMeta ? 'linear-gradient(90deg, #0284c7, #38bdf8)' : isWhatsApp ? 'linear-gradient(90deg, #16a34a, #4ade80)' : 'linear-gradient(90deg, #4CAF4F, #81c784)',
                         borderRadius: '4px'
                       }} />
                     </div>
@@ -1057,6 +1170,7 @@ export default function AdminDashboard({ navigate }) {
                 }}
               >
                 <option value="all">Canal: Todos</option>
+                <option value="whatsapp">💬 WhatsApp Directo</option>
                 <option value="meta">Meta Ads (FB/IG)</option>
                 <option value="web">Web Directa</option>
               </select>
@@ -1130,6 +1244,7 @@ export default function AdminDashboard({ navigate }) {
                     const statusKey = lead.status || 'nuevo';
                     const statusStyle = STATUS_CONFIG[statusKey] || STATUS_CONFIG.nuevo;
                     const isMeta = (lead.source || '').toLowerCase().includes('meta') || (lead.source || '').toLowerCase().includes('facebook');
+                    const isWhatsApp = (lead.source || '').toLowerCase().includes('whatsapp');
                     const leadDate = lead.date ? new Date(lead.date).toLocaleDateString('es-ES', {
                       day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
                     }) : 'N/D';
@@ -1151,8 +1266,8 @@ export default function AdminDashboard({ navigate }) {
                               width: '34px',
                               height: '34px',
                               borderRadius: '50%',
-                              background: isMeta ? '#e0f2fe' : '#dcfce7',
-                              color: isMeta ? '#0284c7' : '#15803d',
+                              background: isMeta ? '#e0f2fe' : isWhatsApp ? '#dcfce7' : '#f1f5f9',
+                              color: isMeta ? '#0284c7' : isWhatsApp ? '#16a34a' : '#15803d',
                               fontWeight: '700',
                               fontSize: '13px',
                               display: 'flex',
@@ -1163,11 +1278,11 @@ export default function AdminDashboard({ navigate }) {
                               {(lead.name || 'C').charAt(0).toUpperCase()}
                             </div>
                             <div>
-                              <div style={{ fontWeight: '700', color: '#0f172a' }}>
-                                {lead.name || 'Sin nombre'}
+                              <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '14px' }}>
+                                {lead.name || 'Cliente sin nombre'}
                               </div>
-                              <div style={{ fontSize: '12px', color: '#64748b' }}>
-                                {lead.email || 'Sin correo'}
+                              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
+                                {lead.email || 'Sin correo especificado'}
                               </div>
                             </div>
                           </div>
@@ -1194,14 +1309,14 @@ export default function AdminDashboard({ navigate }) {
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '5px',
-                            background: isMeta ? '#e0f2fe' : '#f1f5f9',
-                            color: isMeta ? '#0369a1' : '#475569',
+                            background: isMeta ? '#e0f2fe' : isWhatsApp ? '#dcfce7' : '#f1f5f9',
+                            color: isMeta ? '#0369a1' : isWhatsApp ? '#15803d' : '#475569',
                             fontWeight: '700',
                             fontSize: '11px',
                             padding: '3px 8px',
                             borderRadius: '6px'
                           }}>
-                            {isMeta ? <MetaIcon size={12} color="#0369a1" /> : <Globe size={12} color="#475569" />}
+                            {isMeta ? <MetaIcon size={12} color="#0369a1" /> : isWhatsApp ? <WhatsAppIcon size={12} color="#15803d" /> : <Globe size={12} color="#475569" />}
                             <span>{lead.source || 'Web Directa'}</span>
                           </span>
                         </td>
@@ -1370,6 +1485,7 @@ export default function AdminDashboard({ navigate }) {
                 const statusKey = lead.status || 'nuevo';
                 const statusStyle = STATUS_CONFIG[statusKey] || STATUS_CONFIG.nuevo;
                 const isMeta = (lead.source || '').toLowerCase().includes('meta') || (lead.source || '').toLowerCase().includes('facebook');
+                const isWhatsApp = (lead.source || '').toLowerCase().includes('whatsapp');
                 const leadDate = lead.date ? new Date(lead.date).toLocaleDateString('es-ES', {
                   day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
                 }) : 'N/D';
@@ -1395,8 +1511,8 @@ export default function AdminDashboard({ navigate }) {
                           width: '38px',
                           height: '38px',
                           borderRadius: '50%',
-                          background: isMeta ? '#e0f2fe' : '#dcfce7',
-                          color: isMeta ? '#0284c7' : '#15803d',
+                          background: isMeta ? '#e0f2fe' : isWhatsApp ? '#dcfce7' : '#f1f5f9',
+                          color: isMeta ? '#0284c7' : isWhatsApp ? '#16a34a' : '#15803d',
                           fontWeight: '800',
                           fontSize: '15px',
                           display: 'flex',
@@ -1785,6 +1901,288 @@ export default function AdminDashboard({ navigate }) {
                 <span>Eliminar</span>
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ---------------------------------------------------- */}
+      {/* ADD MANUAL LEAD MODAL */}
+      {/* ---------------------------------------------------- */}
+      {isAddModalOpen && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(15, 23, 42, 0.65)',
+          backdropFilter: 'blur(4px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px',
+          zIndex: 60
+        }}>
+          <div style={{
+            background: '#ffffff',
+            borderRadius: '16px',
+            maxWidth: '560px',
+            width: '100%',
+            maxHeight: '92vh',
+            overflowY: 'auto',
+            padding: '24px',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            position: 'relative'
+          }}>
+            {/* Modal Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '18px', borderBottom: '1px solid #f1f5f9', paddingBottom: '14px' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#dcfce7', color: '#16a34a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <UserPlus size={18} />
+                  </div>
+                  <h3 style={{ margin: 0, fontSize: '19px', fontWeight: '800', color: '#0f172a' }}>
+                    Añadir Lead Manual
+                  </h3>
+                </div>
+                <p style={{ margin: '4px 0 0 0', fontSize: '12px', color: '#64748b' }}>
+                  Registra contactos que te escriban por WhatsApp, llamadas o recomendaciones.
+                </p>
+              </div>
+              <button
+                onClick={() => setIsAddModalOpen(false)}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', padding: '4px' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {addLeadError && (
+              <div style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '10px 14px', borderRadius: '8px', fontSize: '13px', marginBottom: '16px' }}>
+                ⚠️ {addLeadError}
+              </div>
+            )}
+
+            <form onSubmit={handleCreateLead} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              
+              {/* Canal de Origen */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                  Canal de Origen *
+                </label>
+                <select
+                  value={newLeadForm.source}
+                  onChange={(e) => setNewLeadForm({ ...newLeadForm, source: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: '8px',
+                    border: '1px solid #cbd5e1',
+                    fontSize: '13px',
+                    background: '#f8fafc',
+                    fontWeight: '600'
+                  }}
+                >
+                  <option value="WhatsApp Directo">💬 WhatsApp Directo</option>
+                  <option value="Llamada Telefónica">📞 Llamada Telefónica</option>
+                  <option value="Recomendación / Boca a boca">🤝 Recomendación / Boca a boca</option>
+                  <option value="Visita Presencial / Oficina">🏢 Visita Presencial / Oficina</option>
+                  <option value="Meta Ads (Facebook / Instagram)">🎯 Meta Ads (Facebook / Instagram)</option>
+                  <option value="Web Directa">🌐 Web Directa</option>
+                  <option value="Otro">📌 Otro canal</option>
+                </select>
+              </div>
+
+              {/* Nombre */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                  Nombre y Apellidos o Razón Social *
+                </label>
+                <input
+                  type="text"
+                  placeholder="ej: Carlos Romero / Frutería Los Ángeles"
+                  value={newLeadForm.name}
+                  onChange={(e) => setNewLeadForm({ ...newLeadForm, name: e.target.value })}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: '8px',
+                    border: '1px solid #cbd5e1',
+                    fontSize: '13px'
+                  }}
+                />
+              </div>
+
+              {/* Teléfono y Email (Grid 2 columnas) */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                    Teléfono / WhatsApp *
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="ej: 620 061 560"
+                    value={newLeadForm.phone}
+                    onChange={(e) => setNewLeadForm({ ...newLeadForm, phone: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '9px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid #cbd5e1',
+                      fontSize: '13px'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                    Email (Opcional)
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="ej: cliente@correo.com"
+                    value={newLeadForm.email}
+                    onChange={(e) => setNewLeadForm({ ...newLeadForm, email: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '9px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid #cbd5e1',
+                      fontSize: '13px'
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Tipo de cliente y Estado (Grid 2 columnas) */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                    Tipo de Perfil
+                  </label>
+                  <select
+                    value={newLeadForm.clientType}
+                    onChange={(e) => setNewLeadForm({ ...newLeadForm, clientType: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '9px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid #cbd5e1',
+                      fontSize: '13px'
+                    }}
+                  >
+                    <option value="particular">Hogar / Particular</option>
+                    <option value="empresa">Empresa / Negocio</option>
+                    <option value="comunidad">Comunidad de Vecinos</option>
+                    <option value="autoconsumo">Placas Solares</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                    Estado Inicial
+                  </label>
+                  <select
+                    value={newLeadForm.status}
+                    onChange={(e) => setNewLeadForm({ ...newLeadForm, status: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '9px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid #cbd5e1',
+                      fontSize: '13px'
+                    }}
+                  >
+                    <option value="nuevo">Nuevo</option>
+                    <option value="contactado">Contactado</option>
+                    <option value="en_estudio">En estudio</option>
+                    <option value="ganado">Ganado / Cliente</option>
+                    <option value="descartado">Descartado</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Gasto mensual estimado */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                  Gasto Mensual Estimado (Opcional)
+                </label>
+                <input
+                  type="text"
+                  placeholder="ej: 95 €/mes o 320 €"
+                  value={newLeadForm.monthlyBill}
+                  onChange={(e) => setNewLeadForm({ ...newLeadForm, monthlyBill: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: '8px',
+                    border: '1px solid #cbd5e1',
+                    fontSize: '13px'
+                  }}
+                />
+              </div>
+
+              {/* Notas */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#334155', marginBottom: '4px' }}>
+                  Notas / Detalles de la conversación (Opcional)
+                </label>
+                <textarea
+                  rows={3}
+                  placeholder="ej: Ha escrito por WhatsApp preguntando por optimización de potencia y tarifa fija 2.0TD. Le hemos solicitado la última factura para hacerle la comparativa."
+                  value={newLeadForm.notes}
+                  onChange={(e) => setNewLeadForm({ ...newLeadForm, notes: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: '8px',
+                    border: '1px solid #cbd5e1',
+                    fontSize: '13px',
+                    resize: 'vertical',
+                    fontFamily: 'inherit'
+                  }}
+                />
+              </div>
+
+              {/* Modal Actions */}
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px', borderTop: '1px solid #f1f5f9', paddingTop: '16px' }}>
+                <button
+                  type="button"
+                  onClick={() => setIsAddModalOpen(false)}
+                  style={{
+                    padding: '9px 16px',
+                    borderRadius: '8px',
+                    border: '1px solid #cbd5e1',
+                    background: '#ffffff',
+                    color: '#475569',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={addingLead}
+                  style={{
+                    padding: '9px 20px',
+                    borderRadius: '8px',
+                    border: '1px solid #16a34a',
+                    background: '#16a34a',
+                    color: '#ffffff',
+                    fontSize: '13px',
+                    fontWeight: '700',
+                    cursor: addingLead ? 'wait' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    boxShadow: '0 2px 6px rgba(22, 163, 74, 0.25)'
+                  }}
+                >
+                  {addingLead ? 'Guardando...' : 'Guardar Lead'}
+                </button>
+              </div>
+
+            </form>
           </div>
         </div>
       )}

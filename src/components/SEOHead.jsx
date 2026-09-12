@@ -226,11 +226,6 @@ export default function SEOHead({ currentPath }) {
         page_title: effectiveTitle
       });
     }
-
-    // Track dynamic SPA pageview in Meta Pixel
-    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-      window.fbq('track', 'PageView');
-    }
   }, [currentPath]);
 
   return null;

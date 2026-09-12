@@ -31,6 +31,13 @@ export default function Presupuesto({ navigate }) {
       });
     }
 
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      window.fbq('track', 'Lead', {
+        content_name: 'Formulario Presupuesto',
+        content_category: formData.clientType || 'particular'
+      });
+    }
+
     if (navigate) {
       navigate('/gracias');
     } else {

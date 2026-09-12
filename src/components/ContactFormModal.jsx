@@ -26,6 +26,13 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {}, na
       });
     }
 
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      window.fbq('track', 'Lead', {
+        content_name: 'Modal Formulario Rapido',
+        content_category: formData.clientType || 'particular'
+      });
+    }
+
     onClose();
     if (navigate) {
       navigate('/gracias');

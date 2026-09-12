@@ -227,6 +227,10 @@ export default function SEOHead({ currentPath }) {
       });
     }
 
+    // Track dynamic SPA pageview in Meta Pixel
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      window.fbq('track', 'PageView');
+    }
   }, [currentPath]);
 
   return null;

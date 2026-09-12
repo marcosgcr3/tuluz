@@ -4,6 +4,8 @@ import { companyInfo, navLinks } from '../data/content';
 
 export default function Navbar({ currentPath, navigate, theme, toggleTheme, openContactModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -17,20 +19,87 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
     };
   }, [mobileMenuOpen]);
 
+  // Smart sticky navbar: hide on scroll down, reveal on scroll up
+  useEffect(() => {
+    let prevScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+
+          // Activate sleek blur and background when scrolled past 20px
+          setIsScrolled(currentScrollY > 20);
+
+          // Never hide navbar while mobile drawer menu is open
+          if (mobileMenuOpen) {
+            setIsVisible(true);
+            prevScrollY = currentScrollY;
+            ticking = false;
+            return;
+          }
+
+          // Near top of page: always visible
+          if (currentScrollY <= 60) {
+            setIsVisible(true);
+          } else {
+            const diff = currentScrollY - prevScrollY;
+
+            // Scrolled down -> hide
+            if (diff > 8) {
+              setIsVisible(false);
+            }
+            // Scrolled up -> show
+            else if (diff < -8) {
+              setIsVisible(true);
+            }
+          }
+
+          prevScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileMenuOpen]);
+
+  // Always reset visibility and close mobile menu when navigating
+  useEffect(() => {
+    setIsVisible(true);
+    setMobileMenuOpen(false);
+  }, [currentPath]);
+
   const handleNavClick = (path) => {
     navigate(path);
     setMobileMenuOpen(false);
+    setIsVisible(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
       <header 
+        className={`main-navbar ${isScrolled ? 'navbar-scrolled' : ''} ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`}
         style={{
-          position: 'relative',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
           zIndex: 900,
-          background: 'transparent',
-          padding: '1.1rem 0'
+          padding: isScrolled ? '0.7rem 0' : '1.1rem 0',
+          background: isScrolled
+            ? (theme === 'dark' ? 'rgba(15, 23, 42, 0.88)' : 'rgba(255, 255, 255, 0.92)')
+            : 'transparent',
+          backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+          WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
+          borderBottom: isScrolled ? '1px solid var(--border-light)' : '1px solid transparent',
+          boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.08)' : 'none',
+          transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease'
         }}
       >
         <div className="navbar-container" style={{ width: '100%', maxWidth: '100%', padding: '0 clamp(1rem, 3.5vw, 3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.25rem' }}>
@@ -202,6 +271,17 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
         </div>
       </header>
 
+      {/* Spacer to preserve normal document flow so page content doesn't jump */}
+      <div 
+        className="navbar-spacer" 
+        style={{ 
+          height: '92px', 
+          width: '100%', 
+          pointerEvents: 'none' 
+        }} 
+        aria-hidden="true" 
+      />
+
       {/* Mobile Backdrop & Drawer Menu */}
       {mobileMenuOpen && (
         <div 
@@ -220,7 +300,7 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
             onClick={(e) => e.stopPropagation()}
             style={{
               position: 'absolute',
-              top: '64px',
+              top: isScrolled ? '68px' : '78px',
               left: '1rem',
               right: '1rem',
               background: 'var(--bg-card)',
@@ -304,12 +384,14 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
           .navbar-cta-desktop { display: none !important; }
         }
         @media (max-width: 600px) {
+          .navbar-spacer { height: 78px !important; }
           .phone-text-desktop { display: none !important; }
           .navbar-brand-icon { width: 44px !important; height: 44px !important; }
           .navbar-brand-text { font-size: 1.6rem !important; }
           .navbar-brand-sub { font-size: 0.55rem !important; }
         }
         @media (max-width: 400px) {
+          .navbar-spacer { height: 72px !important; }
           .navbar-brand-icon { width: 38px !important; height: 38px !important; }
           .navbar-brand-text { font-size: 1.42rem !important; }
           .navbar-brand-sub { font-size: 0.50rem !important; }

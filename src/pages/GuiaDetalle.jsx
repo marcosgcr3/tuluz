@@ -93,10 +93,14 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
           "publisher": {
             "@type": "Organization",
             "name": "tuLuz - Asesoramiento Energético",
+            "url": "https://tu-luz.es",
             "logo": {
               "@type": "ImageObject",
               "url": "https://tu-luz.es/logo.png"
-            }
+            },
+            "sameAs": [
+              "https://www.facebook.com/p/TuLuz-61594254081041/"
+            ]
           },
           "keywords": guide.keyword
         },

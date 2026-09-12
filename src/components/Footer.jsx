@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lightbulb, Phone, Mail, MapPin, MessageCircle, ArrowRight } from 'lucide-react';
+import { Lightbulb, Phone, Mail, MapPin, MessageCircle, Facebook, ArrowRight } from 'lucide-react';
 import { companyInfo } from '../data/content';
 
 export default function Footer({ navigate }) {
@@ -59,12 +59,13 @@ export default function Footer({ navigate }) {
               tuLuz representa claridad, ahorro y un futuro sostenible. Asesoramos para que tomes mejores decisiones energéticas, optimices tu consumo y cuides lo que importa.
             </p>
 
-            <div style={{ display: 'flex', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
               <a 
                 href={companyInfo.socials.whatsapp} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="WhatsApp tuLuz"
+                title="Escríbenos por WhatsApp"
                 style={{
                   width: '38px',
                   height: '38px',
@@ -79,6 +80,28 @@ export default function Footer({ navigate }) {
               >
                 <MessageCircle size={20} />
               </a>
+              {companyInfo.socials.facebook && (
+                <a 
+                  href={companyInfo.socials.facebook} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Página de Facebook de tuLuz"
+                  title="Visita nuestra página de Facebook"
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '50%',
+                    background: 'rgba(24, 119, 242, 0.15)',
+                    color: '#1877F2',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <Facebook size={20} />
+                </a>
+              )}
             </div>
           </div>
 

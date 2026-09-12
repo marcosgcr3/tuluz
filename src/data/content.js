@@ -12,7 +12,8 @@ export const companyInfo = {
   region: "Andalucía",
   country: "España",
   socials: {
-    whatsapp: "https://wa.me/+34620061560?text=Hola,%20quisiera%20recibir%20asesoramiento%20gratuito%20para%20mis%20facturas%20de%20luz%20y%20gas."
+    whatsapp: "https://wa.me/+34620061560?text=Hola,%20quisiera%20recibir%20asesoramiento%20gratuito%20para%20mis%20facturas%20de%20luz%20y%20gas.",
+    facebook: "https://www.facebook.com/p/TuLuz-61594254081041/"
   }
 };
 

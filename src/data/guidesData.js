@@ -1539,11 +1539,11 @@ export const guidesData = [
     "id": "cambio-de-titularidad-luz-que-necesito",
     "slug": "cambio-de-titularidad-luz-que-necesito",
     "keyword": "cambio de titularidad luz qué necesito",
-    "title": "Cambio de titularidad de luz: requisitos y documentos",
-    "metaTitle": "Cambio de titularidad de luz: guía completa | tuLuz",
-    "metaDescription": "Todo lo necesario para cambiar el titular de un suministro eléctrico sin errores ni retrasos.",
+    "title": "Cambio de titularidad de luz: requisitos, documentos y cómo evitar deudas ajenas",
+    "metaTitle": "Cambio de Titularidad de Luz: Requisitos y Documentos | tuLuz",
+    "metaDescription": "Guía completa para cambiar de titular en el contrato de luz. Documentación obligatoria, plazos (1 a 14 días), cambio por alquiler, compraventa o fallecimiento y consejos para evitar deudas previas.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -1551,65 +1551,102 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Todo lo necesario para cambiar el titular de un suministro eléctrico sin errores ni retrasos.",
+    "excerpt": "Cambiar el titular del contrato eléctrico es un trámite completamente gratuito que te protege legalmente ante deudas ajenas y te permite adaptar la tarifa a tus hábitos. Descubre qué documentos necesitas según tu caso y cómo tramitarlo sin retrasos.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cambio de titularidad luz qué necesito"
+        "id": "cuando-es-obligatorio",
+        "title": "1. ¿Cuándo es obligatorio cambiar el titular de la luz?"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "es-gratuito",
+        "title": "2. ¿Tiene algún coste? Cuidado con las deudas previas del suministro"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "documentacion-necesaria",
+        "title": "3. Documentación obligatoria según tu situación (alquiler, compra o fallecimiento)"
+      },
+      {
+        "id": "cuanto-tarda",
+        "title": "4. Plazos habituales: ¿cuánto tarda en hacerse efectivo el cambio?"
+      },
+      {
+        "id": "que-revisar-antes",
+        "title": "5. Qué revisar en el contrato antes de formalizar el cambio"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes sobre el cambio de titular"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cambio de titularidad luz qué necesito",
-        "content": "Comprender a fondo **cambio de titularidad luz qué necesito** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nTodo lo necesario para cambiar el titular de un suministro eléctrico sin errores ni retrasos.",
+        "id": "cuando-es-obligatorio",
+        "title": "1. ¿Cuándo es obligatorio cambiar el titular de la luz?",
+        "content": "La legislación del sector eléctrico en España establece que el contrato de suministro debe estar a nombre de la persona física o jurídica que efectivamente disfruta y hace uso de la electricidad.\n\nEs fundamental tramitar el cambio en las siguientes situaciones:\n\n- **Vivienda o local en régimen de alquiler:** El inquilino debe figurar como titular. De esta forma, el arrendador se desvincula de cualquier impago o retraso, y el inquilino puede elegir libremente su tarifa o acogerse al Bono Social si cumple los requisitos.\n- **Compraventa de un inmueble:** El nuevo propietario debe subrogarse en el contrato o dar un alta nueva a su nombre.\n- **Fallecimiento del titular anterior:** Los herederos o el cónyuge deben regularizar la titularidad.\n- **Separación o divorcio:** El cónyuge que permanezca en la vivienda debe asumir la titularidad contractual."
+      },
+      {
+        "id": "es-gratuito",
+        "title": "2. ¿Tiene algún coste? Cuidado con las deudas previas del suministro",
+        "content": "El cambio de titularidad es un trámite **100% gratuito** por ley. Ninguna comercializadora ni distribuidora puede cobrarte gastos de gestión por modificar los datos del contrato.\n\nExisten dos modalidades para gestionarlo:\n\n1. **Subrogación simple:** Heredas el contrato tal y como estaba (mantienes la misma potencia y tarifa). Si el anterior titular tenía deudas acumuladas con la compañía, existe el riesgo de que la comercializadora intente reclamártelas.\n2. **Cambio de titular con cambio de tarifa o compañía:** Es la opción más recomendada por los asesores de tuLuz. Se genera un contrato nuevo limpio, evitando arrastrar responsabilidades por deudas ajenas y permitiéndote contratar una tarifa actualizada y más barata.",
         "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cambio de titularidad luz qué necesito, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+          "type": "warning",
+          "title": "Consejo de seguridad jurídica",
+          "text": "Si entras a vivir de alquiler, aporta siempre una copia del contrato de arrendamiento donde figure la fecha de inicio del alquiler para blindarte ante cualquier factura pendiente del inquilino anterior."
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
+        "id": "documentacion-necesaria",
+        "title": "3. Documentación obligatoria según tu situación (alquiler, compra o fallecimiento)",
+        "content": "Para tramitar el cambio sin incidencias debes recopilar los siguientes datos:",
+        "table": {
+          "headers": [
+            "Tipo de caso",
+            "Documentos requeridos",
+            "Datos de pago"
+          ],
+          "rows": [
+            [
+              "Vivienda en Alquiler",
+              "Contrato de arrendamiento firmado + DNI del inquilino + Código CUPS de la vivienda",
+              "Número de cuenta bancaria (IBAN) del inquilino"
+            ],
+            [
+              "Compraventa de inmueble",
+              "Escritura de compraventa o nota simple reciente + DNI del nuevo propietario + CUPS",
+              "IBAN del nuevo titular"
+            ],
+            [
+              "Por fallecimiento",
+              "Certificado de defunción + Justificante de titularidad (testamento/escritura) + DNI del nuevo titular",
+              "IBAN del heredero que asume el contrato"
+            ],
+            [
+              "Separación o divorcio",
+              "Sentencia de divorcio o convenio regulador donde se adjudique el uso de la vivienda + DNI",
+              "IBAN de quien permanece en la casa"
+            ]
+          ]
+        }
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cambio de titularidad de luz: requisitos y documentos** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "cuanto-tarda",
+        "title": "4. Plazos habituales: ¿cuánto tarda en hacerse efectivo el cambio?",
+        "content": "El cambio de titularidad tarda habitualmente entre **1 y 14 días hábiles**, dependiendo del ciclo de facturación de la distribuidora:\n\n- La distribuidora no suele cortar el periodo de lectura a mitad de mes: emite una **factura de cierre** con el consumo hasta la fecha de solicitud a nombre del antiguo titular, y la siguiente factura ya se emitirá a nombre del nuevo titular.\n- Durante todo el proceso de cambio, **el suministro eléctrico no se interrumpe en ningún instante**."
+      },
+      {
+        "id": "que-revisar-antes",
+        "title": "5. Qué revisar en el contrato antes de formalizar el cambio",
+        "content": "Aprovecha el cambio de titular para sanear la configuración del suministro:\n\n1. **Revisa la potencia contratada:** Comprueba si la potencia que tenía el anterior inquilino es excesiva para ti (por ejemplo, bajar de 5,75 kW a 3,45 kW te ahorrará más de 120€ al año).\n2. **Elimina servicios de mantenimiento obligatorios:** Muchas eléctricas cuelan seguros de pago de 5€ a 12€/mes en los traspasos de titular.\n3. **Compara el precio del kWh:** No te conformes con heredar la tarifa desfasada del antiguo titular."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cambio de titularidad luz qué necesito?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Puedo cambiar el titular si el anterior inquilino dejó facturas sin pagar?",
+        "a": "Sí. Si presentas tu contrato de alquiler con fecha posterior a la generación de la deuda, la ley te protege y la comercializadora no puede negarse al cambio ni exigirte el pago de deudas que no son tuyas."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Se necesita el consentimiento del antiguo titular para cambiar de nombre?",
+        "a": "No es estrictamente obligatorio si acreditas documentalmente tu derecho de uso de la vivienda (mediante contrato de alquiler o escritura de propiedad)."
       }
     ],
     "relatedSlugs": [
@@ -1622,11 +1659,11 @@ export const guidesData = [
     "id": "como-aumentar-potencia-contratada",
     "slug": "como-aumentar-potencia-contratada",
     "keyword": "cómo aumentar potencia contratada",
-    "title": "Cómo aumentar la potencia contratada de luz",
-    "metaTitle": "Aumentar potencia contratada: pasos y coste | tuLuz",
-    "metaDescription": "Cuándo aumentar potencia, qué revisar y cómo tramitar el cambio de forma segura.",
+    "title": "Cómo aumentar la potencia contratada de luz: costes por kW, boletín y pasos",
+    "metaTitle": "Cómo Aumentar la Potencia de Luz: Costes por kW y Pasos | tuLuz",
+    "metaDescription": "Conoce cuánto cuesta subir la potencia en tu factura de luz (derechos de acceso, extensión y enganche). Revisa si necesitas nuevo boletín eléctrico (CIE) y cómo tramitarlo.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -1634,65 +1671,118 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Cuándo aumentar potencia, qué revisar y cómo tramitar el cambio de forma segura.",
+    "excerpt": "¿Te saltan los plomos con frecuencia o vas a instalar aire acondicionado, aerotermia o un cargador de coche eléctrico? Descubre cuánto cuesta exactamente subir la potencia, qué derechos regulados pagarás y cuándo te pedirán un boletín eléctrico nuevo.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo aumentar potencia contratada"
+        "id": "senales-aumentar",
+        "title": "1. ¿Cuándo necesitas realmente aumentar la potencia contratada?"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "costes-regulados",
+        "title": "2. ¿Cuánto cuesta subir la potencia? Desglose oficial de derechos regulados"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "tabla-ejemplos-coste",
+        "title": "3. Tabla de costes reales según los kW aumentados"
+      },
+      {
+        "id": "cuando-piden-boletin",
+        "title": "4. El Boletín Eléctrico (CIE): cuándo te exigirán renovarlo"
+      },
+      {
+        "id": "subir-solo-valle",
+        "title": "5. El truco de aumentar potencia solo en Valle para recarga de coche eléctrico"
+      },
+      {
+        "id": "paso-a-paso",
+        "title": "6. Cómo tramitar el aumento de potencia paso a paso"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "7. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo aumentar potencia contratada",
-        "content": "Comprender a fondo **cómo aumentar potencia contratada** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nCuándo aumentar potencia, qué revisar y cómo tramitar el cambio de forma segura.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo aumentar potencia contratada, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+        "id": "senales-aumentar",
+        "title": "1. ¿Cuándo necesitas realmente aumentar la potencia contratada?",
+        "content": "El **Interruptor de Control de Potencia (ICP)** del contador digital salta cuando la suma de vatios demandados en un instante supera el límite contratado.\n\nAntes de pedir un aumento de potencia, distingue si se trata de un problema puntual de hábitos o de una necesidad técnica real:\n\n- **Es un hábito evitable:** Si salta cuando pones el horno, la vitrocerámica a tope y la lavadora calentando agua exactamente en el mismo minuto. Desplazar la lavadora 40 minutos soluciona el problema sin gastar un solo euro.\n- **Es una necesidad real:** Has instalado aerotermia centralizada, placas de inducción potentes, una bomba de calor para toda la vivienda o un cargador de vehículo eléctrico doméstico."
+      },
+      {
+        "id": "costes-regulados",
+        "title": "2. ¿Cuánto cuesta subir la potencia? Desglose oficial de derechos regulados",
+        "content": "Subir la potencia conlleva el abono de tres conceptos regulados por el Estado español a favor de la distribuidora eléctrica (RD 1955/2000):\n\n- **Derechos de extensión:** **17,37 € por cada kW aumentado** (+ IVA). Cubren el mantenimiento de las infraestructuras de red.\n- **Derechos de acceso:** **19,70 € por cada kW aumentado** (+ IVA). Remuneran el uso de la red de transporte.\n- **Derechos de enganche:** **9,04 € de cuota fija** (+ IVA), independientemente de los kW que subas.\n\nEn total, cada kW que aumentes te costará aproximadamente **45€ a 50€ en un único pago** en tu siguiente factura, más el incremento mensual fijo de unos 4€ a 5€/mes por kW en tus futuros recibos."
+      },
+      {
+        "id": "tabla-ejemplos-coste",
+        "title": "3. Tabla de costes reales según los kW aumentados",
+        "content": "Ejemplos de coste de subida de potencia habituales en viviendas domésticas:",
+        "table": {
+          "headers": [
+            "Potencia actual",
+            "Potencia nueva",
+            "kW adicionales",
+            "Coste puntual en factura (con IVA)",
+            "Subida fija mensual"
+          ],
+          "rows": [
+            [
+              "3,45 kW",
+              "4,60 kW",
+              "+1,15 kW",
+              "~56 €",
+              "+4,80 € / mes"
+            ],
+            [
+              "3,45 kW",
+              "5,75 kW",
+              "+2,30 kW",
+              "~107 €",
+              "+9,60 € / mes"
+            ],
+            [
+              "4,60 kW",
+              "5,75 kW",
+              "+1,15 kW",
+              "~56 €",
+              "+4,80 € / mes"
+            ],
+            [
+              "4,60 kW",
+              "6,90 kW",
+              "+2,30 kW",
+              "~107 €",
+              "+9,60 € / mes"
+            ],
+            [
+              "5,75 kW",
+              "8,05 kW",
+              "+2,30 kW",
+              "~107 €",
+              "+9,60 € / mes"
+            ]
+          ]
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
+        "id": "cuando-piden-boletin",
+        "title": "4. El Boletín Eléctrico (CIE): cuándo te exigirán renovarlo",
+        "content": "El **Certificado de Instalación Eléctrica (CIE o Boletín)** certifica la potencia máxima admisible de los cables y protecciones de tu vivienda. La distribuidora te exigirá un boletín nuevo emitido por un instalador autorizado en dos supuestos:\n\n1. **Si la potencia deseada supera la potencia máxima autorizada en el boletín vigente.**\n2. **Si el boletín actual tiene más de 20 años de antigüedad.**\n\nUn boletín eléctrico nuevo suele costar entre **120€ y 200€** según la comunidad autónoma e instalador."
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo aumentar la potencia contratada de luz** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "subir-solo-valle",
+        "title": "5. El truco de aumentar potencia solo en Valle para recarga de coche eléctrico",
+        "content": "Gracias a la tarifa 2.0TD, **no estás obligado a subir la potencia de las 24 horas del día**:\n\nSi has comprado un coche eléctrico y necesitas cargar a 7,4 kW por la noche, puedes mantener tu potencia diurna en **3,45 kW en Punta (P1)** y contratar **7,4 kW en Valle (P2)**. El coste del peaje de potencia en Valle es hasta un 90% más barato, por lo que pagarás prácticamente lo mismo en tu recibo mensual disfrutando de carga ultrarrápida nocturna."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo aumentar potencia contratada?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto tarda la compañía en subirme la potencia?",
+        "a": "Con los contadores digitales inteligentes, el aumento se procesa telemáticamente en un plazo de entre 1 y 5 días hábiles desde que la distribuidora aprueba la solicitud."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Si me mudo de casa me devuelven lo pagado por derechos de extensión?",
+        "a": "No. Los derechos quedan asociados al punto de suministro (al código CUPS de la vivienda) durante un plazo de 3 años."
       }
     ],
     "relatedSlugs": [
@@ -1705,11 +1795,11 @@ export const guidesData = [
     "id": "pvpc-o-mercado-libre-que-conviene",
     "slug": "pvpc-o-mercado-libre-que-conviene",
     "keyword": "PVPC o mercado libre qué conviene",
-    "title": "PVPC o mercado libre: diferencias y cómo decidir",
-    "metaTitle": "PVPC o mercado libre: cuál te conviene | tuLuz",
-    "metaDescription": "Compara las características de la tarifa regulada y el mercado libre antes de revisar tu contrato.",
+    "title": "PVPC o mercado libre en 2026: comparativa, ventajas, riesgos y cuál te conviene",
+    "metaTitle": "PVPC o Mercado Libre: ¿Cuál Te Conviene en 2026? | tuLuz",
+    "metaDescription": "Compara la tarifa regulada PVPC y el mercado libre con datos actualizados. Descubre cómo funciona la nueva fórmula con mercados de futuros y cuál se adapta a tu consumo.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -1717,65 +1807,116 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Compara las características de la tarifa regulada y el mercado libre antes de revisar tu contrato.",
+    "excerpt": "Elegir entre la tarifa regulada por el Gobierno (PVPC) o una tarifa del mercado libre puede significar pagar un 35% más o menos en tu recibo anual. Conoce las diferencias reales, cómo funciona la nueva fórmula y qué opción encaja mejor con tu hogar.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre PVPC o mercado libre qué conviene"
+        "id": "que-es-el-pvpc",
+        "title": "1. ¿Qué es el PVPC (Precio Voluntario para el Pequeño Consumidor)?"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "que-es-el-mercado-libre",
+        "title": "2. ¿Qué es el Mercado Libre?"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "nueva-formula-pvpc",
+        "title": "3. La nueva fórmula del PVPC: mayor estabilidad frente a la volatilidad"
+      },
+      {
+        "id": "tabla-comparativa",
+        "title": "4. Tabla comparativa: PVPC vs Mercado Libre cara a cara"
+      },
+      {
+        "id": "cual-te-conviene",
+        "title": "5. ¿Cuál te conviene según tu perfil y estilo de vida?"
+      },
+      {
+        "id": "trampas-mercado-libre",
+        "title": "6. Las trampas comerciales más frecuentes del mercado libre"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "7. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre PVPC o mercado libre qué conviene",
-        "content": "Comprender a fondo **PVPC o mercado libre qué conviene** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nCompara las características de la tarifa regulada y el mercado libre antes de revisar tu contrato.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a PVPC o mercado libre qué conviene, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+        "id": "que-es-el-pvpc",
+        "title": "1. ¿Qué es el PVPC (Precio Voluntario para el Pequeño Consumidor)?",
+        "content": "El **PVPC** es la tarifa eléctrica regulada y supervisada directamente por el Ministerio para la Transición Ecológica y la CNMC en España:\n\n- Solo pueden ofrecerla las **Comercializadoras de Referencia** designadas por el Gobierno (como Curenergía, Energía XXI, etc.).\n- El precio de la energía cambia cada hora de cada día en función del mercado mayorista.\n- **No tiene permanencia ni servicios adicionales vinculados**.\n- Es la única tarifa que da acceso obligatorio al **Bono Social Eléctrico**."
+      },
+      {
+        "id": "que-es-el-mercado-libre",
+        "title": "2. ¿Qué es el Mercado Libre?",
+        "content": "En el **mercado libre**, las empresas comercializadoras (existen más de 300 en España) fijan libremente sus condiciones, promociones y precios con el cliente:\n\n- **Tarifas con precio fijo 24 horas:** Pagas siempre los mismos euros por kWh durante todo el año, independientemente de lo que pase en el mercado mayorista.\n- **Tarifas con discriminación horaria propia:** Precios cerrados para Punta, Llano y Valle.\n- **Tarifas indexadas libres:** Precio de coste mayorista más un margen comercial explícito."
+      },
+      {
+        "id": "nueva-formula-pvpc",
+        "title": "3. La nueva fórmula del PVPC: mayor estabilidad frente a la volatilidad",
+        "content": "Tras la crisis energética de 2022, el Gobierno reformó el cálculo del PVPC (Real Decreto 444/2023). Desde 2024 y con pleno despliegue en 2026, el precio del PVPC ya no depende al 100% de la subasta diaria (spot), sino que incorpora una **cesta de mercados de futuros a plazo mensual, trimestral y anual**.\n\nEsto reduce los picos extremos de precio cuando el gas o la electricidad se encarecen, aportando mayor estabilidad a los consumidores regulados."
+      },
+      {
+        "id": "tabla-comparativa",
+        "title": "4. Tabla comparativa: PVPC vs Mercado Libre cara a cara",
+        "content": "Resumen de diferencias estructurales:",
+        "table": {
+          "headers": [
+            "Característica",
+            "PVPC (Mercado Regulado)",
+            "Mercado Libre"
+          ],
+          "rows": [
+            [
+              "Fijación del precio",
+              "Supervisado por ley (coste de producción + peajes)",
+              "Pactado libremente entre empresa y cliente"
+            ],
+            [
+              "Modalidades disponibles",
+              "Solo precio horario variable (24 precios al día)",
+              "Precio fijo 24h, 3 tramos, tarifa plana o indexada"
+            ],
+            [
+              "Acceso a Bono Social",
+              "SÍ (es requisito indispensable)",
+              "NO (incompatible por ley)"
+            ],
+            [
+              "Permanencia",
+              "NUNCA (prohibida por ley)",
+              "Habitualmente no, pero algunas compañías aplican 12 meses"
+            ],
+            [
+              "Servicios adicionales",
+              "Prohibido incluir mantenimientos o seguros",
+              "Frecuentes (mantenimientos, asistencias, urgencias)"
+            ],
+            [
+              "Compañías que lo venden",
+              "Solo 8 Comercializadoras de Referencia",
+              "Más de 300 comercializadoras libres"
+            ]
+          ]
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
+        "id": "cual-te-conviene",
+        "title": "5. ¿Cuál te conviene según tu perfil y estilo de vida?",
+        "content": "Elige con criterio objetivo:\n\n- **Te conviene el PVPC si:** Tienes derecho al Bono Social Eléctrico (descuento del 40% al 80%), puedes adaptar tus consumos a las horas solares o nocturnas, o en épocas de alta generación renovable con precios mayoristas en mínimos.\n- **Te conviene el Mercado Libre si:** Buscas certidumbre absoluta y tranquilidad mediante una **tarifa con precio fijo competitivo** (por debajo de 0,12€ - 0,14€/kWh), consumes mucho en horas punta de la tarde/noche y no quieres preocuparte de qué hora es al cocinar o encender la climatización."
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **PVPC o mercado libre: diferencias y cómo decidir** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "trampas-mercado-libre",
+        "title": "6. Las trampas comerciales más frecuentes del mercado libre",
+        "content": "Si decides contratar en el mercado libre, vigila con lupa estos tres puntos:\n\n1. **Precios promocionales que caducan:** Descuentos atractivos los primeros 6 meses que se duplican automáticamente al renovar.\n2. **Seguros colados en el contrato:** Servicios de urgencias de 6€ a 12€/mes que encarecen el recibo más de 100€ anuales.\n3. **Cláusulas de permanencia oculta:** Penalizaciones por marcharte antes de cumplir un año."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con PVPC o mercado libre qué conviene?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Puedo pasarme de PVPC a mercado libre y viceversa cuando quiera?",
+        "a": "Sí. El cambio es completamente gratuito y no requiere obras ni cortes de suministro. Puedes volver a PVPC en cualquier momento llamando a una comercializadora de referencia."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿El contador de luz cambia si cambio de mercado?",
+        "a": "No. El contador y la instalación física pertenecen a la distribuidora de tu zona y no se tocan."
       }
     ],
     "relatedSlugs": [
@@ -1788,9 +1929,9 @@ export const guidesData = [
     "id": "como-saber-si-tengo-pvpc",
     "slug": "como-saber-si-tengo-pvpc",
     "keyword": "cómo saber si tengo PVPC",
-    "title": "Cómo saber si tienes PVPC o mercado libre",
-    "metaTitle": "Cómo saber si tienes PVPC o mercado libre | tuLuz",
-    "metaDescription": "Identifica tu tipo de tarifa, qué datos mirar y qué implica cada modalidad.",
+    "title": "Cómo saber si tienes PVPC o mercado libre: 4 comprobaciones infalibles en tu factura",
+    "metaTitle": "Cómo Saber si Tienes PVPC o Mercado Libre en tu Factura | tuLuz",
+    "metaDescription": "Aprende a identificar en menos de 1 minuto si estás en el mercado regulado (PVPC) o en el mercado libre. Nombres de las comercializadoras reguladas y datos del recibo.",
     "category": "Mercado y Tarifas",
     "readTime": "6 min de lectura",
     "publishedAt": "2026-09-14",
@@ -1800,65 +1941,107 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Identifica tu tipo de tarifa, qué datos mirar y qué implica cada modalidad.",
+    "excerpt": "Más del 60% de los consumidores no sabe qué tipo de tarifa tiene contratada. Sigue estos 4 pasos sencillos para descifrar tu última factura en menos de 60 segundos y saber si estás en mercado libre o regulado.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo saber si tengo PVPC"
+        "id": "por-que-es-importante",
+        "title": "1. ¿Por qué es crucial saber si estás en PVPC o mercado libre?"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "clave-1-nombre-empresa",
+        "title": "2. Clave 1: El nombre exacto de la comercializadora"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "tabla-empresas-reguladas",
+        "title": "3. Tabla oficial de las Comercializadoras de Referencia (PVPC)"
+      },
+      {
+        "id": "clave-2-tipo-contrato",
+        "title": "4. Clave 2: El apartado 'Datos del contrato' en tu factura"
+      },
+      {
+        "id": "clave-3-servicios-adicionales",
+        "title": "5. Clave 3: Presencia de seguros o servicios de mantenimiento"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo saber si tengo PVPC",
-        "content": "Comprender a fondo **cómo saber si tengo PVPC** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nIdentifica tu tipo de tarifa, qué datos mirar y qué implica cada modalidad.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo saber si tengo PVPC, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+        "id": "por-que-es-importante",
+        "title": "1. ¿Por qué es crucial saber si estás en PVPC o mercado libre?",
+        "content": "Saber qué contrato tienes es el primer paso para dejar de pagar de más:\n\n- Si estás en **mercado libre**, tu precio puede haberse quedado desfasado respecto a las mejores ofertas actuales o incluir cuotas de mantenimiento que ni siquiera sabes que pagas.\n- Si estás en **PVPC**, tu factura fluctúa cada mes y estás pagando un precio fijado por el mercado mayorista."
+      },
+      {
+        "id": "clave-1-nombre-empresa",
+        "title": "2. Clave 1: El nombre exacto de la comercializadora",
+        "content": "Las grandes energéticas operan con dos empresas distintas con nombres muy similares para confundir al usuario:\n\n- **Iberdrola:** Su filial de mercado libre se llama *Iberdrola Clientes*. Su filial de PVPC se llama **Curenergía**.\n- **Endesa:** Su filial de mercado libre se llama *Endesa Energía*. Su filial de PVPC se llama **Energía XXI**.\n- **Naturgy:** Su filial libre es *Naturgy Iberia*. Su filial regulada es **Comercializadora Regulada Gas & Power**.\n- **TotalEnergies:** Su filial libre es *TotalEnergies Electricidad y Gas*. Su filial regulada es **Baser**.\n\nSi en el logotipo de la factura pone Endesa Energía o Iberdrola Clientes, estás en el **mercado libre**."
+      },
+      {
+        "id": "tabla-empresas-reguladas",
+        "title": "3. Tabla oficial de las Comercializadoras de Referencia (PVPC)",
+        "content": "En España solo existen estas comercializadoras autorizadas para ofrecer el PVPC y tramitar el Bono Social:",
+        "table": {
+          "headers": [
+            "Grupo energético",
+            "Comercializadora de Referencia (PVPC)",
+            "Mercado al que pertenece"
+          ],
+          "rows": [
+            [
+              "Grupo Iberdrola",
+              "Curenergía Comercializador de Último Recurso S.A.U.",
+              "Mercado Regulado (PVPC)"
+            ],
+            [
+              "Grupo Endesa",
+              "Energía XXI Comercializadora de Referencia S.L.U.",
+              "Mercado Regulado (PVPC)"
+            ],
+            [
+              "Grupo Naturgy",
+              "Comercializadora Regulada, Gas & Power S.A.",
+              "Mercado Regulado (PVPC)"
+            ],
+            [
+              "Grupo TotalEnergies",
+              "Baser Comercializadora de Referencia S.A.",
+              "Mercado Regulado (PVPC)"
+            ],
+            [
+              "Grupo EDP",
+              "COR Energético del Noroeste S.A.",
+              "Mercado Regulado (PVPC)"
+            ],
+            [
+              "Grupo Repsol",
+              "Régsiti Comercializadora Regulada S.L.U.",
+              "Mercado Regulado (PVPC)"
+            ]
+          ]
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
+        "id": "clave-2-tipo-contrato",
+        "title": "4. Clave 2: El apartado 'Datos del contrato' en tu factura",
+        "content": "Busca en tu factura el recuadro **'Datos del contrato'** o **'Información de tu suministro'**:\n\n- Si estás en **PVPC**, pondrá explícitamente: *'Modalidad de contratación: Precio Voluntario para el Pequeño Consumidor (PVPC)'* o *'Tarifa 2.0TD PVPC'*. Además verás un enlace al comparador de la CNMC.\n- Si estás en **mercado libre**, aparecerá un nombre comercial como *'Plan Estable'*, *'Tarifa Fácil'*, *'Plan Noche'*, *'Tarifa Tranquilidad'* o *'Tarifa Indexada'*."
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo saber si tienes PVPC o mercado libre** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "clave-3-servicios-adicionales",
+        "title": "5. Clave 3: Presencia de seguros o servicios de mantenimiento",
+        "content": "Revisa la lista de importes desglosados al final de la factura:\n\n- Por normativa legal, **en el PVPC está estrictamente prohibido cobrar ningún servicio adicional** (como 'Protección Pagos', 'Mantenimiento Eléctrico' o 'Urgencias 24h').\n- Si en tu recibo aparece cualquier concepto que no sea Potencia, Energía, Impuesto Eléctrico, Alquiler de Contador o IVA, estás **sin duda alguna en el mercado libre**."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo saber si tengo PVPC?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Es mejor estar en mercado libre o en PVPC?",
+        "a": "No hay una respuesta única: depende del momento del año y de tu perfil. Si contratas un precio fijo muy bajo en mercado libre pagarás menos que en PVPC cuando el mercado mayorista suba; pero si tienes derecho al Bono Social, el PVPC siempre será imbatible."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Dónde puedo enviar mi factura para que me digan qué tengo?",
+        "a": "En tuLuz analizamos tu factura gratuitamente en 2 minutos. Solo tienes que adjuntarla en nuestro formulario y un asesor te explicará qué tarifa tienes y si puedes ahorrar."
       }
     ],
     "relatedSlugs": [
@@ -1871,11 +2054,11 @@ export const guidesData = [
     "id": "bono-social-electrico-requisitos",
     "slug": "bono-social-electrico-requisitos",
     "keyword": "bono social eléctrico requisitos",
-    "title": "Bono social eléctrico: requisitos y solicitud",
-    "metaTitle": "Bono social eléctrico: requisitos y solicitud | tuLuz",
-    "metaDescription": "Consulta quién puede solicitarlo, qué documentación hace falta y qué revisar antes de tramitarlo.",
+    "title": "Bono social eléctrico en 2026: requisitos, descuentos del 40% al 80% y cómo solicitarlo",
+    "metaTitle": "Bono Social Eléctrico 2026: Requisitos y Solicitud Paso a Paso | tuLuz",
+    "metaDescription": "Guía actualizada del Bono Social Eléctrico. Consulta los límites de renta IPREM, categorías (vulnerable, severo, riesgo de exclusión), documentos y tramitación oficial.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -1883,65 +2066,111 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Consulta quién puede solicitarlo, qué documentación hace falta y qué revisar antes de tramitarlo.",
+    "excerpt": "El Bono Social es un descuento regulado por el Gobierno de hasta un 80% en la factura de la luz para familias y personas con rentas moderadas o situaciones especiales. Descubre si cumples los requisitos de renta y cómo solicitarlo paso a paso.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre bono social eléctrico requisitos"
+        "id": "que-es-el-bono-social",
+        "title": "1. ¿Qué es el Bono Social Eléctrico y qué descuento aplica?"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "requisitos-previos",
+        "title": "2. Requisitos previos obligatorios para poder solicitarlo"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "categorias-y-renta",
+        "title": "3. Categorías de beneficiarios y límites de renta IPREM"
+      },
+      {
+        "id": "limite-kwh-bonificados",
+        "title": "4. Límite máximo de kWh con descuento al año"
+      },
+      {
+        "id": "bono-social-termico",
+        "title": "5. La ayuda extra automática: el Bono Social Térmico"
+      },
+      {
+        "id": "documentos-y-solicitud",
+        "title": "6. Documentación necesaria y canales oficiales de tramitación"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "7. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre bono social eléctrico requisitos",
-        "content": "Comprender a fondo **bono social eléctrico requisitos** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nConsulta quién puede solicitarlo, qué documentación hace falta y qué revisar antes de tramitarlo.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a bono social eléctrico requisitos, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+        "id": "que-es-el-bono-social",
+        "title": "1. ¿Qué es el Bono Social Eléctrico y qué descuento aplica?",
+        "content": "El **Bono Social Eléctrico** es un mecanismo de protección fijado por el Gobierno de España para reducir el gasto en electricidad de los consumidores con menores recursos o en situaciones de vulnerabilidad:\n\n- **Consumidor Vulnerable:** Descuento directo de entre el **40% y el 65%** sobre el término de energía y potencia de la tarifa regulada.\n- **Consumidor Vulnerable Severo:** Descuento de hasta el **80%** sobre la factura.\n- **Consumidor en Riesgo de Exclusión Social:** Factura al **0€** (asumida al 50% por la comunidad autónoma o ayuntamiento y al 50% por el sistema eléctrico), con prohibición total de corte de luz."
+      },
+      {
+        "id": "requisitos-previos",
+        "title": "2. Requisitos previos obligatorios para poder solicitarlo",
+        "content": "Antes de calcular tus ingresos, debes cumplir estos 3 requisitos técnicos obligatorios:\n\n1. **Ser persona física y titular del contrato:** La vivienda debe ser la **residencia habitual** del solicitante (no aplica a segundas residencias).\n2. **Tener contratada la tarifa regulada PVPC:** Si estás en el mercado libre, primero debes solicitar el traspaso a PVPC con una Comercializadora de Referencia (es gratis).\n3. **Tener una potencia contratada igual o inferior a 10 kW**."
+      },
+      {
+        "id": "categorias-y-renta",
+        "title": "3. Categorías de beneficiarios y límites de renta IPREM",
+        "content": "Para ser considerado **Consumidor Vulnerable**, la renta anual conjunta de la unidad de convivencia debe situarse por debajo de los multiplicadores del IPREM (Indicador Público de Renta de Efectos Múltiples):\n\n- **Adulto sin menores:** Renta ≤ 1,5 × IPREM (~12.600 €/año).\n- **Unidad de convivencia con 1 menor:** Renta ≤ 2 × IPREM (~16.800 €/año).\n- **Unidad de convivencia con 2 menores:** Renta ≤ 2,5 × IPREM (~21.000 €/año).\n- **Familias numerosas:** Tienen derecho **automático** como consumidor vulnerable sin importar su nivel de ingresos.\n- **Pensionistas con pensión mínima:** Tienen acceso directo si no perciben otros ingresos superiores a 500 € anuales.\n- **Situaciones especiales:** Discapacidad ≥ 33%, víctimas de violencia de género o terrorismo, o personas en situación de dependencia grado II o III incrementan los límites de renta permitidos."
+      },
+      {
+        "id": "limite-kwh-bonificados",
+        "title": "4. Límite máximo de kWh con descuento al año",
+        "content": "El descuento del Bono Social no es ilimitado; se aplica hasta un tope máximo anual de energía consumida. El consumo que supere ese límite se factura al precio normal del PVPC:",
+        "table": {
+          "headers": [
+            "Tipo de unidad familiar",
+            "Límite máximo bonificado anual",
+            "Media mensual"
+          ],
+          "rows": [
+            [
+              "Persona individual sin menores",
+              "1.580 kWh / año",
+              "~131 kWh / mes"
+            ],
+            [
+              "Unidad de convivencia con 1 menor",
+              "2.222 kWh / año",
+              "~185 kWh / mes"
+            ],
+            [
+              "Unidad de convivencia con 2 menores",
+              "2.698 kWh / año",
+              "~225 kWh / mes"
+            ],
+            [
+              "Familias numerosas",
+              "4.761 kWh / año",
+              "~396 kWh / mes"
+            ],
+            [
+              "Pensionistas con pensión mínima",
+              "2.322 kWh / año",
+              "~193 kWh / mes"
+            ]
+          ]
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
+        "id": "bono-social-termico",
+        "title": "5. La ayuda extra automática: el Bono Social Térmico",
+        "content": "Si te conceden el Bono Social Eléctrico a fecha 31 de diciembre, adquieres automáticamente el derecho a cobrar el **Bono Social Térmico** sin necesidad de presentar ninguna solicitud adicional:\n\n- Es una ayuda económica directa en un único pago anual transferido a tu cuenta bancaria por tu comunidad autónoma.\n- Está destinado a compensar gastos de calefacción, agua caliente y cocina (gas, butano o biomasa).\n- El importe oscila entre **40€ y más de 350€**, dependiendo de la zona climática donde esté situada tu vivienda y de tu grado de vulnerabilidad."
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Bono social eléctrico: requisitos y solicitud** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "documentos-y-solicitud",
+        "title": "6. Documentación necesaria y canales oficiales de tramitación",
+        "content": "Para pedir el Bono Social debes contactar con cualquiera de las Comercializadoras de Referencia autorizadas (Energía XXI, Curenergía, Comercializadora Regulada Gas & Power, etc.) aportando:\n\n1. Formulario oficial de solicitud cumplimentado y firmado por todos los mayores de 14 años de la unidad familiar.\n2. Fotocopia del DNI/NIE del titular y de los miembros de la vivienda.\n3. Certificado de empadronamiento conjunto de todos los habitantes del domicilio.\n4. Libro de familia o certificado del Registro Civil.\n5. Título de familia numerosa o certificados de discapacidad/dependencia en su caso."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con bono social eléctrico requisitos?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto tiempo dura el Bono Social antes de renovarlo?",
+        "a": "Tiene una vigencia de 2 años (salvo para familias numerosas, que dura mientras esté vigente su carné de familia numerosa). La comercializadora comprueba automáticamente los requisitos antes de que expire."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Me pueden cortar la luz si soy beneficiario del Bono Social?",
+        "a": "Los consumidores vulnerables con menores de 16 años en la vivienda, personas con discapacidad del 33% o situación de dependencia tienen prohibición legal de corte de suministro por impago en su vivienda habitual."
       }
     ],
     "relatedSlugs": [

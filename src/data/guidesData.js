@@ -882,11 +882,11 @@ export const guidesData = [
     "id": "como-saber-que-potencia-contratar-en-casa",
     "slug": "como-saber-que-potencia-contratar-en-casa",
     "keyword": "cómo saber qué potencia contratar en casa",
-    "title": "Cómo saber qué potencia contratar en casa",
-    "metaTitle": "Potencia contratada en casa: cómo calcularla | tuLuz",
-    "metaDescription": "Aprende a calcular la potencia que necesita tu vivienda y detecta si estás pagando de más.",
+    "title": "Cómo saber qué potencia contratar en casa: fórmula, tablas y comprobación paso a paso",
+    "metaTitle": "Cómo Saber Qué Potencia Contratar en Casa (Cálculo Real) | tuLuz",
+    "metaDescription": "Aprende a calcular la potencia exacta en kW que necesita tu hogar. Evita que salte el ICP y deja de pagar de más en el término fijo de tu factura de luz.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -894,65 +894,167 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Aprende a calcular la potencia que necesita tu vivienda y detecta si estás pagando de más.",
+    "excerpt": "La potencia contratada determina cuántos electrodomésticos puedes encender a la vez sin que 'salten los plomos' y representa hasta el 40% del coste de tu factura. Aprende a calcular tu potencia óptima con datos reales y evita regalar dinero cada mes.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo saber qué potencia contratar en casa"
+        "id": "que-es-la-potencia",
+        "title": "1. ¿Qué es la potencia contratada y por qué influye tanto en tu recibo?"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-electrodomesticos",
+        "title": "2. Tabla de potencia media de los electrodomésticos habituales"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "formula-calculo",
+        "title": "3. La fórmula de cálculo y el factor de simultaneidad"
+      },
+      {
+        "id": "tramos-normalizados",
+        "title": "4. Tramos de potencia recomendados según el tamaño del hogar"
+      },
+      {
+        "id": "como-comprobar-maxima-demandada",
+        "title": "5. Cómo comprobar tu potencia máxima demandada en tu distribuidora"
+      },
+      {
+        "id": "potencia-punta-valle",
+        "title": "6. Optimización en dos periodos: Punta y Valle (Tarifa 2.0TD)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "7. Preguntas frecuentes sobre la potencia en el hogar"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo saber qué potencia contratar en casa",
-        "content": "Comprender a fondo **cómo saber qué potencia contratar en casa** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAprende a calcular la potencia que necesita tu vivienda y detecta si estás pagando de más.",
+        "id": "que-es-la-potencia",
+        "title": "1. ¿Qué es la potencia contratada y por qué influye tanto en tu recibo?",
+        "content": "El **término de potencia** (medido en kilovatios, **kW**) es el importe fijo que pagas en cada factura eléctrica, independientemente de si estás viviendo en la casa o si te has ido un mes entero de vacaciones.\n\nRepresenta la capacidad máxima de flujo eléctrico que puede entrar simultáneamente en tu vivienda. Si conectas más aparatos de los que tu potencia contratada soporta, el **Interruptor de Control de Potencia (ICP)** del contador digital salta automáticamente para proteger la instalación frente a sobrecargas.\n\nEn España, el coste medio anual por cada kW contratado ronda entre **40€ y 60€ al año**. Un hogar con 5,75 kW que realmente solo necesita 3,45 kW está pagando unos **110€ a 140€ anuales de más** de forma continuada.",
         "callout": {
           "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo saber qué potencia contratar en casa, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+          "title": "El error más común: confundir kW con kWh",
+          "text": "Los kW (potencia) son el caudal máximo que puedes pedir a la vez (lo ancho que es tu grifo). Los kWh (energía) son la cantidad total de agua que ha salido del grifo a lo largo del mes. Ajustar los kW reduce tu factura fija de por vida."
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "tabla-electrodomesticos",
+        "title": "2. Tabla de potencia media de los electrodomésticos habituales",
+        "content": "Para calcular cuánta potencia necesitas, no basta con sumar todas las potencias de tus aparatos, ya que casi nunca los usarás todos al mismo segundo. Sin embargo, debes conocer cuáles son los electrodomésticos de mayor consumo simultáneo:",
+        "table": {
+          "headers": [
+            "Electrodoméstico",
+            "Potencia típica (vatios)",
+            "Potencia en kW",
+            "Impacto en simultaneidad"
+          ],
+          "rows": [
+            [
+              "Vitrocerámica / Inducción (máx.)",
+              "1.500 W - 2.500 W por fuego",
+              "1,5 - 2,5 kW",
+              "Muy alto (suele coincidir con cena/comida)"
+            ],
+            [
+              "Horno eléctrico",
+              "1.800 W - 2.500 W",
+              "1,8 - 2,5 kW",
+              "Alto"
+            ],
+            [
+              "Lavadora (calentando agua)",
+              "1.500 W - 2.200 W",
+              "1,5 - 2,2 kW",
+              "Alto (el pico dura solo mientras calienta el agua)"
+            ],
+            [
+              "Lavavajillas (fase lavado)",
+              "1.500 W - 2.000 W",
+              "1,5 - 2,0 kW",
+              "Medio-Alto"
+            ],
+            [
+              "Termo eléctrico de agua (80L-100L)",
+              "1.200 W - 1.800 W",
+              "1,2 - 1,8 kW",
+              "Constante durante periodos de recuperación"
+            ],
+            [
+              "Aire acondicionado (split individual)",
+              "900 W - 1.400 W",
+              "0,9 - 1,4 kW",
+              "Continuo según temperatura seleccionada"
+            ],
+            [
+              "Bomba de calor centralizada",
+              "2.500 W - 4.500 W",
+              "2,5 - 4,5 kW",
+              "Muy alto"
+            ],
+            [
+              "Microondas",
+              "800 W - 1.200 W",
+              "0,8 - 1,2 kW",
+              "Cortos periodos (2-5 min)"
+            ],
+            [
+              "Frigorífico combi",
+              "150 W - 300 W",
+              "0,15 - 0,3 kW",
+              "Bajo pero continuo"
+            ],
+            [
+              "Iluminación LED y televisores",
+              "100 W - 250 W en total",
+              "0,1 - 0,25 kW",
+              "Muy bajo e irrelevante para el ICP"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "formula-calculo",
+        "title": "3. La fórmula de cálculo y el factor de simultaneidad",
+        "content": "Para estimar la potencia requerida sin recurrir a mediciones del contador, los instaladores técnicos aplican la regla del **factor de simultaneidad**:\n\n**Potencia estimada = Potencia del electrodoméstico más potente + (Suma del resto de aparatos de uso habitual × 0,25 o 0,30)**\n\nPor ejemplo, en una vivienda con vitrocerámica, horno, lavadora, frigorífico y aire acondicionado:\n- Aparato mayor: Vitrocerámica a media carga (~2.000 W)\n- Resto de aparatos: Horno (2.000 W) + Lavadora (1.800 W) + Frigorífico (200 W) + Clima (1.200 W) = 5.200 W\n- Factor de simultaneidad (0,25): 5.200 W × 0,25 = 1.300 W\n- **Potencia recomendada:** 2.000 W + 1.300 W = **3.300 W (~3,3 kW a 3,45 kW)**.",
+        "callout": {
+          "type": "tip",
+          "title": "Hábito inteligente vs contratar más",
+          "text": "No poner la lavadora y el horno exactamente a la vez que cocinas te permite contratar 3,45 kW en lugar de 5,75 kW, ahorrándote más de 120€ cada año sin perder confort."
+        }
+      },
+      {
+        "id": "tramos-normalizados",
+        "title": "4. Tramos de potencia recomendados según el tamaño del hogar",
+        "content": "Desde la reforma de 2018, en España puedes contratar la potencia en tramos múltiplos de **0,1 kW** (no estás obligado a los escalones antiguos de 3,45 kW, 4,6 kW o 5,75 kW). Como guía de referencia:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "**2,3 kW a 3,0 kW:** Pisos pequeños o estudios (1-2 personas), con cocina y calefacción por gas, electrodomésticos básicos y sin aire acondicionado centralizado.",
+          "**3,45 kW a 4,0 kW:** Viviendas estándar medianas (70-100 m²), con vitrocerámica, lavadora, lavavajillas y aire acondicionado individual. Es el tramo idóneo para la mayoría de familias en España.",
+          "**4,6 kW a 5,5 kW:** Viviendas con todo eléctrico (termo eléctrico, cocina de inducción y aire acondicionado por conductos o calefacción eléctrica acumulada).",
+          "**6,9 kW o más:** Chalets independientes con piscina, bombas de riego, aerotermia o punto de recarga rápido para coche eléctrico sin balanceo de carga dinámico."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo saber qué potencia contratar en casa** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "como-comprobar-maxima-demandada",
+        "title": "5. Cómo comprobar tu potencia máxima demandada en tu distribuidora",
+        "content": "El método infalible no es calcular a ojo, sino ver qué ha registrado tu contador digital durante el último año. Los contadores inteligentes miden el **cuarto de hora de máxima potencia demandada (maxímetro)** cada mes.\n\nPara consultarlo gratis:\n1. Revisa tu factura y mira quién es tu **distribuidora** (i-DE de Iberdrola, e-distribución de Endesa, UFD de Naturgy, E-Redes de EDP o Viesgo).\n2. Date de alta en su portal web o app de distribuidora con tu DNI y tu código CUPS.\n3. Entra en la sección **'Potencia máxima demandada'** o 'Curvas de carga'.\n4. Verás una gráfica con el pico máximo de cada mes en los últimos 12 meses. Si tu pico máximo en pleno invierno o verano nunca superó los 3,2 kW y tienes contratados 5,0 kW, puedes bajar tu potencia a 3,4 kW con total tranquilidad."
+      },
+      {
+        "id": "potencia-punta-valle",
+        "title": "6. Optimización en dos periodos: Punta y Valle (Tarifa 2.0TD)",
+        "content": "Desde junio de 2021, todos los suministros domésticos en España disponen de **dos tramos de potencia contratada independientes** en su contrato:\n\n- **Potencia Punta (P1):** Aplica de 08:00 a 00:00 h en días laborables. Es el tramo con el coste de peajes más elevado.\n- **Potencia Valle (P2):** Aplica de 00:00 a 08:00 h en días laborables y las 24 horas de sábados, domingos y festivos nacionales. El precio del kW en Valle es hasta un 90% más barato que en Punta.\n\nPuedes tener, por ejemplo, **3,45 kW en Punta** para tu consumo diurno habitual, y **5,5 kW en Valle** para recargar tu coche eléctrico por la noche o calentar el termo sin que te penalice el recibo mensual."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo saber qué potencia contratar en casa?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué ocurre si bajo la potencia y me quedo corto?",
+        "a": "Si enciendes más aparatos de los debidos, el contador saltará. Basta con apagar el último electrodoméstico encendido y bajar el interruptor general del cuadro durante 5 segundos y volverlo a subir. Si ves que salta con frecuencia, puedes volver a subir la potencia en cualquier momento llamando a tu compañía."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cuánto cuesta cambiar la potencia contratada?",
+        "a": "Bajar la potencia tiene un coste regulado de 9,04 € + IVA por derechos de enganche. Subir la potencia cuesta aproximadamente 45 € a 50 € por cada kW que aumentes (por derechos de acceso y extensión regulados por el Estado)."
+      },
+      {
+        "q": "¿Puedo cambiar la potencia cuantas veces quiera al año?",
+        "a": "Por normativa técnica, las distribuidoras están obligadas a permitir al menos un cambio de potencia cada 12 meses. Sin embargo, la mayoría de comercializadoras permiten cambios adicionales si se justifican técnicamente."
       }
     ],
     "relatedSlugs": [
@@ -965,11 +1067,11 @@ export const guidesData = [
     "id": "como-bajar-la-potencia-contratada",
     "slug": "como-bajar-la-potencia-contratada",
     "keyword": "cómo bajar la potencia contratada",
-    "title": "Cómo bajar la potencia contratada sin cometer errores",
-    "metaTitle": "Bajar potencia contratada: pasos y ahorro | tuLuz",
-    "metaDescription": "Cuándo conviene reducir potencia, qué límites existen y cómo solicitar el cambio correctamente.",
+    "title": "Cómo bajar la potencia contratada sin cometer errores: costes, ahorro y trámites",
+    "metaTitle": "Cómo Bajar la Potencia Contratada de Luz: Ahorro y Pasos | tuLuz",
+    "metaDescription": "Guía paso a paso para reducir los kW contratados en tu factura de luz. Cuánto ahorras al año, costes de distribuidora (9,04 € + IVA) y cómo evitar que salte el contador.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -977,65 +1079,124 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Cuándo conviene reducir potencia, qué límites existen y cómo solicitar el cambio correctamente.",
+    "excerpt": "Bajar la potencia es la forma más rápida y garantizada de recortar tu factura eléctrica de por vida. Descubre cuánto te cobrará la distribuidora por el trámite, cuánto vas a ahorrar y el paso a paso para no quedarte corto.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo bajar la potencia contratada"
+        "id": "por-que-bajar-potencia",
+        "title": "1. Por qué reducir la potencia es el ahorro más eficaz y garantizado"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "cuanto-se-ahorra",
+        "title": "2. Tabla de ahorro real: euros ahorrados al año según los kW reducidos"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "costes-del-tramite",
+        "title": "3. ¿Cuánto cuesta bajar la potencia? Derechos de enganche regulados"
+      },
+      {
+        "id": "limite-anual",
+        "title": "4. La regla del cambio anual: lo que debes saber antes de solicitarlo"
+      },
+      {
+        "id": "paso-a-paso",
+        "title": "5. Paso a paso para solicitar la reducción de potencia"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes sobre la bajada de potencia"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo bajar la potencia contratada",
-        "content": "Comprender a fondo **cómo bajar la potencia contratada** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nCuándo conviene reducir potencia, qué límites existen y cómo solicitar el cambio correctamente.",
+        "id": "por-que-bajar-potencia",
+        "title": "1. Por qué reducir la potencia es el ahorro más eficaz y garantizado",
+        "content": "A diferencia del consumo de energía (que depende de cuántas horas dejes la calefacción o el aire encendidos), el **término de potencia es un coste fijo ineludible**. Lo pagas los 365 días del año por el mero hecho de tener el suministro dado de alta.\n\nSegún datos de la Comisión Nacional de los Mercados y la Competencia (CNMC), **más de 7 millones de familias en España tienen contratada más potencia de la que jamás han demandado**. Esto se debe a que durante décadas las constructoras contrataban por defecto potencias elevadas (como 5,75 kW) para evitar llamadas de clientes por saltos de plomos, sin importar el sobrecoste que eso generaría mes a mes.",
         "callout": {
           "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo bajar la potencia contratada, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+          "title": "Ahorro directo en la factura",
+          "text": "Reducir la potencia no reduce tu calidad de vida ni el calor de tu casa; solo ajusta el límite máximo de aparatos encendidos exactamente en el mismo instante."
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "cuanto-se-ahorra",
+        "title": "2. Tabla de ahorro real: euros ahorrados al año según los kW reducidos",
+        "content": "Cada kilovatio (kW) de potencia contratada que reduzcas en tu factura supone un ahorro directo aproximado de **entre 45€ y 60€ al año** (sumando término de potencia, impuesto de electricidad e IVA):",
+        "table": {
+          "headers": [
+            "Potencia inicial",
+            "Potencia optimizada",
+            "Reducción en kW",
+            "Ahorro anual estimado (€)"
+          ],
+          "rows": [
+            [
+              "5,75 kW",
+              "4,60 kW",
+              "1,15 kW",
+              "52€ - 68€ / año"
+            ],
+            [
+              "5,75 kW",
+              "3,45 kW",
+              "2,30 kW",
+              "105€ - 135€ / año"
+            ],
+            [
+              "4,60 kW",
+              "3,45 kW",
+              "1,15 kW",
+              "52€ - 68€ / año"
+            ],
+            [
+              "4,60 kW",
+              "2,90 kW",
+              "1,70 kW",
+              "78€ - 100€ / año"
+            ],
+            [
+              "3,45 kW",
+              "2,30 kW",
+              "1,15 kW",
+              "52€ - 68€ / año"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "costes-del-tramite",
+        "title": "3. ¿Cuánto cuesta bajar la potencia? Derechos de enganche regulados",
+        "content": "Bajar la potencia **no es gratis**, pero su coste es muy reducido y se amortiza habitualmente en el primer o segundo mes:\n\n- **Derechos de enganche:** Importe regulado por el Real Decreto 1955/2000 fijado en **9,04 € + IVA (aproximadamente 10,94 €)**.\n- Este importe no lo cobra tu compañía comercializadora: lo cobra la distribuidora de tu zona y aparecerá reflejado en tu siguiente recibo bajo el concepto 'Costes de modificación de potencia'.\n\nNo existen costes adicionales por desplazamiento de técnico, ya que en los contadores digitales telegestionados el ajuste se realiza de forma remota en cuestión de segundos."
+      },
+      {
+        "id": "limite-anual",
+        "title": "4. La regla del cambio anual: lo que debes saber antes de solicitarlo",
+        "content": "El artículo 79 del Real Decreto 1955/2000 establece que la empresa distribuidora no está obligada a conceder más de **un cambio de potencia cada 12 meses** en el mismo suministro.\n\nPor este motivo, es crucial calcular bien la bajada antes de solicitarla: si bajas demasiado y luego necesitas subirla de nuevo inmediatamente, la distribuidora podría negarse o exigir el abono completo de los derechos de acceso y extensión (que para subir cuestan más de 45 € por kW).",
+        "callout": {
+          "type": "warning",
+          "title": "Comprueba tus picos antes de pedirlo",
+          "text": "Revisa siempre en la web de tu distribuidora que tu pico máximo en los meses más fríos de invierno y más calurosos de verano quede al menos un 10% por debajo de la potencia a la que quieres bajar."
+        }
+      },
+      {
+        "id": "paso-a-paso",
+        "title": "5. Paso a paso para solicitar la reducción de potencia",
+        "content": "Tramitar la bajada de potencia es un proceso 100% administrativo muy sencillo:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "**Paso 1:** Ten a mano tu última factura de luz para localizar tu código CUPS y el nombre del titular.",
+          "**Paso 2:** Contacta con tu comercializadora actual (por teléfono, app o área de cliente). En tuLuz tramitamos esta gestión gratuitamente para nuestros clientes.",
+          "**Paso 3:** Indica exactamente la potencia deseada en Punta (P1) y en Valle (P2). Puedes bajarlas a la misma cifra o mantener Valle más alta si tienes termo o recarga de vehículo.",
+          "**Paso 4:** La comercializadora enviará la solicitud a la distribuidora de tu zona. En un plazo de entre **2 y 6 días hábiles**, el nuevo valor quedará programado en tu contador digital."
         ]
-      },
-      {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo bajar la potencia contratada sin cometer errores** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo bajar la potencia contratada?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Tiene que venir un técnico a mi casa para bajar la potencia?",
+        "a": "No. Con los contadores digitales inteligentes instalados en toda España, la distribuidora modifica el valor de forma telemática desde su centralita sin entrar a tu vivienda."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Pierdo la garantía de mi instalación si bajo la potencia?",
+        "a": "No, en absoluto. De hecho, trabajar con potencias más moderadas reduce el estrés térmico en el cuadro eléctrico de la vivienda."
       }
     ],
     "relatedSlugs": [
@@ -1048,9 +1209,9 @@ export const guidesData = [
     "id": "diferencia-entre-potencia-y-energia-electrica",
     "slug": "diferencia-entre-potencia-y-energia-electrica",
     "keyword": "diferencia entre potencia y energía eléctrica",
-    "title": "Potencia y energía eléctrica: diferencias que debes conocer",
-    "metaTitle": "Potencia y energía eléctrica: diferencias claras | tuLuz",
-    "metaDescription": "Entiende qué son kW y kWh, cómo afectan a tu recibo y por qué no son lo mismo.",
+    "title": "Potencia y energía eléctrica: diferencias clave para entender tu factura (kW vs kWh)",
+    "metaTitle": "Diferencia entre Potencia (kW) y Energía (kWh) en la Factura | tuLuz",
+    "metaDescription": "Descubre la diferencia entre potencia eléctrica (kW) y consumo de energía (kWh). Aprende cómo se calculan en tu factura y cómo reducir ambos conceptos.",
     "category": "Hogar y Consumo",
     "readTime": "6 min de lectura",
     "publishedAt": "2026-09-14",
@@ -1060,65 +1221,107 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Entiende qué son kW y kWh, cómo afectan a tu recibo y por qué no son lo mismo.",
+    "excerpt": "Confundir kW con kWh es el error que impide a la mayoría de consumidores entender su factura de luz. Descubre la diferencia real con analogías sencillas, aprende cómo te factura cada concepto tu compañía y dónde puedes recortar gasto.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre diferencia entre potencia y energía eléctrica"
+        "id": "analogia-coche",
+        "title": "1. La analogía del coche y del grifo para entender kW y kWh"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "que-es-la-potencia",
+        "title": "2. Qué es la potencia eléctrica (kW): el término fijo"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "que-es-la-energia",
+        "title": "3. Qué es la energía eléctrica (kWh): el consumo variable"
+      },
+      {
+        "id": "tabla-comparativa",
+        "title": "4. Tabla comparativa: kW frente a kWh en tu recibo"
+      },
+      {
+        "id": "como-optimizar-ambos",
+        "title": "5. Cómo optimizar cada concepto para pagar lo mínimo"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre diferencia entre potencia y energía eléctrica",
-        "content": "Comprender a fondo **diferencia entre potencia y energía eléctrica** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nEntiende qué son kW y kWh, cómo afectan a tu recibo y por qué no son lo mismo.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a diferencia entre potencia y energía eléctrica, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+        "id": "analogia-coche",
+        "title": "1. La analogía del coche y del grifo para entender kW y kWh",
+        "content": "Para recordar la diferencia para siempre, recurre a estas dos comparaciones de la vida cotidiana:\n\n- **La analogía del coche:** La **potencia (kW)** son los caballos del motor (la velocidad punta o capacidad máxima que el coche puede desarrollar en un instante). La **energía (kWh)** son los litros de gasolina que has consumido durante un viaje de 300 kilómetros.\n- **La analogía del grifo:** La **potencia (kW)** es lo grueso que es el grifo y cuánto caudal de agua puede soltar a la vez. La **energía (kWh)** es el cubo de agua que has llenado al final del día."
+      },
+      {
+        "id": "que-es-la-potencia",
+        "title": "2. Qué es la potencia eléctrica (kW): el término fijo",
+        "content": "La potencia se mide en **kilovatios (kW)** (1 kW = 1.000 vatios). Expresa la velocidad a la que se consume la energía en una fracción de segundo.\n\nEn tu factura eléctrica:\n- Es el concepto conocido como **Término Fijo o Término de Potencia**.\n- Se factura multiplicando los kW contratados por los días del periodo facturado y por el precio del kW fijado por contrato (por ejemplo: 3,45 kW × 30 días × 0,105 €/kW/día = 10,87 €).\n- **Se paga siempre**, aunque el contador marque consumo cero."
+      },
+      {
+        "id": "que-es-la-energia",
+        "title": "3. Qué es la energía eléctrica (kWh): el consumo variable",
+        "content": "La energía se mide en **kilovatios-hora (kWh)**. Representa el trabajo eléctrico total realizado por tus electrodomésticos a lo largo del tiempo:\n\n**Energía (kWh) = Potencia del aparato (kW) × Horas de funcionamiento**\n\nPor ejemplo:\n- Si tienes un calefactor eléctrico de 2.000 W (2 kW) y lo enciendes durante 3 horas seguidas, habrá consumido: 2 kW × 3 h = **6 kWh**.\n- En tu factura se multiplica esa cantidad de kWh por el precio del kWh contratado (por ejemplo: 6 kWh × 0,14 €/kWh = 0,84 €)."
+      },
+      {
+        "id": "tabla-comparativa",
+        "title": "4. Tabla comparativa: kW frente a kWh en tu recibo",
+        "content": "Resumen de las características distintivas de cada concepto:",
+        "table": {
+          "headers": [
+            "Concepto",
+            "Potencia (kW)",
+            "Energía (kWh)"
+          ],
+          "rows": [
+            [
+              "Unidad de medida",
+              "Kilovatio (kW)",
+              "Kilovatio-hora (kWh)"
+            ],
+            [
+              "Qué mide",
+              "Capacidad simultánea instantánea",
+              "Volumen total de electricidad consumida"
+            ],
+            [
+              "En tu factura",
+              "Término fijo (independiente del uso)",
+              "Término variable o de consumo"
+            ],
+            [
+              "¿Si te vas de vacaciones?",
+              "Se sigue pagando exactamente igual",
+              "Se reduce a cero (salvo la nevera)"
+            ],
+            [
+              "¿Cómo se reduce el coste?",
+              "Bajando los kW contratados en contrato",
+              "Usando programas ECO y hábitos eficientes"
+            ],
+            [
+              "Riesgo si está mal ajustado",
+              "Si falta, salta el ICP; si sobra, pagas de más",
+              "Si no cuidas el precio del kWh, el recibo se dispara"
+            ]
+          ]
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
-      },
-      {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Potencia y energía eléctrica: diferencias que debes conocer** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "como-optimizar-ambos",
+        "title": "5. Cómo optimizar cada concepto para pagar lo mínimo",
+        "content": "Una factura equilibrada ataca ambos frentes:\n\n1. **Para recortar los kW (potencia):** Comprueba tus picos anuales en tu distribuidora y ajusta el contrato a tu necesidad real sin margen excesivo.\n2. **Para recortar los kWh (energía):** Contrata una tarifa competitiva (por debajo de 0,13 - 0,15 €/kWh en precio fijo o aprovechando horas valle en indexadas), instala bombillas LED y climatiza a temperaturas moderadas (21°C invierno / 25°C verano)."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con diferencia entre potencia y energía eléctrica?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Si tengo contratada mucha potencia consumo más energía?",
+        "a": "No directamente. Una bombilla de 10W consume exactamente lo mismo tanto si tienes contratados 3,45 kW como si tienes 10 kW. Lo que aumenta al tener más potencia es el coste fijo que pagas por estar conectado a la red."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Por qué en la factura aparecen dos potencias (Punta y Valle)?",
+        "a": "Desde la reforma de la tarifa 2.0TD, la normativa española permite fijar un límite de potencia para las horas punta (laborables de 8h a 24h) y otro diferente para las horas valle (noches y fines de semana)."
       }
     ],
     "relatedSlugs": [
@@ -1131,11 +1334,11 @@ export const guidesData = [
     "id": "horas-mas-baratas-de-la-luz",
     "slug": "horas-mas-baratas-de-la-luz",
     "keyword": "horas más baratas de la luz",
-    "title": "Horas más baratas de la luz: cuándo conviene consumir",
-    "metaTitle": "Horas baratas de luz: guía de consumo | tuLuz",
-    "metaDescription": "Aprende cómo funcionan punta, llano y valle y cuándo desplazar tu consumo eléctrico.",
+    "title": "Horas más baratas de la luz en 2026: tramos punta, llano y valle y cuándo conviene consumir",
+    "metaTitle": "Horas Más Baratas de la Luz: Tramos Punta, Llano y Valle | tuLuz",
+    "metaDescription": "Conoce cuáles son las horas más baratas para poner la lavadora, el lavavajillas o cargar tu vehículo. Horarios oficiales de la tarifa 2.0TD y consejos prácticos.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -1143,65 +1346,101 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Aprende cómo funcionan punta, llano y valle y cuándo desplazar tu consumo eléctrico.",
+    "excerpt": "Saber a qué hora encender los aparatos que más consumen puede suponer hasta un 30% de ahorro directo en tu recibo. Conoce la estructura horaria de la tarifa 2.0TD, los precios de peajes y cómo aprovechar las horas valle.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre horas más baratas de la luz"
+        "id": "los-tres-tramos",
+        "title": "1. Los tres tramos horarios oficiales: Punta, Llano y Valle"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-horarios",
+        "title": "2. Tabla completa de horarios y días de la semana"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "el-comodin-fines-semana",
+        "title": "3. El comodín de los fines de semana y festivos: 24 horas Valle"
+      },
+      {
+        "id": "diferencia-fija-indexada",
+        "title": "4. ¿Afectan los tramos si tienes tarifa con precio fijo 24 horas?"
+      },
+      {
+        "id": "cuanto-se-ahorra",
+        "title": "5. Cuánto te ahorras al mover lavadora, secadora y termo a horas baratas"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes sobre las horas más baratas"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre horas más baratas de la luz",
-        "content": "Comprender a fondo **horas más baratas de la luz** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAprende cómo funcionan punta, llano y valle y cuándo desplazar tu consumo eléctrico.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a horas más baratas de la luz, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
+        "id": "los-tres-tramos",
+        "title": "1. Los tres tramos horarios oficiales: Punta, Llano y Valle",
+        "content": "La tarifa de acceso regulada para todos los hogares y pequeños negocios en España (tarifa **2.0TD**, hasta 15 kW) divide las 24 horas del día en tres periodos según la tensión de demanda de la red eléctrica nacional:\n\n- **Periodo Valle (P3):** El tramo más económico. Los peajes y cargos regulados por el Gobierno son mínimos. Coincide con la noche y las horas de menor actividad industrial.\n- **Periodo Llano (P2):** Tramo de coste intermedio. Horas de transición por la mañana y a última hora de la tarde.\n- **Periodo Punta (P1):** El tramo más caro. Coincide con los momentos de máxima demanda nacional, cuando entran en funcionamiento las centrales de generación más costosas."
+      },
+      {
+        "id": "tabla-horarios",
+        "title": "2. Tabla completa de horarios y días de la semana",
+        "content": "Para días laborables (de lunes a viernes no festivos en toda España), la distribución horaria es la siguiente:",
+        "table": {
+          "headers": [
+            "Tramo horario",
+            "Horas en días laborables",
+            "Nivel de coste de peajes",
+            "Recomendación de uso"
+          ],
+          "rows": [
+            [
+              "Valle (P3)",
+              "00:00 h a 08:00 h (madrugada)",
+              "Muy bajo (hasta un 65% menos de peaje)",
+              "Programar lavadora, lavavajillas, termo y recarga de coche eléctrico"
+            ],
+            [
+              "Llano (P2)",
+              "08:00 a 10:00 h, 14:00 a 18:00 h y 22:00 a 24:00 h",
+              "Coste intermedio",
+              "Cocina habitual, teletrabajo, ordenadores y vida doméstica"
+            ],
+            [
+              "Punta (P1)",
+              "10:00 a 14:00 h y 18:00 a 22:00 h",
+              "El más caro",
+              "Evitar aparatos térmicos continuos (horno, secadora, plancha, calefactores)"
+            ]
+          ]
         }
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
-      },
-      {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Horas más baratas de la luz: cuándo conviene consumir** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "el-comodin-fines-semana",
+        "title": "3. El comodín de los fines de semana y festivos: 24 horas Valle",
+        "content": "Existe una ventaja fundamental que muchos usuarios desaprovechan: **los sábados, los domingos y los festivos de ámbito nacional son 100% periodo Valle durante las 24 horas del día**.\n\nEsto significa que durante todo el fin de semana puedes encender lavadoras, secadoras, horno para cocinar o cargar baterías sin preocuparte por el reloj, beneficiándote de las tarifas más reducidas de toda la semana.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
+          "title": "¿Cuáles festivos cuentan?",
+          "text": "Solo cuentan los festivos nacionales con fecha fija en el calendario oficial (no festivos autonómicos o locales que varían cada año), además del 6 de enero."
         }
+      },
+      {
+        "id": "diferencia-fija-indexada",
+        "title": "4. ¿Afectan los tramos si tienes tarifa con precio fijo 24 horas?",
+        "content": "Depende del tipo de contrato que tengas firmado con tu comercializadora:\n\n- **Si tienes tarifa con precio fijo 24h:** Pagas exactamente el mismo precio por cada kWh consumido a las 3 de la tarde que a las 4 de la mañana. No necesitas mirar el reloj para encender la luz, aunque tu comercializadora asume el coste y suele fijar un precio medio algo superior.\n- **Si tienes tarifa con discriminación horaria (3 precios):** Cada tramo tiene un precio cerrado en contrato (P1 caro, P2 medio, P3 barato).\n- **Si tienes tarifa indexada (mercado regulado PVPC o indexada libre):** Además de los peajes regulados por tramos, el precio de la energía cambia cada hora según la subasta diaria del mercado mayorista (OMIE). En primavera y verano, gracias a la producción fotovoltaica masiva, las horas centrales del mediodía (12:00 a 17:00 h) suelen tener precios del kWh extraordinariamente bajos."
+      },
+      {
+        "id": "cuanto-se-ahorra",
+        "title": "5. Cuánto te ahorras al mover lavadora, secadora y termo a horas baratas",
+        "content": "Desplazar los consumos más intensivos genera un impacto directo acumulativo:\n\n- **Lavadora (4 lavados por semana a 40°C):** Moverla de periodo Punta a Valle supone un ahorro de unos **35€ a 50€ al año**.\n- **Secadora (3 ciclos semanales):** El electrodoméstico que más energía consume. Usarla en fin de semana o Valle ahorra entre **60€ y 90€ anuales**.\n- **Termo eléctrico programado con reloj (1,5 kW):** Programar su calentamiento entre las 05:00 y las 08:00 h ahorra más de **85€ al año** frente a tenerlo encendido las 24 horas del día."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con horas más baratas de la luz?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Las horas valle cambian con el cambio de hora de verano o invierno?",
+        "a": "No. El horario de los periodos 2.0TD permanece fijo durante todo el año en la península, Baleares y Canarias (en Canarias los tramos se adaptan con una hora de desfase local)."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cuál es la hora más barata de todas para poner la lavadora?",
+        "a": "Los fines de semana a cualquier hora, o entre semana de madrugada entre las 00:00 y las 08:00 h. Si no quieres molestar a los vecinos de noche, los sábados y domingos por la mañana son el momento perfecto."
       }
     ],
     "relatedSlugs": [
@@ -1214,9 +1453,9 @@ export const guidesData = [
     "id": "que-es-el-cups-y-donde-encontrarlo",
     "slug": "que-es-el-cups-y-donde-encontrarlo",
     "keyword": "qué es el CUPS y dónde encontrarlo",
-    "title": "Qué es el CUPS y dónde encontrarlo en tu factura",
-    "metaTitle": "Qué es el CUPS y dónde encontrarlo | tuLuz",
-    "metaDescription": "Te explicamos para qué sirve el CUPS, dónde aparece y cuándo te lo pedirán.",
+    "title": "Qué es el código CUPS y dónde encontrarlo en tu factura de luz: guía práctica",
+    "metaTitle": "Qué es el Código CUPS y Dónde Encontrarlo en la Factura | tuLuz",
+    "metaDescription": "Aprende qué es el CUPS (Código Universal de Punto de Suministro), cómo descifrar sus 20 o 22 caracteres y para qué trámites energéticos te lo exigirán.",
     "category": "Mercado y Tarifas",
     "readTime": "6 min de lectura",
     "publishedAt": "2026-09-14",
@@ -1226,65 +1465,68 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Te explicamos para qué sirve el CUPS, dónde aparece y cuándo te lo pedirán.",
+    "excerpt": "El código CUPS es el DNI de tu instalación eléctrica. Te lo pedirán para cambiar de compañía, modificar la potencia, solicitar el bono social o instalar placas solares. Descubre dónde localizarlo y qué significa cada una de sus partes.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué es el CUPS y dónde encontrarlo"
+        "id": "que-es-el-cups",
+        "title": "1. ¿Qué es el código CUPS y para qué sirve?"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "estructura-del-codigo",
+        "title": "2. Estructura del código: cómo descifrar sus 20 o 22 caracteres"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "donde-encontrarlo",
+        "title": "3. Dónde encontrar el CUPS en las facturas de las principales eléctricas"
+      },
+      {
+        "id": "tramites-que-lo-piden",
+        "title": "4. Trámites donde es imprescindible presentar el CUPS"
+      },
+      {
+        "id": "cruce-de-cups",
+        "title": "5. Qué es el 'cruce de CUPS' y cómo evitar pagar la luz del vecino"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes sobre el CUPS"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué es el CUPS y dónde encontrarlo",
-        "content": "Comprender a fondo **qué es el CUPS y dónde encontrarlo** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nTe explicamos para qué sirve el CUPS, dónde aparece y cuándo te lo pedirán.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a qué es el CUPS y dónde encontrarlo, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
+        "id": "que-es-el-cups",
+        "title": "1. ¿Qué es el código CUPS y para qué sirve?",
+        "content": "Las siglas **CUPS** corresponden a **Código Universal del Punto de Suministro** (en inglés, *Universal Point of Supply Code*).\n\nEs un identificador alfanumérico único e irrepetible asignado por la empresa distribuidora de electricidad o gas a cada vivienda, local comercial o nave industrial. Es exactamente el equivalente al **DNI o número de matrícula** de una instalación energética:\n\n- **No cambia de titular:** Aunque cambie el inquilino o el propietario de la vivienda, el CUPS sigue siendo siempre el mismo.\n- **No cambia de compañía:** Si cambias de Iberdrola a Endesa o a tuLuz, tu CUPS no varía.\n- **Identifica la conexión física:** Vincula de forma permanente el contador de tu casa con la red de transporte de la distribuidora."
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
-        "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
-        ]
+        "id": "estructura-del-codigo",
+        "title": "2. Estructura del código: cómo descifrar sus 20 o 22 caracteres",
+        "content": "Un código CUPS eléctrico en España tiene siempre entre **20 y 22 caracteres** estructurados de la siguiente forma:\n\n`ES 0021 0000 1234 5678 AB 1F`\n\n- **ES (2 caracteres):** Código de país (España).\n- **Primeros 4 dígitos numéricos (ej. 0021):** Identifican a la empresa distribuidora propietaria de la red de la zona (por ejemplo: 0021 es Endesa Distribución/e-distribución; 0022 es Iberdrola/i-DE; 0023 es UFD Naturgy; 0026 es E-Redes/EDP).\n- **Siguientes 12 dígitos numéricos:** Número de identificación único asignado a tu punto de suministro físico.\n- **2 letras de control (ej. AB):** Letras calculadas por algoritmo para verificar que no hay errores tipográficos al teclearlo.\n- **2 caracteres adicionales opcionales (ej. 1F):** Caracteres de control de puntos de medida específicos."
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Qué es el CUPS y dónde encontrarlo en tu factura** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
-        "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+        "id": "donde-encontrarlo",
+        "title": "3. Dónde encontrar el CUPS en las facturas de las principales eléctricas",
+        "content": "Por ley, el código CUPS debe figurar de manera visible y destacada en todas las facturas de luz emitidas en España. Suele encontrarse en la sección **'Datos del suministro'** o **'Datos del contrato'**, habitualmente en la primera o segunda página del recibo:\n\n- **Factura de Endesa / Energía XXI:** En el recuadro 'Datos del contrato', en el margen superior derecho o en la página 2 junto a la potencia contratada.\n- **Factura de Iberdrola / Curenergía:** En la primera página, dentro del bloque 'Datos de tu contrato', etiquetado como 'Código CUPS'.\n- **Factura de Naturgy / Comercializadora Regulada:** En el apartado 'Información del suministro' en la primera página.\n- **Factura de TotalEnergies:** En el recuadro 'Datos del punto de suministro'.\n- **En la app móvil o área de cliente:** En el apartado de 'Mis contratos' o 'Mis suministros'."
+      },
+      {
+        "id": "tramites-que-lo-piden",
+        "title": "4. Trámites donde es imprescindible presentar el CUPS",
+        "content": "Te solicitarán obligatoriamente el código CUPS siempre que vayas a realizar cualquiera de las siguientes gestiones:\n\n1. **Cambio de comercializadora de luz:** Para asociar la nueva tarifa a tu contador.\n2. **Cambio de titular o subrogación:** Para verificar la instalación ante la distribuidora.\n3. **Modificación de potencia o discriminación horaria:** Para emitir la orden telemática de reconfiguración.\n4. **Legalización de autoconsumo solar fotovoltaico:** Para asociar el vertido de excedentes y la compensación o batería virtual.\n5. **Solicitud del Bono Social Eléctrico:** Para cruzar los datos del beneficiario con el Registro de Suministros.\n6. **Reclamaciones por averías o cortes:** Para que la distribuidora localice la incidencia en la red."
+      },
+      {
+        "id": "cruce-de-cups",
+        "title": "5. Qué es el 'cruce de CUPS' y cómo evitar pagar la luz del vecino",
+        "content": "Un **cruce de CUPS** es una incidencia grave en la que los códigos de dos suministros se intercambian por error (habitualmente al dar de alta pisos de obra nueva en un mismo rellano). Como consecuencia, tú pagas la electricidad consumida por tu vecino y tu vecino paga la tuya.\n\n**¿Cómo comprobar si tu CUPS es el correcto?**\n1. Baja el interruptor general (IGA) de tu cuadro eléctrico en casa.\n2. Ve al cuarto de contadores comunitarios y mira tu contador asignado.\n3. Si la pantalla del contador deja de marcar consumo y el piloto rojo queda fijo, comprueba que el CUPS que aparece en la etiqueta del contador coincida exactamente con el de tu factura. Si no coincide, sufres un cruce de CUPS y debes reclamar a la distribuidora inmediatamente."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con qué es el CUPS y dónde encontrarlo?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Puedo saber mi código CUPS si no tengo ninguna factura a mano?",
+        "a": "Sí. Puedes llamar por teléfono a la empresa distribuidora de tu zona indicando tu nombre, DNI y la dirección exacta de la vivienda (incluyendo piso y puerta). Si acreditas ser el titular o propietario, te facilitarán el código."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿El código CUPS es el mismo para la luz que para el gas?",
+        "a": "No. Aunque tengas contratada la luz y el gas con la misma compañía comercializadora, el suministro eléctrico tiene su propio código CUPS (empieza por ES...) y el suministro de gas tiene otro código CUPS independiente para su contador de gas."
       }
     ],
     "relatedSlugs": [

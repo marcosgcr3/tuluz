@@ -22,11 +22,29 @@ import { getGuideBySlug, guidesData } from '../data/guidesData';
 import { companyInfo } from '../data/content';
 
 export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
-  const guide = useMemo(() => getGuideBySlug(slug) || guidesData[0], [slug]);
+  const guide = useMemo(() => getGuideBySlug(slug), [slug]);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeHeading, setActiveHeading] = useState('');
   const [openFaqIndices, setOpenFaqIndices] = useState([0]); // First FAQ open by default
   const [isTocOpen, setIsTocOpen] = useState(false); // Collapsed by default on load for optimal mobile reading
+  const [guideStatus, setGuideStatus] = useState(null);
+  const [statusChecked, setStatusChecked] = useState(false);
+
+  const isAdmin = typeof window !== 'undefined' && !!sessionStorage.getItem('tuluz_admin_key');
+
+  useEffect(() => {
+    fetch('/api/guides-status')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.guides && data.guides[slug]) {
+          setGuideStatus(data.guides[slug]);
+        }
+        setStatusChecked(true);
+      })
+      .catch(() => {
+        setStatusChecked(true);
+      });
+  }, [slug]);
 
   // Reading progress tracker
   useEffect(() => {
@@ -192,10 +210,49 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
 
   if (!guide) {
     return (
-      <div className="container" style={{ padding: '5rem 1rem', textAlign: 'center' }}>
-        <h2>Guía no encontrada</h2>
-        <button onClick={() => navigate('/guias')} className="btn btn-primary" style={{ marginTop: '1rem' }}>
-          Volver al índice de guías
+      <div className="container" style={{ padding: '6rem 1rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1rem', color: 'var(--text-main)' }}>Guía no encontrada</h2>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>El artículo solicitado no existe o su dirección ha cambiado.</p>
+        <button onClick={() => navigate('/guias')} className="btn btn-primary">
+          Ver todas las guías
+        </button>
+      </div>
+    );
+  }
+
+  // Si la guía está en borrador o programada y el visitante no es administrador
+  const isHiddenFromPublic = guideStatus && guideStatus.isPublished === false;
+  if (statusChecked && isHiddenFromPublic && !isAdmin) {
+    return (
+      <div className="container" style={{ padding: '6rem 1.5rem', textAlign: 'center', maxWidth: '640px', margin: '0 auto' }}>
+        <div style={{
+          width: '70px',
+          height: '70px',
+          borderRadius: '50%',
+          background: 'rgba(245, 158, 11, 0.12)',
+          color: '#d97706',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '1.5rem',
+          border: '1px solid rgba(245, 158, 11, 0.3)'
+        }}>
+          <Clock size={34} />
+        </div>
+        <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: '800', marginBottom: '1rem', color: 'var(--text-main)' }}>
+          {guideStatus.status === 'programada' ? 'Publicación programada' : 'Artículo en preparación'}
+        </h2>
+        <p style={{ color: 'var(--text-muted)', lineHeight: '1.65', fontSize: '1.05rem', marginBottom: '2rem' }}>
+          {guideStatus.status === 'programada' 
+            ? 'Esta guía ya está programada y se publicará automáticamente muy pronto en nuestro portal.'
+            : 'Este artículo técnico se encuentra actualmente en fase de revisión y borrador. Estará disponible públicamente muy pronto.'}
+        </p>
+        <button 
+          onClick={() => navigate('/guias')} 
+          className="btn btn-primary"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem' }}
+        >
+          <ArrowLeft size={16} /> Volver al catálogo de guías
         </button>
       </div>
     );
@@ -204,11 +261,67 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   return (
     <article className="guide-detail-page" style={{ position: 'relative', paddingBottom: '5rem' }}>
       
+      {/* Banner de Previsualización de Administrador */}
+      {isAdmin && isHiddenFromPublic && (
+        <div style={{
+          background: 'linear-gradient(90deg, #92400e 0%, #b45309 50%, #d97706 100%)',
+          color: '#ffffff',
+          padding: '12px 24px',
+          position: 'sticky',
+          top: 0,
+          zIndex: 10000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          fontSize: '13px',
+          fontWeight: '600',
+          boxShadow: '0 4px 15px rgba(180, 83, 9, 0.3)',
+          flexWrap: 'wrap',
+          gap: '12px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Sparkles size={18} />
+            <span>
+              <strong>VISTA PREVIA ADMINISTRADOR:</strong> Esta guía está en estado{' '}
+              <span style={{ 
+                textTransform: 'uppercase', 
+                background: 'rgba(0,0,0,0.25)', 
+                padding: '2px 8px', 
+                borderRadius: '4px',
+                fontWeight: '800' 
+              }}>
+                {guideStatus.status}
+              </span>
+              {guideStatus.publishAt && (
+                <> (Fecha programada: {new Date(guideStatus.publishAt).toLocaleString('es-ES')})</>
+              )}
+              {' '}— Oculta al público general.
+            </span>
+          </div>
+          <button
+            onClick={() => navigate('/admin')}
+            style={{
+              background: '#ffffff',
+              border: 'none',
+              color: '#92400e',
+              borderRadius: '6px',
+              padding: '5px 14px',
+              fontSize: '12px',
+              fontWeight: '800',
+              cursor: 'pointer',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+            }}
+          >
+            Volver a Admin
+          </button>
+        </div>
+      )}
+
       {/* Top Reading Progress Bar */}
       <div 
         style={{
           position: 'fixed',
-          top: 0,
+          top: isAdmin && isHiddenFromPublic ? '48px' : 0,
           left: 0,
           height: '4px',
           background: 'linear-gradient(90deg, var(--primary) 0%, #81C784 100%)',

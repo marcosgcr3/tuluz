@@ -1,0 +1,277 @@
+{
+  "ahorrar-factura-de-la-luz": {
+    "status": "publicada",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T17:00:00.000Z"
+  },
+  "tarifas-luz-empresas": {
+    "status": "publicada",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:07:23.553Z"
+  },
+  "autoconsumo-solar-comunidades-de-vecinos": {
+    "status": "publicada",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T17:00:00.000Z"
+  },
+  "comparador-comercializadoras-luz-y-gas": {
+    "status": "publicada",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T17:00:00.000Z"
+  },
+  "placas-solares-particulares-precio": {
+    "status": "publicada",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T17:00:00.000Z"
+  },
+  "como-saber-que-potencia-contratar-en-casa": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.148Z"
+  },
+  "como-bajar-la-potencia-contratada": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "diferencia-entre-potencia-y-energia-electrica": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "horas-mas-baratas-de-la-luz": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "que-es-el-cups-y-donde-encontrarlo": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "cambio-de-titularidad-luz-que-necesito": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-aumentar-potencia-contratada": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "pvpc-o-mercado-libre-que-conviene": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-saber-si-tengo-pvpc": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "bono-social-electrico-requisitos": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "que-electrodomesticos-consumen-mas-luz": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "cuanto-consume-el-stand-by-en-casa": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-calcular-consumo-electrico-de-una-empresa": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "auditoria-energetica-para-pymes": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-ahorrar-luz-en-un-restaurante": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-ahorrar-luz-en-una-oficina": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-electrico-camara-frigorifica": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "cambio-de-titularidad-luz-local-comercial": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-ahorrar-luz-en-ascensor-comunidad": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-ahorrar-luz-en-garaje-comunitario": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-leer-contador-digital-de-luz": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-consultar-consumo-de-luz-por-horas": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-calcular-consumo-electrico-de-una-vivienda": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-aire-acondicionado-por-hora": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-calefactor-electrico-por-hora": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "cuanto-consume-una-secadora": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "cuanto-consume-un-termo-electrico": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "que-hacer-si-salta-el-diferencial": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "diferencia-icp-y-diferencial": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-dar-de-alta-la-luz-en-una-vivienda": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "que-es-el-certificado-de-instalacion-electrica": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-cambiar-domiciliacion-factura-luz": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "cuanto-tarda-un-cambio-de-comercializadora-luz": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "que-hacer-si-me-cambian-compania-luz-sin-permiso": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "cruce-de-cups-que-es": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "diferencia-distribuidora-y-comercializadora": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "que-hacer-si-no-llega-factura-de-luz": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-reclamar-factura-de-luz-incorrecta": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-electrico-de-un-coche-electrico-en-casa": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "mejor-hora-para-cargar-coche-electrico-en-casa": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-calcular-potencia-para-cargador-coche-electrico": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-electrico-de-una-panaderia": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-electrico-de-una-lavanderia": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "ahorro-energetico-en-una-peluqueria": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-medir-consumo-electrico-por-maquinas": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-electrico-de-iluminacion-led-negocio": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "como-repartir-gasto-luz-zonas-comunes": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-ventilacion-garaje-comunitario": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "ahorro-iluminacion-portal-comunidad-vecinos": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  },
+  "consumo-piscina-comunitaria": {
+    "status": "borrador",
+    "publishAt": null,
+    "updatedAt": "2026-09-14T15:10:41.149Z"
+  }
+}

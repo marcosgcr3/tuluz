@@ -18,7 +18,9 @@ import {
   saveLead, 
   getAllLeads, 
   updateLeadStatus, 
-  deleteLead 
+  deleteLead,
+  getGuidesConfig,
+  saveGuideConfig
 } from './db.js';
 
 // Inicializar conexión con PostgreSQL (con fallback automático a leads.json)
@@ -748,6 +750,93 @@ app.post('/api/leads/create', async (req, res) => {
   } catch (err) {
     console.error('Error creando lead manual:', err);
     res.status(500).json({ error: 'Error guardando el lead en la base de datos.' });
+  }
+});
+
+// ==========================================
+// API DE GESTIÓN Y PUBLICACIÓN DE GUÍAS
+// ==========================================
+
+// Endpoint público para consultar qué guías están publicadas / accesibles
+app.get('/api/guides-status', async (req, res) => {
+  try {
+    const rawConfigs = await getGuidesConfig();
+    const now = Date.now();
+
+    const computedStatus = {};
+    for (const [slug, item] of Object.entries(rawConfigs)) {
+      const status = item.status || 'publicada';
+      const publishAt = item.publishAt || null;
+      let isPublished = status === 'publicada';
+
+      if (status === 'programada' && publishAt) {
+        const scheduleTime = new Date(publishAt).getTime();
+        if (!isNaN(scheduleTime) && scheduleTime <= now) {
+          isPublished = true;
+        }
+      }
+
+      computedStatus[slug] = {
+        status,
+        publishAt,
+        isPublished,
+        updatedAt: item.updatedAt
+      };
+    }
+
+    res.json({ success: true, guides: computedStatus });
+  } catch (err) {
+    console.error('Error en /api/guides-status:', err);
+    res.status(500).json({ error: 'Error consultando estado de guías' });
+  }
+});
+
+// Endpoint protegido para obtener la configuración completa de guías en Admin
+app.get('/api/admin/guides-config', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado' });
+  }
+
+  try {
+    const configs = await getGuidesConfig();
+    res.json({ success: true, configs });
+  } catch (err) {
+    console.error('Error en GET /api/admin/guides-config:', err);
+    res.status(500).json({ error: 'Error cargando configuración de guías' });
+  }
+});
+
+// Endpoint protegido para actualizar estado o fecha programada de una guía
+app.post('/api/admin/guides-config', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado' });
+  }
+
+  const { slug, status, publishAt } = req.body;
+  if (!slug) {
+    return res.status(400).json({ error: 'El parámetro slug es obligatorio' });
+  }
+
+  const validStatuses = ['publicada', 'borrador', 'programada'];
+  if (status && !validStatuses.includes(status)) {
+    return res.status(400).json({ error: `Estado inválido. Valores permitidos: ${validStatuses.join(', ')}` });
+  }
+
+  try {
+    const result = await saveGuideConfig(slug, {
+      status: status || 'publicada',
+      publishAt: publishAt || null
+    });
+
+    if (!result.success) {
+      return res.status(500).json({ error: result.error || 'Error al guardar la guía' });
+    }
+
+    console.log(`📚 [Admin] Guía actualizada: "${slug}" -> ${status} ${publishAt ? `(Programada: ${publishAt})` : ''}`);
+    res.json({ success: true, guide: result.config });
+  } catch (err) {
+    console.error('Error en POST /api/admin/guides-config:', err);
+    res.status(500).json({ error: 'Error actualizando configuración de guía' });
   }
 });
 

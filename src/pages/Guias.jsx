@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, 
   ArrowRight, 
@@ -11,7 +11,9 @@ import {
   FileText, 
   Filter,
   CheckCircle2,
-  ChevronRight
+  ChevronRight,
+  Eye,
+  AlertTriangle
 } from 'lucide-react';
 import { guidesData, getAllGuideCategories } from '../data/guidesData';
 import { companyInfo } from '../data/content';
@@ -19,11 +21,38 @@ import { companyInfo } from '../data/content';
 export default function Guias({ navigate, onOpenModal }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todas');
+  const [statusMap, setStatusMap] = useState({});
+
+  const isAdmin = typeof window !== 'undefined' && !!sessionStorage.getItem('tuluz_admin_key');
+
+  // Cargar estado de publicación de guías desde el backend
+  useEffect(() => {
+    fetch('/api/guides-status')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.guides) {
+          setStatusMap(data.guides);
+        }
+      })
+      .catch(err => {
+        console.warn('No se pudo cargar estado dinámico de guías:', err);
+      });
+  }, []);
 
   const categories = useMemo(() => getAllGuideCategories(), []);
 
-  const filteredGuides = useMemo(() => {
+  // Filtrar guías públicas (a menos que sea admin con sesión activa)
+  const availableGuides = useMemo(() => {
     return guidesData.filter((guide) => {
+      const config = statusMap[guide.slug];
+      if (isAdmin) return true; // El admin puede ver borradores
+      if (!config) return true; // Por defecto visible
+      return config.isPublished !== false;
+    });
+  }, [statusMap, isAdmin]);
+
+  const filteredGuides = useMemo(() => {
+    return availableGuides.filter((guide) => {
       const matchesCategory = selectedCategory === 'Todas' || guide.category === selectedCategory;
       const matchesSearch = 
         searchQuery.trim() === '' ||
@@ -32,9 +61,9 @@ export default function Guias({ navigate, onOpenModal }) {
         guide.keyword.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [availableGuides, searchQuery, selectedCategory]);
 
-  const featuredGuide = guidesData[0];
+  const featuredGuide = availableGuides[0];
 
   const handleGuideClick = (slug) => {
     navigate(`/guias/${slug}`);
@@ -58,6 +87,46 @@ export default function Guias({ navigate, onOpenModal }) {
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         
+        {/* Banner de Administrador */}
+        {isAdmin && (
+          <div style={{
+            background: 'rgba(254, 243, 199, 0.95)',
+            border: '1px solid #fde68a',
+            borderRadius: '12px',
+            padding: '10px 18px',
+            marginBottom: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '10px',
+            fontSize: '0.85rem',
+            color: '#92400e',
+            backdropFilter: 'blur(8px)',
+            boxShadow: '0 2px 10px rgba(217, 119, 6, 0.08)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Eye size={16} color="#d97706" />
+              <span><strong>Modo Administrador:</strong> Estás previsualizando borradores y artículos programados no visibles para el público.</span>
+            </div>
+            <button
+              onClick={() => navigate('/admin')}
+              style={{
+                background: '#d97706',
+                color: '#ffffff',
+                border: 'none',
+                padding: '5px 12px',
+                borderRadius: '6px',
+                fontSize: '0.8rem',
+                fontWeight: '700',
+                cursor: 'pointer'
+              }}
+            >
+              Gestionar en Admin →
+            </button>
+          </div>
+        )}
+
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
           <button 
@@ -208,6 +277,22 @@ export default function Guias({ navigate, onOpenModal }) {
               <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', whiteSpace: 'nowrap', flexShrink: 0 }}>
                 <Clock size={13} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {featuredGuide.readTime}
               </span>
+              {statusMap[featuredGuide.slug] && !statusMap[featuredGuide.slug].isPublished && (
+                <span style={{
+                  background: statusMap[featuredGuide.slug].status === 'programada' ? '#f3e8ff' : '#fef3c7',
+                  color: statusMap[featuredGuide.slug].status === 'programada' ? '#7e22ce' : '#b45309',
+                  border: `1px solid ${statusMap[featuredGuide.slug].status === 'programada' ? '#d8b4fe' : '#fde68a'}`,
+                  fontSize: '0.74rem',
+                  fontWeight: 700,
+                  padding: '0.2rem 0.65rem',
+                  borderRadius: 'var(--radius-full)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.3rem'
+                }}>
+                  {statusMap[featuredGuide.slug].status === 'programada' ? '⏰ Programada' : '🟡 Borrador'}
+                </span>
+              )}
             </div>
 
             <h2 style={{
@@ -299,17 +384,35 @@ export default function Guias({ navigate, onOpenModal }) {
                   }}>
                     {guide.category}
                   </span>
-                  <span style={{ 
-                    fontSize: '0.8rem', 
-                    color: 'var(--text-muted)', 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '0.35rem',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0
-                  }}>
-                    <Clock size={13} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {guide.readTime}
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    {statusMap[guide.slug] && !statusMap[guide.slug].isPublished && (
+                      <span style={{
+                        background: statusMap[guide.slug].status === 'programada' ? '#f3e8ff' : '#fef3c7',
+                        color: statusMap[guide.slug].status === 'programada' ? '#7e22ce' : '#b45309',
+                        border: `1px solid ${statusMap[guide.slug].status === 'programada' ? '#d8b4fe' : '#fde68a'}`,
+                        fontSize: '0.7rem',
+                        fontWeight: 700,
+                        padding: '0.15rem 0.5rem',
+                        borderRadius: 'var(--radius-full)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.25rem'
+                      }}>
+                        {statusMap[guide.slug].status === 'programada' ? '⏰ Programada' : '🟡 Borrador'}
+                      </span>
+                    )}
+                    <span style={{ 
+                      fontSize: '0.8rem', 
+                      color: 'var(--text-muted)', 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      gap: '0.35rem',
+                      whiteSpace: 'nowrap',
+                      flexShrink: 0
+                    }}>
+                      <Clock size={13} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {guide.readTime}
+                    </span>
+                  </div>
                 </div>
 
                 <h3 style={{

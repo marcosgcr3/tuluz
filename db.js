@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const LEADS_FILE = path.join(__dirname, 'leads.json');
+const GUIDES_FILE = path.join(__dirname, 'guides_config.json');
 
 const { Pool } = pg;
 
@@ -15,7 +16,7 @@ let dbReady = false;
 export function initDatabase() {
   const connectionString = process.env.DATABASE_URL;
   if (!connectionString || connectionString.trim() === '') {
-    console.log('ℹ️ [DB] DATABASE_URL no configurado. Operando con almacenamiento local (leads.json).');
+    console.log('ℹ️ [DB] DATABASE_URL no configurado. Operando con almacenamiento local (leads.json y guides_config.json).');
     return null;
   }
 
@@ -59,10 +60,17 @@ export function initDatabase() {
           );
           CREATE INDEX IF NOT EXISTS idx_leads_date ON leads(date DESC);
           CREATE INDEX IF NOT EXISTS idx_leads_meta_id ON leads(meta_lead_id);
+
+          CREATE TABLE IF NOT EXISTS guides_config (
+            slug VARCHAR(255) PRIMARY KEY,
+            status VARCHAR(50) DEFAULT 'publicada',
+            publish_at TIMESTAMPTZ,
+            updated_at TIMESTAMPTZ DEFAULT NOW()
+          );
         `);
         client.release();
         dbReady = true;
-        console.log('🐘 [DB] Conectado exitosamente a PostgreSQL. Tabla leads activa.');
+        console.log('🐘 [DB] Conectado exitosamente a PostgreSQL. Tablas leads y guides_config activas.');
       } catch (e) {
         console.error('⚠️ [DB] No se pudo conectar a PostgreSQL al iniciar:', e.message);
         dbReady = false;
@@ -247,4 +255,80 @@ export async function deleteLead(leadId) {
   }
 
   return deleted;
+}
+
+// ==========================================
+// CONFIGURACIÓN DE GUÍAS (PUBLICADA / BORRADOR / PROGRAMADA)
+// ==========================================
+
+export async function getGuidesConfig() {
+  const configs = {};
+
+  // 1. Cargar desde guides_config.json primero (fallback / caché local)
+  if (fs.existsSync(GUIDES_FILE)) {
+    try {
+      const raw = fs.readFileSync(GUIDES_FILE, 'utf-8');
+      const jsonMap = JSON.parse(raw || '{}');
+      Object.assign(configs, jsonMap);
+    } catch (e) {
+      console.error('Error leyendo guides_config.json:', e.message);
+    }
+  }
+
+  // 2. Si PostgreSQL está activo, consultar y sobreescribir con datos frescos
+  if (isDbConnected()) {
+    try {
+      const res = await pool.query('SELECT slug, status, publish_at, updated_at FROM guides_config');
+      for (const row of res.rows) {
+        configs[row.slug] = {
+          status: row.status || 'publicada',
+          publishAt: row.publish_at ? new Date(row.publish_at).toISOString() : null,
+          updatedAt: row.updated_at ? new Date(row.updated_at).toISOString() : new Date().toISOString()
+        };
+      }
+    } catch (err) {
+      console.error('Error leyendo guides_config de PostgreSQL:', err.message);
+    }
+  }
+
+  return configs;
+}
+
+export async function saveGuideConfig(slug, configData) {
+  const { status = 'publicada', publishAt = null } = configData;
+  const now = new Date().toISOString();
+
+  // 1. Guardar en PostgreSQL si está disponible
+  if (isDbConnected()) {
+    try {
+      await pool.query(
+        `INSERT INTO guides_config (slug, status, publish_at, updated_at)
+         VALUES ($1, $2, $3, NOW())
+         ON CONFLICT (slug)
+         DO UPDATE SET status = EXCLUDED.status, publish_at = EXCLUDED.publish_at, updated_at = NOW()`,
+        [slug, status, publishAt ? new Date(publishAt) : null]
+      );
+    } catch (err) {
+      console.error('Error guardando config de guía en PostgreSQL:', err.message);
+    }
+  }
+
+  // 2. Guardar siempre en guides_config.json
+  try {
+    let configs = {};
+    if (fs.existsSync(GUIDES_FILE)) {
+      const raw = fs.readFileSync(GUIDES_FILE, 'utf-8');
+      configs = JSON.parse(raw || '{}');
+    }
+    configs[slug] = {
+      status,
+      publishAt: publishAt ? new Date(publishAt).toISOString() : null,
+      updatedAt: now
+    };
+    fs.writeFileSync(GUIDES_FILE, JSON.stringify(configs, null, 2), 'utf-8');
+    return { success: true, config: configs[slug] };
+  } catch (fileErr) {
+    console.error('Error guardando guides_config.json:', fileErr.message);
+    return { success: false, error: fileErr.message };
+  }
 }

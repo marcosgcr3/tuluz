@@ -4,8 +4,10 @@ import {
   RefreshCw, Search, Filter, CheckCircle2, Clock, 
   AlertCircle, ExternalLink, Lock, LogOut, MessageSquare, 
   FileText, Sparkles, ChevronRight, Eye, X, ArrowLeft,
-  Check, ShieldCheck, Trash2, Globe, UserPlus
+  Check, ShieldCheck, Trash2, Globe, UserPlus, BookOpen,
+  CalendarClock, Save
 } from 'lucide-react';
+import { guidesData } from '../data/guidesData';
 
 // Official Meta SVG Icon
 const MetaIcon = ({ size = 16, color = "currentColor", style = {} }) => (
@@ -33,6 +35,19 @@ export default function AdminDashboard({ navigate }) {
   const [dashboardData, setDashboardData] = useState(null);
   const [error, setError] = useState(null);
   const [updatingLeadId, setUpdatingLeadId] = useState(null);
+
+  // Navigation Tab
+  const [adminTab, setAdminTab] = useState('leads'); // 'leads' | 'guides'
+
+  // Guides Management State
+  const [guidesConfigMap, setGuidesConfigMap] = useState({});
+  const [guidesLoading, setGuidesLoading] = useState(false);
+  const [savingGuideSlug, setSavingGuideSlug] = useState(null);
+  const [guideSuccessToast, setGuideSuccessToast] = useState(null);
+  const [guideSearchTerm, setGuideSearchTerm] = useState('');
+  const [guideCategoryFilter, setGuideCategoryFilter] = useState('all');
+  const [guideStatusFilter, setGuideStatusFilter] = useState('all');
+  const [guideForms, setGuideForms] = useState({});
 
   // Filters & Search
   const [searchTerm, setSearchTerm] = useState('');
@@ -105,9 +120,93 @@ export default function AdminDashboard({ navigate }) {
     }
   };
 
+  const fetchGuidesConfig = async (keyToUse) => {
+    const key = keyToUse || adminKey;
+    if (!key) return;
+    setGuidesLoading(true);
+    try {
+      const res = await fetch(`/api/admin/guides-config?key=${encodeURIComponent(key)}`);
+      if (res.ok) {
+        const data = await res.json();
+        const configs = data.configs || {};
+        setGuidesConfigMap(configs);
+
+        // Inicializar formularios editables por cada guía
+        const forms = {};
+        guidesData.forEach(g => {
+          const c = configs[g.slug] || { status: 'publicada', publishAt: null };
+          let dateStr = '';
+          if (c.publishAt) {
+            try {
+              const d = new Date(c.publishAt);
+              // Format for datetime-local: YYYY-MM-DDTHH:mm
+              const pad = n => String(n).padStart(2, '0');
+              dateStr = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+            } catch (e) {}
+          }
+          forms[g.slug] = {
+            status: c.status || 'publicada',
+            publishAt: dateStr
+          };
+        });
+        setGuideForms(forms);
+      }
+    } catch (err) {
+      console.error('Error cargando configuración de guías:', err);
+    } finally {
+      setGuidesLoading(false);
+    }
+  };
+
+  const handleSaveGuide = async (slug) => {
+    const form = guideForms[slug] || { status: 'publicada', publishAt: '' };
+    
+    // Validación para fecha de publicación programada
+    if (form.status === 'programada' && !form.publishAt) {
+      alert('Para programar una publicación, debes seleccionar la fecha y hora en la que se publicará.');
+      return;
+    }
+
+    setSavingGuideSlug(slug);
+    try {
+      const isoDate = form.publishAt ? new Date(form.publishAt).toISOString() : null;
+      const res = await fetch('/api/admin/guides-config', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': adminKey
+        },
+        body: JSON.stringify({
+          slug,
+          status: form.status,
+          publishAt: isoDate
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Error al guardar');
+      }
+
+      setGuidesConfigMap(prev => ({
+        ...prev,
+        [slug]: data.guide
+      }));
+
+      const guideItem = guidesData.find(g => g.slug === slug);
+      const title = guideItem ? guideItem.title : slug;
+      setGuideSuccessToast(`✓ Guía "${title.slice(0, 35)}..." guardada como ${form.status.toUpperCase()}`);
+      setTimeout(() => setGuideSuccessToast(null), 4000);
+    } catch (err) {
+      alert('Error al guardar la guía: ' + err.message);
+    } finally {
+      setSavingGuideSlug(null);
+    }
+  };
+
   useEffect(() => {
     if (adminKey) {
       fetchDashboardData(adminKey);
+      fetchGuidesConfig(adminKey);
 
       // Auto-refresco silencioso cada 15 segundos para mantener el panel siempre al día
       const timer = setInterval(() => {
@@ -124,6 +223,7 @@ export default function AdminDashboard({ navigate }) {
     setAuthError('');
     setAdminKey(passwordInput.trim());
     fetchDashboardData(passwordInput.trim());
+    fetchGuidesConfig(passwordInput.trim());
   };
 
   const handleLogout = () => {
@@ -131,6 +231,7 @@ export default function AdminDashboard({ navigate }) {
     setAdminKey('');
     setIsAuthenticated(false);
     setDashboardData(null);
+    setGuidesConfigMap({});
   };
 
   const handleStatusChange = async (leadId, newStatus) => {
@@ -527,6 +628,63 @@ export default function AdminDashboard({ navigate }) {
   const webTotal = total - metaTotal;
   const metaPercentage = total > 0 ? Math.round((metaTotal / total) * 100) : 0;
 
+  // Métricas y filtrado de Guías
+  const guidesStats = useMemo(() => {
+    let publicadas = 0;
+    let borradores = 0;
+    let programadas = 0;
+    const now = Date.now();
+
+    guidesData.forEach(g => {
+      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
+      if (cfg.status === 'borrador') {
+        borradores++;
+      } else if (cfg.status === 'programada') {
+        const schedTime = cfg.publishAt ? new Date(cfg.publishAt).getTime() : NaN;
+        if (!isNaN(schedTime) && schedTime <= now) {
+          publicadas++;
+        } else {
+          programadas++;
+        }
+      } else {
+        publicadas++;
+      }
+    });
+
+    return { total: guidesData.length, publicadas, borradores, programadas };
+  }, [guidesConfigMap]);
+
+  const filteredGuidesList = useMemo(() => {
+    const now = Date.now();
+    return guidesData.filter(g => {
+      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
+
+      // Filtro por estado
+      if (guideStatusFilter !== 'all') {
+        if (guideStatusFilter === 'publicada') {
+          const isActuallyPub = cfg.status === 'publicada' || (cfg.status === 'programada' && cfg.publishAt && new Date(cfg.publishAt).getTime() <= now);
+          if (!isActuallyPub) return false;
+        } else if (guideStatusFilter === 'borrador') {
+          if (cfg.status !== 'borrador') return false;
+        } else if (guideStatusFilter === 'programada') {
+          const isFutSched = cfg.status === 'programada' && (!cfg.publishAt || new Date(cfg.publishAt).getTime() > now);
+          if (!isFutSched) return false;
+        }
+      }
+
+      // Filtro por búsqueda
+      if (guideSearchTerm.trim() !== '') {
+        const q = guideSearchTerm.toLowerCase();
+        const matchTitle = g.title.toLowerCase().includes(q);
+        const matchCat = g.category.toLowerCase().includes(q);
+        const matchSlug = g.slug.toLowerCase().includes(q);
+        if (!matchTitle && !matchCat && !matchSlug) return false;
+      }
+
+      return true;
+    });
+  }, [guidesConfigMap, guideStatusFilter, guideSearchTerm]);
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -749,10 +907,107 @@ export default function AdminDashboard({ navigate }) {
         </div>
       </header>
 
+      {/* Sub-Header Tabs Navigation */}
+      <div style={{
+        background: '#ffffff',
+        borderBottom: '1px solid #e2e8f0',
+        padding: '0 24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '12px',
+        position: 'sticky',
+        top: '73px',
+        zIndex: 35
+      }}>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button
+            onClick={() => setAdminTab('leads')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '14px 18px',
+              fontSize: '14px',
+              fontWeight: adminTab === 'leads' ? '700' : '600',
+              color: adminTab === 'leads' ? '#16a34a' : '#64748b',
+              background: 'none',
+              border: 'none',
+              borderBottom: adminTab === 'leads' ? '3px solid #16a34a' : '3px solid transparent',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease'
+            }}
+          >
+            <Users size={18} />
+            <span>Leads & Clientes</span>
+            <span style={{
+              background: adminTab === 'leads' ? '#dcfce7' : '#f1f5f9',
+              color: adminTab === 'leads' ? '#15803d' : '#64748b',
+              fontSize: '11px',
+              fontWeight: '700',
+              padding: '2px 8px',
+              borderRadius: '12px'
+            }}>
+              {total}
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              setAdminTab('guides');
+              if (Object.keys(guidesConfigMap).length === 0) {
+                fetchGuidesConfig();
+              }
+            }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '14px 18px',
+              fontSize: '14px',
+              fontWeight: adminTab === 'guides' ? '700' : '600',
+              color: adminTab === 'guides' ? '#16a34a' : '#64748b',
+              background: 'none',
+              border: 'none',
+              borderBottom: adminTab === 'guides' ? '3px solid #16a34a' : '3px solid transparent',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease'
+            }}
+          >
+            <BookOpen size={18} />
+            <span>Gestión de Guías</span>
+            <span style={{
+              background: adminTab === 'guides' ? '#dcfce7' : '#f1f5f9',
+              color: adminTab === 'guides' ? '#15803d' : '#64748b',
+              fontSize: '11px',
+              fontWeight: '700',
+              padding: '2px 8px',
+              borderRadius: '12px'
+            }}>
+              {guidesData.length}
+            </span>
+          </button>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 0' }}>
+          <span style={{ fontSize: '12px', color: '#64748b' }}>
+            {adminTab === 'leads' 
+              ? 'Panel de contactos y rendimiento comercial' 
+              : 'Publicación, borradores y programación de artículos'}
+          </span>
+        </div>
+      </div>
+
       {/* Main Container */}
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '24px' }}>
 
-        {/* System Health Indicators */}
+        {/* ---------------------------------------------------- */}
+        {/* TAB 1: LEADS & MÉTRICAS COMERCIALES */}
+        {/* ---------------------------------------------------- */}
+        {adminTab === 'leads' && (
+          <>
+            {/* System Health Indicators */}
         <div style={{
           display: 'flex',
           gap: '12px',
@@ -1685,6 +1940,589 @@ export default function AdminDashboard({ navigate }) {
             )}
           </div>
         </div>
+        </>
+      )}
+
+      {/* ---------------------------------------------------- */}
+      {/* TAB 2: GESTIÓN Y PUBLICACIÓN DE GUÍAS */}
+      {/* ---------------------------------------------------- */}
+      {adminTab === 'guides' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          
+          {/* Header Banner */}
+          <div style={{
+            background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+            color: '#ffffff',
+            borderRadius: '16px',
+            padding: '24px 28px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '16px',
+            boxShadow: '0 4px 20px rgba(15, 23, 42, 0.12)'
+          }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                <span style={{
+                  background: 'rgba(76, 175, 79, 0.2)',
+                  color: '#4CAF4F',
+                  padding: '4px 10px',
+                  borderRadius: '12px',
+                  fontSize: '12px',
+                  fontWeight: '700',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <Sparkles size={14} /> Centro de Contenidos
+                </span>
+                <span style={{ color: '#94a3b8', fontSize: '13px' }}>
+                  Motor editorial SEO de tuLuz
+                </span>
+              </div>
+              <h2 style={{ margin: '0 0 8px 0', fontSize: '22px', fontWeight: '800', color: '#ffffff' }}>
+                Gestión de Publicación & Borradores de Guías
+              </h2>
+              <p style={{ margin: 0, fontSize: '14px', color: '#cbd5e1', lineHeight: 1.55 }}>
+                Decide qué guías están visibles en la web. Puedes poner artículos en <strong>Borrador</strong> para revisarlos privadamente, dejarlos <strong>Publicados</strong> en vivo o <strong>Programar</strong> una fecha y hora para que se activen de forma 100% automática.
+              </p>
+            </div>
+
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => window.open('/guias', '_blank')}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 16px',
+                  borderRadius: '10px',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  color: '#ffffff',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s'
+                }}
+              >
+                <ExternalLink size={15} />
+                <span>Ver Hub Público (/guias)</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Guide KPI Cards */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '16px'
+          }}>
+            {/* Total */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '14px',
+              padding: '20px',
+              border: '1px solid #e2e8f0',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13px', fontWeight: '600', color: '#64748b' }}>Total de Artículos</span>
+                <BookOpen size={20} color="#3b82f6" />
+              </div>
+              <div style={{ fontSize: '28px', fontWeight: '800', color: '#0f172a' }}>
+                {guidesStats.total}
+              </div>
+              <p style={{ margin: '4px 0 0 0', fontSize: '12px', color: '#94a3b8' }}>
+                Artículos registrados en la plataforma
+              </p>
+            </div>
+
+            {/* Publicadas */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '14px',
+              padding: '20px',
+              border: '1px solid #bbf7d0',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13px', fontWeight: '600', color: '#166534' }}>Publicadas (En Vivo)</span>
+                <CheckCircle2 size={20} color="#16a34a" />
+              </div>
+              <div style={{ fontSize: '28px', fontWeight: '800', color: '#15803d' }}>
+                {guidesStats.publicadas}
+              </div>
+              <p style={{ margin: '4px 0 0 0', fontSize: '12px', color: '#16a34a' }}>
+                Visibles para visitantes y buscadores
+              </p>
+            </div>
+
+            {/* Borradores */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '14px',
+              padding: '20px',
+              border: '1px solid #fef08a',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13px', fontWeight: '600', color: '#854d0e' }}>En Borrador</span>
+                <Clock size={20} color="#ca8a04" />
+              </div>
+              <div style={{ fontSize: '28px', fontWeight: '800', color: '#a16207' }}>
+                {guidesStats.borradores}
+              </div>
+              <p style={{ margin: '4px 0 0 0', fontSize: '12px', color: '#a16207' }}>
+                Ocultas al público (solo vista admin)
+              </p>
+            </div>
+
+            {/* Programadas */}
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '14px',
+              padding: '20px',
+              border: '1px solid #ddd6fe',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13px', fontWeight: '600', color: '#5b21b6' }}>Programadas</span>
+                <CalendarClock size={20} color="#7c3aed" />
+              </div>
+              <div style={{ fontSize: '28px', fontWeight: '800', color: '#6d28d9' }}>
+                {guidesStats.programadas}
+              </div>
+              <p style={{ margin: '4px 0 0 0', fontSize: '12px', color: '#6d28d9' }}>
+                Se publicarán en la fecha elegida
+              </p>
+            </div>
+          </div>
+
+          {/* Filters & Search Toolbar */}
+          <div style={{
+            background: '#ffffff',
+            borderRadius: '14px',
+            padding: '16px 20px',
+            border: '1px solid #e2e8f0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '14px'
+          }}>
+            {/* Search */}
+            <div style={{ position: 'relative', flex: '1', minWidth: '240px', maxWidth: '420px' }}>
+              <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
+              <input
+                type="text"
+                placeholder="Buscar por título, categoría o slug..."
+                value={guideSearchTerm}
+                onChange={(e) => setGuideSearchTerm(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '9px 12px 9px 36px',
+                  borderRadius: '8px',
+                  border: '1px solid #cbd5e1',
+                  fontSize: '13px',
+                  outline: 'none'
+                }}
+              />
+              {guideSearchTerm && (
+                <button
+                  onClick={() => setGuideSearchTerm('')}
+                  style={{
+                    position: 'absolute',
+                    right: '10px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none',
+                    border: 'none',
+                    color: '#94a3b8',
+                    cursor: 'pointer',
+                    fontSize: '12px'
+                  }}
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+
+            {/* Status Filter Tabs */}
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              {[
+                { id: 'all', label: `Todos (${guidesStats.total})` },
+                { id: 'publicada', label: `🟢 Publicadas (${guidesStats.publicadas})` },
+                { id: 'borrador', label: `🟡 Borradores (${guidesStats.borradores})` },
+                { id: 'programada', label: `⏰ Programadas (${guidesStats.programadas})` }
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setGuideStatusFilter(tab.id)}
+                  style={{
+                    padding: '7px 14px',
+                    borderRadius: '8px',
+                    border: guideStatusFilter === tab.id ? '1px solid #16a34a' : '1px solid #e2e8f0',
+                    background: guideStatusFilter === tab.id ? '#16a34a' : '#f8fafc',
+                    color: guideStatusFilter === tab.id ? '#ffffff' : '#475569',
+                    fontSize: '13px',
+                    fontWeight: guideStatusFilter === tab.id ? '700' : '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease'
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Guides Cards List */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {filteredGuidesList.length === 0 ? (
+              <div style={{
+                background: '#ffffff',
+                borderRadius: '14px',
+                padding: '40px',
+                textAlign: 'center',
+                color: '#64748b',
+                border: '1px dashed #cbd5e1'
+              }}>
+                <BookOpen size={36} color="#94a3b8" style={{ margin: '0 auto 12px' }} />
+                <h4 style={{ margin: '0 0 6px 0', color: '#0f172a' }}>No se encontraron artículos</h4>
+                <p style={{ margin: 0, fontSize: '13px' }}>Prueba con otros términos de búsqueda o elimina el filtro de estado.</p>
+              </div>
+            ) : (
+              filteredGuidesList.map(guide => {
+                const cfg = guidesConfigMap[guide.slug] || { status: 'publicada', publishAt: null };
+                const form = guideForms[guide.slug] || { status: cfg.status || 'publicada', publishAt: '' };
+                const isSaving = savingGuideSlug === guide.slug;
+
+                // Determinar estado actual real del servidor
+                const now = Date.now();
+                const isActuallyScheduled = cfg.status === 'programada';
+                const isSchedReached = isActuallyScheduled && cfg.publishAt && new Date(cfg.publishAt).getTime() <= now;
+                const isEffectivePublic = cfg.status === 'publicada' || isSchedReached;
+
+                return (
+                  <div
+                    key={guide.slug}
+                    style={{
+                      background: '#ffffff',
+                      borderRadius: '16px',
+                      border: '1px solid #e2e8f0',
+                      padding: '22px 26px',
+                      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)',
+                      transition: 'border-color 0.2s, box-shadow 0.2s'
+                    }}
+                  >
+                    {/* Header Row: Category, Read Time, Slug and Server Status Badge */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '12px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                        <span style={{
+                          background: 'rgba(76, 175, 79, 0.1)',
+                          color: '#15803d',
+                          fontSize: '11px',
+                          fontWeight: '700',
+                          padding: '3px 10px',
+                          borderRadius: '12px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.04em'
+                        }}>
+                          {guide.category}
+                        </span>
+
+                        <span style={{ fontSize: '12px', color: '#64748b', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Clock size={13} color="#94a3b8" /> {guide.readTime}
+                        </span>
+
+                        <span style={{ fontSize: '12px', color: '#94a3b8' }}>•</span>
+
+                        <span style={{ fontSize: '12px', color: '#64748b', fontFamily: 'monospace' }}>
+                          /guias/{guide.slug}
+                        </span>
+                      </div>
+
+                      {/* Actual Server Status Badge */}
+                      <div>
+                        {cfg.status === 'publicada' && (
+                          <span style={{
+                            background: '#dcfce7',
+                            color: '#15803d',
+                            border: '1px solid #86efac',
+                            fontSize: '12px',
+                            fontWeight: '700',
+                            padding: '4px 10px',
+                            borderRadius: '20px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}>
+                            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#16a34a' }} />
+                            Publicada (En Vivo)
+                          </span>
+                        )}
+
+                        {cfg.status === 'borrador' && (
+                          <span style={{
+                            background: '#fef3c7',
+                            color: '#b45309',
+                            border: '1px solid #fde68a',
+                            fontSize: '12px',
+                            fontWeight: '700',
+                            padding: '4px 10px',
+                            borderRadius: '20px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}>
+                            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#d97706' }} />
+                            Borrador (Oculta)
+                          </span>
+                        )}
+
+                        {cfg.status === 'programada' && (
+                          <span style={{
+                            background: isSchedReached ? '#dcfce7' : '#f3e8ff',
+                            color: isSchedReached ? '#15803d' : '#7e22ce',
+                            border: `1px solid ${isSchedReached ? '#86efac' : '#d8b4fe'}`,
+                            fontSize: '12px',
+                            fontWeight: '700',
+                            padding: '4px 10px',
+                            borderRadius: '20px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}>
+                            <CalendarClock size={13} />
+                            {isSchedReached 
+                              ? 'Publicada automáticamente (Fecha alcanzada)'
+                              : `Programada: ${cfg.publishAt ? new Date(cfg.publishAt).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' }) : 'Sin fecha'}`}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Article Title */}
+                    <h3 style={{ margin: '0 0 8px 0', fontSize: '18px', fontWeight: '800', color: '#0f172a', lineHeight: 1.35 }}>
+                      {guide.title}
+                    </h3>
+
+                    {/* Article Excerpt */}
+                    <p style={{ margin: '0 0 18px 0', fontSize: '13.5px', color: '#475569', lineHeight: 1.55 }}>
+                      {guide.excerpt}
+                    </p>
+
+                    {/* Action & Configuration Panel */}
+                    <div style={{
+                      background: '#f8fafc',
+                      borderRadius: '12px',
+                      padding: '14px 18px',
+                      border: '1px solid #e2e8f0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: '16px'
+                    }}>
+                      {/* Left: State Selector Buttons */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '13px', fontWeight: '700', color: '#334155' }}>
+                          Estado de publicación:
+                        </span>
+
+                        <div style={{ display: 'inline-flex', background: '#e2e8f0', borderRadius: '8px', padding: '3px', gap: '3px' }}>
+                          {/* Publicada */}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setGuideForms(prev => ({
+                                ...prev,
+                                [guide.slug]: { ...form, status: 'publicada' }
+                              }));
+                            }}
+                            style={{
+                              border: 'none',
+                              padding: '6px 14px',
+                              borderRadius: '6px',
+                              fontSize: '12px',
+                              fontWeight: form.status === 'publicada' ? '700' : '600',
+                              background: form.status === 'publicada' ? '#16a34a' : 'transparent',
+                              color: form.status === 'publicada' ? '#ffffff' : '#475569',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              transition: 'all 0.15s ease'
+                            }}
+                          >
+                            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: form.status === 'publicada' ? '#ffffff' : '#16a34a' }} />
+                            Publicada
+                          </button>
+
+                          {/* Borrador */}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setGuideForms(prev => ({
+                                ...prev,
+                                [guide.slug]: { ...form, status: 'borrador' }
+                              }));
+                            }}
+                            style={{
+                              border: 'none',
+                              padding: '6px 14px',
+                              borderRadius: '6px',
+                              fontSize: '12px',
+                              fontWeight: form.status === 'borrador' ? '700' : '600',
+                              background: form.status === 'borrador' ? '#d97706' : 'transparent',
+                              color: form.status === 'borrador' ? '#ffffff' : '#475569',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              transition: 'all 0.15s ease'
+                            }}
+                          >
+                            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: form.status === 'borrador' ? '#ffffff' : '#d97706' }} />
+                            Borrador
+                          </button>
+
+                          {/* Programada */}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              // Si aún no tenía fecha seleccionada, fijar por defecto mañana a las 10:00
+                              let defaultDate = form.publishAt;
+                              if (!defaultDate) {
+                                const tomorrow = new Date();
+                                tomorrow.setDate(tomorrow.getDate() + 1);
+                                tomorrow.setHours(10, 0, 0, 0);
+                                const pad = n => String(n).padStart(2, '0');
+                                defaultDate = `${tomorrow.getFullYear()}-${pad(tomorrow.getMonth() + 1)}-${pad(tomorrow.getDate())}T${pad(tomorrow.getHours())}:${pad(tomorrow.getMinutes())}`;
+                              }
+                              setGuideForms(prev => ({
+                                ...prev,
+                                [guide.slug]: { ...form, status: 'programada', publishAt: defaultDate }
+                              }));
+                            }}
+                            style={{
+                              border: 'none',
+                              padding: '6px 14px',
+                              borderRadius: '6px',
+                              fontSize: '12px',
+                              fontWeight: form.status === 'programada' ? '700' : '600',
+                              background: form.status === 'programada' ? '#7c3aed' : 'transparent',
+                              color: form.status === 'programada' ? '#ffffff' : '#475569',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              transition: 'all 0.15s ease'
+                            }}
+                          >
+                            <CalendarClock size={13} />
+                            Programada
+                          </button>
+                        </div>
+
+                        {/* Date Picker if Programada is selected */}
+                        {form.status === 'programada' && (
+                          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                            <input
+                              type="datetime-local"
+                              value={form.publishAt || ''}
+                              onChange={(e) => {
+                                setGuideForms(prev => ({
+                                  ...prev,
+                                  [guide.slug]: { ...form, publishAt: e.target.value }
+                                }));
+                              }}
+                              style={{
+                                padding: '6px 10px',
+                                borderRadius: '6px',
+                                border: '1px solid #cbd5e1',
+                                fontSize: '12px',
+                                outline: 'none',
+                                background: '#ffffff',
+                                color: '#0f172a'
+                              }}
+                            />
+                            <span style={{ fontSize: '11px', color: '#64748b' }}>
+                              (Automática)
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Right: Actions (Save Button & Preview) */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        {/* Save Button */}
+                        <button
+                          type="button"
+                          onClick={() => handleSaveGuide(guide.slug)}
+                          disabled={isSaving}
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            padding: '8px 16px',
+                            borderRadius: '8px',
+                            background: '#0f172a',
+                            color: '#ffffff',
+                            border: 'none',
+                            fontSize: '13px',
+                            fontWeight: '700',
+                            cursor: isSaving ? 'wait' : 'pointer',
+                            boxShadow: '0 2px 6px rgba(15, 23, 42, 0.2)',
+                            transition: 'all 0.15s ease'
+                          }}
+                        >
+                          {isSaving ? (
+                            <>
+                              <RefreshCw size={14} className="spin" />
+                              <span>Guardando...</span>
+                            </>
+                          ) : (
+                            <>
+                              <Save size={14} />
+                              <span>Guardar Estado</span>
+                            </>
+                          )}
+                        </button>
+
+                        {/* Preview Button */}
+                        <button
+                          type="button"
+                          onClick={() => window.open(`/guias/${guide.slug}`, '_blank')}
+                          title="Abrir artículo con tu sesión de administrador para previsualizarlo tal y como lo verán los visitantes"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            padding: '8px 14px',
+                            borderRadius: '8px',
+                            background: '#ffffff',
+                            color: '#334155',
+                            border: '1px solid #cbd5e1',
+                            fontSize: '13px',
+                            fontWeight: '600',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <Eye size={14} color="#64748b" />
+                          <span>Vista Previa</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      )}
       </div>
 
       {/* ---------------------------------------------------- */}
@@ -2241,6 +3079,42 @@ export default function AdminDashboard({ navigate }) {
           <span style={{ fontSize: '14px', fontWeight: '700' }}>{newLeadToast}</span>
           <button
             onClick={() => setNewLeadToast(null)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#94a3b8',
+              cursor: 'pointer',
+              marginLeft: '8px',
+              padding: '2px',
+              display: 'flex'
+            }}
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
+      {/* Notificación flotante cuando se actualiza el estado de una guía */}
+      {guideSuccessToast && (
+        <div style={{
+          position: 'fixed',
+          bottom: '24px',
+          left: '24px',
+          background: '#0f172a',
+          color: '#ffffff',
+          padding: '14px 22px',
+          borderRadius: '14px',
+          boxShadow: '0 12px 35px rgba(0,0,0,0.35)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          zIndex: 9999,
+          border: '1px solid #22c55e'
+        }}>
+          <CheckCircle2 size={20} color="#22c55e" />
+          <span style={{ fontSize: '14px', fontWeight: '700' }}>{guideSuccessToast}</span>
+          <button
+            onClick={() => setGuideSuccessToast(null)}
             style={{
               background: 'transparent',
               border: 'none',

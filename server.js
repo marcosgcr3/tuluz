@@ -22,6 +22,7 @@ import {
   getGuidesConfig,
   saveGuideConfig
 } from './db.js';
+import { guidesData } from './src/data/guidesData.js';
 
 // Inicializar conexión con PostgreSQL (con fallback automático a leads.json)
 initDatabase();
@@ -833,6 +834,10 @@ app.post('/api/admin/guides-config', async (req, res) => {
     }
 
     console.log(`📚 [Admin] Guía actualizada: "${slug}" -> ${status} ${publishAt ? `(Programada: ${publishAt})` : ''}`);
+
+    // Regenerar archivos físicos sitemap.xml de forma asíncrona para redundancia total
+    syncPhysicalSitemapFiles().catch(e => console.warn('Advertencia actualizando archivos sitemap.xml:', e.message));
+
     res.json({ success: true, guide: result.config });
   } catch (err) {
     console.error('Error en POST /api/admin/guides-config:', err);
@@ -1049,6 +1054,99 @@ app.get('/api/leads/export-csv', async (req, res) => {
   }
 });
 
+// ==========================================
+// SITEMAP DINÁMICO SEO (/sitemap.xml)
+// ==========================================
+
+// Función centralizada para construir el contenido XML del sitemap
+async function buildSitemapXml() {
+  const rawConfigs = await getGuidesConfig();
+  const now = Date.now();
+  const today = new Date().toISOString().split('T')[0];
+
+  // Páginas institucionales estáticas
+  const staticPages = [
+    { loc: 'https://tu-luz.es/', priority: '1.0', changefreq: 'weekly', lastmod: today },
+    { loc: 'https://tu-luz.es/empresas', priority: '0.9', changefreq: 'monthly', lastmod: today },
+    { loc: 'https://tu-luz.es/comunidades-de-vecinos', priority: '0.9', changefreq: 'monthly', lastmod: today },
+    { loc: 'https://tu-luz.es/particulares', priority: '0.9', changefreq: 'monthly', lastmod: today },
+    { loc: 'https://tu-luz.es/autoconsumo', priority: '0.9', changefreq: 'monthly', lastmod: today },
+    { loc: 'https://tu-luz.es/guias', priority: '0.9', changefreq: 'weekly', lastmod: today },
+    { loc: 'https://tu-luz.es/solicita-un-presupuesto', priority: '0.8', changefreq: 'monthly', lastmod: today },
+    { loc: 'https://tu-luz.es/aviso-legal', priority: '0.3', changefreq: 'yearly', lastmod: '2026-09-10' },
+    { loc: 'https://tu-luz.es/politica-de-privacidad', priority: '0.3', changefreq: 'yearly', lastmod: '2026-09-10' }
+  ];
+
+  // Filtrar guías que estén actualmente publicadas (en vivo o programadas cuya fecha ya llegó)
+  const publishedGuideUrls = [];
+  for (const guide of guidesData) {
+    const cfg = rawConfigs[guide.slug];
+    const status = cfg?.status || guide.status || 'borrador';
+    const publishAt = cfg?.publishAt || null;
+
+    let isPublished = status === 'publicada';
+    if (status === 'programada' && publishAt) {
+      const scheduleTime = new Date(publishAt).getTime();
+      if (!isNaN(scheduleTime) && scheduleTime <= now) {
+        isPublished = true;
+      }
+    }
+
+    if (isPublished) {
+      let lastmod = today;
+      if (cfg?.updatedAt) {
+        lastmod = new Date(cfg.updatedAt).toISOString().split('T')[0];
+      } else if (guide.updatedAt) {
+        lastmod = guide.updatedAt;
+      }
+
+      publishedGuideUrls.push({
+        loc: `https://tu-luz.es/guias/${guide.slug}`,
+        lastmod,
+        changefreq: 'monthly',
+        priority: '0.8'
+      });
+    }
+  }
+
+  const allUrls = [...staticPages, ...publishedGuideUrls];
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    allUrls.map(u => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`).join('\n') +
+    `\n</urlset>`;
+}
+
+// Sincronizar también archivos físicos en /public y /dist para despliegues estáticos o redundancia
+async function syncPhysicalSitemapFiles() {
+  try {
+    const xml = await buildSitemapXml();
+    const publicSitemap = path.join(__dirname, 'public', 'sitemap.xml');
+    fs.writeFileSync(publicSitemap, xml, 'utf-8');
+
+    const distSitemap = path.join(__dirname, 'dist', 'sitemap.xml');
+    if (fs.existsSync(path.dirname(distSitemap))) {
+      fs.writeFileSync(distSitemap, xml, 'utf-8');
+    }
+  } catch (err) {
+    console.warn('⚠️ [Sitemap Sync]', err.message);
+  }
+}
+
+// Ruta dinámica para motores de búsqueda (siempre datos frescos sin reiniciar)
+app.get('/sitemap.xml', async (req, res) => {
+  try {
+    const xml = await buildSitemapXml();
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    // Cache de 30 minutos para no saturar CPU ante oleadas de bots, pero siempre fresco
+    res.setHeader('Cache-Control', 'public, max-age=1800, s-maxage=3600');
+    res.status(200).send(xml);
+  } catch (err) {
+    console.error('Error generando sitemap dinámico:', err);
+    res.status(500).send('Error generando sitemap.xml');
+  }
+});
+
 // Servir archivos estáticos del frontend con caché óptima (1 año para assets inmutables, no-cache para index.html)
 app.use(express.static(path.join(__dirname, 'dist'), {
   maxAge: '1y',
@@ -1086,5 +1184,8 @@ app.listen(PORT, () => {
       syncMetaLeadsSilently().catch(err => console.error('Error en sync inicial Meta:', err));
     }
   }, 5000);
+
+  // Sincronización inicial del sitemap físico al arrancar
+  syncPhysicalSitemapFiles().catch(e => console.warn('Error en sync inicial sitemap:', e.message));
 });
 

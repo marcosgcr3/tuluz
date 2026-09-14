@@ -877,13 +877,22 @@ app.post('/api/admin/guides/auto-schedule', async (req, res) => {
       return new Date(isoStr).toISOString();
     }
 
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    // Buscar fechas consecutivas que caigan en Lunes (1) o Jueves (4)
+    let curDate = new Date();
+    curDate.setDate(curDate.getDate() + 1);
+
+    const targetDates = [];
+    while (targetDates.length < drafts.length) {
+      const dayOfWeek = curDate.getDay();
+      if (dayOfWeek === 1 || dayOfWeek === 4) {
+        targetDates.push(new Date(curDate.getTime()));
+      }
+      curDate.setDate(curDate.getDate() + 1);
+    }
 
     for (let i = 0; i < drafts.length; i++) {
       const guide = drafts[i];
-      const targetDate = new Date(tomorrow.getTime());
-      targetDate.setDate(targetDate.getDate() + i);
+      const targetDate = targetDates[i];
 
       const year = targetDate.getFullYear();
       const month = targetDate.getMonth() + 1;
@@ -910,11 +919,11 @@ app.post('/api/admin/guides/auto-schedule', async (req, res) => {
 
     syncPhysicalSitemapFiles().catch(e => console.warn('Advertencia sitemap sync:', e.message));
 
-    console.log(`⚡ [Admin] Auto-programadas ${drafts.length} guías (1 por día, 9:00 a 12:00 España)`);
+    console.log(`⚡ [Admin] Auto-programadas ${drafts.length} guías (2 por semana: Lunes y Jueves, 9:00 a 12:00 España)`);
     res.json({
       success: true,
       count: drafts.length,
-      message: `Se han programado exitosamente ${drafts.length} guías para publicarse 1 por día entre las 9:00 y las 12:00 (hora española).`
+      message: `Se han programado exitosamente ${drafts.length} guías para publicarse 2 veces por semana (lunes y jueves) entre las 9:00 y las 12:00 (hora española).`
     });
   } catch (err) {
     console.error('Error en POST /api/admin/guides/auto-schedule:', err);

@@ -240,7 +240,7 @@ export default function AdminDashboard({ navigate }) {
   };
 
   const handleAutoScheduleGuides = async () => {
-    if (!window.confirm('¿Deseas programar automáticamente todos los artículos en borrador para que se publiquen 1 cada día entre las 9:00 y las 12:00 (hora de España)?')) {
+    if (!window.confirm('¿Deseas programar automáticamente todos los artículos en borrador para que se publiquen 2 veces por semana (lunes y jueves) entre las 9:00 y las 12:00 (hora de España)?')) {
       return;
     }
 
@@ -2059,7 +2059,7 @@ export default function AdminDashboard({ navigate }) {
                 type="button"
                 onClick={handleAutoScheduleGuides}
                 disabled={autoScheduling}
-                title="Distribuye todos los artículos en borrador para publicarse automáticamente 1 por día entre las 9:00 y las 12:00 (hora española)"
+                title="Distribuye todos los artículos en borrador para publicarse automáticamente 2 veces por semana (lunes y jueves) entre las 9:00 y las 12:00 (hora española)"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -2077,7 +2077,7 @@ export default function AdminDashboard({ navigate }) {
                 }}
               >
                 <CalendarClock size={16} />
-                <span>{autoScheduling ? 'Programando...' : 'Auto-Programar (1/día 9h-12h)'}</span>
+                <span>{autoScheduling ? 'Programando...' : 'Auto-Programar (2/sem: Lun y Jue)'}</span>
               </button>
 
               <button

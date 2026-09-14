@@ -78,7 +78,11 @@ export function initDatabase() {
               await pool.query(
                 `INSERT INTO guides_config (slug, status, publish_at, updated_at)
                  VALUES ($1, $2, $3, NOW())
-                 ON CONFLICT (slug) DO NOTHING`,
+                 ON CONFLICT (slug) DO UPDATE
+                 SET status = EXCLUDED.status,
+                     publish_at = EXCLUDED.publish_at,
+                     updated_at = NOW()
+                 WHERE guides_config.status = 'borrador' AND EXCLUDED.status = 'programada'`,
                 [slug, item.status || 'borrador', item.publishAt ? new Date(item.publishAt) : null]
               );
             }

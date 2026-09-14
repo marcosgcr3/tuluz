@@ -102,7 +102,7 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
           transition: 'transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease'
         }}
       >
-        <div className="navbar-container" style={{ width: '100%', maxWidth: '100%', padding: '0 clamp(1rem, 3.5vw, 3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.25rem' }}>
+        <div className="navbar-container" style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 clamp(1rem, 3.5vw, 2.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.25rem' }}>
           
           {/* Brand Logo */}
           <div 

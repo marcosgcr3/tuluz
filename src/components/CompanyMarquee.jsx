@@ -85,7 +85,7 @@ export default function CompanyMarquee() {
         top: 0,
         bottom: 0,
         left: 0,
-        width: '120px',
+        width: 'clamp(35px, 10vw, 120px)',
         background: 'linear-gradient(to right, var(--bg-main) 0%, transparent 100%)',
         zIndex: 2,
         pointerEvents: 'none'
@@ -96,7 +96,7 @@ export default function CompanyMarquee() {
         top: 0,
         bottom: 0,
         right: 0,
-        width: '120px',
+        width: 'clamp(35px, 10vw, 120px)',
         background: 'linear-gradient(to left, var(--bg-main) 0%, transparent 100%)',
         zIndex: 2,
         pointerEvents: 'none'

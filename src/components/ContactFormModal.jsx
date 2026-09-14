@@ -201,7 +201,7 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {}, na
                 <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
                   Tipo de Cliente
                 </label>
-                <div style={{ display: 'flex', gap: '0.35rem', background: 'var(--bg-main)', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+                <div className="modal-type-grid" style={{ display: 'flex', gap: '0.35rem', background: 'var(--bg-main)', padding: '0.3rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
                   {[
                     { id: 'particular', label: 'Particular' },
                     { id: 'empresa', label: 'Empresa' },
@@ -212,10 +212,11 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {}, na
                       type="button"
                       key={t.id}
                       onClick={() => setFormData({ ...formData, clientType: t.id })}
+                      className="modal-type-btn"
                       style={{
                         flex: 1,
                         padding: '0.45rem 0.3rem',
-                        fontSize: 'clamp(0.75rem, 2.5vw, 0.85rem)',
+                        fontSize: 'clamp(0.78rem, 2.5vw, 0.86rem)',
                         fontWeight: formData.clientType === t.id ? 700 : 500,
                         borderRadius: 'var(--radius-sm)',
                         color: formData.clientType === t.id ? '#ffffff' : 'var(--text-muted)',
@@ -444,6 +445,18 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {}, na
       <style>{`
         @media (max-width: 540px) {
           .modal-form-row { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 520px) {
+          .modal-type-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.35rem !important;
+          }
+          .modal-type-btn {
+            padding: 0.5rem 0.4rem !important;
+            font-size: 0.85rem !important;
+            min-height: 38px !important;
+          }
         }
       `}</style>
     </div>

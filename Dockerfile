@@ -22,6 +22,8 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/server.js ./server.js
 COPY --from=builder /app/db.js ./db.js
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/guides_config.json ./guides_config.json
 
 EXPOSE 3000
 

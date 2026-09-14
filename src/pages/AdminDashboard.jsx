@@ -24,6 +24,41 @@ const WhatsAppIcon = ({ size = 16, color = "currentColor", style = {} }) => (
   </svg>
 );
 
+// Helper function to calculate clean word count without HTML or markdown markup
+export function getGuideWordCount(guide) {
+  if (!guide) return 0;
+  let rawText = [guide.title || '', guide.excerpt || '', guide.author || ''].join(' ');
+  if (Array.isArray(guide.sections)) {
+    guide.sections.forEach(sec => {
+      if (sec.heading) rawText += ' ' + sec.heading;
+      if (sec.content) rawText += ' ' + sec.content;
+      if (Array.isArray(sec.bullets)) rawText += ' ' + sec.bullets.join(' ');
+      if (sec.callout) {
+        if (typeof sec.callout === 'string') rawText += ' ' + sec.callout;
+        else if (sec.callout.title || sec.callout.text) rawText += ' ' + (sec.callout.title || '') + ' ' + (sec.callout.text || '');
+      }
+      if (sec.table) {
+        if (Array.isArray(sec.table.headers)) rawText += ' ' + sec.table.headers.join(' ');
+        if (Array.isArray(sec.table.rows)) {
+          sec.table.rows.forEach(row => { if (Array.isArray(row)) rawText += ' ' + row.join(' '); });
+        }
+      }
+    });
+  }
+  if (Array.isArray(guide.faqs)) {
+    guide.faqs.forEach(faq => {
+      if (faq.q) rawText += ' ' + faq.q;
+      if (faq.a) rawText += ' ' + faq.a;
+    });
+  }
+  const clean = rawText
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/[#*_`\[\]()]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return clean ? clean.split(/\s+/).length : 0;
+}
+
 export default function AdminDashboard({ navigate }) {
   const [adminKey, setAdminKey] = useState(() => sessionStorage.getItem('tuluz_admin_key') || '');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -2241,6 +2276,23 @@ export default function AdminDashboard({ navigate }) {
 
                         <span style={{ fontSize: '12px', color: '#64748b', fontFamily: 'monospace' }}>
                           /guias/{guide.slug}
+                        </span>
+
+                        <span style={{ fontSize: '12px', color: '#94a3b8' }}>•</span>
+
+                        <span style={{ 
+                          fontSize: '12px', 
+                          color: '#334155', 
+                          fontWeight: '600',
+                          display: 'inline-flex', 
+                          alignItems: 'center', 
+                          gap: '5px',
+                          background: '#f1f5f9',
+                          padding: '2px 8px',
+                          borderRadius: '6px',
+                          border: '1px solid #e2e8f0'
+                        }} title="Número total de palabras del artículo (excluyendo etiquetas HTML y markdown)">
+                          <FileText size={13} color="#64748b" /> {getGuideWordCount(guide).toLocaleString('es-ES')} palabras
                         </span>
                       </div>
 

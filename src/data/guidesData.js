@@ -2182,12 +2182,12 @@ export const guidesData = [
   {
     "id": "que-electrodomesticos-consumen-mas-luz",
     "slug": "que-electrodomesticos-consumen-mas-luz",
-    "keyword": "qué electrodomésticos consumen más luz",
-    "title": "Qué electrodomésticos consumen más luz en casa",
-    "metaTitle": "Electrodomésticos que más consumen luz | tuLuz",
-    "metaDescription": "Identifica los aparatos que más influyen en tu consumo y cómo reducir su gasto.",
+    "keyword": "que electrodomésticos consumen más luz",
+    "title": "Qué electrodomésticos consumen más luz: ranking de gasto real y cómo reducir hasta 250 € al año",
+    "metaTitle": "Electrodomésticos que Más Luz Consumen: Ranking y Consejos | tuLuz",
+    "metaDescription": "Descubre qué electrodomésticos disparan tu factura de luz. Tabla comparativa de consumo anual en kWh y euros, impacto del etiquetado y hábitos de uso eficiente.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2195,82 +2195,200 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Identifica los aparatos que más influyen en tu consumo y cómo reducir su gasto.",
+    "excerpt": "En un hogar medio español, los electrodomésticos representan más del 55% del consumo eléctrico total. Conoce el ranking real medido en kWh, su impacto en euros según la tarifa y cómo ahorrar decenas de euros al año sin perder confort.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué electrodomésticos consumen más luz"
+        "id": "ranking-consumo",
+        "title": "1. Ranking de electrodomésticos con mayor consumo eléctrico"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "frigorifico-impacto",
+        "title": "2. El frigorífico: por qué lidera el gasto anual total"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "climatizacion-secadoras",
+        "title": "3. Lavado, secado y calor: los grandes devoradores de potencia puntual"
+      },
+      {
+        "id": "etiqueta-energetica",
+        "title": "4. Cómo interpretar la nueva etiqueta energética europea (A a G)"
+      },
+      {
+        "id": "habitos-ahorro",
+        "title": "5. Consejos prácticos de uso para rebajar hasta un 30% el gasto"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué electrodomésticos consumen más luz",
-        "content": "Comprender a fondo **qué electrodomésticos consumen más luz** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nIdentifica los aparatos que más influyen en tu consumo y cómo reducir su gasto.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a qué electrodomésticos consumen más luz, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "ranking-consumo",
+        "heading": "1. Ranking de electrodomésticos con mayor consumo eléctrico en España",
+        "content": "Para entender tu recibo de la luz es imprescindible distinguir entre dos conceptos clave: la potencia que demanda un equipo mientras funciona (kW) y la energía acumulada a lo largo del año (kWh). Por ejemplo, una plancha demanda hasta 2.200 W pero se utiliza pocas horas al mes, mientras que un frigorífico apenas consume 150-200 W de pico, pero está conectado las 24 horas del día durante los 365 días del año. Los datos oficiales del IDAE (Instituto para la Diversificación y Ahorro de la Energía) confirman la distribución real del gasto en un hogar medio.",
+        "table": {
+          "headers": [
+            "Electrodoméstico",
+            "Potencia típica (W)",
+            "Consumo medio anual (kWh)",
+            "% del total eléctrico del hogar",
+            "Coste estimado anual (€ a 0,16 €/kWh)"
+          ],
+          "rows": [
+            [
+              "Frigorífico y congelador",
+              "150 - 250 W",
+              "550 - 680 kWh",
+              "30,6%",
+              "88 € - 109 €"
+            ],
+            [
+              "Lavadora (ciclo caliente)",
+              "1.800 - 2.200 W",
+              "255 - 320 kWh",
+              "11,8%",
+              "41 € - 51 €"
+            ],
+            [
+              "Televisor / Pantallas",
+              "80 - 220 W",
+              "220 - 290 kWh",
+              "12,2%",
+              "35 € - 46 €"
+            ],
+            [
+              "Horno eléctrico",
+              "1.500 - 2.500 W",
+              "210 - 270 kWh",
+              "8,3%",
+              "33 € - 43 €"
+            ],
+            [
+              "Lavavajillas",
+              "1.500 - 2.200 W",
+              "200 - 260 kWh",
+              "7,4%",
+              "32 € - 41 €"
+            ],
+            [
+              "Secadora de condensación/bomba",
+              "900 - 2.800 W",
+              "240 - 380 kWh",
+              "8,5%",
+              "38 € - 61 €"
+            ],
+            [
+              "Placa de inducción / vitrocerámica",
+              "1.200 - 3.000 W",
+              "190 - 250 kWh",
+              "6,8%",
+              "30 € - 40 €"
+            ],
+            [
+              "Microondas",
+              "800 - 1.200 W",
+              "80 - 120 kWh",
+              "3,1%",
+              "13 € - 19 €"
+            ],
+            [
+              "Stand-by (consumo silencioso)",
+              "30 - 80 W permanentes",
+              "250 - 450 kWh",
+              "10,7%",
+              "40 € - 72 €"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El frío doméstico (frigorífico y congelador) representa casi un tercio del consumo de todos los electrodomésticos combinados.",
+          "El 80% de la energía de la lavadora y el lavavajillas se destina exclusivamente a calentar el agua mediante resistencias térmicas.",
+          "El modo fantasma o stand-by supera en coste anual al consumo combinado del horno y el microondas juntos."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Qué electrodomésticos consumen más luz en casa** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "frigorifico-impacto",
+        "heading": "2. El frigorífico: por qué lidera el gasto anual total",
+        "content": "Dado que el frigorífico no descansa nunca, su eficiencia energética tiene un impacto directo y perpetuo en tus facturas. Un frigorífico antiguo de clase D o E bajo la escala anterior (o F en la clasificación actual) puede devorar más de 650 kWh anuales. En contraste, un modelo actual de clase A o B con tecnología Inverter y aislamiento de vacío consume menos de 140 kWh al año, generando un ahorro directo de más de 80 € cada doce meses.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Ajuste óptimo del termostato",
+          "text": "Cada grado que bajas innecesariamente el termostato del frigorífico incrementa su consumo de electricidad en aproximadamente un 6% a 8%. La temperatura recomendada por los técnicos es de 4 °C a 5 °C en la zona de refrigeración y de -18 °C en el compartimento congelador."
+        },
+        "bullets": [
+          "Separa la parte trasera del frigorífico al menos 5 cm de la pared para garantizar una correcta disipación térmica del compresor.",
+          "Limpia la rejilla exterior del condensador al menos una vez al año para evitar acumulaciones de polvo que aumenten el esfuerzo del motor.",
+          "Comprueba periódicamente que las gomas de cierre hermético retienen una hoja de papel sin deslizarse."
+        ]
+      },
+      {
+        "id": "climatizacion-secadoras",
+        "heading": "3. Lavado, secado y calor: los grandes devoradores de potencia puntual",
+        "content": "Los electrodomésticos con resistencias eléctricas de calentamiento por efecto Joule (lavadoras en ciclos calientes, secadoras convencionales, hornos y termos) son los que provocan los picos de potencia más elevados. Si conectas el horno y la secadora de manera simultánea en una vivienda con 3,45 kW contratados, es muy probable que salte el Interruptor de Control de Potencia (ICP) de tu contador inteligente.",
+        "bullets": [
+          "Lavado en frío: Lavar la colada a 30 °C o en frío consume entre un 55% y un 75% menos energía que lavar a 60 °C.",
+          "Secadoras de bomba de calor: Sustituir una secadora tradicional por una de bomba de calor reduce el gasto energético por ciclo en más de un 60%.",
+          "Aprovechamiento del calor residual: Apagar el horno eléctrico y la placa vitrocerámica 5 a 10 minutos antes de concluir la cocción permite terminar la preparación sin consumir ni un solo vatio adicional."
+        ]
+      },
+      {
+        "id": "etiqueta-energetica",
+        "heading": "4. Cómo interpretar la nueva etiqueta energética europea (A a G)",
+        "content": "Desde marzo de 2021, la Unión Europea eliminó definitivamente las confusas denominaciones A+, A++ y A+++ para restablecer una escala lineal transparente y exigente que abarca desde la letra A (máxima eficiencia) hasta la letra G (mínima eficiencia). Un modelo que antes lucía con orgullo la etiqueta A+++ pasó a clasificarse como C o B en el nuevo etiquetado, reservando la calificación A a los equipos con los estándares tecnológicos más avanzados del mercado.",
+        "bullets": [
+          "El código QR situado en la esquina superior derecha permite escanear y acceder directamente a la base de datos oficial EPREL con el consumo homologado exacto.",
+          "La etiqueta desglosa el consumo por cada 100 ciclos de uso en lavadoras y lavavajillas, facilitando la comparación objetiva entre modelos de distinta capacidad.",
+          "También incluye niveles de emisión acústica en decibelios (dB) y clases de ruido de la A a la D."
+        ]
+      },
+      {
+        "id": "habitos-ahorro",
+        "heading": "5. Consejos prácticos de uso para rebajar hasta un 30% el gasto",
+        "content": "No es indispensable renovar de golpe todos los aparatos de la casa para percibir un alivio sustancial en el recibo. Con simples correcciones de hábitos diarios y desplazando el uso a los tramos horarios valle de tu tarifa, puedes recortar más de 180 € al año en electricidad.",
+        "bullets": [
+          "Carga siempre la lavadora y el lavavajillas a su capacidad nominal completa: dos medios lavados consumen hasta un 35% más agua y luz que un lavado completo.",
+          "Utiliza regletas con interruptor o enchufes programables inteligentes para cortar el stand-by de televisores, routers secundarios, videoconsolas y barras de sonido durante la noche.",
+          "Prioriza el microondas frente al horno convencional para porciones individuales: ahorra hasta un 70% de tiempo y energía.",
+          "Descongela los alimentos introduciéndolos en el compartimento frigorífico la noche anterior: aportarás frigorías gratuitas al interior del refrigerador."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Resolvemos las dudas técnicas más habituales sobre el gasto de los electrodomésticos domésticos.",
+        "bullets": [
+          "¿Merece la pena pagar más por un electrodoméstico clase A frente a uno clase E? Sí, especialmente en frigoríficos y secadoras, donde la diferencia en la factura amortiza el sobrecoste del equipo en menos de 4 a 5 años.",
+          "¿El programa ECO del lavavajillas realmente gasta menos si dura 3 horas? Sí. Al durar más tiempo, calienta el agua a menor temperatura de forma progresiva, reduciendo el consumo eléctrico en un 30% a 40% respecto a un ciclo rápido intensivo.",
+          "¿Un televisor apagado consume luz? En reposo (luz roja de stand-by), consume entre 0,5 W y 3 W. Puede parecer poco, pero sumado al resto de dispositivos de la casa cuesta entre 40 € y 70 € al año."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con qué electrodomésticos consumen más luz?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuál es el electrodoméstico que más encarece el recibo de la luz?",
+        "a": "En términos de consumo acumulado anual, el frigorífico es el que más consume (unos 650 kWh/año) por estar encendido sin interrupción. En términos de potencia instantánea máxima, la secadora, la vitrocerámica y el horno eléctrico son los que demandan más vatios por hora."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cuánto se ahorra lavando la ropa en frío?",
+        "a": "Alrededor de un 70% de electricidad en cada ciclo de lavado, ya que el motor que gira el tambor apenas requiere 250 W, mientras que la resistencia para calentar el agua a 60 °C demanda cerca de 2.000 W durante 40 minutos."
+      },
+      {
+        "q": "¿Qué significa la letra de eficiencia en la etiqueta energética?",
+        "a": "Es una clasificación europea de la A (verde oscuro, máxima eficiencia) a la G (rojo, menor eficiencia). Los aparatos de clase A consumen hasta un 50% menos energía que los de clases inferiores para realizar la misma función."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "cuanto-consume-el-stand-by-en-casa",
     "slug": "cuanto-consume-el-stand-by-en-casa",
-    "keyword": "cuánto consume el stand by en casa",
-    "title": "Consumo en stand-by: cuánto gastan los aparatos apagados",
-    "metaTitle": "Consumo stand-by: cuánto cuesta y cómo reducirlo | tuLuz",
-    "metaDescription": "Averigua cuánto puede sumar el consumo fantasma y qué dispositivos conviene desconectar.",
+    "keyword": "cuanto consume el stand by en casa",
+    "title": "Cuánto consume el stand-by en casa: el gasto vampiro de tu factura y cómo eliminarlo",
+    "metaTitle": "Consumo del Stand-By en Casa: Cuánto Cuesta y Cómo Evitarlo | tuLuz",
+    "metaDescription": "Calcula el coste real del consumo fantasma o stand-by en tu hogar. Descubre qué aparatos gastan en reposo y cómo ahorrar entre 60 € y 100 € al año fácilmente.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2278,82 +2396,188 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Averigua cuánto puede sumar el consumo fantasma y qué dispositivos conviene desconectar.",
+    "excerpt": "El consumo en reposo o 'consumo vampiro' pasa desapercibido pero representa entre el 7% y el 11% de la electricidad total que pagas en tu hogar. Conoce los aparatos que más gastan apagados y cómo neutralizarlos.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto consume el stand by en casa"
+        "id": "que-es-standby",
+        "title": "1. Qué es el consumo fantasma o stand-by y cómo opera"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-aparatos",
+        "title": "2. Tabla de aparatos que más consumen en modo reposo"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "coste-anual",
+        "title": "3. Cuánto dinero cuesta el stand-by al año en España"
+      },
+      {
+        "id": "normativa-ce",
+        "title": "4. Normativa europea sobre consumo en reposo de equipos electrónicos"
+      },
+      {
+        "id": "soluciones-practicas",
+        "title": "5. Soluciones técnicas y automáticas para erradicarlo"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto consume el stand by en casa",
-        "content": "Comprender a fondo **cuánto consume el stand by en casa** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAverigua cuánto puede sumar el consumo fantasma y qué dispositivos conviene desconectar.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cuánto consume el stand by en casa, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "que-es-standby",
+        "heading": "1. Qué es el consumo fantasma o stand-by y cómo opera",
+        "content": "El stand-by, también conocido en ingeniería energética como 'consumo vampiro' o carga parásita, es la energía que continúan absorbiendo los aparatos electrónicos cuando aparentemente están apagados pero permanecen conectados a la toma de corriente. La presencia de pantallas LED informativas, receptores de mandos a distancia por infrarrojos, relojes integrados, adaptadores de corriente internos que mantienen transformadores activos o módulos Wi-Fi en espera de órdenes perpetúan este consumo inadvertido durante 8.760 horas al año.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "No requiere que el aparato esté prestando ningún servicio activo para consumir electricidad.",
+          "Los transformadores de corriente antiguos continúan disipando calor incluso sin carga conectada.",
+          "En viviendas con domótica o múltiples dispositivos inteligentes, la carga de fondo en reposo puede superar los 70 W constantes."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Consumo en stand-by: cuánto gastan los aparatos apagados** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-aparatos",
+        "heading": "2. Tabla de aparatos que más consumen en modo reposo",
+        "content": "Aunque cada aparato individual pueda gastar entre 1 y 15 W por hora, la suma simultánea de docenas de receptores en toda la vivienda conforma una potencia basal que eleva innecesariamente el término de energía facturado mes a mes.",
+        "table": {
+          "headers": [
+            "Dispositivo en Reposo",
+            "Potencia en Stand-By (W)",
+            "Consumo Anual (kWh)",
+            "Gasto Anual Estimado (€)"
+          ],
+          "rows": [
+            [
+              "Decodificador de TV por cable / satélite",
+              "8 - 18 W",
+              "70 - 150 kWh",
+              "12 € - 25 €"
+            ],
+            [
+              "Videoconsola en reposo (actualizaciones activas)",
+              "10 - 25 W",
+              "85 - 200 kWh",
+              "14 € - 33 €"
+            ],
+            [
+              "Router Wi-Fi fibra óptica (24h ininterrumpido)",
+              "6 - 12 W",
+              "52 - 105 kWh",
+              "9 € - 18 €"
+            ],
+            [
+              "Equipo de música / Cadena Hi-Fi",
+              "5 - 12 W",
+              "44 - 100 kWh",
+              "7 € - 17 €"
+            ],
+            [
+              "Ordenador sobremesa en suspensión",
+              "3 - 8 W",
+              "26 - 70 kWh",
+              "4 € - 12 €"
+            ],
+            [
+              "Televisor Smart TV moderno",
+              "0,5 - 3 W",
+              "4 - 26 kWh",
+              "1 € - 5 €"
+            ],
+            [
+              "Impresora láser o inyección conectada",
+              "2 - 6 W",
+              "17 - 52 kWh",
+              "3 € - 9 €"
+            ],
+            [
+              "Microondas con reloj digital continuo",
+              "2 - 4 W",
+              "17 - 35 kWh",
+              "3 € - 6 €"
+            ],
+            [
+              "Cargadores móviles enchufados sin teléfono",
+              "0,2 - 0,5 W",
+              "1,7 - 4,3 kWh",
+              "0,30 € - 0,80 €"
+            ]
+          ]
+        },
+        "bullets": [
+          "Las videoconsolas de última generación configuradas en modo 'encendido instantáneo' o 'reposo con descargas activas' son los vampiros más voraces del hogar.",
+          "Los decodificadores de televisión de operadores suelen mantener la circuitería interna y los discos duros prácticamente a pleno régimen térmico.",
+          "Dejar el cargador del móvil enchufado a la pared sin dispositivo gasta muy poco por unidad, pero reduce la vida útil de sus condensadores internos."
+        ]
+      },
+      {
+        "id": "coste-anual",
+        "heading": "3. Cuánto dinero cuesta el stand-by al año en España",
+        "content": "Según auditorías de consumo doméstico realizadas por la OCU y la Comisión Europea, el stand-by medio de un hogar estándar oscila entre 35 y 60 vatios permanentes. A lo largo de un año completo, 45 W constantes suponen 394 kWh de energía consumida sin ningún beneficio práctico. Al precio medio de la electricidad en España (unos 0,16 €/kWh con peajes e impuestos indirectos), este desperdicio silencioso equivale a desembolsar entre 60 € y más de 100 € cada año.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Impacto en periodos vacacionales",
+          "text": "Si sales de vacaciones un mes entero y dejas enchufados decodificadores, routers, ordenadores, termos y televisores, tu contador inteligente seguirá registrando entre 25 y 45 kWh de consumo, lo que se traducirá en una factura inexplicable pese a tener la casa vacía."
+        },
+        "bullets": [
+          "El stand-by representa aproximadamente el 10% del total de kWh consumidos en viviendas unifamiliares o pisos familiares.",
+          "En viviendas secundarias o de fin de semana, el consumo fantasma puede llegar a suponer más del 40% del consumo de energía registrado en el año."
+        ]
+      },
+      {
+        "id": "normativa-ce",
+        "heading": "4. Normativa europea sobre consumo en reposo de equipos electrónicos",
+        "content": "La Unión Europea ha endurecido de forma progresiva la directiva de diseño ecológico (Reglamento UE 801/2013 y actualizaciones posteriores). Los aparatos vendidos actualmente en territorio comunitario no pueden superar los 0,5 W en modo reposo simple o 1 W si disponen de pantalla informativa de estado. No obstante, los dispositivos conectados en red (televisores conectados, altavoces inteligentes o routers) tienen excepciones normativas que les permiten alcanzar entre 2 y 8 W para mantener la conectividad continua.",
+        "bullets": [
+          "Los aparatos adquiridos antes de 2013 o importados sin marcado CE reglamentario pueden consumir más de 10 W en stand-by.",
+          "Verifica en los menús de configuración de tu Smart TV y videoconsola las opciones de 'Ahorro de energía profundo' para cumplir el estándar de reposo de bajo consumo."
+        ]
+      },
+      {
+        "id": "soluciones-practicas",
+        "heading": "5. Soluciones técnicas y automáticas para erradicarlo",
+        "content": "No es necesario desconectar manualmente uno por uno cada enchufe de la vivienda antes de irse a dormir. Existen tecnologías sencillas y muy económicas que automatizan la desconexión total.",
+        "bullets": [
+          "Regletas con interruptor agrupado: Centralizan la alimentación de todos los periféricos de la zona de televisión (consola, barra de sonido, decodificador) o del ordenador de trabajo con un único clic nocturno.",
+          "Regletas Master-Slave (Maestro-Esclavo): Cortan de forma automática la corriente a todos los periféricos cuando detectan que el equipo principal (el televisor o el PC) se apaga.",
+          "Enchufes inteligentes programables: Permiten fijar calendarios de apagado absoluto de 01:00 a 07:00 para routers y zonas multimedia desde la aplicación móvil.",
+          "Bajar el automático secundario en vacaciones: Desconectar los magnetotérmicos del cuadro general que no alimentan el frigorífico ni alarmas de seguridad."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Respuestas técnicas sobre cómo medir y controlar la potencia residual en el hogar.",
+        "bullets": [
+          "¿Cómo puedo saber cuánto consume el stand-by en mi casa? Puedes verlo en tiempo real a través de la aplicación de tu distribuidora eléctrica (i-DE, e-redes, UFD) en el gráfico de potencia horaria durante las madrugadas (de 03:00 a 05:00), cuando todos duermen.",
+          "¿Apagar el router por la noche daña la fibra óptica? No sufre ningún daño. Sin embargo, si tienes telefonía fija vinculada a la fibra o sistemas de alarma por IP, no debes desconectarlo.",
+          "¿Cuánto cuesta un medidor de consumo tipo enchufe? Por entre 12 € y 20 € puedes adquirir un vatímetro digital que te indicará los vatios exactos y los euros que consume cualquier equipo en reposo."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cuánto consume el stand by en casa?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto dinero al año cuesta el stand-by en un piso medio en España?",
+        "a": "Entre 60 € y 100 € anuales, dependiendo del número de aparatos conectados (especialmente consolas, decodificadores y ordenadores) y del precio del kWh contratado."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Es malo dejar el cargador del móvil enchufado a la corriente?",
+        "a": "Económicamente apenas cuesta unos 0,40 € al año en electricidad, pero degrada prematuramente los condensadores del cargador por calor continuo y supone un riesgo innecesario de microcortocircuito."
+      },
+      {
+        "q": "¿Cuál es la forma más rápida de eliminar el stand-by del televisor?",
+        "a": "Conectar la tele, consola y barra de sonido a una regleta con interruptor basculante o un enchufe inteligente y apagarla por completo por la noche."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-calcular-consumo-electrico-de-una-empresa",
     "slug": "como-calcular-consumo-electrico-de-una-empresa",
-    "keyword": "cómo calcular consumo eléctrico de una empresa",
-    "title": "Cómo calcular el consumo eléctrico de una empresa",
-    "metaTitle": "Calcular consumo eléctrico de una empresa | tuLuz",
-    "metaDescription": "Guía para estimar el consumo de un negocio, localizar desviaciones y preparar una revisión energética.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "como calcular consumo electrico de una empresa",
+    "title": "Cómo calcular el consumo eléctrico de una empresa: auditoría de cargas, curva de carga y tarifas 3.0TD / 6.XTD",
+    "metaTitle": "Cómo Calcular el Consumo Eléctrico de una Empresa | tuLuz Negocios",
+    "metaDescription": "Metodología profesional para calcular y desglosar el consumo de luz en una empresa: inventario de maquinaria, curva de carga de telemedida y optimización de periodos P1-P6.",
+    "category": "Empresas y Pymes",
+    "readTime": "9 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2361,82 +2585,173 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Guía para estimar el consumo de un negocio, localizar desviaciones y preparar una revisión energética.",
+    "excerpt": "Dimensionar con precisión la demanda energética en un negocio o pyme es la base para negociar contratos corporativos, evitar penalizaciones por excesos de potencia y reducir costes operativos hasta un 28%. Conoce el método de cálculo paso a paso.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo calcular consumo eléctrico de una empresa"
+        "id": "metodologia-calculo",
+        "title": "1. Metodología de inventario de cargas y factores de utilización"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "curva-cuarto-horaria",
+        "title": "2. La curva de carga cuarto-horaria de la distribuidora"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "tramos-periodos",
+        "title": "3. Distribución del consumo por periodos horarios (P1 a P6)"
+      },
+      {
+        "id": "energia-reactiva",
+        "title": "4. Cálculo y control de la energía reactiva y penalizaciones"
+      },
+      {
+        "id": "optimizacion-tarifaria",
+        "title": "5. Cómo negociar la tarifa corporativa con los datos obtenidos"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo calcular consumo eléctrico de una empresa",
-        "content": "Comprender a fondo **cómo calcular consumo eléctrico de una empresa** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nGuía para estimar el consumo de un negocio, localizar desviaciones y preparar una revisión energética.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo calcular consumo eléctrico de una empresa, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "metodologia-calculo",
+        "heading": "1. Metodología de inventario de cargas y factores de utilización",
+        "content": "Para calcular el consumo teórico de una empresa sin limitarse a mirar la cifra final de una factura pasada, es necesario elaborar un inventario detallado de receptores eléctricos. La fórmula estándar de cálculo de consumo por equipo es: Consumo (kWh) = Potencia Nominal (kW) × Factor de Carga (Fc) × Horas de Funcionamiento (h). El factor de carga refleja que un motor o compresor rara vez opera al 100% de su potencia nominal durante todo su ciclo de actividad.",
+        "table": {
+          "headers": [
+            "Equipo / Instalación",
+            "Potencia Nominal (kW)",
+            "Horas/día",
+            "Factor de Carga (Fc)",
+            "Consumo Diario Estimado (kWh)"
+          ],
+          "rows": [
+            [
+              "Climatización central VRV/VRF",
+              "18,0 kW",
+              "10 h",
+              "0,65",
+              "117,0 kWh"
+            ],
+            [
+              "Compresor industrial de aire",
+              "7,5 kW",
+              "8 h",
+              "0,70",
+              "42,0 kWh"
+            ],
+            [
+              "Iluminación técnica LED en nave/oficinas",
+              "3,2 kW",
+              "11 h",
+              "1,00",
+              "35,2 kWh"
+            ],
+            [
+              "Equipos ofimática y servidores (20 puestos)",
+              "4,5 kW",
+              "24 h (servidor) / 9 h (PC)",
+              "0,55",
+              "48,6 kWh"
+            ],
+            [
+              "Cámaras de refrigeración / congelación",
+              "5,5 kW",
+              "24 h (intermitente)",
+              "0,50",
+              "66,0 kWh"
+            ],
+            [
+              "Maquinaria de producción / soldadura",
+              "12,0 kW",
+              "6 h",
+              "0,45",
+              "32,4 kWh"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El factor de simultaneidad (Fs) debe aplicarse al sumar los consumos para estimar la potencia máxima requerida en un instante dado.",
+          "Separar el consumo de procesos productivos directos frente a servicios auxiliares (climatización e iluminación) es vital para calcular el coste energético por unidad producida."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo calcular el consumo eléctrico de una empresa** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "curva-cuarto-horaria",
+        "heading": "2. La curva de carga cuarto-horaria de la distribuidora",
+        "content": "En empresas con tarifas 3.0TD (más de 15 kW contratados) y de media/alta tensión 6.XTD, el contador de telemedida registra el consumo cada 15 minutos exactos. Esta información se almacena en los servidores de la distribuidora eléctrica y puede descargarse en formato CSV/Excel a través del portal para consumidores cualificados (Datadis o el portal de tu distribuidora: i-DE, UFD, e-redes). Analizar esta curva permite detectar consumos anómalos fuera de horario laboral, arranques simultáneos de maquinaria y el perfil exacto de demanda de la empresa.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Detección de 'fantasmas' industriales nocturnos",
+          "text": "Si tu curva cuarto-horaria refleja un consumo continuo de 8 a 15 kW en noches de domingo cuando la empresa está cerrada, significa que hay sistemas de climatización desprogramados, fugas en líneas de aire comprimido o cámaras con aislamiento defectuoso."
+        },
+        "bullets": [
+          "El maxímetro registra la potencia media integrada en cada bloque de 15 minutos.",
+          "Superar la potencia contratada genera recargos por excesos de potencia según el factor cuadrático regulado por la CNMC."
+        ]
+      },
+      {
+        "id": "tramos-periodos",
+        "heading": "3. Distribución del consumo por periodos horarios (P1 a P6)",
+        "content": "Las tarifas empresariales 3.0TD y 6.XTD dividen el año en 6 periodos horarios de energía y 6 de potencia (P1 a P6), que varían según el mes del año y la zona geográfica peninsular o extrapeninsular. El precio de la energía en P1 (punta máxima de invierno o verano) puede ser hasta cuatro veces más caro que en P6 (noches y fines de semana completos).",
+        "bullets": [
+          "P6 comprende todas las horas de 00:00 a 08:00 en días laborables y las 24 horas íntegras de sábados, domingos y festivos nacionales.",
+          "Desplazar procesos de alto consumo intensivo (cargas de baterías de carretillas, ciclos de lavado térmico o producción automatizada) hacia P6 o periodos llanos reduce la factura directa drásticamente."
+        ]
+      },
+      {
+        "id": "energia-reactiva",
+        "heading": "4. Cálculo y control de la energía reactiva y penalizaciones",
+        "content": "La maquinaria rotativa con bobinados e inductancias (motores, transformadores, fluorescentes antiguos) genera energía reactiva inductiva (kVArh), que satura las líneas de transporte sin transformarse en trabajo útil. Si el coseno de phi (cos φ) de tu empresa desciende por debajo de 0,95, la distribuidora factura una penalización por energía reactiva que puede superar los 300 € a 1.200 € al mes.",
+        "bullets": [
+          "La instalación de una batería de condensadores automática con regulación por pasos compensa la reactiva en tiempo real y neutraliza la penalización al 100%.",
+          "El retorno de inversión (ROI) de una batería de condensadores en una empresa oscila normalmente entre 6 y 14 meses."
+        ]
+      },
+      {
+        "id": "optimizacion-tarifaria",
+        "heading": "5. Cómo negociar la tarifa corporativa con los datos obtenidos",
+        "content": "Conocer la curva de carga real y el volumen total de kWh anuales consumidos por periodos permite acudir al mercado libre con poder de negociación. Los consultores energéticos de tuLuz licitan la demanda agrupada de tu empresa frente a más de 20 comercializadoras para conseguir fórmulas de precio fijo multianual o contratos indexados con coberturas financieras en función de tu tolerancia al riesgo de mercado.",
+        "bullets": [
+          "Ajusta los 6 tramos de potencia contratada en orden creciente estricto (P1 ≤ P2 ≤ P3 ≤ P4 ≤ P5 ≤ P6) para adaptarlos milimétricamente al maxímetro registrado.",
+          "Compara ofertas considerando no solo el precio por kWh, sino el margen comercial (fee), las cláusulas de permanencia y las garantías financieras exigidas."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Respuestas técnicas para gerentes, directores financieros y jefes de planta.",
+        "bullets": [
+          "¿Dónde puedo descargar la curva de carga cuarto-horaria de mi empresa? En la plataforma oficial Datadis.es con el certificado digital de la empresa o en el portal de clientes de tu distribuidora eléctrica.",
+          "¿Qué diferencia hay entre tarifa 3.0TD y 2.0TD? La tarifa 2.0TD aplica a suministros de hasta 15 kW en baja tensión con 3 periodos. La 3.0TD aplica a más de 15 kW con 6 periodos tanto en energía como en potencia contratada.",
+          "¿Salta el contador si supero la potencia en una empresa con 3.0TD? No. En las tarifas 3.0TD el contador no corta el suministro eléctrico; registra el exceso y la distribuidora lo cobra como recargo en la factura."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo calcular consumo eléctrico de una empresa?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué datos son necesarios para auditar el consumo eléctrico de una empresa?",
+        "a": "Se necesita el archivo CSV de la curva de carga cuarto-horaria de los últimos 12 meses (descargable en Datadis), las últimas 3 facturas completas con código CUPS y el inventario de maquinaria principal."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo se elimina la penalización por energía reactiva en la factura?",
+        "a": "Instalando una batería de condensadores dimensionada según los kVArh máximos registrados en los periodos P1 a P5. Se amortiza en menos de un año y elimina el recargo por completo."
+      },
+      {
+        "q": "¿Qué es el maxímetro y cómo funciona en tarifas 3.0TD?",
+        "a": "Es la función del contador que mide la potencia media demandada en intervalos de 15 minutos. Si la potencia demandada supera la contratada en ese periodo, se calcula una penalización económica proporcional al exceso al cuadrado."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "auditoria-energetica-para-pymes",
     "slug": "auditoria-energetica-para-pymes",
-    "keyword": "auditoría energética para pymes",
-    "title": "Auditoría energética para pymes: qué revisar",
-    "metaTitle": "Auditoría energética para pymes: guía práctica | tuLuz",
-    "metaDescription": "Conoce los datos y facturas que conviene analizar para detectar oportunidades de ahorro.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "auditoria energetica para pymes",
+    "title": "Auditoría energética para pymes: pasos, coste, subvenciones y cómo recortar hasta un 30% en costes fijos",
+    "metaTitle": "Auditoría Energética para Pymes: Pasos, Costes y Ahorro | tuLuz",
+    "metaDescription": "Guía completa de auditoría energética en pymes. Descubre cuándo es obligatoria (RD 56/2016), cómo se realiza el estudio y medidas de ahorro inmediato para empresas.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2444,82 +2759,152 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Conoce los datos y facturas que conviene analizar para detectar oportunidades de ahorro.",
+    "excerpt": "Una auditoría energética profesional permite a una pequeña o mediana empresa radiografiar sus puntos de fuga de energía, optimizar la contratación de potencia y acometer inversiones con periodos de retorno garantizados inferiores a 24 meses.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre auditoría energética para pymes"
+        "id": "que-es-auditoria",
+        "title": "1. Qué es una auditoría energética y qué objetivos persigue"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "marco-legal",
+        "title": "2. Marco legal: ¿es obligatoria para tu empresa? (RD 56/2016)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "fases-estudio",
+        "title": "3. Las 4 fases de una auditoría técnica profesional"
+      },
+      {
+        "id": "medidas-sin-coste",
+        "title": "4. Medidas de ahorro sin inversión (Quick Wins) vs inversiones CAPEX"
+      },
+      {
+        "id": "subvenciones-cae",
+        "title": "5. Subvenciones públicas y el sistema de Certificados de Ahorro Energético (CAE)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre auditoría energética para pymes",
-        "content": "Comprender a fondo **auditoría energética para pymes** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nConoce los datos y facturas que conviene analizar para detectar oportunidades de ahorro.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a auditoría energética para pymes, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "que-es-auditoria",
+        "heading": "1. Qué es una auditoría energética y qué objetivos persigue",
+        "content": "Una auditoría energética es un procedimiento técnico sistemático mediante el cual ingenieros especializados analizan los flujos de entrada, transformación y consumo de energía en las instalaciones de una empresa. Su meta no es recopilar tablas de datos abstractas, sino cuantificar con precisión matemática dónde se pierde el dinero y proponer un plan de acción priorizado según el coste de implantación y el plazo de amortización del capital invertido.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Identifica desviaciones en consumos térmicos (gas, calderas, vapor) y eléctricos (motores, frío, iluminación).",
+          "Establece una línea base de consumo (EnPI o indicadores de rendimiento energético) por unidad de facturación o volumen fabricado.",
+          "Garantiza ahorros medios de entre el 15% y el 35% en la cuenta de resultados."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Auditoría energética para pymes: qué revisar** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "marco-legal",
+        "heading": "2. Marco legal: ¿es obligatoria para tu empresa? (RD 56/2016)",
+        "content": "En España, el Real Decreto 56/2016 traspone la Directiva Europea 2012/27/UE y establece la obligatoriedad de realizar una auditoría energética cada 4 años a todas aquellas entidades que cumplan la condición de gran empresa durante al menos dos ejercicios consecutivos: tener más de 250 empleados o bien facturar más de 50 millones de euros con un balance general superior a 43 millones. Las pymes están exentas de la obligación legal sancionable, pero son precisamente quienes obtienen un impacto más inmediato en su margen operativo al ejecutarla de forma voluntaria.",
+        "table": {
+          "headers": [
+            "Tipo de Empresa",
+            "Criterio de Tamaño",
+            "Obligación Legal RD 56/2016",
+            "Sanciones por Incumplimiento"
+          ],
+          "rows": [
+            [
+              "Gran Empresa",
+              "> 250 empleados o > 50 M€ facturación",
+              "Obligatoria cada 4 años (o certificar ISO 50001)",
+              "Hasta 60.000 € (infracción muy grave)"
+            ],
+            [
+              "Mediana Empresa",
+              "50 - 249 empleados y < 50 M€ facturación",
+              "Voluntaria (altamente recomendada)",
+              "Exenta de sanción"
+            ],
+            [
+              "Pequeña Empresa / Micro",
+              "< 50 empleados y < 10 M€ facturación",
+              "Voluntaria (foco en contratos y potencia)",
+              "Exenta de sanción"
+            ]
+          ]
+        },
+        "bullets": [
+          "Las empresas que cuenten con un sistema de gestión energética certificado bajo la norma UNE-EN ISO 50001 quedan exentas de la auditoría cuatrienal.",
+          "El registro oficial de auditorías energéticas depende del Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO)."
+        ]
+      },
+      {
+        "id": "fases-estudio",
+        "heading": "3. Las 4 fases de una auditoría técnica profesional",
+        "content": "Una auditoría seria no se realiza rellenando un formulario web en diez minutos; requiere un protocolo riguroso ejecutado por técnicos cualificados en campo.",
+        "bullets": [
+          "Fase 1 - Recopilación y análisis documental: Estudio de facturas de luz y gas de 2 años, curvas cuarto-horarias, planos unifilares y manuales de maquinaria.",
+          "Fase 2 - Inspección in situ y mediciones: Visita a las instalaciones con analizadores de redes eléctricas portátiles, cámaras termográficas para fugas de calor o cuadros sobrecalentados y luxómetros.",
+          "Fase 3 - Modelización y balance energético: Simulación de consumos teóricos frente a reales para detectar rendimientos deficientes en calderas, bombas y climatización.",
+          "Fase 4 - Informe ejecutivo y plan de inversiones: Propuesta de medidas clasificadas por coste cero, baja inversión (< 2 años de retorno) y proyectos mayores con estudio de viabilidad económica (VAN, TIR y Payback)."
+        ]
+      },
+      {
+        "id": "medidas-sin-coste",
+        "heading": "4. Medidas de ahorro sin inversión (Quick Wins) vs inversiones CAPEX",
+        "content": "Cerca del 40% del ahorro potencial identificado en una pyme no exige comprar maquinaria nueva ni endeudarse, sino simplemente corregir desajustes de contratación y programación operativa.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Ahorro a coste cero en contratos",
+          "text": "El reajuste de potencias contratadas en periodos punta (P1-P2) basándose en los registros reales del maxímetro suele liberar de 1.500 € a 6.000 € anuales de gasto fijo en el primer mes de aplicación sin invertir ni un euro en material."
+        },
+        "bullets": [
+          "Quick Wins (Coste 0 €): Ajuste de potencia en 6 tramos, reprogramación de termostatos según RITE (27 °C en verano, 19 °C en invierno), apagado de equipos secundarios y eliminación de reactiva.",
+          "Inversiones de retorno rápido (1 a 3 años): Sustitución integral a luminarias LED con sensores de presencia, variadores de frecuencia en motores y bombas, y aislamiento de tuberías térmicas.",
+          "Proyectos estructurales (3 a 5 años): Instalación solar fotovoltaica para autoconsumo industrial, sustitución de calderas de gasoil por bombas de calor aerotérmicas y recuperación de calor residual de compresores."
+        ]
+      },
+      {
+        "id": "subvenciones-cae",
+        "heading": "5. Subvenciones públicas y el sistema de Certificados de Ahorro Energético (CAE)",
+        "content": "Las pymes cuentan actualmente con un incentivo financiero revolucionario: el Sistema de Certificados de Ahorro Energético (CAE), regulado por el Real Decreto 36/2023. Cada kWh de gas o electricidad que una empresa ahorre al acometer una mejora de eficiencia puede monetizarse vendiendo los certificados resultantes a los Sujetos Obligados (grandes comercializadoras de energía), recibiendo un ingreso directo en cuenta bancaria que financia entre el 10% y el 40% del coste de la instalación.",
+        "bullets": [
+          "Los CAE son compatibles con la mayoría de ayudas de fondos europeos NextGeneration y programas autonómicos del IDAE.",
+          "Un consultor acreditado gestiona toda la validación ante el verificador oficial sin carga administrativa para la pyme."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre el proceso de auditoría y su rentabilidad.",
+        "bullets": [
+          "¿Cuánto cuesta una auditoría energética para una pyme? Dependiendo de la complejidad y dimensiones del negocio, oscila habitualmente entre 1.200 € y 4.500 €. En la inmensa mayoría de los casos se amortiza en menos de 6 meses con las medidas detectadas.",
+          "¿Tiene que parar la producción durante la visita del auditor? No. Las mediciones se realizan mediante pinzas amperimétricas no invasivas y cámaras termográficas con la fábrica o negocio funcionando a pleno rendimiento.",
+          "¿Qué titulación debe tener el auditor? Debe ser un técnico competente con titulación universitaria de ingeniería o FP técnica especializada con certificado de cualificación profesional acreditado por ENAC."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con auditoría energética para pymes?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué empresas están obligadas por ley a pasar una auditoría energética?",
+        "a": "Las grandes empresas con más de 250 empleados o un volumen de negocio superior a 50 millones de euros (según RD 56/2016). Las pymes no están obligadas por ley, pero la realizan voluntariamente por el elevado ahorro económico que genera."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué son los Certificados de Ahorro Energético (CAE)?",
+        "a": "Es un mecanismo oficial que permite a las empresas cobrar dinero directo por cada kWh que consigan ahorrar al sustituir equipos antiguos por tecnologías más eficientes."
+      },
+      {
+        "q": "¿Cuánto se tarda en realizar una auditoría energética en una pyme?",
+        "a": "El proceso completo suele prolongarse entre 2 y 4 semanas: 1 semana para recopilar datos, 1 o 2 días de inspección in situ y 2 semanas para el cálculo, balance y entrega del informe final con recomendaciones."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-un-restaurante",
     "slug": "como-ahorrar-luz-en-un-restaurante",
-    "keyword": "cómo ahorrar luz en un restaurante",
-    "title": "Cómo ahorrar luz en un restaurante sin afectar al servicio",
-    "metaTitle": "Cómo ahorrar luz en un restaurante | tuLuz",
-    "metaDescription": "Medidas para cocina, cámaras, iluminación y horarios que ayudan a controlar el consumo.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "como ahorrar luz en un restaurante",
+    "title": "Cómo ahorrar luz en un restaurante o bar: guía de eficiencia en cocina, frío y climatización",
+    "metaTitle": "Cómo Ahorrar Luz en un Restaurante: Claves Hostelería | tuLuz",
+    "metaDescription": "Estrategias de ahorro energético para restaurantes y bares. Reduce la factura eléctrica optimizando cámaras frigoríficas, campanas extractoras y potencia contratada.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2527,82 +2912,156 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Medidas para cocina, cámaras, iluminación y horarios que ayudan a controlar el consumo.",
+    "excerpt": "El gasto eléctrico en el sector de la hostelería representa entre el 4% y el 9% de los costes de explotación totales de un restaurante. Aprende a controlar los puntos críticos de consumo para reducir tu factura hasta un 30% sin alterar el servicio al cliente.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en un restaurante"
+        "id": "reparto-consumo-hosteleria",
+        "title": "1. Radiografía del consumo eléctrico en un restaurante"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "frio-comercial",
+        "title": "2. Cámaras frigoríficas y botelleros: el corazón del gasto"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "extraccion-cocina",
+        "title": "3. Extracción de humos, hornos y lavavajillas de cúpula"
+      },
+      {
+        "id": "climatizacion-sala",
+        "title": "4. Climatización de sala y confort acústico y térmico"
+      },
+      {
+        "id": "gestion-potencia-restaurante",
+        "title": "5. Ajuste de potencia para evitar cortes durante los servicios punta"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en un restaurante",
-        "content": "Comprender a fondo **cómo ahorrar luz en un restaurante** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nMedidas para cocina, cámaras, iluminación y horarios que ayudan a controlar el consumo.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo ahorrar luz en un restaurante, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "reparto-consumo-hosteleria",
+        "heading": "1. Radiografía del consumo eléctrico en un restaurante",
+        "content": "La hostelería posee uno de los perfiles energéticos más exigentes y concentrados del tejido productivo. El consumo se distribuye en tres grandes áreas operativas: la conservación de alimentos (cámaras de frío y congelación continuo 24/7), la preparación en cocina durante los picos de servicio (freidoras, planchas, hornos mixtos, campanas de extracción) y la climatización de la sala de comensales.",
+        "table": {
+          "headers": [
+            "Área Operativa",
+            "% Consumo Típico",
+            "Equipos Principales",
+            "Medida Principal de Ahorro"
+          ],
+          "rows": [
+            [
+              "Frío y conservación",
+              "35% - 42%",
+              "Cámaras panelables, bajo mostradores, botelleros",
+              "Limpieza de condensadores y cortinas de lamas"
+            ],
+            [
+              "Cocina caliente y lavado",
+              "28% - 35%",
+              "Hornos convección, freidoras, lavavasos, lavavajillas",
+              "Encendido escalonado y recuperación de calor"
+            ],
+            [
+              "Climatización y ventilación",
+              "20% - 25%",
+              "Splits/conductos sala y campana extractora",
+              "Variadores de velocidad en motor de extracción"
+            ],
+            [
+              "Iluminación y barra",
+              "5% - 10%",
+              "Cafetera profesional, iluminación decorativa, TPV",
+              "Ajuste de termostato de caldera en cafetera y LED"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El frío comercial y la campana extractora suelen sumar juntos más del 55% de toda la energía consumida en el local.",
+          "Los picos de consumo coinciden con los servicios de comidas (13:00 a 16:00) y cenas (20:30 a 23:30), habitualmente en periodos caros de la tarifa eléctrica."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo ahorrar luz en un restaurante sin afectar al servicio** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "frio-comercial",
+        "heading": "2. Cámaras frigoríficas y botelleros: el corazón del gasto",
+        "content": "Las cámaras frigoríficas y los arcones de congelación trabajan los 365 días del año. Una cámara panelable mal mantenida puede consumir hasta un 40% más de electricidad debido a condensadores sucios de grasa ambiental, juntas magnéticas de puertas agrietadas o evaporadores con capas gruesas de escarcha que impiden el intercambio de calor.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "El peligro de las cortinas de lamas deterioradas",
+          "text": "Dejar la puerta de la cámara abierta mientras se descarga género o no disponer de cortinas de tiras de PVC transparente provoca una pérdida inmediata del aire frío estratificado, obligando al compresor a trabajar sin pausa durante más de dos horas seguidas."
+        },
+        "bullets": [
+          "Instala cortinas de lamas plásticas en el acceso a las cámaras: reducen la infiltración térmica en un 60% durante la carga.",
+          "Programa los desescarches automáticos en horario nocturno o tramos valle P3/P6 de menor coste eléctrico.",
+          "Verifica que los botelleros de barra cuenten con apagado de iluminación interna fuera de horario comercial."
+        ]
+      },
+      {
+        "id": "extraccion-cocina",
+        "heading": "3. Extracción de humos, hornos y lavavajillas de cúpula",
+        "content": "La campana de extracción industrial es uno de los mayores consumidores silenciosos. En muchos restaurantes, el motor de extracción funciona al 100% de su potencia desde las 10:00 de la mañana hasta las 00:00 de la noche, aunque solo haya una sartén al fuego durante el turno de mañana. La instalación de un variador de frecuencia con sensor óptico de humos o temperatura modula la extracción según la necesidad real, rebajando el gasto del motor entre un 45% y un 65%.",
+        "bullets": [
+          "Encendido escalonado de cocina: Prohíbe que el personal encienda hornos, freidoras y planchas simultáneamente al llegar; escalona los arranques con 15 minutos de diferencia para aplanar los picos del maxímetro.",
+          "Aprovecha el calor residual del lavavajillas de cúpula y utiliza siempre agua precalentada por el circuito de ACS o recuperadores de calor de los motores de frío.",
+          "Tapa freidoras y ollas durante la fase de calentamiento para acelerar el punto de ebullición reduciendo tiempo de resistencia activa."
+        ]
+      },
+      {
+        "id": "climatizacion-sala",
+        "heading": "4. Climatización de sala y confort acústico y térmico",
+        "content": "El comedor de un restaurante experimenta bruscas variaciones de carga térmica: de estar vacío a albergar 80 comensales emitiendo calor metabólico y abriendo puertas de acceso continuamente. Instalar compuertas de aire o cortinas térmicas en la puerta principal evita que el aire climatizado se escape a la calle cada vez que entra o sale un cliente.",
+        "bullets": [
+          "Mantén el termostato a 21 °C en invierno y 25 °C en verano para cumplir la normativa RITE y evitar que los clientes sientan choques térmicos.",
+          "Zonifica la climatización para no enfriar zonas de comedor reservadas que no estén ocupadas en turnos de menor afluencia."
+        ]
+      },
+      {
+        "id": "gestion-potencia-restaurante",
+        "heading": "5. Ajuste de potencia para evitar cortes durante los servicios punta",
+        "content": "Los restaurantes con tarifa 2.0TD sufren cortes constantes del ICP si coinciden la plancha, el horno y el lavavajillas en pleno servicio. Por el contrario, los restaurantes con tarifa 3.0TD no sufren cortes pero pagan elevadas penalizaciones por maxímetro. Un análisis de curva de carga permite ajustar la potencia contratada al milímetro en cada periodo P1-P6.",
+        "bullets": [
+          "Si tienes contratados más de 15 kW (3.0TD), contrata menor potencia en P1 si no operas en horario matinal y concentra la potencia en P2 y P3.",
+          "Revisa tu recibo para confirmar que no estás pagando penalizaciones por energía reactiva causada por los motores de las cámaras y la campana."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas operativas habituales entre propietarios de restaurantes y cafeterías.",
+        "bullets": [
+          "¿Conviene apagar las cámaras de bebidas por la noche? No las cámaras de alimentos perecederos. Sin embargo, los botelleros de refrescos cerrados pueden controlarse con reloj horario o enchufe inteligente para apagarse de 02:00 a 08:00 sin perder la temperatura óptima matinal.",
+          "¿Cuánto cuesta poner variadores de frecuencia a la campana extractora? La inversión oscila entre 800 € y 1.500 € y suele amortizarse en menos de 10 meses solo con el ahorro eléctrico del ventilador y el menor desperdicio de aire climatizado extraído al exterior.",
+          "¿Se puede poner placas solares en un restaurante de alquiler? Sí, si el propietario de la cubierta o local da su consentimiento o bien contratando autoconsumo colectivo a través de una comunidad solar cercana."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo ahorrar luz en un restaurante?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué equipo consume más luz en la cocina de un restaurante?",
+        "a": "El conjunto de cámaras frigoríficas y botelleros en consumo acumulado (24h continuas), y los hornos mixtos de convección, freidoras eléctricas y campanas extractoras en potencia puntual durante los picos de servicio."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo puedo evitar penalizaciones por maxímetro en un bar o restaurante?",
+        "a": "Implantando un protocolo de encendido escalonado de la maquinaria de cocción al inicio de cada turno para evitar que todos los termostatos demanden energía al mismo tiempo."
+      },
+      {
+        "q": "¿Qué ahorro aporta un variador de velocidad en la extracción de humos?",
+        "a": "Reduce el consumo eléctrico del motor de la campana entre un 40% y un 60%, y además ahorra hasta un 25% en la climatización del local al no expulsar aire acondicionado innecesariamente cuando la cocina no tiene humos."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-una-oficina",
     "slug": "como-ahorrar-luz-en-una-oficina",
-    "keyword": "cómo ahorrar luz en una oficina",
-    "title": "Cómo ahorrar electricidad en una oficina",
-    "metaTitle": "Cómo ahorrar electricidad en una oficina | tuLuz",
-    "metaDescription": "Acciones concretas para reducir el consumo de iluminación, climatización y equipos informáticos.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "como ahorrar luz en una oficina",
+    "title": "Cómo ahorrar luz en una oficina: plan de eficiencia en climatización, iluminación y equipos informáticos",
+    "metaTitle": "Cómo Ahorrar Luz en una Oficina: Guía de Eficiencia | tuLuz",
+    "metaDescription": "Aprende a recortar hasta un 35% en la factura eléctrica de tu oficina. Pautas de control para climatización HVAC, zonificación LED y gestión de puestos informáticos.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2610,82 +3069,161 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Acciones concretas para reducir el consumo de iluminación, climatización y equipos informáticos.",
+    "excerpt": "En los edificios de oficinas y espacios de coworking, la climatización y la iluminación representan más del 70% del gasto energético total. Descubre cómo optimizar instalaciones y protocolos para reducir costes fijos sin mermar el bienestar de los trabajadores.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en una oficina"
+        "id": "distribucion-gasto-oficina",
+        "title": "1. Distribución del gasto energético en entornos de oficinas"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "climatizacion-hvac",
+        "title": "2. Climatización eficiente (HVAC): temperaturas, consignas y RITE"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "iluminacion-inteligente",
+        "title": "3. Iluminación técnica: LED, sensores DALI y aprovechamiento natural"
+      },
+      {
+        "id": "equipos-it-servidores",
+        "title": "4. Puestos de trabajo, servidores (CPD) y apagados automáticos"
+      },
+      {
+        "id": "cultura-corporativa",
+        "title": "5. Concienciación del equipo humano y auditoría de consumos basales"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en una oficina",
-        "content": "Comprender a fondo **cómo ahorrar luz en una oficina** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAcciones concretas para reducir el consumo de iluminación, climatización y equipos informáticos.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo ahorrar luz en una oficina, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "distribucion-gasto-oficina",
+        "heading": "1. Distribución del gasto energético en entornos de oficinas",
+        "content": "A diferencia del sector industrial o la hostelería, el perfil de una oficina es diurno y muy regular, con concentración de actividad de lunes a viernes entre las 08:00 y las 19:00 horas. Esto representa una gran ventaja estratégica, ya que permite apagar de forma prácticamente total las cargas energéticas durante las noches y los fines de semana completos.",
+        "table": {
+          "headers": [
+            "Sistema / Uso",
+            "% Gasto Eléctrico",
+            "Potencial de Ahorro Directo",
+            "Acción Recomendada"
+          ],
+          "rows": [
+            [
+              "Climatización y ventilación (HVAC)",
+              "48% - 55%",
+              "20% - 30%",
+              "Sistemas de free-cooling y consigna a 25 °C/21 °C"
+            ],
+            [
+              "Iluminación interior",
+              "22% - 28%",
+              "40% - 60%",
+              "Sensores de presencia y sustitución de tubos fluorescentes"
+            ],
+            [
+              "Ofimática y puestos de trabajo",
+              "12% - 16%",
+              "25% - 40%",
+              "Políticas de apagado de monitores y suspensión profunda"
+            ],
+            [
+              "Servidores y rack de comunicaciones (CPD)",
+              "6% - 10%",
+              "15% - 25%",
+              "Virtualización de servidores y climatización aislada"
+            ],
+            [
+              "Ascensores y zonas comunes",
+              "3% - 6%",
+              "10% - 20%",
+              "Maniobra selectiva y regeneración eléctrica"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El 60% del consumo de una oficina mal gestionada tiene lugar fuera del horario productivo debido a climatizadores olvidados, pantallas encendidas y luces secundarias.",
+          "Las tarifas de oficina suelen ser 2.0TD (hasta 15 kW) para despachos medianos o 3.0TD (más de 15 kW) para plantas corporativas completas."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo ahorrar electricidad en una oficina** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "climatizacion-hvac",
+        "heading": "2. Climatización eficiente (HVAC): temperaturas, consignas y RITE",
+        "content": "El Reglamento de Instalaciones Térmicas en los Edificios (RITE) fija las consignas de temperatura en espacios de uso terciario y administrativo: no inferior a 27 °C en verano (con excepciones autorizadas de hasta 25 °C por razones de trabajo sedentario continuado) y no superior a 19 °C o 21 °C en invierno. Cada grado de sobreenfriamiento o sobrecalentamiento supone un incremento directo del 7% al 10% en el consumo energético de los compresores.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Programadores horarios centralizados",
+          "text": "Configurar la máquina de aire para que se apague automáticamente a las 19:00 o disponga de apagado automático tras 2 horas si alguien la enciende manualmente en horas extraordinarias erradica facturas disparadas por olvidos de fin de semana."
+        },
+        "bullets": [
+          "Aprovecha el free-cooling: en primavera y otoño, introducir aire exterior fresco nocturno o matinal reduce la necesidad de encender la maquinaria de frío.",
+          "Mantenimiento semestral de filtros: la suciedad en filtros de fancoils reduce el caudal de aire y fuerza a los ventiladores a consumir hasta un 18% más electricidad."
+        ]
+      },
+      {
+        "id": "iluminacion-inteligente",
+        "heading": "3. Iluminación técnica: LED, sensores DALI y aprovechamiento natural",
+        "content": "Los tubos fluorescentes tradicionales T8 de 36 W y los focos halógenos disipan gran parte de la energía en forma de calor residual, lo que a su vez sobrecarga el aire acondicionado en verano. La modernización a paneles LED de bajo deslumbramiento (UGR < 19) reduce la potencia instalada de iluminación a más de la mitad.",
+        "bullets": [
+          "Sensores de presencia y luminosidad en aseos, salas de reuniones, archivos y pasillos: apagan la iluminación cuando la estancia queda vacía.",
+          "Regulación crepuscular DALI en puestos junto a ventanales: atenúa automáticamente la intensidad de las luminarias artificiales cuando entra luz solar suficiente.",
+          "Zonificación por interruptores independientes para evitar encender 300 m² de nave de oficinas para una sola persona que realiza horas extras."
+        ]
+      },
+      {
+        "id": "equipos-it-servidores",
+        "heading": "4. Puestos de trabajo, servidores (CPD) y apagados automáticos",
+        "content": "Un ordenador de sobremesa con dos pantallas consume en promedio 120 W. Cincuenta puestos de trabajo encendidos innecesariamente durante una noche suponen 6 kW sostenidos. Implementar políticas de grupo en el dominio informático (GPO en Windows o MDM) que fuercen la suspensión tras 20 minutos de inactividad genera ahorros inmediatos.",
+        "bullets": [
+          "Uso de ordenadores portátiles y mini-PC de bajo consumo frente a torres de sobremesa voluminosas: consumen entre un 60% y un 80% menos energía.",
+          "Migración de servidores locales a la nube (Cloud Computing): evita mantener un cuarto de rack refrigerado a 18 °C las 24 horas del día en la propia oficina."
+        ]
+      },
+      {
+        "id": "cultura-corporativa",
+        "heading": "5. Concienciación del equipo humano y auditoría de consumos basales",
+        "content": "La implicación de los empleados es el activo de eficiencia más rentable. Designar un responsable de cierre energético que verifique el apagado de luces, pantallas y climatización al final de la jornada previene desviaciones presupuestarias.",
+        "bullets": [
+          "Publica mensualmente la evolución del consumo eléctrico en el tablón corporativo o intranet para involucrar a los empleados en las metas de sostenibilidad.",
+          "Comprueba periódicamente los consumos en fines de semana en la app de la distribuidora para certificar que el edificio 'duerme' de verdad."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Respuestas técnicas sobre climatización y gestión energética en oficinas.",
+        "bullets": [
+          "¿A qué temperatura debe estar el aire acondicionado en una oficina según la ley? La normativa general de eficiencia energética establece como referencia 27 °C en verano y 19 °C en invierno, si bien en oficinas se admite habitualmente una temperatura de confort de 25 °C en verano y 21 °C en invierno según criterios de salud laboral del INSST.",
+          "¿Cuánto se ahorra cambiando fluorescentes por paneles LED? Entre un 50% y un 65% de consumo en iluminación, con una reducción añadida en el calentamiento de las salas.",
+          "¿Es conveniente apagar los ordenadores o dejarlos en suspensión? La suspensión profunda gasta menos de 1 W y permite reanudar el trabajo al instante. Los fines de semana es preferible apagarlos por completo."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo ahorrar luz en una oficina?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué representa el mayor gasto de luz en una oficina?",
+        "a": "El sistema de climatización y ventilación (calefacción y aire acondicionado), que abarca entre el 45% y el 55% de toda la electricidad facturada al cabo del año."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo evitar que la climatización quede encendida el fin de semana?",
+        "a": "Instalando un termostato programable centralizado o con temporizador de desconexión forzada a las 19:00 de lunes a viernes."
+      },
+      {
+        "q": "¿Qué tipo de iluminación es obligatoria en puestos de trabajo de oficina?",
+        "a": "Luminarias con índice de deslumbramiento UGR inferior a 19 y nivel de iluminancia media de al menos 500 lux sobre la mesa de trabajo (norma UNE-EN 12464-1)."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "consumo-electrico-camara-frigorifica",
     "slug": "consumo-electrico-camara-frigorifica",
-    "keyword": "consumo eléctrico cámara frigorífica",
-    "title": "Cómo reducir el consumo de una cámara frigorífica",
-    "metaTitle": "Reducir consumo de una cámara frigorífica | tuLuz",
-    "metaDescription": "Claves para revisar el gasto de una cámara frigorífica y mejorar su eficiencia.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "consumo electrico camara frigorifica",
+    "title": "Consumo eléctrico de una cámara frigorífica: cálculo de kWh, costes y 7 medidas para bajar el recibo",
+    "metaTitle": "Consumo de una Cámara Frigorífica: Cálculo y Ahorro | tuLuz",
+    "metaDescription": "Calcula el consumo eléctrico de una cámara frigorífica o de congelación (positiva y negativa). Tablas de kWh/año, coste en euros y claves de mantenimiento preventivo.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2693,70 +3231,168 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Claves para revisar el gasto de una cámara frigorífica y mejorar su eficiencia.",
+    "excerpt": "Las cámaras frigoríficas industriales y comerciales son instalaciones críticas que trabajan ininterrumpidamente. Conoce cómo calcular su gasto en euros, qué factores disparan su factura y cómo recortar hasta un 25% su consumo eléctrico sin comprometer la cadena de frío.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico cámara frigorífica"
+        "id": "positiva-vs-negativa",
+        "title": "1. Cámaras de temperatura positiva (0 °C a 4 °C) vs negativa (-18 °C a -25 °C)"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-consumos-dimensiones",
+        "title": "2. Tabla comparativa de consumo anual por dimensiones y potencia"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "factores-disparan-gasto",
+        "title": "3. Los 5 factores que disparan el consumo eléctrico del compresor"
+      },
+      {
+        "id": "tecnologias-eficientes",
+        "title": "4. Válvulas de expansión electrónicas, variadores y condensación flotante"
+      },
+      {
+        "id": "mantenimiento-preventivo",
+        "title": "5. Protocolo de mantenimiento preventivo y desescarches inteligentes"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico cámara frigorífica",
-        "content": "Comprender a fondo **consumo eléctrico cámara frigorífica** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nClaves para revisar el gasto de una cámara frigorífica y mejorar su eficiencia.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo eléctrico cámara frigorífica, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "positiva-vs-negativa",
+        "heading": "1. Cámaras de temperatura positiva (0 °C a 4 °C) vs negativa (-18 °C a -25 °C)",
+        "content": "La demanda energética de una instalación frigorífica depende de la diferencia entre la temperatura interior de consigna y la temperatura del aire exterior donde disipa el condensador. En una cámara de congelación negativa (-20 °C), la relación de compresión es muy superior, lo que exige entre 2 y 3 veces más energía eléctrica por metro cúbico de volumen refrigerado que en una cámara positiva convencional de conservación hortofrutícola o cárnica.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Cámara positiva (0 °C a +4 °C): el compresor arranca periódicamente para compensar la carga térmica de los productos almacenados y las aperturas de puerta.",
+          "Cámara negativa de congelación (-18 °C a -25 °C): requiere resistencias eléctricas de desescarche en el evaporador y calefactores de marco de puerta para evitar la congelación de juntas herméticas.",
+          "El tipo de gas refrigerante (R-449A, R-452A, CO2 transcrítico o propano R-290) determina el rendimiento termodinámico global (COP)."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo reducir el consumo de una cámara frigorífica** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-consumos-dimensiones",
+        "heading": "2. Tabla comparativa de consumo anual por dimensiones y potencia",
+        "content": "A continuación se muestra el consumo medio homologado para cámaras modulares estándar de panel sándwich de 80 a 100 mm de poliuretano, considerando un uso comercial estándar.",
+        "table": {
+          "headers": [
+            "Tipo de Cámara",
+            "Volumen (m³)",
+            "Potencia Compresor (CV / kW)",
+            "Consumo Anual Estimado (kWh)",
+            "Coste Anual (€ a 0,15 €/kWh)"
+          ],
+          "rows": [
+            [
+              "Conservación Positiva (+2 °C)",
+              "10 m³ (2x2x2,5m)",
+              "1,0 CV (0,75 kW)",
+              "3.800 - 4.600 kWh",
+              "570 € - 690 €"
+            ],
+            [
+              "Conservación Positiva (+2 °C)",
+              "25 m³ (3x3x2,8m)",
+              "2,0 CV (1,50 kW)",
+              "7.200 - 8.900 kWh",
+              "1.080 € - 1.335 €"
+            ],
+            [
+              "Conservación Positiva (+2 °C)",
+              "60 m³ (5x4x3,0m)",
+              "4,0 CV (3,00 kW)",
+              "14.500 - 18.000 kWh",
+              "2.175 € - 2.700 €"
+            ],
+            [
+              "Congelación Negativa (-20 °C)",
+              "10 m³ (2x2x2,5m)",
+              "2,0 CV (1,50 kW)",
+              "8.200 - 10.500 kWh",
+              "1.230 € - 1.575 €"
+            ],
+            [
+              "Congelación Negativa (-20 °C)",
+              "25 m³ (3x3x2,8m)",
+              "3,5 CV (2,60 kW)",
+              "15.000 - 19.500 kWh",
+              "2.250 € - 2.925 €"
+            ],
+            [
+              "Congelación Negativa (-20 °C)",
+              "60 m³ (5x4x3,0m)",
+              "7,5 CV (5,50 kW)",
+              "28.000 - 36.000 kWh",
+              "4.200 € - 5.400 €"
+            ]
+          ]
+        },
+        "bullets": [
+          "Una cámara de congelación pequeña de 10 m³ puede gastar en electricidad más de 1.400 € al año.",
+          "El espesor del panel aislante es determinante: un panel de 120 mm reduce las pérdidas de calor por conducción en un 25% frente a uno de 80 mm en cámaras negativas."
+        ]
+      },
+      {
+        "id": "factores-disparan-gasto",
+        "heading": "3. Los 5 factores que disparan el consumo eléctrico del compresor",
+        "content": "Muchos negocios sufren facturas astronómicas sin ser conscientes de que su instalación frigorífica está trabajando forzada por anomalías mecánicas o malos hábitos operativos.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "La suciedad en el condensador: el enemigo invisible",
+          "text": "Una capa de apenas 2 mm de grasa o polvo sobre las aletas de aluminio del condensador exterior eleva la temperatura de condensación 5 °C, lo que incrementa el consumo del compresor un 15% y acorta su vida útil a la mitad."
+        },
+        "bullets": [
+          "Aperturas prolongadas de puerta y ausencia de cortinas de lamas o antesalas climatizadas.",
+          "Fuga de refrigerante: niveles bajos de gas obligan al compresor a funcionar de forma ininterrumpida sin alcanzar la consigna.",
+          "Introducción de género caliente sin abatimiento previo de temperatura en cocina.",
+          "Hielo acumulado en el evaporador por desescarches deficientes o sondas de fin de desescarche mal calibradas.",
+          "Ubicación del condensador en salas cerradas sin ventilación adecuada o expuesto a radiación solar directa en azoteas."
+        ]
+      },
+      {
+        "id": "tecnologias-eficientes",
+        "heading": "4. Válvulas de expansión electrónicas, variadores y condensación flotante",
+        "content": "La incorporación de componentes de control modernos transforma una cámara frigorífica tradicional en una máquina de alta eficiencia.",
+        "bullets": [
+          "Válvula de expansión electrónica (EEV): ajusta con precisión micrométrica el sobrecalentamiento del gas, permitiendo trabajar con presiones de condensación más bajas y ahorrando hasta un 18% anual.",
+          "Condensación flotante: en invierno o durante las noches frescas, permite que la presión de alta descienda con la temperatura exterior, reduciendo el trabajo del compresor.",
+          "Variador de frecuencia (Inverter) en el compresor: modula la velocidad de rotación según la demanda frigorífica real, evitando paradas y arranques bruscos.",
+          "Ventiladores electrónicos EC en evaporadores y condensadores: consumen hasta un 70% menos electricidad que los motores tradicionales de espira de sombra."
+        ]
+      },
+      {
+        "id": "mantenimiento-preventivo",
+        "heading": "5. Protocolo de mantenimiento preventivo y desescarches inteligentes",
+        "content": "El mantenimiento preventivo mensual no es un gasto prescindible, sino la inversión de mayor rendimiento para proteger la mercancía y reducir el recibo de la luz.",
+        "bullets": [
+          "Desescarche por demanda: sustituir el reloj programador que activa desescarches por tiempo rígido por controladores que miden el espesor de escarcha real ahorra cientos de kWh de resistencias eléctricas.",
+          "Revisión trimestral de juntas herméticas con la prueba de la hoja de papel.",
+          "Limpieza mensual a presión del condensador con producto desengrasante específico."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas técnicas sobre cálculo y mantenimiento de cámaras frigoríficas.",
+        "bullets": [
+          "¿Cuánto consume una cámara frigorífica al día? Una cámara positiva pequeña gasta entre 10 y 15 kWh diarios (unos 1,80 € - 2,50 €/día). Una de congelación negativa de tamaño medio supera fácilmente los 45 a 80 kWh diarios (8 € - 14 €/día).",
+          "¿A qué temperatura debe estar la cámara de carnes? Entre 0 °C y 2 °C para carne fresca según la normativa sanitaria de higiene de los alimentos.",
+          "¿Es aconsejable apagar la cámara de noche? Nunca si almacena producto fresco o congelado; rompería la cadena de frío obligatoria por sanidad e incrementaría el consumo al tener que volver a enfriar toda la masa térmica por la mañana."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo eléctrico cámara frigorífica?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánta electricidad gasta una cámara frigorífica estándar al mes?",
+        "a": "Una cámara positiva de conservación consume entre 300 y 600 kWh mensuales (50 € a 100 €/mes), mientras que una cámara de congelación negativa consume de 900 a 2.500 kWh al mes (150 € a 400 €/mes)."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo saber si mi cámara frigorífica tiene una fuga de gas?",
+        "a": "Si notas que el compresor no se apaga en todo el día, se forma hielo en la tubería de aspiración o en la entrada del evaporador y la cámara tarda muchas horas en alcanzar la temperatura programada."
+      },
+      {
+        "q": "¿Qué ahorro aporta la condensación flotante en frío industrial?",
+        "a": "Aporta entre un 15% y un 25% de ahorro en la energía del compresor al aprovechar las bajas temperaturas nocturnas e invernales para reducir la presión de trabajo del circuito frigorífico."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
@@ -2764,11 +3400,11 @@ export const guidesData = [
     "id": "cambio-de-titularidad-luz-local-comercial",
     "slug": "cambio-de-titularidad-luz-local-comercial",
     "keyword": "cambio de titularidad luz local comercial",
-    "title": "Cambio de titularidad de luz en un local comercial",
-    "metaTitle": "Cambio titularidad luz en local comercial | tuLuz",
-    "metaDescription": "Qué documentos necesitas y qué revisar al abrir, alquilar o traspasar un local.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "title": "Cambio de titularidad de la luz en un local comercial: requisitos, trámites, costes y plazo",
+    "metaTitle": "Cambio de Titular de Luz en Local Comercial: Guía | tuLuz",
+    "metaDescription": "Cómo cambiar el titular de la luz en un local comercial o negocio. Documentación necesaria (CIF, poderes, CIE), costes, plazos y cómo evitar deudas del inquilino anterior.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2776,82 +3412,148 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Qué documentos necesitas y qué revisar al abrir, alquilar o traspasar un local.",
+    "excerpt": "Al alquilar o adquirir un local para abrir un negocio, el cambio de nombre del suministro eléctrico es un paso administrativo crucial. Conoce la documentación exigida, cómo protegerte de deudas previas y qué hacer si la distribuidora solicita un nuevo boletín eléctrico.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cambio de titularidad luz local comercial"
+        "id": "diferencia-cambio-alta",
+        "title": "1. Cambio de titular vs alta nueva: qué te conviene"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "documentacion-exigida",
+        "title": "2. Documentación requerida para personas jurídicas y autónomos"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "deudas-anteriores",
+        "title": "3. Cómo proteger a tu empresa de deudas impagadas del anterior inquilino"
+      },
+      {
+        "id": "boletin-cie-potencia",
+        "title": "4. El Certificado de Instalación Eléctrica (CIE): cuándo es obligatorio"
+      },
+      {
+        "id": "costes-y-plazos",
+        "title": "5. Costes del trámite, fianza/depósito de garantía y plazos oficiales"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cambio de titularidad luz local comercial",
-        "content": "Comprender a fondo **cambio de titularidad luz local comercial** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nQué documentos necesitas y qué revisar al abrir, alquilar o traspasar un local.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cambio de titularidad luz local comercial, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "diferencia-cambio-alta",
+        "heading": "1. Cambio de titular vs alta nueva: qué te conviene",
+        "content": "Al entrar en un nuevo local comercial, es fundamental cerciorarse de si el suministro de luz continúa dado de alta con contador operativo o si fue dado de baja por el anterior arrendatario. Realizar un cambio de titularidad sobre un suministro activo es un trámite gratuito que no interrumpe el suministro. Por el contrario, un alta nueva o reactivación tras baja exige abonar los derechos regulados a la distribuidora (derechos de acometida, enganche y acceso), cuyo coste puede superar fácilmente los 300 € a 1.200 € en función de los kilovatios.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Si el contador sigue activo, solicita siempre cambio de titularidad sin subrogación de deuda.",
+          "No aceptes que el anterior titular dé de baja el contrato antes de tu entrada, salvo que exista una deuda legal insalvable que impida el traspaso."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cambio de titularidad de luz en un local comercial** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "documentacion-exigida",
+        "heading": "2. Documentación requerida para personas jurídicas y autónomos",
+        "content": "A diferencia de un cambio de titular doméstico, en locales comerciales las comercializadoras aplican controles de solvencia y requieren acreditar fehacientemente la representación legal de la sociedad.",
+        "table": {
+          "headers": [
+            "Tipo de Solicitante",
+            "Documentos Obligatorios",
+            "Acreditación del Inmueble",
+            "Datos Bancarios"
+          ],
+          "rows": [
+            [
+              "Sociedad Mercantil (SL / SA)",
+              "CIF empresa, DNI administrador y escrituras de constitución/poderes",
+              "Contrato de arrendamiento o escritura de compraventa",
+              "Certificado de titularidad de la cuenta bancaria (IBAN)"
+            ],
+            [
+              "Trabajador Autónomo",
+              "NIF/NIE del titular y modelo 036 o 037 de alta censal en Hacienda",
+              "Contrato de alquiler en vigor o nota simple del Registro",
+              "IBAN bancario a nombre del autónomo"
+            ],
+            [
+              "Comunidad de Bienes / Sociedad Civil",
+              "CIF de la entidad, DNI de los comuneros y contrato de constitución",
+              "Contrato de arrendamiento firmado por los representantes",
+              "Cuenta bancaria a nombre de la CB"
+            ]
+          ]
+        },
+        "bullets": [
+          "Número CUPS (20 o 22 dígitos alfanuméricos que comienzan por ES), localizable en cualquier factura anterior.",
+          "Lectura actual del contador digital en la fecha exacta de toma de posesión para delimitar los consumos del anterior titular."
+        ]
+      },
+      {
+        "id": "deudas-anteriores",
+        "heading": "3. Cómo proteger a tu empresa de deudas impagadas del anterior inquilino",
+        "content": "Si el inquilino que ocupaba el local comercial dejó facturas impagadas, la comercializadora con la que tenía contratado el servicio puede negarse inicialmente a tramitar el cambio de nombre. Existen dos figuras jurídicas diferenciadas: cambio con subrogación (asumes derechos y deudas del contrato anterior) y cambio sin subrogación (inicio de nueva relación contractual limpia).",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Nunca firmes subrogación de contrato",
+          "text": "Exige siempre de forma explícita tramitar un 'cambio de titularidad sin subrogación aportando título de posesión'. Aportando el nuevo contrato de alquiler y la fecha de inicio, la ley te exime de cualquier deuda que pertenezca exclusivamente al titular anterior."
+        },
+        "bullets": [
+          "Si la comercializadora bloquea el cambio por deudas ajenas, puedes solicitar el alta directa en otra comercializadora libre diferente presentando tu contrato de alquiler.",
+          "Guarda el acta de entrega de llaves firmada donde conste la lectura del contador en el día 1 de tu arrendamiento."
+        ]
+      },
+      {
+        "id": "boletin-cie-potencia",
+        "heading": "4. El Certificado de Instalación Eléctrica (CIE): cuándo es obligatorio",
+        "content": "El Certificado de Instalación Eléctrica (CIE o boletín eléctrico) tiene una vigencia reglamentaria de 20 años en España. Al realizar un cambio de titularidad en un local, la distribuidora puede solicitar un CIE actualizado en dos supuestos: si la instalación supera los 20 años de antigüedad o si la nueva actividad comercial requiere solicitar un aumento de potencia por encima de la potencia máxima admisible reflejada en el boletín anterior.",
+        "bullets": [
+          "Los locales de pública concurrencia (restaurantes, bares, comercios de más de 40 m² de afluencia o gimnasios) están sujetos a inspecciones periódicas de OCA cada 5 años.",
+          "Si precisas un nuevo boletín, un instalador electricista autorizado deberá revisar el cuadro eléctrico, la toma de tierra y los diferenciales antes de emitirlo."
+        ]
+      },
+      {
+        "id": "costes-y-plazos",
+        "heading": "5. Costes del trámite, fianza/depósito de garantía y plazos oficiales",
+        "content": "El trámite de cambio de titular en sí mismo no tiene coste. Sin embargo, en contratos de empresas y locales comerciales existen dos conceptos económicos a considerar:",
+        "bullets": [
+          "Depósito de garantía de la distribuidora: el RD 1955/2000 faculta a las distribuidoras a exigir un depósito equivalente a la facturación teórica de un mes de potencia y energía para empresas.",
+          "Plazo habitual: el cambio suele hacerse efectivo entre 1 y 7 días hábiles, habitualmente coincidiendo con el siguiente cierre de ciclo de facturación del contador."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Respuestas técnicas sobre trámites de suministro en locales.",
+        "bullets": [
+          "¿Puedo cambiar de comercializadora y de titular a la vez? Sí, es lo más recomendable. Puedes elegir una tarifa más competitiva y solicitar simultáneamente el cambio de nombre sin coste adicional.",
+          "¿Qué pasa si la luz está cortada por impago del anterior inquilino? Deberás presentar el contrato de alquiler que acredite que eres un nuevo ocupante sin vinculación con el deudor para que la distribuidora reabra el punto de suministro.",
+          "¿Es necesario cambiar el titular del gas también? Sí, el suministro de gas natural sigue el mismo principio administrativo que la electricidad."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cambio de titularidad luz local comercial?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto cuesta cambiar el titular de la luz de un local comercial?",
+        "a": "El trámite es completamente gratuito si no se modifican las potencias contratadas ni se requiere un nuevo boletín eléctrico por tener más de 20 años de antigüedad."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Pueden cobrarme la deuda de luz del anterior negocio que estaba en el local?",
+        "a": "No, siempre que tramites el cambio sin subrogación y acredites con tu contrato de arrendamiento o compraventa que no tienes vinculación societaria ni familiar con el inquilino deudor."
+      },
+      {
+        "q": "¿Cuánto tarda en hacerse efectivo el cambio de nombre de la luz?",
+        "a": "Entre 2 y 7 días laborables. No hay ningún corte de luz durante el proceso si el suministro estaba activo."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-ascensor-comunidad",
     "slug": "como-ahorrar-luz-en-ascensor-comunidad",
-    "keyword": "cómo ahorrar luz en ascensor comunidad",
-    "title": "Cómo ahorrar luz en el ascensor de una comunidad",
-    "metaTitle": "Ahorrar luz en ascensor comunitario | tuLuz",
-    "metaDescription": "Medidas de mantenimiento, iluminación y uso para reducir el gasto del ascensor.",
+    "keyword": "como ahorrar luz en ascensor comunidad",
+    "title": "Cómo ahorrar luz en el ascensor de una comunidad: maniobras eficientes, motores gearless y ajuste de potencia",
+    "metaTitle": "Ahorro de Luz en Ascensores de Comunidades | tuLuz",
+    "metaDescription": "Estrategias técnicas para reducir la factura eléctrica del ascensor en comunidades de vecinos. Ajuste de potencia en P1-P3, motores sin reductor y maniobra en espera.",
     "category": "Comunidades de Propietarios",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2859,82 +3561,160 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Medidas de mantenimiento, iluminación y uso para reducir el gasto del ascensor.",
+    "excerpt": "El ascensor es uno de los principales responsables del gasto energético en las zonas comunes de una comunidad de propietarios, llegando a suponer hasta el 40% del recibo general. Conoce las soluciones técnicas más eficaces para reducir su coste.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en ascensor comunidad"
+        "id": "gasto-ascensor-comunidad",
+        "title": "1. Cuánto gasta realmente un ascensor en una comunidad de vecinos"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "termino-potencia-sobredimensionado",
+        "title": "2. El gran sobrecoste: la potencia contratada innecesaria"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "tecnologia-motores",
+        "title": "3. Motores Gearless vs hidráulicos y convencionales con reductor"
+      },
+      {
+        "id": "iluminacion-cabina-standby",
+        "title": "4. Iluminación LED y apagado automático en cabina"
+      },
+      {
+        "id": "baterias-regenerativas",
+        "title": "5. Variadores de frecuencia y sistemas de frenado regenerativo"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en ascensor comunidad",
-        "content": "Comprender a fondo **cómo ahorrar luz en ascensor comunidad** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nMedidas de mantenimiento, iluminación y uso para reducir el gasto del ascensor.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo ahorrar luz en ascensor comunidad, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "gasto-ascensor-comunidad",
+        "heading": "1. Cuánto gasta realmente un ascensor en una comunidad de vecinos",
+        "content": "El ascensor de un edificio residencial de 5 a 8 plantas realiza un promedio de 80 a 180 viajes diarios. Sin embargo, su consumo se divide en dos componentes muy dispares: el gasto por movimiento mecánico (apenas el 30% del consumo energético anual en fincas residenciales) y el consumo pasivo en reposo (electrónica de control, bobinas de freno, display y luz de cabina continua, que suman hasta el 70% del consumo de energía registrado).",
+        "table": {
+          "headers": [
+            "Tecnología del Ascensor",
+            "Potencia Media Motor",
+            "Consumo Anual (kWh)",
+            "Gasto Estimado Anual Energía + Potencia (€)"
+          ],
+          "rows": [
+            [
+              "Hidráulico antiguo (pistón de aceite)",
+              "7,5 kW - 11 kW",
+              "3.200 - 4.500 kWh",
+              "1.100 € - 1.650 €"
+            ],
+            [
+              "Electromecánico con reductor y 2 velocidades",
+              "4,5 kW - 6,0 kW",
+              "2.400 - 3.400 kWh",
+              "850 € - 1.250 €"
+            ],
+            [
+              "Electromecánico con variador VVVF",
+              "3,5 kW - 4,5 kW",
+              "1.600 - 2.200 kWh",
+              "620 € - 890 €"
+            ],
+            [
+              "Gearless imanes permanentes (moderno)",
+              "2,2 kW - 3,5 kW",
+              "950 - 1.400 kWh",
+              "380 € - 560 €"
+            ],
+            [
+              "Gearless con tecnología regenerativa KERS",
+              "2,0 kW - 3,0 kW",
+              "650 - 950 kWh",
+              "290 € - 420 €"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Un ascensor hidráulico antiguo puede consumir más del triple de energía que un equipo con máquina de tracción síncrona sin engranajes (Gearless).",
+          "La luz halógena incandescente de la cabina encendida 24 horas al día gasta más electricidad que los viajes mecánicos que realiza en toda una semana."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo ahorrar luz en el ascensor de una comunidad** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "termino-potencia-sobredimensionado",
+        "heading": "2. El gran sobrecoste: la potencia contratada innecesaria",
+        "content": "La mayor parte del importe que paga una comunidad en la factura del ascensor no corresponde a los kWh consumidos, sino al término de potencia fija (kW). Históricamente, las empresas mantenedoras recomendaban contratar potencias sobredimensionadas (7,5 kW o 10 kW) para absorber el pico de arranque de los motores antiguos con arranque directo estrella-triángulo.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Ajuste de potencia con variador de frecuencia",
+          "text": "Al incorporar un variador de frecuencia (VVVF), el arranque se realiza con rampa suave sin picos de intensidad, lo que permite rebajar la potencia contratada de 8 kW a 3,5 kW o 4 kW, generando un ahorro fijo directo de entre 200 € y 350 € anuales en la factura de la comunidad."
+        },
+        "bullets": [
+          "Revisa el maxímetro o el informe de potencias demandadas que proporciona la distribuidora.",
+          "En contratos de comunidad de vecinos con tarifa 2.0TD o 3.0TD, ajustar la potencia es el trámite con mayor rentabilidad inmediata."
+        ]
+      },
+      {
+        "id": "tecnologia-motores",
+        "heading": "3. Motores Gearless vs hidráulicos y convencionales con reductor",
+        "content": "La máquina de tracción Gearless (sin reductor) de imanes permanentes representa el estándar actual de máxima eficiencia. Al suprimir la caja de engranajes por corona y sinfín, se eliminan las pérdidas mecánicas por fricción y la necesidad de lubricantes de aceite contaminantes, incrementando el rendimiento energético global por encima del 85%.",
+        "bullets": [
+          "Los motores hidráulicos son muy ineficientes en edificios de más de 3 plantas debido a la alta potencia necesaria para bombear el fluido a presión en la subida.",
+          "Los equipos Gearless ocupan mucho menos espacio y no requieren cuarto de máquinas en la azotea (sistemas MRL - Machine Room Less)."
+        ]
+      },
+      {
+        "id": "iluminacion-cabina-standby",
+        "heading": "4. Iluminación LED y apagado automático en cabina",
+        "content": "Mantener 4 focos halógenos de 35 W o dos tubos fluorescentes de 18 W permanentemente encendidos en la cabina equivale a un consumo continuo de 40 a 140 W durante las 8.760 horas del año. Sustituir estas luminarias por tecnología LED con temporizador de apagado por detector de presencia o apertura de puerta reduce el consumo en reposo en un 95%.",
+        "bullets": [
+          "El sistema de apagado de cabina apaga la luz tras 2 o 3 minutos de inactividad y la enciende de inmediato cuando un usuario pulsa la llamada.",
+          "Esta sencilla modificación cuesta menos de 90 € y se amortiza en menos de 6 meses."
+        ]
+      },
+      {
+        "id": "baterias-regenerativas",
+        "heading": "5. Variadores de frecuencia y sistemas de frenado regenerativo",
+        "content": "Un ascensor con contrapeso no siempre consume energía; cuando sube vacío o baja cargado de personas, el contrapeso desciende por gravedad o la masa de la cabina arrastra el motor, actuando este como un generador eléctrico. En instalaciones convencionales, esa energía se disipa en forma de calor residual en unas resistencias térmicas. Los ascensores regenerativos devuelven esa electricidad limpia a la red eléctrica interna del edificio.",
+        "bullets": [
+          "El sistema regenerativo devuelve hasta un 30% de la energía del ascensor para iluminar el portal o alimentar la puerta del garaje.",
+          "Evita el sobrecalentamiento del cuarto de máquinas en verano, reduciendo la necesidad de ventiladores auxiliares."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes entre administradores de fincas y presidentes de comunidad.",
+        "bullets": [
+          "¿Se puede bajar la potencia del ascensor sin cambiar el motor? Si el ascensor dispone de variador de frecuencia, casi con total seguridad sí se puede ajustar a la baja. Si tiene un motor antiguo de dos velocidades, conviene consultar con el mantenedor antes de bajar potencia para evitar disparos por intensidad de arranque.",
+          "¿Cuánto cuesta instalar un sistema de apagado automático de luces de cabina? Suele costar entre 60 € y 120 € en una revisión periódica ordinaria.",
+          "¿Existen ayudas públicas para modernizar el ascensor? Sí, los fondos europeos y los programas autonómicos de rehabilitación energética financian entre un 30% y un 60% de la sustitución de motores y maniobras eficientes."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo ahorrar luz en ascensor comunidad?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto gasta de luz un ascensor en una comunidad de vecinos al mes?",
+        "a": "Entre 40 € y 120 € al mes en función de la antigüedad del motor, la potencia contratada y el número de viviendas del edificio."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué es un ascensor Gearless y cuánto ahorra?",
+        "a": "Es un ascensor con motor síncrono de imanes permanentes sin caja de engranajes reductora. Ahorra hasta un 50% de electricidad respecto a un ascensor tradicional de dos velocidades."
+      },
+      {
+        "q": "¿Por qué es tan cara la potencia en la factura del ascensor?",
+        "a": "Porque tradicionalmente se contrataban 7,5 kW o más para soportar el tirón de arranque de los motores viejos, cobrando la compañía un coste fijo mensual elevado aunque el ascensor pase horas parado."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-garaje-comunitario",
     "slug": "como-ahorrar-luz-en-garaje-comunitario",
-    "keyword": "cómo ahorrar luz en garaje comunitario",
-    "title": "Cómo reducir el consumo de un garaje comunitario",
-    "metaTitle": "Ahorrar luz en un garaje comunitario | tuLuz",
-    "metaDescription": "Revisa iluminación, ventilación, horarios y potencia para bajar el gasto eléctrico del garaje.",
+    "keyword": "como ahorrar luz en garaje comunitario",
+    "title": "Cómo ahorrar luz en un garaje comunitario: ventilación forzada, zonificación LED y optimización de potencia",
+    "metaTitle": "Ahorro de Luz en Garajes Comunitarios: Guía | tuLuz",
+    "metaDescription": "Reduce la factura de luz del garaje de tu comunidad de vecinos. Claves en control de monóxido de carbono (CO), sectorización de luminarias y puertas automáticas.",
     "category": "Comunidades de Propietarios",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -2942,82 +3722,155 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Revisa iluminación, ventilación, horarios y potencia para bajar el gasto eléctrico del garaje.",
+    "excerpt": "El aparcamiento subterráneo suele concentrar entre el 35% y el 55% de todo el gasto eléctrico comunitario. Aprende cómo ajustar los extractores de monóxido, sectorizar la iluminación y rebajar la potencia contratada para ahorrar cientos de euros anuales a los vecinos.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en garaje comunitario"
+        "id": "puntos-criticos-garaje",
+        "title": "1. Radiografía del consumo en garajes subterráneos"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "ventilacion-monoxido",
+        "title": "2. Sistema de ventilación y extracción de CO: cumplimiento del CTE"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "iluminacion-sectorizada",
+        "title": "3. Sustitución a tubos LED con radar y sectorización de viales"
+      },
+      {
+        "id": "puertas-y-bombas",
+        "title": "4. Motores de puertas automáticas y bombas de achique de pluviales"
+      },
+      {
+        "id": "optimizacion-tarifa-garaje",
+        "title": "5. Ajuste del término de potencia y discriminación horaria"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo ahorrar luz en garaje comunitario",
-        "content": "Comprender a fondo **cómo ahorrar luz en garaje comunitario** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nRevisa iluminación, ventilación, horarios y potencia para bajar el gasto eléctrico del garaje.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo ahorrar luz en garaje comunitario, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "puntos-criticos-garaje",
+        "heading": "1. Radiografía del consumo en garajes subterráneos",
+        "content": "Los garajes de comunidades de propietarios cuentan habitualmente con un contador eléctrico independiente con tarifa 2.0TD (hasta 15 kW) o 3.0TD (más de 15 kW). Su consumo está marcado por dos grandes consumidores: la iluminación de los viales y plazas de aparcamiento (que en muchas fincas permanece encendida las 24 horas del día) y los potentes motores de extracción de aire y ventilación forzada.",
+        "table": {
+          "headers": [
+            "Instalación del Garaje",
+            "% Consumo Habitual",
+            "Potencial de Ahorro",
+            "Solución Técnica Eficiente"
+          ],
+          "rows": [
+            [
+              "Iluminación fluorescente continua",
+              "45% - 60%",
+              "60% - 80%",
+              "Tubos LED con sensor de presencia por radar integrado"
+            ],
+            [
+              "Ventilación y extracción de humos/CO",
+              "25% - 40%",
+              "30% - 50%",
+              "Calibración de centralita de CO y variadores de frecuencia"
+            ],
+            [
+              "Puertas automáticas de acceso rodado",
+              "5% - 10%",
+              "10% - 20%",
+              "Regulación de temporizador de cierre y motores brushless"
+            ],
+            [
+              "Bombas de achique de aguas freáticas/pluviales",
+              "3% - 8%",
+              "15% - 25%",
+              "Mantenimiento de boyas de nivel y limpieza de fosa"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Un garaje medio de 50 plazas con 60 tubos fluorescentes de 58 W encendidos permanentemente derrocha más de 30.000 kWh anuales (unos 4.800 € solo en luz de pasillo).",
+          "La ventilación forzada no necesita funcionar de manera continua; debe activarse únicamente cuando la concentración de CO supera los límites de salubridad legal."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo reducir el consumo de un garaje comunitario** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "ventilacion-monoxido",
+        "heading": "2. Sistema de ventilación y extracción de CO: cumplimiento del CTE",
+        "content": "El Código Técnico de la Edificación (DB-HS 3) y la norma UNE 100166 obligan a garantizar la evacuación de gases de escape en garajes para evitar intoxicaciones. La instalación debe contar con detectores electroquímicos de monóxido de carbono (CO) que activan los ventiladores al superar 50 ppm (primera velocidad) y 100 ppm (segunda velocidad máxima).",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "El peligro de las sondas de CO caducadas",
+          "text": "Las sondas de detección de CO tienen una vida útil máxima de 3 a 5 años. Cuando caducan o se descalibran, suelen enviar una señal errónea de alarma continua a la centralita, dejando los extractores de 5,5 kW funcionando día y noche y disparando el recibo en más de 600 € mensuales."
+        },
+        "bullets": [
+          "Realiza anualmente el mantenimiento y calibración reglamentaria de las sondas de detección de gases.",
+          "Instala variadores de frecuencia en los ventiladores de impulsión y extracción para modular el caudal según la densidad del tráfico."
+        ]
+      },
+      {
+        "id": "iluminacion-sectorizada",
+        "heading": "3. Sustitución a tubos LED con radar y sectorización de viales",
+        "content": "La mayor revolución económica en un garaje es la instalación de tubos LED inteligentes con sensor de radar microondas incorporado. En reposo (cuando no hay coches ni peatones), el tubo permanece en un modo de luz tenue de seguridad (al 10% de su potencia, apenas 2 W). En cuanto un vehículo o vecino accede al pasillo, el radar detecta el movimiento y eleva la iluminación al 100% (18 W) de forma instantánea.",
+        "bullets": [
+          "Ahorro superior al 80% respecto a los tubos fluorescentes tradicionales con reactancias electromagnéticas.",
+          "El sensor de microondas funciona a través de las pantallas estancas, evitando polvo y humedad.",
+          "Sectoriza por zonas: si un coche aparca en la planta -1, no tiene ningún sentido que se encienda la iluminación de la planta -2."
+        ]
+      },
+      {
+        "id": "puertas-y-bombas",
+        "heading": "4. Motores de puertas automáticas y bombas de achique de pluviales",
+        "content": "Las puertas basculantes o seccionales de los garajes sufren cientos de ciclos de apertura diarios. Ajustar el tiempo de espera de cierre automático de 60 a 20 segundos evita la pérdida innecesaria de calor/frío en invierno y reduce el tiempo en que los sistemas de semáforos y fotocélulas demandan energía continua.",
+        "bullets": [
+          "Revisa las boyas de nivel en el pozo de bombeo de achique: si una boya queda atascada por lodo, la bomba puede quedar funcionando en seco consumiendo energía continua hasta quemarse.",
+          "Instala fotocélulas y bandas de seguridad de bajo consumo con marcado CE."
+        ]
+      },
+      {
+        "id": "optimizacion-tarifa-garaje",
+        "heading": "5. Ajuste del término de potencia y discriminación horaria",
+        "content": "Al sustituir la iluminación continua por LED inteligente, la potencia simultánea demandada en el garaje se reduce drásticamente. Esto permite bajar la potencia contratada con la distribuidora en varios kilovatios, consolidando un ahorro recurrente en la cuota fija mensual.",
+        "bullets": [
+          "Comprueba si el garaje tiene contratada tarifa 3.0TD innecesariamente: si la potencia punta real es menor de 15 kW, pasar a 2.0TD simplifica la factura y reduce peajes fijos.",
+          "Asegúrate de que la comunidad no paga penalizaciones por reactiva provocada por los motores de los extractores de aire."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre gestión eléctrica de aparcamientos residenciales.",
+        "bullets": [
+          "¿Es legal que las luces del garaje se apaguen completamente? El CTE exige garantizar unos niveles mínimos de iluminación de seguridad (normalmente 50 lux en viales en uso). La solución más segura y legal es mantener una iluminación basal de seguridad al 10% con tubos LED con radar.",
+          "¿Cuánto se tarda en amortizar el cambio a tubos LED con sensor en un garaje? En la mayoría de comunidades con más de 30 plazas, la amortización completa de la instalación se consigue en menos de 8 a 14 meses.",
+          "¿Quién paga la luz del punto de recarga de coche eléctrico? El propietario de la plaza mediante conexión directa al contador de su vivienda o con contador secundario homologado; la comunidad de vecinos no debe asumir el coste de carga privada."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo ahorrar luz en garaje comunitario?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto se puede ahorrar en la luz de un garaje comunitario con LED inteligentes?",
+        "a": "Entre un 70% y un 85% del gasto de iluminación, lo que suele representar entre 1.500 € y 4.000 € de ahorro al año para la comunidad de vecinos."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cada cuánto tiempo hay que calibrar los detectores de CO del garaje?",
+        "a": "El mantenimiento debe realizarse semestralmente o anualmente según la normativa municipal y autonómica, sustituyendo los sensores electroquímicos cada 4 o 5 años para evitar que activen los extractores por error."
+      },
+      {
+        "q": "¿Se puede bajar la potencia contratada del garaje de la comunidad?",
+        "a": "Sí, tras modernizar la iluminación a LED y comprobar que los extractores de aire no arrancan simultáneamente, es muy habitual poder bajar de 10-15 kW a 4-6 kW."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-leer-contador-digital-de-luz",
     "slug": "como-leer-contador-digital-de-luz",
-    "keyword": "cómo leer contador digital de luz",
-    "title": "Cómo leer un contador digital de luz paso a paso",
-    "metaTitle": "Cómo leer un contador digital de luz | tuLuz",
-    "metaDescription": "Aprende qué datos muestra un contador inteligente y cuáles necesitas para revisar tu consumo.",
-    "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "keyword": "como leer contador digital de luz",
+    "title": "Cómo leer el contador digital de la luz: códigos OBIS, botón frontal y lectura de kWh reales",
+    "metaTitle": "Cómo Leer el Contador Digital de la Luz | Guía tuLuz",
+    "metaDescription": "Aprende a interpretar tu contador digital (telegestión). Códigos OBIS 1.18.X, lectura de consumo real, potencia instantánea y cómo reactivarlo si salta el ICP.",
+    "category": "Mercado y Tarifas",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3025,82 +3878,176 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Aprende qué datos muestra un contador inteligente y cuáles necesitas para revisar tu consumo.",
+    "excerpt": "Los contadores inteligentes de telegestión ofrecen información valiosa en tiempo real. Aprende a navegar por sus menús mediante el botón frontal, descifra los códigos OBIS de energía y potencia y detecta si te están facturando lecturas estimadas erróneas.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo leer contador digital de luz"
+        "id": "modelos-contadores",
+        "title": "1. Modelos de contadores digitales en España (Sagemcom, Landis+Gyr, ZIV)"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "boton-navegacion",
+        "title": "2. Cómo navegar por el menú con el botón frontal"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "codigos-obis-tabla",
+        "title": "3. Tabla de códigos OBIS esenciales (consumo y potencia)"
+      },
+      {
+        "id": "comprobar-lectura-factura",
+        "title": "4. Cómo contrastar la lectura real con tu factura"
+      },
+      {
+        "id": "reactivar-icp-contador",
+        "title": "5. Cómo rearmar el ICP del contador si te has quedado sin luz"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo leer contador digital de luz",
-        "content": "Comprender a fondo **cómo leer contador digital de luz** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAprende qué datos muestra un contador inteligente y cuáles necesitas para revisar tu consumo.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo leer contador digital de luz, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "modelos-contadores",
+        "heading": "1. Modelos de contadores digitales en España (Sagemcom, Landis+Gyr, ZIV)",
+        "content": "Desde la sustitución masiva del parque analógico exigida por el Plan de Telegestión del Gobierno español, más del 99% de los hogares cuentan con contadores digitales inteligentes. Los fabricantes más extendidos en las redes de las principales distribuidoras (i-DE de Iberdrola, E-Distribución de Endesa, UFD de Naturgy, E-Redes de EDP) son marcas homologadas como Sagemcom, Landis+Gyr, ZIV y Cirwatt. Aunque su aspecto exterior varíe, todos comparten el protocolo internacional de códigos OBIS (Object Identification System) para mostrar las magnitudes eléctricas.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Todos disponen de una pantalla LCD retroiluminada de cristal líquido y uno o dos botones de navegación.",
+          "Cuentan con un diodo LED rojo que parpadea proporcionalmente al consumo: cuanto más rápido parpadea, mayor es el consumo instantáneo de vatios.",
+          "Están conectados por telemedida PLC a través de las propias líneas de baja tensión con los centros de transformación de la distribuidora."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo leer un contador digital de luz paso a paso** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "boton-navegacion",
+        "heading": "2. Cómo navegar por el menú con el botón frontal",
+        "content": "Para consultar los datos de tu contador no necesitas herramientas ni desmontar ninguna tapa protectora; basta con interactuar con el botón frontal (habitualmente amarillo, rojo o gris). Presionando brevemente el botón avanzas de un código a otro en la pantalla. Si mantienes presionado el botón durante 2 a 3 segundos, accedes al submenú de lecturas detalladas (Modo Lectura / L10).",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "El significado del LED rojo frontal",
+          "text": "La luz roja parpadeante indica pulsos de energía (habitualmente 1.000 o 2.000 impulsos por cada kWh consumido). Si el LED rojo está fijo y no parpadea, significa que en ese momento el consumo en la vivienda es exactamente cero o el interruptor general está bajado."
+        },
+        "bullets": [
+          "Pulsación corta (< 1 segundo): avanza al siguiente parámetro en pantalla.",
+          "Pulsación larga (> 2 segundos): entra en el menú seleccionado o confirma la visualización de valores contractuales.",
+          "Retorno automático: si dejas de pulsar durante 30 segundos, el contador vuelve a su pantalla de reposo estándar."
+        ]
+      },
+      {
+        "id": "codigos-obis-tabla",
+        "heading": "3. Tabla de códigos OBIS esenciales (consumo y potencia)",
+        "content": "Los códigos OBIS son secuencias numéricas normalizadas que identifican de forma unívoca cada magnitud registrada. En la tarifa doméstica 2.0TD (con tres tramos horarios de energía y dos de potencia), estos son los códigos que debes buscar en la pantalla:",
+        "table": {
+          "headers": [
+            "Código OBIS",
+            "Significado / Magnitud",
+            "Tramo Horario",
+            "Uso Principal"
+          ],
+          "rows": [
+            [
+              "1.18.0",
+              "Energía activa total acumulada (kWh)",
+              "Total acumulado",
+              "Comprobar el consumo global desde el primer día"
+            ],
+            [
+              "1.18.1",
+              "Energía activa consumida en Punta (kWh)",
+              "Periodo 1 (P1: más caro)",
+              "Verificar lectura P1 de la factura"
+            ],
+            [
+              "1.18.2",
+              "Energía activa consumida en Llano (kWh)",
+              "Periodo 2 (P2: precio medio)",
+              "Verificar lectura P2 de la factura"
+            ],
+            [
+              "1.18.3",
+              "Energía activa consumida en Valle (kWh)",
+              "Periodo 3 (P3: más económico)",
+              "Verificar lectura P3 de la factura"
+            ],
+            [
+              "1.16.1",
+              "Potencia máxima demandada en P1 (kW)",
+              "Maxímetro Punta",
+              "Evaluar si puedes bajar la potencia contratada"
+            ],
+            [
+              "1.16.2",
+              "Potencia máxima demandada en P2 (kW)",
+              "Maxímetro Valle",
+              "Controlar la potencia demandada en horario nocturno"
+            ],
+            [
+              "1.14.0",
+              "Potencia instantánea demandada (kW)",
+              "Tiempo real actual",
+              "Ver cuántos vatios consume la casa en este momento exacto"
+            ]
+          ]
+        },
+        "bullets": [
+          "Anota las cifras que aparecen junto a los códigos 1.18.1, 1.18.2 y 1.18.3: esos son los kWh que deben figurar como lectura actual en tu factura.",
+          "El código 1.14.0 te permite hacer pruebas en vivo: enciende o apaga un electrodoméstico y observa cómo sube o baja la cifra en tiempo real."
+        ]
+      },
+      {
+        "id": "comprobar-lectura-factura",
+        "heading": "4. Cómo contrastar la lectura real con tu factura",
+        "content": "Si sospechas que tu comercializadora te ha cobrado de más o te ha emitido una factura estimada artificialmente inflada, puedes acudir al cuarto de contadores y cotejar los valores. Si la lectura que figura en tu factura en el código 1.18.0 es superior a la cifra real que muestra tu contador físico hoy, tu comercializadora te ha facturado energía futura que aún no has consumido, dándote derecho a exigir una refacturación inmediata.",
+        "bullets": [
+          "Compara siempre el número de serie del contador que figura en tu factura con el grabado en la placa frontal del equipo físico.",
+          "Puedes fotografiar la pantalla con tu teléfono móvil para adjuntarla como prueba irrefutable en cualquier reclamación."
+        ]
+      },
+      {
+        "id": "reactivar-icp-contador",
+        "heading": "5. Cómo rearmar el ICP del contador si te has quedado sin luz",
+        "content": "En los contadores inteligentes modernos, el Interruptor de Control de Potencia (ICP) está integrado en el propio chip del contador exterior. Si conectas demasiados aparatos a la vez y sobrepasas la potencia contratada, el contador corta el suministro automáticamente.",
+        "bullets": [
+          "Paso 1: Desconecta el último electrodoméstico de alta potencia que encendiste en la vivienda.",
+          "Paso 2: Acude al cuadro eléctrico general de tu casa, baja el Interruptor General Automático (IGA) durante 5 a 10 segundos y vuelve a subirlo.",
+          "Paso 3: En el 95% de los casos, la maniobra de bajar y subir el IGA desde dentro de casa reactiva automáticamente el contador exterior.",
+          "Paso 4: Si no se reactiva, baja al cuarto de contadores: verás en pantalla el mensaje 'ICP DESCONECTADO'. Mantén pulsado el botón frontal durante 3 segundos hasta escuchar un 'clic' del relé interno."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas habituales de los usuarios sobre el funcionamiento de su contador.",
+        "bullets": [
+          "¿Tiene peligro tocar el botón del contador? Ninguno. Los botones externos están aislados galvánicamente y diseñados para que los usuarios puedan consultar sus lecturas con total seguridad.",
+          "¿Por qué mi contador parpadea en rojo muy deprisa? Porque hay aparatos de alto consumo funcionando en ese instante (termo eléctrico, horno, vitrocerámica o secadora).",
+          "¿Puedo negarme al alquiler del contador? La inmensa mayoría de consumidores tienen el contador en régimen de alquiler con la distribuidora (unos 0,81 €/mes regulados). Es posible comprarlo en propiedad, pero exige asumir los costes de homologación, instalación y mantenimiento técnico ante cualquier avería."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo leer contador digital de luz?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué código del contador digital indica el consumo total de luz?",
+        "a": "El código OBIS 1.18.0 refleja el consumo acumulado total en kWh. Para ver el consumo desglosado por tramos horarios en tarifa 2.0TD se utilizan 1.18.1 (Punta), 1.18.2 (Llano) y 1.18.3 (Valle)."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué hacer si el contador digital corta la luz por exceso de potencia?",
+        "a": "Apaga los aparatos que causaron la sobrecarga, ve a tu cuadro de luces, baja el interruptor general (IGA) durante 10 segundos y vuélvelo a subir para rearmar el relé del contador a distancia."
+      },
+      {
+        "q": "¿Cómo saber cuántos vatios estoy gastando en este momento exacto?",
+        "a": "Navega con el botón frontal hasta el código OBIS 1.14.0 o pantalla de potencia instantánea, donde verás reflejada la potencia en kW que está demandando tu vivienda en tiempo real."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-consultar-consumo-de-luz-por-horas",
     "slug": "como-consultar-consumo-de-luz-por-horas",
-    "keyword": "cómo consultar consumo de luz por horas",
-    "title": "Cómo consultar tu consumo de luz por horas",
-    "metaTitle": "Consultar consumo de luz por horas | tuLuz",
-    "metaDescription": "Descubre cómo ver tu consumo horario y usar esos datos para tomar mejores decisiones.",
-    "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "keyword": "como consultar consumo de luz por horas",
+    "title": "Cómo consultar el consumo de luz por horas: Datadis y las apps de las distribuidoras eléctricas",
+    "metaTitle": "Consultar Consumo de Luz por Horas: Datadis y Apps | tuLuz",
+    "metaDescription": "Aprende a ver tu consumo eléctrico hora a hora gratis. Alta en Datadis, i-DE, e-distribución y UFD para descargar tus curvas de carga y ahorrar en tu factura.",
+    "category": "Mercado y Tarifas",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3108,82 +4055,162 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Descubre cómo ver tu consumo horario y usar esos datos para tomar mejores decisiones.",
+    "excerpt": "Cualquier titular de un contrato eléctrico en España tiene derecho legal y gratuito a acceder a las lecturas horarias de su contador. Descubre cómo consultar tus gráficos hora a hora, detectar fugas de consumo y comprobar las potencias máximas demandadas.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo consultar consumo de luz por horas"
+        "id": "distribuidora-vs-comercializadora",
+        "title": "1. Por qué debes consultar a tu distribuidora y no a tu comercializadora"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "mapa-distribuidoras",
+        "title": "2. Mapa de distribuidoras en España y sus portales web"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "plataforma-datadis",
+        "title": "3. Datadis: la plataforma unificada oficial del sector eléctrico"
+      },
+      {
+        "id": "datos-descargables",
+        "title": "4. Curva de carga horaria, potencia máxima y simulación de tarifas"
+      },
+      {
+        "id": "como-detectar-anomalias",
+        "title": "5. Cómo utilizar los gráficos horarios para reducir tu recibo"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo consultar consumo de luz por horas",
-        "content": "Comprender a fondo **cómo consultar consumo de luz por horas** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nDescubre cómo ver tu consumo horario y usar esos datos para tomar mejores decisiones.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo consultar consumo de luz por horas, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "distribuidora-vs-comercializadora",
+        "heading": "1. Por qué debes consultar a tu distribuidora y no a tu comercializadora",
+        "content": "Existe una confusión muy extendida: la comercializadora (la empresa que te emite la factura y a la que pagas cada mes) solo recibe paquetes de datos mensuales de la distribuidora. La propietaria del contador físico y de la infraestructura de cables que mide tu consumo en tiempo real es la empresa distribuidora de tu zona geográfica. Por ello, si quieres ver tus curvas horarias actualizadas al día anterior sin intermediarios, debes registrarte en el portal de tu distribuidora o en la plataforma oficial Datadis.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El acceso es 100% gratuito y está garantizado por la Ley del Sector Eléctrico.",
+          "Cambiar de comercializadora no afecta a tu usuario en la distribuidora: tus datos históricos se conservan siempre.",
+          "Puedes consultar datos de hasta 24 meses de antigüedad con detalle horario."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo consultar tu consumo de luz por horas** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "mapa-distribuidoras",
+        "heading": "2. Mapa de distribuidoras en España y sus portales web",
+        "content": "La distribuidora no se elige; está asignada por territorio según la concesión histórica de la red eléctrica.",
+        "table": {
+          "headers": [
+            "Empresa Distribuidora",
+            "Zonas Principales",
+            "Primeros dígitos CUPS",
+            "Portal de Clientes / App"
+          ],
+          "rows": [
+            [
+              "i-DE (Iberdrola Distribución)",
+              "Madrid, C. Valenciana, Castilla y León, C.-La Mancha, Murcia, País Vasco",
+              "ES0021...",
+              "zonaprivada.i-de.es / App i-DE"
+            ],
+            [
+              "e-distribución (Endesa)",
+              "Cataluña, Andalucía, Baleares, Canarias, Aragón, Extremadura sur",
+              "ES0031...",
+              "edistribucion.com / App e-distribución"
+            ],
+            [
+              "UFD (Naturgy / Fenosa)",
+              "Galicia, Madrid sur, Ciudad Real, Toledo, Castilla y León",
+              "ES0022...",
+              "ufd.es / App UFD Clientes"
+            ],
+            [
+              "E-REDES (EDP / TotalEnergies)",
+              "Asturias, Cantabria, zonas de Alicante y Murcia",
+              "ES0026...",
+              "e-redes.es / Portal E-Redes"
+            ],
+            [
+              "Viesgo Distribución (Repsol)",
+              "Cantabria, norte de Palencia y Burgos, Asturias",
+              "ES0027...",
+              "viesgodistribucion.com"
+            ]
+          ]
+        },
+        "bullets": [
+          "Para darte de alta en su web solo necesitas tu DNI/NIE y el código CUPS de tu factura.",
+          "Muchas de sus aplicaciones móviles permiten configurar alertas gratuitas si superas una potencia o un consumo diario determinado."
+        ]
+      },
+      {
+        "id": "plataforma-datadis",
+        "heading": "3. Datadis: la plataforma unificada oficial del sector eléctrico",
+        "content": "Datadis (datadis.es) es la plataforma digital impulsada conjuntamente por todas las distribuidoras eléctricas españolas bajo supervisión del Ministerio para la Transición Ecológica y la CNMC. Su gran ventaja es que unifica en un solo panel de control todos los suministros eléctricos que tengas a tu nombre en cualquier parte de España, con independencia de cuál sea la empresa distribuidora de cada inmueble.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Acceso rápido con Cl@ve o Certificado Digital",
+          "text": "Puedes acceder a Datadis al instante mediante el sistema Cl@ve del Estado o tu certificado digital de la FNMT, sin necesidad de esperar cartas de activación ni contraseñas por correo postal."
+        },
+        "bullets": [
+          "Muestra gráficos comparativos de consumo diario, semanal, mensual y anual.",
+          "Permite descargar tu curva de consumo en formato CSV estándar para subirla a comparadores y herramientas de auditoría energética."
+        ]
+      },
+      {
+        "id": "datos-descargables",
+        "heading": "4. Curva de carga horaria, potencia máxima y simulación de tarifas",
+        "content": "Al consultar tu información horaria obtendrás dos métricas fundamentales que tu factura mensual resume en una sola línea:",
+        "bullets": [
+          "Curva horaria de consumo (kWh): refleja exactamente cuánta energía consumió tu hogar en cada una de las 24 horas del día. Permite verificar qué porcentaje de tu consumo realizas en periodo valle (horas baratas).",
+          "Potencia máxima demandada (kW): el contador registra el pico máximo de potencia de cada mes en los periodos P1 (punta) y P2 (valle). Si tienes contratados 4,6 kW y tu pico más alto en los últimos 12 meses fue de 2,9 kW, puedes bajar la potencia contratada de inmediato y ahorrar unos 70 € al año en costes fijos."
+        ]
+      },
+      {
+        "id": "como-detectar-anomalias",
+        "heading": "5. Cómo utilizar los gráficos horarios para reducir tu recibo",
+        "content": "Los datos horarios son una radiografía infalible para auditar tus hábitos domésticos y la salud de tu instalación.",
+        "bullets": [
+          "Detectar consumos continuos en madrugada: si entre las 02:00 y las 06:00 de la mañana tu gráfico muestra 400 W continuos, tienes un termo eléctrico descalibrado, un suelo radiante encendido por error o consumos vampiro severos.",
+          "Comprobar el impacto del teletrabajo: analiza el salto de consumo que experimenta tu hogar entre los días que trabajas presencialmente y los días de oficina en casa.",
+          "Planificar la inversión en autoconsumo solar: la curva horaria indica con precisión cuántos kWh necesitas en las horas de irradiación solar (de 10:00 a 18:00) para calcular el número exacto de placas fotovoltaicas que debes instalar sin sobredimensionar."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre el acceso telemático al contador de luz.",
+        "bullets": [
+          "¿Por qué no veo los datos del día de hoy? La telemedida suele consolidar los datos de las 24 horas al cierre de la jornada; lo habitual es consultar los registros con un desfase de 24 a 48 horas.",
+          "¿Tiene algún coste darse de alta en Datadis o en la web de la distribuidora? No, es un servicio público 100% gratuito.",
+          "¿Puede mi comercializadora ver estos datos? Sí, la comercializadora accede a las mismas lecturas oficiales validadas por la distribuidora para emitir tus facturas periódicas."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo consultar consumo de luz por horas?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Dónde puedo ver mi consumo de luz por horas gratis?",
+        "a": "En la web o app oficial de tu distribuidora eléctrica (i-DE, e-distribución, UFD, E-Redes) o en la plataforma nacional unificada Datadis.es."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué datos necesito para consultar mi consumo en la distribuidora?",
+        "a": "El DNI/NIE del titular del contrato y el código CUPS de 20 o 22 dígitos que aparece en la parte superior de cualquier factura de luz."
+      },
+      {
+        "q": "¿Para qué sirve conocer la potencia máxima demandada?",
+        "a": "Permite comprobar si tienes contratada más potencia de la que realmente necesitas y reducirla para pagar menos de término fijo cada mes de por vida."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-calcular-consumo-electrico-de-una-vivienda",
     "slug": "como-calcular-consumo-electrico-de-una-vivienda",
-    "keyword": "cómo calcular consumo eléctrico de una vivienda",
-    "title": "Cómo calcular el consumo eléctrico de una vivienda",
-    "metaTitle": "Calcular consumo eléctrico de una vivienda | tuLuz",
-    "metaDescription": "Estima el consumo de tu hogar a partir de tus aparatos, hábitos y horas de uso.",
+    "keyword": "como calcular consumo electrico de una vivienda",
+    "title": "Cómo calcular el consumo eléctrico de una vivienda: fórmulas, estimación anual y tabla por metros cuadrados",
+    "metaTitle": "Cómo Calcular el Consumo Eléctrico de una Casa | tuLuz",
+    "metaDescription": "Calcula el consumo eléctrico anual de tu vivienda en kWh y euros. Tablas por superficie (m²), número de convivientes, tipo de calefacción y equipamiento doméstico.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3191,70 +4218,155 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Estima el consumo de tu hogar a partir de tus aparatos, hábitos y horas de uso.",
+    "excerpt": "Saber cuánta electricidad debería consumir tu hogar te permite descubrir si estás pagando un sobrecoste evitable, dimensionar una instalación de placas solares o prever los gastos energéticos al mudarte a un nuevo piso o chalet.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo calcular consumo eléctrico de una vivienda"
+        "id": "factores-determinantes",
+        "title": "1. Factores determinantes del consumo en un hogar"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-consumo-superficie",
+        "title": "2. Tabla de consumo medio anual según superficie y ocupantes"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "impacto-climatizacion",
+        "title": "3. El gran divisor: calefacción eléctrica vs gas natural o aerotermia"
+      },
+      {
+        "id": "formula-calculo-kwh",
+        "title": "4. La fórmula técnica para calcular el consumo equipo por equipo"
+      },
+      {
+        "id": "comparativa-factura-real",
+        "title": "5. Cómo comparar tu cifra con la media nacional de Red Eléctrica (REE)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo calcular consumo eléctrico de una vivienda",
-        "content": "Comprender a fondo **cómo calcular consumo eléctrico de una vivienda** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nEstima el consumo de tu hogar a partir de tus aparatos, hábitos y horas de uso.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo calcular consumo eléctrico de una vivienda, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "factores-determinantes",
+        "heading": "1. Factores determinantes del consumo en un hogar",
+        "content": "El consumo eléctrico de una vivienda no responde únicamente a los metros cuadrados construidos. De hecho, dos viviendas idénticas de 90 m² pueden presentar consumos anuales radicalmente dispares (desde 2.200 kWh hasta más de 9.000 kWh) según el sistema empleado para producir agua caliente sanitaria (ACS), el tipo de calefacción y la zona climática peninsular en la que se ubiquen.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Número de habitantes y hábitos de presencia en la vivienda durante las horas diurnas.",
+          "Electrificación del confort térmico: termos de agua, bombas de calor o radiadores eléctricos frente a calderas de gas.",
+          "Aislamiento de la envolvente térmica: carpinterías con rotura de puente térmico y vidrios bajo emisivos reducen la necesidad de climatización en un 40%."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo calcular el consumo eléctrico de una vivienda** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-consumo-superficie",
+        "heading": "2. Tabla de consumo medio anual según superficie y ocupantes",
+        "content": "Basándonos en las estadísticas consolidadas del IDAE y los datos agregados de consumidores residenciales con tarifa 2.0TD, estos son los consumos anuales de referencia para viviendas en España con equipamiento estándar:",
+        "table": {
+          "headers": [
+            "Tipo de Vivienda",
+            "Ocupantes Habituales",
+            "Consumo sin Calefacción Eléctrica (kWh/año)",
+            "Consumo con Termo y Bomba Calor (kWh/año)",
+            "Gasto Estimado Anual (€ a 0,16 €/kWh)"
+          ],
+          "rows": [
+            [
+              "Estudio / Apartamento (40-55 m²)",
+              "1 persona",
+              "1.400 - 1.900 kWh",
+              "2.600 - 3.400 kWh",
+              "415 € - 544 €"
+            ],
+            [
+              "Piso mediano (70-90 m²)",
+              "2 - 3 personas",
+              "2.400 - 3.200 kWh",
+              "4.200 - 5.600 kWh",
+              "672 € - 896 €"
+            ],
+            [
+              "Piso grande (100-130 m²)",
+              "4 personas",
+              "3.300 - 4.200 kWh",
+              "5.800 - 7.500 kWh",
+              "928 € - 1.200 €"
+            ],
+            [
+              "Chalet adosado (140-180 m²)",
+              "4 - 5 personas",
+              "4.200 - 5.500 kWh",
+              "7.500 - 10.500 kWh",
+              "1.200 € - 1.680 €"
+            ],
+            [
+              "Chalet independiente (> 200 m² con jardín)",
+              "4 - 6 personas",
+              "5.800 - 7.800 kWh",
+              "10.500 - 16.000 kWh",
+              "1.680 € - 2.560 €"
+            ]
+          ]
+        },
+        "bullets": [
+          "Un hogar medio español consume unos 3.272 kWh al año según datos oficiales de Red Eléctrica de España (REE).",
+          "Tener una piscina privada con depuradora añade entre 800 y 1.400 kWh adicionales cada temporada de verano."
+        ]
+      },
+      {
+        "id": "impacto-climatizacion",
+        "heading": "3. El gran divisor: calefacción eléctrica vs gas natural o aerotermia",
+        "content": "La calefacción por radiadores eléctricos convencionales (emisores térmicos o acumuladores de calor por efecto Joule) tiene un rendimiento COP = 1 (1 kWh eléctrico produce exactamente 1 kWh térmico). Por el contrario, una bomba de calor o sistema de aerotermia moderno de clase A+++ presenta un COP medio anual de 3,5 a 4,5, lo que significa que por cada kWh eléctrico consumido aporta hasta 4 kWh de calor a la vivienda aprovechando la energía del aire exterior.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Cuidado con los emisores 'de bajo consumo'",
+          "text": "Ningún radiador eléctrico de resistencia puede producir más calor del que consume eléctricamente; la ley física de conservación de la energía no se puede burlar. Los radiadores de calor azul o fluido térmico retienen el calor durante más tiempo, pero gastan exactamente la misma electricidad que un calefactor convencional para aportar los mismos julios de calor a una estancia."
+        },
+        "bullets": [
+          "Sustituir radiadores eléctricos por una bomba de calor inverter reduce el consumo de climatización en un 65% a 75%.",
+          "El termo eléctrico para agua caliente sanitaria representa por sí solo entre el 20% y el 28% del consumo de una casa sin calefacción eléctrica."
+        ]
+      },
+      {
+        "id": "formula-calculo-kwh",
+        "heading": "4. La fórmula técnica para calcular el consumo equipo por equipo",
+        "content": "Para calcular el consumo teórico de cualquier receptor eléctrico de tu vivienda se aplica la fórmula fundamental: Consumo (kWh) = [Potencia (W) / 1.000] × Horas de uso al día × Días del periodo. Multiplicando la suma de todos los kWh por el precio del kWh de tu tarifa contratada (sumando peajes, cargos e impuestos: Impuesto Especial sobre la Electricidad e IVA), obtendrás el coste en euros.",
+        "bullets": [
+          "Ejemplo termo eléctrico de 1.500 W funcionando 3 horas al día: (1.500 / 1.000) × 3 h = 4,5 kWh al día (135 kWh al mes). A 0,16 €/kWh supone 21,60 € mensuales en la factura.",
+          "Ejemplo televisor de 100 W encendido 4 horas al día: (100 / 1.000) × 4 h = 0,4 kWh al día (12 kWh al mes), equivalente a 1,92 € al mes."
+        ]
+      },
+      {
+        "id": "comparativa-factura-real",
+        "heading": "5. Cómo comparar tu cifra con la media nacional de Red Eléctrica (REE)",
+        "content": "Si al revisar la suma de tus últimas doce facturas descubres que tu vivienda supera en más de un 35% los valores de la tabla de referencia para tu perfil familiar, estás ante una anomalía de consumo o un contrato con tarifas obsoletas.",
+        "bullets": [
+          "Verifica si tienes fugas eléctricas apagando todos los automáticos del cuadro excepto el diferencial y observando si el contador sigue contabilizando pulsos.",
+          "Compara tu precio del kWh: muchas familias consumen una cantidad razonable de kWh pero pagan hasta el doble por tener contratada una tarifa libre cara que no han revisado en años."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre el cálculo de consumo en hogares.",
+        "bullets": [
+          "¿Cuántos kWh gasta una casa al día de media? En España, una vivienda sin calefacción eléctrica consume entre 6 y 10 kWh diarios. Con termo eléctrico y aire acondicionado en verano el gasto sube a 12-18 kWh al día.",
+          "¿Cuánto consume una persona sola que vive en un piso? Entre 120 y 160 kWh al mes (unos 25 € a 35 € de término de energía mensual más el término de potencia).",
+          "¿Dónde viene indicado el consumo anual en la factura de la luz? En el reverso de la factura, en el apartado de 'Información de consumo', suele figurar un gráfico con el consumo de los últimos 14 meses y la media en kWh/día."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo calcular consumo eléctrico de una vivienda?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuántos kWh consume una casa al año en España de media?",
+        "a": "Unos 3.272 kWh anuales según datos oficiales del IDAE y Red Eléctrica. En viviendas con calefacción y agua caliente 100% eléctricas, la media asciende a entre 6.000 y 8.500 kWh al año."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo puedo calcular cuánto me cuesta poner un aparato una hora?",
+        "a": "Divide los vatios del aparato entre 1.000 y multiplícalo por el precio de tu kWh. Por ejemplo, un calefactor de 2.000 W (2 kW) a un precio de 0,16 €/kWh cuesta 0,32 € por cada hora encendido."
+      },
+      {
+        "q": "¿Qué electrodoméstico influye más en el cálculo total de consumo?",
+        "a": "El termo eléctrico de agua caliente si es eléctrico (unos 1.500 - 2.200 kWh/año) y el frigorífico con congelador (unos 550 - 680 kWh/año)."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
@@ -3262,11 +4374,11 @@ export const guidesData = [
     "id": "consumo-aire-acondicionado-por-hora",
     "slug": "consumo-aire-acondicionado-por-hora",
     "keyword": "consumo aire acondicionado por hora",
-    "title": "Cuánto consume un aire acondicionado por hora",
-    "metaTitle": "Consumo de aire acondicionado por hora | tuLuz",
-    "metaDescription": "Calcula el gasto aproximado de tu aire acondicionado y aprende a reducirlo sin perder confort.",
+    "title": "Consumo de aire acondicionado por hora: cálculo en kWh, coste en euros y tecnología Inverter",
+    "metaTitle": "Consumo de Aire Acondicionado por Hora: Guía y Coste | tuLuz",
+    "metaDescription": "Calcula cuánto gasta tu aire acondicionado por hora y al mes en euros. Tabla según frigorías, tecnología Inverter, etiqueta SEER y temperatura de consigna recomendada.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3274,82 +4386,167 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Calcula el gasto aproximado de tu aire acondicionado y aprende a reducirlo sin perder confort.",
+    "excerpt": "El aire acondicionado es el rey indiscutible del verano, pero el temor a una factura desorbitada hace que muchos usuarios pasen calor innecesariamente. Descubre cuánto consume en realidad cada hora de uso según su potencia y cómo mantener la casa fresca por menos de 1 euro al día.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo aire acondicionado por hora"
+        "id": "frigorias-vs-vatios",
+        "title": "1. Frigorías vs potencia eléctrica consumida: la confusión habitual"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-coste-hora",
+        "title": "2. Tabla de consumo y coste por hora según frigorías y eficiencia SEER"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "tecnologia-inverter",
+        "title": "3. Por qué la tecnología Inverter reduce el gasto a la mitad"
+      },
+      {
+        "id": "temperatura-optima",
+        "title": "4. La regla de oro de los 25-26 °C y el impacto de cada grado de menos"
+      },
+      {
+        "id": "consejos-ahorro-verano",
+        "title": "5. Claves prácticas para climatizar gastando un 40% menos"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo aire acondicionado por hora",
-        "content": "Comprender a fondo **consumo aire acondicionado por hora** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nCalcula el gasto aproximado de tu aire acondicionado y aprende a reducirlo sin perder confort.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo aire acondicionado por hora, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "frigorias-vs-vatios",
+        "heading": "1. Frigorías vs potencia eléctrica consumida: la confusión habitual",
+        "content": "Uno de los errores más frecuentes al evaluar un split de aire acondicionado es confundir la potencia térmica (medida en frigorías por hora o kW térmicos) con la potencia eléctrica real que el equipo demanda del enchufe (kW eléctricos). Un split habitual de '3.000 frigorías' (unos 3,5 kW de potencia frigorífica útil) no consume 3.500 W de electricidad. Gracias al ciclo termodinámico de compresión de vapor, la máquina absorbe calor del interior y lo expulsa al exterior demandando únicamente entre 800 y 1.100 W de electricidad.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "1 frigoría equivale aproximadamente a 1,163 vatios de potencia térmica.",
+          "El coeficiente SEER (Seasonal Energy Efficiency Ratio) indica el rendimiento estacional en modo frío: cuanto más alto sea el SEER, menos vatios eléctricos necesitará para enfriar la habitación."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cuánto consume un aire acondicionado por hora** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-coste-hora",
+        "heading": "2. Tabla de consumo y coste por hora según frigorías y eficiencia SEER",
+        "content": "A continuación detallamos el consumo eléctrico real medio de un aparato de aire acondicionado doméstico funcionando en régimen estable tras alcanzar la temperatura deseada:",
+        "table": {
+          "headers": [
+            "Capacidad Térmica",
+            "Superficie Recomendada",
+            "Potencia Eléctrica Media (kW)",
+            "Coste por Hora (€ a 0,16 €/kWh)",
+            "Coste Diario (8h encendido)"
+          ],
+          "rows": [
+            [
+              "2.000 frigorías (2,5 kW frío - A+++)",
+              "Dormitorio pequeño (12-18 m²)",
+              "0,45 - 0,65 kW",
+              "0,07 € - 0,10 €/h",
+              "0,56 € - 0,80 €"
+            ],
+            [
+              "3.000 frigorías (3,5 kW frío - A++)",
+              "Salón mediano (20-30 m²)",
+              "0,75 - 1,05 kW",
+              "0,12 € - 0,17 €/h",
+              "0,96 € - 1,36 €"
+            ],
+            [
+              "4.500 frigorías (5,0 kW frío - A+)",
+              "Salón grande o diáfano (35-45 m²)",
+              "1,20 - 1,60 kW",
+              "0,19 € - 0,26 €/h",
+              "1,52 € - 2,08 €"
+            ],
+            [
+              "6.000 frigorías (7,0 kW frío por conductos)",
+              "Vivienda completa (70-90 m²)",
+              "1,80 - 2,50 kW",
+              "0,29 € - 0,40 €/h",
+              "2,32 € - 3,20 €"
+            ],
+            [
+              "Aire acondicionado portátil (pingüino antiguo)",
+              "Habitación individual (15 m²)",
+              "1,10 - 1,40 kW",
+              "0,18 € - 0,22 €/h",
+              "1,44 € - 1,76 €"
+            ]
+          ]
+        },
+        "bullets": [
+          "Tener encendido un split inverter moderno en un dormitorio durante toda la noche (8 horas) cuesta menos de 0,80 € al día.",
+          "Los aires acondicionados portátiles de tubo (pingüinos) consumen casi el doble de electricidad que un split de pared de la misma potencia debido a las infiltraciones de aire caliente del exterior por la ventana."
+        ]
+      },
+      {
+        "id": "tecnologia-inverter",
+        "heading": "3. Por qué la tecnología Inverter reduce el gasto a la mitad",
+        "content": "Los equipos antiguos no inverter funcionaban en modo 'todo o nada' (ON/OFF): el compresor arrancaba a máxima potencia hasta alcanzar la temperatura, se apagaba por completo y volvía a arrancar forzado cada vez que la estancia subía un grado. Los motores Inverter modulan la velocidad de rotación de forma continua; una vez alcanzada la consigna, reducen su régimen a un mínimo de mantenimiento (apenas 200 a 350 W), evitando los violentos picos de arranque y ahorrando más de un 45% de energía.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "No apagues y enciendas constantemente el aire",
+          "text": "Si sales de la habitación durante 20 minutos, es más eficiente dejar el aire acondicionado Inverter encendido manteniendo la temperatura que apagarlo y obligar al compresor a trabajar a máxima potencia al regresar para enfriar las paredes que se han calentado."
+        },
+        "bullets": [
+          "Los arranques continuos en equipos no inverter disparan el maxímetro y provocan un desgaste prematuro del bobinado del motor.",
+          "La modulación Inverter mantiene una temperatura interior constante sin oscilaciones molestas de frío y calor."
+        ]
+      },
+      {
+        "id": "temperatura-optima",
+        "heading": "4. La regla de oro de los 25-26 °C y el impacto de cada grado de menos",
+        "content": "Fijar el termostato a 18 °C o 20 °C al entrar acalorado de la calle es el error más costoso del verano. El aparato no enfriará la estancia más rápido (el aire sale de la rejilla a la misma temperatura constante de unos 10-12 °C), pero forzará al compresor a trabajar sin descanso durante horas intentando alcanzar una temperatura imposible.",
+        "bullets": [
+          "Cada grado que bajas el termostato por debajo de 25 °C incrementa el consumo eléctrico entre un 7% y un 9%.",
+          "La temperatura de confort ideal recomendada por el IDAE y la OMS en verano se sitúa entre 24 °C y 26 °C con una humedad relativa del 40% al 60%."
+        ]
+      },
+      {
+        "id": "consejos-ahorro-verano",
+        "heading": "5. Claves prácticas para climatizar gastando un 40% menos",
+        "content": "Optimizar el funcionamiento del equipo y la física de la vivienda permite disfrutar de una casa fresca con un gasto mínimo:",
+        "bullets": [
+          "Baja persianas y toldos en las fachadas orientadas al sur y oeste durante las horas centrales del día: la radiación solar directa que entra por las ventanas puede elevar la carga térmica interior en más de 2.000 frigorías.",
+          "Limpia los filtros de plástico de la unidad interior una vez al mes durante el verano: la pelusa acumulada obstruye el paso de aire y reduce el rendimiento frigorífico un 20%.",
+          "Orienta las lamas de impulsión hacia arriba: el aire frío es más denso y desciende de forma natural, logrando una estratificación homogénea en toda la estancia."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas habituales sobre el gasto del aire acondicionado.",
+        "bullets": [
+          "¿Cuánto gasta el aire acondicionado puesto toda la noche? Un split de 2.500 frigorías con modo noche/ECO consume unos 2,5 a 3,5 kWh en 8 horas, lo que equivale a unos 0,40 € - 0,60 € por noche en tarifa valle.",
+          "¿Qué gasta más, un ventilador de techo o el aire acondicionado? Un ventilador de techo consume entre 25 y 45 W (unos 0,006 €/hora), es decir, hasta 20 veces menos que el aire acondicionado. Usar ventilador permite fijar el aire acondicionado a 26 °C sintiendo una sensación térmica de 23 °C.",
+          "¿Es más caro el aire acondicionado centralizado por conductos? Sí, al climatizar varios recintos a la vez su máquina es más grande (de 5 a 8 kW térmicos), si bien permite zonificar mediante compuertas motorizadas tipo Airzone para enfriar solo las habitaciones ocupadas."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo aire acondicionado por hora?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto cuesta tener el aire acondicionado encendido 1 hora?",
+        "a": "Un split estándar de 3.000 frigorías con eficiencia A++ consume entre 0,75 y 1,0 kW/h, lo que cuesta entre 0,12 € y 0,17 € por hora con una tarifa eléctrica media de 0,16 €/kWh."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿A qué temperatura se debe poner el aire acondicionado para no gastar mucho?",
+        "a": "Entre 25 °C y 26 °C. Es la temperatura ideal de confort térmico y evita el sobreconsumo del 8% que produce cada grado que se baja por debajo de ese umbral."
+      },
+      {
+        "q": "¿Cuánto consume un aire acondicionado portátil tipo pingüino?",
+        "a": "Consume entre 1,1 y 1,5 kWh por hora (unos 0,20 € - 0,25 €/hora), siendo sensiblemente menos eficiente y más ruidoso que un split de pared fijo."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "consumo-calefactor-electrico-por-hora",
     "slug": "consumo-calefactor-electrico-por-hora",
-    "keyword": "consumo calefactor eléctrico por hora",
-    "title": "Cuánto consume un calefactor eléctrico por hora",
-    "metaTitle": "Consumo de calefactor eléctrico por hora | tuLuz",
-    "metaDescription": "Averigua cuánto puede gastar un calefactor y qué alternativas reducen el consumo en invierno.",
+    "keyword": "consumo calefactor electrico por hora",
+    "title": "Consumo de calefactor eléctrico por hora: termoventiladores, radiadores de aceite y placas cerámicas",
+    "metaTitle": "Consumo de Calefactor Eléctrico por Hora | Guía tuLuz",
+    "metaDescription": "Calcula el gasto real por hora de un calefactor eléctrico en euros. Comparativa de termoventiladores de 2.000 W, radiadores de aceite y alternativas eficientes.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3357,82 +4554,174 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Averigua cuánto puede gastar un calefactor y qué alternativas reducen el consumo en invierno.",
+    "excerpt": "Los calefactores eléctricos son económicos de comprar pero pueden ser una auténtica ruina en la factura mensual. Descubre cuánto dinero gasta realmente cada tipo de estufa eléctrica por hora de funcionamiento y cómo utilizarlos sin sorpresas en el recibo.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo calefactor eléctrico por hora"
+        "id": "fisica-calefactores",
+        "title": "1. La física del calor resistivo: por qué todos consumen lo mismo por vatio"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-coste-tipos",
+        "title": "2. Tabla comparativa de consumo y coste por hora de estufas eléctricas"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "termoventilador-vs-aceite",
+        "title": "3. Termoventilador vs radiador de aceite vs panel cerámico"
+      },
+      {
+        "id": "impacto-potencia-contratada",
+        "title": "4. Por qué hacen saltar el diferencial o el ICP de la casa"
+      },
+      {
+        "id": "alternativas-eficientes",
+        "title": "5. Alternativas eficientes: bomba de calor y emisores con termostato PID"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo calefactor eléctrico por hora",
-        "content": "Comprender a fondo **consumo calefactor eléctrico por hora** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAverigua cuánto puede gastar un calefactor y qué alternativas reducen el consumo en invierno.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo calefactor eléctrico por hora, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "fisica-calefactores",
+        "heading": "1. La física del calor resistivo: por qué todos consumen lo mismo por vatio",
+        "content": "En el mercado existen cientos de calefactores eléctricos bajo distintas denominaciones comerciales: cerámicos, halógenos, de cuarzo, de mica, termoventiladores o radiadores de aceite. Sin embargo, desde el punto de vista de la física energética, todos ellos funcionan mediante el principio del Efecto Joule: hacer circular corriente a través de una resistencia eléctrica para generar calor. Su rendimiento térmico es idéntico: el 100% de la electricidad consumida se convierte en calor (COP = 1). Un calefactor de 2.000 W gastará exactamente 2 kWh de electricidad por cada hora que su resistencia permanezca encendida, sin importar si es de cuarzo o de aceite.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Lo que varía entre tecnologías no es la cantidad de energía consumida por vatio, sino la forma en que transmiten ese calor: por convección forzada (aire), por radiación directa (infrarrojos) o por inercia térmica.",
+          "Un calefactor de 2.000 W consume en una hora lo mismo que una bombilla LED de 10 W encendida durante 200 horas seguidas."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cuánto consume un calefactor eléctrico por hora** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-coste-tipos",
+        "heading": "2. Tabla comparativa de consumo y coste por hora de estufas eléctricas",
+        "content": "A continuación reflejamos el gasto horario real en función de la potencia seleccionada en el selector del equipo:",
+        "table": {
+          "headers": [
+            "Tipo de Calefactor",
+            "Potencia habitual",
+            "Consumo por hora continua (kWh)",
+            "Coste por hora (€ a 0,16 €/kWh)",
+            "Coste mensual (4h al día / 30 días)"
+          ],
+          "rows": [
+            [
+              "Termoventilador de baño (máxima potencia)",
+              "2.000 W (2,0 kW)",
+              "2,00 kWh",
+              "0,32 € / h",
+              "38,40 € / mes"
+            ],
+            [
+              "Termoventilador (posición media ECO)",
+              "1.000 W (1,0 kW)",
+              "1,00 kWh",
+              "0,16 € / h",
+              "19,20 € / mes"
+            ],
+            [
+              "Radiador de aceite grande (9-11 elementos)",
+              "2.500 W (2,5 kW)",
+              "2,50 kWh (1,5 kWh con termostato)",
+              "0,24 € - 0,40 € / h",
+              "28,80 € - 48,00 € / mes"
+            ],
+            [
+              "Estufa halógena o de cuarzo (3 barras)",
+              "1.200 W (1,2 kW)",
+              "1,20 kWh",
+              "0,19 € / h",
+              "23,04 € / mes"
+            ],
+            [
+              "Panel cerámico de bajo consumo / infrarrojos",
+              "600 W (0,6 kW)",
+              "0,60 kWh",
+              "0,10 € / h",
+              "11,52 € / mes"
+            ],
+            [
+              "Convector de aire natural",
+              "1.500 W (1,5 kW)",
+              "1,50 kWh",
+              "0,24 € / h",
+              "28,80 € / mes"
+            ]
+          ]
+        },
+        "bullets": [
+          "Encender dos termoventiladores de 2.000 W en diferentes habitaciones durante 6 horas al día puede añadir más de 115 € al mes solo en calefacción puntual.",
+          "El termostato mecánico corta la corriente cuando la estancia se calienta, rebajando el consumo efectivo a un 60%-70% del tiempo total."
+        ]
+      },
+      {
+        "id": "termoventilador-vs-aceite",
+        "heading": "3. Termoventilador vs radiador de aceite vs panel cerámico",
+        "content": "Cada tipo de calefactor responde a una necesidad espacial y temporal concreta:",
+        "bullets": [
+          "Termoventilador: calienta el aire por convección forzada de forma casi instantánea. Es ideal para calentar el baño durante 15 minutos antes de ducharse, pero resulta muy ineficiente para calentar estancias grandes porque reseca el aire y el calor se disipa en cuanto se apaga.",
+          "Radiador de aceite: calienta un fluido térmico mineral que almacena el calor. Tarda más en calentarse, pero proporciona calor homogéneo y silencioso con inercia térmica durante 30-45 minutos tras apagarse.",
+          "Estufa halógena / Infrarrojos: no calienta el aire intermedio, sino directamente los cuerpos y objetos situados en su haz de luz. Muy útil para puestos de trabajo fijos en habitaciones frías o terrazas."
+        ]
+      },
+      {
+        "id": "impacto-potencia-contratada",
+        "heading": "4. Por qué hacen saltar el diferencial o el ICP de la casa",
+        "content": "Los calefactores eléctricos son la causa número uno de cortes por sobrepotencia durante los meses de invierno. En una vivienda habitual con 3,45 kW contratados, conectar un calefactor de 2.000 W mientras funciona la lavadora (2.000 W) o la vitrocerámica supera de inmediato el límite del contador inteligente.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Peligro en enchufes y regletas sobrecargadas",
+          "text": "Un calefactor de 2.000 W demanda casi 9 amperios de intensidad continua. Nunca lo conectes a regletas múltiples delgadas ni a ladrones chinos de baja calidad, ya que el calor excesivo funde los contactos y constituye una de las principales causas de incendios domésticos en invierno."
+        },
+        "bullets": [
+          "Conéctalo siempre directamente a tomas de enchufe de pared preparadas para 16 A con toma de tierra reglamentaria.",
+          "Utiliza la posición de potencia intermedia (1.000 W) si tienes otros electrodomésticos en marcha."
+        ]
+      },
+      {
+        "id": "alternativas-eficientes",
+        "heading": "5. Alternativas eficientes: bomba de calor y emisores con termostato PID",
+        "content": "Si necesitas calentar una habitación de forma habitual durante varias horas al día, los calefactores resistivos son la peor opción económica. La bomba de calor (el modo calefacción de tu aire acondicionado split) produce entre 3 y 4 veces más calor por cada euro gastado en electricidad.",
+        "bullets": [
+          "La bomba de calor en modo invierno genera 3.500 W de calor consumiendo apenas 900 W eléctricos.",
+          "Los emisores térmicos modernos con termostato electrónico PID y cronoprogramador semanal evitan sobrecalentar la estancia más allá de la consigna óptima de 20 °C a 21 °C."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre el consumo de estufas eléctricas.",
+        "bullets": [
+          "¿Cuánto gasta un calefactor de 2.000 W puesto toda la noche? Si funciona de forma continuada durante 8 horas, consumirá 16 kWh, lo que cuesta unos 2,56 € por noche (más de 75 € al mes solo por un dormitorio).",
+          "¿Existen realmente los radiadores de bajo consumo? No existen milagros resistivos. Se les llama 'de bajo consumo' porque cuentan con termostatos electrónicos de precisión que apagan la resistencia cuando alcanzan la consigna, pero cada vatio de calor generado cuesta exactamente lo mismo.",
+          "¿Qué es más económico, gas natural o calefactor eléctrico? El gas natural o la aerotermia son sustancialmente más baratos por kWh útil de calor que cualquier calefactor eléctrico tradicional."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo calefactor eléctrico por hora?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto consume un calefactor eléctrico de 2.000 W a la hora?",
+        "a": "Consume exactamente 2 kWh por cada hora a máxima potencia. A un precio medio de la luz de 0,16 €/kWh, cuesta aproximadamente 0,32 € cada hora encendido."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué tipo de estufa eléctrica gasta menos luz?",
+        "a": "Ninguna resistencia gasta menos por unidad de calor. Sin embargo, las estufas de infrarrojos o paneles cerámicos permiten calentar zonas focalizadas con menor potencia nominal (600 - 800 W), logrando menor gasto total."
+      },
+      {
+        "q": "¿Qué calienta más barato una habitación, un split de aire en calor o un radiador de aceite?",
+        "a": "El split de aire en modo bomba de calor es casi cuatro veces más económico que el radiador de aceite, ya que aporta 4 kWh de calor por cada 1 kWh eléctrico consumido."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "cuanto-consume-una-secadora",
     "slug": "cuanto-consume-una-secadora",
-    "keyword": "cuánto consume una secadora",
-    "title": "Cuánto consume una secadora y cómo usarla mejor",
-    "metaTitle": "Consumo de una secadora: gasto y consejos | tuLuz",
-    "metaDescription": "Conoce el consumo de una secadora, qué factores lo cambian y cómo optimizar cada ciclo.",
+    "keyword": "cuanto consume una secadora",
+    "title": "Cuánto consume una secadora de ropa: bomba de calor vs condensación vs evacuación y coste por ciclo",
+    "metaTitle": "Cuánto Consume una Secadora de Ropa: Guía y Coste | tuLuz",
+    "metaDescription": "Calcula cuánto gasta tu secadora por ciclo y al año. Comparativa técnica de secadoras de bomba de calor frente a condensación convencional y consejos de uso.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3440,82 +4729,174 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Conoce el consumo de una secadora, qué factores lo cambian y cómo optimizar cada ciclo.",
+    "excerpt": "La secadora es uno de los electrodomésticos más prácticos del invierno, pero también uno de los que mayor potencia demanda de la red. Aprende a calcular su coste exacto por colada, descubre cuánto ahorra la tecnología de bomba de calor y amortiza tu equipo rápidamente.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto consume una secadora"
+        "id": "tecnologias-secado",
+        "title": "1. Las 3 tecnologías de secado: evacuación, condensación y bomba de calor"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-consumo-ciclo",
+        "title": "2. Tabla comparativa de consumo en kWh y coste en euros por colada"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "ahorro-bomba-calor",
+        "title": "3. Por qué la bomba de calor ahorra hasta un 70% de luz"
+      },
+      {
+        "id": "etiqueta-energetica-secadoras",
+        "title": "4. Etiquetado energético: amortización del sobrecoste de compra"
+      },
+      {
+        "id": "habitos-centrifugado",
+        "title": "5. El secreto del centrifugado previo en lavadora y mantenimiento del filtro"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto consume una secadora",
-        "content": "Comprender a fondo **cuánto consume una secadora** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nConoce el consumo de una secadora, qué factores lo cambian y cómo optimizar cada ciclo.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cuánto consume una secadora, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "tecnologias-secado",
+        "heading": "1. Las 3 tecnologías de secado: evacuación, condensación y bomba de calor",
+        "content": "Para comprender el gasto de una secadora es imprescindible conocer su tecnología interna. Existen tres familias muy diferenciadas en el mercado español:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Secadoras de evacuación (antiguas): calientan el aire con resistencias eléctricas de 2.500 W y expulsan el aire húmedo al exterior mediante un tubo flexible. Son las más baratas de adquirir pero las más ineficientes del mercado.",
+          "Secadoras de condensación por resistencia: calientan el aire con resistencias eléctricas pero condensan el vapor de agua en un depósito extraíble interno sin necesidad de tubo exterior. Tienen un consumo elevado (clase B o C).",
+          "Secadoras de bomba de calor (modernas): no utilizan resistencias eléctricas tradicionales; incorporan un circuito frigorífico termodinámico que recicla y reutiliza el calor del aire en un bucle cerrado, alcanzando calificaciones energéticas A++ o A+++."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cuánto consume una secadora y cómo usarla mejor** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-consumo-ciclo",
+        "heading": "2. Tabla comparativa de consumo en kWh y coste en euros por colada",
+        "content": "A continuación detallamos el consumo homologado para una carga estándar de 8 kg de ropa de algodón con centrifugado previo a 1.000 rpm:",
+        "table": {
+          "headers": [
+            "Tecnología de Secadora",
+            "Clase Energética",
+            "Consumo por ciclo (kWh)",
+            "Coste por secado (€ a 0,16 €/kWh)",
+            "Consumo anual (160 ciclos)",
+            "Gasto anual en electricidad (€)"
+          ],
+          "rows": [
+            [
+              "Secadora de Evacuación",
+              "Clase C",
+              "4,80 kWh",
+              "0,77 € / ciclo",
+              "768 kWh / año",
+              "122,88 € / año"
+            ],
+            [
+              "Secadora de Condensación convencional",
+              "Clase B",
+              "4,20 kWh",
+              "0,67 € / ciclo",
+              "672 kWh / año",
+              "107,52 € / año"
+            ],
+            [
+              "Bomba de calor (modelo básico)",
+              "Clase A+",
+              "2,10 kWh",
+              "0,34 € / ciclo",
+              "336 kWh / año",
+              "53,76 € / año"
+            ],
+            [
+              "Bomba de calor (alta eficiencia)",
+              "Clase A++",
+              "1,75 kWh",
+              "0,28 € / ciclo",
+              "280 kWh / año",
+              "44,80 € / año"
+            ],
+            [
+              "Bomba de calor (máxima eficiencia Inverter)",
+              "Clase A+++",
+              "1,35 kWh",
+              "0,22 € / ciclo",
+              "216 kWh / año",
+              "34,56 € / año"
+            ]
+          ]
+        },
+        "bullets": [
+          "Una secadora de bomba de calor A+++ gasta tres veces y media menos electricidad en cada ciclo que una secadora de evacuación.",
+          "Para una familia que realiza 3 a 4 secadoras a la semana, el ahorro directo supera los 80 € al año en electricidad."
+        ]
+      },
+      {
+        "id": "ahorro-bomba-calor",
+        "heading": "3. Por qué la bomba de calor ahorra hasta un 70% de luz",
+        "content": "Mientras que una secadora convencional genera calor continuo quemando electricidad con resistencias y luego desecha ese calor para condensar el agua, la secadora de bomba de calor aprovecha el cambio de estado del refrigerante. El calor liberado en la condensación se transfiere nuevamente al aire de secado sin volver a demandar potencia de la red. Además, al secar a menor temperatura (unos 50 °C frente a los 75 °C de las de resistencia), cuida mucho mejor las fibras textiles y evita que la ropa encoja.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Tiempo de ciclo vs consumo",
+          "text": "Las secadoras de bomba de calor tardan algo más de tiempo en completar el ciclo (unas 2 h 15 min frente a 1 h 30 min de las de resistencia), pero como su motor solo demanda entre 600 y 900 W de potencia, el consumo total acumulado de kWh es un 65% inferior."
+        },
+        "bullets": [
+          "Su menor potencia nominal (800 W vs 2.500 W) evita que salte el limitador de potencia si la pones a la vez que el horno o la lavadora.",
+          "No calienta ni humedece la estancia o cuarto de lavado en el que está instalada."
+        ]
+      },
+      {
+        "id": "etiqueta-energetica-secadoras",
+        "heading": "4. Etiquetado energético: amortización del sobrecoste de compra",
+        "content": "Una secadora de condensación tradicional puede costar unos 320 €, mientras que un modelo de bomba de calor de clase A+++ ronda los 550 €. La diferencia de precio de compra (unos 230 €) se amortiza en menos de 3 años de uso familiar ordinario, convirtiéndose en un ahorro neto durante los siguientes 8 a 12 años de vida útil del electrodoméstico.",
+        "bullets": [
+          "Revisa siempre la ficha técnica EPREL escaneando el código QR de la etiqueta.",
+          "Verifica si el condensador dispone de sistema de autolimpieza (SelfCleaning Condenser), que previene que las pelusas bloqueen el intercambio térmico con los años."
+        ]
+      },
+      {
+        "id": "habitos-centrifugado",
+        "heading": "5. El secreto del centrifugado previo en lavadora y mantenimiento del filtro",
+        "content": "El consumo de la secadora está directamente ligado a la cantidad de agua residual que retiene la ropa al salir de la lavadora.",
+        "bullets": [
+          "Centrifugar a 1.200 o 1.400 rpm en la lavadora: extraer el agua mediante giro mecánico consume diez veces menos electricidad que evaporarla térmicamente en la secadora, reduciendo el tiempo de secado en 30 minutos.",
+          "Limpia el filtro de pelusas tras cada uso: un filtro saturado reduce el caudal de aire y alarga el ciclo hasta un 20% más.",
+          "No sobrecargues el tambor: la ropa apelmazada no permite el paso del flujo de aire y genera arrugas profundas que exigirán planchado posterior."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre el uso y eficiencia de secadoras.",
+        "bullets": [
+          "¿Cuánto cuesta poner una secadora en horario valle? Con una secadora de bomba de calor en horario valle (00:00 a 08:00 o fines de semana a 0,10 €/kWh), un ciclo completo cuesta apenas 0,14 € a 0,18 €.",
+          "¿Qué gasta más, una lavadora-secadora o dos aparatos independientes? Los aparatos independientes son sensiblemente más eficientes. Muchas lavadoras-secadoras integradas utilizan agua de la red para condensar el vapor durante el secado, disparando tanto la factura de la luz como la del agua.",
+          "¿Se puede poner la secadora encima de la lavadora? Sí, mediante un kit de unión en columna homologado que garantiza la estabilidad estructural durante los ciclos de centrifugado."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cuánto consume una secadora?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto cuesta poner la secadora de ropa en España?",
+        "a": "Entre 0,22 € y 0,35 € por ciclo en una secadora moderna de bomba de calor, y entre 0,65 € y 0,85 € por ciclo en una secadora antigua de evacuación o condensación tradicional."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué diferencia hay entre secadora de condensación y de bomba de calor?",
+        "a": "Ambas condensan el agua en un depósito, pero la de condensación tradicional calienta con resistencias eléctricas de alto consumo (2.500 W) y la de bomba de calor utiliza un compresor eficiente (800 W) que recicla el calor, consumiendo hasta un 70% menos."
+      },
+      {
+        "q": "¿Cómo reducir al máximo el gasto de la secadora?",
+        "a": "Centrifugando la colada en la lavadora a 1.200 rpm o más antes de meterla, limpiando el filtro de pelusas en cada ciclo y programándola en horas valle de tu tarifa."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "cuanto-consume-un-termo-electrico",
     "slug": "cuanto-consume-un-termo-electrico",
-    "keyword": "cuánto consume un termo eléctrico",
-    "title": "Cuánto consume un termo eléctrico al mes",
-    "metaTitle": "Consumo de termo eléctrico al mes | tuLuz",
-    "metaDescription": "Calcula el gasto de un termo eléctrico y revisa temperatura, capacidad y horarios de funcionamiento.",
+    "keyword": "cuanto consume un termo electrico",
+    "title": "Cuánto consume un termo eléctrico: cálculo de gasto mensual, termostatos y programadores horarios",
+    "metaTitle": "Cuánto Consume un Termo Eléctrico al Mes | tuLuz",
+    "metaDescription": "Calcula el consumo de tu termo eléctrico en kWh y euros. ¿Conviene dejarlo encendido o apagarlo? Claves para ahorrar hasta 150 € al año en agua caliente.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3523,82 +4904,165 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Calcula el gasto de un termo eléctrico y revisa temperatura, capacidad y horarios de funcionamiento.",
+    "excerpt": "El termo eléctrico de agua caliente sanitaria (ACS) es el aparato individual que más energía consume en un hogar sin calefacción centralizada, devorando más de un cuarto del recibo. Aprende cuánto cuesta calentar el agua y resuelve el eterno debate: ¿apagarlo o mantenerlo encendido 24h?",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto consume un termo eléctrico"
+        "id": "gasto-mensual-acs",
+        "title": "1. Radiografía del gasto de un termo eléctrico en España"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-litros-consumo",
+        "title": "2. Tabla de consumo mensual y anual según capacidad (50L, 80L, 100L)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "eterno-debate-encendido",
+        "title": "3. El gran dilema: ¿es mejor dejarlo encendido o apagarlo con programador?"
+      },
+      {
+        "id": "temperatura-legionela",
+        "title": "4. Ajuste óptimo del termostato (55 °C a 60 °C) y prevención de legionela"
+      },
+      {
+        "id": "medidas-ahorro-termo",
+        "title": "5. Trucos técnicos para recortar hasta un 35% en agua caliente"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto consume un termo eléctrico",
-        "content": "Comprender a fondo **cuánto consume un termo eléctrico** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nCalcula el gasto de un termo eléctrico y revisa temperatura, capacidad y horarios de funcionamiento.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cuánto consume un termo eléctrico, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "gasto-mensual-acs",
+        "heading": "1. Radiografía del gasto de un termo eléctrico en España",
+        "content": "Calentar agua mediante resistencias eléctricas requiere una ingente cantidad de energía térmica debido al elevado calor específico del agua (4.186 julios por cada kilogramo y grado centígrado). En un hogar medio de 3 personas, el termo eléctrico consume entre 1.400 y 2.200 kWh al año, lo que representa entre el 22% y el 30% del importe total de las facturas de la luz.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Un termo de 80 litros suele albergar una resistencia de 1.500 W a 2.000 W de potencia.",
+          "Su consumo no se debe solo al agua caliente que se gasta en duchas y fregadero, sino a las pérdidas térmicas estáticas continuas que se escapan por las paredes del calderín al enfriarse el agua almacenada."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cuánto consume un termo eléctrico al mes** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-litros-consumo",
+        "heading": "2. Tabla de consumo mensual y anual según capacidad (50L, 80L, 100L)",
+        "content": "A continuación desglosamos el consumo energético medio estimado según el volumen del calderín y el número de duchas diarias en la vivienda:",
+        "table": {
+          "headers": [
+            "Capacidad del Termo",
+            "Personas Recomendadas",
+            "Consumo Medio Diario (kWh)",
+            "Consumo Mensual (kWh)",
+            "Coste Mensual Estimado (€ a 0,16 €/kWh)",
+            "Coste Anual (€)"
+          ],
+          "rows": [
+            [
+              "Termo 50 Litros",
+              "1 - 2 personas",
+              "3,5 - 4,8 kWh",
+              "105 - 144 kWh",
+              "16,80 € - 23,04 €",
+              "201 € - 276 €"
+            ],
+            [
+              "Termo 80 Litros",
+              "2 - 3 personas",
+              "5,2 - 7,0 kWh",
+              "156 - 210 kWh",
+              "24,96 € - 33,60 €",
+              "299 € - 403 €"
+            ],
+            [
+              "Termo 100 Litros",
+              "3 - 4 personas",
+              "6,8 - 9,2 kWh",
+              "204 - 276 kWh",
+              "32,64 € - 44,16 €",
+              "391 € - 530 €"
+            ],
+            [
+              "Termo 150 Litros",
+              "4 - 5 personas",
+              "9,5 - 13,0 kWh",
+              "285 - 390 kWh",
+              "45,60 € - 62,40 €",
+              "547 € - 748 €"
+            ]
+          ]
+        },
+        "bullets": [
+          "Cada ducha templada de 6 a 8 minutos consume entre 25 y 35 litros de agua caliente a unos 40 °C, lo que equivale a unos 1,2 a 1,6 kWh eléctricos (unos 0,22 € por ducha).",
+          "Las pérdidas por dispersión térmica estática en un termo mal aislado suponen entre 1 y 2 kWh diarios adicionales aunque nadie abra un grifo en todo el día."
+        ]
+      },
+      {
+        "id": "eterno-debate-encendido",
+        "heading": "3. El gran dilema: ¿es mejor dejarlo encendido o apagarlo con programador?",
+        "content": "Existe un encendido debate sobre si apagar el termo durante el día ahorra energía o si cuesta más calentar el agua desde cero. Los ensayos de laboratorio del IDAE y de los colegios de ingenieros han demostrado empíricamente que apagar el termo cuando no se necesita genera un ahorro neto de entre un 15% y un 25%. Las pérdidas estáticas son proporcionales a la diferencia de temperatura entre el agua y la estancia; mantener el agua a 70 °C todo el día genera una fuga continua de calor mucho mayor que dejarla enfriar y encender el termo 2 o 3 horas antes del horario habitual de duchas.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "La solución definitiva: enchufe inteligente o programador horario",
+          "text": "Instalar un programador digital o enchufe inteligente Wi-Fi de 12 € para que el termo caliente el agua únicamente de 05:00 a 08:00 de la mañana (en periodo valle muy barato) permite tener el agua lista para las duchas matinales sin gastar un solo céntimo en horas punta caras."
+        },
+        "bullets": [
+          "Si todos los miembros de la familia se duchan a primera hora de la mañana o por la noche, programar el termo para encenderse 2,5 horas antes del uso es la medida de ahorro más rentable de todo el hogar.",
+          "Si hay consumo disperso de agua caliente durante las 24 horas del día por personas mayores o bebés, conviene mantenerlo encendido pero a una temperatura de consigna moderada."
+        ]
+      },
+      {
+        "id": "temperatura-legionela",
+        "heading": "4. Ajuste óptimo del termostato (55 °C a 60 °C) y prevención de legionela",
+        "content": "Muchos termos vienen regulados de fábrica a su máxima potencia (75 °C o 80 °C). Calentar el agua a tanta temperatura es un error que acelera la formación de sarro y cal en la resistencia y dispara las pérdidas estáticas. Sin embargo, fijar el termostato por debajo de 50 °C entraña el riesgo de proliferación de la bacteria Legionella pneumophila.",
+        "bullets": [
+          "Temperatura óptima de trabajo: entre 55 °C y 60 °C. Garantiza agua caliente suficiente al mezclarla con agua fría en el grifo sin quemar la piel.",
+          "Ciclo antilegionela: los termos inteligentes modernos incorporan una función automática que eleva la temperatura a 65 °C una vez cada semana durante 30 minutos para esterilizar el calderín."
+        ]
+      },
+      {
+        "id": "medidas-ahorro-termo",
+        "heading": "5. Trucos técnicos para recortar hasta un 35% en agua caliente",
+        "content": "Medidas complementarias muy sencillas que multiplican el rendimiento de tu termo eléctrico:",
+        "bullets": [
+          "Instala aireadores o reductores de caudal en alcachofas de ducha y grifos: reducen el consumo de agua caliente de 14 litros/minuto a 7 litros/minuto sin perder presión.",
+          "Aísla las tuberías de salida de agua caliente con fundas de espuma elastomérica coquilla para evitar que el agua se enfríe en su recorrido por las paredes.",
+          "Revisa el ánodo de magnesio cada 2 años: en zonas de agua dura (Valencia, Baleares, Murcia, costa mediterránea), la acumulación de cal en la resistencia actúa como aislante térmico y hace que el termo tarde el doble en calentar."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre el uso eficiente de termos eléctricos.",
+        "bullets": [
+          "¿Cuánto tarda un termo de 80 litros en calentar el agua desde fría? Un termo de 1.500 W tarda aproximadamente entre 2 horas y 2 horas y media en calentar 80 litros de agua desde 15 °C hasta 60 °C.",
+          "¿Conviene desenchufar el termo si me voy de vacaciones un fin de semana? Para 2 o 3 días el ahorro es modesto, pero para ausencias superiores a 4 días sí es muy recomendable desconectarlo por completo.",
+          "¿Qué es un termo con bomba de calor o aerotermo? Es un equipo que sustituye la resistencia tradicional por un pequeño compresor termodinámico de aerotermia, reduciendo el consumo eléctrico de ACS en más de un 70%."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cuánto consume un termo eléctrico?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto consume un termo eléctrico al mes en euros?",
+        "a": "Un termo de 80 litros para una vivienda de 2 a 3 personas consume unos 160 a 210 kWh al mes, lo que supone un gasto aproximado de entre 25 € y 34 € mensuales en la factura de la luz."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué gasta más, dejar el termo encendido o poner un reloj programador?",
+        "a": "Poner un temporizador o programador ahorra entre un 15% y un 25% de electricidad al calentar el agua justo antes de las horas de uso y evitar las pérdidas continuas de calor a lo largo de todo el día."
+      },
+      {
+        "q": "¿A qué temperatura debe estar regulado el termo eléctrico?",
+        "a": "Entre 55 °C y 60 °C para conseguir el mejor equilibrio entre ahorro energético, confort y total seguridad biológica contra la legionela."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "que-hacer-si-salta-el-diferencial",
     "slug": "que-hacer-si-salta-el-diferencial",
-    "keyword": "qué hacer si salta el diferencial",
-    "title": "Qué hacer si salta el diferencial de casa",
-    "metaTitle": "Salta el diferencial: causas y qué hacer | tuLuz",
-    "metaDescription": "Identifica causas habituales de un salto del diferencial y cuándo debes contactar con un profesional.",
+    "keyword": "que hacer si salta el diferencial",
+    "title": "Qué hacer si salta el diferencial de la luz: cómo aislar la derivación y cuándo llamar al electricista",
+    "metaTitle": "Qué Hacer si Salta el Diferencial de la Luz | Guía tuLuz",
+    "metaDescription": "Guía paso a paso para localizar qué avería o electrodoméstico hace saltar el diferencial (ID). Protocolo de descarte, derivaciones a tierra y diferenciales superinmunizados.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3606,82 +5070,157 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Identifica causas habituales de un salto del diferencial y cuándo debes contactar con un profesional.",
+    "excerpt": "Cuando la palanca del interruptor diferencial se baja y no se sostiene arriba, tu vivienda te está avisando de una fuga de corriente hacia la toma de tierra. Aprende el método de descarte profesional para encontrar el aparato culpable en 5 minutos sin peligro.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué hacer si salta el diferencial"
+        "id": "que-es-el-diferencial",
+        "title": "1. Qué es el interruptor diferencial y por qué protege tu vida"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "diferencia-diferencial-icp",
+        "title": "2. Diferencia entre disparo del diferencial vs magnetotérmico o ICP"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "metodo-descarte",
+        "title": "3. El método de descarte de los 5 pasos para localizar la fuga"
+      },
+      {
+        "id": "electrodomesticos-culpables",
+        "title": "4. Los sospechosos habituales: electrodomésticos con resistencia y humedad"
+      },
+      {
+        "id": "diferenciales-superinmunizados",
+        "title": "5. Disparos intempestivos o aleatorios: el diferencial superinmunizado"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué hacer si salta el diferencial",
-        "content": "Comprender a fondo **qué hacer si salta el diferencial** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nIdentifica causas habituales de un salto del diferencial y cuándo debes contactar con un profesional.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a qué hacer si salta el diferencial, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "que-es-el-diferencial",
+        "heading": "1. Qué es el interruptor diferencial y por qué protege tu vida",
+        "content": "El Interruptor Diferencial (ID) es el dispositivo de seguridad más crítico del cuadro eléctrico de tu vivienda. Se reconoce fácilmente porque tiene una palanca y un botón de prueba marcado con la letra 'T' (Test). Su función no es proteger los cables ni los aparatos, sino proteger a las personas frente a electrocuciones por contacto directo o indirecto. Mide de forma permanente la diferencia entre la corriente que entra por la fase y la que regresa por el neutro; si detecta una fuga a tierra superior a 30 miliamperios (0,03 A), corta el suministro en menos de 50 milisegundos para salvar vidas.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Si tocas la carcasa metálica de un electrodoméstico derivado, el diferencial salta antes de que la corriente atraviese tu corazón.",
+          "El Reglamento Electrotécnico de Baja Tensión (REBT) exige que todos los circuitos de una vivienda estén protegidos por diferenciales de alta sensibilidad (30 mA)."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Qué hacer si salta el diferencial de casa** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "diferencia-diferencial-icp",
+        "heading": "2. Diferencia entre disparo del diferencial vs magnetotérmico o ICP",
+        "content": "Antes de empezar a manipular el cuadro, es imprescindible identificar qué palanca exacta se ha bajado:",
+        "table": {
+          "headers": [
+            "Dispositivo Disparado",
+            "Aspecto en el Cuadro",
+            "Causa Real del Corte",
+            "Acción Inmediata"
+          ],
+          "rows": [
+            [
+              "Interruptor Diferencial (ID)",
+              "Lleva el botón 'T' de Test al lado de la palanca",
+              "Fuga de corriente a tierra (humedad, cable pelado, resistencia rota)",
+              "Aplicar protocolo de descarte de circuitos"
+            ],
+            [
+              "Magnetotérmico individual (PIA)",
+              "Palancas estrechas rotuladas (C1, C2, C3, etc.)",
+              "Cortocircuito o sobrecarga en ese circuito concreto",
+              "Desconectar los aparatos de esa línea específica"
+            ],
+            [
+              "Interruptor General (IGA)",
+              "Palanca doble más ancha a la izquierda",
+              "Sobrecarga general grave en toda la vivienda",
+              "Apagar varios electrodomésticos de golpe"
+            ],
+            [
+              "Contador digital exterior (ICP)",
+              "No hay palancas bajadas en el cuadro de casa",
+              "Exceso de potencia contratada (demasiados kW en uso)",
+              "Bajar el IGA 10 segundos para rearmar el contador"
+            ]
+          ]
+        },
+        "bullets": [
+          "Si se ha bajado una palanca sin botón 'T', no ha saltado el diferencial, sino un magnetotérmico por sobrecarga o cortocircuito.",
+          "Si se ha bajado la palanca que tiene el botón 'T', se trata inequívocamente de una derivación a tierra."
+        ]
+      },
+      {
+        "id": "metodo-descarte",
+        "heading": "3. El método de descarte de los 5 pasos para localizar la fuga",
+        "content": "Aplica este protocolo sistemático para dar con el circuito averiado:",
+        "bullets": [
+          "Paso 1: Baja todas las palancas de los magnetotérmicos pequeños (PIAs) situados a la derecha del diferencial. Deja todas las líneas de la casa desconectadas.",
+          "Paso 2: Sube la palanca del interruptor diferencial. Ahora debería sostenerse arriba sin problemas al no haber ninguna carga conectada.",
+          "Paso 3: Ve subiendo los magnetotérmicos pequeños uno a uno, lentamente, dejando 2 segundos entre cada uno.",
+          "Paso 4: En el momento en que subas una palanca concreta y el diferencial salte de golpe hacia abajo, habrás localizado la línea exacta causante de la avería (por ejemplo, el circuito de enchufes de cocina C5 o el de alumbrado C1).",
+          "Paso 5: Vuelve a bajar esa palanca defectuosa, sube el diferencial y el resto de palancas sanas. Tu casa recuperará la luz en el 90% de estancias mientras investigas los aparatos de la línea afectada."
+        ]
+      },
+      {
+        "id": "electrodomesticos-culpables",
+        "heading": "4. Los sospechosos habituales: electrodomésticos con resistencia y humedad",
+        "content": "En más del 80% de las ocasiones, el culpable es un electrodoméstico que combina resistencias eléctricas de calentamiento con presencia de agua o vapor.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Los aparatos que más hacen saltar el diferencial",
+          "text": "1. El termo eléctrico: la vaina de la resistencia sumergida se perfora por la cal y el agua entra en contacto con el filamento eléctrico.\n2. La lavadora o lavavajillas: fuga interna de agua que moja el motor o la bomba de desagüe.\n3. La plancha de vapor o cafetera: condensación interna sobre los bornes.\n4. La iluminación exterior de terrazas o jardines: filtración de agua de lluvia en una caja de empalmes o foco estanco deteriorado."
+        },
+        "bullets": [
+          "Desenchufa físicamente todos los aparatos de la línea localizada (no basta con apagarlos con el interruptor; hay que desconectar la clavija de la pared).",
+          "Vuelve a subir la palanca del circuito y ve enchufando aparato por aparato hasta que salte el causante."
+        ]
+      },
+      {
+        "id": "diferenciales-superinmunizados",
+        "heading": "5. Disparos intempestivos o aleatorios: el diferencial superinmunizado",
+        "content": "Si el diferencial salta a veces sin motivo aparente (de madrugada, cuando no hay nadie en casa o cuando arranca el ascensor del edificio), no suele deberse a un electrodoméstico roto, sino a 'disparos intempestivos' por corrientes parásitas de alta frecuencia (armónicos) inyectadas por fuentes de alimentación electrónicas (ordenadores, variadores, cargadores y luminarias LED).",
+        "bullets": [
+          "Los diferenciales tipo AC convencionales son sensibles a ruidos parásitos de la red pública.",
+          "La solución técnica definitiva es sustituir el diferencial antiguo por un diferencial superinmunizado (Tipo F o Tipo A superinmunizado), que filtra los armónicos y evita disparos falsos sin comprometer la seguridad humana."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre averías del diferencial eléctrico.",
+        "bullets": [
+          "¿Cada cuánto tiempo hay que pulsar el botón 'T' de test? La normativa y los fabricantes recomiendan pulsarlo una vez al mes. Si al pulsarlo no salta la palanca de inmediato, el diferencial está estropeado internamente y debe sustituirse con urgencia.",
+          "¿Qué pasa si el diferencial no sube ni siquiera con todos los magnetotérmicos bajados? Si con todas las palancas de la casa bajadas el diferencial sigue sin sostenerse arriba, el propio mecanismo del diferencial se ha roto o existe una derivación grave directa en los peines de conexión del cuadro.",
+          "¿Cuánto cuesta cambiar un diferencial averiado? El precio del componente oscila entre 35 € (estándar tipo A) y 90 € (superinmunizado), más la mano de obra del electricista autorizado (unos 50 € - 80 €)."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con qué hacer si salta el diferencial?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Por qué salta el diferencial pero no los magnetotérmicos?",
+        "a": "Porque los magnetotérmicos solo saltan por sobrecalentamiento de cables o cortocircuito entre fase y neutro, mientras que el diferencial salta exclusivamente por fugas de corriente hacia la toma de tierra para proteger a las personas."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo saber qué aparato hace saltar el diferencial?",
+        "a": "Baja todos los automáticos pequeños (PIAs), sube el diferencial y ve subiendo los automáticos uno a uno. El que tire el diferencial señalará la habitación o circuito donde está el aparato defectuoso."
+      },
+      {
+        "q": "¿Qué es un diferencial superinmunizado y cuándo instalarlo?",
+        "a": "Es un diferencial avanzado con filtros electrónicos que evita que salte la luz de forma aleatoria por tormentas o armónicos de ordenadores y fuentes de alimentación LED sin haber una avería real."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "diferencia-icp-y-diferencial",
     "slug": "diferencia-icp-y-diferencial",
-    "keyword": "diferencia ICP y diferencial",
-    "title": "Diferencia entre ICP, magnetotérmico y diferencial",
-    "metaTitle": "ICP, magnetotérmico y diferencial: diferencias | tuLuz",
-    "metaDescription": "Entiende qué protege cada elemento del cuadro eléctrico y qué significa cuando se dispara.",
-    "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "keyword": "diferencia icp y diferencial",
+    "title": "Diferencia entre ICP y diferencial: funciones, aspecto, disparos y cuadro eléctrico",
+    "metaTitle": "Diferencia entre ICP y Diferencial | Guía tuLuz",
+    "metaDescription": "Conoce las diferencias técnicas entre el Interruptor de Control de Potencia (ICP) y el Interruptor Diferencial (ID). Funciones, cómo distinguirlos en el cuadro y qué hacer si saltan.",
+    "category": "Mercado y Tarifas",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3689,82 +5228,161 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Entiende qué protege cada elemento del cuadro eléctrico y qué significa cuando se dispara.",
+    "excerpt": "'Ha saltado el diferencial' y 'ha saltado el ICP' son dos frases que suelen confundirse coloquialmente, pero corresponden a problemas eléctricos radicalmente distintos con soluciones completamente diferentes. Conoce la función de cada uno para no perder tiempo en el cuadro.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre diferencia ICP y diferencial"
+        "id": "resumen-diferencias",
+        "title": "1. Resumen directo: qué vigila cada interruptor"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-comparativa-icp-id",
+        "title": "2. Tabla comparativa: ICP vs Diferencial vs Magnetotérmicos (PIAs)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "como-identificarlos-cuadro",
+        "title": "3. Cómo identificarlos visualmente en tu cuadro general de mando y protección"
+      },
+      {
+        "id": "que-hacer-en-cada-caso",
+        "title": "4. Protocolo de actuación según cuál de los dos haya cortado la luz"
+      },
+      {
+        "id": "icp-en-contadores-digitales",
+        "title": "5. Dónde está el ICP hoy en día: la telegestión del contador inteligente"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre diferencia ICP y diferencial",
-        "content": "Comprender a fondo **diferencia ICP y diferencial** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nEntiende qué protege cada elemento del cuadro eléctrico y qué significa cuando se dispara.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a diferencia ICP y diferencial, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "resumen-diferencias",
+        "heading": "1. Resumen directo: qué vigila cada interruptor",
+        "content": "La diferencia fundamental radica en el objetivo que persigue cada dispositivo: el Interruptor de Control de Potencia (ICP) controla la cantidad de energía simultánea que consumes para que no superes los kilovatios que tienes contratados por contrato comercial con la eléctrica, mientras que el Interruptor Diferencial (ID) es un dispositivo de protección que vigila la seguridad humana frente a fugas de corriente a tierra para evitar que alguien sufra una descarga eléctrica letal.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El ICP salta por sobrecarga comercial (demasiados electrodomésticos encendidos a la vez).",
+          "El Diferencial salta por defecto de aislamiento (un cable pelado, una resistencia en contacto con agua o una persona tocando un elemento con tensión)."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Diferencia entre ICP, magnetotérmico y diferencial** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-comparativa-icp-id",
+        "heading": "2. Tabla comparativa: ICP vs Diferencial vs Magnetotérmicos (PIAs)",
+        "content": "Para tener una visión global del Cuadro General de Mando y Protección (CGMP) de tu vivienda, observa este cuadro comparativo:",
+        "table": {
+          "headers": [
+            "Característica",
+            "ICP (Control de Potencia)",
+            "ID (Interruptor Diferencial)",
+            "PIA (Pequeño Magnetotérmico)"
+          ],
+          "rows": [
+            [
+              "Función primordial",
+              "Limitar la potencia máxima simultánea en kW contratados",
+              "Proteger a las personas contra descargas eléctricas por derivación a tierra",
+              "Proteger los cables de cada circuito contra cortocircuitos y sobrecargas"
+            ],
+            [
+              "¿Lleva botón de Test?",
+              "No",
+              "Sí (botón marcado con 'T')",
+              "No"
+            ],
+            [
+              "Unidad de medida",
+              "Amperios térmicos (15A = 3,45kW, 20A = 4,6kW)",
+              "Sensibilidad en miliamperios (30 mA doméstico)",
+              "Amperios nominales (10A, 16A, 20A, 25A)"
+            ],
+            [
+              "Motivo de disparo",
+              "Conectar demasiados aparatos a la vez",
+              "Fuga de corriente a tierra en un aparato o humedad",
+              "Cortocircuito entre cables o exceso de aparatos en esa línea concreta"
+            ],
+            [
+              "¿Corta toda la casa?",
+              "Sí (corte general)",
+              "Sí (a todos los circuitos que cuelgan de él)",
+              "No (solo corta su línea: luz, enchufes o cocina)"
+            ]
+          ]
+        },
+        "bullets": [
+          "El diferencial no salta si enciendes 10 radiadores a la vez (salvo que alguno esté derivado a tierra); de eso se encarga el ICP o el IGA.",
+          "El ICP no te protegerá si metes los dedos en un enchufe o si el termo tiene una fuga de agua electrificada; de eso te salva exclusivamente el diferencial."
+        ]
+      },
+      {
+        "id": "como-identificarlos-cuadro",
+        "heading": "3. Cómo identificarlos visualmente en tu cuadro general de mando y protección",
+        "content": "Al abrir la tapa plástica del cuadro de luces de tu vivienda verás una hilera de interruptores modulares:",
+        "bullets": [
+          "El Interruptor Diferencial es inconfundible: tiene un botón pulsador pequeño (de color azul, amarillo o blanco) con la letra 'T'. En su carátula suele leerse 'IΔn = 0,03A' o '30mA'.",
+          "Los Pequeños Interruptores Automáticos (PIAs) son más estrechos y están agrupados a la derecha, rotulados habitualmente como Iluminación (10 A), Enchufes (16 A), Horno/Vitro (25 A) o Lavadora (20 A).",
+          "El IGA (Interruptor General Automático) se sitúa a la cabecera y protege toda la instalación frente a sobrecargas globales que superen la potencia máxima del boletín eléctrico."
+        ]
+      },
+      {
+        "id": "que-hacer-en-cada-caso",
+        "heading": "4. Protocolo de actuación según cuál de los dos haya cortado la luz",
+        "content": "Saber cuál ha disparado ahorra tiempo y frustración:",
+        "bullets": [
+          "Si ha saltado el ICP (o el contador te ha cortado por potencia): apaga el último aparato de alto consumo que encendiste (horno, secadora, calefactor) y baja el interruptor IGA 10 segundos para rearmar.",
+          "Si ha saltado el Diferencial (palanca con botón 'T' abajo): no apagues aparatos al azar; baja todos los PIAs, sube el diferencial y ve subiendo los PIAs uno a uno hasta detectar qué circuito tiene la derivación a tierra."
+        ]
+      },
+      {
+        "id": "icp-en-contadores-digitales",
+        "heading": "5. Dónde está el ICP hoy en día: la telegestión del contador inteligente",
+        "content": "En las instalaciones anteriores a 2018, el ICP era un interruptor físico precintado por la distribuidora en un compartimento independiente a la izquierda del cuadro general. Hoy en día, con el despliegue de los contadores digitales de telegestión, el ICP físico del cuadro ha quedado deshabilitado o anulado. La limitación de potencia la ejecuta directamente el contador electrónico exterior mediante un chip interno de medición y un relé de corte automático.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "¿Puedo quitar el viejo ICP de mi cuadro?",
+          "text": "Sí. Si ya tienes contador digital inteligente telegestionado, el antiguo ICP de palanca con precinto de plomo ya no cumple ninguna función técnica. Un instalador autorizado puede retirarlo en una reforma para ganar espacio en el carril DIN del cuadro."
+        },
+        "bullets": [
+          "El contador digital permite contratar potencias normalizadas con saltos de 0,1 kW (por ejemplo, 3,6 kW o 4,2 kW), a diferencia de los rígidos escalones de los antiguos ICP mecánicos.",
+          "El rearme tras disparo de potencia se realiza de forma remota desde el propio cuadro general de la vivienda bajando y subiendo el interruptor general."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes entre los usuarios sobre los elementos del cuadro eléctrico.",
+        "bullets": [
+          "¿Por qué mi cuadro tiene dos diferenciales? En viviendas medianas o grandes (más de 5 circuitos o grado de electrificación elevada) el REBT obliga a instalar un diferencial por cada 5 circuitos para que un fallo en un electrodoméstico no deje toda la casa a oscuras.",
+          "¿El ICP cobra recargos si salta muchas veces? No, la distribuidora no te cobra ninguna multa por que salte el ICP. Simplemente te quedas sin luz hasta que desconectes aparatos y rearme el contador.",
+          "¿Puedo puentear el diferencial para tener luz si no consigo encontrar la avería? Jamás debes puentear ni anular un interruptor diferencial. Dejarías la vivienda y a tu familia completamente expuestos a electrocuciones mortales y riesgo de incendio por cortocircuito a tierra."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con diferencia ICP y diferencial?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuál es la diferencia básica entre ICP y diferencial?",
+        "a": "El ICP limita la potencia máxima contratada para que no gastes más de lo contratado, mientras que el diferencial protege la vida humana cortando la corriente si hay fugas de electricidad a tierra."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo sé si lo que salta en mi casa es el diferencial o el ICP?",
+        "a": "El diferencial tiene un botón de Test marcado con una 'T' al lado de su palanca. Si esa palanca con botón 'T' está bajada, es una fuga a tierra. Si las palancas del cuadro están todas subidas pero no tienes luz, es el contador (ICP) por exceso de potencia."
+      },
+      {
+        "q": "¿Qué pasa si se estropea el botón de Test del diferencial?",
+        "a": "Si al pulsar el botón 'T' el diferencial no salta de inmediato, el mecanismo interno está roto y no protegerá a nadie ante una descarga eléctrica; debe ser sustituido de inmediato por un electricista."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-dar-de-alta-la-luz-en-una-vivienda",
     "slug": "como-dar-de-alta-la-luz-en-una-vivienda",
-    "keyword": "cómo dar de alta la luz en una vivienda",
-    "title": "Cómo dar de alta la luz en una vivienda",
-    "metaTitle": "Dar de alta la luz: requisitos y pasos | tuLuz",
-    "metaDescription": "Qué necesitas para activar un suministro eléctrico nuevo, alquilado o que lleva tiempo inactivo.",
+    "keyword": "como dar de alta la luz en una vivienda",
+    "title": "Cómo dar de alta la luz en una vivienda en 2026: costes regulados, CIE y plazos paso a paso",
+    "metaTitle": "Dar de Alta la Luz en una Vivienda en 2026 | tuLuz",
+    "metaDescription": "Guía completa para dar de alta la luz en una vivienda nueva o de segunda mano. Tabla oficial de derechos de acometida, enganche y acceso, requisitos y plazos reales.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "9 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3772,82 +5390,173 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Qué necesitas para activar un suministro eléctrico nuevo, alquilado o que lleva tiempo inactivo.",
+    "excerpt": "Dar de alta el suministro eléctrico en una casa nueva o reactivar un contador que llevaba meses cortado exige realizar trámites administrativos con la distribuidora y abonar los derechos regulados por ley. Conoce cuánto cuesta exactamente, qué documentos necesitas y cómo tener luz en menos de una semana.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo dar de alta la luz en una vivienda"
+        "id": "alta-nueva-vs-reactivacion",
+        "title": "1. Alta nueva de obra vs reactivación de suministro existente"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "derechos-regulados-tabla",
+        "title": "2. Tabla oficial de costes regulados por la distribuidora (BOE)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "documentacion-necesaria",
+        "title": "3. Documentación obligatoria y el Certificado de Instalación Eléctrica (CIE)"
+      },
+      {
+        "id": "paso-a-paso-tramitacion",
+        "title": "4. Pasos para tramitar el alta con la comercializadora"
+      },
+      {
+        "id": "plazos-instalacion-contador",
+        "title": "5. Plazos legales de colocación del contador y qué hacer ante retrasos"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo dar de alta la luz en una vivienda",
-        "content": "Comprender a fondo **cómo dar de alta la luz en una vivienda** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nQué necesitas para activar un suministro eléctrico nuevo, alquilado o que lleva tiempo inactivo.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo dar de alta la luz en una vivienda, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "alta-nueva-vs-reactivacion",
+        "heading": "1. Alta nueva de obra vs reactivación de suministro existente",
+        "content": "El procedimiento y los costes para disponer de suministro eléctrico varían según el estado previo del inmueble:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Vivienda de obra nueva de primera ocupación: nunca ha tenido suministro eléctrico. Requiere que la promotora haya tramitado la acometida de la finca y que la distribuidora haya asignado el código CUPS definitivo.",
+          "Vivienda de segunda mano con suministro dado de baja hace menos de 3 años: conserva la vigencia de los derechos de extensión, lo que reduce el coste final del trámite en casi la mitad.",
+          "Vivienda con baja superior a 3 años: los derechos de extensión han caducado legalmente y deben volver a abonarse íntegros como si fuera un alta de obra nueva."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo dar de alta la luz en una vivienda** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "derechos-regulados-tabla",
+        "heading": "2. Tabla oficial de costes regulados por la distribuidora (BOE)",
+        "content": "Los costes por dar de alta la luz están fijados por el Real Decreto 1955/2000 y sus actualizaciones en el Boletín Oficial del Estado. Son exactamente iguales en toda España con independencia de la comercializadora que elijas para contratar la tarifa, ya que se abonan en la primera factura y van destinados íntegramente a la empresa distribuidora de la red:",
+        "table": {
+          "headers": [
+            "Concepto Regulado",
+            "Importe por kW solicitado (+ IVA)",
+            "Coste para 3,45 kW (+ IVA)",
+            "Coste para 4,6 kW (+ IVA)",
+            "Finalidad"
+          ],
+          "rows": [
+            [
+              "Derechos de Extensión",
+              "17,37 € / kW",
+              "59,93 €",
+              "79,90 €",
+              "Mantenimiento de la infraestructura de red eléctrica (vigencia 3 años)"
+            ],
+            [
+              "Derechos de Acceso",
+              "19,70 € / kW",
+              "67,97 €",
+              "90,62 €",
+              "Uso de la red de transporte y distribución"
+            ],
+            [
+              "Derechos de Enganche",
+              "9,04 € fijo por trámite",
+              "9,04 €",
+              "9,04 €",
+              "Actuación sobre el contador para conectar la instalación"
+            ],
+            [
+              "Depósito de Garantía (fianza)",
+              "Regulado según tarifa y potencia",
+              "~ 10,00 €",
+              "~ 15,00 €",
+              "Fianza que se devuelve al rescindir el contrato"
+            ],
+            [
+              "TOTAL APROXIMADO (con 21% IVA)",
+              "-",
+              "~ 165,70 €",
+              "~ 217,20 €",
+              "Coste total repercutido en tu primera factura"
+            ]
+          ]
+        },
+        "bullets": [
+          "Si la vivienda estuvo dada de baja hace menos de 3 años, te ahorras los derechos de extensión (unos 60 € - 80 €).",
+          "Ninguna comercializadora seria te cobrará por adelantado por el alta; el importe regulado debe llegar desglosado en el primer recibo oficial de luz."
+        ]
+      },
+      {
+        "id": "documentacion-necesaria",
+        "heading": "3. Documentación obligatoria y el Certificado de Instalación Eléctrica (CIE)",
+        "content": "Para solicitar el alta debes reunir la siguiente documentación técnica y legal:",
+        "bullets": [
+          "Código CUPS (Código Unificado de Punto de Suministro) de 20 o 22 caracteres alfanuméricos.",
+          "DNI, NIE o CIF del titular del contrato y datos de contacto.",
+          "Título de posesión del inmueble: contrato de arrendamiento o escritura pública de compraventa.",
+          "Licencia de primera ocupación o cédula de habitabilidad (según los requisitos de cada Comunidad Autónoma).",
+          "Certificado de Instalación Eléctrica (CIE o Boletín Eléctrico): emitido por un instalador electricista autorizado que certifique que el cableado y el cuadro cumplen el REBT. Tiene una vigencia máxima de 20 años.",
+          "Número de cuenta bancaria (código IBAN) para domiciliar los recibos."
+        ]
+      },
+      {
+        "id": "paso-a-paso-tramitacion",
+        "heading": "4. Pasos para tramitar el alta con la comercializadora",
+        "content": "El cliente no interactúa directamente con la distribuidora para solicitar el servicio; todo se gestiona a través de la comercializadora que elija:",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Consejo tuLuz: elige bien la potencia inicial",
+          "text": "Contrata una potencia ajustada a tus necesidades reales (por ejemplo, 3,45 kW o 4,0 kW). Si pides 6,9 kW 'por si acaso', pagarás más de 100 € extra innecesarios solo en derechos de alta y un término fijo mensual más caro para siempre."
+        },
+        "bullets": [
+          "Paso 1: Contacta con la comercializadora de tu elección y solicita el alta comunicando tu código CUPS.",
+          "Paso 2: Adjunta la documentación digitalizada y el boletín eléctrico en vigor.",
+          "Paso 3: La comercializadora remite la solicitud a la distribuidora de zona para su validación técnica.",
+          "Paso 4: La distribuidora autoriza el expediente y envía a un técnico a colocar el contador inteligente o lo activa de forma telemática si el contador ya estaba instalado."
+        ]
+      },
+      {
+        "id": "plazos-instalacion-contador",
+        "heading": "5. Plazos legales de colocación del contador y qué hacer ante retrasos",
+        "content": "El Real Decreto 1955/2000 establece que la distribuidora dispone de un plazo legal máximo de 5 a 7 días hábiles para dar de alta el suministro una vez que toda la documentación técnica ha sido aprobada.",
+        "bullets": [
+          "Si el contador digital ya estaba físicamente en el cuarto de contadores y solo estaba precintado o desactivado por software, la activación telemática suele tardar entre 48 y 72 horas hábiles.",
+          "Si la distribuidora incumple el plazo legal por causas imputables a ella, el usuario tiene derecho a percibir una indemnización reglamentaria por retraso en el suministro."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre altas de luz.",
+        "bullets": [
+          "¿Puedo dar de alta la luz si el anterior inquilino dejó una deuda? Sí, siempre que presentes tu contrato de alquiler o escritura que demuestre que eres un nuevo ocupante y que no tienes parentesco ni vínculo societario con el anterior inquilino.",
+          "¿Quién paga el alta de la luz en un piso de alquiler? Salvo acuerdo contractual en contrario, es responsabilidad del propietario entregar la vivienda en condiciones de habitabilidad con los suministros básicos disponibles.",
+          "¿Qué potencia me recomiendan contratar para un piso de 3 habitaciones? Para una vivienda media con equipamiento habitual y vitrocerámica, 3,45 kW o 4,0 kW es la potencia más equilibrada."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo dar de alta la luz en una vivienda?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto cuesta dar de alta la luz en una casa?",
+        "a": "Para una potencia estándar de 4 kW en una vivienda sin derechos de extensión vigentes, el coste ronda los 190 € a 210 € con IVA incluido, importe regulado que se factura en el primer recibo."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cuánto tiempo se tarda en tener luz desde que se solicita el alta?",
+        "a": "El plazo legal es de entre 3 y 7 días hábiles desde que la distribuidora valida el boletín eléctrico y el contrato de posesión del inmueble."
+      },
+      {
+        "q": "¿Es obligatorio el boletín eléctrico (CIE) para dar de alta la luz?",
+        "a": "Sí, es imprescindible presentar un Certificado de Instalación Eléctrica con menos de 20 años de antigüedad que certifique la seguridad y la potencia máxima admisible de la vivienda."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "que-es-el-certificado-de-instalacion-electrica",
     "slug": "que-es-el-certificado-de-instalacion-electrica",
-    "keyword": "qué es el certificado de instalación eléctrica",
-    "title": "Qué es el boletín eléctrico y cuándo lo necesitas",
-    "metaTitle": "Boletín eléctrico: qué es y cuándo necesitas | tuLuz",
-    "metaDescription": "Te explicamos para qué sirve el certificado de instalación eléctrica y en qué trámites se solicita.",
+    "keyword": "que es el certificado de instalacion electrica",
+    "title": "Qué es el Certificado de Instalación Eléctrica (CIE o Boletín): precio, vigencia y cuándo es obligatorio",
+    "metaTitle": "Qué es el Certificado de Instalación Eléctrica (CIE) | tuLuz",
+    "metaDescription": "Guía completa del Certificado de Instalación Eléctrica (boletín de luz). Cuánto cuesta, vigencia de 20 años, cuándo lo exige la distribuidora y cómo tramitarlo.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -3855,80 +5564,156 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Te explicamos para qué sirve el certificado de instalación eléctrica y en qué trámites se solicita.",
+    "excerpt": "El Certificado de Instalación Eléctrica (CIE), conocido popularmente como boletín eléctrico o boletín de la luz, es el DNI técnico de la instalación eléctrica de cualquier inmueble. Conoce cuándo es obligatorio presentarlo, cuánto cuesta y cómo evitar estafas en su emisión.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué es el certificado de instalación eléctrica"
+        "id": "que-es-cie",
+        "title": "1. Qué es el CIE y qué información técnica certifica"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "cuando-es-obligatorio",
+        "title": "2. Los 4 casos en los que la distribuidora te exigirá un nuevo boletín"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "precio-plazos-boletin",
+        "title": "3. Cuánto cuesta un boletín eléctrico y quién puede firmarlo legalmente"
+      },
+      {
+        "id": "inspeccion-tecnica-cuadro",
+        "title": "4. Qué revisa el instalador en el cuadro y cableado antes de emitirlo"
+      },
+      {
+        "id": "vigencia-y-registro",
+        "title": "5. Vigencia legal de 20 años y registro oficial en Industria"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué es el certificado de instalación eléctrica",
-        "content": "Comprender a fondo **qué es el certificado de instalación eléctrica** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nTe explicamos para qué sirve el certificado de instalación eléctrica y en qué trámites se solicita.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a qué es el certificado de instalación eléctrica, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "que-es-cie",
+        "heading": "1. Qué es el CIE y qué información técnica certifica",
+        "content": "El Certificado de Instalación Eléctrica en baja tensión es un documento oficial reglamentado por el Reglamento Electrotécnico para Baja Tensión (REBT, Real Decreto 842/2002). Garantiza que la instalación eléctrica de una vivienda, local o nave industrial reúne todas las condiciones de seguridad técnica y salubridad para recibir suministro eléctrico sin riesgo de cortocircuitos, descargas a personas o incendios.",
+        "table": {
+          "headers": [
+            "Dato Certificado en el CIE",
+            "Descripción Técnica",
+            "Importancia para el Usuario"
+          ],
+          "rows": [
+            [
+              "Potencia Máxima Admisible (kW)",
+              "Límite físico en kW que soportan los cables sin quemarse",
+              "Determina el tope máximo de potencia que puedes contratar"
+            ],
+            [
+              "Potencia Instalada (kW)",
+              "Suma teórica de receptores previstos en el proyecto",
+              "Base para dimensionar las protecciones del cuadro"
+            ],
+            [
+              "Tensión nominal",
+              "Monofásica (230 V) o Trifásica (400 V)",
+              "Define el tipo de contrato y contador"
+            ],
+            [
+              "Esquema unifilar y memoria técnica",
+              "Croquis con secciones de cable (mm²) y diferenciales (mA)",
+              "Documentación requerida ante siniestros por el seguro de hogar"
+            ],
+            [
+              "Empresa instaladora autorizada",
+              "Nº de carné profesional, seguro de RC y registro en Industria",
+              "Acredita la responsabilidad civil legal del instalador"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "En Cataluña este documento se denomina 'Memòria Tècnica de Disseny' (MTD) o se acompaña de la 'declaració responsable' del instalador.",
+          "Sin el CIE sellado y registrado telemáticamente en la Consejería de Industria de tu Comunidad Autónoma, ninguna distribuidora conectará el suministro."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Qué es el boletín eléctrico y cuándo lo necesitas** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "cuando-es-obligatorio",
+        "heading": "2. Los 4 casos en los que la distribuidora te exigirá un nuevo boletín",
+        "content": "No siempre es necesario solicitar un boletín nuevo; la distribuidora solo te lo pedirá en cuatro situaciones reglamentarias tasadas:",
+        "bullets": [
+          "1. Alta nueva de suministro: en viviendas de primera ocupación o locales que nunca hayan tenido contador.",
+          "2. Reactivación tras baja prolongada si el CIE anterior ha caducado: suministros dados de baja donde el boletín original tiene más de 20 años de antigüedad.",
+          "3. Aumento de potencia por encima de la máxima admisible: si deseas subir la potencia contratada a 5,75 kW pero tu CIE antiguo fija un máximo admisible de 4,6 kW, debes renovar la instalación y emitir un nuevo boletín.",
+          "4. Cambio de titularidad con boletín caducado: en instalaciones con más de 20 años, algunas distribuidoras exigen revisión técnica para actualizar la titularidad."
+        ]
+      },
+      {
+        "id": "precio-plazos-boletin",
+        "heading": "3. Cuánto cuesta un boletín eléctrico y quién puede firmarlo legalmente",
+        "content": "El precio de emisión de un Certificado de Instalación Eléctrica no está regulado por el Estado; se rige por el libre mercado entre empresas instaladoras autorizadas. Solo puede emitirlo y firmarlo un instalador electricista autorizado en baja tensión dado de alta en el Registro Integrado Industrial (RII).",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Precios medios orientativos en España",
+          "text": "Para una vivienda estándar de hasta 100 m² con instalación en regla: entre 100 € y 180 € (incluyendo tasas oficiales de Industria). Si el electricista detecta que el cuadro o la toma de tierra no cumplen normativa y requiere reformas previas (cambiar diferenciales o cableado), el coste final variará según las obras necesarias."
+        },
+        "bullets": [
+          "Desconfía de ofertas en internet por 40 € que emiten boletines 'a distancia' sin acudir a inspeccionar la vivienda: incurren en fraude y son rechazados habitualmente por las distribuidoras.",
+          "El plazo habitual para registrar el boletín en la delegación de Industria y recibir el código de validación telemática suele ser de 24 a 72 horas hábiles."
+        ]
+      },
+      {
+        "id": "inspeccion-tecnica-cuadro",
+        "heading": "4. Qué revisa el instalador en el cuadro y cableado antes de emitirlo",
+        "content": "Durante la visita obligatoria de inspección reglamentaria, el instalador autorizado comprueba mediante instrumental homologado (telurómetro, medidor de aislamiento y comprobador de diferenciales):",
+        "bullets": [
+          "El valor de la resistencia de la toma de tierra (debe ser inferior a los límites reglamentarios, habitualmente < 15-20 ohmios).",
+          "Tiempo de disparo y sensibilidad real de los interruptores diferenciales (30 mA en menos de 50 ms).",
+          "Sección del cableado interior: cable libre de halógenos de 1,5 mm² para alumbrado, 2,5 mm² para enchufes generales, 4 mm² para lavadora/termo y 6 mm² para vitrocerámica/horno.",
+          "Presencia de Interruptor General Automático (IGA) y protector contra sobretensiones transitorias y permanentes según la versión vigente del REBT."
+        ]
+      },
+      {
+        "id": "vigencia-y-registro",
+        "heading": "5. Vigencia legal de 20 años y registro oficial en Industria",
+        "content": "La validez legal de un Certificado de Instalación Eléctrica es de 20 años en instalaciones domésticas. Mientras no modifiques la potencia contratada por encima del límite especificado ni des de baja el suministro, el CIE seguirá siendo plenamente válido durante dos décadas completas.",
+        "bullets": [
+          "Solicita siempre al electricista una copia digitalizada del boletín con el justificante telemático del pago de tasas en la Consejería de Industria.",
+          "Guarda el CIE junto a las escrituras del inmueble: te lo pedirán en futuras reformas o transacciones de compraventa."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre el boletín eléctrico.",
+        "bullets": [
+          "¿Cómo puedo saber si mi boletín de la luz está caducado? Consulta con tu distribuidora o revisa la fecha de emisión en la documentación original de la vivienda; si pasaron más de 20 años desde su expedición, está legalmente caducado ante nuevos trámites.",
+          "¿Se puede dar de alta la luz con un boletín de hace 15 años? Sí, si tiene menos de 20 años y la potencia solicitada no supera la potencia máxima admisible indicada en el documento.",
+          "¿Qué es el BRIE en Cataluña? En Cataluña, para aumentos menores de potencia o trámites secundarios se exigía antiguamente el 'Boletín Azul' o BRIE; actualmente se unifica con los modelos de la Generalitat."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con qué es el certificado de instalación eléctrica?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto cuesta un boletín eléctrico (CIE) en 2026?",
+        "a": "En una vivienda estándar con la instalación en buen estado, el coste oscila entre 110 € y 190 €, incluyendo la visita técnica del instalador autorizado y el pago de tasas de Industria."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cuánto dura la vigencia de un boletín eléctrico?",
+        "a": "Tiene una vigencia legal de 20 años. Pasado ese tiempo, la distribuidora exigirá uno nuevo si solicitas un alta de suministro o aumentos de potencia."
+      },
+      {
+        "q": "¿Puedo contratar más potencia de la que pone en mi boletín?",
+        "a": "No. La potencia máxima admisible es un límite físico insuperable por seguridad. Para contratar más kW es obligatorio que un electricista revise la instalación y emita un nuevo CIE con un límite superior."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-cambiar-domiciliacion-factura-luz",
     "slug": "como-cambiar-domiciliacion-factura-luz",
-    "keyword": "cómo cambiar domiciliación factura luz",
-    "title": "Cómo cambiar la cuenta bancaria de la factura de luz",
-    "metaTitle": "Cambiar cuenta bancaria de la luz | tuLuz",
-    "metaDescription": "Pasos y datos que conviene revisar al modificar la domiciliación de tu contrato eléctrico.",
+    "keyword": "como cambiar domiciliacion factura luz",
+    "title": "Cómo cambiar la domiciliación de la factura de la luz: trámites online, cuenta bancaria y plazos",
+    "metaTitle": "Cambiar Domiciliación de la Factura de la Luz | tuLuz",
+    "metaDescription": "Aprende cómo cambiar el número de cuenta bancaria (IBAN) de tu recibo de luz online o por teléfono. Requisitos, titularidad y cómo evitar cortes por recibos devueltos.",
     "category": "Mercado y Tarifas",
     "readTime": "6 min de lectura",
     "publishedAt": "2026-09-14",
@@ -3938,82 +5723,124 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Pasos y datos que conviene revisar al modificar la domiciliación de tu contrato eléctrico.",
+    "excerpt": "Cambiar el número de cuenta bancaria de tu recibo de electricidad es un trámite rápido, gratuito y 100% telemático. Conoce los pasos para gestionarlo en cualquier comercializadora, qué hacer si el titular de la cuenta es distinto al del contrato y cómo evitar devoluciones de recibo.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo cambiar domiciliación factura luz"
+        "id": "canales-cambio-iban",
+        "title": "1. Canales para cambiar la cuenta bancaria (área de cliente, teléfono, app)"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "datos-necesarios",
+        "title": "2. Datos obligatorios que debes tener a mano"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "titular-distinto-sepa",
+        "title": "3. Qué ocurre si el titular de la cuenta bancaria no es el titular de la luz (Mandato SEPA)"
+      },
+      {
+        "id": "plazos-efectividad",
+        "title": "4. Plazos de efectividad: ¿cuándo llegará el primer recibo a la nueva cuenta?"
+      },
+      {
+        "id": "recibos-devueltos",
+        "title": "5. Qué hacer si se devuelve una factura durante el cambio"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo cambiar domiciliación factura luz",
-        "content": "Comprender a fondo **cómo cambiar domiciliación factura luz** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nPasos y datos que conviene revisar al modificar la domiciliación de tu contrato eléctrico.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo cambiar domiciliación factura luz, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "canales-cambio-iban",
+        "heading": "1. Canales para cambiar la cuenta bancaria (área de cliente, teléfono, app)",
+        "content": "La modificación del IBAN bancario es una gestión que depende exclusivamente de tu empresa comercializadora (no de la distribuidora). La mayoría de compañías permiten realizar el cambio en menos de dos minutos a través de:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Área privada de clientes web: accediendo al apartado 'Mis Contratos' > 'Datos de Pago' o 'Facturación'.",
+          "Aplicación móvil de la compañía: escaneando o introduciendo el nuevo número de cuenta con confirmación biométrica o SMS.",
+          "Atención telefónica gratuita: comunicando los datos al operador tras superar las preguntas de verificación de identidad.",
+          "Correo electrónico o formulario de atención al cliente aportando el certificado de titularidad bancaria."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo cambiar la cuenta bancaria de la factura de luz** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "datos-necesarios",
+        "heading": "2. Datos obligatorios que debes tener a mano",
+        "content": "Para formalizar el cambio de domiciliación bancaria te requerirán:",
+        "bullets": [
+          "Número de cuenta bancaria completo en formato IBAN (en España comienza por ES seguido de 2 dígitos de control y los 20 dígitos de la cuenta).",
+          "DNI o NIE del titular del contrato de suministro.",
+          "Código CUPS o número de contrato que figura en la cabecera de tus facturas anteriores.",
+          "Dirección exacta del punto de suministro."
+        ]
+      },
+      {
+        "id": "titular-distinto-sepa",
+        "heading": "3. Qué ocurre si el titular de la cuenta bancaria no es el titular de la luz (Mandato SEPA)",
+        "content": "Es muy común que el titular de la luz sea un progenitor, un casero o una pareja, mientras que el pago se realiza desde la cuenta de otra persona. La normativa europea de cobros bancarios SEPA (Single Euro Payments Area) permite esta modalidad pero exige garantías adicionales.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "La firma de la orden de domiciliación SEPA",
+          "text": "Si el titular de la cuenta bancaria es diferente al titular del contrato eléctrico, la comercializadora requerirá que el titular de la cuenta firme digitalmente una 'Orden de domiciliación de adeudo directo SEPA' o aporte copia de su DNI para evitar que el banco rechace los cobros automáticos."
+        },
+        "bullets": [
+          "El titular del contrato sigue siendo el responsable legal de la deuda ante la comercializadora en caso de impago bancario.",
+          "El pagador de la cuenta no adquiere derechos de gestión sobre el contrato eléctrico (no puede cambiar de tarifa ni dar de baja la luz)."
+        ]
+      },
+      {
+        "id": "plazos-efectividad",
+        "heading": "4. Plazos de efectividad: ¿cuándo llegará el primer recibo a la nueva cuenta?",
+        "content": "El cambio de cuenta bancaria en el sistema informático de la comercializadora suele ser inmediato. No obstante, si una factura ya ha sido emitida y enviada a la cámara de compensación bancaria bancaria (habitualmente 3 a 5 días antes del cobro efectivo), ese recibo se cargará en la cuenta antigua.",
+        "bullets": [
+          "No cierres la cuenta bancaria antigua de forma precipitada; manténla con saldo disponible durante al menos un ciclo completo de facturación para evitar devoluciones.",
+          "El siguiente recibo que se genere tras la tramitación ya se remitirá de forma automática al nuevo IBAN."
+        ]
+      },
+      {
+        "id": "recibos-devueltos",
+        "heading": "5. Qué hacer si se devuelve una factura durante el cambio",
+        "content": "Si el banco devuelve un recibo por cierre de cuenta anticipado o error en el IBAN, la comercializadora enviará un aviso de impago por SMS o correo electrónico. Devolver un recibo no corta la luz de inmediato (la ley fija un plazo de requerimiento fehaciente de al menos dos meses para consumidores residenciales), pero puede acarrear recargos de devolución bancaria de 3 € a 15 € según el contrato.",
+        "bullets": [
+          "Abona el recibo devuelto de inmediato mediante pasarela de pago con tarjeta de crédito en la web de la comercializadora o por transferencia bancaria.",
+          "Verifica en tu área de cliente que el nuevo IBAN ha quedado grabado correctamente para los próximos meses."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre cambios de cuenta bancaria.",
+        "bullets": [
+          "¿Cobran algo por cambiar de cuenta bancaria? No, es un trámite administrativo 100% gratuito.",
+          "¿Puedo domiciliar la luz en una cuenta bancaria online o extranjera? Sí, siempre que sea una cuenta con código IBAN perteneciente a la zona SEPA (como bancos digitales europeos tipo Revolut, N26, etc.). Por ley está prohibida la discriminación por razón de IBAN.",
+          "¿Puedo pagar con tarjeta en lugar de domiciliar? La mayoría de comercializadoras exigen la domiciliación como método de cobro estándar, aunque permiten pagos puntuales con tarjeta ante devoluciones o retrasos."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo cambiar domiciliación factura luz?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto cuesta cambiar el número de cuenta de la factura de la luz?",
+        "a": "El cambio de domiciliación bancaria es un trámite totalmente gratuito y puedes realizarlo tantas veces como desees."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Puede pagar la luz una persona distinta al titular del contrato?",
+        "a": "Sí, es legalmente posible facilitando el IBAN y firmando la correspondiente autorización de adeudo SEPA por parte del pagador de la cuenta."
+      },
+      {
+        "q": "¿Cuánto tarda en aplicarse el cambio de cuenta bancaria?",
+        "a": "Suele aplicarse en 24 a 48 horas en los sistemas de la compañía, surtiendo efecto en la primera factura que se emita tras la solicitud."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "cuanto-tarda-un-cambio-de-comercializadora-luz",
     "slug": "cuanto-tarda-un-cambio-de-comercializadora-luz",
-    "keyword": "cuánto tarda un cambio de comercializadora luz",
-    "title": "Cuánto tarda un cambio de comercializadora de luz",
-    "metaTitle": "Cambio de comercializadora: cuánto tarda | tuLuz",
-    "metaDescription": "Conoce los plazos habituales, qué gestiona la nueva compañía y cómo comprobar el estado del cambio.",
+    "keyword": "cuanto tarda un cambio de comercializadora luz",
+    "title": "Cuánto tarda un cambio de comercializadora de luz: plazos legales, pasos y sin corte de suministro",
+    "metaTitle": "Cuánto Tarda un Cambio de Compañía de Luz | tuLuz",
+    "metaDescription": "Conoce los plazos oficiales para cambiar de compañía eléctrica en España. Entre 1 y 15 días, sin obras, sin cortes de luz y tus derechos de desistimiento legal de 14 días.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4021,82 +5848,160 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Conoce los plazos habituales, qué gestiona la nueva compañía y cómo comprobar el estado del cambio.",
+    "excerpt": "Cambiar de compañía eléctrica para pagar menos por la luz es un derecho legal de todos los consumidores. Conoce cuánto tiempo tarda en completarse el proceso, qué ocurre entre bastidores en la distribuidora y por qué es imposible que te quedes sin luz durante el traspaso.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto tarda un cambio de comercializadora luz"
+        "id": "plazo-estandar-mercado",
+        "title": "1. El plazo real del cambio: entre 2 y 15 días hábiles"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "garantia-corte-cero",
+        "title": "2. Garantía legal absoluta: imposible sufrir un corte de suministro"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "que-ocurre-bastidores",
+        "title": "3. Qué ocurre entre bastidores: validación en la distribuidora"
+      },
+      {
+        "id": "ultima-factura-antigua",
+        "title": "4. La factura de liquidación o finiquito de la antigua compañía"
+      },
+      {
+        "id": "derecho-desistimiento",
+        "title": "5. El derecho de desistimiento de 14 días sin penalización"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cuánto tarda un cambio de comercializadora luz",
-        "content": "Comprender a fondo **cuánto tarda un cambio de comercializadora luz** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nConoce los plazos habituales, qué gestiona la nueva compañía y cómo comprobar el estado del cambio.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cuánto tarda un cambio de comercializadora luz, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "plazo-estandar-mercado",
+        "heading": "1. El plazo real del cambio: entre 2 y 15 días hábiles",
+        "content": "La normativa de la Unión Europea y el Real Decreto 1955/2000 en España regulan los plazos de cambio de suministrador. En la práctica actual, con el parque de contadores inteligentes completamente digitalizado, un cambio de comercializadora de luz tarda una media de entre 2 y 7 días hábiles, con un límite reglamentario máximo habitual de 15 a 21 días.",
+        "table": {
+          "headers": [
+            "Fase del Proceso",
+            "Responsable",
+            "Duración Típica",
+            "Acción del Usuario"
+          ],
+          "rows": [
+            [
+              "Firma del nuevo contrato",
+              "Usuario y Nueva Comercializadora",
+              "Inmediata (online/teléfono)",
+              "Facilitar DNI, CUPS y número de cuenta IBAN"
+            ],
+            [
+              "Envío de solicitud a distribuidora",
+              "Nueva Comercializadora",
+              "24 a 48 horas",
+              "Ninguna (proceso automático telemático)"
+            ],
+            [
+              "Validación y lectura de cierre",
+              "Empresa Distribuidora de zona",
+              "1 a 4 días hábiles",
+              "Ninguna (el contador telegestionado envía la lectura oficial)"
+            ],
+            [
+              "Activación del nuevo contrato",
+              "Nueva Comercializadora",
+              "Día hábil siguiente",
+              "Recibes SMS/correo de bienvenida con fecha de inicio"
+            ],
+            [
+              "Factura de finiquito anterior",
+              "Antigua Compañía",
+              "15 a 30 días posteriores",
+              "Abonar únicamente los días transcurridos hasta la lectura de cambio"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Si solicitas el cambio coincidiendo cerca de la fecha de cierre de facturación mensual del contador, el traspaso puede tardar apenas 48 a 72 horas.",
+          "El usuario no tiene que llamar a su compañía antigua para darse de baja; la nueva compañía se encarga del traspaso administrativo íntegro."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cuánto tarda un cambio de comercializadora de luz** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "garantia-corte-cero",
+        "heading": "2. Garantía legal absoluta: imposible sufrir un corte de suministro",
+        "content": "Uno de los miedos más comunes entre los usuarios es quedarse sin electricidad durante el cambio. Técnicamente y jurídicamente es imposible que sufras un corte de luz. La electricidad que llega a los enchufes de tu hogar proviene siempre de los mismos cables y de la misma empresa distribuidora de tu barrio. Cambiar de comercializadora es una modificación contable y jurídica en una base de datos informática; ningún operario acude a tocar cables en la calle.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Sin obras ni visitas a casa",
+          "text": "Un cambio de compañía no exige obras, ni cambios de cableado, ni que ningún técnico acuda a tu domicilio a manipular el contador. La transición es 100% digital e imperceptible para el usuario."
+        },
+        "bullets": [
+          "El suministro eléctrico continúa ininterrumpido en todo momento.",
+          "La calidad de la onda eléctrica y la reparación de averías en la red sigue dependiendo por ley de tu distribuidora de zona."
+        ]
+      },
+      {
+        "id": "que-ocurre-bastidores",
+        "heading": "3. Qué ocurre entre bastidores: validación en la distribuidora",
+        "content": "Cuando contratas con una nueva compañía, esta envía una solicitud formal de traspaso a través del protocolo informático oficial SIPS a la distribuidora. La distribuidora verifica que el código CUPS sea correcto, que no exista una orden judicial de corte o un fraude abierto y toma una lectura oficial telemática del contador inteligente. Esa misma lectura sirve de corte: finaliza el contrato de la comercializadora saliente y da inicio al de la comercializadora entrante.",
+        "bullets": [
+          "Se evita por completo cualquier posibilidad de doble cobro por los mismos kWh consumidos.",
+          "Si la distribuidora detecta algún error de numeración de CUPS, devuelve una notificación técnica de rechazo subsanable."
+        ]
+      },
+      {
+        "id": "ultima-factura-antigua",
+        "heading": "4. La factura de liquidación o finiquito de la antigua compañía",
+        "content": "Tras completarse el cambio, recibirás una última factura de tu compañía anterior. Esta factura no es ninguna multa ni cobro indebido; es la liquidación de los días de consumo y potencia transcurridos entre tu última factura ordinaria y el día exacto en que se formalizó el traspaso a la nueva empresa.",
+        "bullets": [
+          "Comprueba que la lectura de cierre de esa última factura coincide con la lectura de inicio de tu nueva compañía.",
+          "Verifica si tenías servicios de mantenimiento vinculados (seguros de reparaciones o revisiones) que requieran cancelación expresa por separado."
+        ]
+      },
+      {
+        "id": "derecho-desistimiento",
+        "heading": "5. El derecho de desistimiento de 14 días sin penalización",
+        "content": "Por ley (Ley General para la Defensa de los Consumidores y Usuarios), todos los contratos de suministro contratados a distancia (por teléfono o internet) gozan de un periodo de desistimiento legal de 14 días naturales. Durante esas dos semanas puedes anular la contratación sin alegar ningún motivo y sin penalización económica alguna.",
+        "bullets": [
+          "Las ofertas puerta a puerta no autorizadas son ilegales según la normativa de la CNMC.",
+          "Comprueba en las condiciones particulares si la nueva oferta incluye permanencia (en el mercado residencial la mayoría de tarifas son sin permanencia)."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre cambios de compañía eléctrica.",
+        "bullets": [
+          "¿Tengo que avisar a mi compañía actual de que me voy? No. La nueva comercializadora tramita la baja administrativa ante la distribuidora de forma automática.",
+          "¿Tiene algún coste cambiar de compañía de luz? El cambio de comercializadora es un trámite completamente gratuito. Solo pagarías penalización si tu contrato actual tuviera una cláusula de permanencia expresa en vigor.",
+          "¿Puedo cambiarme cuantas veces quiera? Sí, el mercado eléctrico es libre y puedes cambiar de compañía las veces que encuentres una oferta más competitiva."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cuánto tarda un cambio de comercializadora luz?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto tarda en hacerse efectivo un cambio de comercializadora de luz?",
+        "a": "Entre 2 y 7 días hábiles en la mayoría de los casos con contadores digitales, con un plazo máximo legal habitual de 15 a 21 días."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Hay algún corte de luz mientras se realiza el cambio de empresa?",
+        "a": "No, en ningún caso. El suministro eléctrico no se interrumpe ni un segundo, ya que la red física sigue perteneciendo a la misma distribuidora."
+      },
+      {
+        "q": "¿Qué documentos se necesitan para cambiar de compañía de luz?",
+        "a": "El DNI/NIE del titular, el código CUPS de la factura anterior y el número de cuenta bancaria (IBAN) para los cobros."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "que-hacer-si-me-cambian-compania-luz-sin-permiso",
     "slug": "que-hacer-si-me-cambian-compania-luz-sin-permiso",
-    "keyword": "qué hacer si me cambian compañía luz sin permiso",
-    "title": "Me han cambiado de compañía de luz sin permiso: qué hacer",
-    "metaTitle": "Cambio de compañía sin permiso: qué hacer | tuLuz",
-    "metaDescription": "Pasos para revisar el contrato, conservar pruebas y reclamar ante un cambio no autorizado.",
+    "keyword": "que hacer si me cambian compania luz sin permiso",
+    "title": "Qué hacer si te cambian de compañía de luz sin permiso: denuncia por consentimiento viciado y recuperación del contrato",
+    "metaTitle": "Cambio de Compañía de Luz sin Permiso: Qué Hacer | tuLuz",
+    "metaDescription": "Guía legal ante cambios fraudulentos de comercializadora de luz (slamming). Cómo anular el contrato, recuperar tu tarifa anterior, denunciar ante la CNMC y reclamar.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4104,82 +6009,125 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Pasos para revisar el contrato, conservar pruebas y reclamar ante un cambio no autorizado.",
+    "excerpt": "El traspaso no consentido de contrato eléctrico (conocido en telecomunicaciones y energía como 'slamming') es una práctica ilícita grave. Si has recibido una factura de una empresa con la que nunca contrataste o llamadas fraudulentas, descubre el protocolo legal exacto para volver a tu tarifa previa y denunciar.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué hacer si me cambian compañía luz sin permiso"
+        "id": "que-es-slamming-electrico",
+        "title": "1. Qué es el cambio fraudulento de compañía (slamming) y cómo ocurre"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "senales-de-alarma",
+        "title": "2. Señales de alarma: cómo saber que te han cambiado de comercializadora"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "protocolo-recuperacion",
+        "title": "3. Protocolo legal en 4 pasos para anular el contrato y volver a tu compañía"
+      },
+      {
+        "id": "devolucion-facturas-indebidas",
+        "title": "4. Qué hacer con las facturas emitidas por la compañía usurpadora"
+      },
+      {
+        "id": "denuncias-oficiales",
+        "title": "5. Dónde denunciar: OMIC, CNMC y Agencia Española de Protección de Datos (AEPD)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué hacer si me cambian compañía luz sin permiso",
-        "content": "Comprender a fondo **qué hacer si me cambian compañía luz sin permiso** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nPasos para revisar el contrato, conservar pruebas y reclamar ante un cambio no autorizado.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a qué hacer si me cambian compañía luz sin permiso, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "que-es-slamming-electrico",
+        "heading": "1. Qué es el cambio fraudulento de compañía (slamming) y cómo ocurre",
+        "content": "El 'slamming' eléctrico se produce cuando un comercial deshonesto o una agencia de telemarketing tramita un cambio de suministrador a espaldas del titular, falseando su consentimiento o engañándolo mediante técnicas de ingeniería social telefónica o visitas comerciales 'a puerta fría'. Las modalidades de engaño más comunes incluyen falsos avisos de 'actualización obligatoria de contador', suplantaciones de la distribuidora alertando de una 'avería en la línea' o comerciales que solicitan ver una factura anterior para copiar el código CUPS y el DNI.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "La Ley del Sector Eléctrico exige que cualquier cambio cuente con el consentimiento expreso, inequívoco y verificable del titular (mediante grabación de voz legalmente válida o firma manuscrita/digital).",
+          "La CNMC sanciona estas conductas con multas millonarias a las comercializadoras infractoras."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Me han cambiado de compañía de luz sin permiso: qué hacer** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "senales-de-alarma",
+        "heading": "2. Señales de alarma: cómo saber que te han cambiado de comercializadora",
+        "content": "Presta atención a estos síntomas que delatan un traspaso no autorizado:",
+        "bullets": [
+          "Recibes un SMS o correo electrónico dándote la 'bienvenida' a una empresa energética con la que jamás has firmado nada.",
+          "Tu banco te notifica un adeudo directo de una comercializadora desconocida.",
+          "Dejas de recibir las facturas de tu compañía habitual durante más de un mes y medio.",
+          "Recibes una factura final de liquidación de tu compañía de confianza sin haber pedido ninguna baja."
+        ]
+      },
+      {
+        "id": "protocolo-recuperacion",
+        "heading": "3. Protocolo legal en 4 pasos para anular el contrato y volver a tu compañía",
+        "content": "Si eres víctima de un cambio no autorizado, actúa de inmediato siguiendo estos cuatro pasos reglamentarios:",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Exige la grabación contractual o contrato firmado",
+          "text": "Contacta con la compañía usurpadora y exige de forma fehaciente que te envíen la supuesta grabación telefónica o el contrato físico donde prestaste tu consentimiento. Si no disponen de él o la voz no es la tuya, el contrato es nulo de pleno derecho por falsedad documental."
+        },
+        "bullets": [
+          "Paso 1 - Reclamación por nulidad a la nueva compañía: llama y envía burofax o correo certificado exigiendo la anulación inmediata del contrato por consentimiento nulo y solicitando la rescisión sin coste.",
+          "Paso 2 - Contacto con tu comercializadora original: avisa a tu antigua comercializadora del fraude y solicita la reversión del suministro para recuperar tu tarifa y antigüedad anteriores.",
+          "Paso 3 - Bloqueo de cobros bancarios: acude a tu entidad bancaria y ordena el rechazo o devolución de los recibos emitidos por la empresa usurpadora.",
+          "Paso 4 - Presentación de reclamación oficial en Consumo: eleva un escrito formal a la Oficina Municipal de Información al Consumidor (OMIC)."
+        ]
+      },
+      {
+        "id": "devolucion-facturas-indebidas",
+        "heading": "4. Qué hacer con las facturas emitidas por la compañía usurpadora",
+        "content": "La jurisprudencia y los criterios de la CNMC establecen que si no hubo consentimiento válido, el contrato es nulo desde su origen. La compañía defraudadora no puede exigirte penalizaciones por permanencia ni inscribirte en ficheros de morosos (ASNEF/EXPERIAN) mientras exista una reclamación formal en curso por usurpación de contrato.",
+        "bullets": [
+          "Tienes un plazo legal de 8 semanas para devolver recibos domiciliados indebidos en tu banco bajo la normativa SEPA.",
+          "La liquidación de la energía consumida durante ese periodo debe recalcularse conforme a las condiciones que tenías en tu tarifa legítima anterior."
+        ]
+      },
+      {
+        "id": "denuncias-oficiales",
+        "heading": "5. Dónde denunciar: OMIC, CNMC y Agencia Española de Protección de Datos (AEPD)",
+        "content": "Para evitar que la práctica quede impune, formaliza la denuncia a través de los organismos oficiales:",
+        "bullets": [
+          "OMIC o Dirección General de Consumo de tu Comunidad Autónoma: solicitarán un arbitraje de consumo de obligado cumplimiento.",
+          "CNMC (Comisión Nacional de los Mercados y la Competencia): a través de su buzón telemático de denuncias de energía.",
+          "Agencia Española de Protección de Datos (AEPD): si utilizaron tus datos personales (nombre, DNI, CUPS) sin tu consentimiento para contratar servicios comerciales."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre fraudes de contratación eléctrica.",
+        "bullets": [
+          "¿Puedo perder el Bono Social si me cambian de compañía sin permiso? Sí, al pasarte al mercado libre se pierde automáticamente el Bono Social. Por eso es vital revertir el contrato de urgencia; la comercializadora reguladora puede restituirlo con efectos retroactivos acreditando el fraude.",
+          "¿Pueden cortarme la luz mientras reclamo? No, la ley prohíbe cortar el suministro en puntos en litigio de reclamación por cambio fraudulento de suministrador.",
+          "¿Cómo evitar que vuelva a suceder? Nunca muestres tu factura a comerciales que acudan a tu puerta ni dictes tu código CUPS por teléfono en llamadas no solicitadas."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con qué hacer si me cambian compañía luz sin permiso?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué hacer si me han cambiado de compañía de luz sin mi consentimiento?",
+        "a": "Llama de inmediato a la empresa defraudadora exigiendo la grabación del contrato, avisa a tu compañía original para que tramite la reversión de urgencia y presenta reclamación en la OMIC."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Tengo que pagar las facturas de una compañía con la que no he contratado?",
+        "a": "No, un contrato sin consentimiento es legalmente nulo de pleno derecho. Tienes derecho a devolver los recibos bancarios y exigir que se anule cualquier permanencia o recargo."
+      },
+      {
+        "q": "¿Cómo consiguen mis datos para hacerme un cambio fraudulento?",
+        "a": "Habitualmente mediante comerciales que piden ver tu factura en el portal de tu casa o llamadas telefónicas engañosas haciéndose pasar por tu distribuidora o por el departamento técnico de facturación."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "cruce-de-cups-que-es",
     "slug": "cruce-de-cups-que-es",
-    "keyword": "cruce de CUPS qué es",
-    "title": "Cruce de CUPS: qué es y cómo actuar",
-    "metaTitle": "Cruce de CUPS: cómo detectarlo y reclamar | tuLuz",
-    "metaDescription": "Aprende a detectar un CUPS erróneo durante una contratación y qué datos debes comprobar.",
+    "keyword": "cruce de cups que es",
+    "title": "Cruce de CUPS: qué es, cómo detectar si pagas la luz del vecino y cómo solucionarlo",
+    "metaTitle": "Cruce de CUPS: Qué es y Cómo Solucionarlo | tuLuz",
+    "metaDescription": "¿Sospechas que estás pagando la luz de tu vecino? Guía completa para detectar y resolver un cruce de CUPS o de contadores. Pruebas físicas, reclamaciones y refacturación.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4187,70 +6135,110 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Aprende a detectar un CUPS erróneo durante una contratación y qué datos debes comprobar.",
+    "excerpt": "El cruce de CUPS es uno de los errores administrativos y técnicos más desconcertantes del sector eléctrico: consiste en que tu vivienda está asociada en las bases de datos al contador de tu vecino y viceversa. Conoce la prueba del interruptor para descubrirlo y el protocolo para recuperar tu dinero.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cruce de CUPS qué es"
+        "id": "que-es-cruce-cups",
+        "title": "1. Qué es exactamente un cruce de CUPS o de contadores"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "como-se-origina",
+        "title": "2. Por qué ocurre este error: causas en obras y reformas"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "prueba-definitiva-corte",
+        "title": "3. La prueba física infalible: el test de desconexión del IGA"
+      },
+      {
+        "id": "protocolo-subsanacion",
+        "title": "4. Cómo tramitar la regularización ante la distribuidora"
+      },
+      {
+        "id": "refacturacion-devolucion",
+        "title": "5. Liquidación económica y refacturación retroactiva del dinero"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cruce de CUPS qué es",
-        "content": "Comprender a fondo **cruce de CUPS qué es** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAprende a detectar un CUPS erróneo durante una contratación y qué datos debes comprobar.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cruce de CUPS qué es, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "que-es-cruce-cups",
+        "heading": "1. Qué es exactamente un cruce de CUPS o de contadores",
+        "content": "Un cruce de CUPS (o cruce de contadores) es una anomalía en la que existe una discordancia entre la asignación administrativa del código CUPS en los ficheros de la distribuidora y la línea eléctrica física que alimenta el interior de la vivienda. Como consecuencia, el titular de la vivienda 1º A paga en sus facturas el consumo que en realidad realiza el vecino del 1º B, y viceversa.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Puede pasar desapercibido durante meses o años si ambos vecinos tienen hábitos de consumo similares.",
+          "Suele descubrirse cuando un vecino se marcha de vacaciones un mes entero y su factura sigue marcando cientos de kilovatios, o cuando uno de los dos instala aire acondicionado o coche eléctrico y el otro sufre una subida disparatada en su recibo."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cruce de CUPS: qué es y cómo actuar** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "como-se-origina",
+        "heading": "2. Por qué ocurre este error: causas en obras y reformas",
+        "content": "El cruce suele originarse en tres momentos concretos:",
+        "bullets": [
+          "En la entrega de una promoción de obra nueva: el instalador de la constructora rotula incorrectamente los cables de las derivaciones individuales en la centralización de contadores del edificio.",
+          "Durante la sustitución de contadores analógicos a digitales de telegestión: el operario de la subcontrata de la distribuidora intercambia los números de serie de los equipos al asociar los códigos CUPS en su terminal digital.",
+          "Tras una reforma de la finca o adecuación de la batería de contadores por parte de la comunidad de propietarios."
+        ]
+      },
+      {
+        "id": "prueba-definitiva-corte",
+        "heading": "3. La prueba física infalible: el test de desconexión del IGA",
+        "content": "Para verificar de forma empírica e irrefutable si sufres un cruce de contadores, realiza esta prueba con la ayuda de otra persona:",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "La prueba del corte general (IGA)",
+          "text": "1. Baja al cuarto de contadores del edificio y localiza el contador que tiene grabado el número de serie de tu factura.\n2. Con tu teléfono móvil en llamada, pide a un familiar en casa que baje por completo el Interruptor General Automático (IGA) del cuadro de luces.\n3. Si tras bajar el interruptor de tu casa el diodo rojo de ese contador sigue parpadeando y la pantalla sigue registrando consumo (código OBIS 1.14.0 > 0 kW), ¡ese contador no es el tuyo! Estás ante un cruce evidente de CUPS."
+        },
+        "bullets": [
+          "Observa qué contador se queda con el LED rojo fijo sin parpadear en el momento exacto en que tu familiar baja el interruptor general: ese es el contador que realmente alimenta tu hogar.",
+          "Apunta el número de serie del contador físico real para contrastarlo con el que figura erróneamente en tu recibo."
+        ]
+      },
+      {
+        "id": "protocolo-subsanacion",
+        "heading": "4. Cómo tramitar la regularización ante la distribuidora",
+        "content": "La corrección técnica de un cruce de CUPS es competencia exclusiva de la empresa distribuidora de electricidad de tu zona:",
+        "bullets": [
+          "Paso 1: Notifica la incidencia a tu comercializadora aportando las pruebas y el número de serie del contador real.",
+          "Paso 2: Abre paralelamente una reclamación formal ante el servicio de atención técnica de tu distribuidora (i-DE, e-distribución, UFD, E-Redes) solicitando una 'verificación de punto de suministro por sospecha de cruce'.",
+          "Paso 3: Un inspector de la distribuidora acudirá al edificio para inyectar una señal portadora o comprobar la continuidad de los cables entre tu cuadro y el cuarto de contadores, levantando un acta oficial de inspección."
+        ]
+      },
+      {
+        "id": "refacturacion-devolucion",
+        "heading": "5. Liquidación económica y refacturación retroactiva del dinero",
+        "content": "Una vez confirmado y corregido el cruce en el sistema por la distribuidora, esta debe emitir a las comercializadoras involucradas las lecturas reales cruzadas de los últimos meses (con un tope retroactivo legal habitual de hasta 12 o 24 meses según el caso). Las comercializadoras deben anular las facturas erróneas y emitir una refacturación correcta.",
+        "bullets": [
+          "Si pagaste más de lo que consumías, tu comercializadora está obligada a abonarte la diferencia íntegra de golpe en tu cuenta bancaria.",
+          "Si consumiste más de lo que pagaste, la distribuidora y comercializadora deben ofrecerte el fraccionamiento de los pagos en tantas cuotas mensuales como meses duró la anomalía."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre cruces de CUPS y contadores.",
+        "bullets": [
+          "¿Quién paga el técnico de la distribuidora si hay cruce? Si se confirma el cruce de CUPS, la visita y regularización son totalmente gratuitas para los vecinos por ser una anomalía técnica imputable a la red.",
+          "¿Qué pasa si mi vecino se niega a colaborar? La inspección de la distribuidora no requiere el consentimiento de tu vecino; el técnico accede al cuarto comunitario de contadores y a tu vivienda para verificar la línea.",
+          "¿Cuánto tarda en corregirse un cruce de CUPS? La visita del técnico suele tardar entre 5 y 15 días laborables, mientras que la refacturación económica administrativa completa puede demorarse entre 1 y 3 meses."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cruce de CUPS qué es?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cómo saber si mi contador de luz está cruzado con el de un vecino?",
+        "a": "Baja el interruptor general (IGA) de tu casa y comprueba en el cuarto de contadores si el contador que tiene tu número de factura sigue registrando consumo o parpadeando. Si sigue parpadeando, hay un cruce."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué pasa con el dinero pagado de más si hubo un cruce de contadores?",
+        "a": "La distribuidora corrige las lecturas y la comercializadora está obligada por ley a refacturar y devolverte todo el dinero cobrado indebidamente."
+      },
+      {
+        "q": "¿A quién hay que reclamar un cruce de CUPS?",
+        "a": "A tu empresa comercializadora y directamente a la empresa distribuidora de tu zona solicitando una inspección técnica presencial."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
@@ -4258,11 +6246,11 @@ export const guidesData = [
     "id": "diferencia-distribuidora-y-comercializadora",
     "slug": "diferencia-distribuidora-y-comercializadora",
     "keyword": "diferencia distribuidora y comercializadora",
-    "title": "Diferencia entre distribuidora y comercializadora",
-    "metaTitle": "Distribuidora y comercializadora: diferencias | tuLuz",
-    "metaDescription": "Aprende quién gestiona la red, quién factura y a quién dirigirte ante cada incidencia.",
+    "title": "Diferencia entre distribuidora y comercializadora de luz: funciones, averías y facturación",
+    "metaTitle": "Diferencia entre Distribuidora y Comercializadora | tuLuz",
+    "metaDescription": "¿A quién llamar si se va la luz o te cobran de más? Conoce las diferencias entre distribuidora (red y cables) y comercializadora (tarifas y facturas) en España.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4270,82 +6258,159 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Aprende quién gestiona la red, quién factura y a quién dirigirte ante cada incidencia.",
+    "excerpt": "Uno de los mayores focos de confusión entre los usuarios del sistema eléctrico en España es no saber distinguir entre quién transporta la electricidad y quién la vende. Descubre con exactitud a quién acudir ante cada avería o trámite y evita llamadas inútiles.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre diferencia distribuidora y comercializadora"
+        "id": "resumen-visual-roles",
+        "title": "1. Resumen directo: cables e infraestructura vs venta y facturas"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-responsabilidades",
+        "title": "2. Tabla comparativa: qué hace cada entidad en el sistema"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "puedo-elegir-distribuidora",
+        "title": "3. ¿Se puede elegir la distribuidora? El monopolio natural regulado"
+      },
+      {
+        "id": "mercado-libre-regulador",
+        "title": "4. Las comercializadoras: libre competencia (más de 300 opciones)"
+      },
+      {
+        "id": "a-quien-llamar-segun-problema",
+        "title": "5. Guía rápida: a quién llamar según la gestión que necesites"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre diferencia distribuidora y comercializadora",
-        "content": "Comprender a fondo **diferencia distribuidora y comercializadora** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAprende quién gestiona la red, quién factura y a quién dirigirte ante cada incidencia.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a diferencia distribuidora y comercializadora, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "resumen-visual-roles",
+        "heading": "1. Resumen directo: cables e infraestructura vs venta y facturas",
+        "content": "Desde la liberalización del sector eléctrico promovida por la Ley 54/1997, las actividades de red y las de venta al cliente final están separadas por ley. La Distribuidora se encarga de la infraestructura física: líneas de alta y baja tensión, postes, centros de transformación y el contador inteligente de tu pared. La Comercializadora es la empresa de servicios con la que firmas el contrato, compras la energía a un precio determinado y recibes la factura mensual.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "La distribuidora lleva la electricidad hasta tu puerta (no puedes elegirla, depende de tu zona geográfica).",
+          "La comercializadora te vende la luz y te cobra el recibo (puedes cambiar de empresa libremente cuando quieras)."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Diferencia entre distribuidora y comercializadora** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-responsabilidades",
+        "heading": "2. Tabla comparativa: qué hace cada entidad en el sistema",
+        "content": "Compara las responsabilidades operativas de cada una:",
+        "table": {
+          "headers": [
+            "Área de Actuación",
+            "Empresa Distribuidora (Redes)",
+            "Empresa Comercializadora (Servicios)"
+          ],
+          "rows": [
+            [
+              "Función principal",
+              "Mantenimiento físico de líneas, contadores y transporte",
+              "Compra de energía en el mercado y facturación al cliente"
+            ],
+            [
+              "¿Puedes elegirla libremente?",
+              "No (monopolio natural asignado por zona geográfica)",
+              "Sí (puedes contratar cualquiera de las más de 300 activas)"
+            ],
+            [
+              "Gestión de averías en la calle",
+              "Responsable única (teléfono gratuito de averías 24/7)",
+              "No tiene competencias técnicas sobre cables o transformadores"
+            ],
+            [
+              "Lectura del contador",
+              "Toma la lectura real telemática oficial y la envía al sistema",
+              "Recibe los datos de la distribuidora para emitir tu factura"
+            ],
+            [
+              "Alta nueva / Acometida física",
+              "Ejecuta el enganche y cobra los derechos regulados",
+              "Tramita la solicitud administrativa en tu nombre"
+            ],
+            [
+              "Precios y ofertas",
+              "Precios fijados por ley por el BOE y la CNMC",
+              "Fija libremente los precios del kWh y promociones"
+            ]
+          ]
+        },
+        "bullets": [
+          "Aunque pertenezcan al mismo grupo empresarial histórico (por ejemplo, i-DE y Endesa Energía), operan como sociedades jurídicas independientes y estancas.",
+          "La distribuidora nunca te llamará para ofrecerte una tarifa más barata ni descuentos comerciales."
+        ]
+      },
+      {
+        "id": "puedo-elegir-distribuidora",
+        "heading": "3. ¿Se puede elegir la distribuidora? El monopolio natural regulado",
+        "content": "No se puede elegir la distribuidora. Sería insostenible e ineficiente que diez empresas distintas tendieran diez cables diferentes por la misma acera de tu calle. Por ello, la red de distribución opera bajo el modelo de monopolio natural regulado: el Estado asigna a una única empresa la gestión de las redes de una zona geográfica concreta bajo estricta auditoría de la CNMC.",
+        "bullets": [
+          "Las cinco grandes distribuidoras en España son: i-DE (Iberdrola), e-distribución (Endesa), UFD (Naturgy), E-Redes (EDP) y Viesgo.",
+          "El margen que perciben las distribuidoras está regulado por peajes fijados en el BOE que se cobran como parte del recibo de la luz."
+        ]
+      },
+      {
+        "id": "mercado-libre-regulador",
+        "heading": "4. Las comercializadoras: libre competencia (más de 300 opciones)",
+        "content": "Al contrario que las redes, el mercado de comercialización es 100% libre y competitivo. Existen dos modalidades de comercializadoras:",
+        "bullets": [
+          "Comercializadoras de Referencia (COR): son las únicas autorizadas por el Gobierno para ofrecer la tarifa regulada PVPC y gestionar el Bono Social.",
+          "Comercializadoras de Mercado Libre: fijan libremente sus condiciones contractuales, tarifas fijas, indexadas o con discriminación horaria personalizada."
+        ]
+      },
+      {
+        "id": "a-quien-llamar-segun-problema",
+        "heading": "5. Guía rápida: a quién llamar según la gestión que necesites",
+        "content": "Para ahorrar tiempo, memoriza este criterio sencillo:",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "¿A quién llamar?",
+          "text": "• Se va la luz en todo tu barrio, ves chispas en un poste o el contador está roto: LLAMA A LA DISTRIBUIDORA.\n• Tienes dudas sobre un cobro en la factura, quieres cambiar el IBAN, pedir un descuento o contratar otra tarifa: LLAMA A LA COMERCIALIZADORA."
+        },
+        "bullets": [
+          "Si llamas a la comercializadora por una avería en la calle, solo podrán derivarte al teléfono de la distribuidora.",
+          "Si llamas a la distribuidora para quejarte del precio del kWh, te informarán de que no tienen relación con tu tarifa contratada."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes entre los usuarios.",
+        "bullets": [
+          "¿Dónde veo el nombre de mi distribuidora? En cualquier factura de luz, en el apartado 'Datos del suministro' o consultando los primeros dígitos de tu código CUPS.",
+          "¿Cambiar de comercializadora afecta a la calidad de la luz? Jamás. Los electrones circulan por los mismos cables de la misma distribuidora; cambiar de comercializadora solo cambia quién te cobra la factura.",
+          "¿A quién se le paga el alquiler del contador? Se abona a la comercializadora en el recibo mensual, pero esta transfiere íntegramente ese importe regulado a la empresa distribuidora propietaria del equipo."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con diferencia distribuidora y comercializadora?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué diferencia hay entre distribuidora y comercializadora?",
+        "a": "La distribuidora es dueña de los cables y el contador y repara averías en la red de tu zona. La comercializadora te vende la luz, fija el precio del kWh y te cobra las facturas."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Puedo cambiar de distribuidora de luz?",
+        "a": "No, la distribuidora viene fijada por tu ubicación geográfica. Lo que sí puedes elegir y cambiar libremente en cualquier momento es tu comercializadora."
+      },
+      {
+        "q": "¿A quién llamo si se va la luz en toda mi calle?",
+        "a": "Al teléfono gratuito de averías de tu empresa distribuidora de zona, que está disponible las 24 horas del día los 365 días del año."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "que-hacer-si-no-llega-factura-de-luz",
     "slug": "que-hacer-si-no-llega-factura-de-luz",
-    "keyword": "qué hacer si no llega factura de luz",
-    "title": "No me llega la factura de luz: causas y soluciones",
-    "metaTitle": "No llega la factura de luz: qué hacer | tuLuz",
-    "metaDescription": "Revisa qué puede estar ocurriendo con tus facturas y qué comprobaciones hacer antes de reclamar.",
+    "keyword": "que hacer si no llega factura de luz",
+    "title": "Qué hacer si no te llega la factura de la luz: causas, acumulación de recibos y fraccionamiento obligatorio",
+    "metaTitle": "No Me Llega la Factura de la Luz: Qué Hacer | tuLuz",
+    "metaDescription": "¿Llevas meses sin recibir facturas de luz? Conoce tus derechos por retraso en facturación. Fraccionamiento sin intereses y cómo evitar cortes por acumulación de deuda.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4353,82 +6418,124 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Revisa qué puede estar ocurriendo con tus facturas y qué comprobaciones hacer antes de reclamar.",
+    "excerpt": "Pasar varios meses sin recibir la factura de la luz no significa que la electricidad sea gratis: augura la llegada repentina de una factura acumulada de cientos de euros de golpe. Conoce las causas del bloqueo, la obligación legal de fraccionamiento y cómo exigir soluciones.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué hacer si no llega factura de luz"
+        "id": "por-que-se-retrasa",
+        "title": "1. Por qué se bloquea la emisión de facturas: el cuello de botella distribuidora-comercializadora"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "el-peligro-factura-acumulada",
+        "title": "2. El gran riesgo: la factura acumulada de golpe"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "derecho-fraccionamiento",
+        "title": "3. Derecho legal a fraccionar el pago sin intereses (RD 1955/2000)"
+      },
+      {
+        "id": "protocolo-actuacion",
+        "title": "4. Pasos para desbloquear la situación antes de que crezca la deuda"
+      },
+      {
+        "id": "prescripcion-deudas",
+        "title": "5. Prescripción de facturas: ¿cuántos meses atrás te pueden cobrar?"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre qué hacer si no llega factura de luz",
-        "content": "Comprender a fondo **qué hacer si no llega factura de luz** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nRevisa qué puede estar ocurriendo con tus facturas y qué comprobaciones hacer antes de reclamar.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a qué hacer si no llega factura de luz, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "por-que-se-retrasa",
+        "heading": "1. Por qué se bloquea la emisión de facturas: el cuello de botella distribuidora-comercializadora",
+        "content": "El retraso sistemático en la emisión de facturas no suele ser culpa del banco ni de correos, sino de un fallo en el intercambio telemático de lecturas entre la distribuidora y la comercializadora. Los motivos más frecuentes son:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Fallo de telemedida en el contador inteligente: el contador pierde la conexión PLC y no envía las curvas de consumo.",
+          "Lecturas que no pasan los filtros de validación de la distribuidora por picos anómalos de consumo.",
+          "Cambios recientes de titularidad o modificaciones de potencia que se quedan atascados en trámite administrativo.",
+          "Errores en los sistemas informáticos de facturación de la comercializadora tras migraciones de software."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **No me llega la factura de luz: causas y soluciones** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "el-peligro-factura-acumulada",
+        "heading": "2. El gran riesgo: la factura acumulada de golpe",
+        "content": "Muchos usuarios no reclaman pensando que la compañía se ha olvidado de cobrarles. Sin embargo, la distribuidora acabará enviando las lecturas acumuladas tarde o temprano, y la comercializadora emitirá un único recibo o varios recibos juntos que pueden sumar entre 400 € y más de 1.200 € de golpe, provocando descubiertos bancarios involuntarios.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Ahorra el dinero mes a mes",
+          "text": "Si llevas 3 o 4 meses sin recibir facturas, calcula tu gasto mensual habitual y resérvalo en una cuenta separada. Ese dinero te lo cobrarán indefectiblemente cuando se resuelva la incidencia técnica."
+        },
+        "bullets": [
+          "Comprueba periódicamente tu área de cliente web para verificar si las facturas constan como emitidas pero no cobradas.",
+          "Revisa si tu distribuidora está registrando lecturas en la plataforma Datadis."
+        ]
+      },
+      {
+        "id": "derecho-fraccionamiento",
+        "heading": "3. Derecho legal a fraccionar el pago sin intereses (RD 1955/2000)",
+        "content": "El artículo 96 del Real Decreto 1955/2000 protege de forma explícita al consumidor ante retrasos imputables a las empresas eléctricas: si una comercializadora factura con retraso consumos acumulados por causas ajenas al cliente, está obligada por ley a fraccionar el importe en tantas mensualidades como meses haya durado el retraso, sin aplicar ningún tipo de interés por demora ni recargo de financiación.",
+        "bullets": [
+          "Ejemplo: si han tardado 6 meses en facturarte y la cuenta asciende a 600 €, tienes derecho a pagar 100 € adicionales al mes durante los próximos 6 meses.",
+          "La empresa no puede negarse al fraccionamiento legal ni amenazar con corte de suministro mientras se abonen los plazos acordados."
+        ]
+      },
+      {
+        "id": "protocolo-actuacion",
+        "heading": "4. Pasos para desbloquear la situación antes de que crezca la deuda",
+        "content": "No esperes a que pase un año entero:",
+        "bullets": [
+          "Paso 1: Contacta por escrito con la comercializadora exigiendo la regularización de la facturación y solicita número de reclamación formal.",
+          "Paso 2: Aporta la autolectura de tu contador (fotografía de la pantalla LCD) para forzar la emisión manual de la factura.",
+          "Paso 3: Si la comercializadora alega que la distribuidora no le remite lecturas, presenta reclamación paralela en el portal de la distribuidora exigiendo el envío de medidas.",
+          "Paso 4: Si transcurre más de un mes sin respuesta, eleva la queja ante los Servicios Provinciales de Consumo o la Dirección General de Industria de tu Comunidad Autónoma."
+        ]
+      },
+      {
+        "id": "prescripcion-deudas",
+        "heading": "5. Prescripción de facturas: ¿cuántos meses atrás te pueden cobrar?",
+        "content": "El Código Civil español fija un plazo general de prescripción de 5 años para deudas periódicas. No obstante, en el ámbito eléctrico, la jurisprudencia y las resoluciones de la CNMC establecen que si el retraso en facturar se debe a errores exclusivos de la empresa eléctrica, esta no puede exigir al consumidor de buena fe importes acumulados de periodos superiores a un año (art. 96 RD 1955/2000 en facturaciones incorrectas).",
+        "bullets": [
+          "Si te reclaman consumos de más de un año atrás por negligencia técnica propia, tienes base jurídica sólida para impugnar la deuda ante Consumo e Industria.",
+          "Conserva todas las reclamaciones y correos enviados como prueba de que intentaste solucionar el retraso."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre retrasos en recibos de luz.",
+        "bullets": [
+          "¿Me pueden cortar la luz si me niego a pagar de golpe una factura de 5 meses acumulados? No, siempre que solicites formalmente el fraccionamiento legal al que tienes derecho por el artículo 96 del RD 1955/2000.",
+          "¿Puedo cambiar de compañía si la actual no me envía facturas? Sí, el derecho a cambiar de suministrador no queda anulado por un retraso de facturación de la compañía saliente.",
+          "¿Qué pasa si mi contador digital está averiado y no lee? La distribuidora debe estimar el consumo según la media histórica del mismo periodo del año anterior o instalar un equipo de sustitución."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con qué hacer si no llega factura de luz?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué pasa si la compañía de luz tarda meses en enviarme la factura?",
+        "a": "El consumo se acumula y lo cobrarán más adelante, pero tienes derecho legal a que te fraccionen el pago en tantos meses como haya durado el retraso sin intereses."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cuántos meses atrás puede cobrarme la compañía de la luz?",
+        "a": "El plazo máximo habitual para regularizar errores de facturación imputables a la distribuidora es de hasta un año según el RD 1955/2000."
+      },
+      {
+        "q": "¿Cómo puedo forzar a la compañía para que me facture?",
+        "a": "Presentando una reclamación formal por escrito con fotografía de la lectura real de tu contador y acudiendo a la Dirección General de Consumo si no responden en 30 días."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-reclamar-factura-de-luz-incorrecta",
     "slug": "como-reclamar-factura-de-luz-incorrecta",
-    "keyword": "cómo reclamar factura de luz incorrecta",
-    "title": "Cómo reclamar una factura de luz incorrecta",
-    "metaTitle": "Reclamar una factura de luz incorrecta | tuLuz",
-    "metaDescription": "Guía para revisar cargos, reunir información y presentar una reclamación con orden y evidencia.",
+    "keyword": "como reclamar factura de luz incorrecta",
+    "title": "Cómo reclamar una factura de luz incorrecta: pasos, modelos, plazos y arbitraje de consumo",
+    "metaTitle": "Cómo Reclamar una Factura de Luz Incorrecta | tuLuz",
+    "metaDescription": "Guía práctica para reclamar cobros indebidos en tu factura de luz. Errores de lectura, servicios no contratados, cómo devolver el recibo y arbitraje en la OMIC.",
     "category": "Mercado y Tarifas",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4436,82 +6543,157 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Guía para revisar cargos, reunir información y presentar una reclamación con orden y evidencia.",
+    "excerpt": "Recibir una factura eléctrica desmesurada por una lectura estimada desorbitada, servicios de asistencia no solicitados o errores en el precio del kilovatio es una de las reclamaciones más frecuentes en España. Descubre el cauce oficial paso a paso para que te devuelvan el dinero cobrado de más.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo reclamar factura de luz incorrecta"
+        "id": "errores-mas-comunes",
+        "title": "1. Los 5 errores más frecuentes en los recibos de la luz"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "reclamacion-comercializadora",
+        "title": "2. Paso 1: Reclamación formal ante el Servicio de Atención al Cliente"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "devolver-recibo-banco",
+        "title": "3. ¿Se debe devolver el recibo en el banco? Riesgos y precauciones"
+      },
+      {
+        "id": "arbitraje-consumo-omic",
+        "title": "4. Paso 2: Elevar la queja a la Junta Arbitral de Consumo y la OMIC"
+      },
+      {
+        "id": "via-industria-organo-competente",
+        "title": "5. Paso 3: Vía de la Dirección General de Industria (discrepancias técnicas)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo reclamar factura de luz incorrecta",
-        "content": "Comprender a fondo **cómo reclamar factura de luz incorrecta** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nGuía para revisar cargos, reunir información y presentar una reclamación con orden y evidencia.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo reclamar factura de luz incorrecta, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "errores-mas-comunes",
+        "heading": "1. Los 5 errores más frecuentes en los recibos de la luz",
+        "content": "Antes de iniciar una reclamación, es necesario identificar la anomalía exacta en el desglose de la factura:",
+        "table": {
+          "headers": [
+            "Tipo de Error",
+            "Síntoma en Factura",
+            "Prueba a Aportar"
+          ],
+          "rows": [
+            [
+              "Lectura estimada inflada",
+              "La lectura actual en factura es mayor que la lectura real del contador físico",
+              "Fotografía con fecha del contador digital"
+            ],
+            [
+              "Servicios adicionales no contratados",
+              "Cargos de 4 € a 15 € por 'mantenimiento eléctrico', 'asistencia hogar' o seguros",
+              "Copia del contrato original sin marcar esas casillas"
+            ],
+            [
+              "Aplicación de tarifa o precio erróneo",
+              "Precio del kWh superior al pactado por contrato o fin de promoción no notificado",
+              "Condiciones particulares firmadas"
+            ],
+            [
+              "Potencia facturada incorrecta",
+              "Se cobra una potencia en kW superior a la que figura en el contrato",
+              "Contrato vigente o comprobante del trámite"
+            ],
+            [
+              "Duplicidad de periodos",
+              "Solapamiento de fechas con la factura inmediatamente anterior",
+              "Factura del mes precedente"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El 65% de las reclamaciones ganadas por los consumidores corresponden a lecturas estimadas abusivas y servicios adicionales vinculados sin consentimiento informado.",
+          "Las empresas eléctricas están obligadas a responder a las reclamaciones en un plazo máximo de 30 días naturales."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo reclamar una factura de luz incorrecta** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "reclamacion-comercializadora",
+        "heading": "2. Paso 1: Reclamación formal ante el Servicio de Atención al Cliente",
+        "content": "El primer trámite obligatorio es reclamar directamente ante la comercializadora emisora:",
+        "bullets": [
+          "Utiliza canales que dejen constancia fehaciente: formulario web con acuse de recibo, correo electrónico o llamada telefónica solicitando siempre el NÚMERO DE INCIDENCIA.",
+          "Detalla con claridad: nombre, DNI, CUPS, número de factura recurrida, importe exacto impugnado y motivo fundamentado.",
+          "Adjunta la fotografía del contador o copia del contrato como evidencia documental.",
+          "Si no te facilitan número de reclamación, la llamada no tiene valor probatorio legal."
+        ]
+      },
+      {
+        "id": "devolver-recibo-banco",
+        "heading": "3. ¿Se debe devolver el recibo en el banco? Riesgos y precauciones",
+        "content": "Devolver el recibo en el banco de forma impulsiva es un arma de doble filo que entraña riesgos jurídicos serios:",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "Precaución con la devolución bancaria",
+          "text": "Si devuelves el recibo íntegro sin haber abierto reclamación previa formal, la comercializadora puede computarte como deudor moroso, iniciar el procedimiento reglamentario de corte de luz a los dos meses y cobrar recargos de devolución bancaria. Si el error es parcial (por ejemplo, 20 € de más en una factura de 80 €), es más prudente abonar el recibo y exigir el reintegro, o pagar la parte no discutida."
+        },
+        "bullets": [
+          "Solo se aconseja devolver el recibo bancario en casos de fraude flagrante (facturas de compañías desconocidas con las que nunca contrataste o importes desorbitados de miles de euros claramente erróneos).",
+          "Acompaña siempre la devolución con un escrito formal a la empresa justificando el motivo del impago temporal por reclamación en curso."
+        ]
+      },
+      {
+        "id": "arbitraje-consumo-omic",
+        "heading": "4. Paso 2: Elevar la queja a la Junta Arbitral de Consumo y la OMIC",
+        "content": "Si la comercializadora desestima tu reclamación o no contesta en el plazo reglamentario de un mes, acude a la vía extrajudicial pública:",
+        "bullets": [
+          "Presenta solicitud de Arbitraje de Consumo a través de la OMIC de tu ayuntamiento o de la Junta Arbitral de Consumo autonómica.",
+          "Es un procedimiento 100% gratuito, rápido y sin necesidad de abogado ni procurador.",
+          "El laudo arbitral dictado por el tribunal de consumo tiene el mismo valor vinculante y fuerza ejecutiva que una sentencia judicial firme."
+        ]
+      },
+      {
+        "id": "via-industria-organo-competente",
+        "heading": "5. Paso 3: Vía de la Dirección General de Industria (discrepancias técnicas)",
+        "content": "Si el desacuerdo versa sobre discrepancias puramente técnicas (funcionamiento defectuoso del contador, tarifas de acceso, cálculo de peajes o fraudes imputados por la distribuidora), el organismo competente no es Consumo, sino la Dirección General de Energía e Industria de tu Comunidad Autónoma.",
+        "bullets": [
+          "La Consejería de Industria puede ordenar la verificación metrológica oficial del contador mediante laboratorio acreditado.",
+          "Sus resoluciones son de obligado cumplimiento para la empresa distribuidora."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre reclamaciones de electricidad.",
+        "bullets": [
+          "¿Cuánto tardan en devolverme el dinero si me han cobrado de más? Una vez aprobada la reclamación, la comercializadora emite una factura rectificativa (nota de abono) y transfiere el dinero a tu cuenta bancaria en un plazo habitual de 5 a 15 días laborables.",
+          "¿Pueden incluirme en ASNEF si he reclamado en la OMIC? No, la inclusión en ficheros de solvencia patrimonial por deudas controvertidas e impugnadas formalmente en vía administrativa es ilegal y sancionable por la AEPD con indemnizaciones por vulneración del derecho al honor.",
+          "¿Puedo reclamar facturas de hace más de un año? Sí, el plazo general para reclamar cobros indebidos es de hasta 5 años según el Código Civil."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo reclamar factura de luz incorrecta?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué hago si me llega una factura de luz desorbitada?",
+        "a": "Comprueba la lectura de tu contador físico, abre de inmediato una reclamación formal con número de expediente ante la comercializadora y no devuelvas el recibo sin asesorarte previamente."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué plazo tiene la compañía de luz para responder a mi reclamación?",
+        "a": "Tiene un plazo máximo legal de 30 días naturales para dar una respuesta motivada por escrito."
+      },
+      {
+        "q": "¿Qué es el arbitraje de consumo y cuánto cuesta?",
+        "a": "Es un procedimiento de resolución de conflictos público, gratuito e imparcial ante la Administración que emite una resolución obligatoria para la compañía si esta está adherida al sistema arbitral."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-un-coche-electrico-en-casa",
     "slug": "consumo-electrico-de-un-coche-electrico-en-casa",
-    "keyword": "consumo eléctrico de un coche eléctrico en casa",
-    "title": "Cuánto consume cargar un coche eléctrico en casa",
-    "metaTitle": "Cargar coche eléctrico en casa: consumo | tuLuz",
-    "metaDescription": "Calcula el consumo aproximado de recargar un vehículo eléctrico y qué factores influyen en el coste.",
+    "keyword": "consumo electrico de un coche electrico en casa",
+    "title": "Consumo eléctrico de un coche eléctrico en casa: coste por cada 100 km, recarga doméstica y punto de carga",
+    "metaTitle": "Consumo de Coche Eléctrico en Casa: Coste por 100 km | tuLuz",
+    "metaDescription": "Calcula cuánto cuesta cargar un coche eléctrico en casa. Consumo en kWh, coste por cada 100 km (menos de 2 €), instalación de wallbox y tarifas nocturnas.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "9 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4519,82 +6701,175 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Calcula el consumo aproximado de recargar un vehículo eléctrico y qué factores influyen en el coste.",
+    "excerpt": "Cargar un vehículo eléctrico en el garaje del hogar es hasta cinco veces más económico que repostar gasolina o diésel en una estación de servicio. Conoce cuántos kWh consume en un enchufe doméstico, cuánto cuesta recorrer 100 kilómetros y cómo optimizar la potencia contratada.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de un coche eléctrico en casa"
+        "id": "consumo-medio-100km",
+        "title": "1. Consumo medio de un coche eléctrico: kWh por cada 100 kilómetros"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-coste-comparativo",
+        "title": "2. Tabla comparativa: cargar en casa vs gasolina vs electrolinera pública"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "punto-recarga-wallbox",
+        "title": "3. Tipos de recarga doméstica: enchufe Schuko vs Wallbox con balanceo"
+      },
+      {
+        "id": "impacto-factura-mensual",
+        "title": "4. Impacto en la factura mensual según los kilómetros anuales"
+      },
+      {
+        "id": "instalacion-garaje-comunitario",
+        "title": "5. Cómo instalar un cargador en un garaje comunitario (Ley de Propiedad Horizontal)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de un coche eléctrico en casa",
-        "content": "Comprender a fondo **consumo eléctrico de un coche eléctrico en casa** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nCalcula el consumo aproximado de recargar un vehículo eléctrico y qué factores influyen en el coste.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo eléctrico de un coche eléctrico en casa, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "consumo-medio-100km",
+        "heading": "1. Consumo medio de un coche eléctrico: kWh por cada 100 kilómetros",
+        "content": "Así como los coches de combustión miden su rendimiento en 'litros cada 100 km', los vehículos 100% eléctricos (BEV) se miden en 'kWh cada 100 km'. En condiciones reales de circulación mixta (urbano y carretera), un turismo eléctrico moderno de tamaño compacto o berlina (como un Renault Mégane E-Tech, Tesla Model 3, MG4 o Volkswagen ID.3) consume entre 14 y 18 kWh a los 100 km. Los SUV de mayor tamaño y peso oscilan entre 18 y 22 kWh a los 100 km.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "En entorno puramente urbano el consumo es menor (apenas 12-14 kWh/100 km) gracias a la frenada regenerativa que recarga la batería en cada detención.",
+          "En autopista a 120 km/h el consumo se incrementa por la resistencia aerodinámica del aire.",
+          "Las pérdidas de eficiencia durante la recarga en corriente alterna (AC) oscilan habitualmente entre el 7% y el 12%."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cuánto consume cargar un coche eléctrico en casa** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-coste-comparativo",
+        "heading": "2. Tabla comparativa: cargar en casa vs gasolina vs electrolinera pública",
+        "content": "La brecha económica entre cargar en casa y otras alternativas energéticas es colosal:",
+        "table": {
+          "headers": [
+            "Modo de Carga / Combustible",
+            "Precio Unitario Estimado",
+            "Consumo para 100 km",
+            "Coste por 100 km (€)",
+            "Gasto anual (15.000 km/año)"
+          ],
+          "rows": [
+            [
+              "Carga en casa (Tarifa nocturna valle)",
+              "0,09 € / kWh",
+              "16 kWh",
+              "1,44 € / 100 km",
+              "216 € / año"
+            ],
+            [
+              "Carga en casa (Tarifa plana estándar)",
+              "0,16 € / kWh",
+              "16 kWh",
+              "2,56 € / 100 km",
+              "384 € / año"
+            ],
+            [
+              "Carga pública lenta/semirrápida (11-22 kW)",
+              "0,35 € / kWh",
+              "16 kWh",
+              "5,60 € / 100 km",
+              "840 € / año"
+            ],
+            [
+              "Carga ultra-rápida en autopista (150-350 kW)",
+              "0,65 € / kWh",
+              "16 kWh",
+              "10,40 € / 100 km",
+              "1.560 € / año"
+            ],
+            [
+              "Turismo Diésel eficiente",
+              "1,45 € / litro",
+              "5,5 l / 100 km",
+              "7,97 € / 100 km",
+              "1.195 € / año"
+            ],
+            [
+              "Turismo Gasolina estándar",
+              "1,55 € / litro",
+              "6,5 l / 100 km",
+              "10,07 € / 100 km",
+              "1.510 € / año"
+            ]
+          ]
+        },
+        "bullets": [
+          "Recorrer 100 km con carga nocturna doméstica cuesta menos de 1,50 €, lo que supone un ahorro anual de más de 1.200 € frente a un coche de gasolina.",
+          "El coche eléctrico se amortiza de forma acelerada cuantos más kilómetros se realicen al año."
+        ]
+      },
+      {
+        "id": "punto-recarga-wallbox",
+        "heading": "3. Tipos de recarga doméstica: enchufe Schuko vs Wallbox con balanceo",
+        "content": "Para cargar en casa existen dos vías técnicas:",
+        "bullets": [
+          "Enchufe doméstico Schuko convencional: carga a baja potencia (máximo 2,3 kW o 10 A por seguridad térmica). Es una solución lenta (tarda 20 a 25 horas en llenar una batería) y puede sobrecalentar las tomas estándar si se usa a diario.",
+          "Punto de recarga de pared dedicado (Wallbox): carga entre 3,7 kW y 7,4 kW en monofásica (o hasta 11-22 kW en trifásica). Es el método recomendado por seguridad, velocidad y eficiencia.",
+          "Balanceo dinámico de carga: el wallbox incorpora un sensor que mide el consumo del resto de la vivienda en tiempo real. Si enciendes el horno y la lavadora, el cargador reduce automáticamente su potencia para no hacer saltar el contador, y vuelve a subir al máximo cuando los electrodomésticos se apagan."
+        ]
+      },
+      {
+        "id": "impacto-factura-mensual",
+        "heading": "4. Impacto en la factura mensual según los kilómetros anuales",
+        "content": "Para un usuario medio que recorre 1.250 km al mes (15.000 km/año), el coche demandará unos 200 a 220 kWh mensuales de electricidad.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Ajuste de potencia en periodo Valle (P2)",
+          "text": "La tarifa doméstica 2.0TD permite contratar dos potencias distintas: puedes mantener 3,5 kW durante el día (P1) y contratar 6,0 kW en horario nocturno (P2, de 00:00 a 08:00) para cargar el coche a máxima velocidad. El sobrecoste del término fijo de potencia nocturna es de apenas unos céntimos al mes debido a sus bajísimos peajes regulados."
+        },
+        "bullets": [
+          "El incremento en la factura de la luz mensual será de unos 18 € a 30 € al mes, sustituyendo un desembolso en gasolinera de más de 120 € mensuales."
+        ]
+      },
+      {
+        "id": "instalacion-garaje-comunitario",
+        "heading": "5. Cómo instalar un cargador en un garaje comunitario (Ley de Propiedad Horizontal)",
+        "content": "El artículo 17.5 de la Ley de Propiedad Horizontal (LPH) establece que cualquier propietario o arrendatario de una plaza de garaje tiene derecho legal a instalar un punto de recarga para su vehículo eléctrico sin necesidad de someterlo a votación ni aprobación de la junta de vecinos.",
+        "bullets": [
+          "Solo es obligatorio comunicar por escrito al presidente o administrador de la finca la intención de realizar la instalación con carácter previo.",
+          "La instalación debe ser ejecutada por un instalador electricista autorizado según la instrucción ITC-BT-52 del REBT.",
+          "La derivación eléctrica puede conectarse directamente desde el contador de tu propia vivienda en el cuarto de contadores o mediante un nuevo contador secundario."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre recarga de vehículos eléctricos.",
+        "bullets": [
+          "¿Cuánto tarda en cargar un coche eléctrico en casa? Con un Wallbox a 7,4 kW, una batería mediana de 60 kWh recupera el 80% de su capacidad en unas 6 a 7 horas (durante la noche).",
+          "¿Cuánto cuesta instalar un Wallbox en casa? El equipo y la instalación completa suelen costar entre 1.000 € y 1.600 €, con ayudas del Plan MOVES que subvencionan hasta el 70% o 80% del coste total.",
+          "¿Se puede cargar el coche gratis con placas solares? Sí, los cargadores inteligentes solares pueden programarse para inyectar al vehículo únicamente el excedente de producción fotovoltaica que tu vivienda no esté consumiendo."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo eléctrico de un coche eléctrico en casa?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto cuesta cargar un coche eléctrico en casa al mes?",
+        "a": "Para unos 15.000 km al año (unos 1.250 km al mes), el coste en electricidad oscila entre 18 € y 32 € al mes cargando en horario nocturno con tarifa con discriminación horaria."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Es necesario subir la potencia contratada para tener un coche eléctrico?",
+        "a": "No es imprescindible si instalas un Wallbox con balanceo dinámico de potencia, que modula la carga automáticamente para no sobrepasar el límite de tu contrato actual."
+      },
+      {
+        "q": "¿Necesito permiso de los vecinos para poner un cargador en mi garaje comunitario?",
+        "a": "No, según el artículo 17.5 de la Ley de Propiedad Horizontal no requiere aprobación ni votación de la comunidad; basta con comunicar la instalación por escrito al presidente o administrador."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "mejor-hora-para-cargar-coche-electrico-en-casa",
     "slug": "mejor-hora-para-cargar-coche-electrico-en-casa",
-    "keyword": "mejor hora para cargar coche eléctrico en casa",
-    "title": "Cuándo cargar un coche eléctrico en casa",
-    "metaTitle": "Mejor hora para cargar coche eléctrico | tuLuz",
-    "metaDescription": "Descubre cómo planificar la recarga doméstica según tu consumo, potencia y periodos horarios.",
+    "keyword": "mejor hora para cargar coche electrico en casa",
+    "title": "Cuál es la mejor hora para cargar el coche eléctrico en casa: tarifas 2.0TD, tramo valle y automatización",
+    "metaTitle": "Mejor Hora para Cargar el Coche Eléctrico en Casa | tuLuz",
+    "metaDescription": "Descubre las horas más baratas para recargar tu coche eléctrico en casa. Tramos valle nocturnos (00:00 a 08:00), tarifas especiales para VE y cómo programar la carga.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4602,82 +6877,160 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Descubre cómo planificar la recarga doméstica según tu consumo, potencia y periodos horarios.",
+    "excerpt": "Cargar el vehículo eléctrico en las horas adecuadas puede marcar una diferencia de más del triple en tu factura de luz. Descubre el mapa horario de la tarifa 2.0TD, las mejores tarifas nocturnas específicas para movilidad eléctrica y cómo automatizar la carga para dormir mientras ahorras.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre mejor hora para cargar coche eléctrico en casa"
+        "id": "tramos-horarios-20td-ve",
+        "title": "1. El mapa de tramos horarios de la tarifa 2.0TD para movilidad eléctrica"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "horas-supervalle-tarifas-ve",
+        "title": "2. Las tarifas específicas para coche eléctrico (horas supervalle a 0,03 € - 0,07 €)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "tabla-ahorro-horarios",
+        "title": "3. Tabla comparativa: coste de carga completa según la hora de conexión"
+      },
+      {
+        "id": "como-programar-carga",
+        "title": "4. Cómo programar la recarga: desde la app del coche vs el Wallbox"
+      },
+      {
+        "id": "cuidados-bateria",
+        "title": "5. Carga nocturna y salud de la batería: la regla del 20% al 80%"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre mejor hora para cargar coche eléctrico en casa",
-        "content": "Comprender a fondo **mejor hora para cargar coche eléctrico en casa** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nDescubre cómo planificar la recarga doméstica según tu consumo, potencia y periodos horarios.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a mejor hora para cargar coche eléctrico en casa, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "tramos-horarios-20td-ve",
+        "heading": "1. El mapa de tramos horarios de la tarifa 2.0TD para movilidad eléctrica",
+        "content": "La estructura tarifaria regulada 2.0TD divide las 24 horas del día en tres periodos de consumo de energía: Punta (el más caro), Llano (precio medio) y Valle (el más económico). Para los usuarios de vehículo eléctrico, el periodo Valle es el paraíso del ahorro: abarca todas las madrugadas de lunes a viernes desde las 00:00 hasta las 08:00 horas, y las 24 horas completas de todos los sábados, domingos y festivos nacionales.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Durante las 8 horas nocturnas valle, los peajes y cargos regulados del sistema eléctrico se reducen en más de un 90% respecto al horario punta.",
+          "La red de transporte de Red Eléctrica de España (REE) tiene exceso de capacidad eólica nocturna, lo que abarata el precio del pool mayorista."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cuándo cargar un coche eléctrico en casa** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "horas-supervalle-tarifas-ve",
+        "heading": "2. Las tarifas específicas para coche eléctrico (horas supervalle a 0,03 € - 0,07 €)",
+        "content": "Muchas comercializadoras en el mercado libre han diseñado tarifas especiales para conductores de coches híbridos enchufables y eléctricos. Estas tarifas concentran un precio extraordinariamente reducido (de 0,03 € a 0,07 € por kWh) en una franja específica nocturna (habitualmente entre la 01:00 y las 07:00 de la madrugada), a cambio de un precio ligeramente superior durante las horas punta diurnas.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "La estrategia tuLuz para propietarios de VE",
+          "text": "Si recorres más de 15.000 km al año, contratar una tarifa con discriminación nocturna agresiva o tarifa especial VE permite 'llenar el depósito' de una batería de 50 kWh por apenas 2,50 €, recorriendo más de 300 kilómetros por el precio de un café con leche."
+        },
+        "bullets": [
+          "Verifica que el precio diurno no sea excesivamente penalizador si en tu casa hay personas teletrabajando durante el día.",
+          "Aprovecha los fines de semana completos (48 horas continuas en periodo valle) para recargas largas al mínimo coste."
+        ]
+      },
+      {
+        "id": "tabla-ahorro-horarios",
+        "heading": "3. Tabla comparativa: coste de carga completa según la hora de conexión",
+        "content": "Observa el impacto económico de enchufar una batería estándar de 60 kWh (equivalente a unos 380 km de autonomía) según el tramo horario:",
+        "table": {
+          "headers": [
+            "Horario de Recarga",
+            "Tramo Tarifario 2.0TD",
+            "Precio Medio del kWh",
+            "Coste de Carga Completa (60 kWh)",
+            "Coste por 100 km equivalentes"
+          ],
+          "rows": [
+            [
+              "Madrugada (01:00 a 07:00)",
+              "Horas Supervalle (Tarifa VE)",
+              "0,05 € / kWh",
+              "3,00 €",
+              "0,79 € / 100 km"
+            ],
+            [
+              "Noche (00:00 a 08:00) o Fines de Semana",
+              "Periodo Valle estándar",
+              "0,09 € / kWh",
+              "5,40 €",
+              "1,42 € / 100 km"
+            ],
+            [
+              "Tarde (14:00 a 18:00 / 22:00 a 00:00)",
+              "Periodo Llano",
+              "0,15 € / kWh",
+              "9,00 €",
+              "2,37 € / 100 km"
+            ],
+            [
+              "Mediodía (10:00 a 14:00) o Noche (18:00 a 22:00)",
+              "Periodo Punta",
+              "0,24 € / kWh",
+              "14,40 €",
+              "3,79 € / 100 km"
+            ]
+          ]
+        },
+        "bullets": [
+          "Cargar a las 20:00 de la tarde en periodo punta cuesta casi cinco veces más caro que hacerlo a las 03:00 de la madrugada.",
+          "Con solo desplazar la carga a la madrugada te ahorras más de 450 € al año en electricidad."
+        ]
+      },
+      {
+        "id": "como-programar-carga",
+        "heading": "4. Cómo programar la recarga: desde la app del coche vs el Wallbox",
+        "content": "No necesitas levantarte a las 00:00 para conectar el cable. El proceso se automatiza por completo:",
+        "bullets": [
+          "Programación desde el vehículo: casi todos los coches eléctricos permiten fijar en su pantalla multimedia la 'hora de inicio de carga' (por ejemplo, a las 00:05) y el 'límite de porcentaje' deseado.",
+          "Programación desde la app del Wallbox: permite definir calendarios semanales y enlazar el cargador con el precio horario del pool eléctrico (en tarifas indexadas) para que el equipo arranque únicamente en las horas más baratas de cada noche.",
+          "Llegas a casa a las 19:00, enchufas la manguera y el sistema queda en reposo hasta que el reloj alcanza la hora programada."
+        ]
+      },
+      {
+        "id": "cuidados-bateria",
+        "heading": "5. Carga nocturna y salud de la batería: la regla del 20% al 80%",
+        "content": "Cargar en corriente alterna lenta durante la noche no solo es más barato, sino que es el método más saludable para la longevidad de las celdas de iones de litio.",
+        "bullets": [
+          "Carga lenta (AC a 3,7 - 7,4 kW) no produce sobrecalentamiento en la química de la batería, evitando la degradación prematura que causan los cargadores ultra-rápidos de corriente continua (DC).",
+          "Regla del 20% al 80%: para el uso diario cotidiano, programa el límite de carga al 80% o 85%. Reserva la recarga al 100% únicamente para antes de emprender viajes largos por carretera."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre horarios de recarga de vehículos.",
+        "bullets": [
+          "¿Qué pasa si necesito cargar de día con urgencia? Puedes forzar la recarga inmediata en cualquier momento desde la app del coche o el botón del wallbox, aunque ese consumo puntual compute en periodo llano o punta.",
+          "¿A qué hora empieza el tramo valle los fines de semana? Empieza el viernes a las 23:59:59 y se mantiene de forma ininterrumpida las 48 horas del sábado y el domingo hasta las 00:00 del lunes.",
+          "¿Las horas valle cambian en verano e invierno? No, desde la reforma de peajes de 2021 los tramos de la tarifa 2.0TD se mantienen idénticos todo el año con independencia de los cambios de hora estacionales."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con mejor hora para cargar coche eléctrico en casa?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuál es la hora más barata para cargar un coche eléctrico en casa?",
+        "a": "De 00:00 a 08:00 de la mañana todos los días laborables de lunes a viernes, y las 24 horas del día durante los sábados, domingos y festivos nacionales."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo puedo evitar que el coche empiece a cargar en cuanto lo enchufo?",
+        "a": "Programando el horario de carga en la aplicación móvil de tu coche o configurando el temporizador de tu cargador Wallbox para que solo suministre corriente a partir de las 00:00."
+      },
+      {
+        "q": "¿Cuánto se ahorra cargando de noche frente a cargar de día?",
+        "a": "Entre un 60% y un 75% del coste total de la recarga, lo que supone un ahorro directo de entre 300 € y 600 € anuales para un conductor medio."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-calcular-potencia-para-cargador-coche-electrico",
     "slug": "como-calcular-potencia-para-cargador-coche-electrico",
-    "keyword": "cómo calcular potencia para cargador coche eléctrico",
-    "title": "Qué potencia necesitas para cargar un coche eléctrico",
-    "metaTitle": "Potencia para cargador de coche eléctrico | tuLuz",
-    "metaDescription": "Qué revisar antes de instalar o usar un cargador doméstico: potencia disponible, hábitos y seguridad.",
+    "keyword": "como calcular potencia para cargador coche electrico",
+    "title": "Cómo calcular la potencia para un cargador de coche eléctrico: kW necesarios, balanceo y término fijo",
+    "metaTitle": "Potencia para Cargador de Coche Eléctrico: Cálculo | tuLuz",
+    "metaDescription": "Aprende a calcular la potencia (kW) que necesitas contratar para recargar tu coche eléctrico en casa. Monofásica vs trifásica, balanceo dinámico y tramos P1/P2.",
     "category": "Hogar y Consumo",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4685,82 +7038,166 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Qué revisar antes de instalar o usar un cargador doméstico: potencia disponible, hábitos y seguridad.",
+    "excerpt": "Dimensionar la potencia contratada para recargar un vehículo eléctrico en el hogar sin provocar disparos del contador ni pagar un sobrecoste absurdo en el término fijo es uno de los mayores retos técnicos para los nuevos usuarios. Conoce las fórmulas exactas y el papel del balanceo de carga.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo calcular potencia para cargador coche eléctrico"
+        "id": "kilometros-diarios-vs-kw",
+        "title": "1. La relación real: kilómetros diarios recorridos frente a kW de potencia"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-potencias-tiempos",
+        "title": "2. Tabla de potencia de carga vs tiempo de recarga y kilómetros recuperados por hora"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "balanceador-dinamico",
+        "title": "3. El balanceador dinámico de potencia: por qué evita subir la potencia contratada"
+      },
+      {
+        "id": "diferencia-potencia-p1-p2",
+        "title": "4. La gran ventaja 2.0TD: contratar más potencia solo en horario nocturno (P2)"
+      },
+      {
+        "id": "monofasica-vs-trifasica-ve",
+        "title": "5. Instalación monofásica (230 V) vs trifásica (400 V)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo calcular potencia para cargador coche eléctrico",
-        "content": "Comprender a fondo **cómo calcular potencia para cargador coche eléctrico** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nQué revisar antes de instalar o usar un cargador doméstico: potencia disponible, hábitos y seguridad.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo calcular potencia para cargador coche eléctrico, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "kilometros-diarios-vs-kw",
+        "heading": "1. La relación real: kilómetros diarios recorridos frente a kW de potencia",
+        "content": "Muchos conductores creen erróneamente que necesitan contratar 7,4 kW o 11 kW para poder tener un coche eléctrico en casa. Sin embargo, un conductor medio en España recorre entre 30 y 50 kilómetros al día, lo que supone un gasto de apenas 5 a 8 kWh de energía. En una noche típica de 8 horas de sueño, suministrar 7 kWh requiere una potencia media de menos de 1 kW (apenas 1.000 vatios, equivalente a un microondas).",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "No necesitas cargar toda la batería al 100% cada noche; solo necesitas reponer la energía consumida durante el trayecto del día.",
+          "Cargar a potencias moderadas (de 2,3 kW a 3,7 kW) es más que suficiente para el 80% de los usuarios particulares urbanos."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Qué potencia necesitas para cargar un coche eléctrico** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-potencias-tiempos",
+        "heading": "2. Tabla de potencia de carga vs tiempo de recarga y kilómetros recuperados por hora",
+        "content": "A continuación detallamos la velocidad de recarga y la autonomía añadida según la potencia suministrada por el punto de carga:",
+        "table": {
+          "headers": [
+            "Potencia de Carga (kW)",
+            "Intensidad y Tipo",
+            "Autonomía añadida por hora (km/h)",
+            "Tiempo para recargar 40 kWh (batería media)",
+            "Perfil de Usuario Recomendado"
+          ],
+          "rows": [
+            [
+              "2,3 kW",
+              "10 A Monofásica (Schuko reforzado)",
+              "~ 14 - 16 km/h",
+              "17 horas",
+              "Híbridos enchufables (PHEV) o trayectos < 40 km/día"
+            ],
+            [
+              "3,7 kW",
+              "16 A Monofásica (Wallbox básico)",
+              "~ 22 - 26 km/h",
+              "10,8 horas",
+              "Uso urbano diario estándar (50-80 km/día)"
+            ],
+            [
+              "4,6 kW",
+              "20 A Monofásica (Wallbox)",
+              "~ 28 - 33 km/h",
+              "8,7 horas",
+              "Recuperación nocturna completa en 8 horas de sueño"
+            ],
+            [
+              "7,4 kW",
+              "32 A Monofásica (Wallbox tope monofásico)",
+              "~ 45 - 52 km/h",
+              "5,4 horas",
+              "Vehículos 100% eléctricos con baterías grandes (> 70 kWh)"
+            ],
+            [
+              "11,0 kW",
+              "16 A Trifásica (Vivienda trifásica)",
+              "~ 70 - 80 km/h",
+              "3,6 horas",
+              "Chalets con acometida trifásica y dos coches eléctricos"
+            ]
+          ]
+        },
+        "bullets": [
+          "Cargar a 3,7 kW añade más de 200 km de autonomía en una sola noche de 8 horas de conexión.",
+          "Para la gran mayoría de turismos, contratar más de 4,6 kW en el hogar no aporta ventajas prácticas si el coche pasa toda la noche aparcado en el garaje."
+        ]
+      },
+      {
+        "id": "balanceador-dinamico",
+        "heading": "3. El balanceador dinámico de potencia: por qué evita subir la potencia contratada",
+        "content": "El balanceador dinámico (o sensor toroidal de modulación de carga) es un pequeño dispositivo que se instala en el cuadro eléctrico general de la vivienda para medir en milisegundos cuánta potencia están demandando los electrodomésticos de la casa.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Cómo funciona el balanceo en directo",
+          "text": "Si tienes contratados 4,0 kW y tu casa está consumiendo 1.000 W (frigorífico y luces), el wallbox entrega 3.000 W al coche. Si de repente enciendes la vitrocerámica y el horno consumiendo 3.500 W, el wallbox reduce al instante la carga del coche a 500 W. Cuando apagas la cocina, el cargador vuelve a subir automáticamente a 3.000 W sin que el contador salte jamás."
+        },
+        "bullets": [
+          "Elimina la necesidad de aumentar la potencia contratada con la distribuidora, ahorrando más de 100 € anuales en la cuota fija.",
+          "Aprovecha el 100% de la potencia disponible en la vivienda sin riesgo de disparo."
+        ]
+      },
+      {
+        "id": "diferencia-potencia-p1-p2",
+        "heading": "4. La gran ventaja 2.0TD: contratar más potencia solo en horario nocturno (P2)",
+        "content": "Con la tarifa 2.0TD vigente en España, todos los hogares pueden contratar dos potencias diferentes en su contrato: P1 (Punta/Llano de 08:00 a 00:00) y P2 (Valle de 00:00 a 08:00 y fines de semana completos). El precio regulado del término de potencia en P2 es extremadamente bajo (alrededor de 1,5 € por kW y año frente a unos 30 €/kW/año en P1).",
+        "bullets": [
+          "Puedes mantener 3,45 kW durante el día para no encarecer tu término fijo anual.",
+          "Puedes subir la potencia nocturna en P2 a 6,9 kW por apenas 5 € a 7 € al año de sobrecoste fijo total, permitiendo cargar el coche a máxima velocidad de madrugada."
+        ]
+      },
+      {
+        "id": "monofasica-vs-trifasica-ve",
+        "heading": "5. Instalación monofásica (230 V) vs trifásica (400 V)",
+        "content": "En España, más del 90% de los hogares particulares disponen de instalación monofásica (230 V), cuyo límite máximo de carga por normativa es de 7,4 kW (32 A). Pasar una vivienda de monofásica a trifásica solo para cargar un coche es un error económico:",
+        "bullets": [
+          "Exige un nuevo boletín eléctrico, cambio de protecciones en el cuadro y reequilibrio de fases en los circuitos de la casa.",
+          "En trifásica, la potencia contratada se divide entre las tres fases; si contratas 6,9 kW en trifásica, solo dispondrás de 2,3 kW por fase, haciendo saltar los automáticos con electrodomésticos convencionales."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre dimensionamiento de potencia para vehículos eléctricos.",
+        "bullets": [
+          "¿Puedo cargar el coche con la potencia que ya tengo contratada? Sí, con un cargador con balanceador dinámico no necesitas subir ni un solo kilovatio de potencia contratada.",
+          "¿Cuánto cuesta aumentar la potencia contratada en P2 nocturno? Aumentar de 3,5 kW a 6 kW en horario valle cuesta unos 25 € de derechos de enganche/acceso a la distribuidora una sola vez y apenas unos 4 € al año de término fijo.",
+          "¿Salta el contador si cargo el coche y pongo la lavadora a la vez? Con balanceador dinámico, nunca. Sin balanceador, saltará si la suma de potencias supera los kW contratados."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo calcular potencia para cargador coche eléctrico?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué potencia mínima necesito en casa para cargar un coche eléctrico?",
+        "a": "Con 3,45 kW o 3,7 kW contratados es perfectamente viable cargar el coche por la noche con un balanceador dinámico de potencia para reponer entre 150 y 200 km de autonomía en 8 horas."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué es el balanceo de carga dinámico en un wallbox?",
+        "a": "Es un sistema inteligente que mide el consumo de la vivienda y ajusta la potencia entregada al vehículo en tiempo real para aprovechar el margen libre sin hacer saltar el contador."
+      },
+      {
+        "q": "¿Cuánto cuesta subir la potencia contratada solo por la noche?",
+        "a": "La potencia nocturna (P2) es baratísima: subir 3 kW en horario nocturno añade menos de 6 € al año a tu factura en concepto de término fijo regulado."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-una-panaderia",
     "slug": "consumo-electrico-de-una-panaderia",
-    "keyword": "consumo eléctrico de una panadería",
-    "title": "Cómo reducir el consumo eléctrico de una panadería",
-    "metaTitle": "Ahorrar electricidad en una panadería | tuLuz",
-    "metaDescription": "Medidas para revisar hornos, frío, iluminación y horarios en una panadería o pastelería.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "consumo electrico de una panaderia",
+    "title": "Consumo eléctrico de una panadería u obrador: hornos, fermentadoras y claves para ahorrar hasta un 25%",
+    "metaTitle": "Consumo Eléctrico de una Panadería: Hornos y Ahorro | tuLuz",
+    "metaDescription": "Estrategias de eficiencia energética para panaderías y obradores de pastelería. Análisis de hornos de solera, rotativos, cámaras de fermentación y tarifas 3.0TD.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4768,82 +7205,155 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Medidas para revisar hornos, frío, iluminación y horarios en una panadería o pastelería.",
+    "excerpt": "Los obradores de panadería y pastelería tienen una de las mayores intensidades energéticas por metro cuadrado del sector alimentario. Conoce cómo se reparte el consumo entre hornos, amasadoras y frío y cómo aprovechar los horarios nocturnos de producción para rebajar la factura eléctrica.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de una panadería"
+        "id": "reparto-consumo-panaderia",
+        "title": "1. Reparto del consumo energético en un obrador de panadería"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "hornos-panaderia-tipos",
+        "title": "2. Hornos de solera vs rotativos vs convección: consumo en kWh y potencia"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "camaras-fermentacion-frio",
+        "title": "3. Cámaras de fermentación controlada y conservación de masas"
+      },
+      {
+        "id": "aprovechamiento-horario-nocturno",
+        "title": "4. La ventaja competitiva: producción en periodo valle P6 de la tarifa 3.0TD"
+      },
+      {
+        "id": "recuperacion-calor-hornos",
+        "title": "5. Sistemas de recuperación de calor de vahos para agua caliente y fermentación"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de una panadería",
-        "content": "Comprender a fondo **consumo eléctrico de una panadería** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nMedidas para revisar hornos, frío, iluminación y horarios en una panadería o pastelería.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo eléctrico de una panadería, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "reparto-consumo-panaderia",
+        "heading": "1. Reparto del consumo energético en un obrador de panadería",
+        "content": "La factura eléctrica de una panadería suele representar entre el 6% y el 12% de sus costes operativos totales. El gasto está fuertemente dominado por el equipamiento térmico de cocción y frío continuo:",
+        "table": {
+          "headers": [
+            "Equipo del Obrador",
+            "% Consumo Global",
+            "Potencia Media Instalada",
+            "Medida Clave de Optimización"
+          ],
+          "rows": [
+            [
+              "Hornos de cocción (solera / rotativo)",
+              "55% - 68%",
+              "18 kW - 45 kW",
+              "Cocción continua a plena carga y precalentamiento justo"
+            ],
+            [
+              "Cámaras de fermentación y frío de masas",
+              "15% - 22%",
+              "3,5 kW - 8 kW",
+              "Aislamiento hermético y condensación flotante"
+            ],
+            [
+              "Maquinaria mecánica (amasadoras, divisoras)",
+              "8% - 12%",
+              "4 kW - 9 kW",
+              "Motores de alta eficiencia IE3/IE4 y mantenimiento"
+            ],
+            [
+              "Climatización de zona de venta y luz",
+              "5% - 10%",
+              "3 kW - 6 kW",
+              "Cortinas de aire en puerta y LED de tono cálido"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El horno de panadería es el principal centro de consumo del negocio, absorbiendo más de la mitad de la electricidad del obrador.",
+          "Las cámaras de fermentación controlada combinan frío, calor y vapor de humedad, demandando energía las 24 horas del día."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo reducir el consumo eléctrico de una panadería** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "hornos-panaderia-tipos",
+        "heading": "2. Hornos de solera vs rotativos vs convección: consumo en kWh y potencia",
+        "content": "La elección y uso del horno determina la rentabilidad de cada barra de pan horneada:",
+        "bullets": [
+          "Hornos de solera refractaria: ofrecen máxima inercia térmica y calidad de corteza, pero requieren precalentamientos largos de 45 a 60 minutos. Una vez calientes, retienen el calor eficazmente.",
+          "Hornos rotativos de carro: ideales para alta producción y bollería. Su recirculación de aire forzado permite cocciones rápidas y homogéneas, pero sufren pérdidas de calor cada vez que se introduce o extrae un carro.",
+          "Planificación de hornadas por temperatura decreciente: hornear primero las piezas que exigen 240 °C (pan rústico) y finalizar la jornada con repostería y bollería que requieren 180 °C a 160 °C aprovechando la inercia sin gastar resistencias adicionales."
+        ]
+      },
+      {
+        "id": "camaras-fermentacion-frio",
+        "heading": "3. Cámaras de fermentación controlada y conservación de masas",
+        "content": "La fermentación controlada permite programar ciclos térmicos precisos (bloqueo en frío a 2 °C para frenar la levadura y posterior calentamiento progresivo a 26 °C con vapor para levar la masa a la hora exacta deseada).",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Ajuste de humedad relativa",
+          "text": "Una generación excesiva de vapor por electrodos en la cámara de fermentación satura el aire y produce condensaciones en el suelo, desperdiciando agua y multiplicando el consumo eléctrico de los generadores de vapor."
+        },
+        "bullets": [
+          "Revisa semestralmente el aislamiento de paneles y burletes de las cámaras de frío positivo para evitar puentes térmicos.",
+          "Ubica la unidad condensadora exterior en una zona ventilada que no reciba el aire caliente expulsado por los tiros del horno."
+        ]
+      },
+      {
+        "id": "aprovechamiento-horario-nocturno",
+        "heading": "4. La ventaja competitiva: producción en periodo valle P6 de la tarifa 3.0TD",
+        "content": "A diferencia de otros negocios diurnos, las panaderías inician su jornada de amasado y horneado entre las 02:00 y las 07:00 de la madrugada. En las tarifas para empresas 3.0TD, este horario coincide exactamente con el periodo horario P6 (valle profundo), donde el precio de la energía y los peajes de potencia son hasta un 70% más baratos que a mediodía.",
+        "bullets": [
+          "Ajusta la potencia contratada para que el periodo P6 tenga la potencia máxima necesaria para arrancar todos los hornos, mientras mantienes potencias más moderadas en P1 y P2.",
+          "Programa las masas para que la mayor parte del horneado intensivo concluya antes de las 08:00 de la mañana, cuando entra en vigor el periodo punta P1 o P2."
+        ]
+      },
+      {
+        "id": "recuperacion-calor-hornos",
+        "heading": "5. Sistemas de recuperación de calor de vahos para agua caliente y fermentación",
+        "content": "Los humos y vapores expulsados por la chimenea de los hornos alcanzan temperaturas de más de 180 °C a 220 °C. Instalar un recuperador de calor de humos (intercambiador gas-agua) permite obtener agua caliente sanitaria a 60 °C de forma 100% gratuita para la limpieza del obrador y los circuitos de vapor de las cámaras de fermentación.",
+        "bullets": [
+          "Reduce la necesidad de calentar agua con termos eléctricos o calderas de gas.",
+          "La instalación suele amortizarse en menos de 18 meses gracias a la alta intensidad horaria del obrador."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas habituales sobre costes energéticos en panaderías.",
+        "bullets": [
+          "¿Cuánto consume un horno de panadería al mes? Un horno eléctrico rotativo de 30 kW funcionando 6 horas diarias consume unos 4.500 kWh al mes (entre 500 € y 800 € mensuales según la tarifa horaria).",
+          "¿Es más barato un horno de gasoil/gas o eléctrico? Tradicionalmente el gas era más barato, pero con tarifas eléctricas indexadas en horario nocturno P6 y mantenimiento más económico, los hornos eléctricos son más limpios y competitivos hoy en día.",
+          "¿Cómo evitar penalizaciones por energía reactiva en una panadería? Instalando una batería de condensadores que compense la reactiva de los motores de amasadoras, batidoras y compresores de frío."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo eléctrico de una panadería?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuál es la máquina que más luz consume en una panadería?",
+        "a": "El horno de cocción, que concentra más del 60% de todo el consumo eléctrico del obrador."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo ahorrar luz produciendo pan de madrugada?",
+        "a": "Concentrando el grueso de los horneados entre las 02:00 y las 08:00 de la mañana, franja horaria que corresponde al periodo P6 (el más barato de la tarifa 3.0TD)."
+      },
+      {
+        "q": "¿Qué potencia eléctrica necesita una panadería estándar?",
+        "a": "Suele requerir entre 25 kW y 50 kW en tarifa 3.0TD con contador de telemedida y maxímetro, dependiendo de si los hornos son eléctricos o de combustión."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-una-lavanderia",
     "slug": "consumo-electrico-de-una-lavanderia",
-    "keyword": "consumo eléctrico de una lavandería",
-    "title": "Cómo reducir el consumo eléctrico de una lavandería",
-    "metaTitle": "Ahorrar electricidad en una lavandería | tuLuz",
-    "metaDescription": "Claves para controlar consumo de lavadoras, secadoras, agua caliente y horas de máxima demanda.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "consumo electrico de una lavanderia",
+    "title": "Consumo eléctrico de una lavandería de autoservicio o industrial: secadoras, calderas y tarifas",
+    "metaTitle": "Consumo Eléctrico de una Lavandería: Guía y Ahorro | tuLuz",
+    "metaDescription": "Calcula el gasto de luz en lavanderías autoservicio e industriales. Consumo de lavadoras de alta velocidad, secadoras de gas vs eléctricas y optimización de potencia.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4851,82 +7361,155 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Claves para controlar consumo de lavadoras, secadoras, agua caliente y horas de máxima demanda.",
+    "excerpt": "En el modelo de negocio de las lavanderías de autoservicio y las plantas de lavado industrial, la energía es el principal coste variable de explotación tras el alquiler. Descubre cómo calcular el coste por lavado y secado y qué mejoras técnicas multiplican el margen comercial.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de una lavandería"
+        "id": "estructura-costes-lavanderia",
+        "title": "1. Estructura del gasto energético en una lavandería moderna"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "lavadoras-alta-velocidad",
+        "title": "2. Lavadoras flotantes de alto centrifugado (Factor G > 400)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "secadoras-gas-vs-electricas",
+        "title": "3. Secadoras industriales: ¿electricidad, gas natural o biomasa?"
+      },
+      {
+        "id": "agua-caliente-solar-recuperacion",
+        "title": "4. Precalentamiento de agua: termos centralizados, aerotermia y recuperación"
+      },
+      {
+        "id": "gestion-potencia-lavanderia",
+        "title": "5. Optimización de maxímetro y tarifa eléctrica 3.0TD"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de una lavandería",
-        "content": "Comprender a fondo **consumo eléctrico de una lavandería** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nClaves para controlar consumo de lavadoras, secadoras, agua caliente y horas de máxima demanda.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo eléctrico de una lavandería, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "estructura-costes-lavanderia",
+        "heading": "1. Estructura del gasto energético en una lavandería moderna",
+        "content": "Una lavandería de autoservicio estándar con 4 lavadoras y 3 secadoras consume entre 3.000 y 6.000 kWh al mes de electricidad, a lo que se suma el consumo térmico de gas si el calentamiento de agua o las secadoras funcionan con gas natural o GLP. La energía representa entre el 20% y el 35% del total de ingresos del establecimiento.",
+        "table": {
+          "headers": [
+            "Proceso / Maquinaria",
+            "% Consumo Energético Total",
+            "Consumo por Ciclo Medio",
+            "Coste Energético por Ciclo Estimado"
+          ],
+          "rows": [
+            [
+              "Lavado con agua fría/templada (14 kg)",
+              "18% - 25%",
+              "0,6 - 1,1 kWh eléctricos",
+              "0,10 € - 0,18 € / colada"
+            ],
+            [
+              "Lavado con calentamiento eléctrico propio",
+              "35% - 45%",
+              "2,8 - 4,2 kWh eléctricos",
+              "0,45 € - 0,68 € / colada"
+            ],
+            [
+              "Secado eléctrico por resistencia (18 kg)",
+              "40% - 55%",
+              "4,5 - 6,5 kWh eléctricos",
+              "0,72 € - 1,04 € / secado"
+            ],
+            [
+              "Secado por gas natural (18 kg)",
+              "40% - 55%",
+              "6,0 kWh térmicos de gas",
+              "0,36 € - 0,48 € / secado"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El 85% de la energía de una lavandería se destina a producir calor: calentar agua para lavar y calentar aire para secar.",
+          "Secar la colada requiere más energía que lavarla."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo reducir el consumo eléctrico de una lavandería** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "lavadoras-alta-velocidad",
+        "heading": "2. Lavadoras flotantes de alto centrifugado (Factor G > 400)",
+        "content": "El Factor G mide la fuerza centrífuga que extrae el agua de los tejidos durante el centrifugado final. Las lavadoras profesionales rígidas de bajo centrifugado (Factor G 100-200) dejan la ropa con una humedad residual de más del 70%, obligando a la secadora a trabajar durante 40 minutos. Las lavadoras supercentrifugantes flotantes con Factor G 400 o superior reducen la humedad residual a menos del 45%.",
+        "bullets": [
+          "Reducir la humedad residual un 25% acorta el tiempo de secado posterior en 12 minutos por ciclo.",
+          "Ahorra hasta un 30% en la factura de gas o electricidad de las secadoras sin coste adicional."
+        ]
+      },
+      {
+        "id": "secadoras-gas-vs-electricas",
+        "heading": "3. Secadoras industriales: ¿electricidad, gas natural o biomasa?",
+        "content": "Para locales comerciales a pie de calle con acceso a red de gas canalizado, las secadoras industriales a gas son un 40% a 50% más económicas en coste de explotación que las secadoras eléctricas de resistencias. Si el local no dispone de acometida de gas o salida reglamentaria de humos según RITE, se utilizan secadoras eléctricas pero con variador de flujo de aire y recirculación.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Aislamiento del tambor de secado",
+          "text": "Las secadoras con tambor aislado térmicamente y control de humedad residual por sensor evitan sobrecalentar la ropa cuando ya está seca, reduciendo el ciclo medio en 6 minutos por cliente."
+        },
+        "bullets": [
+          "Limpia el filtro de pelusas del cajón inferior al menos 2 veces al día: un filtro sucio dobla el consumo de la secadora.",
+          "Comprueba que el tiro de evacuación de aire húmedo al exterior sea directo y sin codos pronunciados que generen contrapresión."
+        ]
+      },
+      {
+        "id": "agua-caliente-solar-recuperacion",
+        "heading": "4. Precalentamiento de agua: termos centralizados, aerotermia y recuperación",
+        "content": "Hacer que cada lavadora caliente el agua fría de la red desde 12 °C con sus resistencias eléctricas internas de 9 kW es una ineficiencia energética grave que además dispara el maxímetro de potencia del local.",
+        "bullets": [
+          "Instala un sistema centralizado de ACS (Agua Caliente Sanitaria) alimentado por bomba de calor aerotérmica o caldera de condensación de alta eficiencia.",
+          "Alimentar las lavadoras con doble toma (agua fría y agua precalentada a 45 °C) reduce la duración de cada programa de lavado a 25 minutos y elimina los picos de potencia eléctrica de las resistencias de cada tambor.",
+          "Un ciclo más rápido permite atender a más clientes por hora en horas punta comerciales."
+        ]
+      },
+      {
+        "id": "gestion-potencia-lavanderia",
+        "heading": "5. Optimización de maxímetro y tarifa eléctrica 3.0TD",
+        "content": "Las lavanderías operan con tarifas 3.0TD (más de 15 kW contratados). Si 4 lavadoras calientan agua al mismo tiempo mientras funcionan 3 secadoras, la potencia demandada puede superar los 40 kW en 15 minutos, disparando las penalizaciones por maxímetro.",
+        "bullets": [
+          "Instala un sistema de desconexión secuencial de resistencias que impida que coincidan los picos térmicos simultáneos.",
+          "Revisa tu curva de carga cuarto-horaria para contratar la potencia justa en cada uno de los 6 periodos (P1 a P6)."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre energía en lavanderías.",
+        "bullets": [
+          "¿Cuánto paga de luz al mes una lavandería de autoservicio de 5 máquinas? Entre 450 € y 900 € al mes de electricidad (más gas natural para secado si procede).",
+          "¿Es obligatoria la batería de condensadores? Prácticamente sí; los numerosos motores eléctricos de lavadoras y extractores generan abundante energía reactiva que acarrea fuertes recargos si no se compensa.",
+          "¿Compensa poner paneles solares en una lavandería? Si el local cuenta con cubierta propia o azotea comunitaria con luz diurna abundante, el autoconsumo solar cubre hasta el 35% del consumo eléctrico de los motores y bombas de calor."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo eléctrico de una lavandería?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Qué consume más en una lavandería, lavar o secar?",
+        "a": "El secado consume sustancialmente más energía térmica y eléctrica que el lavado, representando cerca del 50% al 60% del gasto energético total."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo reducir a la mitad el consumo eléctrico de las lavadoras?",
+        "a": "Suministrando agua precalentada por una bomba de calor de aerotermia central en lugar de dejar que las resistencias internas de cada lavadora calienten el agua fría."
+      },
+      {
+        "q": "¿Qué es el Factor G en una lavadora industrial y cómo ahorra luz?",
+        "a": "Es la fuerza de centrifugado; un Factor G alto (> 400) extrae más agua mecánicamente y reduce el tiempo que la ropa debe pasar en la secadora en un 25%."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "ahorro-energetico-en-una-peluqueria",
     "slug": "ahorro-energetico-en-una-peluqueria",
-    "keyword": "ahorro energético en una peluquería",
-    "title": "Cómo ahorrar electricidad en una peluquería",
-    "metaTitle": "Ahorrar electricidad en una peluquería | tuLuz",
-    "metaDescription": "Revisa secadores, climatización, iluminación y hábitos de uso para controlar el gasto del salón.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "ahorro energetico en una peluqueria",
+    "title": "Ahorro energético en una peluquería o salón de belleza: agua caliente, secadores y climatización",
+    "metaTitle": "Ahorro de Luz en Peluquerías y Salones de Belleza | tuLuz",
+    "metaDescription": "Aprende a recortar hasta un 30% la factura de luz de tu peluquería. Control de termos de agua para lavacabezas, secadores profesionales de mano y climatización.",
+    "category": "Empresas y Pymes",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -4934,82 +7517,154 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Revisa secadores, climatización, iluminación y hábitos de uso para controlar el gasto del salón.",
+    "excerpt": "En un salón de peluquería o estética, el agua caliente continua en lavacabezas, los secadores de mano de 2.200 W y la iluminación técnica generan un consumo eléctrico constante durante todo el día. Aprende a controlar los puntos críticos para reducir costes fijos sin alterar el servicio al cliente.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre ahorro energético en una peluquería"
+        "id": "reparto-gasto-peluqueria",
+        "title": "1. Radiografía del consumo eléctrico en salones de estética y peluquería"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "lavacabezas-termo-acs",
+        "title": "2. Lavacabezas y agua caliente: el termo eléctrico sobredimensionado"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "secadores-planchas-brushless",
+        "title": "3. Secadores profesionales de mano, cascos térmicos y planchas"
+      },
+      {
+        "id": "iluminacion-cri-color",
+        "title": "4. Iluminación técnica LED con alto índice de reproducción cromática (CRI > 90)"
+      },
+      {
+        "id": "climatizacion-olores-tintes",
+        "title": "5. Climatización y ventilación para renovación de aire y confort térmico"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre ahorro energético en una peluquería",
-        "content": "Comprender a fondo **ahorro energético en una peluquería** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nRevisa secadores, climatización, iluminación y hábitos de uso para controlar el gasto del salón.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a ahorro energético en una peluquería, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "reparto-gasto-peluqueria",
+        "heading": "1. Radiografía del consumo eléctrico en salones de estética y peluquería",
+        "content": "Una peluquería media con 3 a 5 puestos de peinado y 2 lavacabezas consume entre 600 y 1.200 kWh mensuales. El desglose revela que más del 70% de la energía se destina a generar calor térmico (agua caliente y aire caliente de secadores):",
+        "table": {
+          "headers": [
+            "Equipo / Servicio",
+            "% Gasto de Luz",
+            "Potencia Típica",
+            "Medida Inmediata de Ahorro"
+          ],
+          "rows": [
+            [
+              "Agua caliente en lavacabezas (Termo ACS)",
+              "38% - 46%",
+              "1.500 - 3.000 W",
+              "Aireadores ecoducha en grifos y termo con termostato a 55 °C"
+            ],
+            [
+              "Secadores de mano, cascos y tenacillas",
+              "24% - 30%",
+              "2.000 - 2.400 W cada uno",
+              "Secadores con motor digital sin escobillas (Brushless)"
+            ],
+            [
+              "Climatización de la sala (calor/frío)",
+              "18% - 24%",
+              "3.500 - 5.000 W",
+              "Consigna a 24 °C en verano y 21 °C en invierno con RITE"
+            ],
+            [
+              "Iluminación técnica y escaparate",
+              "8% - 12%",
+              "600 - 1.200 W",
+              "LED profesionales regulables de alto CRI"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El termo de agua caliente y los secadores de pelo funcionando al unísono provocan fuertes picos de potencia instantánea.",
+          "La mayor afluencia de clientes se concentra de jueves a sábado, lo que exige dimensionar la potencia para esos picos de actividad."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo ahorrar electricidad en una peluquería** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "lavacabezas-termo-acs",
+        "heading": "2. Lavacabezas y agua caliente: el termo eléctrico sobredimensionado",
+        "content": "Un salón puede realizar entre 15 y 40 lavados de cabeza al día. Si los grifos arrojan 12 litros por minuto de agua a 45 °C, el termo agotará su capacidad rápidamente obligando a sus resistencias a trabajar sin pausa a máxima potencia.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Alcachofas ecoducha para peluquería",
+          "text": "Instalar alcachofas de lavacabezas con microperforaciones de efecto Venturi reduce el consumo de agua de 11 litros/minuto a 5 litros/minuto manteniendo una sensación de masaje y presión impecable para el cliente. Esto ahorra más de un 50% en el consumo eléctrico del termo."
+        },
+        "bullets": [
+          "Regula el termostato del termo a 55 °C: calentar el agua a 75 °C para luego mezclarla con agua fría en el grifo es un derroche evitable.",
+          "Si el local tiene más de 3 lavacabezas, sustituir el termo eléctrico tradicional por un aerotermo reduce el recibo de ACS en un 70%."
+        ]
+      },
+      {
+        "id": "secadores-planchas-brushless",
+        "heading": "3. Secadores profesionales de mano, cascos térmicos y planchas",
+        "content": "Los secadores convencionales de peluquería demandan hasta 2.400 W de resistencia eléctrica continua. La nueva generación de secadores con motor digital BLDC (Brushless) proporcionan una velocidad de flujo de aire muy superior demandando únicamente entre 1.400 y 1.600 W, secando el cabello en un 30% menos de tiempo y consumiendo casi un 40% menos de electricidad por servicio.",
+        "bullets": [
+          "Retira el exceso de humedad con toalla de microfibra de alta absorción antes de aplicar calor: reduce el uso del secador en 4 minutos por cliente.",
+          "Apaga las planchas térmicas y tenacillas entre servicio y servicio; los modelos cerámicos actuales alcanzan la temperatura de trabajo en menos de 25 segundos."
+        ]
+      },
+      {
+        "id": "iluminacion-cri-color",
+        "heading": "4. Iluminación técnica LED con alto índice de reproducción cromática (CRI > 90)",
+        "content": "En un salón de peluquería la iluminación no es solo visibilidad; es una herramienta crítica para juzgar tintes y matices de color con fidelidad. Muchas peluquerías conservan focos halógenos o halogenuros metálicos muy calurosos por temor a que el LED altere los tonos de coloración.",
+        "bullets": [
+          "Instala luminarias LED con CRI (Índice de Reproducción Cromática) superior a 90 o 95 y temperatura de color neutra (4.000 K).",
+          "Ahorran un 75% frente a focos halógenos y emiten cero calor, aliviando enormemente la carga del aire acondicionado en verano."
+        ]
+      },
+      {
+        "id": "climatizacion-olores-tintes",
+        "heading": "5. Climatización y ventilación para renovación de aire y confort térmico",
+        "content": "El uso de decoloraciones, tintes y amoniacos exige una ventilación adecuada. Sin embargo, ventilar dejando la puerta de la calle abierta de par en par expulsa todo el aire climatizado obligando a los aparatos a trabajar al 100%.",
+        "bullets": [
+          "Instala un recuperador de calor entálpico para ventilar y renovar el aire interior sin perder la temperatura alcanzada.",
+          "Coloca cierrapuertas automáticos en la puerta de entrada para evitar pérdidas térmicas continuas hacia la calle."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre factura de luz en peluquerías.",
+        "bullets": [
+          "¿Cuánto paga de luz una peluquería al mes? Entre 120 € y 250 € en salones pequeños, y de 350 € a 600 € en salones grandes con varios puestos de trabajo continuos.",
+          "¿Qué potencia eléctrica suele necesitar una peluquería? Entre 5,5 kW y 9,2 kW en monofásica (tarifa 2.0TD), dependiendo de cuántos secadores y lavacabezas coincidan a la vez los viernes y sábados.",
+          "¿Merece la pena un termo de 150 litros o dos de 80 litros? Dos termos de 80 litros conectados en serie o un aerotermo compacto proporcionan mayor flexibilidad operativa y menor tiempo de recuperación térmica."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con ahorro energético en una peluquería?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuál es el mayor gasto de luz en una peluquería?",
+        "a": "El termo eléctrico de agua caliente para los lavacabezas (cerca del 40% del total) y los secadores de mano y cascos térmicos (alrededor del 28%)."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cómo ahorrar agua caliente en el lavacabezas sin molestar al cliente?",
+        "a": "Instalando alcachofas con atomizador de alta presión (ecoducha), que reducen el caudal de agua a la mitad manteniendo una sensación térmica envolvente."
+      },
+      {
+        "q": "¿Qué tipo de secador de pelo gasta menos electricidad?",
+        "a": "Los secadores profesionales con motor digital sin escobillas (Brushless), que entregan más caudal de aire con solo 1.400-1.600 W en lugar de los 2.400 W tradicionales."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-medir-consumo-electrico-por-maquinas",
     "slug": "como-medir-consumo-electrico-por-maquinas",
-    "keyword": "cómo medir consumo eléctrico por máquinas",
-    "title": "Cómo medir el consumo eléctrico de cada máquina",
-    "metaTitle": "Medir consumo eléctrico por máquinas | tuLuz",
-    "metaDescription": "Aprende a separar consumos por equipos para detectar qué máquinas elevan el gasto de tu negocio.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "como medir consumo electrico por maquinas",
+    "title": "Cómo medir el consumo eléctrico por máquinas: vatímetros, pinzas amperimétricas y submedición IoT",
+    "metaTitle": "Medir Consumo Eléctrico por Máquinas: Guía Técnica | tuLuz",
+    "metaDescription": "Aprende a medir el consumo de máquinas individuales en talleres y fábricas. Vatímetros de carril DIN, pinzas amperimétricas, telemetría IoT y reparto de costes.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -5017,82 +7672,162 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Aprende a separar consumos por equipos para detectar qué máquinas elevan el gasto de tu negocio.",
+    "excerpt": "Lo que no se mide no se puede mejorar. En cualquier negocio con procesos productivos o maquinaria intensiva, desglosar el consumo máquina por máquina permite calcular el coste energético unitario, predecir averías electromecánicas y justificar inversiones en eficiencia.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo medir consumo eléctrico por máquinas"
+        "id": "por-que-submedir",
+        "title": "1. Por qué la factura general de la compañía no es suficiente (Submetering)"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "herramientas-medicion-tabla",
+        "title": "2. Tabla comparativa de herramientas de medición (enchufes, pinzas, analizadores)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "instalacion-sensores-cuadro",
+        "title": "3. Instalación de transformadores de corriente (CT) y medidores de carril DIN"
+      },
+      {
+        "id": "plataformas-iot-telemetria",
+        "title": "4. Monitorización en tiempo real vía Wi-Fi, Modbus o LoRaWAN"
+      },
+      {
+        "id": "mantenimiento-predictivo",
+        "title": "5. Detección temprana de anomalías mecánicas por variaciones de consumo"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo medir consumo eléctrico por máquinas",
-        "content": "Comprender a fondo **cómo medir consumo eléctrico por máquinas** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nAprende a separar consumos por equipos para detectar qué máquinas elevan el gasto de tu negocio.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo medir consumo eléctrico por máquinas, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "por-que-submedir",
+        "heading": "1. Por qué la factura general de la compañía no es suficiente (Submetering)",
+        "content": "La factura eléctrica mensual te dice cuánto has gastado en total, pero no te dice qué máquina lo ha gastado, en qué turno de trabajo se ha disparado ni si un motor está trabajando forzado. La submedición energética (submetering) consiste en colocar puntos de medición secundaria en las líneas que alimentan los centros de coste individuales (cámaras de frío, compresores, líneas de envasado, hornos o climatizadores).",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Permite calcular el coste energético por kilogramo fabricado o pieza producida.",
+          "Identifica consumos pasivos en máquinas que quedan encendidas en 'stand-by industrial' fuera de turno.",
+          "Facilita el cumplimiento de la norma ISO 50001 de gestión energética."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo medir el consumo eléctrico de cada máquina** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "herramientas-medicion-tabla",
+        "heading": "2. Tabla comparativa de herramientas de medición (enchufes, pinzas, analizadores)",
+        "content": "Dependiendo del tipo de máquina y de si la medición es temporal o permanente, existen distintas soluciones tecnológicas:",
+        "table": {
+          "headers": [
+            "Tecnología de Medición",
+            "Tipo de Conexión",
+            "Precisión y Magnitudes",
+            "Coste Orientativo",
+            "Caso de Uso Típico"
+          ],
+          "rows": [
+            [
+              "Vatímetro enchufe monofásico (Smart Plug)",
+              "Directa Schuko (Plug & Play)",
+              "Potencia activa (W) y kWh",
+              "15 € - 30 €",
+              "Aparatos monofásicos individuales (< 16 A)"
+            ],
+            [
+              "Pinza amperimétrica portátil",
+              "No invasiva (abraza el conductor)",
+              "Amperios instantáneos y pico",
+              "60 € - 250 €",
+              "Diagnóstico puntual rápido por electricista"
+            ],
+            [
+              "Medidor carril DIN con toroidales (CT)",
+              "Transformador de núcleo abierto",
+              "kW, kWh, V, A, factor de potencia",
+              "90 € - 220 € / canal",
+              "Submedición fija en cuadro eléctrico de líneas"
+            ],
+            [
+              "Analizador de redes trifásico industrial",
+              "Conexión en carril DIN + Modbus/Ethernet",
+              "Armónicos (THD), reactiva, cos φ, P1-P6",
+              "450 € - 1.200 €",
+              "Líneas principales y maquinaria pesada crítica"
+            ]
+          ]
+        },
+        "bullets": [
+          "Los transformadores de corriente de núcleo abierto (split-core) se instalan abrazando el cable sin necesidad de cortar el suministro eléctrico ni soltar bornes.",
+          "Para máquinas trifásicas es imprescindible medir las tres fases para detectar desequilibrios de carga."
+        ]
+      },
+      {
+        "id": "instalacion-sensores-cuadro",
+        "heading": "3. Instalación de transformadores de corriente (CT) y medidores de carril DIN",
+        "content": "La instalación de un sistema de submedición en el cuadro secundario de una empresa es un procedimiento limpio y seguro:",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Orientación de los toroidales",
+          "text": "Cada transformador de corriente tiene una flecha grabada que debe apuntar siempre hacia la carga (hacia el motor o máquina). Si se coloca invertida, el analizador registrará energía negativa (como si la máquina estuviera generando electricidad)."
+        },
+        "bullets": [
+          "Se coloca un toroidal abrazando el cable de fase de cada circuito que se desea auditar.",
+          "Los cables secundarios del toroidal se conectan al módulo medidor en el carril DIN.",
+          "El módulo toma la referencia de tensión de la línea para calcular la potencia activa real (P = V × I × cos φ)."
+        ]
+      },
+      {
+        "id": "plataformas-iot-telemetria",
+        "heading": "4. Monitorización en tiempo real vía Wi-Fi, Modbus o LoRaWAN",
+        "content": "Los datos recopilados por los analizadores se transmiten de forma inalámbrica a una plataforma en la nube (Dashboard):",
+        "bullets": [
+          "Protocolo Modbus RTU / TCP: el estándar industrial más robusto para comunicar autómatas (PLC) y concentradores.",
+          "Tecnología LoRaWAN: permite enviar datos a kilómetros de distancia sin cables en grandes naves industriales sin cobertura Wi-Fi.",
+          "Alertas automáticas en el móvil: si un compresor arranca fuera de horario o supera un umbral de amperios fijado, el responsable recibe una notificación inmediata."
+        ]
+      },
+      {
+        "id": "mantenimiento-predictivo",
+        "heading": "5. Detección temprana de anomalías mecánicas por variaciones de consumo",
+        "content": "Medir el consumo no solo sirve para ahorrar luz; es la herramienta más eficaz de mantenimiento predictivo. Cuando un rodamiento empieza a desgastarse, una bomba sufre cavitación o un filtro de aire se obstruye, el motor eléctrico debe vencer mayor fricción mecánica, lo que incrementa su intensidad de corriente (amperios) entre un 10% y un 25% semanas antes de que se produzca una rotura catastrófica.",
+        "bullets": [
+          "Permite programar la sustitución de piezas durante paradas planificadas sin interrumpir la producción.",
+          "Alarga la vida útil de los activos productivos de la empresa."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre telemedida y submedición.",
+        "bullets": [
+          "¿Hay que parar la fábrica para instalar los sensores? No, los toroidales de núcleo partido se abren como una pinza y se colocan alrededor de los cables con la máquina funcionando.",
+          "¿Cuántos puntos de medida se recomiendan en una pyme? Con monitorizar entre 4 y 8 circuitos clave (los que concentran el 80% de la energía según la Ley de Pareto) se obtiene el 90% de los beneficios.",
+          "¿Existen ayudas para instalar sistemas de telemedida? Sí, el Kit Digital y los programas de eficiencia del IDAE subvencionan la adquisición de software y hardware de monitorización energética."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo medir consumo eléctrico por máquinas?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cómo se mide el consumo de una máquina individual en una empresa?",
+        "a": "Instalando un analizador de energía en el cuadro eléctrico con transformadores de corriente (toroidales) abrazados a los cables de esa máquina concreta."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué ventaja tiene la submedición energética (submetering)?",
+        "a": "Permite conocer el coste eléctrico exacto por cada producto fabricado, detectar fallos mecánicos antes de que rompan el motor y evitar consumos parásitos nocturnos."
+      },
+      {
+        "q": "¿Se puede ver el consumo de las máquinas desde el teléfono móvil?",
+        "a": "Sí, conectando los medidores a una pasarela IoT mediante Wi-Fi, Ethernet o tarjeta 4G/LoRaWAN para consultar los datos en cuadros de mando en la nube."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-iluminacion-led-negocio",
     "slug": "consumo-electrico-de-iluminacion-led-negocio",
-    "keyword": "consumo eléctrico de iluminación LED negocio",
-    "title": "Cómo calcular el consumo de iluminación LED en un negocio",
-    "metaTitle": "Consumo iluminación LED en negocios | tuLuz",
-    "metaDescription": "Calcula el impacto de tu iluminación y detecta oportunidades de mejora en locales y oficinas.",
-    "category": "Empresas y Negocios",
-    "readTime": "6 min de lectura",
+    "keyword": "consumo electrico de iluminacion led negocio",
+    "title": "Consumo eléctrico de iluminación LED en negocios: ahorro frente a fluorescencia, halógenos y retorno de inversión",
+    "metaTitle": "Consumo de Iluminación LED en Negocios | tuLuz",
+    "metaDescription": "Descubre cuánto ahorra un negocio cambiando a iluminación LED. Cálculo de amortización (ROI), lúmenes por vatio, durabilidad y reducción de calor en tiendas.",
+    "category": "Empresas y Pymes",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -5100,82 +7835,167 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Calcula el impacto de tu iluminación y detecta oportunidades de mejora en locales y oficinas.",
+    "excerpt": "La sustitución de la iluminación tradicional por tecnología LED es la medida de eficiencia con el retorno de inversión más rápido y seguro para cualquier local comercial o nave. Aprende a calcular el ahorro en kWh y euros, el impacto en la climatización y cómo elegir la temperatura de color idónea para tu negocio.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de iluminación LED negocio"
+        "id": "comparativa-tecnologias-tabla",
+        "title": "1. Tabla comparativa: LED vs Fluorescentes vs Halógenos vs Vapor de Sodio"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "calculo-ahorro-anual",
+        "title": "2. Cálculo real de ahorro en un comercio con 12 horas diarias de apertura"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "beneficio-oculto-climatizacion",
+        "title": "3. El beneficio indirecto: menos calor disipado y menor gasto en aire acondicionado"
+      },
+      {
+        "id": "calidad-luz-ventas",
+        "title": "4. Cómo la temperatura de color y el CRI impulsan las ventas de tu local"
+      },
+      {
+        "id": "amortizacion-roi-led",
+        "title": "5. Plazo de retorno de inversión (ROI) y Certificados de Ahorro Energético (CAE)"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo eléctrico de iluminación LED negocio",
-        "content": "Comprender a fondo **consumo eléctrico de iluminación LED negocio** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nCalcula el impacto de tu iluminación y detecta oportunidades de mejora en locales y oficinas.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo eléctrico de iluminación LED negocio, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "comparativa-tecnologias-tabla",
+        "heading": "1. Tabla comparativa: LED vs Fluorescentes vs Halógenos vs Vapor de Sodio",
+        "content": "La eficiencia de una fuente lumínica se mide en lúmenes emitidos por cada vatio eléctrico consumido (lm/W). Mientras las lámparas tradicionales transformaban más del 80% de la energía en calor residual, el LED de estado sólido convierte la mayor parte de los electrones directamente en fotones de luz visible:",
+        "table": {
+          "headers": [
+            "Tecnología Tradicional",
+            "Potencia Antigua (+ reactancia)",
+            "Equivalente LED Eficiente",
+            "Ahorro Energético Directo",
+            "Vida Útil Media"
+          ],
+          "rows": [
+            [
+              "Foco halógeno dicroico 50 W",
+              "50 W + 8 W transformador (58 W)",
+              "LED GU10 de 6 W",
+              "89,6% de ahorro",
+              "25.000 h vs 2.000 h"
+            ],
+            [
+              "Tubo fluorescente T8 de 120 cm",
+              "36 W + 10 W reactancia (46 W)",
+              "Tubo LED de 16 W",
+              "65,2% de ahorro",
+              "30.000 h vs 8.000 h"
+            ],
+            [
+              "Campana industrial vapor de mercurio",
+              "400 W + 45 W balasto (445 W)",
+              "Campana LED UFO de 150 W",
+              "66,3% de ahorro",
+              "50.000 h vs 10.000 h"
+            ],
+            [
+              "Downlight 2x26 W fluorescentes compactas",
+              "52 W + 14 W balasto (66 W)",
+              "Panel / Downlight LED de 20 W",
+              "69,7% de ahorro",
+              "35.000 h vs 6.000 h"
+            ],
+            [
+              "Foco de escaparate halogenuros metálicos",
+              "70 W + 15 W balasto (85 W)",
+              "Foco LED carril de 28 W",
+              "67,1% de ahorro",
+              "40.000 h vs 6.000 h"
+            ]
+          ]
+        },
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Muchas auditorías olvidan el consumo parásito de las reactancias y balastos antiguos, que añaden entre un 15% y un 25% de gasto extra invisible en cada punto de luz.",
+          "Al instalar tubos LED directos a 230 V se anula la reactiva y el balasto viejo, reduciendo el consumo a cero fuera de la propia lámpara."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo calcular el consumo de iluminación LED en un negocio** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "calculo-ahorro-anual",
+        "heading": "2. Cálculo real de ahorro en un comercio con 12 horas diarias de apertura",
+        "content": "Tomemos como ejemplo una tienda de ropa o supermercado de barrio con 40 pantallas de dos tubos fluorescentes (80 tubos en total) encendidos 12 horas al día, 300 días al año:",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Ejemplo práctico de amortización",
+          "text": "• Consumo con fluorescencia: 80 tubos × 46 W × 12 h × 300 días = 13.248 kWh/año = 2.119 € al año.\n• Consumo con tubos LED: 80 tubos × 16 W × 12 h × 300 días = 4.608 kWh/año = 737 € al año.\n• AHORRO DIRECTO: 1.382 € al año en la factura de la luz. Si los 80 tubos LED costaron 640 € instalados, la inversión se amortiza en apenas 5 meses y medio."
+        },
+        "bullets": [
+          "A partir del sexto mes, todo el dinero ahorrado se convierte en beneficio neto directo para el comercio.",
+          "Se elimina el coste recurrente de reposición de cebadores y tubos fundidos."
+        ]
+      },
+      {
+        "id": "beneficio-oculto-climatizacion",
+        "heading": "3. El beneficio indirecto: menos calor disipado y menor gasto en aire acondicionado",
+        "content": "Un aspecto frecuentemente ignorado en ingeniería comercial es que cada vatio de calor que una bombilla halógena o fluorescente disipa en el interior de una tienda debe ser contrarrestado por el sistema de aire acondicionado durante los meses cálidos.",
+        "bullets": [
+          "Por cada 3 W de calor reducidos en iluminación, se ahorra aproximadamente 1 W adicional en el consumo del compresor de climatización.",
+          "Mejora notablemente el confort de los probadores y mostradores de caja."
+        ]
+      },
+      {
+        "id": "calidad-luz-ventas",
+        "heading": "4. Cómo la temperatura de color y el CRI impulsan las ventas de tu local",
+        "content": "La iluminación es una herramienta de marketing sensorial probada:",
+        "bullets": [
+          "Comercio minorista y textil: luz cálida o neutra (3.000 K - 4.000 K) con CRI > 90 para realzar texturas y colores reales de las prendas.",
+          "Alimentación fresca (carnicerías, panaderías, pescaderías): existen chips LED específicos que resaltan el rojo de la carne, el dorado del pan o el brillo del pescado sin emitir radiación ultravioleta que degrade los alimentos perecederos.",
+          "Oficinas y farmacias: luz neutra-blanca (4.000 K - 5.000 K) para transmitir higiene y mantener la concentración activa de los empleados."
+        ]
+      },
+      {
+        "id": "amortizacion-roi-led",
+        "heading": "5. Plazo de retorno de inversión (ROI) y Certificados de Ahorro Energético (CAE)",
+        "content": "El plazo de amortización (Payback) de un proyecto LED en un negocio oscila entre 4 y 12 meses dependiendo del horario de apertura. Además, gracias al nuevo sistema de Certificados de Ahorro Energético (CAE), los proyectos de sustitución masiva de iluminación en empresas reciben incentivos económicos directos en cuenta bancaria por cada megavatio hora ahorrado.",
+        "bullets": [
+          "Los drivers LED regulables 1-10V o DALI permiten atenuar la iluminación automáticamente cerca de ventanales y escaparates.",
+          "Verifica siempre que las luminarias dispongan de marcado CE y factor de potencia > 0,90 para evitar generar reactiva."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre migración a LED en empresas.",
+        "bullets": [
+          "¿Hay que cambiar toda la lámpara o solo el tubo? En la mayoría de pantallas fluorescentes basta con puentear la reactancia y el cebador para colocar tubos LED directos a 230 V, sin necesidad de comprar luminarias nuevas.",
+          "¿Parpadean las luces LED en cámaras de seguridad? Los LEDs de calidad con drivers 'Flicker-Free' (libres de parpadeo) no generan bandas negras en grabaciones de vídeo ni fatiga visual en empleados.",
+          "¿Se funden los LEDs si se apagan y encienden muchas veces? No; a diferencia de los fluorescentes, a los LEDs no les afecta el número de ciclos de conmutación."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo eléctrico de iluminación LED negocio?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto ahorra un negocio al cambiar a luces LED?",
+        "a": "Entre un 60% y un 85% en el consumo eléctrico de iluminación, amortizando la inversión en un plazo medio de entre 4 y 10 meses."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Por qué el LED ayuda a gastar menos en aire acondicionado?",
+        "a": "Porque los focos halógenos y fluorescentes actúan como pequeñas estufas emitiendo mucho calor; al cambiar a LED la tienda se mantiene más fresca y el aire acondicionado trabaja menos."
+      },
+      {
+        "q": "¿Qué significa que una luz LED sea 'Flicker-Free'?",
+        "a": "Significa que su fuente de alimentación elimina el parpadeo invisible de alta frecuencia, evitando dolores de cabeza en trabajadores y rayas en cámaras de seguridad."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "como-repartir-gasto-luz-zonas-comunes",
     "slug": "como-repartir-gasto-luz-zonas-comunes",
-    "keyword": "cómo repartir gasto luz zonas comunes",
-    "title": "Cómo repartir el gasto de luz en zonas comunes",
-    "metaTitle": "Repartir gasto de luz en zonas comunes | tuLuz",
-    "metaDescription": "Explica qué consumos se incluyen en las zonas comunes y qué información debe revisar una comunidad.",
+    "keyword": "como repartir gasto luz zonas comunes",
+    "title": "Cómo repartir el gasto de luz de zonas comunes en una comunidad: coeficientes de propiedad y Ley de Propiedad Horizontal",
+    "metaTitle": "Reparto de Luz de Zonas Comunes en Comunidad | tuLuz",
+    "metaDescription": "Guía legal y contable para repartir la factura de luz comunitaria: portales, escaleras, garajes y piscinas. Coeficientes de participación, LPH y acuerdos de junta.",
     "category": "Comunidades de Propietarios",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -5183,82 +8003,122 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Explica qué consumos se incluyen en las zonas comunes y qué información debe revisar una comunidad.",
+    "excerpt": "El reparto del recibo eléctrico de las zonas comunitarias es una fuente habitual de controversias en las juntas de vecinos: ¿deben pagar los bajos la luz del ascensor? ¿Cómo se divide la luz del garaje entre propietarios de viviendas y usuarios de plazas? Conoce el marco legal de la Ley de Propiedad Horizontal.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo repartir gasto luz zonas comunes"
+        "id": "regla-general-coeficientes",
+        "title": "1. La regla general: reparto por coeficiente de participación (LPH art. 9)"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "locales-bajos-ascensor",
+        "title": "2. Locales comerciales y pisos bajos: ¿están exentos de pagar la luz del ascensor?"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "garajes-piscinas-subcomunidades",
+        "title": "3. Garajes, piscinas e instalaciones con contador eléctrico independiente"
+      },
+      {
+        "id": "acuerdos-junta-modificacion",
+        "title": "4. Cómo modificar el sistema de reparto: mayorías exigidas en junta de propietarios"
+      },
+      {
+        "id": "auditoria-cuentas-comunidad",
+        "title": "5. Cómo auditar los contratos de luz de la finca para rebajar las cuotas"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre cómo repartir gasto luz zonas comunes",
-        "content": "Comprender a fondo **cómo repartir gasto luz zonas comunes** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nExplica qué consumos se incluyen en las zonas comunes y qué información debe revisar una comunidad.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a cómo repartir gasto luz zonas comunes, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "regla-general-coeficientes",
+        "heading": "1. La regla general: reparto por coeficiente de participación (LPH art. 9)",
+        "content": "El artículo 9.1.e de la Ley de Propiedad Horizontal (LPH 49/1960) establece con absoluta claridad la norma jurídica rectora: cada copropietario está obligado a contribuir a los gastos generales para el adecuado sostenimiento del inmueble y sus servicios con arreglo a la cuota o coeficiente de participación fijado en el Título Constitutivo (escritura de división horizontal), salvo que los estatutos comunitarios registrados establezcan expresamente otro criterio de reparto.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El reparto por partes iguales (a partes alícuotas entre todos los vecinos) es nulo si no ha sido aprobado por unanimidad en junta y formalizado en estatutos.",
+          "Los metros cuadrados de la vivienda determinan su porcentaje en el recibo de la luz general."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo repartir el gasto de luz en zonas comunes** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "locales-bajos-ascensor",
+        "heading": "2. Locales comerciales y pisos bajos: ¿están exentos de pagar la luz del ascensor?",
+        "content": "La jurisprudencia del Tribunal Supremo es constante en esta materia: la no utilización voluntaria de un servicio común no exime de la obligación de pagar su mantenimiento ni su consumo eléctrico.",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "La cláusula estatutaria de exención",
+          "text": "Los propietarios de locales comerciales o bajos a pie de calle SOLO quedan exentos de pagar la electricidad del ascensor o de la escalera si los estatutos originales de la comunidad contienen una cláusula expresa que diga textualmente que 'quedan exentos de los gastos de conservación, mantenimiento y suministro del ascensor y portal'."
+        },
+        "bullets": [
+          "Si los estatutos guardan silencio, el propietario del bajo o local comercial tiene la obligación legal de pagar su cuota proporcional de la luz del ascensor.",
+          "Las cláusulas de exención de estatutos deben interpretarse siempre de forma restrictiva."
+        ]
+      },
+      {
+        "id": "garajes-piscinas-subcomunidades",
+        "heading": "3. Garajes, piscinas e instalaciones con contador eléctrico independiente",
+        "content": "En complejos residenciales modernos, el garaje subterráneo o la zona deportiva/piscina cuentan habitualmente con su propio contador eléctrico independiente y código CUPS diferenciado:",
+        "bullets": [
+          "Contador de garaje: su factura debe ser asumida exclusivamente por los titulares de las plazas de aparcamiento mediante su subcomunidad de garaje, sin repercutirse en los recibos de las viviendas que no dispongan de plaza.",
+          "Piscina comunitaria y pistas de pádel: si están en el contador general, todos los comuneros copropietarios de la parcela común abonan el gasto según coeficiente.",
+          "Separar contadores evita tensiones vecinales y permite contratar potencias optimizadas a cada instalación."
+        ]
+      },
+      {
+        "id": "acuerdos-junta-modificacion",
+        "heading": "4. Cómo modificar el sistema de reparto: mayorías exigidas en junta de propietarios",
+        "content": "Cambiar la forma en que se distribuyen los gastos comunes (por ejemplo, pasar de repartir por coeficientes a repartir a partes iguales entre pisos) modifica el Título Constitutivo de la propiedad:",
+        "bullets": [
+          "Requiere la unanimidad del total de los propietarios que representen el 100% de las cuotas de participación (art. 17.6 LPH).",
+          "Un solo voto en contra de cualquier vecino tumba la propuesta de modificación del sistema estatutario de reparto."
+        ]
+      },
+      {
+        "id": "auditoria-cuentas-comunidad",
+        "heading": "5. Cómo auditar los contratos de luz de la finca para rebajar las cuotas",
+        "content": "Antes de discutir sobre cómo repartir el gasto, lo más inteligente es reducir el importe de la factura que se reparte:",
+        "bullets": [
+          "Revisa las potencias contratadas del ascensor y servicios generales: muchas comunidades pagan hasta un 40% de más en término fijo por potencias sobredimensionadas históricas.",
+          "Cambia las tarifas a ofertas indexadas o fijas competitivas sin servicios de mantenimiento superfluos añadidos por comerciales.",
+          "La instalación de detectores de presencia y bombillas LED en rellanos y portal reduce el consumo de energía en más de un 70%."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas legales frecuentes en comunidades de propietarios.",
+        "bullets": [
+          "¿Puede un vecino negarse a pagar la luz de la escalera si no vive en el piso? No, la ley obliga al propietario a sostener los gastos comunes con independencia de si la vivienda está habitada, vacía o alquilada.",
+          "¿Quién paga la luz del cargador de coche eléctrico en el garaje? El propietario del vehículo; se conecta a su contador privado y jamás debe imputarse al contador de la comunidad.",
+          "¿Cómo se aprueba una auditoría energética en la comunidad? Basta con acuerdo por mayoría simple de los propietarios presentes en junta ordinaria o extraordinaria."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con cómo repartir gasto luz zonas comunes?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cómo se reparte por ley la factura de luz en una comunidad de vecinos?",
+        "a": "Por coeficiente de participación según los metros cuadrados fijados en las escrituras, salvo que los estatutos registrados dispongan expresamente otra fórmula."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Tienen que pagar los locales la luz del ascensor?",
+        "a": "Sí están obligados a pagar, a menos que los estatutos de la finca recojan una cláusula expresa de exención para locales o bajos."
+      },
+      {
+        "q": "¿Se puede cambiar el reparto para pagar todos los vecinos lo mismo?",
+        "a": "Solo si se aprueba por unanimidad del 100% de los propietarios en junta, ya que supone modificar el Título Constitutivo de la comunidad."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "consumo-ventilacion-garaje-comunitario",
     "slug": "consumo-ventilacion-garaje-comunitario",
-    "keyword": "consumo ventilación garaje comunitario",
-    "title": "Cómo reducir el consumo de ventilación en un garaje",
-    "metaTitle": "Consumo de ventilación en garaje comunitario | tuLuz",
-    "metaDescription": "Revisa horarios, sistemas de control y mantenimiento para reducir el gasto de ventilación del garaje.",
+    "keyword": "consumo ventilacion garaje comunitario",
+    "title": "Consumo de ventilación forzada en garajes comunitarios: extractores de humos, sondas de CO y optimización",
+    "metaTitle": "Consumo de Ventilación en Garaje Comunitario | tuLuz",
+    "metaDescription": "Aprende a controlar el gasto de los extractores de ventilación en garajes comunitarios. Motores de 5,5 kW, sondas de CO, normativa CTE y variadores de velocidad.",
     "category": "Comunidades de Propietarios",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -5266,82 +8126,161 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Revisa horarios, sistemas de control y mantenimiento para reducir el gasto de ventilación del garaje.",
+    "excerpt": "Los sistemas de extracción y ventilación forzada de los aparcamientos comunitarios cuentan con potentes motores trifásicos que pueden disparar el recibo comunitario en cientos de euros si las sondas de detección de monóxido están averiadas. Descubre cómo opera el sistema y cómo auditar su gasto.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo ventilación garaje comunitario"
+        "id": "por-que-es-obligatoria",
+        "title": "1. Por qué es obligatoria la ventilación forzada en garajes cerrados (CTE DB-HS 3)"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-potencia-motores",
+        "title": "2. Tabla de potencia de extractores, horas de funcionamiento y consumo en kWh"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "centralita-co-sondas",
+        "title": "3. El cerebro del sistema: la centralita de CO y la calibración periódica"
+      },
+      {
+        "id": "variadores-frecuencia-ventilacion",
+        "title": "4. Ahorro con variadores de frecuencia electrónicos"
+      },
+      {
+        "id": "mantenimiento-reglamentario",
+        "title": "5. Mantenimiento técnico obligatorio y libro de revisiones"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo ventilación garaje comunitario",
-        "content": "Comprender a fondo **consumo ventilación garaje comunitario** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nRevisa horarios, sistemas de control y mantenimiento para reducir el gasto de ventilación del garaje.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo ventilación garaje comunitario, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "por-que-es-obligatoria",
+        "heading": "1. Por qué es obligatoria la ventilación forzada en garajes cerrados (CTE DB-HS 3)",
+        "content": "Los aparcamientos subterráneos cerrados carecen de ventilación natural cruzada suficiente. El Código Técnico de la Edificación (Documento Básico HS 3 de Salubridad) y la norma UNE 100166 obligan a instalar sistemas mecánicos de ventilación para garantizar una renovación mínima de 120 litros por segundo y plaza de aparcamiento o evitar que la concentración de monóxido de carbono (CO) supere los 50 ppm.",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "El CO es un gas inodoro, incoloro y altamente tóxico producido por los motores de combustión que desplaza el oxígeno en sangre.",
+          "El sistema debe contar con dos velocidades o caudal variable y ventiladores de aportación de aire limpio y extracción forzada."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo reducir el consumo de ventilación en un garaje** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-potencia-motores",
+        "heading": "2. Tabla de potencia de extractores, horas de funcionamiento y consumo en kWh",
+        "content": "El gasto eléctrico de estos equipos depende críticamente del número de horas que permanecen encendidos:",
+        "table": {
+          "headers": [
+            "Capacidad del Garaje",
+            "Potencia Motores (Extractores + Impulsores)",
+            "Consumo con Sondas Correctas (1,5 h/día)",
+            "Consumo con Sondas Averadas (24 h/día continuas)",
+            "Sobrecoste Anual por Avería (€)"
+          ],
+          "rows": [
+            [
+              "Garaje pequeño (15-30 plazas)",
+              "3,0 kW (4 CV)",
+              "1.642 kWh / año (262 €)",
+              "26.280 kWh / año (4.204 €)",
+              "+ 3.942 € / año derrochados"
+            ],
+            [
+              "Garaje mediano (40-70 plazas)",
+              "5,5 kW (7,5 CV)",
+              "3.011 kWh / año (481 €)",
+              "48.180 kWh / año (7.708 €)",
+              "+ 7.227 € / año derrochados"
+            ],
+            [
+              "Garaje grande (80-150 plazas)",
+              "11,0 kW (15 CV)",
+              "6.022 kWh / año (963 €)",
+              "96.360 kWh / año (15.417 €)",
+              "+ 14.454 € / año derrochados"
+            ],
+            [
+              "Complejo residencial (> 200 plazas)",
+              "22,0 kW (30 CV)",
+              "12.045 kWh / año (1.927 €)",
+              "192.720 kWh / año (30.835 €)",
+              "+ 28.908 € / año derrochados"
+            ]
+          ]
+        },
+        "bullets": [
+          "Un extractor que se queda encendido continuamente por una sonda rota puede costar a la comunidad más de 600 € mensuales de gasto fantasma.",
+          "En régimen normal con sensores en perfecto estado, los ventiladores no deberían funcionar más de 1 a 2 horas al día en los picos de entrada y salida laboral."
+        ]
+      },
+      {
+        "id": "centralita-co-sondas",
+        "heading": "3. El cerebro del sistema: la centralita de CO y la calibración periódica",
+        "content": "La centralita de detección de CO recibe las señales eléctricas de los sensores colocados en las columnas del garaje (uno por cada 200 m² de superficie):",
         "callout": {
-          "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "type": "warning",
+          "title": "La vida útil de los sensores electroquímicos",
+          "text": "Los cabezales de las sondas de CO contienen una célula química que se degrada por el paso del tiempo. A los 3-4 años pierden sensibilidad y envían una señal de 'fondo de escala' que la centralita interpreta como una concentración crítica de gas, encendiendo los ventiladores de 5,5 kW las 24 horas del día."
+        },
+        "bullets": [
+          "Umbral de 50 ppm: activa la primera velocidad (barrido suave de aire).",
+          "Umbral de 100 ppm: activa la segunda velocidad máxima de emergencia.",
+          "Verifica en la pantalla de la centralita si alguna zona marca 299 ppm fija: es el síntoma indiscutible de sensor caducado."
+        ]
+      },
+      {
+        "id": "variadores-frecuencia-ventilacion",
+        "heading": "4. Ahorro con variadores de frecuencia electrónicos",
+        "content": "Sustituir el arranque convencional todo o nada por variadores de velocidad electrónicos permite modular la frecuencia eléctrica del motor de 20 Hz a 50 Hz según el nivel real de monóxido medido.",
+        "bullets": [
+          "Leyes de afinidad de ventiladores: reducir la velocidad de giro un 20% reduce el consumo de potencia eléctrica del motor casi un 50%.",
+          "Elimina el ruido molesto en las viviendas situadas en los pisos bajos encima del garaje.",
+          "Evita los picos de intensidad de arranque que penalizan el maxímetro."
+        ]
+      },
+      {
+        "id": "mantenimiento-reglamentario",
+        "heading": "5. Mantenimiento técnico obligatorio y libro de revisiones",
+        "content": "El Reglamento de Instalaciones de Protección contra Incendios (RIPCI) y las ordenanzas municipales exigen un contrato de mantenimiento con empresa mantenedora autorizada que realice revisiones semestrales con gas patrón de prueba.",
+        "bullets": [
+          "Exige a la empresa mantenedora el certificado de calibración con gas trazable y fecha de sustitución de cada cabezal de CO.",
+          "Asegúrate de que los conductos de chapa y compuertas cortafuegos se encuentran limpios de hollín."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre ventilación en aparcamientos.",
+        "bullets": [
+          "¿Cómo sé si los extractores del garaje están funcionando de más? Si bajas al garaje a las 03:00 de la madrugada o un domingo y los ventiladores están rugiendo sin tráfico de coches, el sistema está averiado.",
+          "¿Cuánto cuesta cambiar las sondas de CO? Cada cabezal sensor suele costar entre 80 € y 130 €, una cifra insignificante comparada con los miles de euros que derrocha en electricidad un extractor funcionando sin freno.",
+          "¿Se puede apagar el sistema para ahorrar? Jamás debe apagarse el sistema de ventilación de forma manual; supondría una infracción muy grave de salubridad y seguridad contra incendios con responsabilidad penal para el presidente."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo ventilación garaje comunitario?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto consume la extracción de aire de un garaje comunitario?",
+        "a": "En condiciones normales con sensores calibrados, unos 20 € a 50 € al mes. Con sondas rotas que dejan los extractores encendidos 24 horas, puede superar los 600 € mensuales."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cada cuánto tiempo hay que sustituir las sondas de monóxido de carbono (CO)?",
+        "a": "Cada 3 a 5 años según las especificaciones del fabricante, realizando calibraciones periódicas semestrales obligatorias con gas patrón."
+      },
+      {
+        "q": "¿Qué pasa si se paran los ventiladores del garaje?",
+        "a": "Se acumularían gases nocivos de combustión (CO y óxidos de nitrógeno), provocando riesgo de intoxicación y asfixia para los usuarios del aparcamiento."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
   {
     "id": "ahorro-iluminacion-portal-comunidad-vecinos",
     "slug": "ahorro-iluminacion-portal-comunidad-vecinos",
-    "keyword": "ahorro iluminación portal comunidad vecinos",
-    "title": "Cómo ahorrar luz en el portal de una comunidad",
-    "metaTitle": "Ahorrar iluminación en portal comunitario | tuLuz",
-    "metaDescription": "Medidas prácticas para mejorar iluminación, temporización y consumo de las zonas de acceso.",
+    "keyword": "ahorro iluminacion portal comunidad vecinos",
+    "title": "Ahorro de iluminación en el portal y escaleras de una comunidad: detectores de presencia, LED y minuteros",
+    "metaTitle": "Ahorro de Luz en Portales y Escaleras | tuLuz",
+    "metaDescription": "Guía práctica para reducir el recibo de luz en zonas comunes de comunidades. Detectores de presencia por microondas, lámparas LED y optimización de minuteros.",
     "category": "Comunidades de Propietarios",
-    "readTime": "6 min de lectura",
+    "readTime": "7 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -5349,70 +8288,175 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Medidas prácticas para mejorar iluminación, temporización y consumo de las zonas de acceso.",
+    "excerpt": "La iluminación de portales, rellanos, pasillos y escaleras comunitarias suele suponer entre el 20% y el 35% de la factura eléctrica de una finca residencial. Aprende a eliminar pulsadores encallados, modernizar a LED inteligente con radar y recortar el término fijo de potencia.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre ahorro iluminación portal comunidad vecinos"
+        "id": "problemas-iluminacion-antigua",
+        "title": "1. Los 3 grandes defectos de la iluminación comunitaria tradicional"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "sensores-pir-vs-radar",
+        "title": "2. Sensores infrarrojos (PIR) vs radar de microondas: cuál instalar"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "tabla-ahorro-modernizacion",
+        "title": "3. Tabla comparativa: bombillas incandescentes vs fluorescentes vs plafones LED con sensor"
+      },
+      {
+        "id": "sectorizacion-por-plantas",
+        "title": "4. Sectorización inteligente por plantas frente al encendido general en cascada"
+      },
+      {
+        "id": "pulsadores-encallados-reloj",
+        "title": "5. El problema de los pulsadores encallados y minuteros electromecánicos"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre ahorro iluminación portal comunidad vecinos",
-        "content": "Comprender a fondo **ahorro iluminación portal comunidad vecinos** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nMedidas prácticas para mejorar iluminación, temporización y consumo de las zonas de acceso.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a ahorro iluminación portal comunidad vecinos, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "problemas-iluminacion-antigua",
+        "heading": "1. Los 3 grandes defectos de la iluminación comunitaria tradicional",
+        "content": "En muchas comunidades construidas antes de 2010 se mantienen tres anomalías energéticas graves:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Encendido en cascada total: un vecino pulsa la luz en el 1º piso y se encienden simultáneamente las luces de las 8 plantas y del portal.",
+          "Temporizadores excesivamente largos: minuteros regulados a 4 o 5 minutos cuando subir una planta requiere apenas 25 segundos.",
+          "Luminarias decorativas de portal con tubos halógenos o fluorescentes compactos encendidos las 24 horas del día."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo ahorrar luz en el portal de una comunidad** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "sensores-pir-vs-radar",
+        "heading": "2. Sensores infrarrojos (PIR) vs radar de microondas: cuál instalar",
+        "content": "A la hora de sustituir los pulsadores manuales por detección automática, existen dos tecnologías muy diferenciadas:",
+        "table": {
+          "headers": [
+            "Característica",
+            "Sensor Infrarrojo Pasivo (PIR)",
+            "Sensor de Radar Microondas (HF)"
+          ],
+          "rows": [
+            [
+              "Principio de detección",
+              "Variación de radiación térmica del cuerpo",
+              "Emisión de ondas de radiofrecuencia (efecto Doppler)"
+            ],
+            [
+              "Sensibilidad a obstáculos",
+              "Solo campo de visión directo (la mampara lo ciega)",
+              "Atraviesa cristales, plafones opacos y falsos techos"
+            ],
+            [
+              "Respuesta en verano",
+              "Falla si la temperatura ambiente ronda los 36 °C",
+              "Inmune a la temperatura ambiente"
+            ],
+            [
+              "Ubicación idónea",
+              "Rellanos abiertos y escaleras diáfanas",
+              "Plafones integrados estéticos sin sensor visible exterior"
+            ],
+            [
+              "Falsos disparos",
+              "Bajo riesgo de falsos disparos",
+              "Puede activarse si se gradúa a excesiva sensibilidad"
+            ]
+          ]
+        },
+        "bullets": [
+          "Los plafones LED con sensor de microondas integrado son la solución más estética y resistente al vandalismo.",
+          "Permiten regular el umbral crepuscular (lux), la distancia de detección (1 a 8 metros) y el tiempo de apagado (30 a 90 segundos)."
+        ]
+      },
+      {
+        "id": "tabla-ahorro-modernizacion",
+        "heading": "3. Tabla comparativa: bombillas incandescentes vs fluorescentes vs plafones LED con sensor",
+        "content": "Analicemos el impacto en un edificio de 6 plantas con portal y 3 luminarias por descansillo (24 puntos de luz en total):",
+        "table": {
+          "headers": [
+            "Tecnología Instalada",
+            "Potencia por Punto",
+            "Consumo Anual (kWh)",
+            "Coste Anual en Electricidad (€ a 0,16 €/kWh)",
+            "Coste de Mantenimiento / Repuestos"
+          ],
+          "rows": [
+            [
+              "Bombillas incandescentes (60 W con minutero)",
+              "60 W",
+              "3.150 kWh",
+              "504 € / año",
+              "Sustitución de 15 bombillas fundidas al año (~ 30 €)"
+            ],
+            [
+              "Fluorescencia compacta (downlight 2x18 W)",
+              "42 W",
+              "2.200 kWh",
+              "352 € / año",
+              "Sustitución de reactancias y lámparas (~ 60 €)"
+            ],
+            [
+              "Plafón LED inteligente con radar (14 W individual)",
+              "14 W (solo la planta en uso)",
+              "420 kWh",
+              "67 € / año",
+              "Cero mantenimiento durante 7 a 10 años"
+            ]
+          ]
+        },
+        "bullets": [
+          "El paso a LED inteligente sectorizado ahorra más del 80% de la energía de iluminación comunitaria.",
+          "La comunidad amortiza la obra completa en menos de 10 meses."
+        ]
+      },
+      {
+        "id": "sectorizacion-por-plantas",
+        "heading": "4. Sectorización inteligente por plantas frente al encendido general en cascada",
+        "content": "La sectorización consiste en independizar eléctricamente cada descansillo. Al salir del ascensor en el 4º piso, únicamente se enciende la luz de esa planta; el resto del edificio permanece a oscuras en reposo.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "Plafones con luz de cortesía al 10%",
+          "text": "Existen plafones LED que mantienen una luz tenue de cortesía nocturna al 10% (apenas 1,5 W) para evitar sensación de cueva oscura en el portal, pasando al 100% de luminosidad en el instante en que alguien empuja la puerta de la calle."
+        },
+        "bullets": [
+          "Aumenta la seguridad percibida por los vecinos mayores y niños.",
+          "Evita pulsadores encallados que dejan toda la finca encendida toda la noche."
+        ]
+      },
+      {
+        "id": "pulsadores-encallados-reloj",
+        "heading": "5. El problema de los pulsadores encallados y minuteros electromecánicos",
+        "content": "En instalaciones con minutero de escalera en el cuadro general, si un vecino deja un objeto apoyado en un pulsador de rellano o este se atasca mecánicamente, la bobina del minutero queda energizada permanentemente y todas las luces del edificio permanecen encendidas 24 horas al día hasta quemarse.",
+        "bullets": [
+          "Sustituir el minutero por detectores autónomos en cada plafón elimina el punto único de fallo.",
+          "Si se conserva el minutero central, sustitúyelo por un minutero electrónico con protección anti-bloqueo."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre iluminación en comunidades.",
+        "bullets": [
+          "¿Se pueden poner detectores sin cambiar el cableado de la escalera? Sí, la inmensa mayoría de plafones LED con sensor incorporado solo necesitan fase y neutro directos en el techo existente.",
+          "¿Cuánto dura un plafón LED comunitario? Un plafón de calidad profesional tiene una vida útil de entre 35.000 y 50.000 horas, lo que equivale a más de 10 años en condiciones de uso residencial.",
+          "¿Qué mayoría se necesita en junta para cambiar a LED? Se considera una obra de mejora de eficiencia energética ordinaria; requiere únicamente mayoría simple de propietarios presentes según el artículo 17.7 de la LPH."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con ahorro iluminación portal comunidad vecinos?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuánto puede ahorrar una comunidad cambiando la luz del portal a LED?",
+        "a": "Entre un 70% y un 85% del recibo de iluminación, lo que suele representar entre 300 € y 1.200 € al año según el número de plantas del edificio."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Qué es mejor en una escalera, pulsadores o detectores de presencia?",
+        "a": "Los detectores de presencia en cada planta son infinitamente mejores: evitan tener que buscar el interruptor a oscuras con las manos ocupadas y se apagan solos a los 45 segundos."
+      },
+      {
+        "q": "¿Qué tipo de sensor es más recomendable para el portal?",
+        "a": "Los plafones con sensor de radar microondas oculto en el interior, ya que son estéticos, no se ensucian y detectan la apertura de la puerta al instante."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   },
@@ -5420,11 +8464,11 @@ export const guidesData = [
     "id": "consumo-piscina-comunitaria",
     "slug": "consumo-piscina-comunitaria",
     "keyword": "consumo piscina comunitaria",
-    "title": "Cómo reducir el consumo eléctrico de una piscina comunitaria",
-    "metaTitle": "Reducir consumo de piscina comunitaria | tuLuz",
-    "metaDescription": "Claves para revisar depuración, horarios, iluminación y potencia en una piscina de comunidad.",
+    "title": "Consumo eléctrico de una piscina comunitaria: bombas de depuración, bombas de calor y cloración salina",
+    "metaTitle": "Consumo Eléctrico de Piscina Comunitaria: Guía | tuLuz",
+    "metaDescription": "Calcula el gasto eléctrico de la piscina de tu comunidad. Horas de filtración, bombas de velocidad variable, clorador salino y cómo reducir la factura en verano.",
     "category": "Comunidades de Propietarios",
-    "readTime": "6 min de lectura",
+    "readTime": "8 min de lectura",
     "publishedAt": "2026-09-14",
     "updatedAt": "2026-09-14",
     "author": {
@@ -5432,70 +8476,163 @@ export const guidesData = [
       "role": "Especialistas en Eficiencia y Mercado Eléctrico",
       "avatar": "/icono.webp"
     },
-    "excerpt": "Claves para revisar depuración, horarios, iluminación y potencia en una piscina de comunidad.",
+    "excerpt": "Durante los meses de junio a septiembre, la depuradora, la iluminación subacuática y los sistemas de tratamiento de la piscina comunitaria pueden duplicar el recibo de la luz de la urbanización. Conoce cuántos kilovatios consume cada equipo, cómo programar los ciclos en horario solar o valle y cómo recortar costes hasta un 45%.",
     "tableOfContents": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo piscina comunitaria"
+        "id": "elementos-consumo-piscina",
+        "title": "1. Radiografía del gasto eléctrico en una piscina comunitaria"
       },
       {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas"
+        "id": "tabla-bombas-volumen",
+        "title": "2. Tabla comparativa: potencia de bomba de depuración vs volumen de agua (m³)"
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado"
+        "id": "bombas-velocidad-variable",
+        "title": "3. Bombas de velocidad variable (Inverter): el ahorro del 65%"
+      },
+      {
+        "id": "cloracion-salina-vs-cloro",
+        "title": "4. Cloración salina vs dosificación de cloro líquido: impacto eléctrico"
+      },
+      {
+        "id": "programacion-filtracion-tramos",
+        "title": "5. Programación óptima de filtración en tramos valle y autoconsumo solar"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "4. Preguntas frecuentes"
+        "title": "6. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
-        "id": "introduccion-claves",
-        "title": "1. Claves esenciales sobre consumo piscina comunitaria",
-        "content": "Comprender a fondo **consumo piscina comunitaria** es fundamental para optimizar tu suministro eléctrico y evitar sobrecostes innecesarios en tus facturas. En España, las tarifas y condiciones de acceso a la red cuentan con especificaciones técnicas que muchos usuarios desconocen, lo que deriva en pagos excesivos mes a mes.\n\nClaves para revisar depuración, horarios, iluminación y potencia en una piscina de comunidad.",
-        "callout": {
-          "type": "tip",
-          "title": "Consejo de Asesor tuLuz",
-          "text": "Antes de realizar cualquier gestión o modificación contractual respecto a consumo piscina comunitaria, solicita una revisión de tus últimas 3 facturas para confirmar que los datos de potencia y consumo coinciden con tus necesidades reales."
-        }
-      },
-      {
-        "id": "analisis-detallado",
-        "title": "2. Análisis paso a paso y recomendaciones prácticas",
-        "content": "Para actuar con seguridad y conseguir los mejores resultados en tu instalación, sigue estos puntos clave recomendados por nuestros técnicos especialistas:",
+        "id": "elementos-consumo-piscina",
+        "heading": "1. Radiografía del gasto eléctrico en una piscina comunitaria",
+        "content": "El mantenimiento de una piscina comunitaria de 100 a 250 m³ de agua requiere hacer circular todo el volumen a través de los filtros de arena o vidrio al menos 2 veces al día durante los meses de apertura estival. Los equipos que demandan energía son:",
         "bullets": [
-          "**Verifica los datos técnicos de tu contrato:** Revisa en tu recibo los conceptos de término de potencia y energía contratada asociados a este trámite.",
-          "**Compara opciones del mercado:** Evalúa si las condiciones ofrecidas se ajustan al mercado libre o regulado y si aplican permanencias o servicios adicionales.",
-          "**Aplica medidas de eficiencia activa:** Ajusta horarios de uso y programas de mantenimiento preventivo para evitar picos de demanda innecesarios."
+          "Bomba de filtración principal: funciona entre 6 y 10 horas al día a pleno régimen (1,5 kW a 4 kW de potencia continua).",
+          "Electrólisis salina o bombas dosificadoras de pH y desinfectante (200 W a 600 W).",
+          "Iluminación subacuática del vaso (focos halógenos antiguos de 300 W vs proyectores LED de 25 W).",
+          "Bomba de calor para climatización del agua en piscinas cubiertas o para extender la temporada en urbanizaciones del norte."
         ]
       },
       {
-        "id": "impacto-factura",
-        "title": "3. Cómo repercute en tu factura y ahorro estimado",
-        "content": "Una gestión correcta en relación con **Cómo reducir el consumo eléctrico de una piscina comunitaria** puede traducirse en una reducción directa de entre un **15% y un 30% en tu gasto energético anual**.\n\nOptimizar términos fijos y variables garantiza que solo pagas por la potencia y energía que efectivamente utilizas, eliminando sobrecostes derivados de configuraciones inadecuadas o penalizaciones en la red.",
+        "id": "tabla-bombas-volumen",
+        "heading": "2. Tabla comparativa: potencia de bomba de depuración vs volumen de agua (m³)",
+        "content": "A continuación reflejamos el gasto estimado para una temporada de baño de 90 días (junio, julio y agosto):",
+        "table": {
+          "headers": [
+            "Dimensiones Piscina",
+            "Volumen de Agua",
+            "Potencia Bomba (CV / kW)",
+            "Consumo Diario (8 h/día)",
+            "Consumo Temporada (90 días)",
+            "Coste Temporada (€ a 0,16 €/kWh)"
+          ],
+          "rows": [
+            [
+              "Pequeña (10 x 5 m / 1,4 m profundidad)",
+              "70 m³",
+              "1,0 CV (0,75 kW)",
+              "6,0 kWh / día",
+              "540 kWh",
+              "86,40 €"
+            ],
+            [
+              "Mediana (15 x 7 m / 1,5 m profundidad)",
+              "150 m³",
+              "1,5 CV (1,10 kW)",
+              "8,8 kWh / día",
+              "792 kWh",
+              "126,72 €"
+            ],
+            [
+              "Grande (20 x 10 m / 1,6 m profundidad)",
+              "320 m³",
+              "3,0 CV (2,20 kW)",
+              "17,6 kWh / día",
+              "1.584 kWh",
+              "253,44 €"
+            ],
+            [
+              "Olímpica / Urbanización (> 400 m³)",
+              "> 450 m³",
+              "Dos bombas de 2,5 CV (3,7 kW)",
+              "29,6 kWh / día",
+              "2.664 kWh",
+              "426,24 €"
+            ],
+            [
+              "Iluminación tradicional (6 focos halógenos 300 W)",
+              "6 focos",
+              "1,80 kW (solo luces 4 h/noche)",
+              "7,2 kWh / día",
+              "648 kWh",
+              "103,68 €"
+            ]
+          ]
+        },
+        "bullets": [
+          "Sustituir 6 focos halógenos subacuáticos de 300 W por proyectores LED de 25 W reduce el consumo de iluminación nocturna de 1.800 W a solo 150 W (un 91% de ahorro).",
+          "Un filtro sucio con alta presión manométrica obliga a la bomba a consumir hasta un 18% más electricidad para mover el mismo caudal."
+        ]
+      },
+      {
+        "id": "bombas-velocidad-variable",
+        "heading": "3. Bombas de velocidad variable (Inverter): el ahorro del 65%",
+        "content": "Las bombas de depuración convencionales giran a una velocidad fija de 2.850 rpm tanto si el agua está limpia como si está sucia. Las bombas modernas de velocidad variable con motor de imanes permanentes pueden funcionar a bajas revoluciones (1.400 rpm) durante periodos más largos.",
         "callout": {
           "type": "tip",
-          "title": "¿Necesitas ayuda personalizada?",
-          "text": "En tuLuz analizamos tu factura de luz de forma totalmente gratuita y sin compromiso, indicándote exactamente dónde puedes recortar costes."
-        }
+          "title": "La física del ahorro hidráulico",
+          "text": "Al reducir la velocidad de rotación a la mitad, el caudal se reduce a la mitad pero la potencia eléctrica absorbida se divide por ocho (según las leyes de afinidad hidráulica). Filtrar el doble de tiempo a mitad de velocidad consume menos de la mitad de energía y mejora sustancialmente la transparencia del agua al filtrarse más despacio por el lecho de arena."
+        },
+        "bullets": [
+          "Ahorran entre un 60% y un 75% de electricidad respecto a una bomba tradicional de una sola velocidad.",
+          "Son ultrasilenciosas, evitando quejas de los vecinos con viviendas próximas a la caseta de depuración."
+        ]
+      },
+      {
+        "id": "cloracion-salina-vs-cloro",
+        "heading": "4. Cloración salina vs dosificación de cloro líquido: impacto eléctrico",
+        "content": "El clorador salino descompone la sal común (NaCl) disuelta en el agua mediante una celda electrolítica para generar cloro libre in situ:",
+        "bullets": [
+          "Añade un consumo eléctrico moderado de 150 a 400 W mientras la bomba de filtración está activa.",
+          "Compensa con creces su consumo al suprimir la compra y manipulación de bidones de cloro químico peligroso.",
+          "Evita ojos rojos y olor a cloro, revalorizando las zonas comunes de la comunidad."
+        ]
+      },
+      {
+        "id": "programacion-filtracion-tramos",
+        "heading": "5. Programación óptima de filtración en tramos valle y autoconsumo solar",
+        "content": "La programación del reloj de la depuradora es la clave económica más sencilla:",
+        "bullets": [
+          "Si la comunidad tiene tarifa con discriminación horaria, programa los ciclos principales de filtración durante las horas valle (de 00:00 a 08:00) y completa con 2 horas de recirculación diurna durante las horas de baño.",
+          "Si la finca cuenta con placas solares fotovoltaicas en el tejado, programa la depuración entre las 11:00 y las 16:00 para que funcione al 100% con energía solar gratuita en los momentos de mayor producción."
+        ]
+      },
+      {
+        "id": "preguntas-frecuentes",
+        "heading": "6. Preguntas frecuentes",
+        "content": "Dudas frecuentes sobre piscinas comunitarias.",
+        "bullets": [
+          "¿Conviene vaciar la piscina comunitaria en invierno? No, el Código Técnico y los ayuntamientos prohíben el vaciado innecesario por sostenibilidad. Con un tratamiento de invernaje y 1 hora de filtración semanal el agua se conserva perfecta de un año para otro sin gastar apenas luz ni agua.",
+          "¿Cuánto cuesta sustituir la bomba antigua por una de velocidad variable? El equipo cuesta entre 600 € y 1.100 € y suele amortizarse en dos temporadas de baño con el ahorro eléctrico acumulado.",
+          "¿Se puede bajar la potencia contratada de la piscina en invierno? Sí, en contratos con tarifa 3.0TD o suministros independientes de piscina se puede reducir la potencia contratada en los meses fríos para pagar un término fijo mínimo."
+        ]
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tiempo tarda en aplicarse cualquier gestión relacionada con consumo piscina comunitaria?",
-        "a": "La mayoría de trámites administrativos y cambios de configuración técnica con la distribuidora se hacen efectivos en un plazo de entre 2 y 15 días hábiles."
+        "q": "¿Cuántas horas al día debe funcionar la depuradora de una piscina comunitaria?",
+        "a": "Entre 6 y 8 horas diarias en verano para asegurar que todo el volumen de agua recircule al menos dos veces por el filtro, repartidas preferiblemente en horas valle o de máxima radiación solar."
       },
       {
-        "q": "¿Tiene algún coste para el usuario?",
-        "a": "Depende de la naturaleza del trámite. La revisión y optimización de tarifas es gratuita con tuLuz. Ciertas modificaciones técnicas (como variaciones de potencia o derechos de acceso) pueden incluir tasas reguladas por la distribuidora."
+        "q": "¿Cuánto consume una bomba de piscina estándar en verano?",
+        "a": "Una bomba de 1,5 CV (1,1 kW) funcionando 8 horas al día consume unos 8,8 kWh diarios, lo que equivale a unos 1,40 € al día (unos 125 € en los 3 meses de verano)."
+      },
+      {
+        "q": "¿Qué ventajas tiene una bomba de velocidad variable en la piscina?",
+        "a": "Reduce el consumo de electricidad hasta un 70%, es casi inaudible y filtra el agua de forma mucho más eficaz al retener partículas microscópicas en el lecho filtrante."
       }
-    ],
-    "relatedSlugs": [
-      "ahorrar-factura-de-la-luz",
-      "tarifas-luz-empresas"
     ],
     "status": "borrador"
   }

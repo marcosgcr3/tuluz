@@ -459,6 +459,63 @@ export default function AdminDashboard({ navigate }) {
     });
   }, [dashboardData, searchTerm, sourceFilter, statusFilter, typeFilter]);
 
+  // Métricas y filtrado de Guías (deben estar en el nivel superior antes de cualquier return temprano)
+  const guidesStats = useMemo(() => {
+    let publicadas = 0;
+    let borradores = 0;
+    let programadas = 0;
+    const now = Date.now();
+
+    guidesData.forEach(g => {
+      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
+      if (cfg.status === 'borrador') {
+        borradores++;
+      } else if (cfg.status === 'programada') {
+        const schedTime = cfg.publishAt ? new Date(cfg.publishAt).getTime() : NaN;
+        if (!isNaN(schedTime) && schedTime <= now) {
+          publicadas++;
+        } else {
+          programadas++;
+        }
+      } else {
+        publicadas++;
+      }
+    });
+
+    return { total: guidesData.length, publicadas, borradores, programadas };
+  }, [guidesConfigMap]);
+
+  const filteredGuidesList = useMemo(() => {
+    const now = Date.now();
+    return guidesData.filter(g => {
+      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
+
+      // Filtro por estado
+      if (guideStatusFilter !== 'all') {
+        if (guideStatusFilter === 'publicada') {
+          const isActuallyPub = cfg.status === 'publicada' || (cfg.status === 'programada' && cfg.publishAt && new Date(cfg.publishAt).getTime() <= now);
+          if (!isActuallyPub) return false;
+        } else if (guideStatusFilter === 'borrador') {
+          if (cfg.status !== 'borrador') return false;
+        } else if (guideStatusFilter === 'programada') {
+          const isFutSched = cfg.status === 'programada' && (!cfg.publishAt || new Date(cfg.publishAt).getTime() > now);
+          if (!isFutSched) return false;
+        }
+      }
+
+      // Filtro por búsqueda
+      if (guideSearchTerm.trim() !== '') {
+        const q = guideSearchTerm.toLowerCase();
+        const matchTitle = g.title.toLowerCase().includes(q);
+        const matchCat = g.category.toLowerCase().includes(q);
+        const matchSlug = g.slug.toLowerCase().includes(q);
+        if (!matchTitle && !matchCat && !matchSlug) return false;
+      }
+
+      return true;
+    });
+  }, [guidesConfigMap, guideStatusFilter, guideSearchTerm]);
+
   // Clean phone for WhatsApp
   const formatWhatsappUrl = (phone, name) => {
     if (!phone) return '#';
@@ -627,63 +684,6 @@ export default function AdminDashboard({ navigate }) {
   const metaTotal = dashboardData?.metaAdsLeads || 0;
   const webTotal = total - metaTotal;
   const metaPercentage = total > 0 ? Math.round((metaTotal / total) * 100) : 0;
-
-  // Métricas y filtrado de Guías
-  const guidesStats = useMemo(() => {
-    let publicadas = 0;
-    let borradores = 0;
-    let programadas = 0;
-    const now = Date.now();
-
-    guidesData.forEach(g => {
-      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
-      if (cfg.status === 'borrador') {
-        borradores++;
-      } else if (cfg.status === 'programada') {
-        const schedTime = cfg.publishAt ? new Date(cfg.publishAt).getTime() : NaN;
-        if (!isNaN(schedTime) && schedTime <= now) {
-          publicadas++;
-        } else {
-          programadas++;
-        }
-      } else {
-        publicadas++;
-      }
-    });
-
-    return { total: guidesData.length, publicadas, borradores, programadas };
-  }, [guidesConfigMap]);
-
-  const filteredGuidesList = useMemo(() => {
-    const now = Date.now();
-    return guidesData.filter(g => {
-      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
-
-      // Filtro por estado
-      if (guideStatusFilter !== 'all') {
-        if (guideStatusFilter === 'publicada') {
-          const isActuallyPub = cfg.status === 'publicada' || (cfg.status === 'programada' && cfg.publishAt && new Date(cfg.publishAt).getTime() <= now);
-          if (!isActuallyPub) return false;
-        } else if (guideStatusFilter === 'borrador') {
-          if (cfg.status !== 'borrador') return false;
-        } else if (guideStatusFilter === 'programada') {
-          const isFutSched = cfg.status === 'programada' && (!cfg.publishAt || new Date(cfg.publishAt).getTime() > now);
-          if (!isFutSched) return false;
-        }
-      }
-
-      // Filtro por búsqueda
-      if (guideSearchTerm.trim() !== '') {
-        const q = guideSearchTerm.toLowerCase();
-        const matchTitle = g.title.toLowerCase().includes(q);
-        const matchCat = g.category.toLowerCase().includes(q);
-        const matchSlug = g.slug.toLowerCase().includes(q);
-        if (!matchTitle && !matchCat && !matchSlug) return false;
-      }
-
-      return true;
-    });
-  }, [guidesConfigMap, guideStatusFilter, guideSearchTerm]);
 
   return (
     <div style={{

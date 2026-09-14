@@ -18,12 +18,20 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {}, na
   const fileInputRef = useRef(null);
 
   const redirectToGracias = () => {
-    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      window.gtag('event', 'generate_lead', {
-        event_category: 'Modal_Formulario',
-        event_label: formData.clientType || 'particular',
-        value: 1
-      });
+    if (typeof window !== 'undefined') {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'Modal_Formulario',
+          event_label: formData.clientType || 'particular',
+          value: 1
+        });
+      }
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: 'Formulario Meta',
+          content_category: formData.clientType || 'particular'
+        });
+      }
     }
 
     onClose();
@@ -161,19 +169,22 @@ export default function ContactFormModal({ isOpen, onClose, initialData = {}, na
           onClick={onClose}
           aria-label="Cerrar modal"
           style={{
-            position: 'absolute',
-            top: '1rem',
-            right: '1rem',
+            position: 'sticky',
+            top: '0',
+            float: 'right',
+            marginRight: '-0.3rem',
+            marginTop: '-0.3rem',
             width: '38px',
             height: '38px',
             borderRadius: '50%',
-            background: 'var(--bg-main)',
+            background: 'var(--bg-card)',
             border: '1px solid var(--border-light)',
+            boxShadow: 'var(--shadow-sm)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: 'var(--text-main)',
-            zIndex: 10
+            zIndex: 20
           }}
         >
           <X size={20} />

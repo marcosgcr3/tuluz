@@ -1229,45 +1229,54 @@ export const guidesData = [
       },
       {
         "id": "que-es-la-potencia",
-        "title": "2. Qué es la potencia eléctrica (kW): el término fijo"
+        "title": "2. Qué es la potencia eléctrica (kW): el término fijo y la tolerancia del ICP"
       },
       {
         "id": "que-es-la-energia",
-        "title": "3. Qué es la energía eléctrica (kWh): el consumo variable"
+        "title": "3. Qué es la energía eléctrica (kWh): el consumo variable y el consumo fantasma"
       },
       {
         "id": "tabla-comparativa",
         "title": "4. Tabla comparativa: kW frente a kWh en tu recibo"
       },
       {
+        "id": "ejemplo-practico-factura",
+        "title": "5. Ejemplo práctico: el impacto real en euros en un recibo mensual"
+      },
+      {
         "id": "como-optimizar-ambos",
-        "title": "5. Cómo optimizar cada concepto para pagar lo mínimo"
+        "title": "6. Cómo optimizar cada concepto para pagar lo mínimo"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "6. Preguntas frecuentes"
+        "title": "7. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
         "id": "analogia-coche",
         "title": "1. La analogía del coche y del grifo para entender kW y kWh",
-        "content": "Para recordar la diferencia para siempre, recurre a estas dos comparaciones de la vida cotidiana:\n\n- **La analogía del coche:** La **potencia (kW)** son los caballos del motor (la velocidad punta o capacidad máxima que el coche puede desarrollar en un instante). La **energía (kWh)** son los litros de gasolina que has consumido durante un viaje de 300 kilómetros.\n- **La analogía del grifo:** La **potencia (kW)** es lo grueso que es el grifo y cuánto caudal de agua puede soltar a la vez. La **energía (kWh)** es el cubo de agua que has llenado al final del día."
+        "content": "Para recordar la diferencia para siempre y saber qué estás pagando en cada línea de tu recibo, recurre a estas dos comparaciones cotidianas:\n\n- **La analogía del coche:** La **potencia (kW)** son los caballos del motor: la capacidad máxima de aceleración o velocidad que el vehículo puede desarrollar en un instante determinado. La **energía (kWh)** son los litros de combustible que has consumido en el depósito al finalizar un viaje de 300 kilómetros.\n- **La analogía del grifo y la tubería:** La **potencia (kW)** equivale al diámetro de la tubería y al caudal máximo de agua que puede salir a la vez si abres todos los grifos de la casa. La **energía (kWh)** es el volumen total de litros que se ha acumulado en el contador al terminar el mes."
       },
       {
         "id": "que-es-la-potencia",
-        "title": "2. Qué es la potencia eléctrica (kW): el término fijo",
-        "content": "La potencia se mide en **kilovatios (kW)** (1 kW = 1.000 vatios). Expresa la velocidad a la que se consume la energía en una fracción de segundo.\n\nEn tu factura eléctrica:\n- Es el concepto conocido como **Término Fijo o Término de Potencia**.\n- Se factura multiplicando los kW contratados por los días del periodo facturado y por el precio del kW fijado por contrato (por ejemplo: 3,45 kW × 30 días × 0,105 €/kW/día = 10,87 €).\n- **Se paga siempre**, aunque el contador marque consumo cero."
+        "title": "2. Qué es la potencia eléctrica (kW): el término fijo y la tolerancia del ICP",
+        "content": "La potencia se mide en **kilovatios (kW)** (1 kW = 1.000 vatios). Expresa la velocidad a la que se demanda y consume la energía en una fracción de segundo.\n\nEn tu factura eléctrica:\n- Es el concepto conocido como **Término Fijo o Término de Potencia**.\n- Se factura multiplicando los kW contratados por los días del periodo facturado y por el precio del kW fijado por contrato (por ejemplo: 3,45 kW × 30 días × 0,105 €/kW/día = 10,87 €).\n- **Se paga siempre de forma obligatoria**, incluso si la vivienda está deshabitada o te vas de vacaciones y el contador marca consumo cero.",
+        "callout": {
+          "type": "tip",
+          "title": "La curva de tolerancia térmica del contador digital",
+          "text": "Los contadores inteligentes no cortan la luz al instante en cuanto superas en 1 vatio tu potencia contratada. Disponen de una curva de disparo térmico normalizada que permite superar puntualmente la potencia entre un 10% y un 20% durante unos minutos para soportar los arranques de motores de frigoríficos, bombas o lavadoras."
+        }
       },
       {
         "id": "que-es-la-energia",
-        "title": "3. Qué es la energía eléctrica (kWh): el consumo variable",
-        "content": "La energía se mide en **kilovatios-hora (kWh)**. Representa el trabajo eléctrico total realizado por tus electrodomésticos a lo largo del tiempo:\n\n**Energía (kWh) = Potencia del aparato (kW) × Horas de funcionamiento**\n\nPor ejemplo:\n- Si tienes un calefactor eléctrico de 2.000 W (2 kW) y lo enciendes durante 3 horas seguidas, habrá consumido: 2 kW × 3 h = **6 kWh**.\n- En tu factura se multiplica esa cantidad de kWh por el precio del kWh contratado (por ejemplo: 6 kWh × 0,14 €/kWh = 0,84 €)."
+        "title": "3. Qué es la energía eléctrica (kWh): el consumo variable y el consumo fantasma",
+        "content": "La energía se mide en **kilovatios-hora (kWh)**. Representa el trabajo eléctrico total realizado por tus electrodomésticos a lo largo del tiempo:\n\n**Energía (kWh) = Potencia del aparato (kW) × Horas de funcionamiento**\n\nPor ejemplo:\n- Si tienes un radiador eléctrico de 2.000 W (2 kW) y lo enciendes durante 3 horas seguidas, habrá consumido exactamente: 2 kW × 3 h = **6 kWh**.\n- En tu factura se multiplica esa cantidad de kWh por el precio del kWh contratado (por ejemplo: 6 kWh × 0,14 €/kWh = 0,84 €).\n\nUn factor invisible de consumo energético en los hogares es el **consumo fantasma o standby**: televisores, routers, consolas y cargadores enchufados sin uso pueden consumir entre 300 y 450 kWh al año, lo que representa entre 45€ y 70€ anuales tirados a la basura sin que te des cuenta."
       },
       {
         "id": "tabla-comparativa",
         "title": "4. Tabla comparativa: kW frente a kWh en tu recibo",
-        "content": "Resumen de las características distintivas de cada concepto:",
+        "content": "Resumen de las características distintivas de cada concepto para que no vuelvas a dudar:",
         "table": {
           "headers": [
             "Concepto",
@@ -1293,35 +1302,48 @@ export const guidesData = [
             [
               "¿Si te vas de vacaciones?",
               "Se sigue pagando exactamente igual",
-              "Se reduce a cero (salvo la nevera)"
+              "Se reduce a cero (salvo el frigorífico)"
             ],
             [
               "¿Cómo se reduce el coste?",
-              "Bajando los kW contratados en contrato",
-              "Usando programas ECO y hábitos eficientes"
+              "Bajando los kW en contrato si tienes margen",
+              "Cuidando hábitos, programas ECO y LED"
             ],
             [
               "Riesgo si está mal ajustado",
               "Si falta, salta el ICP; si sobra, pagas de más",
-              "Si no cuidas el precio del kWh, el recibo se dispara"
+              "Si tienes un precio del kWh caro, la factura se dispara"
             ]
           ]
         }
       },
       {
+        "id": "ejemplo-practico-factura",
+        "title": "5. Ejemplo práctico: el impacto real en euros en un recibo mensual",
+        "content": "Analicemos un caso típico de una vivienda familiar media en España con 4 kW contratados y 250 kWh consumidos a lo largo de 30 días:\n\n- **Coste de la potencia (Término Fijo):** 4 kW × 30 días × 0,105 €/kW/día = **12,60 €**.\n- **Coste de la energía (Término Variable):** 250 kWh × 0,14 €/kWh = **35,00 €**.\n- **Alquiler de contador digital homologado:** ~0,81 €/mes.\n- **Impuesto especial sobre la electricidad:** ~5,11% regulado sobre la suma de potencia y energía.\n- **IVA correspondiente:** calculado sobre la base imponible total.\n\nEn este hogar, la energía representa aproximadamente el 70% del gasto y la potencia el 25%. Sin embargo, en segundas residencias, casas de campo o viviendas con poco uso, la proporción se invierte radicalmente: el término fijo de potencia puede representar más del 75% o el 80% del total de la factura."
+      },
+      {
         "id": "como-optimizar-ambos",
-        "title": "5. Cómo optimizar cada concepto para pagar lo mínimo",
-        "content": "Una factura equilibrada ataca ambos frentes:\n\n1. **Para recortar los kW (potencia):** Comprueba tus picos anuales en tu distribuidora y ajusta el contrato a tu necesidad real sin margen excesivo.\n2. **Para recortar los kWh (energía):** Contrata una tarifa competitiva (por debajo de 0,13 - 0,15 €/kWh en precio fijo o aprovechando horas valle en indexadas), instala bombillas LED y climatiza a temperaturas moderadas (21°C invierno / 25°C verano)."
+        "title": "6. Cómo optimizar cada concepto para pagar lo mínimo",
+        "content": "Una factura eléctrica optimizada al 100% actúa de manera simultánea en ambos frentes:\n\n1. **Para recortar los kW (potencia):** Accede al portal web de tu distribuidora eléctrica con tu DNI, revisa los picos máximos demandados en los últimos 12 meses y ajusta tu contrato eliminando los kW que tengas contratados de más sin riesgo de que salte el ICP.\n2. **Para recortar los kWh (energía):** Contrata una tarifa con precio competitivo (por debajo de 0,12€ - 0,14€/kWh en tarifas fijas o aprovechando las horas valle y solares en tarifas indexadas), sustituye bombillas por tecnología LED de alta eficiencia y mantén el termostato de climatización en temperaturas recomendadas (21°C en invierno y 25°C en verano)."
       }
     ],
     "faqs": [
       {
         "q": "¿Si tengo contratada mucha potencia consumo más energía?",
-        "a": "No directamente. Una bombilla de 10W consume exactamente lo mismo tanto si tienes contratados 3,45 kW como si tienes 10 kW. Lo que aumenta al tener más potencia es el coste fijo que pagas por estar conectado a la red."
+        "a": "No directamente. Un televisor o una bombilla consumen exactamente los mismos kWh tanto si tienes contratados 3 kW como si tienes 10 kW. Lo que aumenta considerablemente al tener más potencia es el coste fijo mensual que pagas por estar conectado a la red, independientemente de si consumes o no."
       },
       {
         "q": "¿Por qué en la factura aparecen dos potencias (Punta y Valle)?",
-        "a": "Desde la reforma de la tarifa 2.0TD, la normativa española permite fijar un límite de potencia para las horas punta (laborables de 8h a 24h) y otro diferente para las horas valle (noches y fines de semana)."
+        "a": "Desde la entrada en vigor de la tarifa 2.0TD, la normativa española permite elegir dos potencias distintas: una para las horas punta (laborables de 8:00 a 24:00) y otra para las horas valle (noches y fines de semana completos), lo cual resulta ideal para abaratar costes al cargar coches eléctricos o acumuladores de calor."
+      },
+      {
+        "q": "¿Qué sucede si bajo demasiado la potencia para intentar ahorrar en el término fijo?",
+        "a": "Si reduces los kW por debajo de la demanda de tus electrodomésticos en uso simultáneo, el interruptor de control de potencia (ICP) del contador digital saltará cada vez que coincidan aparatos de alto consumo (como la vitrocerámica, el horno y la lavadora). Para rearmarlo basta con bajar los interruptores del cuadro general durante 5 segundos y volver a subirlos."
+      },
+      {
+        "q": "¿Por qué el precio del kWh cambia según las horas del día pero el del kW no?",
+        "a": "El precio de la energía (kWh) depende del coste horario de producción de las centrales en el mercado mayorista (OMIE), que varía continuamente según la demanda y la generación eólica y solar. En cambio, la potencia (kW) remunera la infraestructura y capacidad de las redes de transporte, un concepto regulado por el Gobierno que se fija con carácter anual."
       }
     ],
     "relatedSlugs": [
@@ -1695,7 +1717,7 @@ export const guidesData = [
       },
       {
         "id": "paso-a-paso",
-        "title": "6. Cómo tramitar el aumento de potencia paso a paso"
+        "title": "6. Cómo tramitar el aumento de potencia paso a paso con tu comercializadora"
       },
       {
         "id": "preguntas-frecuentes",
@@ -1706,17 +1728,22 @@ export const guidesData = [
       {
         "id": "senales-aumentar",
         "title": "1. ¿Cuándo necesitas realmente aumentar la potencia contratada?",
-        "content": "El **Interruptor de Control de Potencia (ICP)** del contador digital salta cuando la suma de vatios demandados en un instante supera el límite contratado.\n\nAntes de pedir un aumento de potencia, distingue si se trata de un problema puntual de hábitos o de una necesidad técnica real:\n\n- **Es un hábito evitable:** Si salta cuando pones el horno, la vitrocerámica a tope y la lavadora calentando agua exactamente en el mismo minuto. Desplazar la lavadora 40 minutos soluciona el problema sin gastar un solo euro.\n- **Es una necesidad real:** Has instalado aerotermia centralizada, placas de inducción potentes, una bomba de calor para toda la vivienda o un cargador de vehículo eléctrico doméstico."
+        "content": "El **Interruptor de Control de Potencia (ICP)** del contador digital salta automáticamente cuando la suma de vatios demandados de forma simultánea en la vivienda supera el límite contratado en la póliza.\n\nAntes de pedir un aumento de potencia a tu compañía, analiza con calma si se trata de un hábito fácilmente corregible o de una necesidad técnica indispensable:\n\n- **Es un hábito evitable sin coste:** El ICP solo salta cuando pones el horno a máxima temperatura, la vitrocerámica y la lavadora calentando agua exactamente en el mismo instante. Desplazar el lavado de la lavadora 45 minutos o evitar la simultaneidad soluciona el problema de inmediato sin aumentar tu factura para siempre.\n- **Es una necesidad técnica real:** Has instalado un sistema de aerotermia centralizada, placas de inducción de alta potencia, bomba de calor para toda la vivienda o un punto de recarga de coche eléctrico que demanda potencia continua."
       },
       {
         "id": "costes-regulados",
         "title": "2. ¿Cuánto cuesta subir la potencia? Desglose oficial de derechos regulados",
-        "content": "Subir la potencia conlleva el abono de tres conceptos regulados por el Estado español a favor de la distribuidora eléctrica (RD 1955/2000):\n\n- **Derechos de extensión:** **17,37 € por cada kW aumentado** (+ IVA). Cubren el mantenimiento de las infraestructuras de red.\n- **Derechos de acceso:** **19,70 € por cada kW aumentado** (+ IVA). Remuneran el uso de la red de transporte.\n- **Derechos de enganche:** **9,04 € de cuota fija** (+ IVA), independientemente de los kW que subas.\n\nEn total, cada kW que aumentes te costará aproximadamente **45€ a 50€ en un único pago** en tu siguiente factura, más el incremento mensual fijo de unos 4€ a 5€/mes por kW en tus futuros recibos."
+        "content": "Subir la potencia contratada conlleva el pago de tres conceptos regulados por el Ministerio y la normativa estatal (Real Decreto 1955/2000), cuyos importes van destinados directamente a la distribuidora de tu zona:\n\n- **Derechos de extensión:** **17,37 € por cada kW que aumentes** (+ IVA). Remuneran la inversión y el mantenimiento de las líneas eléctricas de distribución.\n- **Derechos de acceso:** **19,70 € por cada kW que aumentes** (+ IVA). Retribuyen el uso efectivo de la red eléctrica de transporte.\n- **Derechos de enganche:** **9,04 € de cuota fija** (+ IVA), independientemente de la cantidad de kilovatios que vayas a subir.\n\nEn la práctica, cada kW que decidas subir te supondrá un **coste puntual único de unos 45€ a 50€ en la siguiente factura**, a lo que habrá que sumar el incremento fijo mensual de aproximadamente 4€ a 5€/mes por cada kW en todas tus facturas futuras.",
+        "callout": {
+          "type": "tip",
+          "title": "Tramos a la carta: ya no estás atado a los tramos antiguos",
+          "text": "Desde 2018 la normativa permite contratar potencia en múltiplos de 0,1 kW. Si necesitas un poco más de margen pero no quieres pagar de golpe 1,15 kW enteros, puedes solicitar por ejemplo 4,1 kW o 4,3 kW y ahorrarte costes en derechos y en el término fijo mensual."
+        }
       },
       {
         "id": "tabla-ejemplos-coste",
         "title": "3. Tabla de costes reales según los kW aumentados",
-        "content": "Ejemplos de coste de subida de potencia habituales en viviendas domésticas:",
+        "content": "Ejemplos del desembolso puntual en factura y el impacto en la cuota fija mensual habituales en viviendas:",
         "table": {
           "headers": [
             "Potencia actual",
@@ -1767,22 +1794,35 @@ export const guidesData = [
       {
         "id": "cuando-piden-boletin",
         "title": "4. El Boletín Eléctrico (CIE): cuándo te exigirán renovarlo",
-        "content": "El **Certificado de Instalación Eléctrica (CIE o Boletín)** certifica la potencia máxima admisible de los cables y protecciones de tu vivienda. La distribuidora te exigirá un boletín nuevo emitido por un instalador autorizado en dos supuestos:\n\n1. **Si la potencia deseada supera la potencia máxima autorizada en el boletín vigente.**\n2. **Si el boletín actual tiene más de 20 años de antigüedad.**\n\nUn boletín eléctrico nuevo suele costar entre **120€ y 200€** según la comunidad autónoma e instalador."
+        "content": "El **Certificado de Instalación Eléctrica (CIE o Boletín Eléctrico)** es el documento oficial emitido por un instalador electricista autorizado que certifica que el cableado, los magnetotérmicos y la toma de tierra de tu vivienda son seguros para una potencia determinada.\n\nLa distribuidora eléctrica te exigirá obligatoriamente presentar un boletín nuevo en dos situaciones:\n\n1. **Si la potencia deseada supera la potencia máxima admisible reflejada en el boletín actual.**\n2. **Si el boletín registrado de tu vivienda tiene más de 20 años de antigüedad**, aun cuando no superes la potencia teórica.\n\nLa emisión de un nuevo boletín eléctrico suele tener un coste de mercado de entre **120€ y 220€**, dependiendo de la comunidad autónoma y de si es necesario adaptar algún componente del cuadro eléctrico."
       },
       {
         "id": "subir-solo-valle",
         "title": "5. El truco de aumentar potencia solo en Valle para recarga de coche eléctrico",
-        "content": "Gracias a la tarifa 2.0TD, **no estás obligado a subir la potencia de las 24 horas del día**:\n\nSi has comprado un coche eléctrico y necesitas cargar a 7,4 kW por la noche, puedes mantener tu potencia diurna en **3,45 kW en Punta (P1)** y contratar **7,4 kW en Valle (P2)**. El coste del peaje de potencia en Valle es hasta un 90% más barato, por lo que pagarás prácticamente lo mismo en tu recibo mensual disfrutando de carga ultrarrápida nocturna."
+        "content": "Gracias a la estructura tarifaria 2.0TD, **no estás obligado a aumentar la potencia para todas las horas del día**:\n\nSi has adquirido un vehículo eléctrico híbrido enchufable o 100% eléctrico y quieres instalar un punto de carga wallbox a 7,4 kW durante la noche, puedes mantener tu potencia diurna en **3,45 kW en periodo Punta (P1)** y contratar **7,4 kW exclusivamente en periodo Valle (P2)**.\n\nDado que el término de potencia en horario valle es aproximadamente un 90% más barato que en punta, podrás disfrutar de recarga ultrarrápida nocturna pagando apenas 1€ o 2€ más al mes en tu recibo total."
+      },
+      {
+        "id": "paso-a-paso",
+        "title": "6. Cómo tramitar el aumento de potencia paso a paso con tu comercializadora",
+        "content": "El trámite para subir la potencia se realiza de forma 100% telemática siguiendo estos 4 pasos:\n\n1. **Comprueba los picos reales demandados:** Entra en el área privada de la web de tu distribuidora (i-DE, e-distribución, UFD, E-Redes) con tu certificado o DNI y consulta el histórico de potencia máxima demandada en el último año.\n2. **Contacta con tu comercializadora actual:** No necesitas llamar a la distribuidora; la solicitud se gestiona a través de la compañía a la que abonas tus facturas mensuales (por teléfono, app o web).\n3. **Aporta la información del suministro:** Deberás indicar el código CUPS de la factura, el nombre y DNI del titular, la potencia deseada en Punta y Valle y el CIE si la distribuidora lo requiere.\n4. **Activación automática en contador inteligente:** Una vez aprobada la petición por la distribuidora, la modificación se envía de forma remota al contador digital telegestionado en un plazo habitual de 1 a 5 días hábiles, sin necesidad de visitas técnicas en casa."
       }
     ],
     "faqs": [
       {
-        "q": "¿Cuánto tarda la compañía en subirme la potencia?",
-        "a": "Con los contadores digitales inteligentes, el aumento se procesa telemáticamente en un plazo de entre 1 y 5 días hábiles desde que la distribuidora aprueba la solicitud."
+        "q": "¿Cuánto tarda la compañía en subirme la potencia contratada?",
+        "a": "Con los contadores digitales inteligentes telegestionados, el aumento se procesa telemáticamente en un plazo habitual de entre 1 y 5 días laborables a partir de que la distribuidora valida la solicitud y la documentación."
       },
       {
         "q": "¿Si me mudo de casa me devuelven lo pagado por derechos de extensión?",
-        "a": "No. Los derechos quedan asociados al punto de suministro (al código CUPS de la vivienda) durante un plazo de 3 años."
+        "a": "No. Los derechos de extensión quedan adscritos al punto de suministro (al código CUPS de la vivienda o local) durante un periodo de 3 años de vigencia."
+      },
+      {
+        "q": "¿Aumentar la potencia implica permanencia con mi comercializadora?",
+        "a": "No. Los derechos de acceso, extensión y enganche son tasas reguladas por el Estado que se transfieren íntegramente a la distribuidora eléctrica. No conllevan ningún tipo de permanencia ni compromiso con tu compañía eléctrica."
+      },
+      {
+        "q": "¿Puedo subir la potencia solo durante los meses de verano o invierno?",
+        "a": "Por ley, las distribuidoras solo están obligadas a conceder una modificación de potencia al año por contrato. Aunque en la práctica suelen permitir subirla pagando los derechos, posteriormente podrían denegarte la bajada antes de que transcurran 12 meses naturales."
       }
     ],
     "relatedSlugs": [
@@ -1826,38 +1866,42 @@ export const guidesData = [
         "title": "4. Tabla comparativa: PVPC vs Mercado Libre cara a cara"
       },
       {
+        "id": "caso-real-simulacion",
+        "title": "5. Ejemplo y simulación: misma vivienda en PVPC vs Mercado Libre"
+      },
+      {
         "id": "cual-te-conviene",
-        "title": "5. ¿Cuál te conviene según tu perfil y estilo de vida?"
+        "title": "6. ¿Cuál te conviene según tu perfil y estilo de vida?"
       },
       {
         "id": "trampas-mercado-libre",
-        "title": "6. Las trampas comerciales más frecuentes del mercado libre"
+        "title": "7. Las trampas comerciales más frecuentes del mercado libre"
       },
       {
         "id": "preguntas-frecuentes",
-        "title": "7. Preguntas frecuentes"
+        "title": "8. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
         "id": "que-es-el-pvpc",
         "title": "1. ¿Qué es el PVPC (Precio Voluntario para el Pequeño Consumidor)?",
-        "content": "El **PVPC** es la tarifa eléctrica regulada y supervisada directamente por el Ministerio para la Transición Ecológica y la CNMC en España:\n\n- Solo pueden ofrecerla las **Comercializadoras de Referencia** designadas por el Gobierno (como Curenergía, Energía XXI, etc.).\n- El precio de la energía cambia cada hora de cada día en función del mercado mayorista.\n- **No tiene permanencia ni servicios adicionales vinculados**.\n- Es la única tarifa que da acceso obligatorio al **Bono Social Eléctrico**."
+        "content": "El **PVPC** es la tarifa eléctrica regulada y supervisada directamente por el Ministerio para la Transición Ecológica y la Comisión Nacional de los Mercados y la Competencia (CNMC) en España:\n\n- Solo pueden comercializarla las **Comercializadoras de Referencia** designadas por el Gobierno (como Curenergía, Energía XXI, Comercializadora Regulada Gas & Power, Baser, Régsiti, etc.).\n- El precio de la energía cambia cada hora de cada día en función de la casación del mercado mayorista.\n- **No tiene ningún tipo de permanencia ni penalizaciones** por marcharse a otra compañía.\n- **No puede incluir servicios adicionales** vinculados (seguros, urgencias, revisiones).\n- Es la única tarifa que permite solicitar y percibir el descuento oficial del **Bono Social Eléctrico** (entre el 40% y el 80% de bonificación)."
       },
       {
         "id": "que-es-el-mercado-libre",
         "title": "2. ¿Qué es el Mercado Libre?",
-        "content": "En el **mercado libre**, las empresas comercializadoras (existen más de 300 en España) fijan libremente sus condiciones, promociones y precios con el cliente:\n\n- **Tarifas con precio fijo 24 horas:** Pagas siempre los mismos euros por kWh durante todo el año, independientemente de lo que pase en el mercado mayorista.\n- **Tarifas con discriminación horaria propia:** Precios cerrados para Punta, Llano y Valle.\n- **Tarifas indexadas libres:** Precio de coste mayorista más un margen comercial explícito."
+        "content": "En el **mercado libre**, las empresas comercializadoras (existen más de 300 autorizadas en España) fijan con total libertad sus precios, fórmulas de facturación, condiciones y promociones contractuales:\n\n- **Tarifas con precio fijo 24 horas:** Pagas exactamente el mismo precio por cada kWh durante todo el año, sin importar a qué hora consumas ni lo que ocurra en el mercado mayorista de la electricidad.\n- **Tarifas con discriminación horaria libre:** Precios cerrados y estables diferenciados para los tramos Punta, Llano y Valle.\n- **Tarifas indexadas libres:** La comercializadora te traslada el precio de coste mayorista más un margen de gestión comercial transparente acordado por contrato."
       },
       {
         "id": "nueva-formula-pvpc",
         "title": "3. La nueva fórmula del PVPC: mayor estabilidad frente a la volatilidad",
-        "content": "Tras la crisis energética de 2022, el Gobierno reformó el cálculo del PVPC (Real Decreto 444/2023). Desde 2024 y con pleno despliegue en 2026, el precio del PVPC ya no depende al 100% de la subasta diaria (spot), sino que incorpora una **cesta de mercados de futuros a plazo mensual, trimestral y anual**.\n\nEsto reduce los picos extremos de precio cuando el gas o la electricidad se encarecen, aportando mayor estabilidad a los consumidores regulados."
+        "content": "A raíz de las crisis energéticas pasadas, el Gobierno de España aprobó el Real Decreto 444/2023, que transformó el cálculo del PVPC. Desde 2024 y con pleno despliegue en 2026, el precio del PVPC ya no depende exclusivamente de la subasta diaria (spot) del mercado eléctrico, sino que incorpora una **cesta de mercados de futuros a plazo mensual, trimestral y anual**.\n\nEsta reforma actúa como un colchón amortiguador: cuando se producen picos de tensión en el precio internacional del gas o en el pool mayorista, la subida se mitiga notablemente, otorgando a los consumidores regulados una factura mucho más predecible y estable."
       },
       {
         "id": "tabla-comparativa",
         "title": "4. Tabla comparativa: PVPC vs Mercado Libre cara a cara",
-        "content": "Resumen de diferencias estructurales:",
+        "content": "Resumen de las diferencias estructurales y contractuales:",
         "table": {
           "headers": [
             "Característica",
@@ -1877,46 +1921,59 @@ export const guidesData = [
             ],
             [
               "Acceso a Bono Social",
-              "SÍ (es requisito indispensable)",
-              "NO (incompatible por ley)"
+              "SÍ (es requisito legal indispensable)",
+              "NO (incompatible por normativa estatal)"
             ],
             [
               "Permanencia",
               "NUNCA (prohibida por ley)",
-              "Habitualmente no, pero algunas compañías aplican 12 meses"
+              "Habitualmente no, pero algunas compañías fijan 12 meses"
             ],
             [
               "Servicios adicionales",
-              "Prohibido incluir mantenimientos o seguros",
-              "Frecuentes (mantenimientos, asistencias, urgencias)"
+              "Prohibido incluir seguros o mantenimientos",
+              "Frecuentes (mantenimientos, urgencias, asistencias)"
             ],
             [
-              "Compañías que lo venden",
+              "Compañías autorizadas",
               "Solo 8 Comercializadoras de Referencia",
-              "Más de 300 comercializadoras libres"
+              "Más de 300 comercializadoras independientes"
             ]
           ]
         }
       },
       {
+        "id": "caso-real-simulacion",
+        "title": "5. Ejemplo y simulación: misma vivienda en PVPC vs Mercado Libre",
+        "content": "Para entender con números reales el impacto en el bolsillo, comparemos una familia con un consumo anual estándar de 3.200 kWh en ambos entornos de mercado:\n\n- **Durante meses con alta generación renovable (primavera y otoño):** El PVPC suele registrar horas a precios extraordinariamente bajos en las horas centrales del día debido a la producción fotovoltaica y eólica, permitiendo facturas mensuales muy reducidas si el usuario programa sus lavadoras y electrodomésticos en esas franjas.\n- **Durante meses de olas de frío, calor extremo o sequía (invierno y verano):** La tarifa PVPC refleja inmediatamente la subida de la demanda energética, encareciendo temporalmente los recibos.\n- **Con una tarifa fija competitiva en mercado libre (0,12€ - 0,13€/kWh):** La misma familia abona exactamente entre 32€ y 35€ mensuales por su energía los 12 meses del año, blindando su economía doméstica frente a cualquier sorpresa o vaivén geopolítico."
+      },
+      {
         "id": "cual-te-conviene",
-        "title": "5. ¿Cuál te conviene según tu perfil y estilo de vida?",
-        "content": "Elige con criterio objetivo:\n\n- **Te conviene el PVPC si:** Tienes derecho al Bono Social Eléctrico (descuento del 40% al 80%), puedes adaptar tus consumos a las horas solares o nocturnas, o en épocas de alta generación renovable con precios mayoristas en mínimos.\n- **Te conviene el Mercado Libre si:** Buscas certidumbre absoluta y tranquilidad mediante una **tarifa con precio fijo competitivo** (por debajo de 0,12€ - 0,14€/kWh), consumes mucho en horas punta de la tarde/noche y no quieres preocuparte de qué hora es al cocinar o encender la climatización."
+        "title": "6. ¿Cuál te conviene según tu perfil y estilo de vida?",
+        "content": "La elección idónea depende de tus prioridades y hábitos cotidianos:\n\n- **Te conviene el PVPC si:** Cumples los requisitos para beneficiarte del **Bono Social Eléctrico** (descuentos de entre el 40% y el 80% sobre el total de la factura), tienes flexibilidad horaria para concentrar consumos en las horas más baratas o buscas una tarifa sin letra pequeña ni sobrecostes de servicios añadidos.\n- **Te conviene el Mercado Libre si:** Buscas tranquilidad total mediante un **precio fijo por kWh muy competitivo** (por debajo de 0,13€/kWh), concentras tus consumos en horas punta de la tarde/noche y prefieres desentenderte por completo de consultar a qué hora es más barata la electricidad."
       },
       {
         "id": "trampas-mercado-libre",
-        "title": "6. Las trampas comerciales más frecuentes del mercado libre",
-        "content": "Si decides contratar en el mercado libre, vigila con lupa estos tres puntos:\n\n1. **Precios promocionales que caducan:** Descuentos atractivos los primeros 6 meses que se duplican automáticamente al renovar.\n2. **Seguros colados en el contrato:** Servicios de urgencias de 6€ a 12€/mes que encarecen el recibo más de 100€ anuales.\n3. **Cláusulas de permanencia oculta:** Penalizaciones por marcharte antes de cumplir un año."
+        "title": "7. Las trampas comerciales más frecuentes del mercado libre",
+        "content": "Si decides contratar en el mercado libre, presta atención a estos tres puntos clave antes de firmar:\n\n1. **Precios promocionales temporales:** Descuentos muy atractivos durante los primeros meses que se encarecen automáticamente al cumplir el año de contrato sin previo aviso claro.\n2. **Servicios de mantenimiento colados en el recibo:** Cuotas de 6€ a 12€ mensuales por asistencias eléctricas o urgencias que encarecen la factura en más de 100€ anuales de forma innecesaria.\n3. **Revisión de IPC o mecanismos de ajuste:** Cláusulas en la letra pequeña que permiten a la empresa subir el término de energía según la inflación o recargos no especificados en la publicidad."
       }
     ],
     "faqs": [
       {
         "q": "¿Puedo pasarme de PVPC a mercado libre y viceversa cuando quiera?",
-        "a": "Sí. El cambio es completamente gratuito y no requiere obras ni cortes de suministro. Puedes volver a PVPC en cualquier momento llamando a una comercializadora de referencia."
+        "a": "Sí. El cambio es completamente gratuito por ley y no requiere obras, modificaciones en el contador ni cortes de suministro. Puedes volver a PVPC en cualquier momento poniéndote en contacto con una comercializadora de referencia autorizada."
       },
       {
         "q": "¿El contador de luz cambia si cambio de mercado?",
-        "a": "No. El contador y la instalación física pertenecen a la distribuidora de tu zona y no se tocan."
+        "a": "No. El contador digital y la instalación eléctrica física pertenecen a la distribuidora de tu zona geográfica y permanecen exactamente igual, con independencia de la comercializadora o mercado con el que contrates."
+      },
+      {
+        "q": "¿Cómo afecta la instalación de placas solares al PVPC frente al mercado libre?",
+        "a": "En PVPC los excedentes se compensan al precio horario del pool menos los costes de desvíos, lo que en horas de alta radiación puede rondar los 0,02 € - 0,04 €/kWh. En el mercado libre puedes encontrar tarifas con compensación fija de excedentes de 0,06 € a 0,09 €/kWh y servicios de batería virtual para acumular euros de saldo."
+      },
+      {
+        "q": "¿Si tengo tarifa PVPC puedo solicitar cambios de potencia o titular?",
+        "a": "Sí. Todos los trámites ordinarios de contrato (cambio de titularidad, ajuste de potencia, modificación de domiciliación bancaria) se realizan con total normalidad a través de tu comercializadora de referencia manteniendo las condiciones reguladas."
       }
     ],
     "relatedSlugs": [
@@ -1964,25 +2021,34 @@ export const guidesData = [
         "title": "5. Clave 3: Presencia de seguros o servicios de mantenimiento"
       },
       {
+        "id": "clave-4-qr-cnmc",
+        "title": "6. Clave 4: El código QR obligatorio de la CNMC"
+      },
+      {
         "id": "preguntas-frecuentes",
-        "title": "6. Preguntas frecuentes"
+        "title": "7. Preguntas frecuentes"
       }
     ],
     "sections": [
       {
         "id": "por-que-es-importante",
         "title": "1. ¿Por qué es crucial saber si estás en PVPC o mercado libre?",
-        "content": "Saber qué contrato tienes es el primer paso para dejar de pagar de más:\n\n- Si estás en **mercado libre**, tu precio puede haberse quedado desfasado respecto a las mejores ofertas actuales o incluir cuotas de mantenimiento que ni siquiera sabes que pagas.\n- Si estás en **PVPC**, tu factura fluctúa cada mes y estás pagando un precio fijado por el mercado mayorista."
+        "content": "Descifrar qué tipo de contrato tienes contratado es el punto de partida indispensable para dejar de pagar de más en el recibo de la luz:\n\n- Si estás en **mercado libre**, tu precio por kWh puede haber quedado totalmente desfasado respecto a las mejores tarifas del momento, o tu factura puede estar arrastrando seguros de mantenimiento que ni siquiera recuerdas haber contratado.\n- Si estás en **PVPC**, el coste de tu energía cambia cada hora según la cotización del mercado y puedes tener derecho al Bono Social Eléctrico si cumples los requisitos de renta o familia numerosa."
       },
       {
         "id": "clave-1-nombre-empresa",
         "title": "2. Clave 1: El nombre exacto de la comercializadora",
-        "content": "Las grandes energéticas operan con dos empresas distintas con nombres muy similares para confundir al usuario:\n\n- **Iberdrola:** Su filial de mercado libre se llama *Iberdrola Clientes*. Su filial de PVPC se llama **Curenergía**.\n- **Endesa:** Su filial de mercado libre se llama *Endesa Energía*. Su filial de PVPC se llama **Energía XXI**.\n- **Naturgy:** Su filial libre es *Naturgy Iberia*. Su filial regulada es **Comercializadora Regulada Gas & Power**.\n- **TotalEnergies:** Su filial libre es *TotalEnergies Electricidad y Gas*. Su filial regulada es **Baser**.\n\nSi en el logotipo de la factura pone Endesa Energía o Iberdrola Clientes, estás en el **mercado libre**."
+        "content": "Las grandes compañías eléctricas operan mediante dos empresas jurídicamente independientes pero con nombres y logotipos muy parecidos, lo que genera confusión masiva entre los consumidores:\n\n- **Grupo Iberdrola:** Su filial de mercado libre se llama *Iberdrola Clientes S.A.U.* Su comercializadora de PVPC se llama **Curenergía Comercializador de Último Recurso S.A.U.**\n- **Grupo Endesa:** Su empresa de mercado libre se llama *Endesa Energía S.A.* Su compañía de PVPC se llama **Energía XXI Comercializadora de Referencia S.L.U.**\n- **Grupo Naturgy:** Su filial libre opera como *Naturgy Iberia S.A.* Su empresa regulada es **Comercializadora Regulada Gas & Power S.A.**\n- **Grupo TotalEnergies:** La comercializadora libre es *TotalEnergies Electricidad y Gas*. Su filial regulada es **Baser Comercializadora de Referencia S.A.**\n\nSi en la cabecera de tu recibo aparece el logo habitual de Endesa o Iberdrola sin la denominación de referencia, estás en el **mercado libre**.",
+        "callout": {
+          "type": "tip",
+          "title": "El detalle de la denominación social",
+          "text": "Busca en la letra pequeña del encabezado o pie de factura la razón social de la empresa: si incluye las palabras 'Comercializador de Último Recurso', 'Referencia' o las siglas COR, estás en el mercado regulado PVPC."
+        }
       },
       {
         "id": "tabla-empresas-reguladas",
         "title": "3. Tabla oficial de las Comercializadoras de Referencia (PVPC)",
-        "content": "En España solo existen estas comercializadoras autorizadas para ofrecer el PVPC y tramitar el Bono Social:",
+        "content": "En España únicamente existen estas comercializadoras autorizadas por el Ministerio para comercializar la tarifa regulada PVPC:",
         "table": {
           "headers": [
             "Grupo energético",
@@ -2026,22 +2092,35 @@ export const guidesData = [
       {
         "id": "clave-2-tipo-contrato",
         "title": "4. Clave 2: El apartado 'Datos del contrato' en tu factura",
-        "content": "Busca en tu factura el recuadro **'Datos del contrato'** o **'Información de tu suministro'**:\n\n- Si estás en **PVPC**, pondrá explícitamente: *'Modalidad de contratación: Precio Voluntario para el Pequeño Consumidor (PVPC)'* o *'Tarifa 2.0TD PVPC'*. Además verás un enlace al comparador de la CNMC.\n- Si estás en **mercado libre**, aparecerá un nombre comercial como *'Plan Estable'*, *'Tarifa Fácil'*, *'Plan Noche'*, *'Tarifa Tranquilidad'* o *'Tarifa Indexada'*."
+        "content": "Localiza en la segunda página de tu recibo el recuadro denominado **'Datos del contrato'**, **'Datos de tu suministro'** o **'Condiciones contractuales'**:\n\n- Si estás en **PVPC**, aparecerá textualmente la indicación: *'Modalidad de contratación: Precio Voluntario para el Pequeño Consumidor (PVPC)'* o *'Tarifa regulada 2.0TD PVPC'*. Además, por ley debe figurar un enlace oficial al comparador de ofertas de la CNMC.\n- Si estás en **mercado libre**, verás nombres comerciales promocionales como *'Plan Estable'*, *'Tarifa Fácil'*, *'Plan Noche'*, *'Tarifa Conecta'*, *'Tarifa Tranquilidad'* o *'Tarifa Indexada Libre'*."
       },
       {
         "id": "clave-3-servicios-adicionales",
         "title": "5. Clave 3: Presencia de seguros o servicios de mantenimiento",
-        "content": "Revisa la lista de importes desglosados al final de la factura:\n\n- Por normativa legal, **en el PVPC está estrictamente prohibido cobrar ningún servicio adicional** (como 'Protección Pagos', 'Mantenimiento Eléctrico' o 'Urgencias 24h').\n- Si en tu recibo aparece cualquier concepto que no sea Potencia, Energía, Impuesto Eléctrico, Alquiler de Contador o IVA, estás **sin duda alguna en el mercado libre**."
+        "content": "Revisa con atención los conceptos desglosados en el total a pagar:\n\n- **En el PVPC está estrictamente prohibido por ley cobrar ningún servicio ajeno al suministro** (como mantenimientos de caldera, protección de pagos, asistencias eléctricas o urgencias 24h).\n- Si en tu factura observas un cargo recurrente de entre 3€ y 12€ al mes bajo conceptos como *'Protección Eléctrica'*, *'OkLuz'*, *'Asistencia Hogar'* o similares, estás **100% en el mercado libre** y puedes solicitar su baja inmediata para ahorrar ese sobrecoste."
+      },
+      {
+        "id": "clave-4-qr-cnmc",
+        "title": "6. Clave 4: El código QR obligatorio de la CNMC",
+        "content": "Desde la reforma regulatoria, la CNMC exige a todas las comercializadoras de España incluir un **código QR de comparación de tarifas** en cada factura emitida:\n\n1. **Apunta con la cámara de tu teléfono móvil al código QR:** Accederás de inmediato a la herramienta oficial del comparador de la CNMC con todos tus datos de consumo real y potencias ya precargados.\n2. **Identificación automática:** En la cabecera de la web de la CNMC verás claramente si tu tarifa actual está clasificada como 'Mercado Regulado (PVPC)' o 'Mercado Libre', junto con un listado transparente de las tarifas más baratas del mercado para tu perfil de consumo."
       }
     ],
     "faqs": [
       {
         "q": "¿Es mejor estar en mercado libre o en PVPC?",
-        "a": "No hay una respuesta única: depende del momento del año y de tu perfil. Si contratas un precio fijo muy bajo en mercado libre pagarás menos que en PVPC cuando el mercado mayorista suba; pero si tienes derecho al Bono Social, el PVPC siempre será imbatible."
+        "a": "Depende de las condiciones del mercado mayorista y de tu perfil de consumo. Si dispones de una tarifa fija muy barata en mercado libre (por debajo de 0,13 €/kWh) estarás protegido frente a subidas; pero si cumples los requisitos del Bono Social Eléctrico, el PVPC siempre resultará la alternativa más económica por sus descuentos del 40% al 80%."
       },
       {
-        "q": "¿Dónde puedo enviar mi factura para que me digan qué tengo?",
-        "a": "En tuLuz analizamos tu factura gratuitamente en 2 minutos. Solo tienes que adjuntarla en nuestro formulario y un asesor te explicará qué tarifa tienes y si puedes ahorrar."
+        "q": "¿Por qué estoy en mercado libre si yo nunca firmé ningún contrato nuevo?",
+        "a": "Muchos usuarios fueron traspasados al mercado libre a través de llamadas de telemarketing agresivas, visitas comerciales a domicilio con la excusa de 'actualizar el contador' o al contratar ofertas combinadas de gas o mantenimiento con la misma compañía de toda la vida."
+      },
+      {
+        "q": "¿Cómo puedo saber qué tarifa tiene el piso si vivo de alquiler?",
+        "a": "Pide al propietario o a la inmobiliaria una copia en PDF de la última factura eléctrica. Revisando el nombre de la comercializadora en la cabecera y el recuadro de datos del contrato podrás saber en menos de 30 segundos si se trata de PVPC o mercado libre."
+      },
+      {
+        "q": "¿Dónde puedo enviar mi factura para que me digan qué tengo y si puedo pagar menos?",
+        "a": "En tuLuz analizamos tu factura de luz o gas de forma 100% gratuita y sin compromiso. Solo tienes que adjuntarla en nuestro formulario web y un especialista revisará tus potencias, consumo y tarifa para decirte con exactitud cuánto puedes ahorrar."
       }
     ],
     "relatedSlugs": [
@@ -8638,18 +8717,10 @@ export const guidesData = [
   }
 ];
 
-// Helper functions for easy querying
-export function getGuideBySlug(slug) {
-  return guidesData.find(guide => guide.slug === slug);
+export function getAllGuideCategories() {
+  return ['Todas', 'Hogar y Consumo', 'Empresas y Pymes', 'Comunidades de Propietarios', 'Autoconsumo y Solar', 'Mercado y Tarifas'];
 }
 
-export function getAllGuideCategories() {
-  return [
-    'Todas',
-    'Hogar y Consumo',
-    'Mercado y Tarifas',
-    'Empresas y Negocios',
-    'Comunidades de Propietarios',
-    'Autoconsumo y Fotovoltaica'
-  ];
+export function getGuideBySlug(slug) {
+  return guidesData.find(g => g.slug === slug);
 }

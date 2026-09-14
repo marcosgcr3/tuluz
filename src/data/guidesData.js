@@ -280,7 +280,8 @@ export const guidesData = [
     "relatedSlugs": [
       "comparador-comercializadoras-luz-y-gas",
       "placas-solares-particulares-precio"
-    ]
+    ],
+    "status": "publicada"
   },
   {
     "id": "tarifas-luz-empresas",
@@ -420,7 +421,8 @@ export const guidesData = [
     "relatedSlugs": [
       "comparador-comercializadoras-luz-y-gas",
       "autoconsumo-solar-comunidades-de-vecinos"
-    ]
+    ],
+    "status": "publicada"
   },
   {
     "id": "autoconsumo-solar-comunidades-de-vecinos",
@@ -566,7 +568,8 @@ export const guidesData = [
     "relatedSlugs": [
       "placas-solares-particulares-precio",
       "ahorrar-factura-de-la-luz"
-    ]
+    ],
+    "status": "publicada"
   },
   {
     "id": "comparador-comercializadoras-luz-y-gas",
@@ -717,7 +720,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "publicada"
   },
   {
     "id": "placas-solares-particulares-precio",
@@ -871,7 +875,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "autoconsumo-solar-comunidades-de-vecinos"
-    ]
+    ],
+    "status": "publicada"
   },
   {
     "id": "como-saber-que-potencia-contratar-en-casa",
@@ -953,7 +958,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-bajar-la-potencia-contratada",
@@ -1035,7 +1041,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "diferencia-entre-potencia-y-energia-electrica",
@@ -1117,7 +1124,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "horas-mas-baratas-de-la-luz",
@@ -1199,7 +1207,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "que-es-el-cups-y-donde-encontrarlo",
@@ -1281,7 +1290,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "cambio-de-titularidad-luz-que-necesito",
@@ -1363,7 +1373,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-aumentar-potencia-contratada",
@@ -1445,7 +1456,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "pvpc-o-mercado-libre-que-conviene",
@@ -1527,7 +1539,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-saber-si-tengo-pvpc",
@@ -1609,7 +1622,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "bono-social-electrico-requisitos",
@@ -1691,7 +1705,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "que-electrodomesticos-consumen-mas-luz",
@@ -1773,7 +1788,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "cuanto-consume-el-stand-by-en-casa",
@@ -1855,7 +1871,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-calcular-consumo-electrico-de-una-empresa",
@@ -1937,7 +1954,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "auditoria-energetica-para-pymes",
@@ -2019,7 +2037,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-un-restaurante",
@@ -2101,7 +2120,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-una-oficina",
@@ -2183,7 +2203,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-electrico-camara-frigorifica",
@@ -2265,7 +2286,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "cambio-de-titularidad-luz-local-comercial",
@@ -2347,7 +2369,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-ascensor-comunidad",
@@ -2429,7 +2452,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-ahorrar-luz-en-garaje-comunitario",
@@ -2511,7 +2535,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-leer-contador-digital-de-luz",
@@ -2593,7 +2618,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-consultar-consumo-de-luz-por-horas",
@@ -2675,7 +2701,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-calcular-consumo-electrico-de-una-vivienda",
@@ -2757,7 +2784,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-aire-acondicionado-por-hora",
@@ -2839,7 +2867,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-calefactor-electrico-por-hora",
@@ -2921,7 +2950,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "cuanto-consume-una-secadora",
@@ -3003,7 +3033,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "cuanto-consume-un-termo-electrico",
@@ -3085,7 +3116,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "que-hacer-si-salta-el-diferencial",
@@ -3167,7 +3199,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "diferencia-icp-y-diferencial",
@@ -3249,7 +3282,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-dar-de-alta-la-luz-en-una-vivienda",
@@ -3331,7 +3365,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "que-es-el-certificado-de-instalacion-electrica",
@@ -3413,7 +3448,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-cambiar-domiciliacion-factura-luz",
@@ -3495,7 +3531,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "cuanto-tarda-un-cambio-de-comercializadora-luz",
@@ -3577,7 +3614,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "que-hacer-si-me-cambian-compania-luz-sin-permiso",
@@ -3659,7 +3697,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "cruce-de-cups-que-es",
@@ -3741,7 +3780,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "diferencia-distribuidora-y-comercializadora",
@@ -3823,7 +3863,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "que-hacer-si-no-llega-factura-de-luz",
@@ -3905,7 +3946,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-reclamar-factura-de-luz-incorrecta",
@@ -3987,7 +4029,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-un-coche-electrico-en-casa",
@@ -4069,7 +4112,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "mejor-hora-para-cargar-coche-electrico-en-casa",
@@ -4151,7 +4195,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-calcular-potencia-para-cargador-coche-electrico",
@@ -4233,7 +4278,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-una-panaderia",
@@ -4315,7 +4361,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-una-lavanderia",
@@ -4397,7 +4444,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "ahorro-energetico-en-una-peluqueria",
@@ -4479,7 +4527,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-medir-consumo-electrico-por-maquinas",
@@ -4561,7 +4610,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-electrico-de-iluminacion-led-negocio",
@@ -4643,7 +4693,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "como-repartir-gasto-luz-zonas-comunes",
@@ -4725,7 +4776,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-ventilacion-garaje-comunitario",
@@ -4807,7 +4859,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "ahorro-iluminacion-portal-comunidad-vecinos",
@@ -4889,7 +4942,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   },
   {
     "id": "consumo-piscina-comunitaria",
@@ -4971,7 +5025,8 @@ export const guidesData = [
     "relatedSlugs": [
       "ahorrar-factura-de-la-luz",
       "tarifas-luz-empresas"
-    ]
+    ],
+    "status": "borrador"
   }
 ];
 

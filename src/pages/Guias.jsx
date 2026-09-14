@@ -44,10 +44,17 @@ export default function Guias({ navigate, onOpenModal }) {
   // Filtrar guías públicas (a menos que sea admin con sesión activa)
   const availableGuides = useMemo(() => {
     return guidesData.filter((guide) => {
-      const config = statusMap[guide.slug];
       if (isAdmin) return true; // El admin puede ver borradores
-      if (!config) return true; // Por defecto visible
-      return config.isPublished !== false;
+
+      const config = statusMap[guide.slug];
+      // Si la API ya devolvió la configuración dinámica del servidor:
+      if (config) {
+        return config.isPublished === true;
+      }
+
+      // Si aún no ha cargado la API o no hay config dinámica:
+      // ÚNICAMENTE mostrar si el artículo está definido explícitamente como "publicada"
+      return guide.status === 'publicada';
     });
   }, [statusMap, isAdmin]);
 

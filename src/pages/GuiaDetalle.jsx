@@ -221,8 +221,12 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   }
 
   // Si la guía está en borrador o programada y el visitante no es administrador
-  const isHiddenFromPublic = guideStatus && guideStatus.isPublished === false;
-  if (statusChecked && isHiddenFromPublic && !isAdmin) {
+  const isExplicitDraft = guide.status === 'borrador';
+  const isDynamicPublished = guideStatus && guideStatus.isPublished === true;
+  const isDynamicUnpublished = guideStatus && guideStatus.isPublished === false;
+  const isHiddenFromPublic = isDynamicUnpublished || (isExplicitDraft && !isDynamicPublished);
+
+  if (isHiddenFromPublic && !isAdmin) {
     return (
       <div className="container" style={{ padding: '6rem 1.5rem', textAlign: 'center', maxWidth: '640px', margin: '0 auto' }}>
         <div style={{

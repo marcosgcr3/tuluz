@@ -63,11 +63,31 @@ export function initDatabase() {
 
           CREATE TABLE IF NOT EXISTS guides_config (
             slug VARCHAR(255) PRIMARY KEY,
-            status VARCHAR(50) DEFAULT 'publicada',
+            status VARCHAR(50) DEFAULT 'borrador',
             publish_at TIMESTAMPTZ,
             updated_at TIMESTAMPTZ DEFAULT NOW()
           );
         `);
+
+        // Sincronizar e inicializar las 55 guías en PostgreSQL si falta alguna
+        if (fs.existsSync(GUIDES_FILE)) {
+          try {
+            const raw = fs.readFileSync(GUIDES_FILE, 'utf-8');
+            const fileMap = JSON.parse(raw || '{}');
+            for (const [slug, item] of Object.entries(fileMap)) {
+              await pool.query(
+                `INSERT INTO guides_config (slug, status, publish_at, updated_at)
+                 VALUES ($1, $2, $3, NOW())
+                 ON CONFLICT (slug) DO NOTHING`,
+                [slug, item.status || 'borrador', item.publishAt ? new Date(item.publishAt) : null]
+              );
+            }
+            console.log('🐘 [DB] Base de datos PostgreSQL sincronizada con las 55 guías.');
+          } catch (syncErr) {
+            console.error('⚠️ [DB] Error sincronizando guías iniciales en PostgreSQL:', syncErr.message);
+          }
+        }
+
         client.release();
         dbReady = true;
         console.log('🐘 [DB] Conectado exitosamente a PostgreSQL. Tablas leads y guides_config activas.');
@@ -281,7 +301,7 @@ export async function getGuidesConfig() {
       const res = await pool.query('SELECT slug, status, publish_at, updated_at FROM guides_config');
       for (const row of res.rows) {
         configs[row.slug] = {
-          status: row.status || 'publicada',
+          status: row.status || 'borrador',
           publishAt: row.publish_at ? new Date(row.publish_at).toISOString() : null,
           updatedAt: row.updated_at ? new Date(row.updated_at).toISOString() : new Date().toISOString()
         };

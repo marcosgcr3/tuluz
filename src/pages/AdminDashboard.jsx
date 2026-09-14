@@ -169,7 +169,7 @@ export default function AdminDashboard({ navigate }) {
         // Inicializar formularios editables por cada guía
         const forms = {};
         guidesData.forEach(g => {
-          const c = configs[g.slug] || { status: 'publicada', publishAt: null };
+          const c = configs[g.slug] || { status: g.status || 'borrador', publishAt: null };
           let dateStr = '';
           if (c.publishAt) {
             try {
@@ -180,7 +180,7 @@ export default function AdminDashboard({ navigate }) {
             } catch (e) {}
           }
           forms[g.slug] = {
-            status: c.status || 'publicada',
+            status: c.status || g.status || 'borrador',
             publishAt: dateStr
           };
         });
@@ -502,7 +502,7 @@ export default function AdminDashboard({ navigate }) {
     const now = Date.now();
 
     guidesData.forEach(g => {
-      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
+      const cfg = guidesConfigMap[g.slug] || { status: g.status || 'borrador' };
       if (cfg.status === 'borrador') {
         borradores++;
       } else if (cfg.status === 'programada') {
@@ -523,7 +523,7 @@ export default function AdminDashboard({ navigate }) {
   const filteredGuidesList = useMemo(() => {
     const now = Date.now();
     return guidesData.filter(g => {
-      const cfg = guidesConfigMap[g.slug] || { status: 'publicada' };
+      const cfg = guidesConfigMap[g.slug] || { status: g.status || 'borrador' };
 
       // Filtro por estado
       if (guideStatusFilter !== 'all') {
@@ -2230,8 +2230,8 @@ export default function AdminDashboard({ navigate }) {
               </div>
             ) : (
               filteredGuidesList.map(guide => {
-                const cfg = guidesConfigMap[guide.slug] || { status: 'publicada', publishAt: null };
-                const form = guideForms[guide.slug] || { status: cfg.status || 'publicada', publishAt: '' };
+                const cfg = guidesConfigMap[guide.slug] || { status: guide.status || 'borrador', publishAt: null };
+                const form = guideForms[guide.slug] || { status: cfg.status || guide.status || 'borrador', publishAt: '' };
                 const isSaving = savingGuideSlug === guide.slug;
 
                 // Determinar estado actual real del servidor

@@ -83,6 +83,7 @@ export default function AdminDashboard({ navigate }) {
   const [guideCategoryFilter, setGuideCategoryFilter] = useState('all');
   const [guideStatusFilter, setGuideStatusFilter] = useState('all');
   const [guideForms, setGuideForms] = useState({});
+  const [autoScheduling, setAutoScheduling] = useState(false);
 
   // Filters & Search
   const [searchTerm, setSearchTerm] = useState('');
@@ -235,6 +236,35 @@ export default function AdminDashboard({ navigate }) {
       alert('Error al guardar la guía: ' + err.message);
     } finally {
       setSavingGuideSlug(null);
+    }
+  };
+
+  const handleAutoScheduleGuides = async () => {
+    if (!window.confirm('¿Deseas programar automáticamente todos los artículos en borrador para que se publiquen 1 cada día entre las 9:00 y las 12:00 (hora de España)?')) {
+      return;
+    }
+
+    setAutoScheduling(true);
+    try {
+      const res = await fetch('/api/admin/guides/auto-schedule', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': adminKey
+        }
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Error al auto-programar');
+      }
+
+      await fetchGuidesConfig(adminKey);
+      setGuideSuccessToast(`✓ ${data.message || 'Artículos programados exitosamente'}`);
+      setTimeout(() => setGuideSuccessToast(null), 6000);
+    } catch (err) {
+      alert('Error: ' + err.message);
+    } finally {
+      setAutoScheduling(false);
     }
   };
 
@@ -2025,6 +2055,31 @@ export default function AdminDashboard({ navigate }) {
             </div>
 
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                onClick={handleAutoScheduleGuides}
+                disabled={autoScheduling}
+                title="Distribuye todos los artículos en borrador para publicarse automáticamente 1 por día entre las 9:00 y las 12:00 (hora española)"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 16px',
+                  borderRadius: '10px',
+                  background: '#7c3aed',
+                  color: '#ffffff',
+                  border: 'none',
+                  fontSize: '13px',
+                  fontWeight: '700',
+                  cursor: autoScheduling ? 'wait' : 'pointer',
+                  boxShadow: '0 2px 8px rgba(124, 58, 237, 0.35)',
+                  transition: 'all 0.2s'
+                }}
+              >
+                <CalendarClock size={16} />
+                <span>{autoScheduling ? 'Programando...' : 'Auto-Programar (1/día 9h-12h)'}</span>
+              </button>
+
               <button
                 onClick={() => window.open('/guias', '_blank')}
                 style={{

@@ -845,6 +845,83 @@ app.post('/api/admin/guides-config', async (req, res) => {
   }
 });
 
+// Endpoint protegido para auto-programar en lote todos los borradores (1 por día entre 9:00 y 12:00 de España)
+app.post('/api/admin/guides/auto-schedule', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado' });
+  }
+
+  try {
+    const rawConfigs = await getGuidesConfig();
+    const drafts = [];
+    for (const g of guidesData) {
+      const cfg = rawConfigs[g.slug];
+      const status = cfg?.status || g.status || 'borrador';
+      if (status !== 'publicada') {
+        drafts.push(g);
+      }
+    }
+
+    if (drafts.length === 0) {
+      return res.json({ success: true, count: 0, message: 'No hay artículos en borrador pendientes de programar.' });
+    }
+
+    function getMadridIso(y, m, d, hh, mm, ss) {
+      const pad = n => String(n).padStart(2, '0');
+      const dObj = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
+      const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Madrid', timeZoneName: 'shortOffset' }).formatToParts(dObj);
+      const tz = parts.find(p => p.type === 'timeZoneName')?.value || 'GMT+2';
+      const offset = parseInt(tz.replace('GMT', ''), 10) || 2;
+      const offStr = (offset >= 0 ? '+' : '-') + pad(Math.abs(offset)) + ':00';
+      const isoStr = `${y}-${pad(m)}-${pad(d)}T${pad(hh)}:${pad(minute)}:${pad(ss)}${offStr}`;
+      return new Date(isoStr).toISOString();
+    }
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    for (let i = 0; i < drafts.length; i++) {
+      const guide = drafts[i];
+      const targetDate = new Date(tomorrow.getTime());
+      targetDate.setDate(targetDate.getDate() + i);
+
+      const year = targetDate.getFullYear();
+      const month = targetDate.getMonth() + 1;
+      const day = targetDate.getDate();
+
+      const randomMinuteOfDay = 540 + Math.floor(Math.random() * 180); // 9:00 a 11:59
+      const hour = Math.floor(randomMinuteOfDay / 60);
+      const minute = randomMinuteOfDay % 60;
+      const second = Math.floor(Math.random() * 60);
+
+      const pad = n => String(n).padStart(2, '0');
+      const dObj = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+      const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Madrid', timeZoneName: 'shortOffset' }).formatToParts(dObj);
+      const tz = parts.find(p => p.type === 'timeZoneName')?.value || 'GMT+2';
+      const offset = parseInt(tz.replace('GMT', ''), 10) || 2;
+      const offStr = (offset >= 0 ? '+' : '-') + pad(Math.abs(offset)) + ':00';
+      const isoUtc = new Date(`${year}-${pad(month)}-${pad(day)}T${pad(hour)}:${pad(minute)}:${pad(second)}${offStr}`).toISOString();
+
+      await saveGuideConfig(guide.slug, {
+        status: 'programada',
+        publishAt: isoUtc
+      });
+    }
+
+    syncPhysicalSitemapFiles().catch(e => console.warn('Advertencia sitemap sync:', e.message));
+
+    console.log(`⚡ [Admin] Auto-programadas ${drafts.length} guías (1 por día, 9:00 a 12:00 España)`);
+    res.json({
+      success: true,
+      count: drafts.length,
+      message: `Se han programado exitosamente ${drafts.length} guías para publicarse 1 por día entre las 9:00 y las 12:00 (hora española).`
+    });
+  } catch (err) {
+    console.error('Error en POST /api/admin/guides/auto-schedule:', err);
+    res.status(500).json({ error: 'Error durante la programación automática' });
+  }
+});
+
 let lastMetaSyncTime = 0;
 let lastMetaSyncError = null;
 

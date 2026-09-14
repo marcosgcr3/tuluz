@@ -220,10 +220,28 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
     );
   }
 
+  // Mientras se consulta el estado en el servidor, mostrar loader para evitar parpadeos y evaluar con datos reales
+  if (!statusChecked) {
+    return (
+      <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{
+          width: '36px',
+          height: '36px',
+          border: '3px solid rgba(76, 175, 79, 0.2)',
+          borderTopColor: 'var(--primary)',
+          borderRadius: '50%',
+          animation: 'spin 0.8s linear infinite'
+        }} />
+        <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+      </div>
+    );
+  }
+
   // Si la guía está en borrador o programada y el visitante no es administrador
-  const isExplicitDraft = guide.status === 'borrador';
+  const effectiveStatus = guideStatus?.status || guide.status || 'publicada';
   const isDynamicPublished = guideStatus && guideStatus.isPublished === true;
   const isDynamicUnpublished = guideStatus && guideStatus.isPublished === false;
+  const isExplicitDraft = guide.status === 'borrador';
   const isHiddenFromPublic = isDynamicUnpublished || (isExplicitDraft && !isDynamicPublished);
 
   if (isHiddenFromPublic && !isAdmin) {
@@ -244,10 +262,10 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
           <Clock size={34} />
         </div>
         <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: '800', marginBottom: '1rem', color: 'var(--text-main)' }}>
-          {guideStatus.status === 'programada' ? 'Publicación programada' : 'Artículo en preparación'}
+          {effectiveStatus === 'programada' ? 'Publicación programada' : 'Artículo en preparación'}
         </h2>
         <p style={{ color: 'var(--text-muted)', lineHeight: '1.65', fontSize: '1.05rem', marginBottom: '2rem' }}>
-          {guideStatus.status === 'programada' 
+          {effectiveStatus === 'programada' 
             ? 'Esta guía ya está programada y se publicará automáticamente muy pronto en nuestro portal.'
             : 'Este artículo técnico se encuentra actualmente en fase de revisión y borrador. Estará disponible públicamente muy pronto.'}
         </p>
@@ -294,9 +312,9 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                 borderRadius: '4px',
                 fontWeight: '800' 
               }}>
-                {guideStatus.status}
+                {effectiveStatus}
               </span>
-              {guideStatus.publishAt && (
+              {guideStatus?.publishAt && (
                 <> (Fecha programada: {new Date(guideStatus.publishAt).toLocaleString('es-ES')})</>
               )}
               {' '}— Oculta al público general.

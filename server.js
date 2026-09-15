@@ -471,6 +471,7 @@ const handleMetaWebhookEvent = async (req, res) => {
           // Guardar registro localmente
           const leadRecord = {
             id: Date.now(),
+            metaLeadId: leadgen_id || null,
             date: new Date().toISOString(),
             name,
             phone,
@@ -485,10 +486,15 @@ const handleMetaWebhookEvent = async (req, res) => {
             fileSize: null
           };
 
-          saveLeadLocally(leadRecord);
+          // Esperar a que quede persistido antes de intentar notificar.
+          await saveLeadLocally(leadRecord);
 
           // Enviar notificación por correo con Google Workspace
-          await sendMetaLeadNotificationEmail(leadRecord, extraQuestions);
+          const notified = await sendMetaLeadNotificationEmail(leadRecord, extraQuestions);
+          if (notified) {
+            leadRecord.notified = true;
+            await saveLeadLocally(leadRecord);
+          }
         }
       }
     }
@@ -983,27 +989,50 @@ async function syncMetaLeadsSilently() {
     }
 
     let existingLeads = await getAllLeads();
+    let syncHadErrors = false;
+
+    // Meta pagina los formularios y los leads. Recorrer todas las páginas evita
+    // que el panel se quede limitado a los primeros resultados.
+    async function fetchAllGraphPages(url) {
+      const all = [];
+      let nextUrl = url;
+      while (nextUrl) {
+        const response = await fetch(nextUrl);
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || payload.error) {
+          throw new Error(payload.error?.message || `Graph API respondió ${response.status}`);
+        }
+        all.push(...(payload.data || []));
+        nextUrl = payload.paging?.next || null;
+      }
+      return all;
+    }
 
     let newlyImported = 0;
 
     for (const pageId of targetPageIds) {
-      const formsRes = await fetch(`https://graph.facebook.com/v21.0/${pageId}/leadgen_forms?access_token=${encodeURIComponent(pageToken)}`);
-      if (!formsRes.ok) {
-        const fErr = await formsRes.json().catch(() => ({}));
-        if (fErr.error) {
-          lastMetaSyncError = `Error consultando formularios (Page ${pageId}): ${fErr.error.message}`;
-          console.warn('⚠️ [Auto-Sync Meta Ads]', lastMetaSyncError);
-        }
+      let forms = [];
+      try {
+        forms = await fetchAllGraphPages(`https://graph.facebook.com/v21.0/${pageId}/leadgen_forms?access_token=${encodeURIComponent(pageToken)}`);
+      } catch (formErr) {
+        syncHadErrors = true;
+        lastMetaSyncError = `Error consultando formularios (Page ${pageId}): ${formErr.message}`;
+        console.warn('⚠️ [Auto-Sync Meta Ads]', lastMetaSyncError);
         continue;
       }
-      const formsData = await formsRes.json();
 
-      for (const form of (formsData.data || [])) {
-        const leadsRes = await fetch(`https://graph.facebook.com/v21.0/${form.id}/leads?access_token=${encodeURIComponent(pageToken)}`);
-        if (!leadsRes.ok) continue;
-        const leadsData = await leadsRes.json();
+      for (const form of forms) {
+        let metaLeads = [];
+        try {
+          metaLeads = await fetchAllGraphPages(`https://graph.facebook.com/v21.0/${form.id}/leads?access_token=${encodeURIComponent(pageToken)}`);
+        } catch (leadErr) {
+          syncHadErrors = true;
+          lastMetaSyncError = `Error leyendo leads del formulario ${form.name || form.id}: ${leadErr.message}`;
+          console.warn('⚠️ [Auto-Sync Meta Ads]', lastMetaSyncError);
+          continue;
+        }
 
-        for (const metaLead of (leadsData.data || [])) {
+        for (const metaLead of metaLeads) {
           const fieldData = metaLead.field_data || [];
           const name = getMetaField(fieldData, ['full_name', 'nombre_completo', 'nombre', 'name', 'first_name']) || 'Cliente Meta Ads';
           const email = getMetaField(fieldData, ['email', 'correo', 'correo_electrónico', 'correo_electronico']) || '';
@@ -1011,14 +1040,15 @@ async function syncMetaLeadsSilently() {
 
           const cleanPhone = phone.replace(/[^0-9]/g, '');
 
-          // Evitar duplicados
-          const exists = existingLeads.some(l => 
-            String(l.metaLeadId) === String(metaLead.id) ||
-            (cleanPhone && l.phone && l.phone.replace(/[^0-9]/g, '') === cleanPhone) ||
-            (email && l.email && l.email.toLowerCase() === email.toLowerCase())
+          // El ID de Meta es la identidad estable. El teléfono/email solo se usan
+          // como compatibilidad para registros antiguos que no tenían metaLeadId.
+          const existing = existingLeads.find(l =>
+            (l.metaLeadId && String(l.metaLeadId) === String(metaLead.id)) ||
+            (!l.metaLeadId && cleanPhone && l.phone && l.phone.replace(/[^0-9]/g, '') === cleanPhone) ||
+            (!l.metaLeadId && email && l.email && l.email.toLowerCase() === email.toLowerCase())
           );
 
-          if (!exists) {
+          if (!existing) {
             const extraQuestions = fieldData
               .filter(f => !['full_name', 'nombre_completo', 'nombre', 'name', 'first_name', 'email', 'correo', 'correo_electrónico', 'correo_electronico', 'phone_number', 'phone', 'telefono', 'teléfono', 'numero_de_telefono', 'número_de_teléfono'].includes((f.name || '').toLowerCase()))
               .map(f => `${f.name}: ${(f.values || []).join(', ')}`)
@@ -1046,17 +1076,19 @@ async function syncMetaLeadsSilently() {
             existingLeads.unshift(newRecord);
             newlyImported++;
 
-            // Enviar correo de notificación SOLO si el lead es reciente (menos de 4 horas)
-            // Esto evita que al reiniciar el contenedor o sincronizar se vuelvan a enviar correos de clientes antiguos
-            const leadTimestamp = new Date(newRecord.date).getTime();
-            const isRecent = !isNaN(leadTimestamp) && (Date.now() - leadTimestamp < 4 * 60 * 60 * 1000);
-
-            if (isRecent) {
-              await sendMetaLeadNotificationEmail(newRecord);
+            // Notificar todo lead nuevo, incluso si se recupera horas después.
+            const sent = await sendMetaLeadNotificationEmail(newRecord);
+            if (sent) {
               newRecord.notified = true;
               await saveLead(newRecord); // Actualizar marca notified en DB
-            } else {
-              console.log(`ℹ️ [Auto-Sync Meta Ads] Lead histórico guardado sin reenviar correo: ${name} (${newRecord.date})`);
+            }
+          } else if (!existing.notified) {
+            // Recuperar avisos perdidos por un webhook caído o por un fallo SMTP.
+            const sent = await sendMetaLeadNotificationEmail({ ...existing, metaLeadId: metaLead.id });
+            if (sent) {
+              existing.notified = true;
+              await saveLead(existing);
+              console.log(`✅ [Auto-Sync Meta Ads] Aviso pendiente reenviado: ${name}`);
             }
           }
         }
@@ -1067,7 +1099,7 @@ async function syncMetaLeadsSilently() {
       console.log(`🔄 [Auto-Sync Meta Ads] Sincronización automática: ${newlyImported} nuevos leads guardados en base de datos.`);
     }
 
-    lastMetaSyncError = null; // Sin errores si completó el ciclo
+    if (!syncHadErrors) lastMetaSyncError = null;
     lastMetaSyncTime = Date.now();
     return { success: true, newlyImported };
   } catch (err) {

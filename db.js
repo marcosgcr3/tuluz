@@ -147,11 +147,20 @@ export async function saveLead(leadData) {
           has_file, file_name, file_size
         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
         ON CONFLICT (id) DO UPDATE SET
+          meta_lead_id = COALESCE(EXCLUDED.meta_lead_id, leads.meta_lead_id),
           name = EXCLUDED.name,
           phone = EXCLUDED.phone,
           email = EXCLUDED.email,
+          client_type = EXCLUDED.client_type,
+          source = EXCLUDED.source,
+          page_url = EXCLUDED.page_url,
+          monthly_bill = EXCLUDED.monthly_bill,
+          notes = EXCLUDED.notes,
           status = EXCLUDED.status,
           notified = EXCLUDED.notified,
+          has_file = EXCLUDED.has_file,
+          file_name = EXCLUDED.file_name,
+          file_size = EXCLUDED.file_size,
           updated_at = NOW()
       `, [
         id, metaId, date, leadData.name || '', leadData.phone || '', leadData.email || '',

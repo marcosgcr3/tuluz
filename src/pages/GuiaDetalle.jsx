@@ -18,7 +18,7 @@ import {
   Sparkles,
   ChevronRight
 } from 'lucide-react';
-import { companyInfo } from '../data/content';
+import { companyInfo, officialSourcesByGuide } from '../data/content';
 
 export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   const [guide, setGuide] = useState(null);
@@ -30,6 +30,7 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   const [isTocOpen, setIsTocOpen] = useState(false); // Collapsed by default on load for optimal mobile reading
   const [statusChecked, setStatusChecked] = useState(false);
   const isAdmin = false;
+  const officialSources = officialSourcesByGuide[slug] || [];
 
   useEffect(() => {
     setStatusChecked(false);
@@ -344,19 +345,19 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
           
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-            <button 
-              onClick={() => navigate('/')} 
-              style={{ background: 'none', border: 'none', padding: 0, color: 'var(--text-muted)', cursor: 'pointer' }}
+            <a
+              href="/"
+              style={{ padding: 0, color: 'var(--text-muted)', textDecoration: 'none' }}
             >
               Inicio
-            </button>
+            </a>
             <ChevronRight size={13} />
-            <button 
-              onClick={() => navigate('/guias')} 
-              style={{ background: 'none', border: 'none', padding: 0, color: 'var(--text-muted)', cursor: 'pointer' }}
+            <a
+              href="/guias"
+              style={{ padding: 0, color: 'var(--text-muted)', textDecoration: 'none' }}
             >
               Guías
-            </button>
+            </a>
             <ChevronRight size={13} />
             <span style={{ color: 'var(--primary)', fontWeight: 600 }}>{guide.category}</span>
           </nav>
@@ -776,6 +777,23 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
               </div>
             </div>
 
+            {officialSources.length > 0 && (
+              <section aria-labelledby="fuentes-oficiales" style={{ marginTop: '2rem', padding: '1.25rem', background: 'rgba(76, 175, 79, 0.06)', border: '1px solid rgba(76, 175, 79, 0.2)', borderRadius: 'var(--radius-md)' }}>
+                <h3 id="fuentes-oficiales" style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.65rem' }}>
+                  Fuentes oficiales para ampliar o verificar
+                </h3>
+                <ul style={{ margin: 0, paddingLeft: '1.2rem', display: 'grid', gap: '0.45rem' }}>
+                  {officialSources.map(source => (
+                    <li key={source.url}>
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-dark)', fontWeight: 600 }}>
+                        {source.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             {/* Related Guides / Cross Linking */}
             {relatedGuides.length > 0 && (
               <section style={{ borderTop: '1px solid var(--border-light)', paddingTop: '2.25rem' }}>
@@ -801,7 +819,9 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                         {rel.category}
                       </span>
                       <h4 style={{ fontSize: '1rem', fontWeight: 700, margin: '0.45rem 0', color: 'var(--text-main)', lineHeight: 1.35 }}>
-                        {rel.title}
+                        <a href={`/guias/${rel.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                          {rel.title}
+                        </a>
                       </h4>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.82rem', color: 'var(--primary)', fontWeight: 600 }}>
                         Leer guía <ChevronRight size={14} />
@@ -814,8 +834,8 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
 
             {/* Back to Guides Hub */}
             <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
-              <button 
-                onClick={() => navigate('/guias')}
+              <a
+                href="/guias"
                 style={{
                   background: 'none',
                   border: '1px solid var(--border-color)',
@@ -827,11 +847,12 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  textDecoration: 'none'
                 }}
               >
                 <ArrowLeft size={16} /> Volver a todas las guías
-              </button>
+              </a>
             </div>
 
           </main>

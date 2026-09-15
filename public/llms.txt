@@ -19,6 +19,8 @@
 - [Autoconsumo solar en comunidades de vecinos](https://tu-luz.es/guias/autoconsumo-solar-comunidades-de-vecinos): Guía completa de instalación compartida y normativa del RD 244/2019, mayorías en junta de la Ley de Propiedad Horizontal (LPH), coeficientes de reparto beta y deducciones IRPF/IBI.
 - [Comparador de comercializadoras de luz y gas](https://tu-luz.es/guias/comparador-comercializadoras-luz-y-gas): Claves para no caer en trampas comerciales, diferencias entre distribuidora y comercializadora, mercado libre vs regulado (PVPC / TUR) y checklist de contratación.
 - [Placas solares para particulares: precio](https://tu-luz.es/guias/placas-solares-particulares-precio): Precio de instalación en 2026, desglose de materiales, cálculo de paneles por consumo, amortización en 3-5 años y batería virtual para factura a 0€.
+- [Cómo saber qué potencia contratar en casa](https://tu-luz.es/guias/como-saber-que-potencia-contratar-en-casa): Método paso a paso para calcular la potencia necesaria, usar tablas de electrodomésticos y evitar pagar de más en el término fijo.
+- [Cómo bajar la potencia contratada](https://tu-luz.es/guias/como-bajar-la-potencia-contratada): Pasos, costes y precauciones para reducir los kW contratados y ahorrar en la factura de luz.
 
 ## Contacto e Información de la Empresa
 

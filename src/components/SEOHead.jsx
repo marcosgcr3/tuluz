@@ -149,6 +149,16 @@ const seoDataMap = {
     title: 'Placas Solares para Particulares: Precio y Rentabilidad 2026 | tuLuz',
     description: '¿Cuánto cuesta instalar placas solares en una vivienda particular? Desglose de precios en 2026, número de paneles, amortización en 3-5 años y deducciones IRPF.',
     canonical: 'https://tu-luz.es/guias/placas-solares-particulares-precio'
+  },
+  '/guias/como-saber-que-potencia-contratar-en-casa': {
+    title: 'Cómo Saber Qué Potencia Contratar en Casa (Cálculo Real) | tuLuz',
+    description: 'Aprende a calcular la potencia exacta en kW que necesita tu hogar. Evita que salte el ICP y deja de pagar de más en el término fijo de la luz.',
+    canonical: 'https://tu-luz.es/guias/como-saber-que-potencia-contratar-en-casa'
+  },
+  '/guias/como-bajar-la-potencia-contratada': {
+    title: 'Cómo Bajar la Potencia Contratada de Luz: Ahorro y Pasos | tuLuz',
+    description: 'Guía paso a paso para reducir los kW contratados, calcular el ahorro anual y solicitar el cambio sin errores.',
+    canonical: 'https://tu-luz.es/guias/como-bajar-la-potencia-contratada'
   }
 };
 

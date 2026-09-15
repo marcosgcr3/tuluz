@@ -25,6 +25,7 @@ import {
   saveGuideConfig
 } from './db.js';
 import { guidesData } from './src/data/guidesData.js';
+import { getOfficialSources } from './src/data/content.js';
 
 // Inicializar conexión con PostgreSQL (con fallback automático a leads.json)
 initDatabase();
@@ -49,6 +50,21 @@ app.use((req, res, next) => {
     const protoHeader = req.headers['x-forwarded-proto'];
     const protocol = (typeof protoHeader === 'string' ? protoHeader.split(',')[0].trim() : '') || 'https';
     return res.redirect(301, `${protocol}://${cleanHost}${req.originalUrl}`);
+  }
+  next();
+});
+
+// Una sola URL por recurso: el sitemap y los canonicales usan rutas sin barra
+// final. Esta redirección evita repartir señales entre /ruta y /ruta/.
+app.use((req, res, next) => {
+  if (
+    (req.method === 'GET' || req.method === 'HEAD') &&
+    req.path.length > 1 &&
+    req.path.endsWith('/') &&
+    !req.path.startsWith('/api/')
+  ) {
+    const target = req.originalUrl.replace(/\/+([?#]|$)/, '$1');
+    return res.redirect(301, target);
   }
   next();
 });
@@ -1401,6 +1417,9 @@ app.get('/sitemap.xml', async (req, res) => {
 
 // Servir archivos estáticos del frontend con caché óptima (1 año para assets inmutables, no-cache para index.html)
 app.use(express.static(path.join(__dirname, 'dist'), {
+  // Las páginas HTML pasan por serveFrontend para recibir metadatos y JSON-LD
+  // correctos desde la primera respuesta, antes de ejecutar JavaScript.
+  index: false,
   maxAge: '1y',
   immutable: true,
   setHeaders: (res, filePath) => {
@@ -1410,10 +1429,191 @@ app.use(express.static(path.join(__dirname, 'dist'), {
   }
 }));
 
-// Cualquier otra petición que no sea de la API sirve el index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
+const STATIC_SEO_PAGES = {
+  '/': {
+    title: 'tuLuz | Asesoramiento Energético Gratuito en Luz y Gas',
+    description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad y gas.',
+    canonical: 'https://tu-luz.es/'
+  },
+  '/empresas': {
+    title: 'Asesoramiento Energético en Luz y Gas para Empresas | tuLuz',
+    description: 'Optimización de costes de electricidad y gas para empresas e industrias. Ajuste de potencia contratada y mejores tarifas con tuLuz.',
+    canonical: 'https://tu-luz.es/empresas'
+  },
+  '/comunidades-de-vecinos': {
+    title: 'Asesoramiento en Luz y Gas para Comunidades de Vecinos | tuLuz',
+    description: 'Estudio gratuito para reducir el gasto de electricidad y gas en zonas comunes, garajes y calderas de comunidades.',
+    canonical: 'https://tu-luz.es/comunidades-de-vecinos'
+  },
+  '/particulares': {
+    title: 'Asesoramiento en Luz y Gas para Particulares y Hogares | tuLuz',
+    description: 'Encuentra la mejor tarifa de luz y gas para tu vivienda. Revisión sin compromiso de facturas y asesoría solar con tuLuz.',
+    canonical: 'https://tu-luz.es/particulares'
+  },
+  '/autoconsumo': {
+    title: 'Autoconsumo Solar y Placas Solares Fotovoltaicas | tuLuz',
+    description: 'Genera tu propia energía y reduce tu factura con un estudio de viabilidad solar, ayudas y batería virtual.',
+    canonical: 'https://tu-luz.es/autoconsumo'
+  },
+  '/guias': {
+    title: 'Guías de Ahorro y Eficiencia Energética | tuLuz Asesoramiento',
+    description: 'Guías prácticas para ahorrar en luz y gas, elegir tarifas, optimizar potencia y entender el autoconsumo solar.',
+    canonical: 'https://tu-luz.es/guias'
+  },
+  '/solicita-un-presupuesto': {
+    title: 'Solicita tu Estudio Gratuito de Luz y Gas | tuLuz',
+    description: 'Analizamos tus facturas de luz y gas sin coste ni compromiso para encontrar oportunidades reales de ahorro.',
+    canonical: 'https://tu-luz.es/solicita-un-presupuesto'
+  },
+  '/aviso-legal': {
+    title: 'Aviso Legal y Términos de Servicio | tuLuz',
+    description: 'Información legal, propiedad intelectual y condiciones de uso de tuLuz Asesoramiento Energético.',
+    canonical: 'https://tu-luz.es/aviso-legal'
+  },
+  '/politica-de-privacidad': {
+    title: 'Política de Privacidad y Protección de Datos | tuLuz',
+    description: 'Consulta cómo tratamos y protegemos tus datos personales en tuLuz Asesoramiento Energético.',
+    canonical: 'https://tu-luz.es/politica-de-privacidad'
+  }
+};
+
+function getSeoPage(pathname) {
+  const cleanPath = pathname.replace(/\/$/, '') || '/';
+  const guideSlug = cleanPath.startsWith('/guias/') ? cleanPath.slice('/guias/'.length) : null;
+  const guide = guideSlug ? guidesData.find(item => item.slug === guideSlug) : null;
+
+  if (guide) {
+    return {
+      title: guide.metaTitle || `${guide.title} | tuLuz`,
+      description: guide.metaDescription || guide.excerpt,
+      canonical: `https://tu-luz.es/guias/${guide.slug}`,
+      guide
+    };
+  }
+
+  return STATIC_SEO_PAGES[cleanPath] || STATIC_SEO_PAGES['/'];
+}
+
+function replaceMetaContent(html, attribute, value, content) {
+  const escapedValue = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = new RegExp(`<meta\\b(?=[^>]*\\b${attribute}=["']${escapedValue}["'])[^>]*>`, 'i');
+  return html.replace(pattern, tag => {
+    const withoutContent = tag.replace(/\scontent=(['"])[\s\S]*?\1/i, '');
+    const openingTag = withoutContent.replace(/\/?\s*>$/, '').trimEnd();
+    return `${openingTag} content="${escapeHtml(content)}">`;
+  });
+}
+
+function buildStructuredData(seo) {
+  const organization = {
+    '@type': 'ProfessionalService',
+    '@id': 'https://tu-luz.es/#organization',
+    name: 'tuLuz - Asesoramiento Energético',
+    url: 'https://tu-luz.es/',
+    logo: 'https://tu-luz.es/logo.png',
+    telephone: '+34620061560',
+    email: 'davidad@tu-luz.es',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Av. del Aeropuerto, 6, Poniente Sur',
+      addressLocality: 'Córdoba',
+      postalCode: '14004',
+      addressRegion: 'Andalucía',
+      addressCountry: 'ES'
+    },
+    areaServed: { '@type': 'Country', name: 'España' }
+  };
+  const page = {
+    '@type': 'WebPage',
+    '@id': `${seo.canonical}#webpage`,
+    url: seo.canonical,
+    name: seo.title,
+    description: seo.description,
+    about: { '@id': 'https://tu-luz.es/#organization' }
+  };
+  const graph = [organization, page];
+
+  if (seo.guide) {
+    const guide = seo.guide;
+    graph.push({
+      '@type': 'Article',
+      '@id': `${seo.canonical}#article`,
+      headline: guide.title,
+      description: seo.description,
+      mainEntityOfPage: { '@id': `${seo.canonical}#webpage` },
+      datePublished: guide.publishedAt,
+      dateModified: guide.updatedAt,
+      author: {
+        '@type': 'Organization',
+        name: guide.author?.name || 'tuLuz',
+        url: 'https://tu-luz.es/'
+      },
+      publisher: { '@id': 'https://tu-luz.es/#organization' },
+      citation: getOfficialSources(guide.slug).map(source => source.url)
+    });
+    graph.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${seo.canonical}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://tu-luz.es/' },
+        { '@type': 'ListItem', position: 2, name: 'Guías', item: 'https://tu-luz.es/guias' },
+        { '@type': 'ListItem', position: 3, name: guide.title, item: seo.canonical }
+      ]
+    });
+    if (Array.isArray(guide.faqs) && guide.faqs.length) {
+      graph.push({
+        '@type': 'FAQPage',
+        '@id': `${seo.canonical}#faq`,
+        mainEntity: guide.faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.q,
+          acceptedAnswer: { '@type': 'Answer', text: faq.a }
+        }))
+      });
+    }
+  }
+
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+}
+
+function buildNoScriptFallback(seo) {
+  const heading = seo.guide?.title || seo.title.replace(/\s*\|\s*tuLuz.*$/i, '');
+  const navigation = [
+    ['/', 'Inicio'],
+    ['/empresas', 'Empresas'],
+    ['/particulares', 'Particulares'],
+    ['/autoconsumo', 'Autoconsumo'],
+    ['/guias', 'Guías de ahorro'],
+    ['/solicita-un-presupuesto', 'Solicitar estudio gratuito']
+  ].map(([href, label]) => `<a href="${href}">${label}</a>`).join(' · ');
+
+  return `<noscript><main style="max-width:760px;margin:2rem auto;padding:0 1rem;font-family:Arial,sans-serif;line-height:1.6"><h1>${escapeHtml(heading)}</h1><p>${escapeHtml(seo.description)}</p><nav aria-label="Navegación principal">${navigation}</nav></main></noscript>`;
+}
+
+function serveFrontend(req, res) {
+  const seo = getSeoPage(req.path);
+  const indexPath = path.join(__dirname, 'dist', 'index.html');
+  let html = fs.readFileSync(indexPath, 'utf-8');
+
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(seo.title)}</title>`);
+  html = replaceMetaContent(html, 'name', 'description', seo.description);
+  html = replaceMetaContent(html, 'property', 'og:title', seo.title);
+  html = replaceMetaContent(html, 'property', 'og:description', seo.description);
+  html = replaceMetaContent(html, 'property', 'og:url', seo.canonical);
+  html = replaceMetaContent(html, 'name', 'twitter:title', seo.title);
+  html = replaceMetaContent(html, 'name', 'twitter:description', seo.description);
+  html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${seo.canonical}">`);
+  html = html.replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, '');
+  html = html.replace('</head>', `    <script type="application/ld+json">${buildStructuredData(seo)}</script>\n  </head>`);
+  html = html.replace('<div id="root"></div>', `<div id="root"></div>${buildNoScriptFallback(seo)}`);
+
+  res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+  res.type('html').send(html);
+}
+
+// Cualquier otra petición que no sea de la API recibe el HTML específico de
+// su URL, con SEO y schema disponibles antes de que cargue React.
+app.get('*', serveFrontend);
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend activo en puerto ${PORT}`);

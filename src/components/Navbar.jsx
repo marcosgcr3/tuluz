@@ -80,6 +80,12 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleAnchorNavigation = (event, path) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    handleNavClick(path);
+  };
+
   return (
     <>
       <header 
@@ -105,9 +111,10 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
         <div className="navbar-container" style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 clamp(1rem, 3.5vw, 2.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.25rem' }}>
           
           {/* Brand Logo */}
-          <div 
-            onClick={() => handleNavClick('/')}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 0 }}
+          <a
+            href="/"
+            onClick={(event) => handleAnchorNavigation(event, '/')}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flexShrink: 0, textDecoration: 'none' }}
             title="tuLuz - Asesoramiento Energético"
           >
             <picture>
@@ -154,16 +161,17 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
                 Asesoramiento Energético
               </span>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Nav Links */}
           <nav style={{ display: 'none', gap: '0.25rem', alignItems: 'center', flexWrap: 'nowrap' }} className="desktop-nav">
             {navLinks.map((link) => {
               const isActive = currentPath === link.path;
               return (
-                <button
+                <a
                   key={link.path}
-                  onClick={() => handleNavClick(link.path)}
+                  href={link.path}
+                  onClick={(event) => handleAnchorNavigation(event, link.path)}
                   style={{
                     padding: '0.45rem 0.75rem',
                     borderRadius: 'var(--radius-full)',
@@ -172,7 +180,9 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
                     color: isActive ? 'var(--primary)' : 'var(--text-main)',
                     background: isActive ? 'rgba(76, 175, 79, 0.12)' : 'transparent',
                     transition: 'all 0.2s ease',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    textDecoration: 'none',
+                    border: 'none'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) e.currentTarget.style.color = 'var(--primary)';
@@ -182,7 +192,7 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
                   }}
                 >
                   {link.name}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -321,9 +331,10 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
             {navLinks.map((link) => {
               const isActive = currentPath === link.path;
               return (
-                <button
+                <a
                   key={link.path}
-                  onClick={() => handleNavClick(link.path)}
+                  href={link.path}
+                  onClick={(event) => handleAnchorNavigation(event, link.path)}
                   style={{
                     textAlign: 'left',
                     padding: '0.9rem 1.1rem',
@@ -335,12 +346,13 @@ export default function Navbar({ currentPath, navigate, theme, toggleTheme, open
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    minHeight: '48px'
+                    minHeight: '48px',
+                    textDecoration: 'none'
                   }}
                 >
                   <span>{link.name}</span>
                   {isActive && <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)' }} />}
-                </button>
+                </a>
               );
             })}
 

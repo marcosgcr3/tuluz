@@ -109,42 +109,46 @@ export default function Footer({ navigate }) {
           <div>
             <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Guías de Ahorro</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-              <button 
-                onClick={() => handleNavClick('/guias')} 
-                style={{ textAlign: 'left', color: 'var(--primary)', fontWeight: 700, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              <a href="/guias"
+                style={{ textAlign: 'left', color: 'var(--primary)', fontWeight: 700, padding: 0, textDecoration: 'none' }}
               >
                 Todas las Guías →
-              </button>
-              <button 
-                onClick={() => handleNavClick('/guias/ahorrar-factura-de-la-luz')} 
-                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              </a>
+              <a href="/guias/ahorrar-factura-de-la-luz"
+                style={{ textAlign: 'left', color: 'inherit', padding: 0, textDecoration: 'none' }}
               >
                 Ahorrar factura de la luz
-              </button>
-              <button 
-                onClick={() => handleNavClick('/guias/tarifas-luz-empresas')} 
-                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              </a>
+              <a href="/guias/tarifas-luz-empresas"
+                style={{ textAlign: 'left', color: 'inherit', padding: 0, textDecoration: 'none' }}
               >
                 Tarifas luz empresas
-              </button>
-              <button 
-                onClick={() => handleNavClick('/guias/autoconsumo-solar-comunidades-de-vecinos')} 
-                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              </a>
+              <a href="/guias/autoconsumo-solar-comunidades-de-vecinos"
+                style={{ textAlign: 'left', color: 'inherit', padding: 0, textDecoration: 'none' }}
               >
                 Autoconsumo comunidades
-              </button>
-              <button 
-                onClick={() => handleNavClick('/guias/comparador-comercializadoras-luz-y-gas')} 
-                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              </a>
+              <a href="/guias/comparador-comercializadoras-luz-y-gas"
+                style={{ textAlign: 'left', color: 'inherit', padding: 0, textDecoration: 'none' }}
               >
                 Comparador luz y gas
-              </button>
-              <button 
-                onClick={() => handleNavClick('/guias/placas-solares-particulares-precio')} 
-                style={{ textAlign: 'left', color: 'inherit', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              </a>
+              <a href="/guias/placas-solares-particulares-precio"
+                style={{ textAlign: 'left', color: 'inherit', padding: 0, textDecoration: 'none' }}
               >
                 Placas solares particulares
-              </button>
+              </a>
+              <a href="/guias/como-saber-que-potencia-contratar-en-casa"
+                style={{ textAlign: 'left', color: 'inherit', padding: 0, textDecoration: 'none' }}
+              >
+                Calcular potencia contratada
+              </a>
+              <a href="/guias/como-bajar-la-potencia-contratada"
+                style={{ textAlign: 'left', color: 'inherit', padding: 0, textDecoration: 'none' }}
+              >
+                Bajar potencia contratada
+              </a>
             </div>
           </div>
 
@@ -176,24 +180,21 @@ export default function Footer({ navigate }) {
           <div>
             <h4 style={{ fontSize: '1.1rem', marginBottom: '1.25rem', color: 'var(--primary)' }}>Legal & Info</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-              <button 
-                onClick={() => handleNavClick('/aviso-legal')} 
-                style={{ textAlign: 'left', color: 'inherit', background: 'none' }}
+              <a href="/aviso-legal"
+                style={{ textAlign: 'left', color: 'inherit', textDecoration: 'none' }}
               >
                 Aviso legal
-              </button>
-              <button 
-                onClick={() => handleNavClick('/politica-de-privacidad')} 
-                style={{ textAlign: 'left', color: 'inherit', background: 'none' }}
+              </a>
+              <a href="/politica-de-privacidad"
+                style={{ textAlign: 'left', color: 'inherit', textDecoration: 'none' }}
               >
                 Política de privacidad
-              </button>
-              <button 
-                onClick={() => handleNavClick('/solicita-un-presupuesto')} 
-                style={{ textAlign: 'left', color: 'var(--primary)', fontWeight: 600, background: 'none' }}
+              </a>
+              <a href="/solicita-un-presupuesto"
+                style={{ textAlign: 'left', color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}
               >
                 Solicitar estudio gratuito
-              </button>
+              </a>
             </div>
           </div>
 

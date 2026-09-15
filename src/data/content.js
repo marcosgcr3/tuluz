@@ -210,3 +210,32 @@ export const faqs = [
     a: "Trabajamos en todo el territorio peninsular y en las islas (Baleares y Canarias), excepto en Ceuta y Melilla. Realizamos todas las gestiones de forma 100% digital y telefónica para tu máxima comodidad."
   }
 ];
+
+const cnmcConsumerGuide = {
+  label: 'Guía informativa para consumidores de electricidad — CNMC',
+  url: 'https://www.cnmc.es/sites/default/files/editor_contenidos/Gu%C3%ADa%20Informativa%20Consumidores%20Electricidad-enero%202022%20FINAL%20links.pdf'
+};
+
+const idaeAutoconsumo = {
+  label: 'Guías técnicas sobre autoconsumo — IDAE',
+  url: 'https://www.idae.es/tecnologias/energias-renovables/oficina-de-autoconsumo/guias-tecnicas-sobre-autoconsumo'
+};
+
+const autoconsumoRegulation = {
+  label: 'Real Decreto 244/2019 sobre autoconsumo — BOE',
+  url: 'https://www.boe.es/eli/es/rd/2019/04/05/244'
+};
+
+export const officialSourcesByGuide = {
+  'ahorrar-factura-de-la-luz': [cnmcConsumerGuide],
+  'tarifas-luz-empresas': [cnmcConsumerGuide],
+  'autoconsumo-solar-comunidades-de-vecinos': [idaeAutoconsumo, autoconsumoRegulation],
+  'comparador-comercializadoras-luz-y-gas': [cnmcConsumerGuide],
+  'placas-solares-particulares-precio': [idaeAutoconsumo, autoconsumoRegulation],
+  'como-saber-que-potencia-contratar-en-casa': [cnmcConsumerGuide],
+  'como-bajar-la-potencia-contratada': [cnmcConsumerGuide]
+};
+
+export function getOfficialSources(slug) {
+  return officialSourcesByGuide[slug] || [];
+}

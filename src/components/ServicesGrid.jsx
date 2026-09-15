@@ -104,17 +104,20 @@ export default function ServicesGrid({ navigate }) {
               </ul>
 
               {/* CTA Link Button */}
-              <button 
-                onClick={() => {
+              <a
+                href={service.path}
+                onClick={(event) => {
+                  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                  event.preventDefault();
                   navigate(service.path);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="btn btn-secondary"
-                style={{ width: '100%', justifyContent: 'space-between', padding: '0.75rem 1.15rem' }}
+                style={{ width: '100%', justifyContent: 'space-between', padding: '0.75rem 1.15rem', textDecoration: 'none' }}
               >
                 <span>Ver Solución Completa</span>
                 <ArrowRight size={16} />
-              </button>
+              </a>
 
             </div>
 

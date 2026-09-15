@@ -121,12 +121,12 @@ export default function Guias({ navigate, onOpenModal }) {
 
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-          <button 
-            onClick={() => navigate('/')} 
-            style={{ background: 'none', border: 'none', padding: 0, color: 'var(--text-muted)', cursor: 'pointer' }}
+          <a
+            href="/"
+            style={{ padding: 0, color: 'var(--text-muted)', textDecoration: 'none' }}
           >
             Inicio
-          </button>
+          </a>
           <ChevronRight size={15} />
           <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Guías de Ahorro</span>
         </nav>
@@ -294,7 +294,9 @@ export default function Guias({ navigate, onOpenModal }) {
               marginBottom: '1rem',
               lineHeight: 1.25
             }}>
-              {featuredGuide.title}
+              <a href={`/guias/${featuredGuide.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                {featuredGuide.title}
+              </a>
             </h2>
 
             <p style={{
@@ -414,7 +416,9 @@ export default function Guias({ navigate, onOpenModal }) {
                   color: 'var(--text-main)',
                   marginBottom: '0.85rem'
                 }}>
-                  {guide.title}
+                  <a href={`/guias/${guide.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {guide.title}
+                  </a>
                 </h3>
 
                 <p style={{

@@ -5,8 +5,10 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const LEADS_FILE = path.join(__dirname, 'leads.json');
+const LEADS_FILE = process.env.LEADS_FILE || path.join(__dirname, 'data', 'leads.json');
 const GUIDES_FILE = path.join(__dirname, 'guides_config.json');
+
+fs.mkdirSync(path.dirname(LEADS_FILE), { recursive: true });
 
 const { Pool } = pg;
 

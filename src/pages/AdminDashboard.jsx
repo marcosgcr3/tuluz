@@ -7,7 +7,6 @@ import {
   Check, ShieldCheck, Trash2, Globe, UserPlus, BookOpen,
   CalendarClock, Save
 } from 'lucide-react';
-import { guidesData } from '../data/guidesData';
 
 // Official Meta SVG Icon
 const MetaIcon = ({ size = 16, color = "currentColor", style = {} }) => (
@@ -76,6 +75,7 @@ export default function AdminDashboard({ navigate }) {
 
   // Guides Management State
   const [guidesConfigMap, setGuidesConfigMap] = useState({});
+  const [guides, setGuides] = useState([]);
   const [guidesLoading, setGuidesLoading] = useState(false);
   const [savingGuideSlug, setSavingGuideSlug] = useState(null);
   const [guideSuccessToast, setGuideSuccessToast] = useState(null);
@@ -161,15 +161,20 @@ export default function AdminDashboard({ navigate }) {
     if (!key) return;
     setGuidesLoading(true);
     try {
-      const res = await fetch(`/api/admin/guides-config?key=${encodeURIComponent(key)}`);
-      if (res.ok) {
-        const data = await res.json();
+      const [res, guidesRes] = await Promise.all([
+        fetch(`/api/admin/guides-config?key=${encodeURIComponent(key)}`),
+        fetch('/api/admin/guides', { headers: { 'x-api-key': key } })
+      ]);
+      if (res.ok && guidesRes.ok) {
+        const [data, guidesData] = await Promise.all([res.json(), guidesRes.json()]);
         const configs = data.configs || {};
+        const guideList = guidesData.guides || [];
+        setGuides(guideList);
         setGuidesConfigMap(configs);
 
         // Inicializar formularios editables por cada guía
         const forms = {};
-        guidesData.forEach(g => {
+        guideList.forEach(g => {
           const c = configs[g.slug] || { status: g.status || 'borrador', publishAt: null };
           let dateStr = '';
           if (c.publishAt) {
@@ -228,7 +233,7 @@ export default function AdminDashboard({ navigate }) {
         [slug]: data.guide
       }));
 
-      const guideItem = guidesData.find(g => g.slug === slug);
+      const guideItem = guides.find(g => g.slug === slug);
       const title = guideItem ? guideItem.title : slug;
       setGuideSuccessToast(`✓ Guía "${title.slice(0, 35)}..." guardada como ${form.status.toUpperCase()}`);
       setTimeout(() => setGuideSuccessToast(null), 4000);
@@ -531,7 +536,7 @@ export default function AdminDashboard({ navigate }) {
     let programadas = 0;
     const now = Date.now();
 
-    guidesData.forEach(g => {
+    guides.forEach(g => {
       const cfg = guidesConfigMap[g.slug] || { status: g.status || 'borrador' };
       if (cfg.status === 'borrador') {
         borradores++;
@@ -547,12 +552,12 @@ export default function AdminDashboard({ navigate }) {
       }
     });
 
-    return { total: guidesData.length, publicadas, borradores, programadas };
-  }, [guidesConfigMap]);
+    return { total: guides.length, publicadas, borradores, programadas };
+  }, [guides, guidesConfigMap]);
 
   const filteredGuidesList = useMemo(() => {
     const now = Date.now();
-    return guidesData.filter(g => {
+    return guides.filter(g => {
       const cfg = guidesConfigMap[g.slug] || { status: g.status || 'borrador' };
 
       // Filtro por estado
@@ -579,7 +584,7 @@ export default function AdminDashboard({ navigate }) {
 
       return true;
     });
-  }, [guidesConfigMap, guideStatusFilter, guideSearchTerm]);
+  }, [guides, guidesConfigMap, guideStatusFilter, guideSearchTerm]);
 
   // Clean phone for WhatsApp
   const formatWhatsappUrl = (phone, name) => {
@@ -1050,7 +1055,7 @@ export default function AdminDashboard({ navigate }) {
               padding: '2px 8px',
               borderRadius: '12px'
             }}>
-              {guidesData.length}
+              {guides.length}
             </span>
           </button>
         </div>

@@ -14,6 +14,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3000
+ENV LEADS_FILE=/data/leads.json
 
 COPY package*.json ./
 RUN npm install --omit=dev
@@ -26,5 +27,6 @@ COPY --from=builder /app/src ./src
 COPY --from=builder /app/guides_config.json ./guides_config.json
 
 EXPOSE 3000
+VOLUME ["/data"]
 
 CMD ["node", "server.js"]

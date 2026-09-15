@@ -5,6 +5,8 @@ import multer from 'multer';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import path from 'path';
+import crypto from 'crypto';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -34,6 +36,11 @@ const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'davidad@tu-luz.es';
 // Middleware
 // Compresión de texto Gzip/Deflate para acelerar transferencias en móvil
 app.use(compression());
+app.use((req, res, next) => {
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Content-Security-Policy', "frame-ancestors 'none'");
+  next();
+});
 // Redirección canónica permanente 301 para SEO (eliminar www y unificar autoridad en tu-luz.es)
 app.use((req, res, next) => {
   const host = req.headers.host || '';
@@ -47,17 +54,95 @@ app.use((req, res, next) => {
 });
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({
+  limit: '200kb',
+  verify: (req, _res, buffer) => {
+    if (req.path === '/webhook' || req.path === '/api/meta-webhook') {
+      req.rawBody = Buffer.from(buffer);
+    }
+  }
+}));
 app.use(express.urlencoded({ extended: true }));
 
-// Configure Multer for in-memory file handling
-const storage = multer.memoryStorage();
+const UPLOAD_DIR = path.join(__dirname, 'data', 'uploads');
+fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+const ALLOWED_BILL_TYPES = new Map([
+  ['application/pdf', { extension: '.pdf', signature: Buffer.from('%PDF-') }],
+  ['image/jpeg', { extension: '.jpg', signature: Buffer.from([0xff, 0xd8, 0xff]) }],
+  ['image/png', { extension: '.png', signature: Buffer.from([0x89, 0x50, 0x4e, 0x47]) }],
+  ['image/webp', { extension: '.webp', signature: Buffer.from('RIFF') }]
+]);
+const storage = multer.diskStorage({
+  destination: (_req, _file, cb) => cb(null, UPLOAD_DIR),
+  filename: (_req, file, cb) => cb(null, `invoice-${crypto.randomUUID()}${path.extname(file.originalname).toLowerCase()}`)
+});
 const upload = multer({ 
-  storage: storage,
-  limits: { fileSize: 15 * 1024 * 1024 } // 15MB max file size
+  storage,
+  limits: { fileSize: 8 * 1024 * 1024, files: 1, fields: 12, parts: 14, fieldSize: 16 * 1024 },
+  fileFilter: (_req, file, cb) => cb(null, ALLOWED_BILL_TYPES.has(file.mimetype))
 });
 
-import fs from 'fs';
+const contactAttempts = new Map();
+function allowContactSubmission(req) {
+  const key = req.ip;
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000;
+  for (const [ip, times] of contactAttempts) {
+    const active = times.filter(time => now - time < windowMs);
+    if (active.length) contactAttempts.set(ip, active);
+    else contactAttempts.delete(ip);
+  }
+  const attempts = (contactAttempts.get(key) || []).filter(time => now - time < windowMs);
+  if (attempts.length >= 5) return false;
+  attempts.push(now);
+  contactAttempts.set(key, attempts);
+  return true;
+}
+
+function contactUpload(req, res, next) {
+  if (!allowContactSubmission(req)) {
+    return res.status(429).json({ error: 'Demasiadas solicitudes. Inténtalo de nuevo más tarde.' });
+  }
+  upload.single('factura')(req, res, error => {
+    if (!error) return next();
+    const message = error instanceof multer.MulterError
+      ? 'La solicitud o el archivo adjunto supera los límites permitidos.'
+      : 'No se pudo procesar el archivo adjunto.';
+    return res.status(400).json({ error: message });
+  });
+}
+
+function isValidBillFile(file) {
+  const expected = ALLOWED_BILL_TYPES.get(file.mimetype);
+  if (!expected) return false;
+  const content = fs.readFileSync(file.path);
+  if (file.mimetype === 'image/webp') {
+    return content.subarray(0, 4).equals(expected.signature) && content.subarray(8, 12).equals(Buffer.from('WEBP'));
+  }
+  return content.subarray(0, expected.signature.length).equals(expected.signature);
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+}
+
+function safePhoneHref(phone) {
+  return `tel:${encodeURIComponent(String(phone ?? '').replace(/[^\d+()\-\s]/g, ''))}`;
+}
+
+function safeMailtoHref(email, subject = '') {
+  const address = encodeURIComponent(String(email ?? '').trim());
+  return `mailto:${address}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
+}
+
+function safeReplyTo(email) {
+  const candidate = String(email ?? '').trim();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(candidate) ? candidate : RECIPIENT_EMAIL;
+}
+
+function safeHeaderText(value) {
+  return String(value ?? '').replace(/[\r\n]/g, ' ');
+}
 
 // Configure Nodemailer Transport
 function isConfiguredSMTP() {
@@ -79,9 +164,7 @@ function getTransporter() {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS.replace(/\s+/g, '')
       },
-      tls: {
-        rejectUnauthorized: false
-      }
+      tls: { rejectUnauthorized: true }
     });
   }
   return null;
@@ -99,8 +182,12 @@ async function saveLeadLocally(leadData) {
 }
 
 // API Endpoint for Contact & Quote Requests
-app.post('/api/contact', upload.single('factura'), async (req, res) => {
+app.post('/api/contact', contactUpload, async (req, res) => {
+  let uploadedPath = req.file?.path;
   try {
+    if (req.file && !isValidBillFile(req.file)) {
+      return res.status(400).json({ error: 'La factura debe ser un PDF, JPEG, PNG o WebP válido.' });
+    }
     const { name, phone, email, clientType, monthlyBill, notes, source, pageUrl } = req.body;
 
     const leadSource = source || 'Web Directa / Orgánico';
@@ -131,9 +218,10 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
       if (transporter) {
         const attachments = [];
         if (req.file) {
+          const fileType = ALLOWED_BILL_TYPES.get(req.file.mimetype);
           attachments.push({
-            filename: req.file.originalname,
-            content: req.file.buffer,
+            filename: `factura${fileType.extension}`,
+            path: req.file.path,
             contentType: req.file.mimetype
           });
         }
@@ -168,13 +256,13 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
             <div class="container">
               <div class="header">
                 <h1>⚡ tuLuz - Nueva Solicitud de Estudio</h1>
-                <p>Asesoramiento Energético • Notificación a ${RECIPIENT_EMAIL}</p>
+                <p>Asesoramiento Energético • Notificación a ${escapeHtml(RECIPIENT_EMAIL)}</p>
               </div>
 
               <div class="content">
                 <div style="display: flex; gap: 8px; margin-bottom: 20px;">
-                  <span class="badge">Perfil: ${clientType || 'Particular'}</span>
-                  <span class="source-badge">📍 Origen: ${leadSource}</span>
+                  <span class="badge">Perfil: ${escapeHtml(clientType || 'Particular')}</span>
+                  <span class="source-badge">📍 Origen: ${escapeHtml(leadSource)}</span>
                 </div>
 
                 <h2 style="font-size: 18px; margin-top: 0; color: #0f172a;">Detalles de la Solicitud:</h2>
@@ -182,49 +270,49 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
                 <table class="info-table">
                   <tr>
                     <th>Canal / Origen:</th>
-                    <td><strong style="color: #0284c7;">${leadSource}</strong></td>
+                    <td><strong style="color: #0284c7;">${escapeHtml(leadSource)}</strong></td>
                   </tr>
                   <tr>
                     <th>Nombre:</th>
-                    <td><strong>${name}</strong></td>
+                    <td><strong>${escapeHtml(name)}</strong></td>
                   </tr>
                   <tr>
                     <th>Teléfono:</th>
-                    <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; text-decoration: none;">${phone}</a></td>
+                    <td><a href="${safePhoneHref(phone)}" style="color: #4CAF4F; font-weight: 700; text-decoration: none;">${escapeHtml(phone)}</a></td>
                   </tr>
                   <tr>
                     <th>Correo del Cliente:</th>
-                    <td><a href="mailto:${email}" style="color: #4CAF4F; text-decoration: none;">${email}</a></td>
+                    <td><a href="${safeMailtoHref(email)}" style="color: #4CAF4F; text-decoration: none;">${escapeHtml(email)}</a></td>
                   </tr>
                   <tr>
                     <th>Tipo de Cliente:</th>
-                    <td>${clientType || 'Particular'}</td>
+                    <td>${escapeHtml(clientType || 'Particular')}</td>
                   </tr>
                   ${monthlyBill ? `
                   <tr>
                     <th>Gasto Mensual Estimado:</th>
-                    <td><strong style="color: #4CAF4F;">${monthlyBill} €/mes</strong></td>
+                    <td><strong style="color: #4CAF4F;">${escapeHtml(monthlyBill)} €/mes</strong></td>
                   </tr>
                   ` : ''}
                   <tr>
                     <th>Factura Adjunta:</th>
-                    <td>${req.file ? `📎 ${req.file.originalname} (${(req.file.size / 1024).toFixed(1)} KB)` : 'No se adjuntó archivo'}</td>
+                    <td>${req.file ? `📎 factura${ALLOWED_BILL_TYPES.get(req.file.mimetype).extension} (${(req.file.size / 1024).toFixed(1)} KB)` : 'No se adjuntó archivo'}</td>
                   </tr>
                 </table>
 
                 ${notes ? `
                   <h3 style="font-size: 14px; color: #475569; margin-bottom: 8px;">Observaciones / Mensaje:</h3>
-                  <div class="notes-box">${notes}</div>
+                  <div class="notes-box">${escapeHtml(notes)}</div>
                 ` : ''}
 
                 <div class="actions">
-                  <a href="mailto:${email}?subject=Estudio%20Energético%20tuLuz%20para%20${encodeURIComponent(name)}" class="btn btn-primary">Responder a ${name}</a>
-                  <a href="tel:${phone}" class="btn btn-secondary">Llamar al ${phone}</a>
+                  <a href="${safeMailtoHref(email, `Estudio Energético tuLuz para ${name || ''}`)}" class="btn btn-primary">Responder a ${escapeHtml(name)}</a>
+                  <a href="${safePhoneHref(phone)}" class="btn btn-secondary">Llamar al ${escapeHtml(phone)}</a>
                 </div>
               </div>
 
               <div class="footer">
-                © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a (${RECIPIENT_EMAIL}).
+                © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a (${escapeHtml(RECIPIENT_EMAIL)}).
               </div>
             </div>
           </body>
@@ -234,8 +322,8 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
         const mailOptions = {
           from: `"tuLuz Asesoramiento Energético" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
           to: RECIPIENT_EMAIL,
-          replyTo: email,
-          subject: `⚡ Nueva Solicitud tuLuz: ${name} (${clientType || 'Particular'})`,
+          replyTo: safeReplyTo(email),
+          subject: `⚡ Nueva Solicitud tuLuz: ${safeHeaderText(name)} (${safeHeaderText(clientType || 'Particular')})`,
           html: htmlTemplate,
           attachments: attachments
         };
@@ -262,6 +350,8 @@ app.post('/api/contact', upload.single('factura'), async (req, res) => {
       success: true,
       message: 'Solicitud recibida'
     });
+  } finally {
+    if (uploadedPath) fs.promises.unlink(uploadedPath).catch(() => {});
   }
 });
 
@@ -282,7 +372,7 @@ function getMetaField(fieldData, aliases) {
 }
 
 // Función centralizada para enviar notificación por correo al recibir un lead de Meta Ads
-async function sendMetaLeadNotificationEmail(leadRecord, extraHtml = '') {
+async function sendMetaLeadNotificationEmail(leadRecord, extraQuestions = []) {
   if (!isConfiguredSMTP()) {
     console.warn(`⚠️ [Meta Ads] SMTP no configurado, no se envió email para ${leadRecord.name}`);
     return false;
@@ -293,6 +383,9 @@ async function sendMetaLeadNotificationEmail(leadRecord, extraHtml = '') {
 
   const { name, phone, email, notes, pageUrl } = leadRecord;
   const cleanPhone = (phone || '').replace(/[^0-9]/g, '');
+  const extraRows = extraQuestions.map(({ name: question, values }) =>
+    `<tr><th>${escapeHtml(question)}:</th><td><strong>${escapeHtml((values || []).join(', '))}</strong></td></tr>`
+  ).join('');
 
   const htmlTemplate = `
     <!DOCTYPE html>
@@ -323,7 +416,7 @@ async function sendMetaLeadNotificationEmail(leadRecord, extraHtml = '') {
       <div class="container">
         <div class="header">
           <h1>🎯 ¡Nuevo Cliente Potencial de Meta Ads!</h1>
-          <p>Campaña de Publicidad • Notificación a ${RECIPIENT_EMAIL}</p>
+          <p>Campaña de Publicidad • Notificación a ${escapeHtml(RECIPIENT_EMAIL)}</p>
         </div>
 
         <div class="content">
@@ -336,34 +429,34 @@ async function sendMetaLeadNotificationEmail(leadRecord, extraHtml = '') {
           <table class="info-table">
             <tr>
               <th>Nombre:</th>
-              <td><strong style="font-size: 16px; color: #0f172a;">${name || 'Cliente Meta'}</strong></td>
+              <td><strong style="font-size: 16px; color: #0f172a;">${escapeHtml(name || 'Cliente Meta')}</strong></td>
             </tr>
             <tr>
               <th>Teléfono:</th>
-              <td><a href="tel:${phone}" style="color: #4CAF4F; font-weight: 700; font-size: 16px; text-decoration: none;">📞 ${phone || 'No especificado'}</a></td>
+              <td><a href="${safePhoneHref(phone)}" style="color: #4CAF4F; font-weight: 700; font-size: 16px; text-decoration: none;">📞 ${escapeHtml(phone || 'No especificado')}</a></td>
             </tr>
             <tr>
               <th>Correo Electrónico:</th>
-              <td><a href="mailto:${email}" style="color: #0284c7; text-decoration: none;">✉️ ${email || 'No especificado'}</a></td>
+              <td><a href="${safeMailtoHref(email)}" style="color: #0284c7; text-decoration: none;">✉️ ${escapeHtml(email || 'No especificado')}</a></td>
             </tr>
-            ${pageUrl ? `<tr><th>Origen / Formulario:</th><td style="color: #64748b; font-size: 13px;">${pageUrl}</td></tr>` : ''}
-            ${notes ? `<tr><th>Detalles / Respuestas:</th><td style="font-size: 13px; white-space: pre-line;">${notes}</td></tr>` : ''}
-            ${extraHtml || ''}
+            ${pageUrl ? `<tr><th>Origen / Formulario:</th><td style="color: #64748b; font-size: 13px;">${escapeHtml(pageUrl)}</td></tr>` : ''}
+            ${notes ? `<tr><th>Detalles / Respuestas:</th><td style="font-size: 13px; white-space: pre-line;">${escapeHtml(notes)}</td></tr>` : ''}
+            ${extraRows}
           </table>
 
           <div class="actions">
             ${cleanPhone ? `
-              <a href="tel:${cleanPhone}" class="btn btn-call">📞 Llamar Ahora</a>
-              <a href="https://wa.me/${cleanPhone}?text=Hola%20${encodeURIComponent(name || '')},%20te%20contactamos%20de%20T%C3%BA%20Luz%20respecto%20a%20tu%20solicitud%20de%20estudio%20energ%C3%A9tico" class="btn btn-wa" target="_blank">💬 WhatsApp</a>
+              <a href="${safePhoneHref(cleanPhone)}" class="btn btn-call">📞 Llamar Ahora</a>
+              <a href="https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${name || ''}, te contactamos de Tú Luz respecto a tu solicitud de estudio energético`)}" class="btn btn-wa" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
             ` : ''}
             ${email && email !== 'No especificado' ? `
-              <a href="mailto:${email}?subject=Estudio%20Energ%C3%A9tico%20T%C3%BA%20Luz%20para%20${encodeURIComponent(name || '')}" class="btn btn-mail">✉️ Enviar Email</a>
+              <a href="${safeMailtoHref(email, `Estudio Energético Tú Luz para ${name || ''}`)}" class="btn btn-mail">✉️ Enviar Email</a>
             ` : ''}
           </div>
         </div>
 
         <div class="footer">
-          © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a (${RECIPIENT_EMAIL}).
+          © ${new Date().getFullYear()} tuLuz Asesoramiento Energético • Notificación directa a (${escapeHtml(RECIPIENT_EMAIL)}).
         </div>
       </div>
     </body>
@@ -373,8 +466,8 @@ async function sendMetaLeadNotificationEmail(leadRecord, extraHtml = '') {
   const mailOptions = {
     from: `"tuLuz - Meta Ads" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
     to: RECIPIENT_EMAIL,
-    replyTo: (email && email !== 'No especificado') ? email : RECIPIENT_EMAIL,
-    subject: `🎯 Lead Meta Ads: ${name || 'Contacto'} (${phone || 'Sin teléfono'})`,
+    replyTo: safeReplyTo(email !== 'No especificado' ? email : ''),
+    subject: `🎯 Lead Meta Ads: ${safeHeaderText(name || 'Contacto')} (${safeHeaderText(phone || 'Sin teléfono')})`,
     html: htmlTemplate
   };
 
@@ -413,9 +506,22 @@ const handleMetaWebhookVerification = (req, res) => {
 app.get('/webhook', handleMetaWebhookVerification);
 app.get('/api/meta-webhook', handleMetaWebhookVerification);
 
+function hasValidMetaSignature(req) {
+  const appSecret = process.env.META_APP_SECRET;
+  const signature = req.get('x-hub-signature-256');
+  if (!appSecret || !signature || !req.rawBody) return false;
+  const expected = `sha256=${crypto.createHmac('sha256', appSecret).update(req.rawBody).digest('hex')}`;
+  const received = Buffer.from(signature);
+  const expectedBuffer = Buffer.from(expected);
+  return received.length === expectedBuffer.length && crypto.timingSafeEqual(received, expectedBuffer);
+}
+
 // POST /webhook (Recepción en tiempo real de nuevo Lead de Meta Ads)
 const handleMetaWebhookEvent = async (req, res) => {
   try {
+    if (!hasValidMetaSignature(req)) {
+      return res.sendStatus(401);
+    }
     const body = req.body;
 
     // Responder inmediatamente a Meta para confirmar recepción y evitar reintentos
@@ -465,8 +571,7 @@ const handleMetaWebhookEvent = async (req, res) => {
           // Extraer preguntas personalizadas del formulario
           const extraQuestions = fieldData
             .filter(f => !['full_name', 'nombre_completo', 'nombre', 'name', 'first_name', 'email', 'correo', 'correo_electrónico', 'correo_electronico', 'phone_number', 'telefono', 'teléfono', 'phone', 'numero_de_telefono', 'número_de_teléfono'].includes((f.name || '').toLowerCase()))
-            .map(f => `<tr><th>${f.name}:</th><td><strong>${(f.values || []).join(', ')}</strong></td></tr>`)
-            .join('');
+            .map(f => ({ name: String(f.name || ''), values: Array.isArray(f.values) ? f.values : [] }));
 
           // Guardar registro localmente
           const leadRecord = {
@@ -480,7 +585,7 @@ const handleMetaWebhookEvent = async (req, res) => {
             source: 'Meta Ads (Facebook / Instagram)',
             pageUrl: `Form ID: ${form_id || 'N/D'} | Ad ID: ${ad_id || 'N/D'}`,
             monthlyBill: '',
-            notes: extraQuestions ? 'Contiene preguntas adicionales de formulario' : 'Cliente potencial directo de anuncio en Meta Ads',
+            notes: extraQuestions.length ? 'Contiene preguntas adicionales de formulario' : 'Cliente potencial directo de anuncio en Meta Ads',
             hasFile: false,
             fileName: null,
             fileSize: null
@@ -764,6 +869,42 @@ app.post('/api/leads/create', async (req, res) => {
 // API DE GESTIÓN Y PUBLICACIÓN DE GUÍAS
 // ==========================================
 
+function isGuidePublished(guide, configs, now = Date.now()) {
+  const config = configs[guide.slug] || {};
+  const status = config.status || guide.status || 'borrador';
+  if (status === 'publicada') return true;
+  return status === 'programada' && config.publishAt && new Date(config.publishAt).getTime() <= now;
+}
+
+function publicGuideSummary(guide) {
+  const { sections, faqs, ...summary } = guide;
+  return summary;
+}
+
+app.get('/api/guides', async (_req, res) => {
+  try {
+    const configs = await getGuidesConfig();
+    res.json({ success: true, guides: guidesData.filter(guide => isGuidePublished(guide, configs)).map(publicGuideSummary) });
+  } catch (err) {
+    res.status(500).json({ error: 'Error consultando guías' });
+  }
+});
+
+app.get('/api/guides/:slug', async (req, res) => {
+  try {
+    const configs = await getGuidesConfig();
+    const guide = guidesData.find(item => item.slug === req.params.slug);
+    if (!guide || !isGuidePublished(guide, configs)) return res.sendStatus(404);
+    const relatedGuides = (guide.relatedSlugs || [])
+      .map(slug => guidesData.find(item => item.slug === slug))
+      .filter(item => item && isGuidePublished(item, configs))
+      .map(publicGuideSummary);
+    res.json({ success: true, guide, relatedGuides });
+  } catch (err) {
+    res.status(500).json({ error: 'Error consultando guía' });
+  }
+});
+
 // Endpoint público para consultar qué guías están publicadas / accesibles
 app.get('/api/guides-status', async (req, res) => {
   try {
@@ -771,24 +912,10 @@ app.get('/api/guides-status', async (req, res) => {
     const now = Date.now();
 
     const computedStatus = {};
-    for (const [slug, item] of Object.entries(rawConfigs)) {
-      const status = item.status || 'publicada';
-      const publishAt = item.publishAt || null;
-      let isPublished = status === 'publicada';
-
-      if (status === 'programada' && publishAt) {
-        const scheduleTime = new Date(publishAt).getTime();
-        if (!isNaN(scheduleTime) && scheduleTime <= now) {
-          isPublished = true;
-        }
+    for (const guide of guidesData) {
+      if (isGuidePublished(guide, rawConfigs, now)) {
+        computedStatus[guide.slug] = { status: 'publicada', isPublished: true };
       }
-
-      computedStatus[slug] = {
-        status,
-        publishAt,
-        isPublished,
-        updatedAt: item.updatedAt
-      };
     }
 
     res.json({ success: true, guides: computedStatus });
@@ -799,6 +926,11 @@ app.get('/api/guides-status', async (req, res) => {
 });
 
 // Endpoint protegido para obtener la configuración completa de guías en Admin
+app.get('/api/admin/guides', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  res.json({ success: true, guides: guidesData.map(publicGuideSummary) });
+});
+
 app.get('/api/admin/guides-config', async (req, res) => {
   if (!checkAdminAuth(req)) {
     return res.status(401).json({ error: 'Acceso no autorizado' });
@@ -1140,7 +1272,9 @@ app.get('/api/leads/export-csv', async (req, res) => {
 
     const escapeCsv = (val) => {
       if (val === null || val === undefined) return '""';
-      const str = String(val).replace(/"/g, '""');
+      let str = String(val);
+      if (/^[\s\u0000-\u001f]*[=+\-@]/.test(str)) str = `'${str}`;
+      str = str.replace(/"/g, '""');
       return `"${str}"`;
     };
 

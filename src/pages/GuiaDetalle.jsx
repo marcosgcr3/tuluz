@@ -18,30 +18,31 @@ import {
   Sparkles,
   ChevronRight
 } from 'lucide-react';
-import { getGuideBySlug, guidesData } from '../data/guidesData';
 import { companyInfo } from '../data/content';
 
 export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
-  const guide = useMemo(() => getGuideBySlug(slug), [slug]);
+  const [guide, setGuide] = useState(null);
+  const [relatedGuides, setRelatedGuides] = useState([]);
+  const guideStatus = null;
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeHeading, setActiveHeading] = useState('');
   const [openFaqIndices, setOpenFaqIndices] = useState([0]); // First FAQ open by default
   const [isTocOpen, setIsTocOpen] = useState(false); // Collapsed by default on load for optimal mobile reading
-  const [guideStatus, setGuideStatus] = useState(null);
   const [statusChecked, setStatusChecked] = useState(false);
-
-  const isAdmin = typeof window !== 'undefined' && !!sessionStorage.getItem('tuluz_admin_key');
+  const isAdmin = false;
 
   useEffect(() => {
-    fetch('/api/guides-status')
+    setStatusChecked(false);
+    fetch(`/api/guides/${encodeURIComponent(slug)}`)
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.guides && data.guides[slug]) {
-          setGuideStatus(data.guides[slug]);
-        }
+        setGuide(data.success ? data.guide : null);
+        setRelatedGuides(data.success ? (data.relatedGuides || []) : []);
         setStatusChecked(true);
       })
       .catch(() => {
+        setGuide(null);
+        setRelatedGuides([]);
         setStatusChecked(true);
       });
   }, [slug]);
@@ -202,11 +203,13 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
   };
 
   // Related guides
-  const relatedGuides = useMemo(() => {
-    return (guide.relatedSlugs || [])
-      .map(s => getGuideBySlug(s))
-      .filter(Boolean);
-  }, [guide]);
+  if (!statusChecked) {
+    return (
+      <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '36px', height: '36px', border: '3px solid rgba(76, 175, 79, 0.2)', borderTopColor: 'var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+      </div>
+    );
+  }
 
   if (!guide) {
     return (
@@ -220,29 +223,8 @@ export default function GuiaDetalle({ slug, navigate, onOpenModal }) {
     );
   }
 
-  // Mientras se consulta el estado en el servidor, mostrar loader para evitar parpadeos y evaluar con datos reales
-  if (!statusChecked) {
-    return (
-      <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{
-          width: '36px',
-          height: '36px',
-          border: '3px solid rgba(76, 175, 79, 0.2)',
-          borderTopColor: 'var(--primary)',
-          borderRadius: '50%',
-          animation: 'spin 0.8s linear infinite'
-        }} />
-        <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
-      </div>
-    );
-  }
-
-  // Si la guía está en borrador o programada y el visitante no es administrador
-  const effectiveStatus = guideStatus?.status || guide.status || 'publicada';
-  const isDynamicPublished = guideStatus && guideStatus.isPublished === true;
-  const isDynamicUnpublished = guideStatus && guideStatus.isPublished === false;
-  const isExplicitDraft = guide.status === 'borrador';
-  const isHiddenFromPublic = isDynamicUnpublished || (isExplicitDraft && !isDynamicPublished);
+  const effectiveStatus = 'publicada';
+  const isHiddenFromPublic = false;
 
   if (isHiddenFromPublic && !isAdmin) {
     return (

@@ -15,48 +15,33 @@ import {
   Eye,
   AlertTriangle
 } from 'lucide-react';
-import { guidesData, getAllGuideCategories } from '../data/guidesData';
 import { companyInfo } from '../data/content';
 
 export default function Guias({ navigate, onOpenModal }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todas');
-  const [statusMap, setStatusMap] = useState({});
-
-  const isAdmin = typeof window !== 'undefined' && !!sessionStorage.getItem('tuluz_admin_key');
+  const [guides, setGuides] = useState([]);
+  const isAdmin = false;
+  const statusMap = {};
 
   // Cargar estado de publicación de guías desde el backend
   useEffect(() => {
-    fetch('/api/guides-status')
+    fetch('/api/guides')
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.guides) {
-          setStatusMap(data.guides);
-        }
+        if (data.success && data.guides) setGuides(data.guides);
       })
       .catch(err => {
         console.warn('No se pudo cargar estado dinámico de guías:', err);
       });
   }, []);
 
-  const categories = useMemo(() => getAllGuideCategories(), []);
+  const categories = useMemo(() => ['Todas', ...new Set(guides.map(guide => guide.category).filter(Boolean))], [guides]);
 
   // Filtrar guías públicas (a menos que sea admin con sesión activa)
   const availableGuides = useMemo(() => {
-    return guidesData.filter((guide) => {
-      if (isAdmin) return true; // El admin puede ver borradores
-
-      const config = statusMap[guide.slug];
-      // Si la API ya devolvió la configuración dinámica del servidor:
-      if (config) {
-        return config.isPublished === true;
-      }
-
-      // Si aún no ha cargado la API o no hay config dinámica:
-      // ÚNICAMENTE mostrar si el artículo está definido explícitamente como "publicada"
-      return guide.status === 'publicada';
-    });
-  }, [statusMap, isAdmin]);
+    return guides;
+  }, [guides]);
 
   const filteredGuides = useMemo(() => {
     return availableGuides.filter((guide) => {

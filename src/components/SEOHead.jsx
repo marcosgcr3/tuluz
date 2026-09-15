@@ -1,4 +1,18 @@
 import { useEffect } from 'react';
+import { guidesData } from '../data/guidesData';
+
+// Keep the browser-side metadata aligned with the guide source of truth. This
+// also covers scheduled guides before they are added to the public listing.
+const guideSeoDataMap = Object.fromEntries(
+  guidesData.map((guide) => [
+    `/guias/${guide.slug}`,
+    {
+      title: guide.metaTitle || `${guide.title} | tuLuz`,
+      description: guide.metaDescription || guide.excerpt,
+      canonical: `https://tu-luz.es/guias/${guide.slug}`
+    }
+  ])
+);
 
 const seoDataMap = {
   '/': {
@@ -165,7 +179,7 @@ const seoDataMap = {
 export default function SEOHead({ currentPath }) {
   useEffect(() => {
     const cleanPath = currentPath ? currentPath.replace(/\/$/, '') || '/' : '/';
-    const seoData = seoDataMap[cleanPath] || seoDataMap['/'];
+    const seoData = seoDataMap[cleanPath] || guideSeoDataMap[cleanPath] || seoDataMap['/'];
 
     // Determine dynamic title with UTM / channel tags for Analytics visibility
     let effectiveTitle = seoData.title;

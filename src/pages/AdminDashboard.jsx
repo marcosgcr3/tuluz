@@ -2116,6 +2116,7 @@ export default function AdminDashboard({ navigate }) {
             </div>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap' }}>
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds(filteredProspects.filter(p => !p.emailSent).map(p => p.id))}>Seleccionar pendientes visibles</button>
+              <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds([])}>Limpiar selección</button>
               <button type="button" className="btn btn-primary" onClick={handleSendProspects} disabled={prospectsLoading || !selectedProspectIds.length}><Mail size={16} />Enviar seleccionados ({selectedProspectIds.length})</button>
               <button type="button" className="btn btn-secondary" onClick={fetchProspects}><RefreshCw size={16} />Actualizar</button>
             </div>

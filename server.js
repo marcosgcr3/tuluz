@@ -843,7 +843,7 @@ app.post('/api/admin/prospects/send', async (req, res) => {
   if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
   const ids = Array.isArray(req.body.ids) ? req.body.ids : [];
   const subject = safeHeaderText(req.body.subject || 'Asesoramiento energético gratuito para {empresa}').replace(/\{empresa\}/gi, 'tu empresa');
-  const body = String(req.body.body || 'Hola,\n\nMe pongo en contacto contigo porque ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nDesde tuLuz ofrecemos un asesoramiento energético totalmente gratuito y sin compromiso. ¿Te parece si hablamos?\n\nUn saludo,\nEl equipo de tuLuz');
+  const body = String(req.body.body || 'Hola,\n\nMe pongo en contacto contigo porque ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nDesde tuLuz ofrecemos un asesoramiento energético totalmente gratuito y sin compromiso. Solo necesitamos una factura de luz: puedes responder a este correo adjuntándola y nosotros la analizaremos gratuitamente para indicarte posibles ahorros.\n\nUn saludo,\nEl equipo de tuLuz');
   if (!ids.length) return res.status(400).json({ error: 'Selecciona al menos un posible cliente.' });
   if (ids.length > 100) return res.status(400).json({ error: 'Puedes enviar como máximo 100 correos por tanda.' });
   if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });

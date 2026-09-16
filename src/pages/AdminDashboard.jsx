@@ -80,7 +80,7 @@ export default function AdminDashboard({ navigate }) {
   const [prospectSentFilter, setProspectSentFilter] = useState('pending');
   const [selectedProspectIds, setSelectedProspectIds] = useState([]);
   const [prospectSubject, setProspectSubject] = useState('Asesoramiento energético gratuito para {empresa}');
-  const [prospectBody, setProspectBody] = useState('Hola,\n\nMe pongo en contacto contigo porque ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nDesde tuLuz ofrecemos un asesoramiento energético totalmente gratuito y sin compromiso. Solo necesitamos una factura de luz: puedes responder a este correo adjuntándola y nosotros la analizaremos gratuitamente para indicarte posibles ahorros.\n\nUn saludo,\nEl equipo de tuLuz');
+  const [prospectBody, setProspectBody] = useState('Hola,\n\nSoy David, fundador y responsable de tuLuz. Ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nSi quieres, puedes responder a este correo adjuntando una factura de luz reciente. La analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nEl análisis es gratuito y sin compromiso.\n\nUn saludo,\nDavid\ntuLuz');
   const [prospectNotice, setProspectNotice] = useState('');
 
   // Guides Management State

@@ -23,6 +23,7 @@ import {
   deleteLead,
   getGuidesConfig,
   saveGuideConfig
+  ,getAllProspects, importProspects, markProspectsEmailSent
 } from './db.js';
 import { guidesData } from './src/data/guidesData.js';
 import { getOfficialSources } from './src/data/content.js';
@@ -97,6 +98,52 @@ const upload = multer({
   limits: { fileSize: 8 * 1024 * 1024, files: 1, fields: 12, parts: 14, fieldSize: 16 * 1024 },
   fileFilter: (_req, file, cb) => cb(null, ALLOWED_BILL_TYPES.has(file.mimetype))
 });
+const csvUpload = multer({ memoryStorage: true, limits: { fileSize: 10 * 1024 * 1024, files: 1 } });
+
+function parseCsv(text) {
+  const rows = [], row = []; let value = '', quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i], next = text[i + 1];
+    if (c === '"' && quoted && next === '"') { value += '"'; i++; }
+    else if (c === '"') quoted = !quoted;
+    else if (c === ',' && !quoted) { row.push(value); value = ''; }
+    else if ((c === '\n' || c === '\r') && !quoted) {
+      if (c === '\r' && next === '\n') i++;
+      row.push(value); value = '';
+      if (row.some(cell => cell.trim())) rows.push(row.splice(0));
+    } else value += c;
+  }
+  if (value || row.length) { row.push(value); if (row.some(cell => cell.trim())) rows.push(row); }
+  if (!rows.length) return [];
+  const headers = rows.shift().map(h => h.replace(/^\uFEFF/, '').trim().toLowerCase());
+  return rows.map(values => Object.fromEntries(headers.map((h, i) => [h, values[i]?.trim() || ''])));
+}
+
+function csvValue(row, names) {
+  const key = names.find(name => Object.prototype.hasOwnProperty.call(row, name));
+  return key ? row[key] : '';
+}
+
+function normalizeProspectRow(row) {
+  const sourceData = { ...row };
+  return {
+    companyName: csvValue(row, ['title', 'name', 'empresa', 'company', 'nombre']),
+    sector: csvValue(row, ['category', 'sector', 'tipo', 'categoría', 'categoria']),
+    email: csvValue(row, ['emails', 'email', 'correo', 'correo electrónico', 'correo electronico']),
+    phone: csvValue(row, ['phone', 'telephone', 'teléfono', 'telefono']),
+    address: csvValue(row, ['address', 'complete_address', 'dirección', 'direccion']),
+    city: csvValue(row, ['city', 'ciudad']),
+    website: csvValue(row, ['website', 'web', 'url']),
+    sourceData
+  };
+}
+
+function personalizedEmail({ companyName, sector, subject, body }) {
+  const safeCompany = escapeHtml(companyName || 'tu empresa');
+  const safeSector = escapeHtml(sector || 'vuestro sector');
+  const rendered = String(body || '').replace(/\{empresa\}/gi, safeCompany).replace(/\{sector\}/gi, safeSector).replace(/\n/g, '<br>');
+  return `<div style="font-family:Arial,sans-serif;color:#1e293b;line-height:1.6;max-width:640px"><p>${rendered}</p><hr style="border:0;border-top:1px solid #e2e8f0"><p style="font-size:12px;color:#64748b">Si no deseas recibir más comunicaciones, responde a este correo indicando "BAJA".</p></div>`;
+}
 
 const contactAttempts = new Map();
 function allowContactSubmission(req) {
@@ -766,6 +813,53 @@ app.post('/api/admin/test-email', async (req, res) => {
     console.error('Error probando envío SMTP:', err);
     res.status(500).json({ error: `Error enviando correo: ${err.message}` });
   }
+});
+
+app.get('/api/admin/prospects', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  try {
+    const prospects = await getAllProspects();
+    res.json({ success: true, prospects, total: prospects.length });
+  } catch (err) { res.status(500).json({ error: 'No se pudieron leer los posibles clientes' }); }
+});
+
+app.post('/api/admin/prospects/import', (req, res, next) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  csvUpload.single('file')(req, res, err => {
+    if (err) return res.status(400).json({ error: 'El CSV supera el límite de 10 MB o no se pudo leer.' });
+    next();
+  });
+}, async (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'Selecciona un archivo CSV.' });
+  try {
+    const rows = parseCsv(req.file.buffer.toString('utf8'));
+    if (!rows.length) return res.status(400).json({ error: 'El CSV está vacío o no tiene cabecera.' });
+    const result = await importProspects(rows.map(normalizeProspectRow));
+    res.json({ success: true, imported: result.imported.length, skipped: result.skipped.length, prospects: result.imported });
+  } catch (err) { console.error('Error importando prospects:', err); res.status(500).json({ error: 'No se pudo importar el CSV.' }); }
+});
+
+app.post('/api/admin/prospects/send', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  const ids = Array.isArray(req.body.ids) ? req.body.ids : [];
+  const subject = safeHeaderText(req.body.subject || 'Asesoramiento energético gratuito para {empresa}').replace(/\{empresa\}/gi, 'tu empresa');
+  const body = String(req.body.body || 'Hola,\n\nMe pongo en contacto contigo porque ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nDesde tuLuz ofrecemos un asesoramiento energético totalmente gratuito y sin compromiso. ¿Te parece si hablamos?\n\nUn saludo,\nEl equipo de tuLuz');
+  if (!ids.length) return res.status(400).json({ error: 'Selecciona al menos un posible cliente.' });
+  if (ids.length > 100) return res.status(400).json({ error: 'Puedes enviar como máximo 100 correos por tanda.' });
+  if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });
+  try {
+    const all = await getAllProspects();
+    const selected = all.filter(p => ids.map(String).includes(String(p.id)) && !p.emailSent);
+    const transporter = getTransporter(); let sent = [], failed = [];
+    for (const prospect of selected) {
+      try {
+        await transporter.sendMail({ from: `"tuLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`, to: prospect.email, subject: subject.replace(/\{sector\}/gi, prospect.sector || 'tu sector'), html: personalizedEmail({ ...prospect, subject, body }) });
+        sent.push(prospect.id);
+      } catch (err) { failed.push({ id: prospect.id, email: prospect.email, error: err.message }); }
+    }
+    if (sent.length) await markProspectsEmailSent(sent);
+    res.json({ success: true, sent: sent.length, failed, skippedAlreadySent: ids.length - selected.length });
+  } catch (err) { console.error('Error enviando campaña:', err); res.status(500).json({ error: 'No se pudo completar el envío.' }); }
 });
 
 // Endpoint para probar el token de Meta y devolver diagnóstico detallado

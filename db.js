@@ -1,14 +1,17 @@
 import pg from 'pg';
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const LEADS_FILE = process.env.LEADS_FILE || path.join(__dirname, 'data', 'leads.json');
 const GUIDES_FILE = path.join(__dirname, 'guides_config.json');
+const PROSPECTS_FILE = process.env.PROSPECTS_FILE || path.join(__dirname, 'data', 'prospects.json');
 
 fs.mkdirSync(path.dirname(LEADS_FILE), { recursive: true });
+fs.mkdirSync(path.dirname(PROSPECTS_FILE), { recursive: true });
 
 const { Pool } = pg;
 
@@ -69,6 +72,25 @@ export function initDatabase() {
             publish_at TIMESTAMPTZ,
             updated_at TIMESTAMPTZ DEFAULT NOW()
           );
+
+          CREATE TABLE IF NOT EXISTS prospects (
+            id BIGSERIAL PRIMARY KEY,
+            company_name VARCHAR(255) NOT NULL DEFAULT '',
+            sector VARCHAR(255) NOT NULL DEFAULT '',
+            email VARCHAR(255) NOT NULL,
+            phone VARCHAR(100) DEFAULT '',
+            address TEXT DEFAULT '',
+            city VARCHAR(255) DEFAULT '',
+            website TEXT DEFAULT '',
+            source_data JSONB DEFAULT '{}'::jsonb,
+            email_sent BOOLEAN NOT NULL DEFAULT false,
+            email_sent_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT NOW(),
+            updated_at TIMESTAMPTZ DEFAULT NOW(),
+            UNIQUE(email)
+          );
+          CREATE INDEX IF NOT EXISTS idx_prospects_sector ON prospects(sector);
+          CREATE INDEX IF NOT EXISTS idx_prospects_email_sent ON prospects(email_sent);
         `);
 
         // Sincronizar e inicializar las 55 guías en PostgreSQL si falta alguna
@@ -109,6 +131,71 @@ export function initDatabase() {
     dbReady = false;
     return null;
   }
+}
+
+function mapProspect(row) {
+  return {
+    id: row.id,
+    companyName: row.company_name,
+    sector: row.sector,
+    email: row.email,
+    phone: row.phone,
+    address: row.address,
+    city: row.city,
+    website: row.website,
+    sourceData: row.source_data || {},
+    emailSent: Boolean(row.email_sent),
+    emailSentAt: row.email_sent_at ? new Date(row.email_sent_at).toISOString() : null,
+    createdAt: row.created_at ? new Date(row.created_at).toISOString() : null
+  };
+}
+
+export async function getAllProspects() {
+  if (isDbConnected()) {
+    try {
+      const res = await pool.query('SELECT * FROM prospects ORDER BY created_at DESC, id DESC');
+      return res.rows.map(mapProspect);
+    } catch (err) { console.warn('⚠️ [DB] Fallo leyendo prospects:', err.message); }
+  }
+  try {
+    if (!fs.existsSync(PROSPECTS_FILE)) return [];
+    return JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]');
+  } catch (err) { console.error('Error leyendo prospects.json:', err.message); return []; }
+}
+
+export async function importProspects(prospects) {
+  const imported = [], skipped = [];
+  let local = [];
+  try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
+  for (const item of prospects) {
+    const email = String(item.email || '').trim().toLowerCase();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { skipped.push({ reason: 'email_invalido', item }); continue; }
+    const record = { id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`, companyName: String(item.companyName || '').trim(), sector: String(item.sector || '').trim(), email, phone: String(item.phone || '').trim(), address: String(item.address || '').trim(), city: String(item.city || '').trim(), website: String(item.website || '').trim(), sourceData: item.sourceData || {}, emailSent: false, emailSentAt: null, createdAt: new Date().toISOString() };
+    if (isDbConnected()) {
+      try {
+        const result = await pool.query(`INSERT INTO prospects (company_name, sector, email, phone, address, city, website, source_data) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT (email) DO NOTHING RETURNING *`, [record.companyName, record.sector, record.email, record.phone, record.address, record.city, record.website, record.sourceData]);
+        if (result.rowCount) imported.push(mapProspect(result.rows[0])); else skipped.push({ reason: 'email_duplicado', item });
+      } catch (err) { skipped.push({ reason: err.message, item }); }
+    } else if (local.some(p => p.email === email)) skipped.push({ reason: 'email_duplicado', item });
+    else { local.unshift(record); imported.push(record); }
+  }
+  if (!isDbConnected()) fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
+  return { imported, skipped };
+}
+
+export async function markProspectsEmailSent(ids) {
+  const wanted = new Set(ids.map(String));
+  if (isDbConnected()) {
+    const res = await pool.query('UPDATE prospects SET email_sent = true, email_sent_at = NOW(), updated_at = NOW() WHERE id = ANY($1::bigint[]) RETURNING *', [ids.map(Number).filter(Number.isFinite)]);
+    return res.rows.map(mapProspect);
+  }
+  let local = [];
+  try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
+  const now = new Date().toISOString();
+  const updated = local.filter(p => wanted.has(String(p.id))).map(p => ({ ...p, emailSent: true, emailSentAt: now }));
+  local = local.map(p => wanted.has(String(p.id)) ? { ...p, emailSent: true, emailSentAt: now } : p);
+  fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
+  return updated;
 }
 
 export function isDbConnected() {

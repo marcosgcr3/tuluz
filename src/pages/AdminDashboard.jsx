@@ -71,7 +71,17 @@ export default function AdminDashboard({ navigate }) {
   const [updatingLeadId, setUpdatingLeadId] = useState(null);
 
   // Navigation Tab
-  const [adminTab, setAdminTab] = useState('leads'); // 'leads' | 'guides'
+  const [adminTab, setAdminTab] = useState('leads'); // 'leads' | 'guides' | 'prospects'
+  const [prospects, setProspects] = useState([]);
+  const [prospectsLoading, setProspectsLoading] = useState(false);
+  const [prospectFile, setProspectFile] = useState(null);
+  const [prospectSearch, setProspectSearch] = useState('');
+  const [prospectSector, setProspectSector] = useState('all');
+  const [prospectSentFilter, setProspectSentFilter] = useState('pending');
+  const [selectedProspectIds, setSelectedProspectIds] = useState([]);
+  const [prospectSubject, setProspectSubject] = useState('Asesoramiento energético gratuito para {empresa}');
+  const [prospectBody, setProspectBody] = useState('Hola,\n\nMe pongo en contacto contigo porque ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nDesde tuLuz ofrecemos un asesoramiento energético totalmente gratuito y sin compromiso. ¿Te parece si hablamos?\n\nUn saludo,\nEl equipo de tuLuz');
+  const [prospectNotice, setProspectNotice] = useState('');
 
   // Guides Management State
   const [guidesConfigMap, setGuidesConfigMap] = useState({});
@@ -485,6 +495,50 @@ export default function AdminDashboard({ navigate }) {
     const url = `/api/leads/export-csv?key=${encodeURIComponent(adminKey)}`;
     window.open(url, '_blank');
   };
+
+  const fetchProspects = async () => {
+    setProspectsLoading(true);
+    try {
+      const res = await fetch(`/api/admin/prospects?key=${encodeURIComponent(adminKey)}`);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'No se pudieron cargar los posibles clientes');
+      setProspects(data.prospects || []);
+    } catch (err) { setProspectNotice(`❌ ${err.message}`); }
+    finally { setProspectsLoading(false); }
+  };
+
+  const handleImportProspects = async () => {
+    if (!prospectFile) return setProspectNotice('Selecciona un archivo CSV.');
+    const formData = new FormData(); formData.append('file', prospectFile);
+    setProspectsLoading(true); setProspectNotice('Importando CSV...');
+    try {
+      const res = await fetch('/api/admin/prospects/import', { method: 'POST', headers: { 'x-api-key': adminKey }, body: formData });
+      const data = await res.json(); if (!res.ok) throw new Error(data.error || 'Error importando');
+      setProspectFile(null); setProspectNotice(`✅ ${data.imported} importados · ${data.skipped} omitidos (duplicados o sin email)`); await fetchProspects();
+    } catch (err) { setProspectNotice(`❌ ${err.message}`); } finally { setProspectsLoading(false); }
+  };
+
+  const handleSendProspects = async () => {
+    if (!selectedProspectIds.length) return setProspectNotice('Selecciona al menos un posible cliente.');
+    if (!window.confirm(`¿Enviar ${selectedProspectIds.length} correo(s)? Los enviados quedarán marcados y no se repetirán.`)) return;
+    setProspectsLoading(true); setProspectNotice('Enviando correos...');
+    try {
+      const res = await fetch('/api/admin/prospects/send', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': adminKey }, body: JSON.stringify({ ids: selectedProspectIds, subject: prospectSubject, body: prospectBody }) });
+      const data = await res.json(); if (!res.ok) throw new Error(data.error || 'Error enviando');
+      setSelectedProspectIds([]); setProspectNotice(`✅ Enviados: ${data.sent} · Fallidos: ${data.failed?.length || 0} · Ya enviados: ${data.skippedAlreadySent || 0}`); await fetchProspects();
+    } catch (err) { setProspectNotice(`❌ ${err.message}`); } finally { setProspectsLoading(false); }
+  };
+
+  const filteredProspects = useMemo(() => {
+    const q = prospectSearch.toLowerCase().trim();
+    return prospects.filter(p => {
+      const matchesSearch = !q || [p.companyName, p.email, p.phone, p.city, p.sector].some(v => String(v || '').toLowerCase().includes(q));
+      const matchesSector = prospectSector === 'all' || p.sector === prospectSector;
+      const matchesSent = prospectSentFilter === 'all' || (prospectSentFilter === 'pending' ? !p.emailSent : p.emailSent);
+      return matchesSearch && matchesSector && matchesSent;
+    });
+  }, [prospects, prospectSearch, prospectSector, prospectSentFilter]);
+  const prospectSectors = useMemo(() => [...new Set(prospects.map(p => p.sector).filter(Boolean))].sort(), [prospects]);
 
   // Filtered Leads
   const filteredLeads = useMemo(() => {
@@ -974,6 +1028,7 @@ export default function AdminDashboard({ navigate }) {
           >
             <LogOut size={16} />
           </button>
+
         </div>
       </header>
 
@@ -1058,13 +1113,21 @@ export default function AdminDashboard({ navigate }) {
               {guides.length}
             </span>
           </button>
+
+          <button
+            onClick={() => { setAdminTab('prospects'); if (!prospects.length) fetchProspects(); }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 18px', fontSize: '14px', fontWeight: adminTab === 'prospects' ? '700' : '600', color: adminTab === 'prospects' ? '#16a34a' : '#64748b', background: 'none', border: 'none', borderBottom: adminTab === 'prospects' ? '3px solid #16a34a' : '3px solid transparent', cursor: 'pointer' }}
+          >
+            <Mail size={18} /><span>Prospección por email</span>
+            <span style={{ background: adminTab === 'prospects' ? '#dcfce7' : '#f1f5f9', color: adminTab === 'prospects' ? '#15803d' : '#64748b', fontSize: '11px', fontWeight: '700', padding: '2px 8px', borderRadius: '12px' }}>{prospects.length}</span>
+          </button>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 0' }}>
           <span style={{ fontSize: '12px', color: '#64748b' }}>
             {adminTab === 'leads' 
               ? 'Panel de contactos y rendimiento comercial' 
-              : 'Publicación, borradores y programación de artículos'}
+            : adminTab === 'guides' ? 'Publicación, borradores y programación de artículos' : 'Importa, segmenta y contacta empresas desde un CSV'}
           </span>
         </div>
       </div>
@@ -2011,6 +2074,55 @@ export default function AdminDashboard({ navigate }) {
           </div>
         </div>
         </>
+      )}
+
+      {/* ---------------------------------------------------- */}
+      {/* TAB: PROSPECCIÓN Y CAMPAÑAS DE EMAIL */}
+      {/* ---------------------------------------------------- */}
+      {adminTab === 'prospects' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ background: 'linear-gradient(135deg,#14532d,#166534)', color: '#fff', borderRadius: '16px', padding: '24px 28px' }}>
+            <h2 style={{ margin: '0 0 8px', fontSize: '23px' }}>Prospección por email</h2>
+            <p style={{ margin: 0, color: '#dcfce7', lineHeight: 1.5 }}>Importa empresas desde un CSV, segmenta por sector y envía una presentación personalizada ofreciendo asesoramiento energético gratuito.</p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 0.8fr) minmax(320px, 1.2fr)', gap: '20px' }}>
+            <section style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '20px' }}>
+              <h3 style={{ margin: '0 0 6px' }}>1. Importar empresas</h3>
+              <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5 }}>Admite las columnas del CSV de ejemplo, incluyendo <code>title</code>, <code>category</code> y <code>emails</code>. Los correos repetidos se omiten.</p>
+              <input type="file" accept=".csv,text/csv" onChange={e => setProspectFile(e.target.files?.[0] || null)} style={{ width: '100%', margin: '12px 0' }} />
+              <button className="btn btn-primary" type="button" onClick={handleImportProspects} disabled={prospectsLoading || !prospectFile}><Download size={16} />{prospectsLoading ? 'Procesando...' : 'Procesar CSV'}</button>
+              {prospectNotice && <p style={{ margin: '14px 0 0', fontSize: '13px', color: prospectNotice.startsWith('❌') ? '#b91c1c' : '#166534' }}>{prospectNotice}</p>}
+            </section>
+
+            <section style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '20px' }}>
+              <h3 style={{ margin: '0 0 12px' }}>2. Plantilla personalizada</h3>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#475569' }}>Asunto</label>
+              <input value={prospectSubject} onChange={e => setProspectSubject(e.target.value)} placeholder="Usa {empresa} y {sector}" style={{ width: '100%', padding: '10px', border: '1px solid #cbd5e1', borderRadius: '8px', margin: '5px 0 12px', boxSizing: 'border-box' }} />
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#475569' }}>Mensaje</label>
+              <textarea value={prospectBody} onChange={e => setProspectBody(e.target.value)} rows={8} style={{ width: '100%', padding: '10px', border: '1px solid #cbd5e1', borderRadius: '8px', marginTop: '5px', boxSizing: 'border-box', resize: 'vertical' }} />
+              <p style={{ fontSize: '12px', color: '#64748b', margin: '8px 0 0' }}>Variables disponibles: <code>{'{empresa}'}</code> y <code>{'{sector}'}</code>.</p>
+            </section>
+          </div>
+
+          <section style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '16px' }}>
+              <div><h3 style={{ margin: 0 }}>3. Empresas importadas ({filteredProspects.length})</h3><span style={{ color: '#64748b', fontSize: '12px' }}>{prospects.filter(p => !p.emailSent).length} pendientes · {prospects.filter(p => p.emailSent).length} enviados</span></div>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <input value={prospectSearch} onChange={e => setProspectSearch(e.target.value)} placeholder="Buscar empresa, email..." style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
+                <select value={prospectSector} onChange={e => setProspectSector(e.target.value)} style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }}><option value="all">Todos los sectores</option>{prospectSectors.map(s => <option key={s} value={s}>{s}</option>)}</select>
+                <select value={prospectSentFilter} onChange={e => setProspectSentFilter(e.target.value)} style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }}><option value="pending">Pendientes</option><option value="sent">Enviados</option><option value="all">Todos</option></select>
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap' }}>
+              <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds(filteredProspects.filter(p => !p.emailSent).map(p => p.id))}>Seleccionar pendientes visibles</button>
+              <button type="button" className="btn btn-primary" onClick={handleSendProspects} disabled={prospectsLoading || !selectedProspectIds.length}><Mail size={16} />Enviar seleccionados ({selectedProspectIds.length})</button>
+              <button type="button" className="btn btn-secondary" onClick={fetchProspects}><RefreshCw size={16} />Actualizar</button>
+            </div>
+            <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}><thead><tr style={{ textAlign: 'left', color: '#64748b', borderBottom: '1px solid #e2e8f0' }}><th style={{ padding: '10px' }}></th><th style={{ padding: '10px' }}>Empresa</th><th style={{ padding: '10px' }}>Sector</th><th style={{ padding: '10px' }}>Email</th><th style={{ padding: '10px' }}>Estado</th></tr></thead><tbody>{filteredProspects.map(p => <tr key={p.id} style={{ borderBottom: '1px solid #f1f5f9' }}><td style={{ padding: '10px' }}><input type="checkbox" checked={selectedProspectIds.includes(p.id)} disabled={p.emailSent} onChange={e => setSelectedProspectIds(prev => e.target.checked ? [...prev, p.id] : prev.filter(id => id !== p.id))} /></td><td style={{ padding: '10px', fontWeight: 700 }}>{p.companyName || 'Sin nombre'}<br /><span style={{ fontWeight: 400, color: '#64748b' }}>{p.city || p.address || ''}</span></td><td style={{ padding: '10px' }}>{p.sector || '—'}</td><td style={{ padding: '10px' }}>{p.email}</td><td style={{ padding: '10px', color: p.emailSent ? '#15803d' : '#d97706', fontWeight: 700 }}>{p.emailSent ? '✓ Enviado' : 'Pendiente'}</td></tr>)}</tbody></table></div>
+            {!filteredProspects.length && <p style={{ textAlign: 'center', color: '#64748b', padding: '24px' }}>{prospectsLoading ? 'Cargando...' : 'No hay registros para este filtro.'}</p>}
+          </section>
+        </div>
       )}
 
       {/* ---------------------------------------------------- */}

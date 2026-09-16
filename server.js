@@ -142,7 +142,7 @@ function personalizedEmail({ companyName, sector, subject, body }) {
   const safeCompany = escapeHtml(companyName || 'tu empresa');
   const safeSector = escapeHtml(sector || 'vuestro sector');
   const rendered = String(body || '').replace(/\{empresa\}/gi, safeCompany).replace(/\{sector\}/gi, safeSector).replace(/\n/g, '<br>');
-  return `<div style="font-family:Arial,sans-serif;color:#1e293b;line-height:1.6;max-width:640px"><p>${rendered}</p><hr style="border:0;border-top:1px solid #e2e8f0"><p style="font-size:12px;color:#64748b">Si no deseas recibir más comunicaciones, responde a este correo indicando "BAJA".</p></div>`;
+  return `<div style="font-family:Arial,sans-serif;color:#1e293b;line-height:1.6;max-width:640px"><p>${rendered}</p><p style="margin-top:24px"><strong>David Amer Duro</strong><br><strong>TúLuz, Soluciones Energéticas</strong><br><a href="tel:+34620061560" style="color:#166534">+34 620 06 15 60</a><br><a href="mailto:davidad@tu-luz.es" style="color:#166534">davidad@tu-luz.es</a></p><hr style="border:0;border-top:1px solid #e2e8f0"><p style="font-size:12px;color:#64748b">Si no deseas recibir más comunicaciones, responde a este correo indicando "BAJA".</p></div>`;
 }
 
 const contactAttempts = new Map();
@@ -843,7 +843,7 @@ app.post('/api/admin/prospects/send', async (req, res) => {
   if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
   const ids = Array.isArray(req.body.ids) ? req.body.ids : [];
   const subject = safeHeaderText(req.body.subject || 'Asesoramiento energético gratuito para {empresa}').replace(/\{empresa\}/gi, 'tu empresa');
-  const body = String(req.body.body || 'Hola,\n\nSoy David, fundador y responsable de tuLuz. Ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nSi quieres, puedes responder a este correo adjuntando una factura de luz reciente. La analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nEl análisis es gratuito y sin compromiso.\n\nUn saludo,\nDavid\ntuLuz');
+  const body = String(req.body.body || 'Hola,\n\nSoy David, fundador y responsable de tuLuz. Ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nSi quieres, puedes responder a este correo adjuntando una factura de luz reciente. La analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nEl análisis es gratuito y sin compromiso.\n\nUn saludo,');
   if (!ids.length) return res.status(400).json({ error: 'Selecciona al menos un posible cliente.' });
   if (ids.length > 100) return res.status(400).json({ error: 'Puedes enviar como máximo 100 correos por tanda.' });
   if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });

@@ -80,7 +80,7 @@ export default function AdminDashboard({ navigate }) {
   const [prospectSentFilter, setProspectSentFilter] = useState('pending');
   const [selectedProspectIds, setSelectedProspectIds] = useState([]);
   const [prospectSubject, setProspectSubject] = useState('Asesoramiento energético gratuito para {empresa}');
-  const [prospectBody, setProspectBody] = useState('Hola,\n\nSoy David, fundador y responsable de tuLuz. Ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nSi quieres, puedes responder a este correo adjuntando una factura de luz reciente. La analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nEl análisis es gratuito y sin compromiso.\n\nUn saludo,\nDavid\ntuLuz');
+  const [prospectBody, setProspectBody] = useState('Hola,\n\nSoy David, fundador y responsable de tuLuz. Ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nSi quieres, puedes responder a este correo adjuntando una factura de luz reciente. La analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nEl análisis es gratuito y sin compromiso.\n\nUn saludo,');
   const [prospectNotice, setProspectNotice] = useState('');
 
   // Guides Management State
@@ -2101,7 +2101,7 @@ export default function AdminDashboard({ navigate }) {
               <input value={prospectSubject} onChange={e => setProspectSubject(e.target.value)} placeholder="Usa {empresa} y {sector}" style={{ width: '100%', padding: '10px', border: '1px solid #cbd5e1', borderRadius: '8px', margin: '5px 0 12px', boxSizing: 'border-box' }} />
               <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#475569' }}>Mensaje</label>
               <textarea value={prospectBody} onChange={e => setProspectBody(e.target.value)} rows={8} style={{ width: '100%', padding: '10px', border: '1px solid #cbd5e1', borderRadius: '8px', marginTop: '5px', boxSizing: 'border-box', resize: 'vertical' }} />
-              <p style={{ fontSize: '12px', color: '#64748b', margin: '8px 0 0' }}>Variables disponibles: <code>{'{empresa}'}</code> y <code>{'{sector}'}</code>.</p>
+              <p style={{ fontSize: '12px', color: '#64748b', margin: '8px 0 0' }}>Variables disponibles: <code>{'{empresa}'}</code> y <code>{'{sector}'}</code>. La firma de David se añade automáticamente al pie.</p>
             </section>
           </div>
 

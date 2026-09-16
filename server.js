@@ -845,7 +845,6 @@ app.post('/api/admin/prospects/send', async (req, res) => {
   const subject = safeHeaderText(req.body.subject || 'Asesoramiento energético gratuito para {empresa}').replace(/\{empresa\}/gi, 'tu empresa');
   const body = String(req.body.body || 'Hola,\n\nSoy David, fundador y responsable de tuLuz. Ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nSi quieres, puedes responder a este correo adjuntando una factura de luz reciente. La analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nEl análisis es gratuito y sin compromiso.\n\nUn saludo,');
   if (!ids.length) return res.status(400).json({ error: 'Selecciona al menos un posible cliente.' });
-  if (ids.length > 100) return res.status(400).json({ error: 'Puedes enviar como máximo 100 correos por tanda.' });
   if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });
   try {
     const all = await getAllProspects();

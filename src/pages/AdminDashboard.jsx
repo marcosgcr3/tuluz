@@ -2107,7 +2107,16 @@ export default function AdminDashboard({ navigate }) {
 
           <section style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '16px' }}>
-              <div><h3 style={{ margin: 0 }}>3. Empresas importadas ({filteredProspects.length})</h3><span style={{ color: '#64748b', fontSize: '12px' }}>{prospects.filter(p => !p.emailSent).length} pendientes · {prospects.filter(p => p.emailSent).length} enviados</span></div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <input
+                  type="checkbox"
+                  aria-label="Seleccionar todos los pendientes visibles"
+                  checked={filteredProspects.filter(p => !p.emailSent).length > 0 && filteredProspects.filter(p => !p.emailSent).every(p => selectedProspectIds.includes(p.id))}
+                  onChange={e => setSelectedProspectIds(e.target.checked ? filteredProspects.filter(p => !p.emailSent).map(p => p.id) : [])}
+                  style={{ marginTop: '4px' }}
+                />
+                <div><h3 style={{ margin: 0 }}>3. Empresas importadas ({filteredProspects.length})</h3><span style={{ color: '#64748b', fontSize: '12px' }}>{prospects.filter(p => !p.emailSent).length} pendientes · {prospects.filter(p => p.emailSent).length} enviados · marca la casilla para seleccionar todos los pendientes visibles</span></div>
+              </div>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <input value={prospectSearch} onChange={e => setProspectSearch(e.target.value)} placeholder="Buscar empresa, email..." style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
                 <select value={prospectSector} onChange={e => setProspectSector(e.target.value)} style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }}><option value="all">Todos los sectores</option>{prospectSectors.map(s => <option key={s} value={s}>{s}</option>)}</select>

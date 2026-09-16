@@ -23,7 +23,7 @@ import {
   deleteLead,
   getGuidesConfig,
   saveGuideConfig
-  ,getAllProspects, importProspects, markProspectsEmailSent, convertProspect
+  ,getAllProspects, importProspects, markProspectsEmailSent, convertProspect, getGmailRefreshToken, saveGmailRefreshToken, updateProspectEmailStatus
 } from './db.js';
 import { guidesData } from './src/data/guidesData.js';
 import { getOfficialSources } from './src/data/content.js';
@@ -1012,6 +1012,89 @@ function isGuidePublished(guide, configs, now = Date.now()) {
   return status === 'programada' && config.publishAt && new Date(config.publishAt).getTime() <= now;
 }
 
+app.get('/api/admin/gmail/connect', (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).send('Acceso no autorizado');
+  if (!gmailOAuthConfigured()) return res.status(500).send('Faltan variables GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_GMAIL_REDIRECT_URI o GOOGLE_GMAIL_EMAIL en el servidor.');
+  const params = new URLSearchParams({ client_id: process.env.GOOGLE_CLIENT_ID, redirect_uri: process.env.GOOGLE_GMAIL_REDIRECT_URI, response_type: 'code', access_type: 'offline', prompt: 'consent', scope: 'https://www.googleapis.com/auth/gmail.readonly', state: createOAuthState() });
+  res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`);
+});
+
+app.get('/api/admin/gmail/callback', async (req, res) => {
+  if (!validOAuthState(req.query.state)) return res.status(400).send('Estado OAuth inválido o caducado. Vuelve a iniciar la conexión desde el panel.');
+  if (req.query.error) return res.redirect('/admin?gmail=cancelled');
+  try {
+    const tokenRes = await fetch('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ code: req.query.code, client_id: process.env.GOOGLE_CLIENT_ID, client_secret: process.env.GOOGLE_CLIENT_SECRET, redirect_uri: process.env.GOOGLE_GMAIL_REDIRECT_URI, grant_type: 'authorization_code' }) });
+    const tokenData = await tokenRes.json();
+    if (!tokenRes.ok || !tokenData.refresh_token) throw new Error(tokenData.error_description || 'Google no devolvió refresh token');
+    await saveGmailRefreshToken(process.env.GOOGLE_GMAIL_EMAIL, tokenData.refresh_token);
+    res.redirect('/admin?gmail=connected');
+  } catch (err) { console.error('Error en callback Gmail OAuth:', err); res.status(500).send('No se pudo conectar Gmail. Revisa los logs del servidor.'); }
+});
+
+app.get('/api/admin/gmail/status', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  res.json({ configured: gmailOAuthConfigured(), connected: Boolean(await getGmailRefreshToken(process.env.GOOGLE_GMAIL_EMAIL)), email: process.env.GOOGLE_GMAIL_EMAIL || null });
+});
+
+async function syncGmailInbox() {
+  const accessToken = await getGmailAccessToken();
+  if (!accessToken) return { scanned: 0, matched: 0, updated: 0, connected: false };
+  const listRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=100&q=in:anywhere newer_than:30d', { headers: { Authorization: `Bearer ${accessToken}` } });
+  const listData = await listRes.json();
+  if (!listRes.ok) throw new Error(listData.error?.message || 'No se pudo leer Gmail');
+  let matched = 0;
+  for (const message of (listData.messages || [])) {
+    const detailRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Auto-Submitted&metadataHeaders=Precedence`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const detail = await detailRes.json();
+    if (!detailRes.ok) continue;
+    const headers = Object.fromEntries((detail.payload?.headers || []).map(h => [h.name.toLowerCase(), h.value]));
+    const match = String(headers.from || '').match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/);
+    if (!match || match[0].toLowerCase() === process.env.GOOGLE_GMAIL_EMAIL.toLowerCase()) continue;
+    const sender = match[0].toLowerCase();
+    const auto = headers['auto-submitted'] || headers.precedence;
+    const status = auto ? 'respuesta_automatica' : /mailer-daemon|postmaster|delivery status notification|undelivered/i.test(String(headers.subject || '') + headers.from) ? 'rebotado' : 'respondido';
+    if (await updateProspectEmailStatus(sender, status, headers.subject || '', detail.internalDate ? new Date(Number(detail.internalDate)).toISOString() : null)) matched++;
+  }
+  return { scanned: listData.messages?.length || 0, matched, updated: matched, connected: true };
+}
+
+app.post('/api/admin/gmail/sync', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  try {
+    const result = await syncGmailInbox();
+    if (!result.connected) return res.status(400).json({ error: 'Gmail todavía no está conectado. Pulsa Conectar Gmail.' });
+    res.json({ success: true, ...result });
+  } catch (err) { console.error('Error sincronizando Gmail:', err); res.status(500).json({ error: err.message || 'No se pudo revisar Gmail' }); }
+});
+
+function createOAuthState() {
+  const payload = `${Date.now()}.${crypto.randomBytes(16).toString('hex')}`;
+  const signature = crypto.createHmac('sha256', process.env.ADMIN_KEY || 'missing-admin-key').update(payload).digest('hex');
+  return Buffer.from(`${payload}.${signature}`).toString('base64url');
+}
+
+function validOAuthState(state) {
+  try {
+    const decoded = Buffer.from(String(state || ''), 'base64url').toString('utf8');
+    const parts = decoded.split('.'); const payload = parts.slice(0, 2).join('.');
+    const expected = crypto.createHmac('sha256', process.env.ADMIN_KEY || 'missing-admin-key').update(payload).digest('hex');
+    return parts.length === 3 && crypto.timingSafeEqual(Buffer.from(parts[2]), Buffer.from(expected)) && Date.now() - Number(parts[0]) < 10 * 60 * 1000;
+  } catch { return false; }
+}
+
+function gmailOAuthConfigured() {
+  return Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET && process.env.GOOGLE_GMAIL_REDIRECT_URI && process.env.GOOGLE_GMAIL_EMAIL);
+}
+
+async function getGmailAccessToken() {
+  const refreshToken = await getGmailRefreshToken(process.env.GOOGLE_GMAIL_EMAIL);
+  if (!refreshToken) return null;
+  const response = await fetch('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ client_id: process.env.GOOGLE_CLIENT_ID, client_secret: process.env.GOOGLE_CLIENT_SECRET, refresh_token: refreshToken, grant_type: 'refresh_token' }) });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error_description || data.error || 'No se pudo renovar el acceso a Gmail');
+  return data.access_token;
+}
+
 function publicGuideSummary(guide) {
   const { sections, faqs, ...summary } = guide;
   return summary;
@@ -1747,6 +1830,13 @@ app.listen(PORT, () => {
   setInterval(() => {
     if (process.env.META_PAGE_ACCESS_TOKEN) {
       syncMetaLeadsSilently().catch(err => console.error('Error en intervalo sync Meta:', err));
+    }
+  }, 5 * 60 * 1000);
+
+  // Revisa Gmail periódicamente aunque el ordenador del usuario esté apagado.
+  setInterval(() => {
+    if (gmailOAuthConfigured()) {
+      syncGmailInbox().catch(err => console.error('Error en intervalo sync Gmail:', err));
     }
   }, 5 * 60 * 1000);
 

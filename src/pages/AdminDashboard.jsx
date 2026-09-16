@@ -82,6 +82,8 @@ export default function AdminDashboard({ navigate }) {
   const [prospectSubject, setProspectSubject] = useState('Asesoramiento energético gratuito para {empresa}');
   const [prospectBody, setProspectBody] = useState('Hola,\n\nSoy David, fundador y responsable de tuLuz, una agencia de asesoría energética especializada en negocios del sector {sector}.\n\nAyudamos a empresas como la vuestra a revisar y optimizar sus costes de luz. Si quieres, puedes responder a este correo adjuntando una factura de luz reciente y la analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nY no nos limitamos a revisar la factura: si te interesa, también nos encargamos gratuitamente de todo el proceso, incluido el cambio de compañía, la búsqueda de una opción más adecuada y toda la gestión necesaria, sin coste y sin compromiso.\n\nUn saludo,');
   const [prospectNotice, setProspectNotice] = useState('');
+  const [gmailStatus, setGmailStatus] = useState({ configured: false, connected: false, email: null });
+  const [gmailSyncing, setGmailSyncing] = useState(false);
 
   // Guides Management State
   const [guidesConfigMap, setGuidesConfigMap] = useState({});
@@ -287,6 +289,7 @@ export default function AdminDashboard({ navigate }) {
     if (adminKey) {
       fetchDashboardData(adminKey);
       fetchGuidesConfig(adminKey);
+      fetchGmailStatus();
 
       // Auto-refresco silencioso cada 15 segundos para mantener el panel siempre al día
       const timer = setInterval(() => {
@@ -505,6 +508,30 @@ export default function AdminDashboard({ navigate }) {
       setProspects(data.prospects || []);
     } catch (err) { setProspectNotice(`❌ ${err.message}`); }
     finally { setProspectsLoading(false); }
+  };
+
+  const fetchGmailStatus = async () => {
+    try {
+      const res = await fetch(`/api/admin/gmail/status?key=${encodeURIComponent(adminKey)}`);
+      const data = await res.json();
+      if (res.ok) setGmailStatus(data);
+    } catch (err) { console.error('Error consultando Gmail:', err); }
+  };
+
+  const handleConnectGmail = () => {
+    window.location.href = `/api/admin/gmail/connect?key=${encodeURIComponent(adminKey)}`;
+  };
+
+  const handleGmailSync = async () => {
+    setGmailSyncing(true);
+    try {
+      const res = await fetch('/api/admin/gmail/sync', { method: 'POST', headers: { 'x-api-key': adminKey } });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'No se pudo revisar Gmail');
+      setProspectNotice(`✅ Bandeja revisada: ${data.scanned} mensajes · ${data.updated} prospectos actualizados.`);
+      await fetchProspects();
+    } catch (err) { setProspectNotice(`❌ ${err.message}`); }
+    finally { setGmailSyncing(false); }
   };
 
   const handleImportProspects = async () => {
@@ -2095,7 +2122,11 @@ export default function AdminDashboard({ navigate }) {
           <div style={{ background: 'linear-gradient(135deg,#14532d,#166534)', color: '#fff', borderRadius: '16px', padding: '24px 28px' }}>
             <h2 style={{ margin: '0 0 8px', fontSize: '23px' }}>Prospección por email</h2>
             <p style={{ margin: '0 0 16px', color: '#dcfce7', lineHeight: 1.5 }}>Importa empresas desde un CSV, segmenta por sector y envía una presentación personalizada ofreciendo asesoramiento energético gratuito.</p>
-            <button type="button" onClick={() => setAdminTab('leads')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '9px 14px', border: '1px solid rgba(255,255,255,.45)', borderRadius: '8px', background: 'rgba(255,255,255,.12)', color: '#fff', fontWeight: 700, cursor: 'pointer' }}><Users size={16} />Ir a Leads & Clientes</button>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+              <button type="button" onClick={() => setAdminTab('leads')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '9px 14px', border: '1px solid rgba(255,255,255,.45)', borderRadius: '8px', background: 'rgba(255,255,255,.12)', color: '#fff', fontWeight: 700, cursor: 'pointer' }}><Users size={16} />Ir a Leads & Clientes</button>
+              {gmailStatus.connected ? <button type="button" onClick={handleGmailSync} disabled={gmailSyncing} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '9px 14px', border: '1px solid rgba(255,255,255,.45)', borderRadius: '8px', background: '#fff', color: '#166534', fontWeight: 700, cursor: gmailSyncing ? 'wait' : 'pointer' }}><RefreshCw size={16} />{gmailSyncing ? 'Revisando...' : 'Revisar bandeja'}</button> : gmailStatus.configured ? <button type="button" onClick={handleConnectGmail} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '9px 14px', border: '1px solid rgba(255,255,255,.45)', borderRadius: '8px', background: '#fff', color: '#166534', fontWeight: 700, cursor: 'pointer' }}><Mail size={16} />Conectar Gmail</button> : <span style={{ fontSize: '12px', color: '#bbf7d0' }}>Configura Google OAuth en Dokploy</span>}
+            </div>
+            {gmailStatus.connected && <div style={{ marginTop: '12px', fontSize: '12px', color: '#bbf7d0' }}>Gmail conectado: {gmailStatus.email}</div>}
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 0.8fr) minmax(320px, 1.2fr)', gap: '20px' }}>
@@ -2141,7 +2172,7 @@ export default function AdminDashboard({ navigate }) {
               <button type="button" className="btn btn-primary" onClick={handleSendProspects} disabled={prospectsLoading || !selectedProspectIds.length}><Mail size={16} />Enviar seleccionados ({selectedProspectIds.length})</button>
               <button type="button" className="btn btn-secondary" onClick={fetchProspects}><RefreshCw size={16} />Actualizar</button>
             </div>
-            <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}><thead><tr style={{ textAlign: 'left', color: '#64748b', borderBottom: '1px solid #e2e8f0' }}><th style={{ padding: '10px' }}></th><th style={{ padding: '10px' }}>Empresa</th><th style={{ padding: '10px' }}>Sector</th><th style={{ padding: '10px' }}>Email</th><th style={{ padding: '10px' }}>Estado</th><th style={{ padding: '10px' }}>CRM</th></tr></thead><tbody>{filteredProspects.map(p => <tr key={p.id} style={{ borderBottom: '1px solid #f1f5f9' }}><td style={{ padding: '10px' }}><input type="checkbox" checked={selectedProspectIds.includes(p.id)} disabled={p.emailSent} onChange={e => setSelectedProspectIds(prev => e.target.checked ? [...prev, p.id] : prev.filter(id => id !== p.id))} /></td><td style={{ padding: '10px', fontWeight: 700 }}>{p.companyName || 'Sin nombre'}<br /><span style={{ fontWeight: 400, color: '#64748b' }}>{p.city || p.address || ''}</span></td><td style={{ padding: '10px' }}>{p.sector || '—'}</td><td style={{ padding: '10px' }}>{p.email}</td><td style={{ padding: '10px', color: p.emailSent ? '#15803d' : '#d97706', fontWeight: 700 }}>{p.emailSent ? '✓ Enviado' : 'Pendiente'}</td><td style={{ padding: '10px' }}>{p.converted ? <span style={{ color: '#15803d', fontWeight: 700 }}>✓ En lead</span> : <button type="button" className="btn btn-secondary" style={{ padding: '6px 10px', minHeight: '32px', fontSize: '12px' }} onClick={() => handleConvertProspect(p)}>Convertir en lead</button>}</td></tr>)}</tbody></table></div>
+            <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}><thead><tr style={{ textAlign: 'left', color: '#64748b', borderBottom: '1px solid #e2e8f0' }}><th style={{ padding: '10px' }}></th><th style={{ padding: '10px' }}>Empresa</th><th style={{ padding: '10px' }}>Sector</th><th style={{ padding: '10px' }}>Email</th><th style={{ padding: '10px' }}>Estado</th><th style={{ padding: '10px' }}>CRM</th></tr></thead><tbody>{filteredProspects.map(p => <tr key={p.id} style={{ borderBottom: '1px solid #f1f5f9' }}><td style={{ padding: '10px' }}><input type="checkbox" checked={selectedProspectIds.includes(p.id)} disabled={p.emailSent} onChange={e => setSelectedProspectIds(prev => e.target.checked ? [...prev, p.id] : prev.filter(id => id !== p.id))} /></td><td style={{ padding: '10px', fontWeight: 700 }}>{p.companyName || 'Sin nombre'}<br /><span style={{ fontWeight: 400, color: '#64748b' }}>{p.city || p.address || ''}</span></td><td style={{ padding: '10px' }}>{p.sector || '—'}</td><td style={{ padding: '10px' }}>{p.email}</td><td style={{ padding: '10px', color: p.emailSent ? '#15803d' : '#d97706', fontWeight: 700 }}>{p.emailSent ? '✓ Enviado' : p.emailStatus === 'rebotado' ? '⚠ Rebotado' : p.emailStatus === 'respuesta_automatica' ? '↩ Respuesta automática' : p.emailStatus === 'respondido' ? '💬 Respondido' : 'Pendiente'}</td><td style={{ padding: '10px' }}>{p.converted ? <span style={{ color: '#15803d', fontWeight: 700 }}>✓ En lead</span> : <button type="button" className="btn btn-secondary" style={{ padding: '6px 10px', minHeight: '32px', fontSize: '12px' }} onClick={() => handleConvertProspect(p)}>Convertir en lead</button>}</td></tr>)}</tbody></table></div>
             {!filteredProspects.length && <p style={{ textAlign: 'center', color: '#64748b', padding: '24px' }}>{prospectsLoading ? 'Cargando...' : 'No hay registros para este filtro.'}</p>}
           </section>
         </div>

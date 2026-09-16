@@ -89,6 +89,9 @@ export function initDatabase() {
             converted BOOLEAN NOT NULL DEFAULT false,
             converted_lead_id VARCHAR(100),
             converted_at TIMESTAMPTZ,
+            email_status VARCHAR(50) DEFAULT NULL,
+            last_email_at TIMESTAMPTZ,
+            last_email_subject TEXT,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW(),
             UNIQUE(email)
@@ -99,6 +102,15 @@ export function initDatabase() {
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted_lead_id VARCHAR(100);
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted_at TIMESTAMPTZ;
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS company_key VARCHAR(500) DEFAULT '';
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS email_status VARCHAR(50);
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS last_email_at TIMESTAMPTZ;
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS last_email_subject TEXT;
+
+          CREATE TABLE IF NOT EXISTS gmail_oauth_tokens (
+            account_email VARCHAR(255) PRIMARY KEY,
+            refresh_token TEXT NOT NULL,
+            updated_at TIMESTAMPTZ DEFAULT NOW()
+          );
         `);
 
         // Sincronizar e inicializar las 55 guías en PostgreSQL si falta alguna
@@ -158,6 +170,9 @@ function mapProspect(row) {
     converted: Boolean(row.converted),
     convertedLeadId: row.converted_lead_id || null,
     convertedAt: row.converted_at ? new Date(row.converted_at).toISOString() : null,
+    emailStatus: row.email_status || null,
+    lastEmailAt: row.last_email_at ? new Date(row.last_email_at).toISOString() : null,
+    lastEmailSubject: row.last_email_subject || null,
     createdAt: row.created_at ? new Date(row.created_at).toISOString() : null
   };
 }
@@ -234,6 +249,38 @@ export async function convertProspect(prospectId) {
     fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
   }
   return { prospect: { ...prospect, converted: true, convertedLeadId: String(lead.id), convertedAt }, lead, alreadyConverted: false };
+}
+
+export async function getGmailRefreshToken(accountEmail) {
+  if (isDbConnected()) {
+    const res = await pool.query('SELECT refresh_token FROM gmail_oauth_tokens WHERE account_email = $1', [accountEmail]);
+    return res.rows[0]?.refresh_token || null;
+  }
+  const file = path.join(path.dirname(PROSPECTS_FILE), 'gmail-oauth.json');
+  try { return JSON.parse(fs.readFileSync(file, 'utf8')).refreshToken || null; } catch { return null; }
+}
+
+export async function saveGmailRefreshToken(accountEmail, refreshToken) {
+  if (isDbConnected()) {
+    await pool.query(`INSERT INTO gmail_oauth_tokens (account_email, refresh_token, updated_at) VALUES ($1,$2,NOW()) ON CONFLICT (account_email) DO UPDATE SET refresh_token = EXCLUDED.refresh_token, updated_at = NOW()`, [accountEmail, refreshToken]);
+    return;
+  }
+  const file = path.join(path.dirname(PROSPECTS_FILE), 'gmail-oauth.json');
+  fs.writeFileSync(file, JSON.stringify({ accountEmail, refreshToken, updatedAt: new Date().toISOString() }, null, 2), 'utf8');
+}
+
+export async function updateProspectEmailStatus(email, status, subject, receivedAt) {
+  const normalized = String(email || '').trim().toLowerCase();
+  if (isDbConnected()) {
+    const res = await pool.query('UPDATE prospects SET email_status = $1, last_email_at = $2, last_email_subject = $3, updated_at = NOW() WHERE email = $4 RETURNING *', [status, receivedAt ? new Date(receivedAt) : new Date(), subject || '', normalized]);
+    return res.rows[0] ? mapProspect(res.rows[0]) : null;
+  }
+  let local = [];
+  try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
+  const now = receivedAt || new Date().toISOString(); let updated = null;
+  local = local.map(p => { if (String(p.email || '').toLowerCase() !== normalized) return p; updated = { ...p, emailStatus: status, lastEmailAt: now, lastEmailSubject: subject || '' }; return updated; });
+  fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
+  return updated;
 }
 
 export function isDbConnected() {

@@ -82,6 +82,7 @@ export function initDatabase() {
             address TEXT DEFAULT '',
             city VARCHAR(255) DEFAULT '',
             website TEXT DEFAULT '',
+            company_key VARCHAR(500) DEFAULT '',
             source_data JSONB DEFAULT '{}'::jsonb,
             email_sent BOOLEAN NOT NULL DEFAULT false,
             email_sent_at TIMESTAMPTZ,
@@ -97,6 +98,7 @@ export function initDatabase() {
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted BOOLEAN NOT NULL DEFAULT false;
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted_lead_id VARCHAR(100);
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted_at TIMESTAMPTZ;
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS company_key VARCHAR(500) DEFAULT '';
         `);
 
         // Sincronizar e inicializar las 55 guías en PostgreSQL si falta alguna
@@ -149,6 +151,7 @@ function mapProspect(row) {
     address: row.address,
     city: row.city,
     website: row.website,
+    companyKey: row.company_key || '',
     sourceData: row.source_data || {},
     emailSent: Boolean(row.email_sent),
     emailSentAt: row.email_sent_at ? new Date(row.email_sent_at).toISOString() : null,
@@ -179,10 +182,10 @@ export async function importProspects(prospects) {
   for (const item of prospects) {
     const email = String(item.email || '').trim().toLowerCase();
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { skipped.push({ reason: 'email_invalido', item }); continue; }
-    const record = { id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`, companyName: String(item.companyName || '').trim(), sector: String(item.sector || '').trim(), email, phone: String(item.phone || '').trim(), address: String(item.address || '').trim(), city: String(item.city || '').trim(), website: String(item.website || '').trim(), sourceData: item.sourceData || {}, emailSent: false, emailSentAt: null, createdAt: new Date().toISOString() };
+    const record = { id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`, companyName: String(item.companyName || '').trim(), sector: String(item.sector || '').trim(), email, phone: String(item.phone || '').trim(), address: String(item.address || '').trim(), city: String(item.city || '').trim(), website: String(item.website || '').trim(), companyKey: String(item.companyKey || '').trim(), sourceData: item.sourceData || {}, emailSent: false, emailSentAt: null, createdAt: new Date().toISOString() };
     if (isDbConnected()) {
       try {
-        const result = await pool.query(`INSERT INTO prospects (company_name, sector, email, phone, address, city, website, source_data) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT (email) DO NOTHING RETURNING *`, [record.companyName, record.sector, record.email, record.phone, record.address, record.city, record.website, record.sourceData]);
+        const result = await pool.query(`INSERT INTO prospects (company_name, sector, email, phone, address, city, website, company_key, source_data) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT (email) DO NOTHING RETURNING *`, [record.companyName, record.sector, record.email, record.phone, record.address, record.city, record.website, record.companyKey, record.sourceData]);
         if (result.rowCount) imported.push(mapProspect(result.rows[0])); else skipped.push({ reason: 'email_duplicado', item });
       } catch (err) { skipped.push({ reason: err.message, item }); }
     } else if (local.some(p => p.email === email)) skipped.push({ reason: 'email_duplicado', item });

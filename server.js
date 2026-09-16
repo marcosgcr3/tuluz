@@ -129,16 +129,20 @@ function extractEmails(value) {
     .map(email => email.trim().toLowerCase());
 }
 
+function prospectCompanyKey(companyName, city) {
+  return `${companyName || ''}|${city || ''}`.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
 function normalizeProspectRow(row) {
   const sourceData = { ...row };
   return {
-    companyName: csvValue(row, ['title', 'name', 'empresa', 'company', 'nombre']),
-    sector: csvValue(row, ['category', 'sector', 'tipo', 'categoría', 'categoria']),
-    email: csvValue(row, ['emails', 'email', 'correo', 'correo electrónico', 'correo electronico']),
+    companyName: csvValue(row, ['title', 'name', 'empresa', 'company', 'nombre', 'nombre_empresa']),
+    sector: csvValue(row, ['category', 'sector', 'tipo', 'categoría', 'categoria', 'sector_actividad']),
+    email: csvValue(row, ['emails', 'email', 'correo', 'email_contacto', 'correo electrónico', 'correo electronico']),
     phone: csvValue(row, ['phone', 'telephone', 'teléfono', 'telefono']),
     address: csvValue(row, ['address', 'complete_address', 'dirección', 'direccion']),
     city: csvValue(row, ['city', 'ciudad']),
-    website: csvValue(row, ['website', 'web', 'url']),
+    website: csvValue(row, ['website', 'web', 'url', 'sitio_web']),
     sourceData
   };
 }
@@ -851,7 +855,7 @@ app.post('/api/admin/prospects/import', (req, res, next) => {
     const normalizedRows = rows.map(normalizeProspectRow);
     const prospects = normalizedRows.flatMap(row => {
       const emails = extractEmails(row.email);
-      return emails.map(email => ({ ...row, email }));
+      return emails.map(email => ({ ...row, email, companyKey: prospectCompanyKey(row.companyName, row.city) }));
     });
     if (!prospects.length) return res.status(400).json({ error: 'No se encontraron emails válidos en la columna emails.' });
     const result = await importProspects(prospects);
@@ -869,12 +873,15 @@ app.post('/api/admin/prospects/send', async (req, res) => {
   try {
     const all = await getAllProspects();
     const selected = all.filter(p => ids.map(String).includes(String(p.id)) && !p.emailSent);
+    const grouped = [...new Set(selected.map(p => p.companyKey || prospectCompanyKey(p.companyName, p.city) || p.email))]
+      .map(key => ({ key, prospects: selected.filter(p => (p.companyKey || prospectCompanyKey(p.companyName, p.city) || p.email) === key) }));
     const transporter = getTransporter(); let sent = [], failed = [];
-    for (const prospect of selected) {
+    for (const group of grouped) {
+      const prospect = group.prospects[0];
       try {
-        await transporter.sendMail({ from: `"tuLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`, to: prospect.email, subject: subject.replace(/\{sector\}/gi, prospect.sector || 'tu sector'), html: personalizedEmail({ ...prospect, subject, body }) });
-        sent.push(prospect.id);
-      } catch (err) { failed.push({ id: prospect.id, email: prospect.email, error: err.message }); }
+        await transporter.sendMail({ from: `"tuLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`, to: group.prospects.map(p => p.email).join(', '), subject: subject.replace(/\{sector\}/gi, prospect.sector || 'tu sector'), html: personalizedEmail({ ...prospect, subject, body }) });
+        sent.push(...group.prospects.map(p => p.id));
+      } catch (err) { failed.push({ id: prospect.id, email: group.prospects.map(p => p.email).join(', '), error: err.message }); }
     }
     if (sent.length) await markProspectsEmailSent(sent);
     res.json({ success: true, sent: sent.length, failed, skippedAlreadySent: ids.length - selected.length });

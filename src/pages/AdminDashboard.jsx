@@ -525,10 +525,10 @@ export default function AdminDashboard({ navigate }) {
   const handleGmailSync = async () => {
     setGmailSyncing(true);
     try {
-      const res = await fetch('/api/admin/gmail/sync', { method: 'POST', headers: { 'x-api-key': adminKey } });
+      const res = await fetch('/api/admin/gmail/sync', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': adminKey }, body: JSON.stringify({ historical: true }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'No se pudo revisar Gmail');
-      setProspectNotice(`✅ Bandeja revisada: ${data.scanned} mensajes · ${data.updated} prospectos actualizados.`);
+      setProspectNotice(`✅ Bandeja revisada: ${data.scanned} mensajes · ${data.updated} prospectos actualizados · ${data.converted || 0} convertidos en lead.`);
       await fetchProspects();
     } catch (err) { setProspectNotice(`❌ ${err.message}`); }
     finally { setGmailSyncing(false); }

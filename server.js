@@ -1036,14 +1036,24 @@ app.get('/api/admin/gmail/status', async (req, res) => {
   res.json({ configured: gmailOAuthConfigured(), connected: Boolean(await getGmailRefreshToken(process.env.GOOGLE_GMAIL_EMAIL)), email: process.env.GOOGLE_GMAIL_EMAIL || null });
 });
 
-async function syncGmailInbox() {
+async function syncGmailInbox({ historical = false } = {}) {
   const accessToken = await getGmailAccessToken();
   if (!accessToken) return { scanned: 0, matched: 0, updated: 0, connected: false };
-  const listRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=100&q=in:anywhere newer_than:30d', { headers: { Authorization: `Bearer ${accessToken}` } });
-  const listData = await listRes.json();
-  if (!listRes.ok) throw new Error(listData.error?.message || 'No se pudo leer Gmail');
+  const query = historical ? 'in:anywhere' : 'in:anywhere newer_than:30d';
+  const messages = [];
+  let pageToken = '';
+  do {
+    const params = new URLSearchParams({ maxResults: '500', q: query });
+    if (pageToken) params.set('pageToken', pageToken);
+    const listRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages?${params.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const listData = await listRes.json();
+    if (!listRes.ok) throw new Error(listData.error?.message || 'No se pudo leer Gmail');
+    messages.push(...(listData.messages || []));
+    pageToken = listData.nextPageToken || '';
+  } while (pageToken && messages.length < 10000);
   let matched = 0;
-  for (const message of (listData.messages || [])) {
+  let converted = 0;
+  for (const message of messages) {
     const detailRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=full`, { headers: { Authorization: `Bearer ${accessToken}` } });
     const detail = await detailRes.json();
     if (!detailRes.ok) continue;
@@ -1056,10 +1066,17 @@ async function syncGmailInbox() {
     const status = isBounce ? 'descartado' : auto ? 'respuesta_automatica' : 'respondido';
     const candidateEmails = isBounce ? [...new Set((rawMessage.match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/gi) || []).map(email => email.toLowerCase()).filter(email => email !== process.env.GOOGLE_GMAIL_EMAIL.toLowerCase()))] : (sender ? [sender] : []);
     for (const email of candidateEmails) {
-      if (await updateProspectEmailStatus(email, status, headers.subject || '', detail.internalDate ? new Date(Number(detail.internalDate)).toISOString() : null)) matched++;
+      const updatedProspect = await updateProspectEmailStatus(email, status, headers.subject || '', detail.internalDate ? new Date(Number(detail.internalDate)).toISOString() : null);
+      if (updatedProspect) {
+        matched++;
+        if (status === 'respondido' && !updatedProspect.converted) {
+          const conversion = await convertProspect(updatedProspect.id);
+          if (conversion && !conversion.alreadyConverted) converted++;
+        }
+      }
     }
   }
-  return { scanned: listData.messages?.length || 0, matched, updated: matched, connected: true };
+  return { scanned: messages.length, matched, updated: matched, converted, connected: true };
 }
 
 function extractGmailMessageText(part) {
@@ -1075,7 +1092,7 @@ function extractGmailMessageText(part) {
 app.post('/api/admin/gmail/sync', async (req, res) => {
   if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
   try {
-    const result = await syncGmailInbox();
+    const result = await syncGmailInbox({ historical: req.body?.historical === true });
     if (!result.connected) return res.status(400).json({ error: 'Gmail todavía no está conectado. Pulsa Conectar Gmail.' });
     res.json({ success: true, ...result });
   } catch (err) { console.error('Error sincronizando Gmail:', err); res.status(500).json({ error: err.message || 'No se pudo revisar Gmail' }); }

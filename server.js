@@ -1044,18 +1044,32 @@ async function syncGmailInbox() {
   if (!listRes.ok) throw new Error(listData.error?.message || 'No se pudo leer Gmail');
   let matched = 0;
   for (const message of (listData.messages || [])) {
-    const detailRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Auto-Submitted&metadataHeaders=Precedence`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const detailRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=full`, { headers: { Authorization: `Bearer ${accessToken}` } });
     const detail = await detailRes.json();
     if (!detailRes.ok) continue;
     const headers = Object.fromEntries((detail.payload?.headers || []).map(h => [h.name.toLowerCase(), h.value]));
-    const match = String(headers.from || '').match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/);
-    if (!match || match[0].toLowerCase() === process.env.GOOGLE_GMAIL_EMAIL.toLowerCase()) continue;
-    const sender = match[0].toLowerCase();
+    const senderMatch = String(headers.from || '').match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/);
+    const sender = senderMatch?.[0]?.toLowerCase();
+    const rawMessage = extractGmailMessageText(detail.payload);
     const auto = headers['auto-submitted'] || headers.precedence;
-    const status = auto ? 'respuesta_automatica' : /mailer-daemon|postmaster|delivery status notification|undelivered/i.test(String(headers.subject || '') + headers.from) ? 'rebotado' : 'respondido';
-    if (await updateProspectEmailStatus(sender, status, headers.subject || '', detail.internalDate ? new Date(Number(detail.internalDate)).toISOString() : null)) matched++;
+    const isBounce = /mailer-daemon|postmaster|delivery status notification|undelivered|failure notice|delivery incomplete|address not found/i.test(String(headers.subject || '') + headers.from + rawMessage);
+    const status = isBounce ? 'descartado' : auto ? 'respuesta_automatica' : 'respondido';
+    const candidateEmails = isBounce ? [...new Set((rawMessage.match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/gi) || []).map(email => email.toLowerCase()).filter(email => email !== process.env.GOOGLE_GMAIL_EMAIL.toLowerCase()))] : (sender ? [sender] : []);
+    for (const email of candidateEmails) {
+      if (await updateProspectEmailStatus(email, status, headers.subject || '', detail.internalDate ? new Date(Number(detail.internalDate)).toISOString() : null)) matched++;
+    }
   }
   return { scanned: listData.messages?.length || 0, matched, updated: matched, connected: true };
+}
+
+function extractGmailMessageText(part) {
+  if (!part) return '';
+  const chunks = [];
+  if (part.body?.data) {
+    try { chunks.push(Buffer.from(part.body.data, 'base64url').toString('utf8')); } catch { /* contenido no decodificable */ }
+  }
+  for (const child of (part.parts || [])) chunks.push(extractGmailMessageText(child));
+  return chunks.join('\n');
 }
 
 app.post('/api/admin/gmail/sync', async (req, res) => {

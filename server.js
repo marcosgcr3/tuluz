@@ -854,7 +854,7 @@ app.post('/api/admin/prospects/send', async (req, res) => {
   if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
   const ids = Array.isArray(req.body.ids) ? req.body.ids : [];
   const subject = safeHeaderText(req.body.subject || 'Asesoramiento energético gratuito para {empresa}').replace(/\{empresa\}/gi, 'tu empresa');
-  const body = String(req.body.body || 'Hola,\n\nSoy David, fundador y responsable de tuLuz. Ayudamos a empresas del sector {sector} a optimizar sus costes energéticos.\n\nSi quieres, puedes responder a este correo adjuntando una factura de luz reciente. La analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nEl análisis es gratuito y sin compromiso.\n\nUn saludo,');
+  const body = String(req.body.body || 'Hola,\n\nSoy David, fundador y responsable de tuLuz, una agencia de asesoría energética especializada en negocios del sector {sector}.\n\nAyudamos a empresas como la vuestra a revisar y optimizar sus costes de luz. Si quieres, puedes responder a este correo adjuntando una factura de luz reciente y la analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nY no nos limitamos a revisar la factura: si te interesa, también nos encargamos gratuitamente de todo el proceso, incluido el cambio de compañía, la búsqueda de una opción más adecuada y toda la gestión necesaria, sin coste y sin compromiso.\n\nUn saludo,');
   if (!ids.length) return res.status(400).json({ error: 'Selecciona al menos un posible cliente.' });
   if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });
   try {

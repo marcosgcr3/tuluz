@@ -77,7 +77,7 @@ export default function AdminDashboard({ navigate }) {
   const [prospectFile, setProspectFile] = useState(null);
   const [prospectSearch, setProspectSearch] = useState('');
   const [prospectSector, setProspectSector] = useState('all');
-  const [prospectSentFilter, setProspectSentFilter] = useState('pending');
+  const [prospectSentFilter, setProspectSentFilter] = useState('all');
   const [selectedProspectIds, setSelectedProspectIds] = useState([]);
   const [prospectSubject, setProspectSubject] = useState('Asesoramiento energético gratuito para {empresa}');
   const [prospectBody, setProspectBody] = useState('Hola,\n\nSoy David, fundador y responsable de tuLuz, una agencia de asesoría energética especializada en negocios del sector {sector}.\n\nAyudamos a empresas como la vuestra a revisar y optimizar sus costes de luz. Si quieres, puedes responder a este correo adjuntando una factura de luz reciente y la analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nY no nos limitamos a revisar la factura: si te interesa, también nos encargamos gratuitamente de todo el proceso, incluido el cambio de compañía, la búsqueda de una opción más adecuada y toda la gestión necesaria, sin coste y sin compromiso.\n\nUn saludo,');
@@ -2094,7 +2094,8 @@ export default function AdminDashboard({ navigate }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ background: 'linear-gradient(135deg,#14532d,#166534)', color: '#fff', borderRadius: '16px', padding: '24px 28px' }}>
             <h2 style={{ margin: '0 0 8px', fontSize: '23px' }}>Prospección por email</h2>
-            <p style={{ margin: 0, color: '#dcfce7', lineHeight: 1.5 }}>Importa empresas desde un CSV, segmenta por sector y envía una presentación personalizada ofreciendo asesoramiento energético gratuito.</p>
+            <p style={{ margin: '0 0 16px', color: '#dcfce7', lineHeight: 1.5 }}>Importa empresas desde un CSV, segmenta por sector y envía una presentación personalizada ofreciendo asesoramiento energético gratuito.</p>
+            <button type="button" onClick={() => setAdminTab('leads')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '9px 14px', border: '1px solid rgba(255,255,255,.45)', borderRadius: '8px', background: 'rgba(255,255,255,.12)', color: '#fff', fontWeight: 700, cursor: 'pointer' }}><Users size={16} />Ir a Leads & Clientes</button>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 0.8fr) minmax(320px, 1.2fr)', gap: '20px' }}>
@@ -2126,7 +2127,7 @@ export default function AdminDashboard({ navigate }) {
                   onChange={e => setSelectedProspectIds(e.target.checked ? filteredProspects.filter(p => !p.emailSent).map(p => p.id) : [])}
                   style={{ marginTop: '4px' }}
                 />
-                <div><h3 style={{ margin: 0 }}>3. Empresas importadas ({filteredProspects.length})</h3><span style={{ color: '#64748b', fontSize: '12px' }}>{prospects.filter(p => !p.emailSent).length} pendientes · {prospects.filter(p => p.emailSent).length} enviados · marca la casilla para seleccionar todos los pendientes visibles</span></div>
+              <div><h3 style={{ margin: 0 }}>3. Empresas importadas ({filteredProspects.length} visibles de {prospects.length})</h3><span style={{ color: '#64748b', fontSize: '12px' }}>{prospects.filter(p => !p.emailSent).length} pendientes · {prospects.filter(p => p.emailSent).length} enviados · marca la casilla para seleccionar todos los pendientes visibles</span></div>
               </div>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <input value={prospectSearch} onChange={e => setProspectSearch(e.target.value)} placeholder="Buscar empresa, email..." style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />

@@ -124,6 +124,11 @@ function csvValue(row, names) {
   return key ? row[key] : '';
 }
 
+function extractEmails(value) {
+  return [...new Set(String(value || '').match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g) || [])]
+    .map(email => email.trim().toLowerCase());
+}
+
 function normalizeProspectRow(row) {
   const sourceData = { ...row };
   return {
@@ -834,7 +839,13 @@ app.post('/api/admin/prospects/import', (req, res, next) => {
   try {
     const rows = parseCsv(req.file.buffer.toString('utf8'));
     if (!rows.length) return res.status(400).json({ error: 'El CSV está vacío o no tiene cabecera.' });
-    const result = await importProspects(rows.map(normalizeProspectRow));
+    const normalizedRows = rows.map(normalizeProspectRow);
+    const prospects = normalizedRows.flatMap(row => {
+      const emails = extractEmails(row.email);
+      return emails.map(email => ({ ...row, email }));
+    });
+    if (!prospects.length) return res.status(400).json({ error: 'No se encontraron emails válidos en la columna emails.' });
+    const result = await importProspects(prospects);
     res.json({ success: true, imported: result.imported.length, skipped: result.skipped.length, prospects: result.imported });
   } catch (err) { console.error('Error importando prospects:', err); res.status(500).json({ error: 'No se pudo importar el CSV.' }); }
 });

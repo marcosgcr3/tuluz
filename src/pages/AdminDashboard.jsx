@@ -2089,7 +2089,7 @@ export default function AdminDashboard({ navigate }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 0.8fr) minmax(320px, 1.2fr)', gap: '20px' }}>
             <section style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '20px' }}>
               <h3 style={{ margin: '0 0 6px' }}>1. Importar empresas</h3>
-              <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5 }}>Admite las columnas del CSV de ejemplo, incluyendo <code>title</code>, <code>category</code> y <code>emails</code>. Los correos repetidos se omiten.</p>
+              <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5 }}>Admite las columnas del CSV maestro, incluyendo <code>title</code>, <code>category</code> y <code>emails</code>. Si un local tiene varias direcciones, se crea un destinatario por cada email válido. Los correos repetidos se omiten.</p>
               <input type="file" accept=".csv,text/csv" onChange={e => setProspectFile(e.target.files?.[0] || null)} style={{ width: '100%', margin: '12px 0' }} />
               <button className="btn btn-primary" type="button" onClick={handleImportProspects} disabled={prospectsLoading || !prospectFile}><Download size={16} />{prospectsLoading ? 'Procesando...' : 'Procesar CSV'}</button>
               {prospectNotice && <p style={{ margin: '14px 0 0', fontSize: '13px', color: prospectNotice.startsWith('❌') ? '#b91c1c' : '#166534' }}>{prospectNotice}</p>}

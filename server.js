@@ -23,7 +23,7 @@ import {
   deleteLead,
   getGuidesConfig,
   saveGuideConfig
-  ,getAllProspects, importProspects, markProspectsEmailSent
+  ,getAllProspects, importProspects, markProspectsEmailSent, convertProspect
 } from './db.js';
 import { guidesData } from './src/data/guidesData.js';
 import { getOfficialSources } from './src/data/content.js';
@@ -826,6 +826,15 @@ app.get('/api/admin/prospects', async (req, res) => {
     const prospects = await getAllProspects();
     res.json({ success: true, prospects, total: prospects.length });
   } catch (err) { res.status(500).json({ error: 'No se pudieron leer los posibles clientes' }); }
+});
+
+app.post('/api/admin/prospects/:id/convert', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  try {
+    const result = await convertProspect(req.params.id);
+    if (!result) return res.status(404).json({ error: 'Posible cliente no encontrado' });
+    res.json({ success: true, ...result });
+  } catch (err) { console.error('Error convirtiendo prospecto:', err); res.status(500).json({ error: 'No se pudo convertir en lead.' }); }
 });
 
 app.post('/api/admin/prospects/import', (req, res, next) => {

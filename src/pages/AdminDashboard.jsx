@@ -529,6 +529,17 @@ export default function AdminDashboard({ navigate }) {
     } catch (err) { setProspectNotice(`❌ ${err.message}`); } finally { setProspectsLoading(false); }
   };
 
+  const handleConvertProspect = async (prospect) => {
+    if (prospect.converted) return;
+    if (!window.confirm(`¿Convertir "${prospect.companyName || prospect.email}" en lead?`)) return;
+    try {
+      const res = await fetch(`/api/admin/prospects/${encodeURIComponent(prospect.id)}/convert`, { method: 'POST', headers: { 'x-api-key': adminKey } });
+      const data = await res.json(); if (!res.ok) throw new Error(data.error || 'No se pudo convertir');
+      setProspects(prev => prev.map(p => String(p.id) === String(prospect.id) ? { ...p, ...data.prospect, converted: true } : p));
+      setProspectNotice(`✅ ${prospect.companyName || prospect.email} ya está en Leads & Clientes.`);
+    } catch (err) { setProspectNotice(`❌ ${err.message}`); }
+  };
+
   const filteredProspects = useMemo(() => {
     const q = prospectSearch.toLowerCase().trim();
     return prospects.filter(p => {
@@ -2129,7 +2140,7 @@ export default function AdminDashboard({ navigate }) {
               <button type="button" className="btn btn-primary" onClick={handleSendProspects} disabled={prospectsLoading || !selectedProspectIds.length}><Mail size={16} />Enviar seleccionados ({selectedProspectIds.length})</button>
               <button type="button" className="btn btn-secondary" onClick={fetchProspects}><RefreshCw size={16} />Actualizar</button>
             </div>
-            <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}><thead><tr style={{ textAlign: 'left', color: '#64748b', borderBottom: '1px solid #e2e8f0' }}><th style={{ padding: '10px' }}></th><th style={{ padding: '10px' }}>Empresa</th><th style={{ padding: '10px' }}>Sector</th><th style={{ padding: '10px' }}>Email</th><th style={{ padding: '10px' }}>Estado</th></tr></thead><tbody>{filteredProspects.map(p => <tr key={p.id} style={{ borderBottom: '1px solid #f1f5f9' }}><td style={{ padding: '10px' }}><input type="checkbox" checked={selectedProspectIds.includes(p.id)} disabled={p.emailSent} onChange={e => setSelectedProspectIds(prev => e.target.checked ? [...prev, p.id] : prev.filter(id => id !== p.id))} /></td><td style={{ padding: '10px', fontWeight: 700 }}>{p.companyName || 'Sin nombre'}<br /><span style={{ fontWeight: 400, color: '#64748b' }}>{p.city || p.address || ''}</span></td><td style={{ padding: '10px' }}>{p.sector || '—'}</td><td style={{ padding: '10px' }}>{p.email}</td><td style={{ padding: '10px', color: p.emailSent ? '#15803d' : '#d97706', fontWeight: 700 }}>{p.emailSent ? '✓ Enviado' : 'Pendiente'}</td></tr>)}</tbody></table></div>
+            <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}><thead><tr style={{ textAlign: 'left', color: '#64748b', borderBottom: '1px solid #e2e8f0' }}><th style={{ padding: '10px' }}></th><th style={{ padding: '10px' }}>Empresa</th><th style={{ padding: '10px' }}>Sector</th><th style={{ padding: '10px' }}>Email</th><th style={{ padding: '10px' }}>Estado</th><th style={{ padding: '10px' }}>CRM</th></tr></thead><tbody>{filteredProspects.map(p => <tr key={p.id} style={{ borderBottom: '1px solid #f1f5f9' }}><td style={{ padding: '10px' }}><input type="checkbox" checked={selectedProspectIds.includes(p.id)} disabled={p.emailSent} onChange={e => setSelectedProspectIds(prev => e.target.checked ? [...prev, p.id] : prev.filter(id => id !== p.id))} /></td><td style={{ padding: '10px', fontWeight: 700 }}>{p.companyName || 'Sin nombre'}<br /><span style={{ fontWeight: 400, color: '#64748b' }}>{p.city || p.address || ''}</span></td><td style={{ padding: '10px' }}>{p.sector || '—'}</td><td style={{ padding: '10px' }}>{p.email}</td><td style={{ padding: '10px', color: p.emailSent ? '#15803d' : '#d97706', fontWeight: 700 }}>{p.emailSent ? '✓ Enviado' : 'Pendiente'}</td><td style={{ padding: '10px' }}>{p.converted ? <span style={{ color: '#15803d', fontWeight: 700 }}>✓ En lead</span> : <button type="button" className="btn btn-secondary" style={{ padding: '6px 10px', minHeight: '32px', fontSize: '12px' }} onClick={() => handleConvertProspect(p)}>Convertir en lead</button>}</td></tr>)}</tbody></table></div>
             {!filteredProspects.length && <p style={{ textAlign: 'center', color: '#64748b', padding: '24px' }}>{prospectsLoading ? 'Cargando...' : 'No hay registros para este filtro.'}</p>}
           </section>
         </div>

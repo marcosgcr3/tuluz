@@ -85,12 +85,18 @@ export function initDatabase() {
             source_data JSONB DEFAULT '{}'::jsonb,
             email_sent BOOLEAN NOT NULL DEFAULT false,
             email_sent_at TIMESTAMPTZ,
+            converted BOOLEAN NOT NULL DEFAULT false,
+            converted_lead_id VARCHAR(100),
+            converted_at TIMESTAMPTZ,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW(),
             UNIQUE(email)
           );
           CREATE INDEX IF NOT EXISTS idx_prospects_sector ON prospects(sector);
           CREATE INDEX IF NOT EXISTS idx_prospects_email_sent ON prospects(email_sent);
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted BOOLEAN NOT NULL DEFAULT false;
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted_lead_id VARCHAR(100);
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted_at TIMESTAMPTZ;
         `);
 
         // Sincronizar e inicializar las 55 guías en PostgreSQL si falta alguna
@@ -146,6 +152,9 @@ function mapProspect(row) {
     sourceData: row.source_data || {},
     emailSent: Boolean(row.email_sent),
     emailSentAt: row.email_sent_at ? new Date(row.email_sent_at).toISOString() : null,
+    converted: Boolean(row.converted),
+    convertedLeadId: row.converted_lead_id || null,
+    convertedAt: row.converted_at ? new Date(row.converted_at).toISOString() : null,
     createdAt: row.created_at ? new Date(row.created_at).toISOString() : null
   };
 }
@@ -196,6 +205,32 @@ export async function markProspectsEmailSent(ids) {
   local = local.map(p => wanted.has(String(p.id)) ? { ...p, emailSent: true, emailSentAt: now } : p);
   fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
   return updated;
+}
+
+export async function convertProspect(prospectId) {
+  const prospects = await getAllProspects();
+  const prospect = prospects.find(p => String(p.id) === String(prospectId));
+  if (!prospect) return null;
+  if (prospect.converted && prospect.convertedLeadId) return { prospect, lead: (await getAllLeads()).find(l => String(l.id) === String(prospect.convertedLeadId)), alreadyConverted: true };
+  const existingLead = (await getAllLeads()).find(l => String(l.email || '').trim().toLowerCase() === String(prospect.email || '').trim().toLowerCase());
+  const lead = existingLead || {
+    id: `${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    date: new Date().toISOString(), name: prospect.companyName || 'Empresa prospectada', phone: prospect.phone || '', email: prospect.email || '',
+    clientType: 'empresa', source: 'Prospección por email', pageUrl: prospect.website || '', monthlyBill: '',
+    notes: `Sector: ${prospect.sector || 'No indicado'}\nDirección: ${prospect.address || ''}${prospect.city ? `, ${prospect.city}` : ''}`,
+    status: 'nuevo', notified: false, hasFile: false
+  };
+  if (!existingLead) await saveLead(lead);
+  const convertedAt = new Date().toISOString();
+  if (isDbConnected()) {
+    await pool.query('UPDATE prospects SET converted = true, converted_lead_id = $1, converted_at = NOW(), updated_at = NOW() WHERE id = $2', [String(lead.id), Number(prospectId)]);
+  } else {
+    let local = [];
+    try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
+    local = local.map(p => String(p.id) === String(prospectId) ? { ...p, converted: true, convertedLeadId: String(lead.id), convertedAt } : p);
+    fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
+  }
+  return { prospect: { ...prospect, converted: true, convertedLeadId: String(lead.id), convertedAt }, lead, alreadyConverted: false };
 }
 
 export function isDbConnected() {

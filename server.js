@@ -1869,7 +1869,7 @@ app.listen(PORT, () => {
     if (gmailOAuthConfigured()) {
       syncGmailInbox().catch(err => console.error('Error en intervalo sync Gmail:', err));
     }
-  }, 5 * 60 * 1000);
+  }, 2 * 60 * 1000);
 
   // Chequeo inicial 5 segundos después del arranque
   setTimeout(() => {

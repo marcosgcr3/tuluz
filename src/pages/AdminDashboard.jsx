@@ -510,6 +510,13 @@ export default function AdminDashboard({ navigate }) {
     finally { setProspectsLoading(false); }
   };
 
+  // Mantiene la tabla actualizada mientras el administrador consulta la prospección.
+  useEffect(() => {
+    if (!adminKey || adminTab !== 'prospects') return undefined;
+    const timer = setInterval(() => { fetchProspects(); }, 30 * 1000);
+    return () => clearInterval(timer);
+  }, [adminKey, adminTab]);
+
   const fetchGmailStatus = async () => {
     try {
       const res = await fetch(`/api/admin/gmail/status?key=${encodeURIComponent(adminKey)}`);

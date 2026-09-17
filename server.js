@@ -874,7 +874,7 @@ app.post('/api/admin/prospects/send', async (req, res) => {
   if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });
   try {
     const all = await getAllProspects();
-    const selected = all.filter(p => ids.map(String).includes(String(p.id)) && !p.emailSent);
+    const selected = all.filter(p => ids.map(String).includes(String(p.id)) && !p.emailSent && p.emailStatus !== 'descartado');
     const grouped = [...new Set(selected.map(p => p.companyKey || prospectCompanyKey(p.companyName, p.city) || p.email))]
       .map(key => ({ key, prospects: selected.filter(p => (p.companyKey || prospectCompanyKey(p.companyName, p.city) || p.email) === key) }));
     const transporter = getTransporter(); let sent = [], failed = [];
@@ -883,7 +883,11 @@ app.post('/api/admin/prospects/send', async (req, res) => {
       try {
         await transporter.sendMail({ from: `"tuLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`, to: group.prospects.map(p => p.email).join(', '), subject: subject.replace(/\{sector\}/gi, prospect.sector || 'tu sector'), html: personalizedEmail({ ...prospect, subject, body }) });
         sent.push(...group.prospects.map(p => p.id));
-      } catch (err) { failed.push({ id: prospect.id, email: group.prospects.map(p => p.email).join(', '), error: err.message }); }
+      } catch (err) {
+        const errorMessage = err.message || 'Google no pudo aceptar el envío.';
+        await Promise.allSettled(group.prospects.map(p => updateProspectEmailStatus(p.email, 'error_envio', subject, new Date().toISOString(), errorMessage)));
+        failed.push(...group.prospects.map(p => ({ id: p.id, email: p.email, error: errorMessage })));
+      }
     }
     if (sent.length) await markProspectsEmailSent(sent);
     res.json({ success: true, sent: sent.length, failed, skippedAlreadySent: ids.length - selected.length });

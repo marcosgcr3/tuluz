@@ -92,6 +92,7 @@ export function initDatabase() {
             converted_lead_id VARCHAR(100),
             converted_at TIMESTAMPTZ,
             email_status VARCHAR(50) DEFAULT NULL,
+            email_error TEXT,
             last_email_at TIMESTAMPTZ,
             last_email_subject TEXT,
             created_at TIMESTAMPTZ DEFAULT NOW(),
@@ -105,6 +106,7 @@ export function initDatabase() {
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS converted_at TIMESTAMPTZ;
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS company_key VARCHAR(500) DEFAULT '';
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS email_status VARCHAR(50);
+          ALTER TABLE prospects ADD COLUMN IF NOT EXISTS email_error TEXT;
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS last_email_at TIMESTAMPTZ;
           ALTER TABLE prospects ADD COLUMN IF NOT EXISTS last_email_subject TEXT;
 
@@ -175,6 +177,7 @@ function mapProspect(row) {
     convertedLeadId: row.converted_lead_id || null,
     convertedAt: row.converted_at ? new Date(row.converted_at).toISOString() : null,
     emailStatus: row.email_status || null,
+    emailError: row.email_error || null,
     lastEmailAt: row.last_email_at ? new Date(row.last_email_at).toISOString() : null,
     lastEmailSubject: row.last_email_subject || null,
     createdAt: row.created_at ? new Date(row.created_at).toISOString() : null
@@ -217,14 +220,14 @@ export async function importProspects(prospects) {
 export async function markProspectsEmailSent(ids) {
   const wanted = new Set(ids.map(String));
   if (isDbConnected()) {
-    const res = await pool.query('UPDATE prospects SET email_sent = true, email_sent_at = NOW(), updated_at = NOW() WHERE id = ANY($1::bigint[]) RETURNING *', [ids.map(Number).filter(Number.isFinite)]);
+    const res = await pool.query('UPDATE prospects SET email_sent = true, email_sent_at = NOW(), email_status = NULL, email_error = NULL, updated_at = NOW() WHERE id = ANY($1::bigint[]) RETURNING *', [ids.map(Number).filter(Number.isFinite)]);
     return res.rows.map(mapProspect);
   }
   let local = [];
   try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
   const now = new Date().toISOString();
-  const updated = local.filter(p => wanted.has(String(p.id))).map(p => ({ ...p, emailSent: true, emailSentAt: now }));
-  local = local.map(p => wanted.has(String(p.id)) ? { ...p, emailSent: true, emailSentAt: now } : p);
+  const updated = local.filter(p => wanted.has(String(p.id))).map(p => ({ ...p, emailSent: true, emailSentAt: now, emailStatus: null, emailError: null }));
+  local = local.map(p => wanted.has(String(p.id)) ? { ...p, emailSent: true, emailSentAt: now, emailStatus: null, emailError: null } : p);
   fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
   return updated;
 }
@@ -294,16 +297,17 @@ export async function saveGmailHistoryId(accountEmail, historyId) {
   fs.writeFileSync(file, JSON.stringify({ ...data, historyId: String(historyId), updatedAt: new Date().toISOString() }, null, 2), 'utf8');
 }
 
-export async function updateProspectEmailStatus(email, status, subject, receivedAt) {
+export async function updateProspectEmailStatus(email, status, subject, receivedAt, errorMessage = null) {
   const normalized = String(email || '').trim().toLowerCase();
+  const safeError = errorMessage ? String(errorMessage).slice(0, 1000) : null;
   if (isDbConnected()) {
-    const res = await pool.query('UPDATE prospects SET email_status = $1, last_email_at = $2, last_email_subject = $3, updated_at = NOW() WHERE email = $4 RETURNING *', [status, receivedAt ? new Date(receivedAt) : new Date(), subject || '', normalized]);
+    const res = await pool.query('UPDATE prospects SET email_status = $1, email_error = $2, last_email_at = $3, last_email_subject = $4, updated_at = NOW() WHERE email = $5 RETURNING *', [status, safeError, receivedAt ? new Date(receivedAt) : new Date(), subject || '', normalized]);
     return res.rows[0] ? mapProspect(res.rows[0]) : null;
   }
   let local = [];
   try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
   const now = receivedAt || new Date().toISOString(); let updated = null;
-  local = local.map(p => { if (String(p.email || '').toLowerCase() !== normalized) return p; updated = { ...p, emailStatus: status, lastEmailAt: now, lastEmailSubject: subject || '' }; return updated; });
+  local = local.map(p => { if (String(p.email || '').toLowerCase() !== normalized) return p; updated = { ...p, emailStatus: status, emailError: safeError, lastEmailAt: now, lastEmailSubject: subject || '' }; return updated; });
   fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
   return updated;
 }

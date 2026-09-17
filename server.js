@@ -1047,17 +1047,25 @@ async function syncGmailInbox({ historical = false } = {}) {
   let latestHistoryId = null;
   const storedHistoryId = historical ? null : await getGmailHistoryId(process.env.GOOGLE_GMAIL_EMAIL);
   if (storedHistoryId) {
-    const historyParams = new URLSearchParams({ startHistoryId: storedHistoryId, historyTypes: 'messageAdded', maxResults: '100' });
-    const historyRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/history?${historyParams.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
-    const historyData = await historyRes.json();
-    if (historyRes.ok) {
-      latestHistoryId = historyData.historyId || storedHistoryId;
-      for (const history of (historyData.history || [])) {
-        for (const added of (history.messagesAdded || [])) messages.push(added.message);
+    let historyPageToken = '';
+    do {
+      const historyParams = new URLSearchParams({ startHistoryId: storedHistoryId, historyTypes: 'messageAdded', maxResults: '50' });
+      if (historyPageToken) historyParams.set('pageToken', historyPageToken);
+      const historyRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/history?${historyParams.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const historyData = await historyRes.json();
+      if (historyRes.ok) {
+        latestHistoryId = historyData.historyId || latestHistoryId || storedHistoryId;
+        for (const history of (historyData.history || [])) {
+          for (const added of (history.messagesAdded || [])) messages.push(added.message);
+        }
+        historyPageToken = historyData.nextPageToken || '';
+      } else if (historyRes.status === 404) {
+        historyPageToken = '';
+        latestHistoryId = null;
+      } else {
+        throw new Error(historyData.error?.message || 'No se pudo consultar el historial de Gmail');
       }
-    } else if (historyRes.status !== 404) {
-      throw new Error(historyData.error?.message || 'No se pudo consultar el historial de Gmail');
-    }
+    } while (historyPageToken);
   }
 
   // Primera conexión, revisión histórica o historial caducado: hacemos una carga inicial.
@@ -1065,7 +1073,7 @@ async function syncGmailInbox({ historical = false } = {}) {
     const query = historical ? 'in:anywhere' : 'in:anywhere newer_than:30d';
     let pageToken = '';
     do {
-      const params = new URLSearchParams({ maxResults: historical ? '100' : '25', q: query });
+      const params = new URLSearchParams({ maxResults: '50', q: query });
       if (pageToken) params.set('pageToken', pageToken);
       const listRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages?${params.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
       const listData = await listRes.json();

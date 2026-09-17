@@ -74,6 +74,7 @@ export default function AdminDashboard({ navigate }) {
   // Navigation Tab
   const [adminTab, setAdminTab] = useState('leads'); // 'leads' | 'guides' | 'prospects'
   const [prospects, setProspects] = useState([]);
+  const [prospectsLoaded, setProspectsLoaded] = useState(false);
   const [prospectsLoading, setProspectsLoading] = useState(false);
   const [prospectFile, setProspectFile] = useState(null);
   const [prospectSearch, setProspectSearch] = useState('');
@@ -290,6 +291,7 @@ export default function AdminDashboard({ navigate }) {
     if (adminKey) {
       fetchDashboardData(adminKey);
       fetchGuidesConfig(adminKey);
+      fetchProspects();
       fetchGmailStatus();
 
       // Auto-refresco silencioso cada 15 segundos para mantener el panel siempre al día
@@ -316,6 +318,8 @@ export default function AdminDashboard({ navigate }) {
     setIsAuthenticated(false);
     setDashboardData(null);
     setGuidesConfigMap({});
+    setProspects([]);
+    setProspectsLoaded(false);
   };
 
   const handleStatusChange = async (leadId, newStatus) => {
@@ -540,16 +544,17 @@ export default function AdminDashboard({ navigate }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'No se pudieron cargar los posibles clientes');
       setProspects(data.prospects || []);
+      setProspectsLoaded(true);
     } catch (err) { setProspectNotice(`❌ ${err.message}`); }
     finally { setProspectsLoading(false); }
   };
 
-  // Mantiene la tabla actualizada mientras el administrador consulta la prospección.
+  // Mantiene el contador del menú y la tabla actualizados, incluso si está en otra pestaña.
   useEffect(() => {
-    if (!adminKey || adminTab !== 'prospects') return undefined;
+    if (!adminKey) return undefined;
     const timer = setInterval(() => { fetchProspects(); }, 30 * 1000);
     return () => clearInterval(timer);
-  }, [adminKey, adminTab]);
+  }, [adminKey]);
 
   const fetchGmailStatus = async () => {
     try {
@@ -1203,7 +1208,7 @@ export default function AdminDashboard({ navigate }) {
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 18px', fontSize: '14px', fontWeight: adminTab === 'prospects' ? '700' : '600', color: adminTab === 'prospects' ? '#16a34a' : '#64748b', background: 'none', border: 'none', borderBottom: adminTab === 'prospects' ? '3px solid #16a34a' : '3px solid transparent', cursor: 'pointer' }}
           >
             <Mail size={18} /><span>Prospección por email</span>
-            <span style={{ background: adminTab === 'prospects' ? '#dcfce7' : '#f1f5f9', color: adminTab === 'prospects' ? '#15803d' : '#64748b', fontSize: '11px', fontWeight: '700', padding: '2px 8px', borderRadius: '12px' }}>{prospects.length}</span>
+            <span title={prospectsLoaded ? `${prospects.length} empresas en prospección` : 'Cargando empresas de prospección'} style={{ background: adminTab === 'prospects' ? '#dcfce7' : '#f1f5f9', color: adminTab === 'prospects' ? '#15803d' : '#64748b', fontSize: '11px', fontWeight: '700', padding: '2px 8px', borderRadius: '12px' }}>{prospectsLoaded ? prospects.length : '…'}</span>
           </button>
         </div>
 

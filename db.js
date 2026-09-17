@@ -9,6 +9,14 @@ const __dirname = path.dirname(__filename);
 const LEADS_FILE = process.env.LEADS_FILE || path.join(__dirname, 'data', 'leads.json');
 const GUIDES_FILE = path.join(__dirname, 'guides_config.json');
 const PROSPECTS_FILE = process.env.PROSPECTS_FILE || path.join(__dirname, 'data', 'prospects.json');
+const NON_EMAIL_FILE_EXTENSIONS = new Set(['png', 'gif', 'jpg', 'jpeg', 'webp', 'svg', 'ico', 'avif', 'bmp', 'tif', 'tiff']);
+
+function isValidProspectEmail(value) {
+  const email = String(value || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) return false;
+  const extension = email.split('@')[1].split('.').pop();
+  return !NON_EMAIL_FILE_EXTENSIONS.has(extension);
+}
 
 fs.mkdirSync(path.dirname(LEADS_FILE), { recursive: true });
 fs.mkdirSync(path.dirname(PROSPECTS_FILE), { recursive: true });
@@ -203,7 +211,7 @@ export async function importProspects(prospects) {
   try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
   for (const item of prospects) {
     const email = String(item.email || '').trim().toLowerCase();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { skipped.push({ reason: 'email_invalido', item }); continue; }
+    if (!isValidProspectEmail(email)) { skipped.push({ reason: 'email_invalido', item }); continue; }
     const record = { id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`, companyName: String(item.companyName || '').trim(), sector: String(item.sector || '').trim(), email, phone: String(item.phone || '').trim(), address: String(item.address || '').trim(), city: String(item.city || '').trim(), website: String(item.website || '').trim(), companyKey: String(item.companyKey || '').trim(), sourceData: item.sourceData || {}, emailSent: false, emailSentAt: null, createdAt: new Date().toISOString() };
     if (isDbConnected()) {
       try {

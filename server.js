@@ -128,7 +128,18 @@ function csvValue(row, names) {
 
 function extractEmails(value) {
   return [...new Set(String(value || '').match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g) || [])]
-    .map(email => email.trim().toLowerCase());
+    .map(email => email.trim().toLowerCase())
+    .filter(isValidProspectEmail);
+}
+
+// Los extractores de webs a veces confunden rutas de imágenes (p. ej.
+// fancybox_sprite@2x.png) con emails. Estas extensiones no son dominios de correo.
+const NON_EMAIL_FILE_EXTENSIONS = new Set(['png', 'gif', 'jpg', 'jpeg', 'webp', 'svg', 'ico', 'avif', 'bmp', 'tif', 'tiff']);
+function isValidProspectEmail(value) {
+  const email = String(value || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) return false;
+  const extension = email.split('@')[1].split('.').pop();
+  return !NON_EMAIL_FILE_EXTENSIONS.has(extension);
 }
 
 function prospectCompanyKey(companyName, city) {
@@ -829,7 +840,7 @@ app.post('/api/admin/test-email', async (req, res) => {
 app.get('/api/admin/prospects', async (req, res) => {
   if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
   try {
-    const prospects = await getAllProspects();
+    const prospects = (await getAllProspects()).map(prospect => ({ ...prospect, invalidEmail: !isValidProspectEmail(prospect.email) }));
     res.json({ success: true, prospects, total: prospects.length });
   } catch (err) { res.status(500).json({ error: 'No se pudieron leer los posibles clientes' }); }
 });
@@ -874,7 +885,7 @@ app.post('/api/admin/prospects/send', async (req, res) => {
   if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });
   try {
     const all = await getAllProspects();
-    const selected = all.filter(p => ids.map(String).includes(String(p.id)) && !p.emailSent && p.emailStatus !== 'descartado');
+    const selected = all.filter(p => ids.map(String).includes(String(p.id)) && !p.emailSent && p.emailStatus !== 'descartado' && isValidProspectEmail(p.email));
     const grouped = [...new Set(selected.map(p => p.companyKey || prospectCompanyKey(p.companyName, p.city) || p.email))]
       .map(key => ({ key, prospects: selected.filter(p => (p.companyKey || prospectCompanyKey(p.companyName, p.city) || p.email) === key) }));
     const transporter = getTransporter(); let sent = [], failed = [];

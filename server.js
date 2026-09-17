@@ -23,7 +23,7 @@ import {
   deleteLead,
   getGuidesConfig,
   saveGuideConfig
-  ,getAllProspects, importProspects, markProspectsEmailSent, convertProspect, getGmailRefreshToken, saveGmailRefreshToken, updateProspectEmailStatus
+  ,getAllProspects, importProspects, markProspectsEmailSent, convertProspect, getGmailRefreshToken, saveGmailRefreshToken, getGmailHistoryId, saveGmailHistoryId, updateProspectEmailStatus
 } from './db.js';
 import { guidesData } from './src/data/guidesData.js';
 import { getOfficialSources } from './src/data/content.js';
@@ -1043,21 +1043,46 @@ async function syncGmailInbox({ historical = false } = {}) {
   try {
   const accessToken = await getGmailAccessToken();
   if (!accessToken) return { scanned: 0, matched: 0, updated: 0, connected: false };
-  const query = historical ? 'in:anywhere' : 'in:anywhere newer_than:30d';
   const messages = [];
-  let pageToken = '';
-  do {
-    const params = new URLSearchParams({ maxResults: historical ? '100' : '25', q: query });
-    if (pageToken) params.set('pageToken', pageToken);
-    const listRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages?${params.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
-    const listData = await listRes.json();
-    if (!listRes.ok) throw new Error(listData.error?.message || 'No se pudo leer Gmail');
-    messages.push(...(listData.messages || []));
-    pageToken = listData.nextPageToken || '';
-  } while (historical && pageToken && messages.length < 10000);
+  let latestHistoryId = null;
+  const storedHistoryId = historical ? null : await getGmailHistoryId(process.env.GOOGLE_GMAIL_EMAIL);
+  if (storedHistoryId) {
+    const historyParams = new URLSearchParams({ startHistoryId: storedHistoryId, historyTypes: 'messageAdded', maxResults: '100' });
+    const historyRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/history?${historyParams.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const historyData = await historyRes.json();
+    if (historyRes.ok) {
+      latestHistoryId = historyData.historyId || storedHistoryId;
+      for (const history of (historyData.history || [])) {
+        for (const added of (history.messagesAdded || [])) messages.push(added.message);
+      }
+    } else if (historyRes.status !== 404) {
+      throw new Error(historyData.error?.message || 'No se pudo consultar el historial de Gmail');
+    }
+  }
+
+  // Primera conexión, revisión histórica o historial caducado: hacemos una carga inicial.
+  if (!storedHistoryId || historical || !latestHistoryId) {
+    const query = historical ? 'in:anywhere' : 'in:anywhere newer_than:30d';
+    let pageToken = '';
+    do {
+      const params = new URLSearchParams({ maxResults: historical ? '100' : '25', q: query });
+      if (pageToken) params.set('pageToken', pageToken);
+      const listRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages?${params.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const listData = await listRes.json();
+      if (!listRes.ok) throw new Error(listData.error?.message || 'No se pudo leer Gmail');
+      messages.push(...(listData.messages || []));
+      pageToken = listData.nextPageToken || '';
+    } while (historical && pageToken && messages.length < 10000);
+  }
+
+  // Gmail permite continuar desde este identificador en el siguiente ciclo.
+  const profileRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/profile', { headers: { Authorization: `Bearer ${accessToken}` } });
+  const profile = await profileRes.json();
+  if (profileRes.ok) await saveGmailHistoryId(process.env.GOOGLE_GMAIL_EMAIL, profile.historyId || latestHistoryId);
+  const uniqueMessages = [...new Map(messages.filter(Boolean).map(message => [message.id, message])).values()];
   let matched = 0;
   let converted = 0;
-  for (const message of messages) {
+  for (const message of uniqueMessages) {
     const detailRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Auto-Submitted&metadataHeaders=Precedence`, { headers: { Authorization: `Bearer ${accessToken}` } });
     const detail = await detailRes.json();
     if (!detailRes.ok) continue;
@@ -1088,7 +1113,7 @@ async function syncGmailInbox({ historical = false } = {}) {
       }
     }
   }
-  return { scanned: messages.length, matched, updated: matched, converted, connected: true };
+  return { scanned: uniqueMessages.length, matched, updated: matched, converted, connected: true };
   } finally {
     gmailSyncInProgress = false;
   }

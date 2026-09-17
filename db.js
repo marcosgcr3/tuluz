@@ -109,8 +109,10 @@ export function initDatabase() {
           CREATE TABLE IF NOT EXISTS gmail_oauth_tokens (
             account_email VARCHAR(255) PRIMARY KEY,
             refresh_token TEXT NOT NULL,
+            history_id VARCHAR(100),
             updated_at TIMESTAMPTZ DEFAULT NOW()
           );
+          ALTER TABLE gmail_oauth_tokens ADD COLUMN IF NOT EXISTS history_id VARCHAR(100);
         `);
 
         // Sincronizar e inicializar las 55 guías en PostgreSQL si falta alguna
@@ -267,6 +269,27 @@ export async function saveGmailRefreshToken(accountEmail, refreshToken) {
   }
   const file = path.join(path.dirname(PROSPECTS_FILE), 'gmail-oauth.json');
   fs.writeFileSync(file, JSON.stringify({ accountEmail, refreshToken, updatedAt: new Date().toISOString() }, null, 2), 'utf8');
+}
+
+export async function getGmailHistoryId(accountEmail) {
+  if (isDbConnected()) {
+    const res = await pool.query('SELECT history_id FROM gmail_oauth_tokens WHERE account_email = $1', [accountEmail]);
+    return res.rows[0]?.history_id || null;
+  }
+  const file = path.join(path.dirname(PROSPECTS_FILE), 'gmail-oauth.json');
+  try { return JSON.parse(fs.readFileSync(file, 'utf8')).historyId || null; } catch { return null; }
+}
+
+export async function saveGmailHistoryId(accountEmail, historyId) {
+  if (!historyId) return;
+  if (isDbConnected()) {
+    await pool.query('UPDATE gmail_oauth_tokens SET history_id = $1, updated_at = NOW() WHERE account_email = $2', [String(historyId), accountEmail]);
+    return;
+  }
+  const file = path.join(path.dirname(PROSPECTS_FILE), 'gmail-oauth.json');
+  let data = {};
+  try { data = JSON.parse(fs.readFileSync(file, 'utf8') || '{}'); } catch {}
+  fs.writeFileSync(file, JSON.stringify({ ...data, historyId: String(historyId), updatedAt: new Date().toISOString() }, null, 2), 'utf8');
 }
 
 export async function updateProspectEmailStatus(email, status, subject, receivedAt) {

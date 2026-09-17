@@ -69,6 +69,7 @@ export default function AdminDashboard({ navigate }) {
   const [dashboardData, setDashboardData] = useState(null);
   const [error, setError] = useState(null);
   const [updatingLeadId, setUpdatingLeadId] = useState(null);
+  const [savingBenefitLeadId, setSavingBenefitLeadId] = useState(null);
 
   // Navigation Tab
   const [adminTab, setAdminTab] = useState('leads'); // 'leads' | 'guides' | 'prospects'
@@ -499,6 +500,39 @@ export default function AdminDashboard({ navigate }) {
     window.open(url, '_blank');
   };
 
+  const handleBenefitChange = (leadId, value) => {
+    setDashboardData(prev => {
+      if (!prev) return prev;
+      return { ...prev, leads: prev.leads.map(lead => String(lead.id) === String(leadId) ? { ...lead, benefit: value } : lead) };
+    });
+    if (selectedLead && String(selectedLead.id) === String(leadId)) {
+      setSelectedLead(prev => ({ ...prev, benefit: value }));
+    }
+  };
+
+  const handleBenefitSave = async (leadId, benefit) => {
+    setSavingBenefitLeadId(leadId);
+    try {
+      const res = await fetch('/api/leads/update-benefit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': adminKey },
+        body: JSON.stringify({ leadId, benefit })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Error al guardar el beneficio');
+      const savedBenefit = data.lead.benefit;
+      setDashboardData(prev => !prev ? prev : { ...prev, leads: prev.leads.map(lead => String(lead.id) === String(leadId) ? { ...lead, benefit: savedBenefit } : lead) });
+      if (selectedLead && String(selectedLead.id) === String(leadId)) {
+        setSelectedLead(prev => ({ ...prev, benefit: savedBenefit }));
+      }
+    } catch (err) {
+      alert('No se pudo guardar el beneficio: ' + err.message);
+      fetchDashboardData(adminKey, true);
+    } finally {
+      setSavingBenefitLeadId(null);
+    }
+  };
+
   const fetchProspects = async () => {
     setProspectsLoading(true);
     try {
@@ -627,6 +661,11 @@ export default function AdminDashboard({ navigate }) {
       return timeB - timeA; // Más reciente primero (arriba del todo)
     });
   }, [dashboardData, searchTerm, sourceFilter, statusFilter, typeFilter]);
+
+  const hasWonLead = useMemo(
+    () => (dashboardData?.leads || []).some(lead => lead.status === 'ganado'),
+    [dashboardData]
+  );
 
   // Métricas y filtrado de Guías (deben estar en el nivel superior antes de cualquier return temprano)
   const guidesStats = useMemo(() => {
@@ -1178,7 +1217,7 @@ export default function AdminDashboard({ navigate }) {
       </div>
 
       {/* Main Container */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '24px' }}>
+      <div style={{ maxWidth: '1600px', margin: '0 auto', padding: '24px' }}>
 
         {/* ---------------------------------------------------- */}
         {/* TAB 1: LEADS & MÉTRICAS COMERCIALES */}
@@ -1660,13 +1699,14 @@ export default function AdminDashboard({ navigate }) {
                   <th style={{ padding: '14px 16px', fontWeight: '600' }}>Perfil</th>
                   <th style={{ padding: '14px 16px', fontWeight: '600' }}>Fecha</th>
                   <th style={{ padding: '14px 16px', fontWeight: '600' }}>Estado Comercial</th>
+                  {hasWonLead && <th style={{ padding: '14px 16px', fontWeight: '600' }}>Beneficio</th>}
                   <th style={{ padding: '14px 20px', fontWeight: '600', textAlign: 'center' }}>Acciones Rápidas</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredLeads.length === 0 ? (
                   <tr>
-                    <td colSpan={7} style={{ padding: '48px 20px', textAlign: 'center', color: '#94a3b8' }}>
+                    <td colSpan={hasWonLead ? 8 : 7} style={{ padding: '48px 20px', textAlign: 'center', color: '#94a3b8' }}>
                       <Users size={32} style={{ margin: '0 auto 12px auto', opacity: 0.5 }} />
                       <p style={{ margin: 0, fontWeight: '600' }}>No se encontraron clientes potenciales</p>
                       <p style={{ margin: '4px 0 0 0', fontSize: '12px' }}>Prueba a modificar los filtros de búsqueda</p>
@@ -1789,6 +1829,30 @@ export default function AdminDashboard({ navigate }) {
                             <option value="descartado">Descartado</option>
                           </select>
                         </td>
+
+                        {hasWonLead && (
+                          <td style={{ padding: '14px 16px', minWidth: '132px' }}>
+                            {statusKey === 'ganado' ? (
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#15803d', fontWeight: '700' }}>
+                                <span aria-hidden="true">€</span>
+                                <input
+                                  type="number"
+                                  min="0"
+                                  step="0.01"
+                                  inputMode="decimal"
+                                  aria-label={`Beneficio de ${lead.name || 'cliente'}`}
+                                  placeholder="0,00"
+                                  value={lead.benefit ?? ''}
+                                  disabled={savingBenefitLeadId === lead.id}
+                                  onChange={(e) => handleBenefitChange(lead.id, e.target.value)}
+                                  onBlur={(e) => handleBenefitSave(lead.id, e.target.value)}
+                                  onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.blur(); }}
+                                  style={{ width: '82px', padding: '6px 7px', borderRadius: '6px', border: '1px solid #a7f3d0', background: '#f0fdf4', color: '#166534', fontSize: '12px', fontWeight: '700', outline: 'none' }}
+                                />
+                              </div>
+                            ) : <span style={{ color: '#cbd5e1' }}>—</span>}
+                          </td>
+                        )}
 
                         {/* Direct Action Buttons */}
                         <td style={{ padding: '14px 20px', textAlign: 'center', whiteSpace: 'nowrap' }}>
@@ -2024,6 +2088,25 @@ export default function AdminDashboard({ navigate }) {
                         <option value="descartado">Descartado</option>
                       </select>
                     </div>
+
+                    {statusKey === 'ganado' && (
+                      <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '10px 0', borderTop: '1px solid #ecfdf5', color: '#166534', fontSize: '13px', fontWeight: '700' }}>
+                        <span>Beneficio (€)</span>
+                        <input
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          inputMode="decimal"
+                          placeholder="0,00"
+                          value={lead.benefit ?? ''}
+                          disabled={savingBenefitLeadId === lead.id}
+                          onChange={(e) => handleBenefitChange(lead.id, e.target.value)}
+                          onBlur={(e) => handleBenefitSave(lead.id, e.target.value)}
+                          onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.blur(); }}
+                          style={{ width: '105px', padding: '7px 9px', borderRadius: '8px', border: '1px solid #a7f3d0', background: '#f0fdf4', color: '#166534', fontSize: '13px', fontWeight: '700', outline: 'none' }}
+                        />
+                      </label>
+                    )}
 
                     {/* Touch Action Buttons for Mobile */}
                     <div style={{

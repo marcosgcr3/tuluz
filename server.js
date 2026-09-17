@@ -20,6 +20,7 @@ import {
   saveLead, 
   getAllLeads, 
   updateLeadStatus, 
+  updateLeadBenefit,
   deleteLead,
   getGuidesConfig,
   saveGuideConfig
@@ -1020,6 +1021,34 @@ app.get('/api/admin/gmail/connect', (req, res) => {
   res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`);
 });
 
+// Endpoint protegido para registrar el beneficio de un cliente ganado
+app.post('/api/leads/update-benefit', async (req, res) => {
+  if (!checkAdminAuth(req)) {
+    return res.status(401).json({ error: 'Acceso no autorizado.' });
+  }
+
+  const { leadId, benefit } = req.body;
+  if (!leadId) {
+    return res.status(400).json({ error: 'Falta el identificador del lead.' });
+  }
+
+  const normalizedBenefit = benefit === '' || benefit === null || benefit === undefined ? null : Number(benefit);
+  if (normalizedBenefit !== null && (!Number.isFinite(normalizedBenefit) || normalizedBenefit < 0)) {
+    return res.status(400).json({ error: 'El beneficio debe ser un importe igual o superior a 0.' });
+  }
+
+  try {
+    const success = await updateLeadBenefit(leadId, normalizedBenefit);
+    if (!success) {
+      return res.status(404).json({ error: 'Lead no encontrado o todavía no marcado como ganado.' });
+    }
+    res.json({ success: true, lead: { id: leadId, benefit: normalizedBenefit } });
+  } catch (err) {
+    console.error('Error actualizando beneficio:', err);
+    res.status(500).json({ error: 'Error actualizando el beneficio del lead.' });
+  }
+});
+
 app.get('/api/admin/gmail/callback', async (req, res) => {
   if (!validOAuthState(req.query.state)) return res.status(400).send('Estado OAuth inválido o caducado. Vuelve a iniciar la conexión desde el panel.');
   if (req.query.error) return res.redirect('/admin?gmail=cancelled');
@@ -1576,7 +1605,7 @@ app.get('/api/leads/export-csv', async (req, res) => {
       return `"${str}"`;
     };
 
-    const header = ['ID', 'Fecha', 'Nombre', 'Teléfono', 'Email', 'Tipo de Cliente', 'Origen', 'Estado', 'Página / Formulario', 'Gasto Mensual', 'Notas'];
+    const header = ['ID', 'Fecha', 'Nombre', 'Teléfono', 'Email', 'Tipo de Cliente', 'Origen', 'Estado', 'Beneficio (€)', 'Página / Formulario', 'Gasto Mensual', 'Notas'];
     const rows = leads.map(l => [
       escapeCsv(l.id),
       escapeCsv(l.date ? new Date(l.date).toLocaleString('es-ES') : ''),
@@ -1586,6 +1615,7 @@ app.get('/api/leads/export-csv', async (req, res) => {
       escapeCsv(l.clientType || 'Particular'),
       escapeCsv(l.source || 'Web Directa'),
       escapeCsv(l.status || 'nuevo'),
+      escapeCsv(l.benefit ?? ''),
       escapeCsv(l.pageUrl || ''),
       escapeCsv(l.monthlyBill || ''),
       escapeCsv(l.notes || '')

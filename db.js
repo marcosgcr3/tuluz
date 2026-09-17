@@ -56,6 +56,7 @@ export function initDatabase() {
             monthly_bill VARCHAR(100),
             notes TEXT,
             status VARCHAR(50) DEFAULT 'nuevo',
+            benefit NUMERIC(12, 2),
             notified BOOLEAN DEFAULT false,
             has_file BOOLEAN DEFAULT false,
             file_name VARCHAR(255),
@@ -65,6 +66,7 @@ export function initDatabase() {
           );
           CREATE INDEX IF NOT EXISTS idx_leads_date ON leads(date DESC);
           CREATE INDEX IF NOT EXISTS idx_leads_meta_id ON leads(meta_lead_id);
+          ALTER TABLE leads ADD COLUMN IF NOT EXISTS benefit NUMERIC(12, 2);
 
           CREATE TABLE IF NOT EXISTS guides_config (
             slug VARCHAR(255) PRIMARY KEY,
@@ -312,6 +314,12 @@ export function isDbConnected() {
 
 // Guardar lead tanto en PostgreSQL (si disponible) como en leads.json (backup)
 export async function saveLead(leadData) {
+  const benefit = leadData.benefit === '' || leadData.benefit === null || leadData.benefit === undefined
+    ? null
+    : Number(leadData.benefit);
+  const normalizedBenefit = Number.isFinite(benefit) ? benefit : null;
+  const normalizedLead = { ...leadData, ...(normalizedBenefit !== null ? { benefit: normalizedBenefit } : {}) };
+
   // 1. Guardar en leads.json como respaldo inmediato
   try {
     let leads = [];
@@ -319,11 +327,11 @@ export async function saveLead(leadData) {
       const content = fs.readFileSync(LEADS_FILE, 'utf-8');
       leads = JSON.parse(content || '[]');
     }
-    const idx = leads.findIndex(l => String(l.id) === String(leadData.id));
+    const idx = leads.findIndex(l => String(l.id) === String(normalizedLead.id));
     if (idx !== -1) {
-      leads[idx] = { ...leads[idx], ...leadData };
+      leads[idx] = { ...leads[idx], ...normalizedLead };
     } else {
-      leads.unshift(leadData);
+      leads.unshift(normalizedLead);
     }
     fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
   } catch (fileErr) {
@@ -333,16 +341,16 @@ export async function saveLead(leadData) {
   // 2. Guardar en PostgreSQL
   if (isDbConnected()) {
     try {
-      const id = String(leadData.id);
-      const metaId = leadData.metaLeadId ? String(leadData.metaLeadId) : null;
-      const date = leadData.date ? new Date(leadData.date) : new Date();
+      const id = String(normalizedLead.id);
+      const metaId = normalizedLead.metaLeadId ? String(normalizedLead.metaLeadId) : null;
+      const date = normalizedLead.date ? new Date(normalizedLead.date) : new Date();
 
       await pool.query(`
         INSERT INTO leads (
           id, meta_lead_id, date, name, phone, email, client_type,
-          source, page_url, monthly_bill, notes, status, notified,
+          source, page_url, monthly_bill, notes, status, benefit, notified,
           has_file, file_name, file_size
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
         ON CONFLICT (id) DO UPDATE SET
           meta_lead_id = COALESCE(EXCLUDED.meta_lead_id, leads.meta_lead_id),
           name = EXCLUDED.name,
@@ -354,17 +362,18 @@ export async function saveLead(leadData) {
           monthly_bill = EXCLUDED.monthly_bill,
           notes = EXCLUDED.notes,
           status = EXCLUDED.status,
+          benefit = COALESCE(EXCLUDED.benefit, leads.benefit),
           notified = EXCLUDED.notified,
           has_file = EXCLUDED.has_file,
           file_name = EXCLUDED.file_name,
           file_size = EXCLUDED.file_size,
           updated_at = NOW()
       `, [
-        id, metaId, date, leadData.name || '', leadData.phone || '', leadData.email || '',
-        leadData.clientType || 'particular', leadData.source || 'Web', leadData.pageUrl || '',
-        leadData.monthlyBill || '', leadData.notes || '', leadData.status || 'nuevo',
-        leadData.notified ?? false, leadData.hasFile ?? false, leadData.fileName || null,
-        leadData.fileSize || null
+        id, metaId, date, normalizedLead.name || '', normalizedLead.phone || '', normalizedLead.email || '',
+        normalizedLead.clientType || 'particular', normalizedLead.source || 'Web', normalizedLead.pageUrl || '',
+        normalizedLead.monthlyBill || '', normalizedLead.notes || '', normalizedLead.status || 'nuevo', normalizedBenefit,
+        normalizedLead.notified ?? false, normalizedLead.hasFile ?? false, normalizedLead.fileName || null,
+        normalizedLead.fileSize || null
       ]);
       console.log(`💾 Lead ${id} (${leadData.name}) guardado en PostgreSQL.`);
     } catch (dbErr) {
@@ -391,6 +400,7 @@ export async function getAllLeads() {
         monthlyBill: r.monthly_bill,
         notes: r.notes,
         status: r.status || 'nuevo',
+        benefit: r.benefit === null ? null : Number(r.benefit),
         notified: r.notified,
         hasFile: r.has_file,
         fileName: r.file_name,
@@ -449,6 +459,42 @@ export async function updateLeadStatus(leadId, status) {
       }
     } catch (e) {
       console.error('Error actualizando leads.json:', e.message);
+    }
+  }
+
+  return updated;
+}
+
+// Guardar el beneficio de un cliente ganado. El importe se conserva si más tarde
+// se cambia el estado, por si el cliente vuelve a marcarse como ganado.
+export async function updateLeadBenefit(leadId, benefit) {
+  let updated = false;
+
+  if (isDbConnected()) {
+    try {
+      const res = await pool.query(
+        "UPDATE leads SET benefit = $1, updated_at = NOW() WHERE id = $2 AND status = 'ganado' RETURNING id",
+        [benefit, String(leadId)]
+      );
+      if (res.rowCount > 0) updated = true;
+    } catch (err) {
+      console.error('Error actualizando beneficio del lead en PostgreSQL:', err.message);
+    }
+  }
+
+  if (fs.existsSync(LEADS_FILE)) {
+    try {
+      const content = fs.readFileSync(LEADS_FILE, 'utf-8');
+      const leads = JSON.parse(content || '[]');
+      const idx = leads.findIndex(l => String(l.id) === String(leadId));
+      if (idx !== -1 && leads[idx].status === 'ganado') {
+        leads[idx].benefit = benefit;
+        leads[idx].updatedAt = new Date().toISOString();
+        fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
+        updated = true;
+      }
+    } catch (err) {
+      console.error('Error actualizando beneficio del lead en JSON:', err.message);
     }
   }
 

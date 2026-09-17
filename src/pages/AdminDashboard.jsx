@@ -623,6 +623,10 @@ export default function AdminDashboard({ navigate }) {
     });
   }, [prospects, prospectSearch, prospectSector, prospectSentFilter]);
   const prospectSectors = useMemo(() => [...new Set(prospects.map(p => p.sector).filter(Boolean))].sort(), [prospects]);
+  const uniqueProspectEmails = useMemo(
+    () => new Set(prospects.map(p => String(p.email || '').trim().toLowerCase()).filter(Boolean)).size,
+    [prospects]
+  );
 
   // Filtered Leads
   const filteredLeads = useMemo(() => {
@@ -2253,7 +2257,7 @@ export default function AdminDashboard({ navigate }) {
                   onChange={e => setSelectedProspectIds(e.target.checked ? filteredProspects.filter(p => !p.emailSent && p.emailStatus !== 'descartado').map(p => p.id) : [])}
                   style={{ marginTop: '4px' }}
                 />
-              <div><h3 style={{ margin: 0 }}>3. Empresas importadas ({filteredProspects.length} visibles de {prospects.length})</h3><span style={{ color: '#64748b', fontSize: '12px' }}>{prospects.filter(p => !p.emailSent && p.emailStatus !== 'descartado').length} pendientes · {prospects.filter(p => p.emailSent).length} enviados · {prospects.filter(p => p.emailStatus === 'descartado').length} descartados</span></div>
+              <div><h3 style={{ margin: 0 }}>3. Contactos importados ({uniqueProspectEmails} correos únicos)</h3><span style={{ color: '#64748b', fontSize: '12px' }}>Mostrando {filteredProspects.length} de {uniqueProspectEmails} · {prospects.filter(p => !p.emailSent && p.emailStatus !== 'descartado').length} pendientes · {prospects.filter(p => p.emailSent).length} enviados · {prospects.filter(p => p.emailStatus === 'descartado').length} descartados</span></div>
               </div>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <input value={prospectSearch} onChange={e => setProspectSearch(e.target.value)} placeholder="Buscar empresa, email..." style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />

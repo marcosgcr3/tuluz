@@ -83,6 +83,7 @@ export default function AdminDashboard({ navigate }) {
   const [selectedProspectIds, setSelectedProspectIds] = useState([]);
   const [prospectSubject, setProspectSubject] = useState('Asesoramiento energético gratuito para {empresa}');
   const [prospectBody, setProspectBody] = useState('Hola,\n\nSoy David, fundador y responsable de tuLuz, una agencia de asesoría energética especializada en pymes y autónomos.\n\nAyudamos a empresas como la vuestra a revisar y optimizar sus costes de luz y gas. Si quieres, puedes responder a este correo adjuntando una factura reciente de luz o gas y la analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nY no nos limitamos a revisar la factura: si te interesa, también nos encargamos gratuitamente de todo el proceso, incluido el cambio de compañía, la búsqueda de una opción más adecuada y toda la gestión necesaria, sin coste y sin compromiso.\n\nUn saludo,');
+  const [savingProspectTemplate, setSavingProspectTemplate] = useState(false);
   const [prospectNotice, setProspectNotice] = useState('');
   const [gmailStatus, setGmailStatus] = useState({ configured: false, connected: false, email: null });
   const [gmailSyncing, setGmailSyncing] = useState(false);
@@ -213,6 +214,34 @@ export default function AdminDashboard({ navigate }) {
     }
   };
 
+  const fetchProspectTemplate = async (keyToUse) => {
+    const key = keyToUse || adminKey;
+    if (!key) return;
+    try {
+      const res = await fetch(`/api/admin/prospects/template?key=${encodeURIComponent(key)}`);
+      const data = await res.json();
+      if (res.ok && data.template) {
+        setProspectSubject(data.template.subject);
+        setProspectBody(data.template.body);
+      }
+    } catch (err) { console.error('Error cargando plantilla de prospección:', err); }
+  };
+
+  const handleSaveProspectTemplate = async () => {
+    setSavingProspectTemplate(true);
+    try {
+      const res = await fetch('/api/admin/prospects/template', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': adminKey },
+        body: JSON.stringify({ subject: prospectSubject, body: prospectBody })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'No se pudo guardar la plantilla');
+      setProspectNotice('✅ Plantilla guardada. Los próximos envíos usarán este texto.');
+    } catch (err) { setProspectNotice(`❌ ${err.message}`); }
+    finally { setSavingProspectTemplate(false); }
+  };
+
   const handleSaveGuide = async (slug) => {
     const form = guideForms[slug] || { status: 'publicada', publishAt: '' };
     
@@ -292,6 +321,7 @@ export default function AdminDashboard({ navigate }) {
       fetchDashboardData(adminKey);
       fetchGuidesConfig(adminKey);
       fetchProspects();
+      fetchProspectTemplate(adminKey);
       fetchGmailStatus();
 
       // Auto-refresco silencioso cada 15 segundos para mantener el panel siempre al día
@@ -2243,7 +2273,10 @@ export default function AdminDashboard({ navigate }) {
               <input value={prospectSubject} onChange={e => setProspectSubject(e.target.value)} placeholder="Usa {empresa} y {sector}" style={{ width: '100%', padding: '10px', border: '1px solid #cbd5e1', borderRadius: '8px', margin: '5px 0 12px', boxSizing: 'border-box' }} />
               <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#475569' }}>Mensaje</label>
               <textarea value={prospectBody} onChange={e => setProspectBody(e.target.value)} rows={8} style={{ width: '100%', padding: '10px', border: '1px solid #cbd5e1', borderRadius: '8px', marginTop: '5px', boxSizing: 'border-box', resize: 'vertical' }} />
-              <p style={{ fontSize: '12px', color: '#64748b', margin: '8px 0 0' }}>Variables disponibles: <code>{'{empresa}'}</code> y <code>{'{sector}'}</code>. La firma de David se añade automáticamente al pie.</p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', marginTop: '10px', flexWrap: 'wrap' }}>
+                <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>El texto actual se usa al pulsar “Enviar seleccionados”, así que puedes cambiarlo para cada sector. Variables: <code>{'{empresa}'}</code> y <code>{'{sector}'}</code>. La firma de David se añade automáticamente.</p>
+                <button type="button" className="btn btn-secondary" onClick={handleSaveProspectTemplate} disabled={savingProspectTemplate}>{savingProspectTemplate ? 'Guardando...' : 'Guardar plantilla'}</button>
+              </div>
             </section>
           </div>
 

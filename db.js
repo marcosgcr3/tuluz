@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 const LEADS_FILE = process.env.LEADS_FILE || path.join(__dirname, 'data', 'leads.json');
 const GUIDES_FILE = path.join(__dirname, 'guides_config.json');
 const PROSPECTS_FILE = process.env.PROSPECTS_FILE || path.join(__dirname, 'data', 'prospects.json');
+const PROSPECT_TEMPLATE_FILE = path.join(path.dirname(PROSPECTS_FILE), 'prospect_email_template.json');
 const NON_EMAIL_FILE_EXTENSIONS = new Set(['png', 'gif', 'jpg', 'jpeg', 'webp', 'svg', 'ico', 'avif', 'bmp', 'tif', 'tiff']);
 
 function isValidProspectEmail(value) {
@@ -125,6 +126,13 @@ export function initDatabase() {
             updated_at TIMESTAMPTZ DEFAULT NOW()
           );
           ALTER TABLE gmail_oauth_tokens ADD COLUMN IF NOT EXISTS history_id VARCHAR(100);
+
+          CREATE TABLE IF NOT EXISTS prospect_email_template (
+            id BOOLEAN PRIMARY KEY DEFAULT true CHECK (id),
+            subject TEXT NOT NULL,
+            body TEXT NOT NULL,
+            updated_at TIMESTAMPTZ DEFAULT NOW()
+          );
         `);
 
         // Sincronizar e inicializar las 55 guías en PostgreSQL si falta alguna
@@ -548,6 +556,37 @@ export async function deleteLead(leadId) {
 // ==========================================
 // CONFIGURACIÓN DE GUÍAS (PUBLICADA / BORRADOR / PROGRAMADA)
 // ==========================================
+
+export async function getProspectEmailTemplate() {
+  if (isDbConnected()) {
+    try {
+      const res = await pool.query('SELECT subject, body, updated_at FROM prospect_email_template WHERE id = true');
+      if (res.rows[0]) return { subject: res.rows[0].subject, body: res.rows[0].body, updatedAt: res.rows[0].updated_at?.toISOString() || null };
+    } catch (err) { console.error('Error leyendo plantilla de prospección en PostgreSQL:', err.message); }
+  }
+  try {
+    if (!fs.existsSync(PROSPECT_TEMPLATE_FILE)) return null;
+    const template = JSON.parse(fs.readFileSync(PROSPECT_TEMPLATE_FILE, 'utf8') || '{}');
+    return template.subject && template.body ? template : null;
+  } catch (err) { console.error('Error leyendo plantilla de prospección local:', err.message); return null; }
+}
+
+export async function saveProspectEmailTemplate({ subject, body }) {
+  const template = { subject: String(subject).trim(), body: String(body).trim(), updatedAt: new Date().toISOString() };
+  if (isDbConnected()) {
+    try {
+      await pool.query(
+        `INSERT INTO prospect_email_template (id, subject, body, updated_at) VALUES (true, $1, $2, NOW())
+         ON CONFLICT (id) DO UPDATE SET subject = EXCLUDED.subject, body = EXCLUDED.body, updated_at = NOW()`,
+        [template.subject, template.body]
+      );
+    } catch (err) { console.error('Error guardando plantilla de prospección en PostgreSQL:', err.message); }
+  }
+  try {
+    fs.writeFileSync(PROSPECT_TEMPLATE_FILE, JSON.stringify(template, null, 2), 'utf8');
+    return { success: true, template };
+  } catch (err) { console.error('Error guardando plantilla de prospección local:', err.message); return { success: false, error: err.message }; }
+}
 
 export async function getGuidesConfig() {
   const configs = {};

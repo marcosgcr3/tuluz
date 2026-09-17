@@ -23,7 +23,9 @@ import {
   updateLeadBenefit,
   deleteLead,
   getGuidesConfig,
-  saveGuideConfig
+  saveGuideConfig,
+  getProspectEmailTemplate,
+  saveProspectEmailTemplate
   ,getAllProspects, importProspects, markProspectsEmailSent, convertProspect, getGmailRefreshToken, saveGmailRefreshToken, getGmailHistoryId, saveGmailHistoryId, updateProspectEmailStatus
 } from './db.js';
 import { guidesData } from './src/data/guidesData.js';
@@ -845,6 +847,23 @@ app.get('/api/admin/prospects', async (req, res) => {
   } catch (err) { res.status(500).json({ error: 'No se pudieron leer los posibles clientes' }); }
 });
 
+app.get('/api/admin/prospects/template', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  try {
+    res.json({ success: true, template: await getProspectEmailTemplate() });
+  } catch (err) { res.status(500).json({ error: 'No se pudo cargar la plantilla de prospección.' }); }
+});
+
+app.post('/api/admin/prospects/template', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  const subject = safeHeaderText(req.body?.subject || '').trim();
+  const body = String(req.body?.body || '').trim();
+  if (!subject || !body) return res.status(400).json({ error: 'El asunto y el mensaje son obligatorios.' });
+  const result = await saveProspectEmailTemplate({ subject, body });
+  if (!result.success) return res.status(500).json({ error: result.error || 'No se pudo guardar la plantilla.' });
+  res.json({ success: true, template: result.template });
+});
+
 app.post('/api/admin/prospects/:id/convert', async (req, res) => {
   if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
   try {
@@ -879,7 +898,7 @@ app.post('/api/admin/prospects/import', (req, res, next) => {
 app.post('/api/admin/prospects/send', async (req, res) => {
   if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
   const ids = Array.isArray(req.body.ids) ? req.body.ids : [];
-  const subject = safeHeaderText(req.body.subject || 'Asesoramiento energético gratuito para {empresa}').replace(/\{empresa\}/gi, 'tu empresa');
+  const subject = safeHeaderText(req.body.subject || 'Asesoramiento energético gratuito para {empresa}');
   const body = String(req.body.body || 'Hola,\n\nSoy David, fundador y responsable de tuLuz, una agencia de asesoría energética especializada en pymes y autónomos.\n\nAyudamos a empresas como la vuestra a revisar y optimizar sus costes de luz y gas. Si quieres, puedes responder a este correo adjuntando una factura reciente de luz o gas y la analizaremos gratuitamente para indicarte si detectamos posibles ahorros.\n\nY no nos limitamos a revisar la factura: si te interesa, también nos encargamos gratuitamente de todo el proceso, incluido el cambio de compañía, la búsqueda de una opción más adecuada y toda la gestión necesaria, sin coste y sin compromiso.\n\nUn saludo,');
   if (!ids.length) return res.status(400).json({ error: 'Selecciona al menos un posible cliente.' });
   if (!isConfiguredSMTP()) return res.status(400).json({ error: 'SMTP no está configurado en las variables de entorno.' });
@@ -892,7 +911,8 @@ app.post('/api/admin/prospects/send', async (req, res) => {
     for (const group of grouped) {
       const prospect = group.prospects[0];
       try {
-        await transporter.sendMail({ from: `"tuLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`, to: group.prospects.map(p => p.email).join(', '), subject: subject.replace(/\{sector\}/gi, prospect.sector || 'tu sector'), html: personalizedEmail({ ...prospect, subject, body }) });
+        const renderedSubject = subject.replace(/\{empresa\}/gi, prospect.companyName || 'tu empresa').replace(/\{sector\}/gi, prospect.sector || 'tu sector');
+        await transporter.sendMail({ from: `"tuLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`, to: group.prospects.map(p => p.email).join(', '), subject: renderedSubject, html: personalizedEmail({ ...prospect, subject: renderedSubject, body }) });
         sent.push(...group.prospects.map(p => p.id));
       } catch (err) {
         const errorMessage = err.message || 'Google no pudo aceptar el envío.';

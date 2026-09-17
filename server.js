@@ -34,6 +34,7 @@ initDatabase();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'davidad@tu-luz.es';
+let gmailSyncInProgress = false;
 
 // Middleware
 // Compresión de texto Gzip/Deflate para acelerar transferencias en móvil
@@ -1037,32 +1038,43 @@ app.get('/api/admin/gmail/status', async (req, res) => {
 });
 
 async function syncGmailInbox({ historical = false } = {}) {
+  if (gmailSyncInProgress) return { scanned: 0, matched: 0, updated: 0, converted: 0, connected: true, skipped: true };
+  gmailSyncInProgress = true;
+  try {
   const accessToken = await getGmailAccessToken();
   if (!accessToken) return { scanned: 0, matched: 0, updated: 0, connected: false };
   const query = historical ? 'in:anywhere' : 'in:anywhere newer_than:30d';
   const messages = [];
   let pageToken = '';
   do {
-    const params = new URLSearchParams({ maxResults: '500', q: query });
+    const params = new URLSearchParams({ maxResults: historical ? '100' : '25', q: query });
     if (pageToken) params.set('pageToken', pageToken);
     const listRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages?${params.toString()}`, { headers: { Authorization: `Bearer ${accessToken}` } });
     const listData = await listRes.json();
     if (!listRes.ok) throw new Error(listData.error?.message || 'No se pudo leer Gmail');
     messages.push(...(listData.messages || []));
     pageToken = listData.nextPageToken || '';
-  } while (pageToken && messages.length < 10000);
+  } while (historical && pageToken && messages.length < 10000);
   let matched = 0;
   let converted = 0;
   for (const message of messages) {
-    const detailRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=full`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const detailRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Auto-Submitted&metadataHeaders=Precedence`, { headers: { Authorization: `Bearer ${accessToken}` } });
     const detail = await detailRes.json();
     if (!detailRes.ok) continue;
     const headers = Object.fromEntries((detail.payload?.headers || []).map(h => [h.name.toLowerCase(), h.value]));
     const senderMatch = String(headers.from || '').match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/);
     const sender = senderMatch?.[0]?.toLowerCase();
-    const rawMessage = extractGmailMessageText(detail.payload);
     const auto = headers['auto-submitted'] || headers.precedence;
-    const isBounce = /mailer-daemon|postmaster|delivery status notification|undelivered|failure notice|delivery incomplete|address not found/i.test(String(headers.subject || '') + headers.from + rawMessage);
+    let rawMessage = '';
+    let isBounce = /mailer-daemon|postmaster|delivery status notification|undelivered|failure notice|delivery incomplete|address not found/i.test(String(headers.subject || '') + headers.from);
+    if (isBounce) {
+      const fullRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${message.id}?format=full`, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const fullMessage = await fullRes.json();
+      if (fullRes.ok) {
+        rawMessage = extractGmailMessageText(fullMessage.payload);
+        isBounce = /mailer-daemon|postmaster|delivery status notification|undelivered|failure notice|delivery incomplete|address not found/i.test(String(headers.subject || '') + headers.from + rawMessage);
+      }
+    }
     const status = isBounce ? 'descartado' : auto ? 'respuesta_automatica' : 'respondido';
     const candidateEmails = isBounce ? [...new Set((rawMessage.match(/[\w.!#$%&'*+/=?^`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/gi) || []).map(email => email.toLowerCase()).filter(email => email !== process.env.GOOGLE_GMAIL_EMAIL.toLowerCase()))] : (sender ? [sender] : []);
     for (const email of candidateEmails) {
@@ -1077,6 +1089,9 @@ async function syncGmailInbox({ historical = false } = {}) {
     }
   }
   return { scanned: messages.length, matched, updated: matched, converted, connected: true };
+  } finally {
+    gmailSyncInProgress = false;
+  }
 }
 
 function extractGmailMessageText(part) {
@@ -1869,7 +1884,7 @@ app.listen(PORT, () => {
     if (gmailOAuthConfigured()) {
       syncGmailInbox().catch(err => console.error('Error en intervalo sync Gmail:', err));
     }
-  }, 2 * 60 * 1000);
+  }, 5 * 60 * 1000);
 
   // Chequeo inicial 5 segundos después del arranque
   setTimeout(() => {

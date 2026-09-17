@@ -60,7 +60,11 @@ export function getGuideWordCount(guide) {
 
 const BUSINESS_GROUPS = {
   restauracion: { label: 'Bares, cafeterías y restauración', terms: ['bar', 'cafeteria', 'cafe', 'restaurante', 'taperia', 'taberna', 'bistro', 'cerveceria', 'gastrobar', 'pizzeria', 'asador'] },
-  alojamientos: { label: 'Hoteles y alojamientos', terms: ['hotel', 'hostal', 'alojamiento', 'apartamento turistico', 'apartamentos turisticos', 'casa rural', 'pension', 'resort', 'guest house', 'bed breakfast', 'camping'] }
+  alojamientos: { label: 'Hoteles y alojamientos', terms: ['hotel', 'hostal', 'alojamiento', 'apartamento turistico', 'apartamentos turisticos', 'casa rural', 'pension', 'resort', 'guest house', 'bed breakfast', 'camping'] },
+  industria_talleres: { label: 'Fábricas, talleres e industria', terms: ['fabrica', 'fabricante', 'manufactura', 'industria', 'industrial', 'taller', 'mecanico', 'automocion', 'carroceria', 'chapa', 'soldadura', 'metal', 'aluminio', 'marmol', 'madera', 'imprenta'] },
+  construccion_oficios: { label: 'Construcción, reformas y oficios', terms: ['construccion', 'reforma', 'albanil', 'fontaneria', 'electricista', 'climatizacion', 'pintura', 'cerrajeria', 'instalaciones', 'tejad', 'pladur'] },
+  comercio: { label: 'Comercios y tiendas', terms: ['tienda', 'comercio', 'boutique', 'supermercado', 'alimentacion', 'panaderia', 'pasteleria', 'floristeria', 'optica', 'libreria', 'ferreteria'] },
+  salud_belleza: { label: 'Salud, belleza y bienestar', terms: ['clinica', 'dentista', 'fisioterapia', 'farmacia', 'peluqueria', 'estetica', 'belleza', 'gimnasio', 'yoga', 'spa'] }
 };
 
 const normalizeBusinessText = (value) => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();

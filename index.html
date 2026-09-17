@@ -8,7 +8,9 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-B3QHJXW8RB');
+      // Las vistas se registran desde SEOHead solo en rutas públicas. Así el
+      // panel privado nunca genera una visita automática en Analytics.
+      gtag('config', 'G-B3QHJXW8RB', { send_page_view: false });
     </script>
 
     <meta charset="UTF-8" />

@@ -1777,6 +1777,18 @@ app.use(express.static(path.join(__dirname, 'dist'), {
 }));
 
 const STATIC_SEO_PAGES = {
+  '/admin': {
+    title: 'TúLuz · Administración',
+    description: 'Área privada de administración.',
+    canonical: 'https://tu-luz.es/admin',
+    noindex: true
+  },
+  '/dashboard': {
+    title: 'TúLuz · Administración',
+    description: 'Área privada de administración.',
+    canonical: 'https://tu-luz.es/admin',
+    noindex: true
+  },
   '/': {
     title: 'tuLuz | Asesoramiento Energético Gratuito en Luz y Gas',
     description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad y gas.',
@@ -1944,6 +1956,7 @@ function serveFrontend(req, res) {
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(seo.title)}</title>`);
   html = replaceMetaContent(html, 'name', 'description', seo.description);
+  html = replaceMetaContent(html, 'name', 'robots', seo.noindex ? 'noindex, nofollow, noarchive' : 'index, follow');
   html = replaceMetaContent(html, 'property', 'og:title', seo.title);
   html = replaceMetaContent(html, 'property', 'og:description', seo.description);
   html = replaceMetaContent(html, 'property', 'og:url', seo.canonical);
@@ -1951,10 +1964,13 @@ function serveFrontend(req, res) {
   html = replaceMetaContent(html, 'name', 'twitter:description', seo.description);
   html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${seo.canonical}">`);
   html = html.replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, '');
-  html = html.replace('</head>', `    <script type="application/ld+json">${buildStructuredData(seo)}</script>\n  </head>`);
-  html = html.replace('<div id="root"></div>', `<div id="root"></div>${buildNoScriptFallback(seo)}`);
+  if (!seo.noindex) {
+    html = html.replace('</head>', `    <script type="application/ld+json">${buildStructuredData(seo)}</script>\n  </head>`);
+    html = html.replace('<div id="root"></div>', `<div id="root"></div>${buildNoScriptFallback(seo)}`);
+  }
 
   res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+  if (seo.noindex) res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');
   res.type('html').send(html);
 }
 

@@ -10,6 +10,8 @@ Disallow: /instagram
 Disallow: /facebook
 Disallow: /tiktok
 Disallow: /promo
+Disallow: /admin
+Disallow: /dashboard
 
 # Rastreadores de Inteligencia Artificial (GEO / AI Search)
 User-agent: GPTBot

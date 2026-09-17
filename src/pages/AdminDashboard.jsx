@@ -852,7 +852,7 @@ export default function AdminDashboard({ navigate }) {
           </div>
 
           <h1 style={{ fontSize: '24px', fontWeight: '800', margin: '0 0 8px 0', letterSpacing: '-0.5px' }}>
-            TúLuz Admin
+            TúLuz · Administración
           </h1>
           <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 28px 0' }}>
             Panel de control, analítica y gestión de clientes potenciales
@@ -1007,7 +1007,7 @@ export default function AdminDashboard({ navigate }) {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <h1 style={{ margin: 0, fontSize: '18px', fontWeight: '800', letterSpacing: '-0.3px', color: '#0f172a' }}>
-                TúLuz • Panel de Métricas & Leads
+                TúLuz · Administración
               </h1>
               <span style={{
                 background: '#dcfce7',

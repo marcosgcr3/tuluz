@@ -15,6 +15,18 @@ const guideSeoDataMap = Object.fromEntries(
 );
 
 const seoDataMap = {
+  '/admin': {
+    title: 'TúLuz · Administración',
+    description: 'Área privada de administración.',
+    canonical: 'https://tu-luz.es/admin',
+    noindex: true
+  },
+  '/dashboard': {
+    title: 'TúLuz · Administración',
+    description: 'Área privada de administración.',
+    canonical: 'https://tu-luz.es/admin',
+    noindex: true
+  },
   '/': {
     title: 'tuLuz | Asesoramiento Energético Gratuito en Luz y Gas',
     description: 'tuLuz representa claridad, ahorro y un futuro sostenible. Estudio 100% gratuito comparando más de 50 comercializadoras de electricidad y gas.',
@@ -244,7 +256,7 @@ export default function SEOHead({ currentPath }) {
     if (twDesc) twDesc.setAttribute('content', seoData.description);
 
     // Track dynamic SPA pageview in Google Tag
-    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    if (!seoData.noindex && typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('config', 'G-B3QHJXW8RB', {
         page_path: cleanPath + (window.location.search || ''),
         page_title: effectiveTitle

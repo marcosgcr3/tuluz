@@ -154,6 +154,8 @@ export default function App() {
   // Si estamos en el panel de administración, no mostramos la barra pública ni el footer
   if (isAdminRoute) {
     return (
+      <>
+      <SEOHead currentPath={currentPath} />
       <Suspense fallback={
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', color: '#ffffff' }}>
           <div style={{
@@ -169,6 +171,7 @@ export default function App() {
       }>
         <AdminDashboard navigate={navigate} />
       </Suspense>
+      </>
     );
   }
 

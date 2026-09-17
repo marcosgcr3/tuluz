@@ -654,12 +654,12 @@ export default function AdminDashboard({ navigate }) {
     } catch (err) { setProspectNotice(`❌ ${err.message}`); }
   };
 
-  const handleCopyErrorEmails = async () => {
+  const handleCopyVisibleEmails = async () => {
     const emails = [...new Set(filteredProspects
-      .filter(p => p.emailStatus === 'error_envio' && !p.invalidEmail)
+      .filter(p => !p.invalidEmail)
       .map(p => String(p.email || '').trim().toLowerCase())
       .filter(Boolean))];
-    if (!emails.length) return setProspectNotice('No hay correos con error de envío en el filtro actual.');
+    if (!emails.length) return setProspectNotice('No hay correos válidos en el filtro actual.');
     const text = emails.join('\n');
     try {
       if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(text);
@@ -668,7 +668,7 @@ export default function AdminDashboard({ navigate }) {
         area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
         document.body.appendChild(area); area.select(); document.execCommand('copy'); area.remove();
       }
-      setProspectNotice(`✅ ${emails.length} correos con error copiados, uno por línea.`);
+      setProspectNotice(`✅ ${emails.length} correos mostrados copiados, uno por línea.`);
     } catch (err) { setProspectNotice('❌ No se pudieron copiar los correos.'); }
   };
 
@@ -2330,7 +2330,7 @@ export default function AdminDashboard({ navigate }) {
             </div>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap' }}>
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds(filteredProspects.filter(p => !p.emailSent && !p.invalidEmail && p.emailStatus !== 'descartado').map(p => p.id))}>Seleccionar contactos disponibles</button>
-              <button type="button" className="btn btn-secondary" onClick={handleCopyErrorEmails} disabled={!filteredProspects.some(p => p.emailStatus === 'error_envio' && !p.invalidEmail)}><FileText size={16} />Copiar correos con error</button>
+              <button type="button" className="btn btn-secondary" onClick={handleCopyVisibleEmails} disabled={!filteredProspects.some(p => !p.invalidEmail)}><FileText size={16} />Copiar correos mostrados</button>
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds([])}>Limpiar selección</button>
               <button type="button" className="btn btn-primary" onClick={handleSendProspects} disabled={prospectsLoading || !selectedProspectIds.length}><Mail size={16} />Enviar seleccionados ({selectedProspectIds.length})</button>
               <button type="button" className="btn btn-secondary" onClick={fetchProspects}><RefreshCw size={16} />Actualizar</button>

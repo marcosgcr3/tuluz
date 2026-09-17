@@ -165,7 +165,7 @@ function normalizeProspectRow(row) {
 function personalizedEmail({ companyName, sector, subject, body }) {
   const safeCompany = escapeHtml(companyName || 'tu empresa');
   const safeSector = escapeHtml(sector || 'vuestro sector');
-  const rendered = String(body || '').replace(/\{empresa\}/gi, safeCompany).replace(/\{sector\}/gi, safeSector).replace(/\n/g, '<br>');
+  const rendered = String(body || '').replace(/(?:\{|\[)empresa(?:\}|\])/gi, safeCompany).replace(/(?:\{|\[)sector(?:\}|\])/gi, safeSector).replace(/\n/g, '<br>');
   return `<div style="font-family:Arial,sans-serif;color:#1e293b;line-height:1.6;max-width:640px"><p>${rendered}</p><p style="margin-top:24px"><strong>David Amer Duro</strong><br><strong>TúLuz, Soluciones Energéticas</strong><br><a href="tel:+34620061560" style="color:#166534">+34 620 06 15 60</a><br><a href="mailto:davidad@tu-luz.es" style="color:#166534">davidad@tu-luz.es</a></p><hr style="border:0;border-top:1px solid #e2e8f0"><p style="font-size:12px;color:#64748b">Si no deseas recibir más comunicaciones, responde a este correo indicando "BAJA".</p></div>`;
 }
 
@@ -911,7 +911,7 @@ app.post('/api/admin/prospects/send', async (req, res) => {
     for (const group of grouped) {
       const prospect = group.prospects[0];
       try {
-        const renderedSubject = subject.replace(/\{empresa\}/gi, prospect.companyName || 'tu empresa').replace(/\{sector\}/gi, prospect.sector || 'tu sector');
+        const renderedSubject = subject.replace(/(?:\{|\[)empresa(?:\}|\])/gi, prospect.companyName || 'tu empresa').replace(/(?:\{|\[)sector(?:\}|\])/gi, prospect.sector || 'tu sector');
         await transporter.sendMail({ from: `"tuLuz" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`, to: group.prospects.map(p => p.email).join(', '), subject: renderedSubject, html: personalizedEmail({ ...prospect, subject: renderedSubject, body }) });
         sent.push(...group.prospects.map(p => p.id));
       } catch (err) {

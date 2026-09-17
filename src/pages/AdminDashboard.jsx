@@ -64,7 +64,11 @@ const BUSINESS_GROUPS = {
   industria_talleres: { label: 'Fábricas, talleres e industria', terms: ['fabrica', 'fabricante', 'manufactura', 'industria', 'industrial', 'taller', 'mecanico', 'automocion', 'carroceria', 'chapa', 'soldadura', 'metal', 'aluminio', 'marmol', 'madera', 'imprenta'] },
   construccion_oficios: { label: 'Construcción, reformas y oficios', terms: ['construccion', 'reforma', 'albanil', 'fontaneria', 'electricista', 'climatizacion', 'pintura', 'cerrajeria', 'instalaciones', 'tejad', 'pladur'] },
   comercio: { label: 'Comercios y tiendas', terms: ['tienda', 'comercio', 'boutique', 'supermercado', 'alimentacion', 'panaderia', 'pasteleria', 'floristeria', 'optica', 'libreria', 'ferreteria'] },
-  salud_belleza: { label: 'Salud, belleza y bienestar', terms: ['clinica', 'dentista', 'fisioterapia', 'farmacia', 'peluqueria', 'estetica', 'belleza', 'gimnasio', 'yoga', 'spa'] }
+  salud_belleza: { label: 'Salud, belleza y bienestar', terms: ['clinica', 'dentista', 'fisioterapia', 'farmacia', 'peluqueria', 'estetica', 'belleza', 'gimnasio', 'yoga', 'spa'] },
+  servicios_profesionales: { label: 'Servicios profesionales y oficinas', terms: ['asesoria', 'gestoria', 'abogado', 'arquitect', 'ingenier', 'consultor', 'notaria', 'agencia', 'marketing', 'informatica', 'oficina'] },
+  transporte_logistica: { label: 'Transporte, logística y automoción', terms: ['transporte', 'logistica', 'mensajeria', 'mudanza', 'taxi', 'autobus', 'vehiculo', 'concesionario', 'alquiler de coches', 'rent a car'] },
+  educacion_ocio: { label: 'Educación, cultura y ocio', terms: ['academia', 'colegio', 'escuela', 'guarderia', 'formacion', 'museo', 'teatro', 'ocio', 'eventos', 'discoteca', 'sala de fiestas'] },
+  inmobiliario: { label: 'Inmobiliarias y gestión de propiedades', terms: ['inmobiliaria', 'inmueble', 'administracion de fincas', 'promotora', 'constructora', 'alquiler vacacional', 'real estate'] }
 };
 
 const normalizeBusinessText = (value) => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -2308,7 +2312,7 @@ export default function AdminDashboard({ navigate }) {
               <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#475569' }}>Mensaje</label>
               <textarea value={prospectBody} onChange={e => setProspectBody(e.target.value)} rows={8} style={{ width: '100%', padding: '10px', border: '1px solid #cbd5e1', borderRadius: '8px', marginTop: '5px', boxSizing: 'border-box', resize: 'vertical' }} />
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', marginTop: '10px', flexWrap: 'wrap' }}>
-                <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>El texto actual se usa al pulsar “Enviar seleccionados”, así que puedes cambiarlo para cada sector. Variables: <code>{'{empresa}'}</code> y <code>{'{sector}'}</code>. La firma de David se añade automáticamente.</p>
+                <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>El texto actual se usa al pulsar “Enviar seleccionados”, así que puedes cambiarlo para cada sector. Variables: <code>{'{empresa}'}</code> o <code>[empresa]</code>, y <code>{'{sector}'}</code> o <code>[sector]</code>. La firma de David se añade automáticamente.</p>
                 <button type="button" className="btn btn-secondary" onClick={handleSaveProspectTemplate} disabled={savingProspectTemplate}>{savingProspectTemplate ? 'Guardando...' : 'Guardar plantilla'}</button>
               </div>
             </section>

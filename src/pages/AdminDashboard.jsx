@@ -58,6 +58,17 @@ export function getGuideWordCount(guide) {
   return clean ? clean.split(/\s+/).length : 0;
 }
 
+const BUSINESS_GROUPS = {
+  restauracion: { label: 'Bares, cafeterías y restauración', terms: ['bar', 'cafeteria', 'cafe', 'restaurante', 'taperia', 'taberna', 'bistro', 'cerveceria', 'gastrobar', 'pizzeria', 'asador'] },
+  alojamientos: { label: 'Hoteles y alojamientos', terms: ['hotel', 'hostal', 'alojamiento', 'apartamento turistico', 'apartamentos turisticos', 'casa rural', 'pension', 'resort', 'guest house', 'bed breakfast', 'camping'] }
+};
+
+const normalizeBusinessText = (value) => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const matchesBusinessGroup = (group, prospect) => {
+  const text = normalizeBusinessText(`${prospect.sector} ${prospect.companyName}`);
+  return group.terms.some(term => term === 'bar' ? /(^|[^a-z])bar([^a-z]|$)/.test(text) : text.includes(term));
+};
+
 export default function AdminDashboard({ navigate }) {
   const [adminKey, setAdminKey] = useState(() => sessionStorage.getItem('tuluz_admin_key') || '');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -643,11 +654,30 @@ export default function AdminDashboard({ navigate }) {
     } catch (err) { setProspectNotice(`❌ ${err.message}`); }
   };
 
+  const handleCopyErrorEmails = async () => {
+    const emails = [...new Set(filteredProspects
+      .filter(p => p.emailStatus === 'error_envio' && !p.invalidEmail)
+      .map(p => String(p.email || '').trim().toLowerCase())
+      .filter(Boolean))];
+    if (!emails.length) return setProspectNotice('No hay correos con error de envío en el filtro actual.');
+    const text = emails.join('\n');
+    try {
+      if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(text);
+      else {
+        const area = document.createElement('textarea');
+        area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
+        document.body.appendChild(area); area.select(); document.execCommand('copy'); area.remove();
+      }
+      setProspectNotice(`✅ ${emails.length} correos con error copiados, uno por línea.`);
+    } catch (err) { setProspectNotice('❌ No se pudieron copiar los correos.'); }
+  };
+
   const filteredProspects = useMemo(() => {
     const q = prospectSearch.toLowerCase().trim();
     return prospects.filter(p => {
       const matchesSearch = !q || [p.companyName, p.email, p.phone, p.city, p.sector].some(v => String(v || '').toLowerCase().includes(q));
-      const matchesSector = prospectSector === 'all' || p.sector === prospectSector;
+      const group = prospectSector.startsWith('group:') ? BUSINESS_GROUPS[prospectSector.slice(6)] : null;
+      const matchesSector = prospectSector === 'all' || (group ? matchesBusinessGroup(group, p) : p.sector === prospectSector);
       const matchesSent = prospectSentFilter === 'all' || (prospectSentFilter === 'pending' ? !p.emailSent && !p.invalidEmail && !['descartado', 'error_envio'].includes(p.emailStatus) : prospectSentFilter === 'error' ? p.emailStatus === 'error_envio' : prospectSentFilter === 'invalid' ? p.invalidEmail : prospectSentFilter === 'discarded' ? p.emailStatus === 'descartado' : p.emailSent);
       return matchesSearch && matchesSector && matchesSent;
     });
@@ -2294,12 +2324,13 @@ export default function AdminDashboard({ navigate }) {
               </div>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <input value={prospectSearch} onChange={e => setProspectSearch(e.target.value)} placeholder="Buscar empresa, email..." style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
-                <select value={prospectSector} onChange={e => setProspectSector(e.target.value)} style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }}><option value="all">Todos los sectores</option>{prospectSectors.map(s => <option key={s} value={s}>{s}</option>)}</select>
+                <select value={prospectSector} onChange={e => setProspectSector(e.target.value)} style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }}><option value="all">Todos los sectores</option><optgroup label="Categorías amplias">{Object.entries(BUSINESS_GROUPS).map(([key, group]) => <option key={key} value={`group:${key}`}>{group.label}</option>)}</optgroup><optgroup label="Sectores exactos">{prospectSectors.map(s => <option key={s} value={s}>{s}</option>)}</optgroup></select>
                 <select value={prospectSentFilter} onChange={e => setProspectSentFilter(e.target.value)} style={{ padding: '9px', border: '1px solid #cbd5e1', borderRadius: '8px' }}><option value="pending">Pendientes</option><option value="error">Errores de envío</option><option value="invalid">Correos no válidos</option><option value="sent">Enviados</option><option value="discarded">Descartados</option><option value="all">Todos</option></select>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap' }}>
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds(filteredProspects.filter(p => !p.emailSent && !p.invalidEmail && p.emailStatus !== 'descartado').map(p => p.id))}>Seleccionar contactos disponibles</button>
+              <button type="button" className="btn btn-secondary" onClick={handleCopyErrorEmails} disabled={!filteredProspects.some(p => p.emailStatus === 'error_envio' && !p.invalidEmail)}><FileText size={16} />Copiar correos con error</button>
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds([])}>Limpiar selección</button>
               <button type="button" className="btn btn-primary" onClick={handleSendProspects} disabled={prospectsLoading || !selectedProspectIds.length}><Mail size={16} />Enviar seleccionados ({selectedProspectIds.length})</button>
               <button type="button" className="btn btn-secondary" onClick={fetchProspects}><RefreshCw size={16} />Actualizar</button>

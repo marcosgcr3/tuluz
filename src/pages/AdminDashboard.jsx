@@ -686,7 +686,7 @@ export default function AdminDashboard({ navigate }) {
       const matchesSearch = !q || [p.companyName, p.email, p.phone, p.city, p.sector].some(v => String(v || '').toLowerCase().includes(q));
       const group = prospectSector.startsWith('group:') ? BUSINESS_GROUPS[prospectSector.slice(6)] : null;
       const matchesSector = prospectSector === 'all' || (group ? matchesBusinessGroup(group, p) : p.sector === prospectSector);
-      const matchesSent = prospectSentFilter === 'all' || (prospectSentFilter === 'pending' ? !p.emailSent && !p.invalidEmail && !['descartado', 'error_envio'].includes(p.emailStatus) : prospectSentFilter === 'error' ? p.emailStatus === 'error_envio' : prospectSentFilter === 'invalid' ? p.invalidEmail : prospectSentFilter === 'discarded' ? p.emailStatus === 'descartado' : p.emailSent);
+      const matchesSent = prospectSentFilter === 'all' || (prospectSentFilter === 'pending' ? !p.emailSent && !p.invalidEmail && !['descartado', 'error_envio'].includes(p.emailStatus) : prospectSentFilter === 'error' ? p.emailStatus === 'error_envio' : prospectSentFilter === 'invalid' ? p.invalidEmail : prospectSentFilter === 'discarded' ? p.emailStatus === 'descartado' : p.emailSent && !p.invalidEmail && p.emailStatus !== 'descartado');
       return matchesSearch && matchesSector && matchesSent;
     });
   }, [prospects, prospectSearch, prospectSector, prospectSentFilter]);

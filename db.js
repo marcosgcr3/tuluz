@@ -248,6 +248,43 @@ export async function markProspectsEmailSent(ids) {
   return updated;
 }
 
+// Devuelve a pendientes únicamente los contactos que siguen estando en el
+// estado de envío normal. Las incidencias, descartes y respuestas conservan su
+// estado para que no vuelvan accidentalmente a una campaña.
+export async function resetSentProspectsToPending() {
+  if (isDbConnected()) {
+    const res = await pool.query(`
+      UPDATE prospects
+      SET email_sent = false,
+          email_sent_at = NULL,
+          updated_at = NOW()
+      WHERE email_sent = true
+        AND converted = false
+        AND (email_status IS NULL OR email_status = '')
+        AND email ~* '^[^[:space:]@]+@[^[:space:]@]+\\.[a-z]{2,}$'
+        AND LOWER(email) !~ '\\.(png|gif|jpg|jpeg|webp|svg|ico|avif|bmp|tif|tiff)$'
+      RETURNING *
+    `);
+    return res.rows.map(mapProspect);
+  }
+
+  let local = [];
+  try { local = fs.existsSync(PROSPECTS_FILE) ? JSON.parse(fs.readFileSync(PROSPECTS_FILE, 'utf8') || '[]') : []; } catch {}
+  const resetIds = new Set(
+    local
+      .filter(p => p.emailSent && !p.converted && !p.emailStatus && isValidProspectEmail(p.email))
+      .map(p => String(p.id))
+  );
+  const updated = local
+    .filter(p => resetIds.has(String(p.id)))
+    .map(p => ({ ...p, emailSent: false, emailSentAt: null, updatedAt: new Date().toISOString() }));
+  local = local.map(p => resetIds.has(String(p.id))
+    ? { ...p, emailSent: false, emailSentAt: null, updatedAt: new Date().toISOString() }
+    : p);
+  fs.writeFileSync(PROSPECTS_FILE, JSON.stringify(local, null, 2), 'utf8');
+  return updated;
+}
+
 export async function convertProspect(prospectId) {
   const prospects = await getAllProspects();
   const prospect = prospects.find(p => String(p.id) === String(prospectId));

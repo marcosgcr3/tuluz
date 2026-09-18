@@ -26,7 +26,7 @@ import {
   saveGuideConfig,
   getProspectEmailTemplate,
   saveProspectEmailTemplate
-  ,getAllProspects, importProspects, markProspectsEmailSent, convertProspect, getGmailRefreshToken, saveGmailRefreshToken, getGmailHistoryId, saveGmailHistoryId, updateProspectEmailStatus
+  ,getAllProspects, importProspects, markProspectsEmailSent, resetSentProspectsToPending, convertProspect, getGmailRefreshToken, saveGmailRefreshToken, getGmailHistoryId, saveGmailHistoryId, updateProspectEmailStatus
 } from './db.js';
 import { guidesData } from './src/data/guidesData.js';
 import { getOfficialSources } from './src/data/content.js';
@@ -871,6 +871,17 @@ app.post('/api/admin/prospects/:id/convert', async (req, res) => {
     if (!result) return res.status(404).json({ error: 'Posible cliente no encontrado' });
     res.json({ success: true, ...result });
   } catch (err) { console.error('Error convirtiendo prospecto:', err); res.status(500).json({ error: 'No se pudo convertir en lead.' }); }
+});
+
+app.post('/api/admin/prospects/reset-sent-to-pending', async (req, res) => {
+  if (!checkAdminAuth(req)) return res.status(401).json({ error: 'Acceso no autorizado' });
+  try {
+    const updated = await resetSentProspectsToPending();
+    res.json({ success: true, reset: updated.length, prospects: updated });
+  } catch (err) {
+    console.error('Error restableciendo contactos enviados:', err);
+    res.status(500).json({ error: 'No se pudieron pasar los contactos enviados a pendientes.' });
+  }
 });
 
 app.post('/api/admin/prospects/import', (req, res, next) => {

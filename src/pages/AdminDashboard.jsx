@@ -651,27 +651,6 @@ export default function AdminDashboard({ navigate }) {
     } catch (err) { setProspectNotice(`❌ ${err.message}`); } finally { setProspectsLoading(false); }
   };
 
-  const handleResetSentProspects = async () => {
-    const resettable = prospects.filter(p => p.emailSent && !p.converted && !p.invalidEmail && !p.emailStatus);
-    if (!resettable.length) return setProspectNotice('No hay contactos enviados sin convertir que puedan volver a pendientes.');
-    if (!window.confirm(`¿Pasar ${resettable.length} contacto(s) enviado(s) sin convertir a Pendiente? No se modificarán errores de envío, correos no válidos, descartados ni respuestas.`)) return;
-
-    setProspectsLoading(true);
-    setProspectNotice('Pasando contactos enviados a pendientes...');
-    try {
-      const res = await fetch('/api/admin/prospects/reset-sent-to-pending', {
-        method: 'POST',
-        headers: { 'x-api-key': adminKey }
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.error || 'No se pudieron actualizar los contactos');
-      setSelectedProspectIds([]);
-      setProspectNotice(`✅ ${data.reset} contacto(s) enviado(s) sin convertir ahora están pendientes.`);
-      await fetchProspects();
-    } catch (err) { setProspectNotice(`❌ ${err.message}`); }
-    finally { setProspectsLoading(false); }
-  };
-
   const handleConvertProspect = async (prospect) => {
     if (prospect.converted) return;
     if (!window.confirm(`¿Convertir "${prospect.companyName || prospect.email}" en lead?`)) return;
@@ -716,11 +695,6 @@ export default function AdminDashboard({ navigate }) {
     () => new Set(prospects.map(p => String(p.email || '').trim().toLowerCase()).filter(Boolean)).size,
     [prospects]
   );
-  const resettableSentProspects = useMemo(
-    () => prospects.filter(p => p.emailSent && !p.converted && !p.invalidEmail && !p.emailStatus),
-    [prospects]
-  );
-
   // Filtered Leads
   const filteredLeads = useMemo(() => {
     if (!dashboardData || !dashboardData.leads) return [];
@@ -2366,7 +2340,6 @@ export default function AdminDashboard({ navigate }) {
               <button type="button" className="btn btn-secondary" onClick={handleCopyVisibleEmails} disabled={!filteredProspects.some(p => !p.invalidEmail)}><FileText size={16} />Copiar correos mostrados</button>
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedProspectIds([])}>Limpiar selección</button>
               <button type="button" className="btn btn-primary" onClick={handleSendProspects} disabled={prospectsLoading || !selectedProspectIds.length}><Mail size={16} />Enviar seleccionados ({selectedProspectIds.length})</button>
-              <button type="button" className="btn btn-secondary" onClick={handleResetSentProspects} disabled={prospectsLoading || !resettableSentProspects.length}><Clock size={16} />Pasar enviados a pendientes ({resettableSentProspects.length})</button>
               <button type="button" className="btn btn-secondary" onClick={fetchProspects}><RefreshCw size={16} />Actualizar</button>
             </div>
             <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}><thead><tr style={{ textAlign: 'left', color: '#64748b', borderBottom: '1px solid #e2e8f0' }}><th style={{ padding: '10px' }}></th><th style={{ padding: '10px' }}>Empresa</th><th style={{ padding: '10px' }}>Sector</th><th style={{ padding: '10px' }}>Email</th><th style={{ padding: '10px' }}>Estado</th><th style={{ padding: '10px' }}>CRM</th></tr></thead><tbody>{filteredProspects.map(p => <tr key={p.id} style={{ borderBottom: '1px solid #f1f5f9' }}><td style={{ padding: '10px' }}><input type="checkbox" checked={selectedProspectIds.includes(p.id)} disabled={p.emailSent || p.invalidEmail || p.emailStatus === 'descartado'} onChange={e => setSelectedProspectIds(prev => e.target.checked ? [...prev, p.id] : prev.filter(id => id !== p.id))} /></td><td style={{ padding: '10px', fontWeight: 700 }}>{p.companyName || 'Sin nombre'}<br /><span style={{ fontWeight: 400, color: '#64748b' }}>{p.city || p.address || ''}</span></td><td style={{ padding: '10px' }}>{p.sector || '—'}</td><td style={{ padding: '10px' }}>{p.email}</td><td title={p.invalidEmail ? 'Parece una ruta o extensión de archivo, no una dirección de correo.' : p.emailStatus === 'error_envio' ? (p.emailError || 'No se pudo completar el envío.') : undefined} style={{ padding: '10px', color: p.invalidEmail || p.emailStatus === 'descartado' ? '#b91c1c' : p.emailStatus === 'error_envio' ? '#ea580c' : p.emailSent ? '#15803d' : '#d97706', fontWeight: 700 }}>{p.invalidEmail ? '✕ Correo no válido' : p.emailStatus === 'descartado' ? '✕ Descartado' : p.emailStatus === 'error_envio' ? <><div>⚠ Error de envío</div><div style={{ marginTop: '3px', maxWidth: '260px', color: '#9a3412', fontSize: '11px', fontWeight: '500', lineHeight: 1.35, whiteSpace: 'normal', wordBreak: 'break-word' }}>{p.emailError || 'No se guardó el detalle de este error anterior.'}</div></> : p.emailSent ? '✓ Enviado' : p.emailStatus === 'respuesta_automatica' ? '↩ Respuesta automática' : p.emailStatus === 'respondido' ? '💬 Respondido' : 'Pendiente'}</td><td style={{ padding: '10px' }}>{p.converted ? <span style={{ color: '#15803d', fontWeight: 700 }}>✓ En lead</span> : <button type="button" className="btn btn-secondary" style={{ padding: '6px 10px', minHeight: '32px', fontSize: '12px' }} onClick={() => handleConvertProspect(p)}>Convertir en lead</button>}</td></tr>)}</tbody></table></div>
